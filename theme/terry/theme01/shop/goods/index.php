@@ -80,7 +80,6 @@ use yii\helpers\Url;
 
     .content .item {
         width: 100%;
-        height: 50px;
     }
 
     .item .picture {

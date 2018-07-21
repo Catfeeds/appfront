@@ -160,7 +160,7 @@
              </div></td>
             <td class="el-table_3_column_23  ">
              <div class="cell el-tooltip" style="width: 150px;">
-              <select name="" id="" onchange="saveStatus(this,'<?=$value['_id']?>')">
+              <select name="" id="" onchange="saveStatus(this,'<?=$value['_id']?>')" class="xiala">
                 <?php
 
 
@@ -271,7 +271,7 @@
         height: 46px;
         line-height: 46px;
     }
-    .content .shuaixuan .xiala {
+    .content .xiala {
         padding-left: 5px;
         width: 98px;
         outline: none;
