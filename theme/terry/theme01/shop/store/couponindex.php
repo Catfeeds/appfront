@@ -118,10 +118,12 @@ use yii\helpers\Url;
                         </li>
                     </ul>
                     <div data-v-345ba354=""><a data-v-345ba354="" href="#/ShopCouponAdd" class="">
-                            <button data-v-345ba354="" type="button"
-                                    class="el-button green el-button--success is-round"><!----><!----><span>添加优惠券</span>
+                        <a href="<?= Yii::$service->url->geturl("/shop/store/addcoupon") ?>">
+                            <button data-v-345ba354="" type="button" class="el-button green el-button--success is-round">
+                                <span>添加优惠券</span>
                             </button>
-                        </a></div>
+                        </a>
+                    </div>
                 </div>
                 <div data-v-345ba354="" class="item">
                     <div data-v-345ba354=""
@@ -203,216 +205,59 @@ use yii\helpers\Url;
                                     <col name="el-table_5_column_36" width="135">
                                 </colgroup>
                                 <tbody>
+                                <?php foreach ($res as $v){ ?>
                                 <tr class="el-table__row">
                                     <td class="el-table_5_column_29  el-table-column--selection">
-                                        <div class="cell"><label role="checkbox" class="el-checkbox"><span
-                                                        aria-checked="mixed" class="el-checkbox__input"><span
-                                                            class="el-checkbox__inner"></span><input type="checkbox"
-                                                                                                     aria-hidden="true"
-                                                                                                     class="el-checkbox__original"
-                                                                                                     value=""></span>
-                                                <!----></label></div>
+                                        <div class="cell">
+                                            <label role="checkbox" class="el-checkbox">
+                                                <span aria-checked="mixed" class="el-checkbox__input">
+                                                    <span class="el-checkbox__inner"></span>
+                                                    <input type="checkbox" aria-hidden="true" class="el-checkbox__original" value="">
+                                                </span>
+                                            </label>
+                                        </div>
                                     </td>
                                     <td class="el-table_5_column_30  ">
-                                        <div class="cell el-tooltip" style="width: 199px;">满300减30（全场通用）</div>
+                                        <div class="cell el-tooltip" style="width: 199px;"><?= $v["coupon_name"] ?></div>
                                     </td>
                                     <td class="el-table_5_column_31  ">
-                                        <div class="cell el-tooltip" style="width: 138px;">30.00</div>
+                                        <div class="cell el-tooltip" style="width: 138px;"><?= $v["discount"] ?></div>
                                     </td>
                                     <td class="el-table_5_column_32  ">
-                                        <div class="cell el-tooltip" style="width: 134px;">300.00</div>
+                                        <div class="cell el-tooltip" style="width: 134px;"><?= $v["conditions"] ?></div>
                                     </td>
                                     <td class="el-table_5_column_33  ">
-                                        <div class="cell el-tooltip" style="width: 134px;">2018-5-29 18:25</div>
+                                        <div class="cell el-tooltip" title="<?= date("Y-m-d H:i:s",$v["created_at"]) ?>" style="width: 134px;"><?= date("Y-m-d H:i:s",$v["created_at"]) ?></div>
                                     </td>
                                     <td class="el-table_5_column_34  ">
-                                        <div class="cell el-tooltip" style="width: 134px;">2018-5-29 18:25</div>
+                                        <div class="cell el-tooltip" title="<?= date("Y-m-d H:i:s",$v["expiration_date"]) ?>" style="width: 134px;"><?= date("Y-m-d H:i:s",$v["expiration_date"]) ?></div>
                                     </td>
                                     <td class="el-table_5_column_35  ">
-                                        <div class="cell"><span data-v-345ba354=""
-                                                                style="color: rgb(54, 221, 124);">有效</span></div>
+                                        <div class="cell">
+                                            <?php if($v["expiration_date"]>time()){?>
+                                                <span data-v-345ba354="" style="color: rgb(54, 221, 124);">
+                                                    有效
+                                                </span>
+                                            <?php }else{?>
+                                                <span data-v-345ba354="" style="color: #ff4949;">
+                                                    无效
+                                                </span>
+                                            <?php } ?>
+                                        </div>
                                     </td>
                                     <td class="el-table_5_column_36  ">
                                         <div class="cell el-tooltip" style="width: 134px;">
-                                            <button data-v-345ba354="" type="button"
-                                                    class="el-button el-button--text el-button--small"><!---->
-                                                <!----><span>编辑</span></button>
+                                            <button data-v-345ba354="" type="button" class="el-button el-button--text el-button--small">
+                                                <span>编辑</span>
+                                            </button>
                                             <span data-v-345ba354="" style="color: rgb(234, 235, 236);">|</span>
-                                            <button data-v-345ba354="" type="button"
-                                                    class="el-button el-button--text el-button--small"><!---->
-                                                <!----><span><i data-v-345ba354="" class="el-icon-delete"></i></span>
+                                            <button data-v-345ba354="" type="button" class="el-button el-button--text el-button--small">
+                                                <span><i data-v-345ba354="" class="el-icon-delete"></i></span>
                                             </button>
                                         </div>
                                     </td>
                                 </tr>
-                                <tr class="el-table__row">
-                                    <td class="el-table_5_column_29  el-table-column--selection">
-                                        <div class="cell"><label role="checkbox" class="el-checkbox"><span
-                                                        aria-checked="mixed" class="el-checkbox__input"><span
-                                                            class="el-checkbox__inner"></span><input type="checkbox"
-                                                                                                     aria-hidden="true"
-                                                                                                     class="el-checkbox__original"
-                                                                                                     value=""></span>
-                                                <!----></label></div>
-                                    </td>
-                                    <td class="el-table_5_column_30  ">
-                                        <div class="cell el-tooltip" style="width: 199px;">满300减30（全场通用）</div>
-                                    </td>
-                                    <td class="el-table_5_column_31  ">
-                                        <div class="cell el-tooltip" style="width: 138px;">30.00</div>
-                                    </td>
-                                    <td class="el-table_5_column_32  ">
-                                        <div class="cell el-tooltip" style="width: 134px;">300.00</div>
-                                    </td>
-                                    <td class="el-table_5_column_33  ">
-                                        <div class="cell el-tooltip" style="width: 134px;">2018-5-29 18:25</div>
-                                    </td>
-                                    <td class="el-table_5_column_34  ">
-                                        <div class="cell el-tooltip" style="width: 134px;">2018-5-29 18:25</div>
-                                    </td>
-                                    <td class="el-table_5_column_35  ">
-                                        <div class="cell"><span data-v-345ba354=""
-                                                                style="color: rgb(54, 221, 124);">有效</span></div>
-                                    </td>
-                                    <td class="el-table_5_column_36  ">
-                                        <div class="cell el-tooltip" style="width: 134px;">
-                                            <button data-v-345ba354="" type="button"
-                                                    class="el-button el-button--text el-button--small"><!---->
-                                                <!----><span>编辑</span></button>
-                                            <span data-v-345ba354="" style="color: rgb(234, 235, 236);">|</span>
-                                            <button data-v-345ba354="" type="button"
-                                                    class="el-button el-button--text el-button--small"><!---->
-                                                <!----><span><i data-v-345ba354="" class="el-icon-delete"></i></span>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="el-table__row">
-                                    <td class="el-table_5_column_29  el-table-column--selection">
-                                        <div class="cell"><label role="checkbox" class="el-checkbox"><span
-                                                        aria-checked="mixed" class="el-checkbox__input"><span
-                                                            class="el-checkbox__inner"></span><input type="checkbox"
-                                                                                                     aria-hidden="true"
-                                                                                                     class="el-checkbox__original"
-                                                                                                     value=""></span>
-                                                <!----></label></div>
-                                    </td>
-                                    <td class="el-table_5_column_30  ">
-                                        <div class="cell el-tooltip" style="width: 199px;">618年中大促，优惠送不停</div>
-                                    </td>
-                                    <td class="el-table_5_column_31  ">
-                                        <div class="cell el-tooltip" style="width: 138px;">30.00</div>
-                                    </td>
-                                    <td class="el-table_5_column_32  ">
-                                        <div class="cell el-tooltip" style="width: 134px;">300.00</div>
-                                    </td>
-                                    <td class="el-table_5_column_33  ">
-                                        <div class="cell el-tooltip" style="width: 134px;">2018-5-29 18:25</div>
-                                    </td>
-                                    <td class="el-table_5_column_34  ">
-                                        <div class="cell el-tooltip" style="width: 134px;">2018-5-29 18:25</div>
-                                    </td>
-                                    <td class="el-table_5_column_35  ">
-                                        <div class="cell"><span data-v-345ba354=""
-                                                                style="color: rgb(54, 221, 124);">有效</span></div>
-                                    </td>
-                                    <td class="el-table_5_column_36  ">
-                                        <div class="cell el-tooltip" style="width: 134px;">
-                                            <button data-v-345ba354="" type="button"
-                                                    class="el-button el-button--text el-button--small"><!---->
-                                                <!----><span>编辑</span></button>
-                                            <span data-v-345ba354="" style="color: rgb(234, 235, 236);">|</span>
-                                            <button data-v-345ba354="" type="button"
-                                                    class="el-button el-button--text el-button--small"><!---->
-                                                <!----><span><i data-v-345ba354="" class="el-icon-delete"></i></span>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="el-table__row">
-                                    <td class="el-table_5_column_29  el-table-column--selection">
-                                        <div class="cell"><label role="checkbox" class="el-checkbox"><span
-                                                        aria-checked="mixed" class="el-checkbox__input"><span
-                                                            class="el-checkbox__inner"></span><input type="checkbox"
-                                                                                                     aria-hidden="true"
-                                                                                                     class="el-checkbox__original"
-                                                                                                     value=""></span>
-                                                <!----></label></div>
-                                    </td>
-                                    <td class="el-table_5_column_30  ">
-                                        <div class="cell el-tooltip" style="width: 199px;">满300减30（全场通用）</div>
-                                    </td>
-                                    <td class="el-table_5_column_31  ">
-                                        <div class="cell el-tooltip" style="width: 138px;">30.00</div>
-                                    </td>
-                                    <td class="el-table_5_column_32  ">
-                                        <div class="cell el-tooltip" style="width: 134px;">300.00</div>
-                                    </td>
-                                    <td class="el-table_5_column_33  ">
-                                        <div class="cell el-tooltip" style="width: 134px;">2018-5-29 18:25</div>
-                                    </td>
-                                    <td class="el-table_5_column_34  ">
-                                        <div class="cell el-tooltip" style="width: 134px;">2018-5-29 18:25</div>
-                                    </td>
-                                    <td class="el-table_5_column_35  ">
-                                        <div class="cell"><span data-v-345ba354=""
-                                                                style="color: rgb(54, 221, 124);">有效</span></div>
-                                    </td>
-                                    <td class="el-table_5_column_36  ">
-                                        <div class="cell el-tooltip" style="width: 134px;">
-                                            <button data-v-345ba354="" type="button"
-                                                    class="el-button el-button--text el-button--small"><!---->
-                                                <!----><span>编辑</span></button>
-                                            <span data-v-345ba354="" style="color: rgb(234, 235, 236);">|</span>
-                                            <button data-v-345ba354="" type="button"
-                                                    class="el-button el-button--text el-button--small"><!---->
-                                                <!----><span><i data-v-345ba354="" class="el-icon-delete"></i></span>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="el-table__row">
-                                    <td class="el-table_5_column_29  el-table-column--selection">
-                                        <div class="cell"><label role="checkbox" class="el-checkbox"><span
-                                                        aria-checked="mixed" class="el-checkbox__input"><span
-                                                            class="el-checkbox__inner"></span><input type="checkbox"
-                                                                                                     aria-hidden="true"
-                                                                                                     class="el-checkbox__original"
-                                                                                                     value=""></span>
-                                                <!----></label></div>
-                                    </td>
-                                    <td class="el-table_5_column_30  ">
-                                        <div class="cell el-tooltip" style="width: 199px;">满300减30（全场通用）</div>
-                                    </td>
-                                    <td class="el-table_5_column_31  ">
-                                        <div class="cell el-tooltip" style="width: 138px;">30.00</div>
-                                    </td>
-                                    <td class="el-table_5_column_32  ">
-                                        <div class="cell el-tooltip" style="width: 134px;">300.00</div>
-                                    </td>
-                                    <td class="el-table_5_column_33  ">
-                                        <div class="cell el-tooltip" style="width: 134px;">2018-5-29 18:25</div>
-                                    </td>
-                                    <td class="el-table_5_column_34  ">
-                                        <div class="cell el-tooltip" style="width: 134px;">2018-5-29 18:25</div>
-                                    </td>
-                                    <td class="el-table_5_column_35  ">
-                                        <div class="cell"><span data-v-345ba354=""
-                                                                style="color: rgb(54, 221, 124);">有效</span></div>
-                                    </td>
-                                    <td class="el-table_5_column_36  ">
-                                        <div class="cell el-tooltip" style="width: 134px;">
-                                            <button data-v-345ba354="" type="button"
-                                                    class="el-button el-button--text el-button--small"><!---->
-                                                <!----><span>编辑</span></button>
-                                            <span data-v-345ba354="" style="color: rgb(234, 235, 236);">|</span>
-                                            <button data-v-345ba354="" type="button"
-                                                    class="el-button el-button--text el-button--small"><!---->
-                                                <!----><span><i data-v-345ba354="" class="el-icon-delete"></i></span>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
+                                <?php } ?>
                                 </tbody>
                             </table>
                         </div>
@@ -424,12 +269,12 @@ use yii\helpers\Url;
                             <div data-v-345ba354="" style="display: flex;">
                                 <div data-v-345ba354="" class="dian"></div>
                                 总计<span data-v-345ba354=""
-                                        style="color: rgb(61, 176, 255); font-weight: bolder;">206</span>记录
+                                        style="color: rgb(61, 176, 255); font-weight: bolder;"><?= $num ?></span>记录
                             </div>
                             <div data-v-345ba354="" style="display: flex;">
                                 <div data-v-345ba354="" class="dian" style="background: rgb(41, 201, 154);"></div>
                                 分<span data-v-345ba354=""
-                                       style="font-weight: bolder; color: rgb(41, 201, 154);">82</span>页
+                                       style="font-weight: bolder; color: rgb(41, 201, 154);"><?= $page ?></span>页
                             </div>
                         </div>
                         <div data-v-345ba354="" style="margin-top: 40px;">
