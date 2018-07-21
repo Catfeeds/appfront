@@ -5,7 +5,7 @@ use yii\helpers\Url;
 ?>
 <style>
     .content {
-        width: 94%;
+        width: 100%;
         height: 100%;
         box-sizing: border-box;
         padding-top: 8px;
@@ -35,7 +35,6 @@ use yii\helpers\Url;
 
     .content .item {
         width: 100%;
-        height: 50px;
     }
 
     .item .picture {
@@ -166,7 +165,7 @@ use yii\helpers\Url;
                                                     <col name="el-table_2_column_18" width="90">
                                                 </colgroup>
                                                 <thead class="has-gutter">
-                                                <tr class="">
+                                                <tr style="font-size: 14px;color: #B1DBFE;">
                                                     <th colspan="1" rowspan="1"
                                                         class="el-table_2_column_10     is-leaf">
                                                         <div class="cell">订单号</div>
@@ -217,7 +216,7 @@ use yii\helpers\Url;
                                                     <col name="el-table_2_column_17" width="80">
                                                     <col name="el-table_2_column_18" width="90">
                                                 </colgroup>
-                                                <tbody>
+                                                <tbody style="font-size: 14px">
                                                 <?php foreach ($orders as $v){ ?>
                                                     <tr class="el-table__row">
                                                     <td class="el-table_2_column_10  ">
