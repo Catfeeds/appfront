@@ -34,9 +34,18 @@ class OrdersController extends PublicsController
     // 订单管理首页
     public function actionIndex()
     {
+        // 获取数据
+        $request = Yii::$app->request;
+        $get = $request->get();
 
+        if($get["flag"]){
+            $flag = $get['flag']-1;
+            $sql = " select count(*) tot from sales_flat_order where shop_id={$_SESSION["shop_id"]} and order_status={$flag}";
+        }else{
+            $sql = " select count(*) tot from sales_flat_order where shop_id={$_SESSION["shop_id"]}";
+        }
         //查询订单表数量
-        $countArr = Yii::$app->db->createCommand(" select count(*) tot from sales_flat_order")->queryOne();
+        $countArr = Yii::$app->db->createCommand($sql)->queryOne();
 
 
         // 实例化分页对象
@@ -44,15 +53,14 @@ class OrdersController extends PublicsController
             'defaultPageSize' => 5,
             'totalCount' => $countArr['tot'],
         ]);
-
-
-        // 进行数据查询
-//        $rows=$query->from('product_flat')
-//            ->orderBy("updated_at desc")
-//            ->offset($pagination->offset)
-//            ->limit($pagination->limit)->all();
         //查询订单产品表
-        $arr = Yii::$app->db->createCommand(" select * from sales_flat_order limit $pagination->offset , $pagination->limit")->queryAll();
+        if($get["flag"]){
+            $flag = $get['flag']-1;
+            $sql = " select sales_flat_order.*,sales_coupon.* from sales_flat_order,sales_coupon where sales_flat_order.shop_id={$_SESSION["shop_id"]} and sales_flat_order.order_status={$flag} and sales_flat_order.coupon_code=sales_coupon.coupon_code limit $pagination->offset , $pagination->limit";
+        }else{
+            $sql = " select sales_flat_order.*,sales_coupon.* from sales_flat_order,sales_coupon where sales_flat_order.shop_id={$_SESSION["shop_id"]} and sales_flat_order.coupon_code=sales_coupon.coupon_code limit $pagination->offset , $pagination->limit";
+        }
+        $arr = Yii::$app->db->createCommand($sql)->queryAll();
 
         $sql = "select * from sales_flat_order_item where order_id in (";
         foreach ($arr as $v) {
@@ -70,10 +78,13 @@ class OrdersController extends PublicsController
                 }
             }
         };
-//        var_dump($arr);
-//        exit();
+        $all = Yii::$app->db->createCommand("select o.order_status from sales_flat_order o")->queryAll();
+
+        //查询所有的
         $datas["orders"] = $arr;
         $datas["pagination"] = $pagination;
+        $datas["all"] = $all;
+        $datas["flag"] = $get["flag"]?$get["flag"]:0;
         return $this->render($this->action->id, $datas);
     }
 

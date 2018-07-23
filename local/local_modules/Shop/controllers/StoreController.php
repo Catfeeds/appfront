@@ -31,10 +31,11 @@ class StoreController extends PublicsController
     
     /*商铺管理首页*/
     public function actionIndex(){
-      
+
+
         //return $this->render($this->action->id, $data);
         $uid = $_SESSION["uid"];
-        $res = Yii::$app->db->createCommand("select * from ns_shop where uid=$uid")->queryOne();
+        $res = Yii::$app->db->createCommand("select * from shop where uid=$uid")->queryOne();
         $addressInfo = parent::getAddressInfo();
         $datas["res"] = $res;
         $datas["province"] = $addressInfo["province"];
@@ -50,7 +51,7 @@ class StoreController extends PublicsController
 
         $datas = $req->post();
 
-        $sql = "update ns_shop set shop_keywords='{$datas['shop_keywords']}',shop_banner='{$datas['shop_banner']}',shop_phone='{$datas['shop_phone']}',province_id='{$datas['province_id']}',city_id='{$datas['city_id']}',shop_address='{$datas['shop_address']}',shop_description='{$datas['shop_description']}'  where uid={$datas['uid']}";
+        $sql = "update shop set shop_keywords='{$datas['shop_keywords']}',shop_banner='{$datas['shop_banner']}',shop_phone='{$datas['shop_phone']}',province_id='{$datas['province_id']}',city_id='{$datas['city_id']}',shop_address='{$datas['shop_address']}',shop_description='{$datas['shop_description']}'  where uid={$datas['uid']}";
 
         $res = Yii::$app->db->createCommand($sql)->execute();
 
@@ -107,7 +108,7 @@ class StoreController extends PublicsController
     public function actionSetimg(){
 
         $uid = $_SESSION["uid"];
-        $res = Yii::$app->db->createCommand("select ns_shop.shop_logo,ns_shop.shop_avatar from ns_shop where uid=$uid")->queryOne();
+        $res = Yii::$app->db->createCommand("select shop.shop_logo,shop.shop_avatar from shop where uid=$uid")->queryOne();
 
         $datas["res"] = $res;
         $datas["imgUrl"] = Yii::$app->params["img"];
@@ -168,7 +169,7 @@ class StoreController extends PublicsController
 
                     if (move_uploaded_file($tmp_name,$folder.$newName)) {
 
-                        $res = Yii::$app->db->createCommand("update ns_shop set shop_logo='{$post['shop_logo']}',shop_avatar='{$post['shop_avatar']}' where uid={$_SESSION['uid']}")->execute();
+                        $res = Yii::$app->db->createCommand("update shop set shop_logo='{$post['shop_logo']}',shop_avatar='{$post['shop_avatar']}' where uid={$_SESSION['uid']}")->execute();
 
                     }
                 }

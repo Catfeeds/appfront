@@ -238,8 +238,8 @@ $cssOptions = [
             width: 88%;
             top: 80px;
             left: 12%;
+            /*overflow: hidden;*/
         }
-
         .el-input--suffix .el-input__inner {
             height: 30px;
             border-radius: 15px;

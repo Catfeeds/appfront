@@ -111,7 +111,7 @@
 </style>
 <div class="main-content">
     <div style="width: 1064px; margin: 0px auto;">
-        <div data-v-2b6e6d92="" class="content">
+        <div data-v-2b6e6d92="" class="">
             <div data-v-2b6e6d92="" class="biaoti">
                 <div data-v-2b6e6d92="" aria-label="Breadcrumb" role="navigation" class="el-breadcrumb"><span
                             data-v-2b6e6d92=""

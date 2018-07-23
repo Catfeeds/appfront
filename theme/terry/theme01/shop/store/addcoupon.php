@@ -206,16 +206,18 @@
                                             <div class="el-scrollbar__thumb" style="transform: translateY(0%);"></div>
                                         </div>
                                     </div><!----></div>
-                            </div><!----></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>
         </div>
         <div data-v-63f72479="" style="float: right;">
-            <button data-v-63f72479="" type="button" class="el-button green el-button--success is-round"><!---->
-                <!----><span>发布活动</span></button>
+            <button data-v-63f72479="" type="button" class="el-button green el-button--success is-round">
+                <span>发布活动</span></button>
             <a data-v-63f72479="" href="#/ShopCouponEdit" class="">
-                <button data-v-63f72479="" type="button" class="el-button red el-button--danger is-round"><!----><!----><span>重置</span>
+                <button data-v-63f72479="" type="button" class="el-button red el-button--danger is-round">
+                    <span>重置</span>
                 </button>
             </a></div>
     </div>
