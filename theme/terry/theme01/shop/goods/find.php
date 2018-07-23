@@ -26,11 +26,11 @@
             </div>
             <div  class="title" style="box-sizing:border-box">
                 <form  class="el-form" method="post" action="<?= Yii::$service->url->getUrl('shop/goods/edit') ?>">
-                    <div  class="el-row" style="width: 800px;">
+                    <div  class="el-row" style="width: 500px;">
                         <div  class="el-form-item">
                             <label class="el-form-item__label" style="width: 120px;">货号:</label>
                             <div class="el-form-item__content" style="margin-left: 120px;">
-                                <div><?= $goods['spu']?></div>
+                                <div style="height: 28px;line-height:28px"><?= $goods['spu']?></div>
                             </div>
                             <input type="hidden" name="_id" value="<?= $goods['_id']?>">
                         </div>
@@ -49,7 +49,7 @@
                                 <div  class="el-select">
                                     <div class="el-input el-input--suffix">
                                     	
-                                    	<select name="classone" onchange="getTwoMenu(this)" class="el-input__inner" style="width:230px;line-height:30px;" id="s1">
+                                    	<select name="classone" onchange="getTwoMenu(this)" class="el-input__inner" style="width:180px;line-height:30px;" id="s1">
                                     		<?php foreach ($category as $key => $value) {?>
 
 												<?php
@@ -68,7 +68,7 @@
 											?>
                                     	</select>
 
-                                    	<select name="classtwo" class="el-input__inner" style="width:230px;line-height:30px;" id="s2">
+                                    	<select name="classtwo" class="el-input__inner" style="width:190px;line-height:30px;" id="s2">
                                     		<?php foreach ($class as $key => $value) {?>
 												<?php
 													if ($goods['category'][1] == $value["_id"]) {
@@ -112,7 +112,7 @@
                         <div  class="el-form-item">
                         	<label class="el-form-item__label" style="width: 120px;">上下架:</label>
                             <div class="el-form-item__content" style="margin-left: 120px;">
-                                <div  role="switch" aria-checked="true" class="el-switch is-checked" style="height: 40px;width:150px;display:flex;justify-content: space-around">
+                                <div  role="switch" aria-checked="true" class="el-switch is-checked" style="height: 30px;width:150px;display:flex;justify-content: space-around">
 									<?php 
 										if($goods['status']==1){
 											echo '<label><input type="radio" name="status" value="1" id="" checked class="shangjia"> 上架</label>
@@ -210,7 +210,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div  style="width:padding-left: 40px;text-align:center">
+                        <div>
                             <button  type="submit" class="el-button blue el-button--primary is-round">
                                 <span>保存</span>
                             </button>
@@ -348,10 +348,10 @@
         height: 35px;
         background: #30B5FE;
         border:none;
-        box-shadow:0 0px 8px #30B5FE;
+        box-shadow:0 0 8px #30B5FE;
     }
     .title .details{
-        width: 100%;
+        width: 600px;
         height:116px;
         outline:none;
         resize:none;

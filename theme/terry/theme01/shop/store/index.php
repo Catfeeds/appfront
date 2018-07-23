@@ -35,7 +35,6 @@
 
     .content .item {
         width: 100%;
-        height: 50px;
     }
 
     .content .item .col-box {
@@ -62,7 +61,6 @@
 
     .bottom .title {
         width: 100%;
-        height: 690px;
         line-height: 46px;
         font-size: 12px;
         padding-left: 22px;
@@ -179,11 +177,7 @@
                                                 <input type="text" autocomplete="off" placeholder="洗衣、洗鞋、洗家纺、洗窗帘、袋洗"
                                                        class="el-input__inner" name="shop_keywords"
                                                        value="<?= $res["shop_keywords"] ?>"/>
-                                                <!---->
-                                                <!---->
-                                                <!---->
                                             </div>
-                                            <!---->
                                         </div>
                                     </div>
                                     <div data-v-3bfc0387="" class="el-form-item">
@@ -192,7 +186,6 @@
                                             <textarea data-v-3bfc0387="" id="" cols="30" rows="10"
                                                       placeholder="店铺新开张，2018.5.20-2018.5.23所有商品打8折" class="details"
                                                       name="shop_banner"><?= $res["shop_banner"] ?></textarea>
-                                            <!---->
                                         </div>
                                     </div>
                                     <div data-v-3bfc0387="" class="el-form-item">
@@ -202,7 +195,6 @@
                                                       placeholder="灯具千种热销款式，厂家一站式供货，自由退换货。专业人士上门安装，服务到家。"
                                                       class="details"
                                                       name="shop_description"><?= $res["shop_description"] ?></textarea>
-                                            <!---->
                                         </div>
                                     </div>
 <!--                                    <div data-v-3bfc0387="" class="el-form-item">-->
@@ -215,14 +207,15 @@
 <!---->
 <!--                                                </div>-->
 <!--                                                <div data-v-3bfc0387="" class="zhizhao2">-->
-<!--                                                    --><?php
+<!--                                                    -->
+                                    <?php
 //                                                        if($res["business_licence_number_electronic"]){
 //                                                            echo "<img src='".$res["business_licence_number_electronic"]."' class='zhizhao-img'/>";
 //                                                        }
 //                                                    ?>
 <!--                                                </div>-->
 <!--                                            </div>-->
-<!--                                            <!---->-->
+<!--                                            <!---->
 <!--                                        </div>-->
 <!--                                    </div>-->
                                 </div>
@@ -315,7 +308,7 @@
 <!--                            </div>-->
 <!--                        </div>-->
 <!--                    </div>-->
-                    <div data-v-3bfc0387="" style="float: right;margin: 20px 0px">
+                    <div data-v-3bfc0387="" style="float: right;margin: 20px 0">
                         <button data-v-3bfc0387="" type="submit" class="el-button green el-button--success is-round">
                             <!---->
                             <!----><span>提交</span></button>

@@ -514,7 +514,7 @@
     .main-content1 .message1 {
         width: 360px;
         height: 46px;
-        font-size: 14px;
+        font-size: 12px;
         color: #bdc3c9;
         margin-left: 20px;
         line-height: 18px;
