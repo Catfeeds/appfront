@@ -304,7 +304,7 @@ use yii\helpers\Url;
                                                                     <div data-v-6045fa9c=""><?= $v["customer_firstname"] ?></div>
                                                                     <div data-v-6045fa9c="">
                                                                         TEL:<?= $v["customer_telephone"] ?></div>
-                                                                    <div data-v-6045fa9c=""><?= $v["customer_address_street1"] ?></div>
+                                                                    <div data-v-6045fa9c=""><?= $v["customer_address_country"] . $v["customer_address_state"] . $v["customer_address_city"] . $v["customer_address_street1"] ?></div>
                                                                 </div>
                                                             </td>
                                                             <td class="el-table_2_column_14">
@@ -349,11 +349,13 @@ use yii\helpers\Url;
                                                                     </button>
                                                                     <?php if($v["order_status"]==1){ ?>
                                                                     <div data-v-6045fa9c="">
-                                                                        <button data-v-6045fa9c="" type="button"
-                                                                                class="el-button el-button--primary is-round"
-                                                                                style="font-size: 10px; width: 60px; margin-top: 5px; height: 25px; padding-top: 5px; padding-left: 18px;">
-                                                                                <span>接单</span>
-                                                                        </button>
+                                                                        <a href="<?= Yii::$service->url->geturl("/shop/orders/receipt?order_id={$v["order_id"]}") ?>">
+                                                                            <button data-v-6045fa9c="" type="button"
+                                                                                    class="el-button el-button--primary is-round"
+                                                                                    style="font-size: 10px; width: 60px; margin-top: 5px; height: 25px; padding-top: 5px; padding-left: 18px;">
+                                                                                    <span>接单</span>
+                                                                            </button>
+                                                                        </a>
                                                                     </div>
                                                                     <?php } ?>
                                                                 </div>

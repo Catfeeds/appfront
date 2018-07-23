@@ -101,7 +101,6 @@ class OrdersController extends PublicsController
         $sql = "select sales_flat_order_item.*,product_flat_qty.qty as kc from sales_flat_order_item,product_flat_qty where sales_flat_order_item.order_id=$order_id and sales_flat_order_item.product_id=product_flat_qty.product_id";
         $res1 = Yii::$app->db->createCommand($sql)->queryAll();
         $res["goodDatas"] = $res1;
-
         $datas["res"] = $res;
         return $this->render($this->action->id, $datas);
     }
@@ -151,11 +150,16 @@ class OrdersController extends PublicsController
 
         return $this->redirect(['orders/see?order_id=' . $order_id]);
     }
-    public function actionAa(){
 
-        echo "aa";
-    }
-    public function actionBb(){
-        echo "bb";
+    //接单
+    public function actionReceipt(){
+
+        $res = Yii::$app->request;
+        $order_id = $res->get("order_id");
+
+        $res = Yii::$app->db->createCommand("update sales_flat_order set order_status=2 where order_id={$order_id}")->execute();
+
+        return $this->redirect("/shop/orders/index");
+
     }
 }
