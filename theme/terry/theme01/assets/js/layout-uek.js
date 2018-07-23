@@ -1,18 +1,24 @@
     var arrs = {
         goods: [
             {"name":"商品列表","url":"/shop/goods/index"},
-            // {"name":"分类管理","url":"/shop/goods/categorylist"},
+            // {"name":"分类管理","url":"/sh op/goods/categorylist"},
             {"name":"用户评价","url":"/shop/goods/commentlist"}
         ],
         orders: [
             {"name":"订单列表","url":"/shop/orders/index"},
             {"name":"纠纷列表","url":""},
-            {"name":"取件单列表","url":""}
+            // {"name":"取件单列表","url":""}
         ],
         store: [
             {"name":"店铺信息","url":"/shop/store/index"},
             {"name":"店铺图片设置","url":"/shop/store/setimg"},
+<<<<<<< HEAD
             {"name":"优惠卷管理","url":"/shop/store/couponindex"},
+=======
+            // {"name":"店铺活动","url":""},
+            {"name":"优惠卷管理","url":"/shop/store/couponindex"},
+            // {"name":"咨询管理","url":""}
+>>>>>>> 74acc9c71537521bc0f992b939900754b3a2056f
         ],
         account: [
             {"name":"实名认证","url":"/shop/account/realname"},

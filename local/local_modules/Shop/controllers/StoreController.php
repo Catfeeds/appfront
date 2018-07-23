@@ -181,20 +181,26 @@ class StoreController extends PublicsController
     //返回优惠卷管理首页
     public function actionCouponindex(){
 
-        $count = Yii::$app->db->createCommand("select count(*) as num from sales_coupon where created_person={$_SESSION[uid]}")->queryAll();
+        $count = Yii::$app->db->createCommand("select count(*) num from sales_coupon where created_person=2")->queryAll();
 
         //实例化分页对象
         // 实例化分页对象
         $pagination = new Pagination([
-            'defaultPageSize' => 5,
-            'totalCount' => $count['num'],
+            'defaultPageSize' => 1,
+            'totalCount' => $count[0]['num'],
         ]);
-
-        $res = Yii::$app->db->createCommand("select * from sales_coupon where created_person={$_SESSION[uid]} limit $pagination->offset,$pagination->limit")->queryAll();
-
+        $res = Yii::$app->db->createCommand("select * from sales_coupon where created_person=2 limit $pagination->offset,$pagination->limit")->queryAll();
         $datas["res"] = $res;
         $datas["pagination"] = $pagination;
-
+        $datas["num"] = $count[0]['num'];
+        $datas["page"] = $pagination->limit;
         return $this->render($this->action->id,$datas);
+    }
+
+    //返回添加优惠券页面
+    public function actionAddcoupon(){
+
+
+        return $this->render($this->action->id);
     }
 }
