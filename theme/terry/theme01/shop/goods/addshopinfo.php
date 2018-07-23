@@ -1,5 +1,5 @@
 <div class="main-content">
-    <div style="width: 1064px; margin: 0px auto;">
+    <div style="width: 1064px; margin: 0 auto;">
         <div class="biaoti">
             <div aria-label="Breadcrumb" role="navigation" class="el-breadcrumb">
                 <span class="el-breadcrumb__item"><span role="link"
@@ -18,7 +18,7 @@
             <ul class="top">
                 <li class="btn1"><span class="btn">选择商品分类</span></li>
                 <li class="btn2"><span class="btn">填写商品信息</span></li>
-                <li class="btn3"><span class="btn">选择商品关联</span></li>
+<!--                <li class="btn3"><span class="btn">选择商品关联</span></li>-->
             </ul>
             <div class="bottom">
                 <div style="width: 328px; height: 42px; line-height: 42px; font-size: 18px; font-weight: bolder;">
@@ -143,7 +143,6 @@
                             };
                         }
                     }
-
                 </script>
                 <div style="width: 328px; height: 42px; line-height: 42px; font-size: 18px; font-weight: bolder; margin-top: 15px;">
                     <div class="col-box"
@@ -175,12 +174,8 @@
                         <label class="el-form-item__label" style="width: 80px;">文字描述</label>
                         <div class="el-form-item__content" style="margin-left: 80px;">
                             <div class="inputbox el-input">
-
                                 <input type="text" autocomplete="off" class="el-input__inner"/>
-
-
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -189,13 +184,11 @@
                          style="width: 12px; height: 7px; border-radius: 5px; margin-top: 17px; margin-left: 10px; margin-right: 7px; background-color: rgb(55, 224, 111);"></div>
                     其他信息
                 </div>
-                <div class="message" style="height: 280px; margin-bottom: 20px;border:none">
+                <div class="message" style="height: 230px; margin-bottom: 20px;border:none">
                     <div class="el-form-item">
                         <label class="el-form-item__label" style="width: 80px;">上架</label>
-                        <div class="el-form-item__content" style="margin-left: 80px;">
+                        <div class="el-form-item__content" style="margin-left: 80px;margin-top:5px;">
                             <div role="switch" aria-checked="true" class="el-switch is-checked">
-
-
                                 <!-- 上架 -->
                                 <span class="el-switch__core" data-id="1"
                                       style="width: 40px; border-color: rgb(19, 206, 102); background-color: rgb(19, 206, 102);"></span>
@@ -203,7 +196,6 @@
                                 <span class="el-switch__core" data-id="2"
                                       style="display:none;width: 40px; border-color: rgb(255, 73, 73); background-color: rgb(255, 73, 73);"></span>
                             </div>
-
                         </div>
                     </div>
                     <input type="hidden" name="status" value="1"/>
@@ -211,7 +203,6 @@
                         <label class="el-form-item__label" style="width: 80px;">关键词</label>
                         <div class="el-form-item__content" style="margin-left: 80px;">
                             <div class="inputbox el-input">
-
                                 <input type="text" autocomplete="off" name="keywords" class="el-input__inner"/>
                                 <input type="hidden" name="one" value="<?= $oneId ?>">
                                 <input type="hidden" name="tow" value="<?= $twoId ?>">
@@ -220,32 +211,26 @@
                             <div class="tishi">
                                 商品关键词请用空格分隔
                             </div>
-
                         </div>
                     </div>
-
                     <div class="el-form-item">
                         <label class="el-form-item__label" style="width: 80px;">商品库存</label>
                         <div class="el-form-item__content" style="margin-left: 80px;">
                             <div class="inputbox el-input">
-
                                 <input type="text" autocomplete="off" name="kucun" class="el-input__inner"/>
-
                             </div>
-
                         </div>
                     </div>
-
                 </div>
                 <a href="<?= Yii::$service->url->getUrl('shop/goods/addclass') ?>" class="">
                     <button type="button" class="el-button blue el-button--primary is-round"
                             style="margin-right: 20px;">
-
                         <span>上一步，选择商品分类 </span></button>
                 </a>
                 <button type="submit" class="el-button blue el-button--primary is-round">
-
-                    <span>下一步，选择商品关联</span></button>
+<!--                    <span>下一步，选择商品关联</span>-->
+                    <span>完成，发布商品</span>
+                </button>
             </div>
             </form>
         </div>
@@ -307,15 +292,14 @@
 
     .main-content .item {
         width: 100%;
-        height: 50px;
     }
 
     .main-content .item .top {
-        width: 100%;
+        width: 65%;
         height: 39px;
         display: flex;
         justify-content: space-between;
-        font-size: 12px;
+        font-size: 14px;
         color: #000;
         line-height: 39px;
     }
@@ -326,13 +310,13 @@
     }
 
     .main-content .item .top .btn2 {
-        background: url("/public/img/add4.png") no-repeat center center/100% auto;
+        background: url("/public/img/add5.png") no-repeat center center/100% auto;
         color: white;
     }
 
-    .main-content .item .top .btn3 {
+    /*.main-content .item .top .btn3 {
         background: url("/public/img/add3.png") no-repeat center center/100% auto;
-    }
+    }*/
 
     .top li {
         width: 333px;
@@ -353,6 +337,7 @@
         font-size: 12px;
         padding-left: 22px;
         border-bottom: 1px solid #eee;
+        box-sizing: border-box;
     }
 
     .bottom .col-box {
@@ -388,6 +373,7 @@
         line-height: 28px;
         font-size: 12px;
         border-bottom: 1px solid #eee;
+        overflow: hidden;
     }
 
     .bottom .message .shangchuan {

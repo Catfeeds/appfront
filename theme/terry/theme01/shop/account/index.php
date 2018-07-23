@@ -5,44 +5,18 @@
      <div  class="content">
       <div  class="biaoti">
        <div  aria-label="Breadcrumb" role="navigation" class="el-breadcrumb">
-        <span  class="el-breadcrumb__item"><span role="link" class="el-breadcrumb__inner is-link">账号管理</span><span role="presentation" class="el-breadcrumb__separator">&middot;</span></span> 
+        <span  class="el-breadcrumb__item"><span role="link" class="el-breadcrumb__inner is-link">账户管理</span><span role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
         <span  class="el-breadcrumb__item" aria-current="page"><span role="link" class="el-breadcrumb__inner"><span  style="color: rgb(48, 211, 102);">账单列表</span></span><span role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
        </div>
       </div> 
       <ul  class="shuaixuan">
-       <li >
-        <div  class="el-select" style="width: 120px; display: inline-block;">
-         
-         <div class="el-input el-input--suffix">
-          
-          <input type="text" autocomplete="off" placeholder="今日账单" readonly="readonly" class="el-input__inner" />
-          
-          <span class="el-input__suffix"><span class="el-input__suffix-inner"><i class="el-select__caret el-input__icon el-icon-arrow-up"></i>
-            </span>
-           </span>
-          
-         </div>
-         <div class="el-select-dropdown el-popper" style="display: none; min-width: 120px;">
-          <div class="el-scrollbar" style="">
-           <div class="el-select-dropdown__wrap el-scrollbar__wrap" style="margin-bottom: -17px; margin-right: -17px;">
-            <ul class="el-scrollbar__view el-select-dropdown__list">
-             
-             <li  class="el-select-dropdown__item"><span>1</span></li>
-             <li  class="el-select-dropdown__item"><span>2</span></li>
-             <li  class="el-select-dropdown__item"><span>3</span></li>
-            </ul>
-           </div>
-           <div class="el-scrollbar__bar is-horizontal">
-            <div class="el-scrollbar__thumb" style="transform: translateX(0%);"></div>
-           </div>
-           <div class="el-scrollbar__bar is-vertical">
-            <div class="el-scrollbar__thumb" style="transform: translateY(0%);"></div>
-           </div>
-          </div>
-          
-         </div>
-        </div></li> 
-       <li >时间段选择 
+       <li>
+           <select name="" id="" class="el-select xiala">
+               <option value="" style="display: none;">今日账单</option>
+               <option value="">1</option>
+               <option value="">2</option>
+           </select>
+       <li>时间段选择
         <div  class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
          <i class="el-input__icon el-range__icon el-icon-time"></i>
          <input placeholder="开始日期" name="" class="el-range-input" />
@@ -52,11 +26,7 @@
         </div></li> 
        <li >
         <div  class="el-input" style="width: 200px;">
-         
          <input type="text" autocomplete="off" placeholder="请输入关键字搜索" class="el-input__inner" />
-         
-         
-         
         </div></li> 
        <li >
         <div  class="sousuo"></div></li>
@@ -342,16 +312,9 @@
               余额支付
              </div></td>
            </tr>
-           
           </tbody>
          </table>
-         
-         
         </div>
-        
-        
-        
-        
         <div class="el-table__column-resize-proxy" style="display: none;"></div>
        </div> 
        <div  style="float: right; margin-top: 20px;">
@@ -412,6 +375,16 @@
         display: flex;
         justify-content: space-between;
         line-height: 46px;
+    }
+    .content .shuaixuan .xiala {
+        padding-left: 5px;
+        width: 98px;
+        outline: none;
+        font-size: 12px;
+        height: 30px;
+        border-radius: 15px;
+        background: #f3faff;
+        border: 2px solid #e5eff8;
     }
 
     .sousuo {

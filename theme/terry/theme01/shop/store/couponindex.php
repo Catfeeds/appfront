@@ -53,7 +53,7 @@ use yii\helpers\Url;
         height: 35px;
         background: #37DF73;
         border: none;
-        box-shadow: 0 0px 8px #37DF73;
+        box-shadow: 0 0 8px #37DF73;
         margin-right: 20px;
     }
 </style>
@@ -111,7 +111,7 @@ use yii\helpers\Url;
                                                                                                          autocomplete="off"
                                                                                                          placeholder="请输入优惠券名称/关键字"
                                                                                                          class="el-input__inner">
-                                <!----><!----><!----></div>
+                               </div>
                         </li>
                         <li data-v-345ba354="">
                             <div data-v-345ba354="" class="sousuo"></div>
@@ -154,7 +154,7 @@ use yii\helpers\Url;
                                     <col name="gutter" width="0">
                                 </colgroup>
                                 <thead class="has-gutter">
-                                <tr class="">
+                                <tr style="font-size: 14px;color: #B1DBFE;">
                                     <th colspan="1" rowspan="1"
                                         class="el-table_5_column_29   el-table-column--selection  is-leaf">
                                         <div class="cell"><label role="checkbox" class="el-checkbox"><span
@@ -204,8 +204,11 @@ use yii\helpers\Url;
                                     <col name="el-table_5_column_35" width="135">
                                     <col name="el-table_5_column_36" width="135">
                                 </colgroup>
+                                <tbody style="font-size: 14px">
+
                                 <tbody>
                                 <?php foreach ($res as $v){ ?>
+
                                 <tr class="el-table__row">
                                     <td class="el-table_5_column_29  el-table-column--selection">
                                         <div class="cell">

@@ -16,7 +16,7 @@
             <ul class="top">
                 <li class="btn1"><span class="btn " style="color: white;">选择商品分类</span> </li>
                  <li class="btn2"><span class="btn">填写商品信息</span></li>
-                 <li class="btn3"><span class="btn">选择商品关联</span></li>
+<!--                 <li class="btn3"><span class="btn">选择商品关联</span></li>-->
             </ul>
             <div class="bottom">
                 <div class="title">
@@ -148,11 +148,11 @@
     }
 
     .main-content .item .top {
-        width: 100%;
+        width: 65%;
         height: 39px;
         display: flex;
         justify-content: space-between;
-        font-size: 12px;
+        font-size: 14px;
         color: #000;
         line-height: 39px;
     }
@@ -163,12 +163,12 @@
     }
 
     .item .top .btn2 {
-        background: url("/public/img/add2.png") no-repeat center center/100% auto;
-    }
-
-    .item .top .btn3 {
         background: url("/public/img/add3.png") no-repeat center center/100% auto;
     }
+
+    /*.item .top .btn3 {
+        background: url("/public/img/add3.png") no-repeat center center/100% auto;
+    }*/
 
     .top li {
         width: 333px;

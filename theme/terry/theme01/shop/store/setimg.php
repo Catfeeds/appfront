@@ -59,7 +59,7 @@
     }
 </style>
 <div data-v-4ce00a5c="" class="main-content">
-    <div data-v-4ce00a5c="" style="width: 1064px; margin: 0px auto;">
+    <div data-v-4ce00a5c="" style="width: 1064px; margin: 0 auto;">
         <div data-v-242c0cfe="" data-v-4ce00a5c="">
             <div data-v-242c0cfe="" class="content">
                 <div data-v-242c0cfe="" class="biaoti">
@@ -96,8 +96,8 @@
                                                     <input accept="image/*" type="file" style="display: none;" name="file[]">
                                                 </div>
                                                 <button data-v-242c0cfe="" type="button"
-                                                        class="el-button green el-button--success is-round sc"><!---->
-                                                    <!----><span>上传</span></button>
+                                                        class="el-button green el-button--success is-round sc" style="line-height: 10px">
+                                                    <span>上传</span></button>
                                                 <span data-v-242c0cfe="" style="color: rgb(65, 178, 252);">模板样式</span>
                                             </div>
                                             <div data-v-242c0cfe="" style="color: rgb(255, 133, 100);">大小限制：80*80像素
@@ -114,12 +114,12 @@
                                                            class="el-input__inner" value="<?= $res["shop_avatar"] ?>"
                                                            name="shop_avatar"></div>
                                                 <button data-v-242c0cfe="" type="button"
-                                                        class="el-button green el-button--success is-round sc"><!---->
-                                                    <!----><span>上传</span></button>
+                                                        class="el-button green el-button--success is-round sc" style="line-height: 10px">
+                                                    <span>上传</span></button>
                                                 <span data-v-242c0cfe="" style="color: rgb(65, 178, 252);">模板样式</span>
                                             </div>
                                             <div data-v-242c0cfe="" style="color: rgb(255, 133, 100);">大小限制：无限制</div>
-                                            <!----></div>
+                                            </div>
                                     </div>
                                 </div>
                         </div>
@@ -137,16 +137,16 @@
                                         <div class="el-form-item__content" style="margin-left: 100px;">
                                             <div data-v-242c0cfe=""
                                                  style="color: rgb(55, 223, 113); font-weight: bolder;">审核成功
-                                            </div><!----></div>
+                                            </div></div>
                                     </div>
                                 </div>
                         </div>
                     </div>
                     <div data-v-242c0cfe="" style="float: right;">
-                        <button data-v-242c0cfe="" type="submit" class="el-button green el-button--success is-round">
+                        <button data-v-242c0cfe="" type="submit" class="el-button green el-button--success is-round" style="line-height: 10px">
                             <span>提交</span>
                         </button>
-                        <button data-v-242c0cfe="" type="button" class="el-button red el-button--danger is-round">
+                        <button data-v-242c0cfe="" type="button" class="el-button red el-button--danger is-round" style="line-height: 10px">
                             <!----><!----><span>取消</span></button>
                     </div>
                     </form>
