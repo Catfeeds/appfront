@@ -12,13 +12,8 @@
         store: [
             {"name":"店铺信息","url":"/shop/store/index"},
             {"name":"店铺图片设置","url":"/shop/store/setimg"},
-<<<<<<< HEAD
             {"name":"优惠卷管理","url":"/shop/store/couponindex"},
-=======
-            // {"name":"店铺活动","url":""},
-            {"name":"优惠卷管理","url":"/shop/store/couponindex"},
-            // {"name":"咨询管理","url":""}
->>>>>>> 74acc9c71537521bc0f992b939900754b3a2056f
+
         ],
         account: [
             {"name":"实名认证","url":"/shop/account/realname"},

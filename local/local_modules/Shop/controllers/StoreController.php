@@ -181,7 +181,7 @@ class StoreController extends PublicsController
     //返回优惠卷管理首页
     public function actionCouponindex(){
 
-        $count = Yii::$app->db->createCommand("select count(*) num from sales_coupon where created_person=2")->queryAll();
+        $count = Yii::$app->db->createCommand("select count(*) num from sales_coupon where created_person=6")->queryAll();
 
         //实例化分页对象
         // 实例化分页对象
@@ -189,7 +189,7 @@ class StoreController extends PublicsController
             'defaultPageSize' => 1,
             'totalCount' => $count[0]['num'],
         ]);
-        $res = Yii::$app->db->createCommand("select * from sales_coupon where created_person=2 limit $pagination->offset,$pagination->limit")->queryAll();
+        $res = Yii::$app->db->createCommand("select * from sales_coupon where created_person=6 limit $pagination->offset,$pagination->limit")->queryAll();
         $datas["res"] = $res;
         $datas["pagination"] = $pagination;
         $datas["num"] = $count[0]['num'];
