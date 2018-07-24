@@ -6,6 +6,11 @@ use yii\helpers\Url;
 
 ?>
 <style>
+    .is-top>a{
+        width: 120px;
+        display: block;
+        float: left;
+    }
     div[role=tab] {
         width: 120px;
         text-align: center;
