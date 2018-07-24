@@ -631,41 +631,4 @@ class GoodsController extends PublicsController
             
     }
 
-// =======================================分类管理=========================================
-
-    public function actionCategorylist(){
-
-
-        // 查询mongo中的分类数据
-        $query = new Query;
-
-        // 查询数据总条数
-        $tot=$query->from('category')->count();
-
-
-        // 实例化分页对象
-        // $pagination = new Pagination([
-        //            'defaultPageSize' => 10,
-        //            'totalCount' => $tot,
-        //        ]);
-
-
-        // 进行数据查询
-        $rows=$query->from('category')
-                // ->orderBy("review_date desc")
-                // ->offset($pagination->offset)
-                // ->limit($pagination->limit)
-                ->all();
-
-        echo "<pre>";
-        print_r($rows);
-        echo "</pre>";
-    
-
-
-        // 加载页面并且分配数据
-        $data=[];
-        return $this->render($this->action->id,$data);
-
-    }
 }
