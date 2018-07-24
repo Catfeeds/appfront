@@ -191,7 +191,7 @@ use yii\helpers\Url;
 
                                 foreach ($class as $key => $value) {
                                     # code...
-                                    $value['name']['name_zh'];
+                                    echo "<option>".$value['name']['name_zh']."</option>";
                                 }
 
 
