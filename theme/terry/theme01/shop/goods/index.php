@@ -190,19 +190,19 @@ use yii\helpers\Url;
                             <?php
 
                                 foreach ($class as $key => $value) {
-                                    # code...
-                                    echo "<option>".$value['name']['name_zh']."</option>";
+                                    echo "<option disabled>".$value['name']['name_zh']."</option>";
+                                    foreach ($value['zi'] as $k => $v) {
+                                        echo "<option>".$value['name']['name_zh'].'/'.$v['name']['name_zh']."</option>";
+                                    }
                                 }
-
-
                             ?>
                         </select>
                     </li>
                     <li>上下架
                         <select name="" id="" class="el-select xiala">
                             <option value="" style="display: none;">全部</option>
-                            <option value="">1</option>
-                            <option value="">2</option>
+                            <option value="">上架</option>
+                            <option value="">下架</option>
                         </select>
                     </li>
                     <li> 商家编号
