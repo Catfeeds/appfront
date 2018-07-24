@@ -182,7 +182,7 @@ class StoreController extends PublicsController
     //返回优惠卷管理首页
     public function actionCouponindex(){
 
-        $count = Yii::$app->db->createCommand("select count(*) num from sales_coupon where created_person=6")->queryAll();
+        $count = Yii::$app->db->createCommand("select count(*) num from sales_coupon where uid={$_SESSION["uid"]}")->queryAll();
 
         //实例化分页对象
         // 实例化分页对象
@@ -190,7 +190,7 @@ class StoreController extends PublicsController
             'defaultPageSize' => 1,
             'totalCount' => $count[0]['num'],
         ]);
-        $res = Yii::$app->db->createCommand("select * from sales_coupon where created_person=6 limit $pagination->offset,$pagination->limit")->queryAll();
+        $res = Yii::$app->db->createCommand("select * from sales_coupon where uid={$_SESSION["uid"]} limit $pagination->offset,$pagination->limit")->queryAll();
         $datas["res"] = $res;
         $datas["pagination"] = $pagination;
         $datas["num"] = $count[0]['num'];
@@ -201,7 +201,33 @@ class StoreController extends PublicsController
     //返回添加优惠券页面
     public function actionAddcoupon(){
 
+        // 查看所有分类数据
+        $query = new Query;
 
-        return $this->render($this->action->id);
+        // 进行数据查询
+        $class=$query->from('category')
+            ->where(['level'=>1,"parent_id"=>"0"])
+            ->all();
+        $datas["class"] = $class;
+        return $this->render($this->action->id,$datas);
+    }
+
+    //添加优惠卷
+    public function actionGetgoods(){
+
+        $res = Yii::$app->request;
+        $category = json_decode($res->get("category"));
+        $query = new Query();
+        $res = [];
+        foreach ($category as $v){
+
+            $where[category][0]=$v;
+            $res1 = $query->from("product_flat")->where($where)->all();
+            foreach ($res1 as $v1){
+                $res[]=$v1;
+            }
+        }
+        echo json_encode($res);
+        exit();
     }
 }
