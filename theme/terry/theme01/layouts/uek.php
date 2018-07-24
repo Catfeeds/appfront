@@ -379,16 +379,16 @@ $cssOptions = [
             cursor: default;
         }
     </style>
-<?php $this->beginPage() ?>
+    <?php $this->beginPage() ?>
     <!doctype html>
     <html lang="en">
     <head>
+        <title>晋彤商家管理系统</title>
         <?= Yii::$service->page->widget->render('head', $this); ?>
         <?= Yii::$service->page->widget->render('beforeContent', $this); ?>
         <?php $this->beginBody() ?>
 
         <meta charset="UTF-8">
-        <title>Document</title>
     </head>
     <body>
     <div class="">

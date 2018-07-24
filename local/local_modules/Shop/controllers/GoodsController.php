@@ -34,6 +34,10 @@ class GoodsController extends PublicsController
     
     // 商品管理首页
     public function actionIndex(){
+
+        // 查询所有的分类
+
+        $class=$this->actionGetclass();
         
         $query = new Query;
 
@@ -100,6 +104,7 @@ class GoodsController extends PublicsController
         $data['pagination']=$pagination;
         $data['tot']=$tot;
         $data['pages']=ceil($tot/10);
+        $data['class']=$class;
         return $this->render($this->action->id,$data);
     }
 
@@ -534,6 +539,14 @@ class GoodsController extends PublicsController
         $data['goods']=Yii::$app->mongodb->getCollection('product_flat')->findOne(['_id'=>$id]);
         
 
+        $data['category']=$this->actionGetclass();
+
+        // 加载页面
+        return $this->render($this->action->id,$data);
+        
+    }
+
+    public function actionGetclass(){
         // 查看所有分类数据
         $query = new Query;
 
@@ -548,11 +561,7 @@ class GoodsController extends PublicsController
             $value['zi']=$query->from('category')->where(['level'=>2,'parent_id'=>"$value[_id]"])->all();
         }
 
-        $data['category']=$class;
-
-        // 加载页面
-        return $this->render($this->action->id,$data);
-        
+        return $class;
     }
 
 // =======================================用户评价=========================================
@@ -631,41 +640,4 @@ class GoodsController extends PublicsController
             
     }
 
-// =======================================分类管理=========================================
-
-    public function actionCategorylist(){
-
-
-        // 查询mongo中的分类数据
-        $query = new Query;
-
-        // 查询数据总条数
-        $tot=$query->from('category')->count();
-
-
-        // 实例化分页对象
-        // $pagination = new Pagination([
-        //            'defaultPageSize' => 10,
-        //            'totalCount' => $tot,
-        //        ]);
-
-
-        // 进行数据查询
-        $rows=$query->from('category')
-                // ->orderBy("review_date desc")
-                // ->offset($pagination->offset)
-                // ->limit($pagination->limit)
-                ->all();
-
-        echo "<pre>";
-        print_r($rows);
-        echo "</pre>";
-    
-
-
-        // 加载页面并且分配数据
-        $data=[];
-        return $this->render($this->action->id,$data);
-
-    }
 }

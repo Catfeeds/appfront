@@ -38,8 +38,7 @@ $cssOptions = [
         <title>Document</title>
     </head>
     <body>
-
-            <?= $content ?>
+        <?= $content ?>
     </body>
     </html>
 <?php $this->endPage() ?>

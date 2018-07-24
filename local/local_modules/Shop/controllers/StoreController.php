@@ -97,7 +97,7 @@ class StoreController extends PublicsController
 //                if (move_uploaded_file($tmp_name,$folder.$newName)) {
 //                    $img = $newName;
 //
-//                    $sql = "update ns_shop_apply set shop_name='{$datas['shop_name']}',  where uid={$datas['uid']}";
+//                    $sql = "update shop_apply set shop_name='{$datas['shop_name']}',  where uid={$datas['uid']}";
 //                }
 //            }
 //        }

@@ -973,6 +973,7 @@ CREATE TABLE `session_storage` (
 DROP TABLE IF EXISTS `shop`;
 CREATE TABLE `shop` (
   `shop_id` int(11) NOT NULL COMMENT '店铺索引id',
+  `shop_code` varchar(20) NOT NULL COMMENT '店铺编号',
   `shop_name` varchar(50) NOT NULL DEFAULT '' COMMENT '店铺名称',
   `shop_code` varchar(50) NOT NULL DEFAULT '' COMMENT '店铺编号',
   `shop_type` int(11) NOT NULL DEFAULT '0' COMMENT '店铺类型等级 1 代表水司 2 代表商家',
