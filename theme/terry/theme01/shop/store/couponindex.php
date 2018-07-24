@@ -204,12 +204,11 @@ use yii\helpers\Url;
                                     <col name="el-table_5_column_35" width="135">
                                     <col name="el-table_5_column_36" width="135">
                                 </colgroup>
-<<<<<<< HEAD
                                 <tbody style="font-size: 14px">
-=======
+
                                 <tbody>
                                 <?php foreach ($res as $v){ ?>
->>>>>>> 74acc9c71537521bc0f992b939900754b3a2056f
+
                                 <tr class="el-table__row">
                                     <td class="el-table_5_column_29  el-table-column--selection">
                                         <div class="cell">

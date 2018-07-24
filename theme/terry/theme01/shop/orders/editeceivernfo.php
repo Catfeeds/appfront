@@ -73,7 +73,7 @@ use yii\helpers\Url;
                     </div>
                 </div>
                 <div>
-                    <button type="button" class="el-button green el-button--success is-round">
+                    <button type="submit" class="el-button green el-button--success is-round">
                         <span>提交</span></button>
                 </div>
             </form>

@@ -184,7 +184,7 @@
                          style="width: 12px; height: 7px; border-radius: 5px; margin-top: 17px; margin-left: 10px; margin-right: 7px; background-color: rgb(55, 224, 111);"></div>
                     其他信息
                 </div>
-                <div class="message" style="height: 280px; margin-bottom: 20px;border:none">
+                <div class="message" style="height: 230px; margin-bottom: 20px;border:none">
                     <div class="el-form-item">
                         <label class="el-form-item__label" style="width: 80px;">上架</label>
                         <div class="el-form-item__content" style="margin-left: 80px;margin-top:5px;">

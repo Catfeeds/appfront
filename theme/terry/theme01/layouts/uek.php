@@ -238,8 +238,8 @@ $cssOptions = [
             width: 88%;
             top: 80px;
             left: 12%;
+            /*overflow: hidden;*/
         }
-
         .el-input--suffix .el-input__inner {
             height: 30px;
             border-radius: 15px;
@@ -383,12 +383,10 @@ $cssOptions = [
     <!doctype html>
     <html lang="en">
     <head>
-        <?= Yii::$service->page->widget->render('head', $this); ?>
-        <?= Yii::$service->page->widget->render('beforeContent', $this); ?>
         <?php $this->beginBody() ?>
 
         <meta charset="UTF-8">
-        <title>Document</title>
+        <title>晋彤商家管理系统</title>
     </head>
     <body>
     <div class="">
