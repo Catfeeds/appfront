@@ -35,14 +35,34 @@ class GoodsController extends PublicsController
     // 商品管理首页
     public function actionIndex(){
 
+        $shop_id=$_SESSION['shop_id'];
+
         // 查询所有的分类
 
         $class=$this->actionGetclass();
-        
+
+        // 接受数据
+
+        $request = Yii::$app->request;
+        $category = $request->get('class');
+        $status = $request->get('status');
+
+        // 查询条件
+        // $where['shop_id'] =$shop_id;
+       
         $query = new Query;
+        if ($category) {
+            $where['category'][1]=$category;
+        }
+
+        $tot2=$query->from('product_flat')->where($where)->count();
+        if ($status) {
+            $where['status']=(int)$status;
+        }
+        
 
         // 查询数据总条数
-        $tot=$query->from('product_flat')->count();
+        $tot=$query->from('product_flat')->where($where)->count();
 
 
 
@@ -56,6 +76,7 @@ class GoodsController extends PublicsController
         // 进行数据查询
         $rows=$query->from('product_flat')
                 ->orderBy("updated_at desc")
+                ->where($where)
                 ->offset($pagination->offset)
                 ->limit($pagination->limit)->all();
       
@@ -99,10 +120,17 @@ class GoodsController extends PublicsController
 
         }
 
+
+        // 查询数据上架总条数
+        $where['status']=1;
+
+        $tot1=$query->from('product_flat')->where($where)->count();
+
         // 加载页面和数据分配
         $data['goods']=$rows;
         $data['pagination']=$pagination;
-        $data['tot']=$tot;
+        $data['tot']=$tot2;
+        $data['tot1']=$tot1;
         $data['pages']=ceil($tot/10);
         $data['class']=$class;
         return $this->render($this->action->id,$data);
@@ -246,6 +274,64 @@ class GoodsController extends PublicsController
             }
         }
 
+        // 商品详情图
+
+        //文件上传存放的目录  
+
+        $folder ='../../appimage/common/media/catalog/product/';
+        
+
+         
+        $file=$_FILES['asd'];
+
+        // 获取用户上传的数量
+
+        $size=count($file['name']);
+
+        $img=[];
+        // 文件处理
+
+        for ($i=0; $i < $size; $i++) { 
+            
+            // 接收文件名
+            $name=$file['name'][$i];
+
+            // 接收临时目录
+            $tmp_name=$file['tmp_name'][$i];
+
+            // 错误编码
+
+            $error=$file['error'][$i];
+
+            if ($error==0) {
+
+                // 检测文件是否来自于表单
+                if (is_uploaded_file($tmp_name)) {
+                    # code...
+                    // 新的文件名
+                    $ext=substr($name,strrpos($name,'.'));
+
+                    $newName=time().rand().$ext;
+
+                    // 进行上传
+
+                    if (move_uploaded_file($tmp_name,$folder.$newName)) {
+                        $img[]=$newName;
+
+                    }
+                }
+            }
+        }
+
+        $dataImg1=[];
+        foreach ($img as $key => $value) {
+            $dataImg1[]=[
+                "image"=>"$newName",
+                "label"=>"",
+                "sort_order"=>""
+            ];
+        }
+
 
         $arr=[];
 
@@ -309,7 +395,7 @@ class GoodsController extends PublicsController
                 "description_es"=>"",
                 "description_ru"=>"",
                 "description_pt"=>"",
-                "description_zh"=>"description"
+                "description_zh"=>"$data[description_zh1]"
             ] ,
             "short_description"=>[// 产品meta信息
                 "short_description_en"=>"",
@@ -333,6 +419,8 @@ class GoodsController extends PublicsController
                   
                 
             ],
+
+            "text"=>$dataImg1,
 
 
         ];
@@ -371,6 +459,82 @@ class GoodsController extends PublicsController
         // 获取数据
         $request = Yii::$app->request;
         $data = $request->post();
+
+
+
+        $goods=Yii::$app->mongodb->getCollection('product_flat')->findOne(['_id'=>$data['_id']]);
+
+        echo "<pre>";
+
+        $arr=explode(',', $data['del']);
+        array_shift($arr);
+
+        foreach ($variable as $key => $value) {
+            # code...
+        }
+        var_dump($arr);
+        var_dump($goods);
+
+        exit;
+        //文件上传存放的目录  
+
+        $folder ='../../appimage/common/media/catalog/product/';
+        
+
+         
+        $file=$_FILES['file'];
+
+        // 获取用户上传的数量
+
+        $size=count($file['name']);
+
+        $img=[];
+        // 文件处理
+
+        for ($i=0; $i < $size; $i++) { 
+            
+            // 接收文件名
+            $name=$file['name'][$i];
+
+            // 接收临时目录
+            $tmp_name=$file['tmp_name'][$i];
+
+            // 错误编码
+
+            $error=$file['error'][$i];
+
+            if ($error==0) {
+
+                // 检测文件是否来自于表单
+                if (is_uploaded_file($tmp_name)) {
+                    # code...
+                    // 新的文件名
+                    $ext=substr($name,strrpos($name,'.'));
+
+                    $newName=time().rand().$ext;
+
+                    // 进行上传
+
+                    if (move_uploaded_file($tmp_name,$folder.$newName)) {
+                        $img[]=$newName;
+
+                    }
+                }
+            }
+        }
+
+        $dataImg=[];
+        foreach ($img as $key => $value) {
+            if ($key>=1) {
+                $dataImg[]=[
+                    "image"=>"$newName",
+                    "label"=>"",
+                    "sort_order"=>""
+                ];
+            }
+        }
+
+
 
         // 数组格式化
 
@@ -568,10 +732,28 @@ class GoodsController extends PublicsController
 
     public function actionCommentlist(){
 
+        // 读取数据
+
+        $request = Yii::$app->request;
+        $class = $request->get('class');
+        $name = $request->get('name');
+
+        $shop_id=$_SESSION['shop_id'];
+
+        // 查询条件
+        // $where['shop_id']=$shop_id;
+        if ($class) {
+            $where['category'][1]=$class;
+        }
+
+        if ($name) {
+            // $conditions['tel'] = ['$regex' => $conditions['tel']]; // ^$ 
+            $where['name']=['$regex' => $name];
+        }
         $query = new Query;
 
         // 查询数据总条数
-        $tot=$query->from('review')->count();
+        $tot=$query->from('review')->where($where)->count();
 
         // 实例化分页对象
         $pagination = new Pagination([
@@ -584,7 +766,9 @@ class GoodsController extends PublicsController
         $rows=$query->from('review')
                 ->orderBy("review_date desc")
                 ->offset($pagination->offset)
-                ->limit($pagination->limit)->all();
+                ->where($where)
+                ->limit($pagination->limit)
+                ->all();
 
         $data=[];
 
@@ -600,7 +784,6 @@ class GoodsController extends PublicsController
 
 
             // 查询获取商品对的创建人
-
             $arr=Yii::$app->db->createCommand("select firstname from customer where id='$value[user_id]' ")->queryOne();
 
   
@@ -608,11 +791,17 @@ class GoodsController extends PublicsController
 
     
         }
+        // 查询所有的分类
+
+        $class=$this->actionGetclass();
 
         // 加载页面和数据分配
+
+
         $data['data']=$rows;
         $data['pagination']=$pagination;
         $data['tot']=$tot;
+        $data['class']=$class;
         $data['pages']=ceil($tot/10);
         return $this->render($this->action->id,$data);
     }
