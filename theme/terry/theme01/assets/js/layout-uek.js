@@ -34,7 +34,7 @@
 
     var str = `<div class="logo"></div><ul class=\"aside-list\">`;
     arr.forEach(function (val,index) {
-        str+=`<li>
+        str+=`<li href1="${val.url}">
                 <div class="col-box"></div> 
                 <a href="${val.url}" class="router-link-exact-active router-link-active">${val.name}</a>
             </li> `;
