@@ -34,6 +34,10 @@ class GoodsController extends PublicsController
     
     // 商品管理首页
     public function actionIndex(){
+
+        // 查询所有的分类
+
+        $class=$this->actionGetclass();
         
         $query = new Query;
 
@@ -100,6 +104,7 @@ class GoodsController extends PublicsController
         $data['pagination']=$pagination;
         $data['tot']=$tot;
         $data['pages']=ceil($tot/10);
+        $data['class']=$class;
         return $this->render($this->action->id,$data);
     }
 
@@ -534,6 +539,14 @@ class GoodsController extends PublicsController
         $data['goods']=Yii::$app->mongodb->getCollection('product_flat')->findOne(['_id'=>$id]);
         
 
+        $data['category']=$this->actionGetclass();
+
+        // 加载页面
+        return $this->render($this->action->id,$data);
+        
+    }
+
+    public function actionGetclass(){
         // 查看所有分类数据
         $query = new Query;
 
@@ -548,11 +561,7 @@ class GoodsController extends PublicsController
             $value['zi']=$query->from('category')->where(['level'=>2,'parent_id'=>"$value[_id]"])->all();
         }
 
-        $data['category']=$class;
-
-        // 加载页面
-        return $this->render($this->action->id,$data);
-        
+        return $class;
     }
 
 // =======================================用户评价=========================================

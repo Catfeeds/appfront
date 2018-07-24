@@ -187,8 +187,15 @@ use yii\helpers\Url;
                     <li>分类
                         <select name="" id="" class="el-select xiala">
                             <option value="" style="display: none;">全部分类</option>
-                            <option value="">1</option>
-                            <option value="">2</option>
+                            <?php
+
+                                foreach ($class as $key => $value) {
+                                    # code...
+                                    $value['name']['name_zh'];
+                                }
+
+
+                            ?>
                         </select>
                     </li>
                     <li>上下架
