@@ -58,6 +58,36 @@ class IndexController extends AppfrontController
         return $this->render($this->action->id,$data);
     }
 
+    //跳转添加管理员
+    public function actionAdd(){
+        return $this->render($this->action->id);
+    }
+    //实现添加功能
+    public function actionEditadmin(){
+
+        $req = Yii::$app->request;
+        //获取数据
+        $username = $req->post(username);
+        $password_hash = password_hash($req->post(password_hash),PASSWORD_DEFAULT);
+        $email = $req->post(email);
+        $person = $req->post(person);
+        //判断管理员是否存在
+        $arr = Yii::$app->db->createCommand("select * from admin_user where username='$username'")->queryOne();
+        $data["name"] = $arr["username"];
+        if($data["name"]){
+            return $this->redirect(["/admin/index/add"],$data);
+        }
+        else
+        {
+            $res = Yii::$app->db->createCommand("insert into admin_user (username,password_hash,email,person) values ('$username','$password_hash','$email','$person')")->execute();
+        }
+        /*var_dump($arr);
+        exit;*/
+        //插入数据
+
+
+        return $this->redirect(["/admin/index/index"]);
+    }
     //会员管理
     public function actionMember(){
         $res = Yii::$app->db->createCommand("select * from member")->queryAll();

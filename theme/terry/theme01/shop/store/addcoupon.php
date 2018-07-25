@@ -209,7 +209,7 @@
 </div>
 </div>
 <script>
-    lay('#version').html('-v' + laydate.v);
+    // lay('#version').html('-v' + laydate.v);
 
     //存储商品是否被选中
     var goods = {};

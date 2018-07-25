@@ -19,7 +19,9 @@ use yii\helpers\Url;
         <div class="search-img">
             <img src="/public/adminimg/search.png" alt="">
         </div>
-        <button class="addadmin">添加管理员</button>
+        <button class="addadmin">
+            <a href="/admin/index/add">添加管理员</a>
+        </button>
     </div>
     <!--管理员列表-->
     <div class="admin-table">
@@ -62,3 +64,8 @@ use yii\helpers\Url;
 
 </div>
 </div>
+<style>
+    .addadmin a{
+        color: #fff;
+    }
+</style>

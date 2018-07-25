@@ -136,7 +136,7 @@ $cssOptions = [
 
     /*侧边栏*/
     .aside {
-        width: 162px;
+        width: 167px;
         height: 100%;
         background: #1f262c;
         float: left;
@@ -678,7 +678,7 @@ $cssOptions = [
     }
 
     #platdata {
-        width: 1100px;
+        width: 1110px;
         min-height: 500px;
         padding: 27px 0 0 68px;
         margin:0 auto;
@@ -814,6 +814,7 @@ $cssOptions = [
     }
     .process div:nth-child(7){
         background: url('/public/adminimg/m7.png') no-repeat center center/100% auto;
+        margin-right: 0;
     }
     .addofplatdata {
         width: 1100px;
@@ -2352,6 +2353,87 @@ $cssOptions = [
     .scheck-btn3{
         background: #ffb802;
     }
+    .aside-list li.active {
+        border-left: 6px solid #37df72;
+        background: #323f49;
+        box-sizing: border-box;
+    }
+    .header ul li.active {
+        background: #3CACFE;
+        color: #fff;
+    }
+    .header ul li a{
+        width: 100%;
+        height: 100%;
+    }
+    .header ul li.active a {
+        color: #fff;
+    }
+    .add{
+        width: 500px;
+        height: 400px;
+        margin:0 auto;
+        background: rgba(238,238,238,0.7);
+        margin-top:50px;
+        border-radius: 6px;
+        padding:20px;
+    }
+    .add form{
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+    }
+    .add form>div{
+        height: 50px;
+        line-height: 50px;
+    }
+    .add form>div span{
+        font-size: 20px;
+        color:#333;
+    }
+    .add form>div label{
+        font-size: 14px;
+    }
+    .add form>div input{
+        height: 30px;
+        background: rgba(0,213,223,0.2);
+        border-radius: 10px;
+        border:none;
+        outline: none;
+        width: 200px;
+        padding:0 10px;
+        box-sizing: border-box;
+    }
+    .add form input[type="submit"]{
+        width:100px;
+        height: 36px;
+        border-radius: 18px;
+        border:none;
+        outline: none;
+        text-align: center;
+        line-height: 30px;
+        background:deepskyblue;
+        margin-top:50px;
+        display:block;
+        color:#fff;
+        float: left;
+        margin-left:100px;
+    }
+    .add form button{
+        width:100px;
+        height: 36px;
+        border-radius: 18px;
+        border:none;
+        outline: none;
+        text-align: center;
+        line-height: 30px;
+        background: #ff7504;
+        margin-top:50px;
+        display:block;
+        color:#fff;
+        float: left;
+        margin-left:100px;
+    }
 </style>
 <?php $this->beginPage() ?>
     <!doctype html>
@@ -2424,9 +2506,30 @@ $cssOptions = [
     </div>
     </body>
     <script>
+
+        // 筛选顶部菜单
         var url = location.href.split("/");
 
         document.querySelector("#" + url[4]).classList.add("active");
+
+        // 筛选左侧菜单
+
+       /* let asd=document.querySelectorAll(".aside li");
+
+        let str1=url[5];
+        let arr1=str1.split("?");
+
+
+        for (let i=0; i <asd.length ;i++) {
+            let url12=asd[i].getAttribute('href1');
+
+            let n = url12.search('/'+arr1[0]);
+
+            if (n>=1) {
+                asd[i].className='active';
+            };
+        };*/
+
         let urls = "<?php echo $_SERVER['SERVER_NAME'];?>";
     </script>
     </html>
