@@ -266,13 +266,13 @@ use yii\helpers\Url;
                                         <!-- <div class="el-tabs__active-bar is-top"  style="width: 92px; transform: translateX(0px);"></div> -->
                                         <style>
                                             .is_active1{
-                                                border-bottom: 2px solid blue;
+                                                border-bottom: 2px solid #3CACFE;
                                             }
                                             .el-tabs__item a{
                                                 color:#303133;
                                             }
                                             .is_active1 a{
-                                                color:blue;
+                                                color:#3CACFE;
                                             }
                                         </style>
                                         <div style="padding-left:20px;"  class="el-tabs__item is-top <?php echo $_GET['status']==0 ?'is_active1':'';?>">

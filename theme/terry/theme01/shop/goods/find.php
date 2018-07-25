@@ -25,7 +25,7 @@
                 编号：<span  style="color: rgb(48, 163, 254);"><?= $goods['_id']?></span>
             </div>
             <div  class="title" style="box-sizing:border-box">
-                <form  class="el-form" method="post" action="<?= Yii::$service->url->getUrl('shop/goods/edit') ?>">
+                <form  class="el-form" method="post" enctype="multipart/form-data" action="<?= Yii::$service->url->getUrl('shop/goods/edit') ?>">
                     <div  class="el-row" style="width: 500px;">
                         <div  class="el-form-item">
                             <label class="el-form-item__label" style="width: 120px;">货号:</label>
@@ -170,7 +170,7 @@
                                 }
 
                             </style>
-                            <input type="hidden" name="del" id="del">
+                            
                             <label class="el-form-item__label" style="width: 120px;">上传商品图片:</label>
                             <div class="el-form-item__content" style="margin-left: 120px;width: 200%;">
                                 <div onclick="setZhu(this,'<?=$goods['image']['main']['image']?>',0)" class="zhu">
@@ -194,6 +194,11 @@
                                             <!-- <div style="display: flex; font-size: 12px; line-height: 30px;">
                                                 <span>图片<?php echo $key+1;?></span>
                                             </div> -->
+
+                                            <?php 
+                                                $zxc.=",".$value['image'];
+
+                                             ?>
                                             <span></span>
                                         </div>
 
@@ -210,6 +215,9 @@
                                     <input type="file" onchange="uploads(this)" name="file[]" style="display:none" class="img">
                                 </div>
                             </div>
+
+                            <input type="hidden" name="bao" id="bao" value=",<?=$goods['image']['main']['image']?><?=$zxc?>">
+                            <input type="hidden" name="del" id="del" value="">
                         </div>
                         <div>
                             <button  type="submit" class="el-button blue el-button--primary is-round">
@@ -289,7 +297,10 @@
         // 获取数据
 
         let val=$("#del").val();
+        let bao=$("#bao").val();
 
+        // 获取保留的图片
+        $("#bao").val(bao.replace(','+value,''));
         // 拼接字符串
 
         let str=val+","+idx+'-'+value;
