@@ -58,6 +58,8 @@ class LoginController extends AppfrontController
             $_SESSION["login"] = "yes";
             $_SESSION["uid"] = $res["id"];
             $_SESSION["shop_id"] = $res["shop_id"];
+            $_SESSION["admin_name"] = $firstname;
+            $_SESSION["time"] = time();
             return $this->redirect(["index/index"]);
         }else{
             return $this->redirect(["login/index"]);

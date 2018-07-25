@@ -145,6 +145,12 @@
                             </div>
                         </div>
                         <div  class="el-form-item">
+                            <label class="el-form-item__label" style="width: 120px;">商品库存:</label>
+                            <div class="el-form-item__content" style="margin-left: 120px;">
+                                <input type="text" name="kucun" value="<?= $goods['kuncun']?>" placeholder="请输入商品库存"class="el-input__inner">
+                            </div>
+                        </div>
+                        <div  class="el-form-item">
 
                             <style>
                                 .el-form-item__content>div{
