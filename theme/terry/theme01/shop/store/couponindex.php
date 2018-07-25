@@ -112,7 +112,7 @@ use yii\helpers\Url;
                                </div>
                         </li>
                         <li data-v-345ba354="">
-                            <div data-v-345ba354="" class="sousuo" onclick="sel(e)"></div>
+                            <div data-v-345ba354="" class="sousuo" onclick="sel(event)"></div>
                         </li>
                     </ul>
                     <div data-v-345ba354=""><a data-v-345ba354="" href="#/ShopCouponAdd" class="">
@@ -322,10 +322,11 @@ use yii\helpers\Url;
 <script>
     var like = document.querySelectorAll(".like");
     function sel(e) {
-        if(e.keyCode==13){
+        if(e.keyCode!=13&&e.type=="keydown"){
+            return;
+        }
             var status=like[0].value;
             var name=like[1].value;
             location.href="<?= Yii::$service->url->geturl("/shop/store/couponindex?") ?>"+`status=${status}&name=${name}`;
-        }
     }
 </script>

@@ -26,9 +26,9 @@ class PublicsController extends AppfrontController
     public function init()
     {
         parent::init();
-         if(!isset($_SESSION["login"])){
-             return $this->redirect("/shop/login/index");
-         }
+        if(!($_SESSION["login"] == "yes")){
+            return $this->redirect("/shop/login/index");
+        }
     }
 
     static public function getAddressInfo(){
