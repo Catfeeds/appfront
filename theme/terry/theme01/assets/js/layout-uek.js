@@ -12,11 +12,9 @@
         store: [
             {"name":"店铺信息","url":"/shop/store/index"},
             {"name":"店铺图片设置","url":"/shop/store/setimg"},
-<<<<<<< HEAD
+
             {"name":"优惠卷管理","url":"/shop/store/couponindex"}
-=======
-            {"name":"优惠卷管理","url":"/shop/store/couponindex"},
->>>>>>> b9fa26900e6d50517d7e7367eb62f77c0dea8029
+
         ],
         account: [
             {"name":"实名认证","url":"/shop/account/realname"},

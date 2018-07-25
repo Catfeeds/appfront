@@ -10,6 +10,7 @@
             {"name":"水司数据","url":"/admin/shuju/water"}
         ],
         shop: [
+            {"name":"分类管理","url":"/admin/shop/index"},
             {"name":"商家","url":"/admin/shop/index"},
             {"name":"水司","url":"/admin/shop/water"}
         ],

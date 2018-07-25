@@ -32,7 +32,32 @@ class IndexController extends PublicsController
     
     public function actionIndex(){
 
-        return $this->render($this->action->id);
+    	// 获取shop_id
+
+    	$shop_id=$_SESSION['shop_id'];
+
+
+    	// 获取商品信息
+
+    	$sql = "select * from shop where shop_id = $shop_id";
+
+    	$shop = Yii::$app->db->createCommand($sql)->queryOne();
+
+
+    	// 数据格式化
+
+    	$data['shop']=$shop;
+
+
+
+    			// echo "<pre>";
+    			// print_r($shop);
+    			// echo "</pre>";
+
+    			// exit;
+    		
+
+        return $this->render($this->action->id,$data);
 
     }
     
