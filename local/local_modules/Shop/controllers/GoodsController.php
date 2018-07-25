@@ -462,7 +462,7 @@ class GoodsController extends PublicsController
             $res = Yii::$app->db->createCommand("insert into product_flat_qty (product_id,qty) values ('$a','$kucun')")->execute();
 
 
-            return $this->redirect(['goods/index']);
+             return $this->redirect(['goods/index']);
 
         }else{
             return $this->redirect(['goods/addshopinfo']);

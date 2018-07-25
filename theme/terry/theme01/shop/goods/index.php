@@ -326,12 +326,11 @@ use yii\helpers\Url;
                                                 <th colspan="1" rowspan="1"
                                                     class="el-table_2_column_7   el-table-column--selection  is-leaf">
                                                     <div class="cell">
-                                                        <label role="checkbox" class="el-checkbox"><span
-                                                                    aria-checked="mixed"
-                                                                    class="el-checkbox__input"><span
-                                                                        class="el-checkbox__inner"></span><input
-                                                                        type="checkbox" aria-hidden="true"
-                                                                        class="el-checkbox__original" value=""/></span>
+                                                        <label role="checkbox" class="el-checkbox">
+                                                            <span class="el-checkbox__input">
+                                                                <span class="el-checkbox__inner"></span>
+                                                                <input type="checkbox" class="el-checkbox__original" value=""/>
+                                                            </span>
                                                         </label>
                                                     </div>
                                                 </th>
@@ -376,8 +375,7 @@ use yii\helpers\Url;
                                         </table>
                                     </div>
                                     <div class="el-table__body-wrapper is-scrolling-none">
-                                        <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
-                                               style="width: 1064px;">
+                                        <table cellspacing="0" cellpadding="0" border="0" class="el-table__body" style="width: 1064px;">
                                             <colgroup>
                                                 <col name="el-table_2_column_7" width="55"/>
                                                 <col name="el-table_2_column_8" width="120"/>
@@ -393,17 +391,16 @@ use yii\helpers\Url;
                                                 <tr class="el-table__row" style="font-size: 14px">
                                                     <td class="el-table_2_column_7  el-table-column--selection">
                                                         <div class="cell">
-                                                            <label role="checkbox" class="el-checkbox"><span
-                                                                        aria-checked="mixed" class="el-checkbox__input"><span
-                                                                            class="el-checkbox__inner"></span><input
-                                                                            type="checkbox" aria-hidden="true"
-                                                                            class="el-checkbox__original"
-                                                                            value=""/></span>
-                                                                <!----></label>
+                                                            <label role="checkbox" class="el-checkbox">
+                                                                <span class="el-checkbox__input">
+                                                                    <span class="el-checkbox__inner"></span>
+                                                                    <input type="checkbox"  class="el-checkbox__original" value=""/>
+                                                                </span>
+                                                            </label>
                                                         </div>
                                                     </td>
                                                     <td class="el-table_2_column_8  ">
-                                                        <div class="cell">
+                                                        <div class="cell" title="<?= $v["_id"]; ?>">
                                                             <?= $v["_id"]; ?>
                                                         </div>
                                                     </td>
@@ -414,10 +411,12 @@ use yii\helpers\Url;
                                                                      alt="">
                                                             </div>
                                                             <div class="contents">
-                                                                <div>
+                                                                <div title="<?= $v["sku"] ?>">
                                                                     <span style="color: rgb(186, 190, 193);">货号：</span><?= $v["sku"] ?>
                                                                 </div>
-                                                                <div><?= $v["name"]["name_zh"] ?></div>
+                                                                <div title="<?= $v["name"]["name_zh"] ?>">
+                                                                    <span style="color: rgb(186, 190, 193);">商品名：</span><?= $v["name"]["name_zh"] ?>
+                                                                  </div>
                                                                 <div><span style="color: rgb(186, 190, 193);">运费：</span>按固定运费
                                                                 </div>
                                                             </div>
@@ -453,7 +452,7 @@ use yii\helpers\Url;
                                                         </div>
                                                     </td>
                                                     <td class="el-table_2_column_13  ">
-                                                        <div class="cell el-tooltip" style="width: 146px;">
+                                                        <div class="cell el-tooltip" title="  <?= date("Y-m-d H:i:s", $v["created_at"]) ?>" style="width: 146px;">
                                                             <?= date("Y-m-d H:i:s", $v["created_at"]) ?>
                                                         </div>
                                                     </td>
