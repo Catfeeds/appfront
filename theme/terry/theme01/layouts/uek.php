@@ -191,7 +191,6 @@ $cssOptions = [
             background: url("/public/img/out.png") no-repeat center center/100% auto;
             margin-top: 15px;
             float: left;
-            /* margin-left:10px;*/
         }
 
         /*侧边栏*/
@@ -247,7 +246,6 @@ $cssOptions = [
             width: calc(100% - 167px);
             top: 80px;
             left: 167px;
-            /*overflow: hidden;*/
 
         }
         .el-input--suffix .el-input__inner {
