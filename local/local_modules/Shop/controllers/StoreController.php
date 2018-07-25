@@ -128,8 +128,6 @@ class StoreController extends PublicsController
 
         $folder ='../../appimage/common/images/';
 
-
-
         $file=$_FILES['file'];
 
         // 获取用户上传的数量
@@ -182,7 +180,10 @@ class StoreController extends PublicsController
     //返回优惠卷管理首页
     public function actionCouponindex(){
 
+
+
         $count = Yii::$app->db->createCommand("select count(*) num from sales_coupon where uid={$_SESSION["uid"]}")->queryAll();
+
 
         //实例化分页对象
         // 实例化分页对象

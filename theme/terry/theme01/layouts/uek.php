@@ -88,7 +88,7 @@ $cssOptions = [
         /*头部样式*/
         .header {
             width: 100%;
-            height: 50px;
+            height: 54px;
             position: fixed;
             top: 0;
             right: 0;
@@ -96,14 +96,13 @@ $cssOptions = [
             display: flex;
             background: #eaf6ff;
             justify-content: space-around;
-            padding-left: 12%;
         }
 
         .header ul {
             width: 704px;
             height: 100%;
             display: flex;
-            padding-left: 12%;
+            padding-left: 167px;
         }
 
         .header ul li {
@@ -194,12 +193,11 @@ $cssOptions = [
             background: url("/public/img/out.png") no-repeat center center/100% auto;
             margin-top: 15px;
             float: left;
-            /* margin-left:10px;*/
         }
 
         /*侧边栏*/
         .aside {
-            width: 12%;
+            width: 167px;
             position: fixed !important;
             top: 0;
             bottom: 0;
@@ -247,10 +245,10 @@ $cssOptions = [
         /*主内容*/
         .main-content {
             position: absolute;
-            width: 88%;
+            width: calc(100% - 167px);
             top: 80px;
-            left: 12%;
-            /*overflow: hidden;*/
+            left: 167px;
+
         }
         .el-input--suffix .el-input__inner {
             height: 30px;
@@ -272,7 +270,7 @@ $cssOptions = [
             right: 0;
             top: 0;
             bottom: 0;
-            padding-top: 50px;
+            padding-top: 54px;
             background: white;
             font-family: Microsoft YaHei;
         }
@@ -442,7 +440,7 @@ $cssOptions = [
             </div>
         </div>
         <?php $this->endBody() ?>
-        <div class="right" style="margin-top: 50px;">
+        <div class="right" style="margin-top: 54px;">
             <?= $content ?>
         </div>
     </div>

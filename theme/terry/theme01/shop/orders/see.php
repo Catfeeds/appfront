@@ -1,26 +1,4 @@
 <style>
-    .aside {
-        width: 12%;
-        min-height: 800px;
-        background: #1f262c;
-        float: left;
-        position: fixed;
-        top: 0;
-        left: 0;
-    }
-
-    .aside .logo {
-        width: 100%;
-        height: 125px;
-        background: url("../../assets/img/logo.png") no-repeat center center/100% auto;
-    }
-
-    .aside-list li {
-        width: 100%;
-        height: 72px;
-        line-height: 72px;
-    }
-
     .main-content .biaoti {
         height: 52px;
         font-size: 12px;
@@ -109,7 +87,7 @@
     }
 </style>
 <div class="main-content">
-    <div style="width: 1064px; margin: 0 auto;">
+    <div style="width: 1012px; margin: 0 auto;">
         <div data-v-2b6e6d92="" class="biaoti">
             <div data-v-2b6e6d92="" aria-label="Breadcrumb" role="navigation" class="el-breadcrumb"><span
                         data-v-2b6e6d92=""
@@ -238,7 +216,7 @@
                         <div class="el-table__header-wrapper">
                             <table cellspacing="0" cellpadding="0" border="0" class="el-table__header">
                                 <colgroup>
-                                    <col name="el-table_2_column_11" width="180">
+                                    <col name="el-table_2_column_11" width="128">
                                     <col name="el-table_2_column_12" width="200">
                                     <col name="el-table_2_column_13" width="110">
                                     <col name="el-table_2_column_14" width="110">
@@ -281,9 +259,9 @@
                         </div>
                         <div class="el-table__body-wrapper is-scrolling-none">
                             <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
-                                   style="width: 933px;">
+                                   style="width:100%;">
                                 <colgroup>
-                                    <col name="el-table_2_column_11" width="180">
+                                    <col name="el-table_2_column_11" width="128">
                                     <col name="el-table_2_column_12" width="200">
                                     <col name="el-table_2_column_13" width="110">
                                     <col name="el-table_2_column_14" width="110">
@@ -292,18 +270,24 @@
                                     <col name="el-table_2_column_17" width="110">
                                     <col name="el-table_2_column_18" width="110">
                                 </colgroup>
-                                <tbody>
+                                <tbody style="font-size: 12px;color:#82898e">
                                 <tr class="el-table__row">
                                     <td class="el-table_2_column_11  ">
-                                        <div class="cell"><?= $res["increment_id"] ?></div>
+                                        <div class="cell el-tooltip"><?= $res["increment_id"] ?></div>
                                     </td>
                                     <td class="el-table_2_column_12  ">
-                                        <div class="cell"><?= $res["order_remark"] ?></div>
+                                        <div class="cell el-tooltip"><?= $res["order_remark"] ?></div>
                                     </td>
                                     <td class="el-table_2_column_13  ">
-                                        <div class="cell"><?= $res["payment_method"] ?></div>
+                                        <div class="cell el-tooltip"><?= $res["payment_method"] ?></div>
                                     </td>
                                     <td class="el-table_2_column_14  ">
+<<<<<<< HEAD
+                                        <div class="cell el-tooltip">2018-05-02 18:00</div>
+                                    </td>
+                                    <td class="el-table_2_column_15  ">
+                                        <div class="cell el-tooltip">2016-05-02 18:00</div>
+=======
                                         <div class="cell" title="<?=date("Y-m-d H:i:s",$res[created_at])?>">
                                             <?php if($res[created_at]){ ?>
                                                 <?= date("Y-m-d H:i:s",$res[created_at]) ?>
@@ -316,15 +300,22 @@
                                                 <?= date("Y-m-d H:i:s",$res[paypal_order_datetime]) ?>
                                             <?php } ?>
                                         </div>
+>>>>>>> 8cc6af68143fb990e29b1e23fed1656bca8444bd
                                     </td>
                                     <td class="el-table_2_column_16  ">
-                                        <div class="cell"><?php
+                                        <div class="cell el-tooltip"><?php
                                             $arr = ["待支付", "待接单", "待确认", "待评价", "已完成", "已退单"];
                                             echo $arr[$res["order_status"]];
                                             ?>
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_17  ">
+<<<<<<< HEAD
+                                        <div class="cell el-tooltip">2016-05-02 18:00</div>
+                                    </td>
+                                    <td class="el-table_2_column_18  ">
+                                        <div class="cell el-tooltip">2016-05-02 18:00</div>
+=======
                                         <div class="cell" title="<?=date("Y-m-d H:i:s",$res[receipt_at])?>">
                                             <?php if($res[receipt_at]){ ?>
                                                 <?= date("Y-m-d H:i:s",$res[receipt_at]) ?>
@@ -337,6 +328,7 @@
                                                 <?= date("Y-m-d H:i:s",$res[evaluate_at]) ?>
                                             <?php } ?>
                                         </div>
+>>>>>>> 8cc6af68143fb990e29b1e23fed1656bca8444bd
                                     </td>
                                 </tr>
                                 </tbody>
@@ -370,14 +362,14 @@
                         </div>
                         <div class="el-table__header-wrapper">
                             <table cellspacing="0" cellpadding="0" border="0" class="el-table__header"
-                                   style="width: 933px;">
+                                   style="width: 100%;">
                                 <colgroup>
                                     <col name="el-table_3_column_19" width="100">
-                                    <col name="el-table_3_column_20" width="200">
+                                    <col name="el-table_3_column_20" width="150">
                                     <col name="el-table_3_column_21" width="250">
                                     <col name="el-table_3_column_22" width="180">
                                     <col name="el-table_3_column_23" width="150">
-                                    <col name="el-table_3_column_24" width="180">
+                                    <col name="el-table_3_column_24" width="182">
                                     <col name="gutter" width="0">
                                 </colgroup>
                                 <thead class="has-gutter">
@@ -407,43 +399,52 @@
                         </div>
                         <div class="el-table__body-wrapper is-scrolling-none">
                             <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
-                                   style="width: 933px;">
+                                   style="width:100%;">
                                 <colgroup>
                                     <col name="el-table_3_column_19" width="100">
-                                    <col name="el-table_3_column_20" width="200">
+                                    <col name="el-table_3_column_20" width="150">
                                     <col name="el-table_3_column_21" width="250">
                                     <col name="el-table_3_column_22" width="180">
                                     <col name="el-table_3_column_23" width="150">
-                                    <col name="el-table_3_column_24" width="180">
+                                    <col name="el-table_3_column_24" width="182">
                                 </colgroup>
-                                <tbody>
+                                <tbody style="font-size: 12px;color:#82898e">
                                 <tr class="el-table__row">
                                     <td class="el-table_3_column_19  ">
-                                        <div class="cell"><?= $res["customer_firstname"] ?></div>
+                                        <div class="cell el-tooltip"><?= $res["customer_firstname"] ?></div>
                                     </td>
                                     <td class="el-table_3_column_20  ">
-                                        <div class="cell"><?= $res["customer_telephone"] ?></div>
+                                        <div class="cell el-tooltip"><?= $res["customer_telephone"] ?></div>
                                     </td>
                                     <td class="el-table_3_column_21  ">
-                                        <div class="cell"><?= $res["customer_address_country"] . $res["customer_address_state"] . $res["customer_address_city"] . $res["customer_address_street1"] ?></div>
+                                        <div class="cell el-tooltip"><?= $res["customer_address_country"] . $res["customer_address_state"] . $res["customer_address_city"] . $res["customer_address_street1"] ?></div>
                                     </td>
                                     <td class="el-table_3_column_22  ">
+<<<<<<< HEAD
+                                        <div class="cell el-tooltip">2016-05-02 18:00</div>
+=======
                                         <div class="cell" title="<?=date("Y-m-d H:i:s",$res[confirm_at])?>">
                                             <?php if($res[confirm_at]){ ?>
                                                 <?= date("Y-m-d H:i:s",$res[confirm_at]) ?>
                                             <?php } ?>
                                         </div>
+>>>>>>> 8cc6af68143fb990e29b1e23fed1656bca8444bd
                                     </td>
                                     <td class="el-table_3_column_23  ">
-                                        <div class="cell"><?= $res["customer_address_zip"] ?></div>
+                                        <div class="cell el-tooltip"><?= $res["customer_address_zip"] ?></div>
                                     </td>
                                     <td class="el-table_3_column_24  ">
-                                        <div class="cell"><?= $res["customer_email"] ?></div>
+                                        <div class="cell el-tooltip"><?= $res["customer_email"] ?></div>
                                     </td>
+<<<<<<< HEAD
+                                </tr></tbody>
+                            </table></div>
+=======
                                 </tr>
                                 </tbody>
                             </table>
                         </div>
+>>>>>>> 8cc6af68143fb990e29b1e23fed1656bca8444bd
                         <div class="el-table__column-resize-proxy" style="display: none;"></div>
                     </div>
                 </div>
@@ -469,10 +470,10 @@
                         </div>
                         <div class="el-table__header-wrapper">
                             <table cellspacing="0" cellpadding="0" border="0" class="el-table__header"
-                                   style="width: 933px;">
+                                   style="width: 100%;">
                                 <colgroup>
                                     <col name="el-table_5_column_31" width="230">
-                                    <col name="el-table_5_column_32" width="170">
+                                    <col name="el-table_5_column_32" width="142">
                                     <col name="el-table_5_column_33" width="160">
                                     <col name="el-table_5_column_34" width="160">
                                     <col name="el-table_5_column_35" width="160">
@@ -494,10 +495,10 @@
                                         <div class="cell">数量</div>
                                     </th>
                                     <th colspan="1" rowspan="1" class="el-table_5_column_35     is-leaf">
-                                        <div class="cell">库存</div>
+                                        <div class="cell el-tooltip">库存</div>
                                     </th>
                                     <th colspan="1" rowspan="1" class="el-table_5_column_36     is-leaf">
-                                        <div class="cell">小计</div>
+                                        <div class="cell el-tooltip">小计</div>
                                     </th>
                                     <th class="gutter" style="width: 0; display: none;"></th>
                                 </tr>
@@ -506,20 +507,20 @@
                         </div>
                         <div class="el-table__body-wrapper is-scrolling-none">
                             <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
-                                   style="width: 933px;">
+                                   style="width: 100%">
                                 <colgroup>
                                     <col name="el-table_5_column_31" width="230">
-                                    <col name="el-table_5_column_32" width="170">
+                                    <col name="el-table_5_column_32" width="142">
                                     <col name="el-table_5_column_33" width="160">
                                     <col name="el-table_5_column_34" width="160">
                                     <col name="el-table_5_column_35" width="160">
                                     <col name="el-table_5_column_36" width="160">
                                 </colgroup>
-                                <tbody>
+                                <tbody style="font-size: 12px;color:#82898e">
                                 <?php foreach ($res["goodDatas"] as $v) { ?>
                                     <tr class="el-table__row">
                                         <td class="el-table_5_column_31  ">
-                                            <div class="cell">
+                                            <div class="cell el-tooltip">
                                                 <div data-v-2b6e6d92="" style="display: flex;align-items: center">
                                                     <div data-v-2b6e6d92="" class="shangpinbg">
                                                         <img src="">
@@ -529,19 +530,19 @@
                                             </div>
                                         </td>
                                         <td class="el-table_5_column_32  ">
-                                            <div class="cell"><?= $v["sku"] ?></div>
+                                            <div class="cell el-tooltip"><?= $v["sku"] ?></div>
                                         </td>
                                         <td class="el-table_5_column_33  ">
-                                            <div class="cell"><?= $v["price"] ?></div>
+                                            <div class="cell el-tooltip"><?= $v["price"] ?></div>
                                         </td>
                                         <td class="el-table_5_column_34  ">
-                                            <div class="cell"><?= $v["qty"] ?></div>
+                                            <div class="cell el-tooltip"><?= $v["qty"] ?></div>
                                         </td>
                                         <td class="el-table_5_column_35  ">
-                                            <div class="cell"><?= $v["kc"] ?></div>
+                                            <div class="cell el-tooltip"><?= $v["kc"] ?></div>
                                         </td>
                                         <td class="el-table_5_column_36  ">
-                                            <div class="cell"><?= $v["row_total"] ?></div>
+                                            <div class="cell el-tooltip"><?= $v["row_total"] ?></div>
                                         </td>
                                     </tr>
                                 <?php } ?>
@@ -582,7 +583,7 @@
                             <table cellspacing="0" cellpadding="0" border="0" class="el-table__header"
                                    style="width: 933px;">
                                 <colgroup>
-                                    <col name="el-table_6_column_39" width="190">
+                                    <col name="el-table_6_column_39" width="162">
                                     <col name="el-table_6_column_40" width="170">
                                     <col name="el-table_6_column_41" width="170">
                                     <col name="el-table_6_column_42" width="170">
@@ -617,16 +618,16 @@
                         </div>
                         <div class="el-table__body-wrapper is-scrolling-none">
                             <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
-                                   style="width: 933px;">
+                                   style="width: 100%;">
                                 <colgroup>
-                                    <col name="el-table_6_column_39" width="190">
+                                    <col name="el-table_6_column_39" width="162">
                                     <col name="el-table_6_column_40" width="170">
                                     <col name="el-table_6_column_41" width="170">
                                     <col name="el-table_6_column_42" width="170">
                                     <col name="el-table_6_column_43" width="170">
                                     <col name="el-table_6_column_44" width="170">
                                 </colgroup>
-                                <tbody>
+                                <tbody style="font-size: 12px;color:#82898e">
                                 <tr class="el-table__row">
                                     <td class="el-table_6_column_39  ">
                                         <div class="cell"><?= $res["subtotal"] ?></div>

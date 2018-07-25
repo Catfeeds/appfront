@@ -52,6 +52,7 @@ use yii\helpers\Url;
 
     .content .item {
         width: 100%;
+        margin-top: 10px;
     }
 
     .item .picture {
@@ -82,7 +83,7 @@ use yii\helpers\Url;
 <div id="app">
     <div data-v-7dc5d9bc="">
         <div data-v-7dc5d9bc="" class="main-content">
-            <div style="width: 1064px;margin: 0 auto">
+            <div style="width: 1012px;margin: 0 auto">
                 <div data-v-6045fa9c="" data-v-7dc5d9bc="">
                     <div data-v-6045fa9c="" class="content">
                         <div data-v-6045fa9c="" class="biaoti">
@@ -217,21 +218,33 @@ use yii\helpers\Url;
                                             <div class="el-table__header-wrapper">
                                                 <table cellspacing="0" cellpadding="0" border="0"
                                                        class="el-table__header"
-                                                       style="width: 1040px;">
+                                                       style="width: 1012px;">
                                                     <colgroup>
-                                                        <col name="el-table_2_column_10" width="80">
-                                                        <col name="el-table_2_column_12" width="80">
-                                                        <col name="el-table_2_column_13" width="150">
-                                                        <col name="el-table_2_column_14" width="80">
-                                                        <col name="el-table_2_column_15" width="160">
-                                                        <col name="el-table_2_column_16" width="80">
-                                                        <col name="el-table_2_column_17" width="80">
-                                                        <col name="el-table_2_column_18" width="90">
+                                                        <col name="el-table_2_column_10" width="52">
+                                                        <col name="el-table_2_column_11" width="120">
+                                                        <col name="el-table_2_column_12" width="100">
+                                                        <col name="el-table_2_column_13" width="180">
+                                                        <col name="el-table_2_column_14" width="100">
+                                                        <col name="el-table_2_column_15" width="180">
+                                                        <col name="el-table_2_column_16" width="100">
+                                                        <col name="el-table_2_column_17" width="100">
+                                                        <col name="el-table_2_column_18" width="80">
                                                     </colgroup>
                                                     <thead class="has-gutter">
                                                     <tr style="font-size: 14px;color: #B1DBFE;">
                                                         <th colspan="1" rowspan="1"
-                                                            class="el-table_2_column_10     is-leaf">
+                                                            class="el-table_2_column_7   el-table-column--selection  is-leaf">
+                                                            <div class="cell">
+                                                                <label role="checkbox" class="el-checkbox">
+                                                            <span class="el-checkbox__input">
+                                                                <span class="el-checkbox__inner"></span>
+                                                                <input type="checkbox" class="el-checkbox__original" value=""/>
+                                                            </span>
+                                                                </label>
+                                                            </div>
+                                                        </th>
+                                                        <th colspan="1" rowspan="1"
+                                                            class="el-table_2_column_11     is-leaf">
                                                             <div class="cell">订单号</div>
                                                         </th>
                                                         <th colspan="1" rowspan="1"
@@ -269,22 +282,34 @@ use yii\helpers\Url;
                                             </div>
                                             <div class="el-table__body-wrapper is-scrolling-left">
                                                 <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
-                                                       style="width: 1040px;">
+                                                       style="width: 1012px;">
                                                     <colgroup>
-                                                        <col name="el-table_2_column_10" width="80">
-                                                        <col name="el-table_2_column_12" width="80">
-                                                        <col name="el-table_2_column_13" width="150">
-                                                        <col name="el-table_2_column_14" width="80">
-                                                        <col name="el-table_2_column_15" width="160">
-                                                        <col name="el-table_2_column_16" width="80">
-                                                        <col name="el-table_2_column_17" width="80">
-                                                        <col name="el-table_2_column_18" width="90">
+                                                        <col name="el-table_2_column_10" width="52">
+                                                        <col name="el-table_2_column_11" width="120">
+                                                        <col name="el-table_2_column_12" width="100">
+                                                        <col name="el-table_2_column_13" width="180">
+                                                        <col name="el-table_2_column_14" width="100">
+                                                        <col name="el-table_2_column_15" width="180">
+                                                        <col name="el-table_2_column_16" width="100">
+                                                        <col name="el-table_2_column_17" width="100">
+                                                        <col name="el-table_2_column_18" width="80">
                                                     </colgroup>
-                                                    <tbody style="font-size: 14px">
+                                                    <tbody style="font-size: 12px;color:#82898e">
                                                     <?php foreach ($orders as $v) { ?>
                                                         <tr class="el-table__row">
-                                                            <td class="el-table_2_column_10  ">
-                                                                <div class="cell"><?= $v["increment_id"] ?></div>
+                                                            <td class="el-table_2_column_10  el-table-column--selection">
+                                                                <div class="cell el-tooltip">
+                                                                    <label role="checkbox" class="el-checkbox">
+                                                                <span class="el-checkbox__input">
+                                                                    <span class="el-checkbox__inner"></span>
+                                                                    <input type="checkbox"  class="el-checkbox__original" value=""/>
+                                                                </span>
+                                                                    </label>
+                                                                </div>
+                                                            </td>
+                                                            <td class="el-table_2_column_11  ">
+                                                                <div class="cell el-tooltip" title="<?= $v["increment_id"] ?>">
+                                                                    <?= $v["increment_id"] ?></div>
                                                             </td>
                                                             <!--                                                    <td class="el-table_2_column_11  ">-->
                                                             <!--                                                        <div class="cell" style="display: flex;height: 150px;">-->
@@ -299,48 +324,47 @@ use yii\helpers\Url;
                                                             <!--                                                            </div>-->
                                                             <!--                                                        </div>-->
                                                             <!--                                                    </td>-->
-                                                            <td class="el-table_2_column_12  ">
-                                                                <div class="cell el-tooltip" style="width: 79px;">
+                                                            <td class="el-table_2_column_12">
+                                                                <div class="cell el-tooltip">
                                                                     655.00
                                                                 </div>
                                                             </td>
-                                                            <td class="el-table_2_column_13  ">
-                                                                <div class="cell">
-                                                                    <div data-v-6045fa9c=""><?= $v["customer_firstname"] ?></div>
-                                                                    <div data-v-6045fa9c="">
+                                                            <td class="el-table_2_column_13">
+                                                                <div class="cell el-tooltip">
+                                                                    <div  title="<?= $v["customer_firstname"] ?>" class="ddd"><?= $v["customer_firstname"] ?></div>
+                                                                    <div  title="<?= $v["customer_telephone"] ?>" class="ddd">
                                                                         TEL:<?= $v["customer_telephone"] ?></div>
-                                                                    <div data-v-6045fa9c=""><?= $v["customer_address_country"] . $v["customer_address_state"] . $v["customer_address_city"] . $v["customer_address_street1"] ?></div>
+                                                                    <div class="ddd" title="<?= $v["customer_address_country"] . $v["customer_address_state"] . $v["customer_address_city"] . $v["customer_address_street1"] ?>">
+                                                                        <?= $v["customer_address_country"] . $v["customer_address_state"] . $v["customer_address_city"] . $v["customer_address_street1"] ?></div>
                                                                 </div>
                                                             </td>
                                                             <td class="el-table_2_column_14">
-                                                                <div class="cell el-tooltip"
-                                                                     style="width: 79px;"><?= $v["payment_method"] ?></div>
+                                                                <div class="cell el-tooltip" title="<?= $v["payment_method"] ?>"><?= $v["payment_method"] ?></div>
                                                             </td>
-                                                            <td class="el-table_2_column_15  ">
-                                                                <div class="cell el-tooltip" style="width: 159px;">
-                                                                    <div data-v-6045fa9c="">
-                                                                        总金额:<?= $v["grand_total"] ?></div>
-                                                                    <div data-v-6045fa9c="">
-                                                                        使用优惠券:<?= $v["coupon_name"] ?></div>
-                                                                    <div data-v-6045fa9c="">使用金币:<?= $v["coin_num"] ?></div>
-                                                                    <div data-v-6045fa9c="">
-                                                                        应付金额:<?= $v["grand_total"] - $v["subtotal_with_discount"] ?></div>
+                                                            <td class="el-table_2_column_15">
+                                                                <div class="cell el-tooltip">
+                                                                    <div title="<?= $v["grand_total"] ?>">
+                                                                        总金额：<?= $v["grand_total"] ?></div>
+                                                                    <div title="<?= $v["coupon_name"] ?>">
+                                                                        使用优惠券：<?= $v["coupon_name"] ?></div>
+                                                                    <div title="<?= $v["coin_num"] ?>">使用金币：<?= $v["coin_num"] ?></div>
+                                                                    <div title="<?= $v["grand_total"] - $v["subtotal_with_discount"] ?>">
+                                                                        应付金额：<?= $v["grand_total"] - $v["subtotal_with_discount"] ?></div>
                                                                 </div>
                                                             </td>
-                                                            <td class="el-table_2_column_16  ">
-                                                                <div class="cell el-tooltip"
-                                                                     style="width: 79px;"><?php
+                                                            <td class="el-table_2_column_16">
+                                                                <div class="cell el-tooltip"><?php
                                                                     $arr = ["待支付", "待接单", "待确认", "待评价", "已完成", "已退单"];
                                                                     echo $arr[$v["order_status"]];
                                                                     ?></div>
                                                             </td>
-                                                            <td class="el-table_2_column_17  ">
-                                                                <div class="cell"><?= date("Y-m-d H:i:s", $v[created_at]) ?></div>
+                                                            <td class="el-table_2_column_17">
+                                                                <div class="cell el-tooltip" title="<?= date("Y-m-d H:i:s", $v[created_at]) ?>">
+                                                                    <?= date("Y-m-d H:i:s", $v[created_at]) ?></div>
                                                             </td>
-                                                            <td class="el-table_2_column_18  ">
-                                                                <div class="cell el-tooltip" style="width: 89px;"><a
-                                                                            data-v-6045fa9c="" href="#/OrderListDetails"
-                                                                            class="">
+                                                            <td class="el-table_2_column_18">
+                                                                <div class="cell el-tooltip">
+                                                                    <a data-v-6045fa9c="" href="#/OrderListDetails" class="">
                                                                         <button data-v-6045fa9c="" type="button"
                                                                                 class="el-button el-button--text el-button--small">
                                                                             <a href="<?= Yii::$service->url->getUrl('shop/orders/see?order_id=' . $v['order_id']) ?>"
@@ -349,8 +373,7 @@ use yii\helpers\Url;
                                                                                style="color: rgb(234, 235, 236);">|</span>
                                                                     <button data-v-6045fa9c="" type="button"
                                                                             class="el-button el-button--text el-button--small">
-                                                                        <!----><!----><span><i data-v-6045fa9c=""
-                                                                                               class="el-icon-delete"></i></span>
+                                                                        <span><i data-v-6045fa9c="" class="el-icon-delete"></i></span>
                                                                     </button>
                                                                     <?php if($v["order_status"]==1){ ?>
                                                                     <div data-v-6045fa9c="">

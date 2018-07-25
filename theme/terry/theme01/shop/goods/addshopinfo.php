@@ -1,5 +1,5 @@
 <div class="main-content">
-    <div style="width: 1064px; margin: 0 auto;">
+    <div style="width: 1012px; margin: 0 auto;">
         <div class="biaoti">
             <div aria-label="Breadcrumb" role="navigation" class="el-breadcrumb">
                 <span class="el-breadcrumb__item">
@@ -336,7 +336,7 @@
     }
 
     .main-content .item .top {
-        width: 65%;
+        width: 70%;
         height: 39px;
         display: flex;
         justify-content: space-between;

@@ -15,7 +15,6 @@
    		</div>
     </div>
 
-
     <div  class="item">
         <div  class="bottom">
             <div style="width: 528px; height: 42px; line-height: 42px; font-size: 18px; font-weight: bolder;">
