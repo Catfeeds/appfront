@@ -48,6 +48,9 @@ class IndexController extends PublicsController
 
     	$data['shop']=$shop;
 
+    	$_SESSION['shop_name']=$shop['shop_name'];
+    	$_SESSION['shop_logo']=$shop['shop_logo'];
+
 
 
     			// echo "<pre>";
