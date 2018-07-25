@@ -181,7 +181,6 @@ class StoreController extends PublicsController
     public function actionCouponindex(){
 
 
-        $count = Yii::$app->db->createCommand("select count(*) num from sales_coupon where created_person=6")->queryAll();
 
         $count = Yii::$app->db->createCommand("select count(*) num from sales_coupon where uid={$_SESSION["uid"]}")->queryAll();
 
@@ -202,8 +201,6 @@ class StoreController extends PublicsController
 
     //返回添加优惠券页面
     public function actionAddcoupon(){
-
-        return $this->render($this->action->id);
 
         // 查看所有分类数据
         $query = new Query;

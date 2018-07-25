@@ -128,6 +128,8 @@ class GoodsController extends PublicsController
 
         // 加载页面和数据分配
         $data['goods']=$rows;
+
+            
         $data['pagination']=$pagination;
         $data['tot']=$tot2;
         $data['tot1']=$tot1;
@@ -278,66 +280,66 @@ class GoodsController extends PublicsController
 
         //文件上传存放的目录  
 
-        $folder ='../../appimage/common/media/catalog/product/';
+        // $folder ='../../appimage/common/media/catalog/product/';
         
 
          
-        $file=$_FILES['asd'];
+        // $file=$_FILES['asd'];
 
-        // 获取用户上传的数量
+        // // 获取用户上传的数量
 
-        $size=count($file['name']);
+        // $size=count($file['name']);
 
-        $img=[];
-        // 文件处理
+        // $img=[];
+        // // 文件处理
 
-        for ($i=0; $i < $size; $i++) { 
+        // for ($i=0; $i < $size; $i++) { 
             
-            // 接收文件名
-            $name=$file['name'][$i];
+        //     // 接收文件名
+        //     $name=$file['name'][$i];
 
-            // 接收临时目录
-            $tmp_name=$file['tmp_name'][$i];
+        //     // 接收临时目录
+        //     $tmp_name=$file['tmp_name'][$i];
 
-            // 错误编码
+        //     // 错误编码
 
-            $error=$file['error'][$i];
+        //     $error=$file['error'][$i];
 
-            if ($error==0) {
+        //     if ($error==0) {
 
-                // 检测文件是否来自于表单
-                if (is_uploaded_file($tmp_name)) {
-                    # code...
-                    // 新的文件名
-                    $ext=substr($name,strrpos($name,'.'));
+        //         // 检测文件是否来自于表单
+        //         if (is_uploaded_file($tmp_name)) {
+        //             # code...
+        //             // 新的文件名
+        //             $ext=substr($name,strrpos($name,'.'));
 
-                    $newName=time().rand().$ext;
+        //             $newName=time().rand().$ext;
 
-                    // 进行上传
+        //             // 进行上传
 
-                    if (move_uploaded_file($tmp_name,$folder.$newName)) {
-                        $img[]=$newName;
+        //             if (move_uploaded_file($tmp_name,$folder.$newName)) {
+        //                 $img[]=$newName;
 
-                    }
-                }
-            }
-        }
+        //             }
+        //         }
+        //     }
+        // }
 
-        $dataImg1=[];
-        foreach ($img as $key => $value) {
-            $dataImg1[]=[
-                "image"=>"$newName",
-                "label"=>"",
-                "sort_order"=>""
-            ];
-        }
+        // $dataImg1=[];
+        // foreach ($img as $key => $value) {
+        //     $dataImg1[]=[
+        //         "image"=>"$newName",
+        //         "label"=>"",
+        //         "sort_order"=>""
+        //     ];
+        // }
 
 
         $arr=[];
 
         $arr=[
             "created_at"=>time(),
-            "created_user_id"=>'1',
+            "created_user_id"=>$_SESSION["uid"],
             'name'=>[
                 "name_en"=>"",
                 "name_fr"=>"",
@@ -420,7 +422,31 @@ class GoodsController extends PublicsController
                 
             ],
 
-            "text"=>$dataImg1,
+            // "text"=>$dataImg1, 
+
+            "attr_group"=>"test_group",  // 产品属性组
+            "relation_sku"=>"",  // 产品相关产品
+            "buy_also_buy_sku"=>"", // 产品买了还买
+            "see_also_see_sku"=>"", // 产品看了还看
+            "my_remark"=>"111",   // 下面是属性组中定义的属性，
+            "my_email"=>"1111@22.com",
+            "my_date"=>"2016-11-03",
+            "style"=>"Cute",
+            "dresses-length"=>"Mini",
+            "pattern-type"=>"Animal",
+            "sleeve-length"=>"Sleeveless",
+            "collar"=>"Round Neck",
+            "url_key"=>"",  // 产品urlkey
+            "reviw_rate_star_average"=>5, // 产品平均评分
+            "review_count"=>0, // 产品评论个数
+            "reviw_rate_star_average_lang"=>[  // 产品在各个语言的评分
+                "reviw_rate_star_average_lang_zh"=>5,
+                "reviw_rate_star_average_lang_en"=>4
+            ],
+            "review_count_lang"=>[// 产品在各个语言的评论数
+                "review_count_lang_zh"=>0,
+                "review_count_lang_en"=>0
+            ]
 
 
         ];
@@ -430,7 +456,7 @@ class GoodsController extends PublicsController
         $collection = Yii::$app->mongodb->getCollection('product_flat');
 
         if($collection->insert($arr)){
-            return $this->redirect(['goods/addgoods']);
+            return $this->redirect(['goods/index']);
 
         }else{
             return $this->redirect(['goods/addshopinfo']);
@@ -441,15 +467,6 @@ class GoodsController extends PublicsController
 
     }
 
-    // 商品添加页面三
-
-    // 添加商品关联
-
-    public function actionAddgoods(){
-
-        return $this->render($this->action->id);
-
-    }
 
 
     // 商品修改页面
@@ -460,22 +477,16 @@ class GoodsController extends PublicsController
         $request = Yii::$app->request;
         $data = $request->post();
 
+        // 获取需要保留的图片
+        $bao=explode(',', $data['bao']);
+        array_shift($bao);
 
-
-        $goods=Yii::$app->mongodb->getCollection('product_flat')->findOne(['_id'=>$data['_id']]);
-
-        echo "<pre>";
-
+        // 获取需要删除的图片
         $arr=explode(',', $data['del']);
         array_shift($arr);
 
-        foreach ($variable as $key => $value) {
-            # code...
-        }
-        var_dump($arr);
-        var_dump($goods);
+          
 
-        exit;
         //文件上传存放的目录  
 
         $folder ='../../appimage/common/media/catalog/product/';
@@ -488,7 +499,6 @@ class GoodsController extends PublicsController
 
         $size=count($file['name']);
 
-        $img=[];
         // 文件处理
 
         for ($i=0; $i < $size; $i++) { 
@@ -516,7 +526,7 @@ class GoodsController extends PublicsController
                     // 进行上传
 
                     if (move_uploaded_file($tmp_name,$folder.$newName)) {
-                        $img[]=$newName;
+                        $bao[]=$newName;
 
                     }
                 }
@@ -524,24 +534,22 @@ class GoodsController extends PublicsController
         }
 
         $dataImg=[];
-        foreach ($img as $key => $value) {
+        foreach ($bao as $key => $value) {
             if ($key>=1) {
                 $dataImg[]=[
-                    "image"=>"$newName",
+                    "image"=>"$value",
                     "label"=>"",
                     "sort_order"=>""
                 ];
             }
         }
 
+            // 数组格式化
 
-
-        // 数组格式化
-
-        $arr=[
+        $arr1=[
             "_id"=>$data['_id'],
             "updated_at"=>time(),
-            "created_user_id"=>'1',
+            "created_user_id"=>$_SESSION["uid"],
             'name'=>[
                 "name_en"=>"",
                 "name_fr"=>"",
@@ -607,12 +615,59 @@ class GoodsController extends PublicsController
                 "short_description_zh"=>"$data[short_description]"
             ],
 
+            "image"=>[  // 产品的图片
+                "main"=>[ // 产品主图
+                   "image"=>$bao[0],
+                   "label"=>"",
+                   "sort_order"=>"",
+                   "is_thumbnails"=>"1",  // 产品详情页面：图片是否在橱窗图中显示，1代表显示
+                   "is_detail"=>"1"         // 产品详情页面：图片是否在描述中显示，1代表显示
+                ],  
+                 "gallery"=>$dataImg
+                  
+            ],
+            "attr_group"=>"test_group",  // 产品属性组
+            "relation_sku"=>"",  // 产品相关产品
+            "buy_also_buy_sku"=>"", // 产品买了还买
+            "see_also_see_sku"=>"", // 产品看了还看
+            "my_remark"=>"111",   // 下面是属性组中定义的属性，
+            "my_email"=>"1111@22.com",
+            "my_date"=>"2016-11-03",
+            "style"=>"Cute",
+            "dresses-length"=>"Mini",
+            "pattern-type"=>"Animal",
+            "sleeve-length"=>"Sleeveless",
+            "collar"=>"Round Neck",
+            "url_key"=>"",  // 产品urlkey
+            "reviw_rate_star_average"=>5, // 产品平均评分
+            "review_count"=>0, // 产品评论个数
+            "reviw_rate_star_average_lang"=>[  // 产品在各个语言的评分
+                "reviw_rate_star_average_lang_zh"=>5,
+                "reviw_rate_star_average_lang_en"=>4
+            ],
+            "review_count_lang"=>[// 产品在各个语言的评论数
+                "review_count_lang_zh"=>0,
+                "review_count_lang_en"=>0
+            ]
+
+
         ];
-        $res=Yii::$app->mongodb->getCollection('product_flat')->save($arr);
+
+        $res=Yii::$app->mongodb->getCollection('product_flat')->save($arr1);
 
         // 判断
         if ($res) {
+            foreach ($arr as $key => $value) {
+
+
+                if (file_exists("../../appimage/common/media/catalog/product/".$value)) {
+                    unlink("../../appimage/common/media/catalog/product/".$value);
+                }
+
+            }
             return $this->redirect($_SERVER['HTTP_REFERER']);
+
+            
         }else{
             return $this->redirect($_SERVER['HTTP_REFERER']);
         }
@@ -633,7 +688,7 @@ class GoodsController extends PublicsController
         // 执行数据删除
 
 
-         $a=Yii::$app->mongodb->getCollection('product_flat')->remove(['_id'=>$id]);
+        $a=Yii::$app->mongodb->getCollection('product_flat')->remove(['_id'=>$id]);
 
         // 判断是否删除成功
         if ($a) {

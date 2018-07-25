@@ -12,7 +12,7 @@
         store: [
             {"name":"店铺信息","url":"/shop/store/index"},
             {"name":"店铺图片设置","url":"/shop/store/setimg"},
-            {"name":"优惠卷管理","url":"/shop/store/couponindex"}
+            {"name":"优惠卷管理","url":"/shop/store/couponindex"},
         ],
         account: [
             {"name":"实名认证","url":"/shop/account/realname"},

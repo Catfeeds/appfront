@@ -440,7 +440,7 @@ $cssOptions = [
             </div>
         </div>
         <?php $this->endBody() ?>
-        <div class="right" style="margin-top: 50px;">
+        <div class="right" style="margin-top: 54px;">
             <?= $content ?>
         </div>
     </div>

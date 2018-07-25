@@ -1,5 +1,4 @@
-
-  <div class="box">
+<div class="box">
    <div class="freeze" style="display: none;">
     <div class="freeze-content">
      <div style="width: 438px; height: 30px; border-bottom: 1px solid rgb(48, 163, 254); color: rgb(48, 163, 254); font-size: 20px; font-weight: bolder;">
@@ -657,7 +656,6 @@
 
     .main-content3 {
         width:100%;
-        height: 48px;
     }
 
     .main-content3 .dian {
