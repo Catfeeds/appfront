@@ -184,6 +184,10 @@
                                     <span></span>
                                 </div>
                                 <?php 
+
+                                if ($goods['image']['gallery']) {
+                                    # code...
+                               
                                     foreach($goods['image']['gallery'] as $key => $value){
                                 ?>
                                         <div onclick="setZhu(this,'<?=$value['image']?>',1)" class="zhu">
@@ -204,7 +208,8 @@
 
                                 <?php
                                     }
-                                 ?>
+                                }
+                                ?>
                                
                                 
                                 <div class="adsadas">

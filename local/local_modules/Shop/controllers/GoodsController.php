@@ -653,7 +653,6 @@ class GoodsController extends PublicsController
 
         ];
 
-            
         $res=Yii::$app->mongodb->getCollection('product_flat')->save($arr1);
 
         // 判断
