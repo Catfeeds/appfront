@@ -127,8 +127,6 @@ class StoreController extends PublicsController
 
         $folder ='../../appimage/common/images/';
 
-
-
         $file=$_FILES['file'];
 
         // 获取用户上传的数量
@@ -182,7 +180,6 @@ class StoreController extends PublicsController
     public function actionCouponindex(){
 
         $count = Yii::$app->db->createCommand("select count(*) num from sales_coupon where created_person=6")->queryAll();
-
         //实例化分页对象
         // 实例化分页对象
         $pagination = new Pagination([
@@ -199,8 +196,6 @@ class StoreController extends PublicsController
 
     //返回添加优惠券页面
     public function actionAddcoupon(){
-
-
         return $this->render($this->action->id);
     }
 }

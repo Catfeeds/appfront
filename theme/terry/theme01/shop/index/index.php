@@ -130,7 +130,7 @@
       <ul class="biaoti">
        <li data-v-af5b5ab4="">待处理订单（0）</li> 
        <li data-v-af5b5ab4="">退换货订单（0）</li> 
-       <li data-v-af5b5ab4="">当前店铺活动（0)</li> 
+       <li data-v-af5b5ab4="">当前店铺活动（0）</li>
        <li data-v-af5b5ab4="">即将到期店铺活动（0）</li> 
        <li data-v-af5b5ab4="">待处理回复评论（0）</li>
       </ul> 
@@ -208,7 +208,7 @@
       </div> 
       <div class="zhexian"></div> 
       <div style="font-size: 12px; line-height: 46px; border-bottom: 1px solid rgb(48, 162, 254);">
-       <span style="margin-left: 17px; color: rgb(153, 202, 254);">最近一周单品销售排名</span> 
+       <span style="margin-left: 17px; color: rgb(153, 202, 254);">最近一周单品销量排名</span>
        <div style="float: right;">
         <label role="radio" aria-checked="true" tabindex="0" class="el-radio is-checked"><span class="el-radio__input is-checked"><span class="el-radio__inner"></span><input type="radio" aria-hidden="true" tabindex="-1" class="el-radio__original" value="1" /></span><span class="el-radio__label">按销售量排名
           <!----></span></label> 
@@ -238,7 +238,7 @@
            <col name="gutter" width="0" />
           </colgroup>
           <thead class="has-gutter">
-           <tr style="font-size: 14px;color: #B1DBFE;">
+           <tr style="font-size: 14px;color: #a4adb5;">
             <th colspan="1" rowspan="1" class="el-table_2_column_11     is-leaf">
              <div class="cell">
               排名
@@ -278,7 +278,7 @@
            <col name="el-table_2_column_15" width="146" />
            <col name="el-table_2_column_16" width="146" />
           </colgroup>
-          <tbody style="font-size: 14px">
+          <tbody style="font-size: 14px;color: #82898e">
            <tr class="el-table__row">
             <td class="el-table_2_column_11  ">
              <div class="cell">
@@ -613,6 +613,7 @@
     .item_box .item_box1 {
         height: 30px;
         font-size: 16px;
+        color: #82898e;
         line-height: 30px;
     }
 
@@ -627,10 +628,11 @@
     .item_box .item_box3 {
         font-size: 10px;
         line-height: 36px;
-        color: #a4adb5;
+        color: #bdc4c9;
     }
 
     .item_box .jiantou1 {
+        margin-left:10px;
         display: inline-block;
         width: 14px;
         height: 14px;
@@ -638,6 +640,7 @@
     }
 
     .item_box .jiantou2 {
+        margin-left:10px;
         display: inline-block;
         width: 14px;
         height: 14px;
@@ -645,6 +648,7 @@
     }
 
     .item_box .jiantou3 {
+        margin-left:10px;
         display: inline-block;
         width: 14px;
         height: 14px;

@@ -72,7 +72,7 @@
         line-height: 46px;
         font-size: 12px;
         padding-left: 22px;
-        border-bottom: 1px solid #eee;
+        /*border-bottom: 1px solid #eee;*/
     }
 
     .bottom .title .zhizhao1 {
