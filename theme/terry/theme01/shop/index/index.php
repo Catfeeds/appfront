@@ -277,7 +277,7 @@
            <col name="el-table_2_column_15" width="146" />
            <col name="el-table_2_column_16" width="146" />
           </colgroup>
-          <tbody style="font-size: 14px;color: #82898e">
+          <tbody style="font-size: 12px;color: #82898e">
            <tr class="el-table__row">
             <td class="el-table_2_column_11  ">
              <div class="cell">

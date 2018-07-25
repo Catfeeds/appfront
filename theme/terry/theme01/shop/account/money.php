@@ -10,38 +10,12 @@
        </div>
       </div> 
       <ul  class="shuaixuan">
-       <li >
-        <div  class="el-select" style="width: 120px; display: inline-block;">
-         
-         <div class="el-input el-input--suffix">
-          
-          <input type="text" autocomplete="off" placeholder="最近一个月" readonly="readonly" class="el-input__inner" />
-          
-          <span class="el-input__suffix"><span class="el-input__suffix-inner"><i class="el-select__caret el-input__icon el-icon-arrow-up"></i>
-            </span>
-           </span>
-          
-         </div>
-         <div class="el-select-dropdown el-popper" style="display: none; min-width: 120px;">
-          <div class="el-scrollbar" style="">
-           <div class="el-select-dropdown__wrap el-scrollbar__wrap" style="margin-bottom: -17px; margin-right: -17px;">
-            <ul class="el-scrollbar__view el-select-dropdown__list">
-             
-             <li  class="el-select-dropdown__item"><span>1</span></li>
-             <li  class="el-select-dropdown__item"><span>2</span></li>
-             <li  class="el-select-dropdown__item"><span>3</span></li>
-            </ul>
-           </div>
-           <div class="el-scrollbar__bar is-horizontal">
-            <div class="el-scrollbar__thumb" style="transform: translateX(0%);"></div>
-           </div>
-           <div class="el-scrollbar__bar is-vertical">
-            <div class="el-scrollbar__thumb" style="transform: translateY(0%);"></div>
-           </div>
-          </div>
-          
-         </div>
-        </div></li> 
+       <li>
+           <select name="" id="" class="el-select xiala">
+               <option value="" style="display: none;">最近一个月</option>
+               <option value="">1</option>
+               <option value="">2</option>
+           </select>
        <li >时间段选择 
         <div  class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
          <i class="el-input__icon el-range__icon el-icon-time"></i>
@@ -297,6 +271,23 @@
         justify-content: space-between;
         line-height: 46px;
     }
+    .content .shuaixuan .xiala {
+        padding-left: 5px;
+        width: 120px;
+        outline: none;
+        height: 30px;
+        border-radius: 15px;
+        background: #f3faff;
+        border: 2px solid #e5eff8;
+        color: #9eabb5;
+        font-size: 14px;
+    }
+    .shuaixuan .el-select:hover {
+        border-color: #c0c4cc;
+    }
+    .shuaixuan .el-select:focus {
+        border-color: #3CACFE;
+    }
 
     .sousuo {
         margin-top: 5px;
@@ -307,8 +298,26 @@
 
     .content .item {
         width: 100%;
-        height: 50px;
+        margin-top: 10px;
     }
+    .content .green {
+        width: 112px;
+        height: 33px;
+        background: #37DF73;
+        border: none;
+        box-shadow: 0 0 8px #37DF73;
+        padding-top: 10px;
+    }
+
+    .content .blue {
+        width: 112px;
+        height: 33px;
+        background: #30B5FE;
+        border: none;
+        box-shadow: 0 0 8px #30B5FE;
+        padding-top: 10px;
+    }
+
 
 
 </style>

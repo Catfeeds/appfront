@@ -59,7 +59,7 @@
     }
 </style>
 <div data-v-4ce00a5c="" class="main-content">
-    <div data-v-4ce00a5c="" style="width: 1064px; margin: 0 auto;">
+    <div data-v-4ce00a5c="" style="width: 1012px; margin: 0 auto;">
         <div data-v-242c0cfe="" data-v-4ce00a5c="">
             <div data-v-242c0cfe="" class="content">
                 <div data-v-242c0cfe="" class="biaoti">
@@ -132,12 +132,10 @@
                         </div>
                         <div data-v-242c0cfe="" class="title1">
                                 <div data-v-242c0cfe="" class="el-row" style="width: 500px;">
-                                    <div data-v-242c0cfe="" class="el-form-item"><label class="el-form-item__label"
-                                                                                        style="width: 100px;">审核状态</label>
-                                        <div class="el-form-item__content" style="margin-left: 100px;">
-                                            <div data-v-242c0cfe=""
-                                                 style="color: rgb(55, 223, 113); font-weight: bolder;">审核成功
-                                            </div></div>
+                                    <div style="font-size: 14px">
+                                        <span style="width: 100px;line-height: 40px;margin-left: 50px;">审核状态：</span>
+                                        <span style="color: rgb(55, 223, 113); font-weight: bolder;">
+                                                 审核成功</span>
                                     </div>
                                 </div>
                         </div>

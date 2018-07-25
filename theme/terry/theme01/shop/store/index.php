@@ -117,7 +117,7 @@
 </style>
 
 <div data-v-4ce00a5c="" class="main-content">
-    <div data-v-4ce00a5c="" style="width: 1064px; margin: 0px auto;">
+    <div data-v-4ce00a5c="" style="width: 1012px; margin: 0px auto;">
         <div data-v-3bfc0387="" data-v-4ce00a5c="">
             <div data-v-3bfc0387="" class="content">
                 <div data-v-3bfc0387="" class="biaoti">

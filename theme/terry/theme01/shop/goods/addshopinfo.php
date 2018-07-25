@@ -336,7 +336,7 @@
     }
 
     .main-content .item .top {
-        width: 65%;
+        width: 70%;
         height: 39px;
         display: flex;
         justify-content: space-between;
