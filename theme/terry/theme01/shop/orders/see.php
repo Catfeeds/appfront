@@ -145,7 +145,7 @@
                     <div class="el-step__main">
                         <div class="el-step__title <?= $res["order_status"]>-1?"is-finish":""?>">提交订单</div>
                         <?php if($res["order_status"]>-1){ ?>
-                            <div class="el-step__description is-finish">2018-03-20 12:00:02</div>
+                            <div class="el-step__description is-finish"><?= date("Y-m-d H:i:s",$res[created_at]) ?></div>
                         <?php } ?>
                     </div>
                 </div>
@@ -162,7 +162,7 @@
                     <div class="el-step__main">
                         <div class="el-step__title <?= $res["order_status"]>0?"is-finish":""?>">支付订单</div>
                         <?php if($res["order_status"]>0){ ?>
-                            <div class="el-step__description is-finish">2018-03-20 12:00:02</div>
+                            <div class="el-step__description is-finish"><?= date("Y-m-d H:i:s",$res[paypal_order_datetime]) ?></div>
                         <?php } ?>
                     </div>
                 </div>
@@ -172,14 +172,14 @@
                         <div class="el-step__line" style="margin-right: 0px;"><i class="el-step__line-inner"
                                                                                  style="transition-delay: 300ms; border-width: 1px; width: 100%;"></i>
                         </div>
-                        <div class="el-step__icon is-text"><!---->
+                        <div class="el-step__icon is-text">
                             <div class="el-step__icon-inner">3</div>
                         </div>
                     </div>
                     <div class="el-step__main">
                         <div class="el-step__title <?= $res["order_status"]>1?"is-finish":""?>">接单</div>
                         <?php if($res["order_status"]>1){ ?>
-                            <div class="el-step__description is-finish">2018-03-20 12:00:02</div>
+                            <div class="el-step__description is-finish"><?= date("Y-m-d H:i:s",$res[receipt_at]) ?></div>
                         <?php } ?>
                     </div>
                 </div>
@@ -196,7 +196,7 @@
                     <div class="el-step__main">
                         <div class="el-step__title <?= $res["order_status"]>2?"is-finish":""?>">确认送达</div>
                         <?php if($res["order_status"]>2){ ?>
-                            <div class="el-step__description is-finish">2018-03-20 12:00:02</div>
+                            <div class="el-step__description is-finish"><?= date("Y-m-d H:i:s",$res[confirm_at]) ?></div>
                         <?php } ?>
                     </div>
                 </div>
@@ -211,7 +211,7 @@
                     <div class="el-step__main">
                         <div class="el-step__title <?= $res["order_status"]>3?"is-finish":""?>">评价</div>
                         <?php if($res["order_status"]>3){ ?>
-                            <div class="el-step__description is-finish">2018-03-20 12:00:02</div>
+                            <div class="el-step__description is-finish"><?= date("Y-m-d H:i:s",$res[evaluate_at]) ?></div>
                         <?php } ?>
                     </div>
                 </div>
@@ -269,10 +269,10 @@
                                         <div class="cell">订单状态</div>
                                     </th>
                                     <th colspan="1" rowspan="1" class="el-table_2_column_17     is-leaf">
-                                        <div class="cell">取件时间</div>
+                                        <div class="cell">接单时间</div>
                                     </th>
                                     <th colspan="1" rowspan="1" class="el-table_2_column_18     is-leaf">
-                                        <div class="cell">送件时间</div>
+                                        <div class="cell">评价时间</div>
                                     </th>
                                     <th class="gutter" style="width: 0px; display: none;"></th>
                                 </tr>
@@ -304,10 +304,18 @@
                                         <div class="cell"><?= $res["payment_method"] ?></div>
                                     </td>
                                     <td class="el-table_2_column_14  ">
-                                        <div class="cell">2018-05-02 18:00</div>
+                                        <div class="cell" title="<?=date("Y-m-d H:i:s",$res[created_at])?>">
+                                            <?php if($res[created_at]){ ?>
+                                                <?= date("Y-m-d H:i:s",$res[created_at]) ?>
+                                            <?php } ?>
+                                        </div>
                                     </td>
                                     <td class="el-table_2_column_15  ">
-                                        <div class="cell">2016-05-02 18:00</div>
+                                        <div class="cell" title="<?=date("Y-m-d H:i:s",$res[created_at])?>">
+                                            <?php if($res[paypal_order_datetime]){ ?>
+                                                <?= date("Y-m-d H:i:s",$res[paypal_order_datetime]) ?>
+                                            <?php } ?>
+                                        </div>
                                     </td>
                                     <td class="el-table_2_column_16  ">
                                         <div class="cell"><?php
@@ -317,10 +325,18 @@
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_17  ">
-                                        <div class="cell">2016-05-02 18:00</div>
+                                        <div class="cell" title="<?=date("Y-m-d H:i:s",$res[receipt_at])?>">
+                                            <?php if($res[receipt_at]){ ?>
+                                                <?= date("Y-m-d H:i:s",$res[receipt_at]) ?>
+                                            <?php } ?>
+                                        </div>
                                     </td>
                                     <td class="el-table_2_column_18  ">
-                                        <div class="cell">2016-05-02 18:00</div>
+                                        <div class="cell" title="<?=date("Y-m-d H:i:s",$res[evaluate_at])?>">
+                                            <?php if($res[evaluate_at]){ ?>
+                                                <?= date("Y-m-d H:i:s",$res[evaluate_at]) ?>
+                                            <?php } ?>
+                                        </div>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -376,7 +392,7 @@
                                         <div class="cell">收货地址</div>
                                     </th>
                                     <th colspan="1" rowspan="1" class="el-table_3_column_22     is-leaf">
-                                        <div class="cell">送货时间</div>
+                                        <div class="cell">确认时间</div>
                                     </th>
                                     <th colspan="1" rowspan="1" class="el-table_3_column_23     is-leaf">
                                         <div class="cell">邮政编码</div>
@@ -412,7 +428,11 @@
                                         <div class="cell"><?= $res["customer_address_country"] . $res["customer_address_state"] . $res["customer_address_city"] . $res["customer_address_street1"] ?></div>
                                     </td>
                                     <td class="el-table_3_column_22  ">
-                                        <div class="cell">2016-05-02 18:00</div>
+                                        <div class="cell" title="<?=date("Y-m-d H:i:s",$res[confirm_at])?>">
+                                            <?php if($res[confirm_at]){ ?>
+                                                <?= date("Y-m-d H:i:s",$res[confirm_at]) ?>
+                                            <?php } ?>
+                                        </div>
                                     </td>
                                     <td class="el-table_3_column_23  ">
                                         <div class="cell"><?= $res["customer_address_zip"] ?></div>
@@ -420,8 +440,10 @@
                                     <td class="el-table_3_column_24  ">
                                         <div class="cell"><?= $res["customer_email"] ?></div>
                                     </td>
-                                </tr><!----></tbody>
-                            </table><!----><!----></div><!----><!----><!----><!---->
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                         <div class="el-table__column-resize-proxy" style="display: none;"></div>
                     </div>
                 </div>

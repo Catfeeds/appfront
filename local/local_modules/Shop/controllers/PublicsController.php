@@ -26,13 +26,10 @@ class PublicsController extends AppfrontController
     public function init()
     {
         parent::init();
-         if($_SESSION["login"] && $_SESSION["uid"]){
 
-           
-         }else{
-
-             return $this->redirect("/shop/login/index");
-         }
+        if(!($_SESSION["login"] == "yes")){
+            return $this->redirect("/shop/login/index");
+        }
     }
 
     static public function getAddressInfo(){
