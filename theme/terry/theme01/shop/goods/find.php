@@ -15,7 +15,6 @@
    		</div>
     </div>
 
-
     <div  class="item">
         <div  class="bottom">
             <div style="width: 528px; height: 42px; line-height: 42px; font-size: 18px; font-weight: bolder;">
@@ -142,6 +141,12 @@
                             <label class="el-form-item__label" style="width: 120px;">商品关键字:</label>
                             <div class="el-form-item__content" style="margin-left: 120px;">
                                 <input type="text" name="keywords" value="<?= $goods['meta_keywords']['meta_keywords_zh']?>" placeholder="<?= $goods['meta_keywords']['meta_keywords_zh']?>"class="el-input__inner">
+                            </div>
+                        </div>
+                        <div  class="el-form-item">
+                            <label class="el-form-item__label" style="width: 120px;">商品库存:</label>
+                            <div class="el-form-item__content" style="margin-left: 120px;">
+                                <input type="text" name="kucun" value="<?= $goods['kuncun']?>" placeholder="请输入商品库存"class="el-input__inner">
                             </div>
                         </div>
                         <div  class="el-form-item">

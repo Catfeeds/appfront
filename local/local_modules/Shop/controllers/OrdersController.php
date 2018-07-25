@@ -157,7 +157,7 @@ class OrdersController extends PublicsController
         $res = Yii::$app->request;
         $order_id = $res->get("order_id");
 
-        $res = Yii::$app->db->createCommand("update sales_flat_order set order_status=2 where order_id={$order_id}")->execute();
+        $res = Yii::$app->db->createCommand("update sales_flat_order set order_status=2,receipt_at=".time()." where order_id={$order_id}")->execute();
 
         return $this->redirect("/shop/orders/index");
 

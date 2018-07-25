@@ -30,6 +30,24 @@ use yii\helpers\Url;
         line-height: 46px;
     }
 
+    .content .shuaixuan .xiala {
+        padding-left: 10px;
+        width:160px;
+        outline: none;
+        height: 30px;
+        border-radius: 15px;
+        background: #f3faff;
+        border: 2px solid #e5eff8;
+        color:#9eabb5;
+        font-size: 14px;
+    }
+    .shuaixuan .el-select:hover {
+        border-color: #c0c4cc;
+    }
+    .shuaixuan .el-select:focus {
+        border-color: #3CACFE;
+    }
+
     .sousuo {
         margin-top: 5px;
         width: 40px;
@@ -39,7 +57,7 @@ use yii\helpers\Url;
 
     .content .item {
         width: 100%;
-        height: 50px;
+        margin-top: 10px;
     }
 
     .content .red {
@@ -58,7 +76,7 @@ use yii\helpers\Url;
     }
 </style>
 <div data-v-4ce00a5c="" class="main-content">
-    <div data-v-4ce00a5c="" style="width: 1064px; margin: 0px auto;">
+    <div data-v-4ce00a5c="" style="width: 1012px; margin: 0px auto;">
         <div data-v-345ba354="" data-v-4ce00a5c="">
             <div data-v-345ba354="" class="content">
                 <div data-v-345ba354="" class="biaoti">
@@ -75,12 +93,21 @@ use yii\helpers\Url;
                 <div data-v-345ba354="" class="shuaixuan">
                     <ul data-v-345ba354="" style="width: 500px; display: flex; justify-content: space-between;">
                         <li data-v-345ba354="">
+<<<<<<< HEAD
+                            <div data-v-345ba354="" class="el-select" style="display: inline-block;">
+                                <select name="class" id="" class="el-select xiala" style="margin-left:10px">
+                                    <option value="0" style="display: none">请选择优惠券状态</option>
+                                    <option value="">1</option>
+                                    <option value="">1</option>
+                                    <option value="">1</option>
+                                </select>
+=======
                             <div data-v-345ba354="" class="el-select" style="width: 200px; display: inline-block;">
                                 <!---->
-                                <div class="el-input el-input--suffix"><!----><input type="text" autocomplete="off"
+                                <div class="el-input el-input--suffix"><input onchange="sel(event)" type="text" autocomplete="off"
                                                                                      placeholder="请输入优惠券状态"
                                                                                      readonly="readonly"
-                                                                                     class="el-input__inner">
+                                                                                     class="el-input__inner like">
                                     <!----><span class="el-input__suffix"><span class="el-input__suffix-inner"><i
                                                     class="el-select__caret el-input__icon el-icon-arrow-up"></i><!----></span>
                                         <!----></span><!----></div>
@@ -104,25 +131,31 @@ use yii\helpers\Url;
                                             <div class="el-scrollbar__thumb" style="transform: translateY(0%);"></div>
                                         </div>
                                     </div><!----></div>
+>>>>>>> 8cc6af68143fb990e29b1e23fed1656bca8444bd
                             </div>
                         </li>
                         <li data-v-345ba354="">
-                            <div data-v-345ba354="" class="el-input" style="width: 200px;"><!----><input type="text"
-                                                                                                         autocomplete="off"
-                                                                                                         placeholder="请输入优惠券名称/关键字"
-                                                                                                         class="el-input__inner">
+                            <div data-v-345ba354="" class="el-input" style="width: 200px;">
+<<<<<<< HEAD
+                                <input type="text" autocomplete="off" placeholder="请输入优惠券名称/关键字"
+                                       class="el-input__inner">
+                            </div>
+=======
+                                <input type="text" onkeydown="sel(event)" autocomplete="off" placeholder="请输入优惠券名称" class="el-input__inner like">
                                </div>
+>>>>>>> 8cc6af68143fb990e29b1e23fed1656bca8444bd
                         </li>
                         <li data-v-345ba354="">
-                            <div data-v-345ba354="" class="sousuo"></div>
+                            <div data-v-345ba354="" class="sousuo" onclick="sel(event)"></div>
                         </li>
                     </ul>
                     <div data-v-345ba354=""><a data-v-345ba354="" href="#/ShopCouponAdd" class="">
-                        <a href="<?= Yii::$service->url->geturl("/shop/store/addcoupon") ?>">
-                            <button data-v-345ba354="" type="button" class="el-button green el-button--success is-round">
-                                <span>添加优惠券</span>
-                            </button>
-                        </a>
+                            <a href="<?= Yii::$service->url->geturl("/shop/store/addcoupon") ?>">
+                                <button data-v-345ba354="" type="button"
+                                        class="el-button green el-button--success is-round">
+                                    <span>添加优惠券</span>
+                                </button>
+                            </a>
                     </div>
                 </div>
                 <div data-v-345ba354="" class="item">
@@ -141,16 +174,16 @@ use yii\helpers\Url;
                         </div>
                         <div class="el-table__header-wrapper">
                             <table cellspacing="0" cellpadding="0" border="0" class="el-table__header"
-                                   style="width: 1064px;">
+                                   style="width: 100%;">
                                 <colgroup>
-                                    <col name="el-table_5_column_29" width="50">
-                                    <col name="el-table_5_column_30" width="200">
-                                    <col name="el-table_5_column_31" width="139">
-                                    <col name="el-table_5_column_32" width="135">
-                                    <col name="el-table_5_column_33" width="135">
-                                    <col name="el-table_5_column_34" width="135">
-                                    <col name="el-table_5_column_35" width="135">
-                                    <col name="el-table_5_column_36" width="135">
+                                    <col name="el-table_5_column_29" width="52">
+                                    <col name="el-table_5_column_30" width="130">
+                                    <col name="el-table_5_column_31" width="130">
+                                    <col name="el-table_5_column_32" width="130">
+                                    <col name="el-table_5_column_33" width="155">
+                                    <col name="el-table_5_column_34" width="155">
+                                    <col name="el-table_5_column_35" width="130">
+                                    <col name="el-table_5_column_36" width="130">
                                     <col name="gutter" width="0">
                                 </colgroup>
                                 <thead class="has-gutter">
@@ -193,35 +226,60 @@ use yii\helpers\Url;
                         </div>
                         <div class="el-table__body-wrapper is-scrolling-none">
                             <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
-                                   style="width: 1064px;">
+                                   style="width: 1012px;">
                                 <colgroup>
-                                    <col name="el-table_5_column_29" width="50">
-                                    <col name="el-table_5_column_30" width="200">
-                                    <col name="el-table_5_column_31" width="139">
-                                    <col name="el-table_5_column_32" width="135">
-                                    <col name="el-table_5_column_33" width="135">
-                                    <col name="el-table_5_column_34" width="135">
-                                    <col name="el-table_5_column_35" width="135">
-                                    <col name="el-table_5_column_36" width="135">
+                                    <col name="el-table_5_column_29" width="52">
+                                    <col name="el-table_5_column_30" width="130">
+                                    <col name="el-table_5_column_31" width="130">
+                                    <col name="el-table_5_column_32" width="130">
+                                    <col name="el-table_5_column_33" width="155">
+                                    <col name="el-table_5_column_34" width="155">
+                                    <col name="el-table_5_column_35" width="130">
+                                    <col name="el-table_5_column_36" width="130">
                                 </colgroup>
-                                <tbody style="font-size: 14px">
+                                <tbody style="font-size: 12px;color:#82898e;">
+                                <?php foreach ($res as $v) { ?>
 
-                                <tbody>
-                                <?php foreach ($res as $v){ ?>
-
-                                <tr class="el-table__row">
-                                    <td class="el-table_5_column_29  el-table-column--selection">
-                                        <div class="cell">
-                                            <label role="checkbox" class="el-checkbox">
+                                    <tr class="el-table__row">
+                                        <td class="el-table_5_column_29  el-table-column--selection">
+                                            <div class="cell">
+                                                <label role="checkbox" class="el-checkbox">
                                                 <span aria-checked="mixed" class="el-checkbox__input">
                                                     <span class="el-checkbox__inner"></span>
-                                                    <input type="checkbox" aria-hidden="true" class="el-checkbox__original" value="">
+                                                    <input type="checkbox" aria-hidden="true"
+                                                           class="el-checkbox__original" value="">
                                                 </span>
+<<<<<<< HEAD
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td class="el-table_5_column_30  ">
+                                            <div class="cell el-tooltip"><?= $v["coupon_name"] ?></div>
+                                        </td>
+                                        <td class="el-table_5_column_31  ">
+                                            <div class="cell el-tooltip"><?= $v["discount"] ?></div>
+                                        </td>
+                                        <td class="el-table_5_column_32  ">
+                                            <div class="cell el-tooltip"><?= $v["conditions"] ?></div>
+                                        </td>
+                                        <td class="el-table_5_column_33  ">
+                                            <div class="cell el-tooltip"
+                                                 title="<?= date("Y-m-d H:i:s", $v["created_at"]) ?>"><?= date("Y-m-d H:i:s", $v["created_at"]) ?></div>
+                                        </td>
+                                        <td class="el-table_5_column_34  ">
+                                            <div class="cell el-tooltip"
+                                                 title="<?= date("Y-m-d H:i:s", $v["expiration_date"]) ?>"><?= date("Y-m-d H:i:s", $v["expiration_date"]) ?></div>
+                                        </td>
+                                        <td class="el-table_5_column_35  ">
+                                            <div class="cell">
+                                                <?php if ($v["expiration_date"] > time()) { ?>
+                                                    <span data-v-345ba354="" style="color: rgb(54, 221, 124);">
+=======
                                             </label>
                                         </div>
                                     </td>
                                     <td class="el-table_5_column_30  ">
-                                        <div class="cell el-tooltip" style="width: 199px;"><?= $v["coupon_name"] ?></div>
+                                        <div class="cell el-tooltip" title="<?= $v["coupon_name"] ?>" style="width: 199px;"><?= $v["coupon_name"] ?></div>
                                     </td>
                                     <td class="el-table_5_column_31  ">
                                         <div class="cell el-tooltip" style="width: 138px;"><?= $v["discount"] ?></div>
@@ -230,36 +288,71 @@ use yii\helpers\Url;
                                         <div class="cell el-tooltip" style="width: 134px;"><?= $v["conditions"] ?></div>
                                     </td>
                                     <td class="el-table_5_column_33  ">
-                                        <div class="cell el-tooltip" title="<?= date("Y-m-d H:i:s",$v["created_at"]) ?>" style="width: 134px;"><?= date("Y-m-d H:i:s",$v["created_at"]) ?></div>
+                                        <div class="cell el-tooltip" title="<?= date("Y-m-d H:i:s",$v["start_date"]) ?>" style="width: 134px;"><?= date("Y-m-d H:i:s",$v["start_date"]) ?></div>
                                     </td>
                                     <td class="el-table_5_column_34  ">
                                         <div class="cell el-tooltip" title="<?= date("Y-m-d H:i:s",$v["expiration_date"]) ?>" style="width: 134px;"><?= date("Y-m-d H:i:s",$v["expiration_date"]) ?></div>
                                     </td>
                                     <td class="el-table_5_column_35  ">
                                         <div class="cell">
-                                            <?php if($v["expiration_date"]>time()){?>
+                                            <?php if($v["status"]==0){ ?>
+                                                <span data-v-345ba354="" style="color: #ff4949;">
+                                                    未审核
+                                                </span>
+                                            <?php }else if($v["status"]==2){?>
+                                                <span data-v-345ba354="" style="color: #ff4949;">
+                                                    审核失败
+                                                </span>
+                                            <?php }else if($v["expiration_date"]>time()){?>
                                                 <span data-v-345ba354="" style="color: rgb(54, 221, 124);">
+>>>>>>> 8cc6af68143fb990e29b1e23fed1656bca8444bd
                                                     有效
                                                 </span>
-                                            <?php }else{?>
-                                                <span data-v-345ba354="" style="color: #ff4949;">
+                                                <?php } else { ?>
+                                                    <span data-v-345ba354="" style="color: #ff4949;">
                                                     无效
                                                 </span>
+<<<<<<< HEAD
+                                                <?php } ?>
+                                            </div>
+                                        </td>
+                                        <td class="el-table_5_column_36  ">
+                                            <div class="cell el-tooltip" style="width: 134px;">
+                                                <button data-v-345ba354="" type="button"
+                                                        class="el-button el-button--text el-button--small">
+                                                    <span>编辑</span>
+                                                </button>
+                                                <span data-v-345ba354="" style="color: rgb(234, 235, 236);">|</span>
+                                                <button data-v-345ba354="" type="button"
+                                                        class="el-button el-button--text el-button--small">
+                                                    <span><i data-v-345ba354="" class="el-icon-delete"></i></span>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+=======
                                             <?php } ?>
                                         </div>
                                     </td>
                                     <td class="el-table_5_column_36  ">
                                         <div class="cell el-tooltip" style="width: 134px;">
-                                            <button data-v-345ba354="" type="button" class="el-button el-button--text el-button--small">
-                                                <span>编辑</span>
-                                            </button>
-                                            <span data-v-345ba354="" style="color: rgb(234, 235, 236);">|</span>
-                                            <button data-v-345ba354="" type="button" class="el-button el-button--text el-button--small">
-                                                <span><i data-v-345ba354="" class="el-icon-delete"></i></span>
-                                            </button>
+                                            <a href="<?= Yii::$service->url->geturl("/shop/store/seecoupon?id={$v["coupon_id"]}") ?>">
+                                                <button data-v-345ba354="" type="button" class="el-button el-button--text el-button--small">
+                                                    <span>查看</span>
+                                                </button>
+                                            </a>
+                                            <?php if($v["expiration_date"]>time()){?>
+                                                <span data-v-345ba354="" style="color: rgb(234, 235, 236);">|</span>
+                                                <a href="<?= Yii::$service->url->geturl("/shop/store/delcou?id={$v['coupon_id']}") ?>">
+                                                    <button data-v-345ba354="" type="button" class="el-button el-button--text el-button--small">
+                                                        <span><i data-v-345ba354="" class="el-icon-delete"></i></span>
+                                                    </button>
+                                                </a>
+                                            <?php } ?>
                                         </div>
                                     </td>
                                 </tr>
+>>>>>>> 8cc6af68143fb990e29b1e23fed1656bca8444bd
                                 <?php } ?>
                                 </tbody>
                             </table>
@@ -281,10 +374,10 @@ use yii\helpers\Url;
                             </div>
                         </div>
                         <div data-v-345ba354="" style="margin-top: 40px;">
-                            <button data-v-345ba354="" type="button" class="el-button el-button--default"><!----><!----><span>全选</span>
+                            <button data-v-345ba354="" type="button" class="el-button el-button--default"><span>全选</span>
                             </button>
                             <button data-v-345ba354="" type="button" class="el-button red el-button--danger is-round">
-                                <!----><!----><span>批量删除</span></button>
+                                <span>批量删除</span></button>
                         </div>
                     </div>
                     <div data-v-345ba354="" style="width: 100%; position: relative;">
@@ -307,3 +400,14 @@ use yii\helpers\Url;
         </div>
     </div>
 </div>
+<script>
+    var like = document.querySelectorAll(".like");
+    function sel(e) {
+        if(e.keyCode!=13&&e.type=="keydown"){
+            return;
+        }
+            var status=like[0].value;
+            var name=like[1].value;
+            location.href="<?= Yii::$service->url->geturl("/shop/store/couponindex?") ?>"+`status=${status}&name=${name}`;
+    }
+</script>

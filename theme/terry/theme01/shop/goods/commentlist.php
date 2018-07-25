@@ -4,20 +4,20 @@
     use yii\helpers\Url;
 ?>
 <div class="main-content">
-   <div style="width: 1064px; margin: 0px auto;">
+   <div style="width: 1012px; margin: 0px auto;">
     <div >
      <div class="content">
       <div class="biaoti">
        <div aria-label="Breadcrumb" role="navigation" class="el-breadcrumb" style="display: inline-block; line-height: 52px;">
         <span class="el-breadcrumb__item"><span role="link" class="el-breadcrumb__inner is-link">商品管理</span><span role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
-        <span class="el-breadcrumb__item" aria-current="page"><span role="link" class="el-breadcrumb__inner"><span style="color: rgb(48, 211, 102); font-weight: bolder;">评价</span></span><span role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
+        <span class="el-breadcrumb__item" aria-current="page"><span role="link" class="el-breadcrumb__inner"><span style="color: rgb(48, 211, 102); font-weight: bolder;">用户评价</span></span><span role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
        </div>
       </div>
       <div class="shuaixuan">
         <form action="<?php echo  Yii::$app->request->getHostInfo().Yii::$app->request->url;?>" method="get">
        <ul style="width: 400px; display: flex; justify-content: space-between;">
         <li>
-            <select name="class" id="" class="el-select xiala">
+            <select name="class" id="" class="el-select xiala" style="">
                <option value="0" >全部分类</option>
                 <?php
                     foreach ($class as $key => $value) {
@@ -58,15 +58,15 @@
          <div></div>
         </div>
         <div class="el-table__header-wrapper">
-         <table cellspacing="0" cellpadding="0" border="0" class="el-table__header" style="width: 1064px;">
+         <table cellspacing="0" cellpadding="0" border="0" class="el-table__header" style="width: 1012px;">
           <colgroup>
-           <col name="el-table_3_column_15" width="55" />
-           <col name="el-table_3_column_16" width="102" />
-           <col name="el-table_3_column_17" width="101" />
-           <col name="el-table_3_column_18" width="101" />
-           <col name="el-table_3_column_19" width="101" />
+           <col name="el-table_3_column_15" width="52"/>
+           <col name="el-table_3_column_16" width="100"/>
+           <col name="el-table_3_column_17" width="100"/>
+           <col name="el-table_3_column_18" width="100" />
+           <col name="el-table_3_column_19" width="110" />
            <col name="el-table_3_column_20" width="100" />
-           <col name="el-table_3_column_21" width="201" />
+           <col name="el-table_3_column_21" width="150" />
            <col name="el-table_3_column_22" width="150" />
            <col name="el-table_3_column_23" width="150" />
            <col name="gutter" width="0" />
@@ -117,61 +117,59 @@
          </table>
         </div>
         <div class="el-table__body-wrapper is-scrolling-none">
-         <table cellspacing="0" cellpadding="0" border="0" class="el-table__body" style="width: 1064px;">
+         <table cellspacing="0" cellpadding="0" border="0" class="el-table__body" style="width: 1012px;">
           <colgroup>
-           <col name="el-table_3_column_15" width="55" />
-           <col name="el-table_3_column_16" width="102" />
-           <col name="el-table_3_column_17" width="101" />
-           <col name="el-table_3_column_18" width="101" />
-           <col name="el-table_3_column_19" width="101" />
-           <col name="el-table_3_column_20" width="100" />
-           <col name="el-table_3_column_21" width="201" />
-           <col name="el-table_3_column_22" width="150" />
-           <col name="el-table_3_column_23" width="150" />
+           <col name="el-table_3_column_15" width="52"/>
+           <col name="el-table_3_column_16" width="100"/>
+           <col name="el-table_3_column_17" width="100"/>
+           <col name="el-table_3_column_18" width="100"/>
+           <col name="el-table_3_column_19" width="110"/>
+           <col name="el-table_3_column_20" width="100"/>
+           <col name="el-table_3_column_21" width="150"/>
+           <col name="el-table_3_column_22" width="150"/>
+           <col name="el-table_3_column_23" width="150"/>
           </colgroup>
-          <tbody style="font-size: 14px">
+          <tbody style="font-size: 12px;color:#82898e">
 
             <?php foreach($data as $key=>$value){ ?>
            <tr class="el-table__row">
             <td class="el-table_3_column_15  el-table-column--selection">
-             <div class="cell">
+             <div class="cell el-tooltip">
               <label role="checkbox" class="el-checkbox"><span  class="el-checkbox__input"><span class="el-checkbox__inner"></span><input type="checkbox"  class="el-checkbox__original" value="" /></span>
      </label>
              </div></td>
-            <td class="el-table_3_column_16  ">
-             <div class="cell">
+            <td class="el-table_3_column_16">
+             <div class="cell el-tooltip">
               <?=$value['_id']?>
              </div></td>
-            <td class="el-table_3_column_17  ">
-             <div class="cell el-tooltip" style="width: 100px;">
+            <td class="el-table_3_column_17">
+             <div class="cell el-tooltip">
               <?=$value['username']?>
              </div></td>
-            <td class="el-table_3_column_18  ">
-             <div class="cell el-tooltip" style="width: 100px;">
+            <td class="el-table_3_column_18">
+             <div class="cell el-tooltip">
               <?=$value['product_spu']?>
              </div></td>
-            <td class="el-table_3_column_19  ">
-             <div class="cell el-tooltip" title="<?=$value['goodsname']?>" style="width: 100px;">
+            <td class="el-table_3_column_19">
+             <div class="cell el-tooltip" title="<?=$value['goodsname']?>">
               <?=$value['goodsname']?>
              </div></td>
-            <td class="el-table_3_column_20  ">
-             <div class="cell el-tooltip" title="<?=$value['summary']?>" style="width: 199px;">
+            <td class="el-table_3_column_20">
+             <div class="cell el-tooltip" title="<?=$value['summary']?>">
               <?=$value['summary']?>
              </div></td>
-            <td class="el-table_3_column_21  ">
-             <div class="cell el-tooltip"  title="<?=$value['review_content']?>" style="width: 100px;">
+            <td class="el-table_3_column_21">
+             <div class="cell el-tooltip"  title="<?=$value['review_content']?>">
               <?=$value['review_content']?>
              </div></td>
-            <td class="el-table_3_column_22  ">
-             <div class="cell el-tooltip" style="width: 150px;">
+            <td class="el-table_3_column_22">
+             <div class="cell el-tooltip">
               <?php echo date("Y-m-d H:i:s",$value['review_date']);?>
              </div></td>
-            <td class="el-table_3_column_23  ">
-             <div class="cell el-tooltip" style="width: 150px;">
+            <td class="el-table_3_column_23">
+             <div class="cell el-tooltip">
               <select name="" id="" onchange="saveStatus(this,'<?=$value['_id']?>')" class="xiala">
                 <?php
-
-
                   switch ($value['status']) {
                     case '10':
                       # code...
@@ -278,16 +276,18 @@
     .content .shuaixuan {
         height: 46px;
         line-height: 46px;
+        font-size: 12px;
     }
     .content .xiala {
-        padding-left: 5px;
-        width: 98px;
+        padding-left: 10px;
+        width: 100px;
         outline: none;
-        font-size: 12px;
         height: 30px;
         border-radius: 15px;
         background: #f3faff;
         border: 2px solid #e5eff8;
+        font-size: 14px;
+        color:#9eabb5
     }
     .shuaixuan .el-select:hover {
         border-color: #c0c4cc;

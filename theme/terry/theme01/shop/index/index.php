@@ -1,5 +1,4 @@
-
-  <div class="box">
+<div class="box">
    <div class="freeze" style="display: none;">
     <div class="freeze-content">
      <div style="width: 438px; height: 30px; border-bottom: 1px solid rgb(48, 163, 254); color: rgb(48, 163, 254); font-size: 20px; font-weight: bolder;">
@@ -84,25 +83,25 @@
     <div class="logo"></div>
    </div> 
    <div class="main-content">
-    <div style="width: 1064px; margin: 0px auto;">
+    <div style="width: 1012px; margin: 0px auto;">
      <div class="main-content1">
-      <div class="dianpu"></div> 
+      <div class="dianpu"><img src="<?=$shop[shop_logo]?>" alt=""></div> 
       <div class="content1-center">
        <div class="col-box"></div> 
        <div class="name">
-        康洁洗衣旗舰店
+        <?=$shop['shop_name']?>
        </div> 
        <div class="message1">
         <div class="jianjie">
          商家简介:
         </div> 
-        <span data-v-af5b5ab4="">灯具千种热销款式，厂家一站式供货，自由退换货。专业人士上门安装，服务到家。</span>
+        <span ><?=$shop['shop_description']?></span>
        </div> 
        <div class="message2">
         <div class="gonggao">
          商家公告:
         </div> 
-        <span data-v-af5b5ab4="">店铺新开张，2018.05.20-05.23所有商品8折优惠</span>
+        <span ><?=$shop['shop_banner']?></span>
        </div>
       </div> 
       <div class="content1-right">
@@ -111,18 +110,18 @@
         <span style="color: rgb(65, 178, 252);">商家</span>信息 
        </div> 
        <ul class="message3">
-        <li data-v-af5b5ab4="">
+        <li >
          <div class="gonggao">
           所属公司：
-         </div> <span data-v-af5b5ab4="">王卓生活用品有限公司</span></li> 
-        <li data-v-af5b5ab4="">
+         </div> <span ><?=$shop['shop_company_name']?></span></li> 
+        <li >
          <div class="gonggao">
           负责人：
-         </div> <span data-v-af5b5ab4="">店长admin</span></li> 
-        <li data-v-af5b5ab4="">
+         </div> <span ><?=$_SESSION['admin_name']?></span></li> 
+        <li >
          <div class="gonggao">
           最后一次登录时间：
-         </div> <span data-v-af5b5ab4="">2018-05-29 09:16:36</span></li>
+         </div> <span ><?php echo date("Y-m-d H:i:s",$_SESSION['time']);?></span></li>
        </ul>
       </div>
      </div> 
@@ -130,12 +129,12 @@
       <ul class="biaoti">
        <li data-v-af5b5ab4="">待处理订单（0）</li> 
        <li data-v-af5b5ab4="">退换货订单（0）</li> 
-       <li data-v-af5b5ab4="">当前店铺活动（0)</li> 
+       <li data-v-af5b5ab4="">当前店铺活动（0）</li>
        <li data-v-af5b5ab4="">即将到期店铺活动（0）</li> 
        <li data-v-af5b5ab4="">待处理回复评论（0）</li>
       </ul> 
       <ul class="item">
-       <li data-v-af5b5ab4="">
+       <li >
         <div class="item_box">
          <div class="item_box1">
           今日成交额
@@ -148,7 +147,7 @@
           <div class="jiantou1"></div> 11% 
          </div>
         </div></li> 
-       <li data-v-af5b5ab4="">
+       <li >
         <div class="item_box">
          <div class="item_box1">
           今日成交量
@@ -161,7 +160,7 @@
           <div class="jiantou1"></div> 11% 
          </div>
         </div></li> 
-       <li data-v-af5b5ab4="">
+       <li >
         <div class="item_box">
          <div class="item_box1">
           今日下单量
@@ -174,7 +173,7 @@
           <div class="jiantou2"></div> 11% 
          </div>
         </div></li> 
-       <li data-v-af5b5ab4="">
+       <li >
         <div class="item_box">
          <div class="item_box1">
           今日退货量
@@ -187,7 +186,7 @@
           <div class="jiantou3"></div> 11% 
          </div>
         </div></li> 
-       <li data-v-af5b5ab4="">
+       <li >
         <div class="item_box">
          <div class="item_box1">
           今日点击量
@@ -208,7 +207,7 @@
       </div> 
       <div class="zhexian"></div> 
       <div style="font-size: 12px; line-height: 46px; border-bottom: 1px solid rgb(48, 162, 254);">
-       <span style="margin-left: 17px; color: rgb(153, 202, 254);">最近一周单品销售排名</span> 
+       <span style="margin-left: 17px; color: rgb(153, 202, 254);">最近一周单品销量排名</span>
        <div style="float: right;">
         <label role="radio" aria-checked="true" tabindex="0" class="el-radio is-checked"><span class="el-radio__input is-checked"><span class="el-radio__inner"></span><input type="radio" aria-hidden="true" tabindex="-1" class="el-radio__original" value="1" /></span><span class="el-radio__label">按销售量排名
           <!----></span></label> 
@@ -216,15 +215,15 @@
           <!----></span></label>
        </div>
       </div> 
-      <div data-v-af5b5ab4="">
+      <div >
        <div class="el-table el-table--fit el-table--enable-row-hover el-table--enable-row-transition" style="width: 100%;">
         <div class="hidden-columns">
-         <div data-v-af5b5ab4=""></div> 
-         <div data-v-af5b5ab4=""></div> 
-         <div data-v-af5b5ab4=""></div> 
-         <div data-v-af5b5ab4=""></div> 
-         <div data-v-af5b5ab4=""></div> 
-         <div data-v-af5b5ab4=""></div>
+         <div ></div> 
+         <div ></div> 
+         <div ></div> 
+         <div ></div> 
+         <div ></div> 
+         <div ></div>
         </div>
         <div class="el-table__header-wrapper">
          <table cellspacing="0" cellpadding="0" border="0" class="el-table__header" style="width: 1064px;">
@@ -238,7 +237,7 @@
            <col name="gutter" width="0" />
           </colgroup>
           <thead class="has-gutter">
-           <tr style="font-size: 14px;color: #B1DBFE;">
+           <tr style="font-size: 14px;color: #a4adb5;">
             <th colspan="1" rowspan="1" class="el-table_2_column_11     is-leaf">
              <div class="cell">
               排名
@@ -278,7 +277,7 @@
            <col name="el-table_2_column_15" width="146" />
            <col name="el-table_2_column_16" width="146" />
           </colgroup>
-          <tbody style="font-size: 14px">
+          <tbody style="font-size: 12px;color: #82898e">
            <tr class="el-table__row">
             <td class="el-table_2_column_11  ">
              <div class="cell">
@@ -415,7 +414,7 @@
         <div class="el-table__column-resize-proxy" style="display: none;"></div>
        </div>
       </div>
-      <div data-v-af5b5ab4="">
+      <div >
        <div style="width: 180px; float: right; margin-top: 28px; display: flex; justify-content: space-between;">
         <div style="display: flex;">
          <div class="dian"></div> 总计
@@ -429,7 +428,7 @@
        <button type="button" class="el-button green el-button--success is-round" style="padding:0;">
         <span>导出表格</span></button>
       </div> 
-      <div data-v-af5b5ab4="">
+      <div >
        <div style="width: 400px; font-size: 12px; float: right; display: flex; justify-content: space-between;">
         <div class="button_left">
          首页
@@ -474,22 +473,25 @@
     }
 
     .main-content .col-box {
-        width: 11px;
-        height: 5px;
-        border-radius: 3px;
-        margin-left: 1px;
-        margin-top: 9px;
-        margin-right: 7px;
-        background-color: #37e06f;
-        box-shadow: 0 0 2px #37e06f;
+      width: 11px;
+      height: 5px;
+      border-radius: 3px;
+      margin-left: 1px;
+      margin-top: 9px;
+      margin-right: 7px;
+      background-color: #37e06f;
+      box-shadow: 0 0 2px #37e06f;
     }
 
     .main-content1 .dianpu {
-        float: left;
-        width: 129px;
-        height: 129px;
-        border: 3px solid #eee;
-        background: url("/public/img/dianpu.png") no-repeat center center/100% auto;
+      float: left;
+      width: 129px;
+      height: 129px;
+      border: 3px solid #eee;
+    }
+    .main-content1 .dianpu img{
+      width:100%;
+      height:100%;
     }
 
     .main-content1 .content1-center {
@@ -613,6 +615,7 @@
     .item_box .item_box1 {
         height: 30px;
         font-size: 16px;
+        color: #82898e;
         line-height: 30px;
     }
 
@@ -627,10 +630,11 @@
     .item_box .item_box3 {
         font-size: 10px;
         line-height: 36px;
-        color: #a4adb5;
+        color: #bdc4c9;
     }
 
     .item_box .jiantou1 {
+        margin-left:10px;
         display: inline-block;
         width: 14px;
         height: 14px;
@@ -638,6 +642,7 @@
     }
 
     .item_box .jiantou2 {
+        margin-left:10px;
         display: inline-block;
         width: 14px;
         height: 14px;
@@ -645,6 +650,7 @@
     }
 
     .item_box .jiantou3 {
+        margin-left:10px;
         display: inline-block;
         width: 14px;
         height: 14px;
@@ -653,7 +659,6 @@
 
     .main-content3 {
         width:100%;
-        height: 48px;
     }
 
     .main-content3 .dian {

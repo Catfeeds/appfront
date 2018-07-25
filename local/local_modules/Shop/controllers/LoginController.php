@@ -27,7 +27,7 @@ class LoginController extends AppfrontController
         parent::init();
         // Yii::$service->page->theme->layoutFile = 'category_view.php';
 
-          Yii::$service->page->theme->layoutFile = 'main.php';
+        Yii::$service->page->theme->layoutFile = 'main.php';
     }  
 
     // 登陆页面
@@ -58,6 +58,8 @@ class LoginController extends AppfrontController
             $_SESSION["login"] = "yes";
             $_SESSION["uid"] = $res["id"];
             $_SESSION["shop_id"] = $res["shop_id"];
+            $_SESSION["admin_name"] = $firstname;
+            $_SESSION["time"] = time();
             return $this->redirect(["index/index"]);
         }else{
             return $this->redirect(["login/index"]);

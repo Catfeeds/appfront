@@ -4,7 +4,7 @@
 <input type="hidden" name="" id="two">
 
 <div class="main-content">
-    <div style="width: 1064px; margin: 0px auto;">
+    <div style="width: 1012px; margin: 0px auto;">
         <div class="biaoti">
             <div aria-label="Breadcrumb" role="navigation" class="el-breadcrumb">
                 <span class="el-breadcrumb__item"> <span role="link" class="el-breadcrumb__inner is-link">商品管理</span> <span role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
@@ -148,7 +148,7 @@
     }
 
     .main-content .item .top {
-        width: 65%;
+        width: 70%;
         height: 39px;
         display: flex;
         justify-content: space-between;
