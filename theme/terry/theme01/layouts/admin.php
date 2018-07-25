@@ -214,9 +214,10 @@ $cssOptions = [
 
     /*用户管理-管理员管理*/
     .adminmannager {
-        width: 100%;
+        width: 1100px;
+        margin:0 auto;
         height: 100%;
-        padding: 27px 0 0 68px;
+        padding: 27px 0 0 0;
         box-sizing: border-box;
     }
 
@@ -526,9 +527,10 @@ $cssOptions = [
     }
 
     .ShopMannager {
-        width: 100%;
+        width: 1100px;
+        margin:0 auto;
         height: 100%;
-        padding: 27px 0 0 68px;
+        padding: 27px 0 0 0;
         box-sizing: border-box;
     }
 
@@ -674,9 +676,10 @@ $cssOptions = [
     }
 
     #platdata {
-        width: 100%;
+        width: 1100px;
         min-height: 500px;
         padding: 27px 0 0 68px;
+        margin:0 auto;
     }
 
     #platdata button {
@@ -695,7 +698,7 @@ $cssOptions = [
     }
 
     .main-content {
-        overflow: hidden;
+        /*overflow: hidden;*/
     }
 
     #platdata .tongji {
