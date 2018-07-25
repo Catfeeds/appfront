@@ -174,7 +174,8 @@
                                                     <div data-v-63f72479="" class="checked-class">
                                                             <span class="el-radio__input">
                                                                 <span class="el-radio__inner"></span>
-                                                                <input type="checkbox" name="goods1[]" aria-hidden="true"
+                                                                <input type="checkbox" name="goods1[]"
+                                                                       aria-hidden="true"
                                                                        tabindex="-1" class="el-radio__original"
                                                                        value="<?= $v["_id"] ?>">
                                                             </span>
@@ -195,15 +196,15 @@
                         </div>
                     </div>
             </div>
-            </form>
         </div>
         <div data-v-63f72479="" style="float: right;">
             <button data-v-63f72479="" type="button" class="el-button green el-button--success is-round"><!---->
                 <!----><span>发布活动</span></button>
             <a data-v-63f72479="" href="#/ShopCouponEdit" class="">
-                <button data-v-63f72479="" type="button" class="el-button red el-button--danger is-round"><!---->
+                <button data-v-63f72479="" type="submit" class="el-button red el-button--danger is-round"><!---->
                     <!----><span>重置</span></button>
             </a></div>
+        </form>
     </div>
 </div>
 </div>
@@ -211,7 +212,7 @@
     lay('#version').html('-v' + laydate.v);
 
     //存储商品是否被选中
-    var goods =[];
+    var goods = {};
     //日期时间范围
     laydate.render({
         elem: '#test10'
@@ -229,6 +230,9 @@
         }
     });
     var flag = false;
+    $(".checked-class").each(function (index,val) {
+        goods[$(this).find("input").val()]=[];
+    });
     $(".checked-class").click(function (e) {
         if (!flag) {
             if ($(this).find(".el-radio__input").attr("class").indexOf("is-checked") < 0) {
@@ -242,40 +246,36 @@
             flag = false;
         }
     });
-    var category = [];
+
     $(".checked-class").find("input").change(function () {
-        category = [];
+        var category = [];
         document.querySelectorAll(".checked-class input").forEach(function (val) {
             if ($(val).is(":checked")) {
                 category.push(val.value);
+            }else {
+                goods[val.value]=[];
             }
         });
         fetch("/shop/store/getgoods?" + "category=" + JSON.stringify(category)).then(function (e) {
             return e.json();
         }).then(function (e) {
             var str = "";
-            console.log(goods);
             e.forEach(function (val) {
-                if(!(category.indexOf(val["category"][0]) == -1)) {
-                    goods.forEach(function (value) {
-
-                        if (val["_id"]['$oid'] == value) {
-                            val.isSel = true;
-                            console.log(val);
-                        } else {
-                            val.isSel = false;
-                        }
-                    })
-                }else
-                {
-                    val.isSel = false;
+                if (goods[val["category"][0]] == undefined) {
+                    goods[val["category"][0]] = [];
                 }
+                goods[val["category"][0]].forEach(function (value) {
+                    if (val["_id"]['$oid'] == value) {
+                        val.isSel = true;
+                        console.log(1);
+                    }
+                })
             });
             e.forEach(function (val) {
                 str += `<div data-v-63f72479="" onclick="dianji(this)">
-                                <span class="el-radio__input ${val['isSel']?'is-checked':""}">
+                                <span class="el-radio__input ${val['isSel'] ? 'is-checked' : ""}">
                                     <span class="el-radio__inner"></span>
-                                        <input onchange="gaibian(this)" type="checkbox" name="goods[]" aria-hidden="true" tabindex="-1" class="el-radio__original" value="${val['_id']['$oid']}" checked="${val['isSel']?true:false}">
+                                        <input onclick="gaibian(this,'${val["category"][0]}')" type="checkbox" name="goods[]" aria-hidden="true" tabindex="-1" class="el-radio__original" value="${val['_id']['$oid']}" ${val['isSel'] ? 'checked' : ''}>
                                     </span>
                                     <span class="el-radio__label">${val["name"]["name_zh"]}</span>
                         </div>`;
@@ -284,6 +284,7 @@
         });
     });
     var flag1 = false;
+
     function dianji(ele) {
         if (!flag1) {
             if ($(ele).find(".el-radio__input").attr("class").indexOf("is-checked") < 0) {
@@ -298,12 +299,13 @@
             flag1 = false;
         }
     }
-    function gaibian(ele) {
-        if(!($(ele).is(":checked"))){
-            goods.push(ele.value);
-        }else {
-            goods=goods.filter(function (val) {
-                return val!=ele.value;
+
+    function gaibian(ele, id) {
+        if (($(ele).is(":checked"))) {
+            goods[id].push(ele.value);
+        } else {
+            goods[id] = goods[id].filter(function (val) {
+                return val != ele.value;
             });
         }
     }
