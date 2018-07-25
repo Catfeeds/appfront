@@ -133,7 +133,7 @@
                         <div data-v-242c0cfe="" class="title1">
                                 <div data-v-242c0cfe="" class="el-row" style="width: 500px;">
                                     <div data-v-242c0cfe="" class="el-form-item"><label class="el-form-item__label"
-                                                                                        style="width: 100px;">审核状态</label>
+                                                                                        style="width: 100px;line-height: 40px">审核状态</label>
                                         <div class="el-form-item__content" style="margin-left: 100px;">
                                             <div data-v-242c0cfe=""
                                                  style="color: rgb(55, 223, 113); font-weight: bolder;">审核成功

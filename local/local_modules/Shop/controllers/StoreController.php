@@ -187,7 +187,7 @@ class StoreController extends PublicsController
         //实例化分页对象
         // 实例化分页对象
         $pagination = new Pagination([
-            'defaultPageSize' => 1,
+            'defaultPageSize' => 10,
             'totalCount' => $count[0]['num'],
         ]);
         $res = Yii::$app->db->createCommand("select * from sales_coupon where uid={$_SESSION["uid"]} limit $pagination->offset,$pagination->limit")->queryAll();
@@ -212,7 +212,7 @@ class StoreController extends PublicsController
         return $this->render($this->action->id,$datas);
     }
 
-    //添加优惠卷
+    //得到商品信息
     public function actionGetgoods(){
 
         $res = Yii::$app->request;
@@ -229,5 +229,72 @@ class StoreController extends PublicsController
         }
         echo json_encode($res);
         exit();
+    }
+    public function actionGetgoods1(){
+        $res = Yii::$app->request;
+        $category = json_decode($res->get("category"));
+        $query = new Query();
+        $res = [];
+        foreach ($category as $v){
+
+            $where[_id]=$v;
+            $res1 = $query->from("product_flat")->where($where)->one();
+            $res[]=$res1;
+        }
+        echo json_encode($res);
+        exit();
+    }
+    //添加优惠卷
+    public function actionAddcou(){
+
+        $res = Yii::$app->request;
+
+        $post = $res->post();
+
+        var_dump($post);
+        $goods = "";
+        if($post["flag"]==1||count($post["goods1"])<=0||count($post["goods"])<=0){
+            $goods = 0;
+        }else{
+            foreach ($post["goods"] as $v){
+                $goods = $goods.$v."|";
+            }
+        }
+        $goods = substr($goods,0,-1);
+        $data = explode(" - ",$post["data"]);
+        $start_date = strtotime($data[0]);
+        $expiration_date = strtotime($data[1]);
+        $coupon_code = "CO".time().$_SESSION["shop_id"];
+
+        $res = Yii::$app->db->createCommand("insert into sales_coupon (uid,shop_id,start_date,coupon_name,coupon_code,expiration_date,users_per_customer,conditions,discount,goods,status) values ('{$_SESSION['uid']}','{$_SESSION["shop_id"]}','$start_date','{$post['coupon_name']}','$coupon_code','$expiration_date','1','{$post["conditions"]}','{$post["discount"]}','$goods'),0")->execute();
+
+        return $this->redirect("/shop/store/couponindex");
+    }
+
+    //删除优惠卷
+    public function actionDelcou(){
+
+        $req = Yii::$app->request;
+
+        $coupon_id = $req->get("id");
+
+        $expiration_date = time()-1000;
+
+        $res = Yii::$app->db->createCommand("update sales_coupon set expiration_date={$expiration_date} where coupon_id=$coupon_id")->execute();
+
+        return $this->redirect("/shop/store/couponindex");
+
+    }
+
+    //返回优惠券详情页面
+    public function actionSeecoupon(){
+
+        $req = Yii::$app->request;
+        $coupon_id = $req->get("id");
+
+        $res = Yii::$app->db->createCommand("select * from sales_coupon where coupon_id=$coupon_id")->queryOne();
+
+        $datas["res"] = $res;
+        return $this->render($this->action->id,$datas);
     }
 }

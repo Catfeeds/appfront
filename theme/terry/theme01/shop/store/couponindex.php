@@ -77,10 +77,10 @@ use yii\helpers\Url;
                         <li data-v-345ba354="">
                             <div data-v-345ba354="" class="el-select" style="width: 200px; display: inline-block;">
                                 <!---->
-                                <div class="el-input el-input--suffix"><!----><input type="text" autocomplete="off"
+                                <div class="el-input el-input--suffix"><input onchange="sel(event)" type="text" autocomplete="off"
                                                                                      placeholder="请输入优惠券状态"
                                                                                      readonly="readonly"
-                                                                                     class="el-input__inner">
+                                                                                     class="el-input__inner like">
                                     <!----><span class="el-input__suffix"><span class="el-input__suffix-inner"><i
                                                     class="el-select__caret el-input__icon el-icon-arrow-up"></i><!----></span>
                                         <!----></span><!----></div>
@@ -107,14 +107,12 @@ use yii\helpers\Url;
                             </div>
                         </li>
                         <li data-v-345ba354="">
-                            <div data-v-345ba354="" class="el-input" style="width: 200px;"><!----><input type="text"
-                                                                                                         autocomplete="off"
-                                                                                                         placeholder="请输入优惠券名称/关键字"
-                                                                                                         class="el-input__inner">
+                            <div data-v-345ba354="" class="el-input" style="width: 200px;">
+                                <input type="text" onkeydown="sel(event)" autocomplete="off" placeholder="请输入优惠券名称" class="el-input__inner like">
                                </div>
                         </li>
                         <li data-v-345ba354="">
-                            <div data-v-345ba354="" class="sousuo"></div>
+                            <div data-v-345ba354="" class="sousuo" onclick="sel(e)"></div>
                         </li>
                     </ul>
                     <div data-v-345ba354=""><a data-v-345ba354="" href="#/ShopCouponAdd" class="">
@@ -221,7 +219,7 @@ use yii\helpers\Url;
                                         </div>
                                     </td>
                                     <td class="el-table_5_column_30  ">
-                                        <div class="cell el-tooltip" style="width: 199px;"><?= $v["coupon_name"] ?></div>
+                                        <div class="cell el-tooltip" title="<?= $v["coupon_name"] ?>" style="width: 199px;"><?= $v["coupon_name"] ?></div>
                                     </td>
                                     <td class="el-table_5_column_31  ">
                                         <div class="cell el-tooltip" style="width: 138px;"><?= $v["discount"] ?></div>
@@ -230,14 +228,22 @@ use yii\helpers\Url;
                                         <div class="cell el-tooltip" style="width: 134px;"><?= $v["conditions"] ?></div>
                                     </td>
                                     <td class="el-table_5_column_33  ">
-                                        <div class="cell el-tooltip" title="<?= date("Y-m-d H:i:s",$v["created_at"]) ?>" style="width: 134px;"><?= date("Y-m-d H:i:s",$v["created_at"]) ?></div>
+                                        <div class="cell el-tooltip" title="<?= date("Y-m-d H:i:s",$v["start_date"]) ?>" style="width: 134px;"><?= date("Y-m-d H:i:s",$v["start_date"]) ?></div>
                                     </td>
                                     <td class="el-table_5_column_34  ">
                                         <div class="cell el-tooltip" title="<?= date("Y-m-d H:i:s",$v["expiration_date"]) ?>" style="width: 134px;"><?= date("Y-m-d H:i:s",$v["expiration_date"]) ?></div>
                                     </td>
                                     <td class="el-table_5_column_35  ">
                                         <div class="cell">
-                                            <?php if($v["expiration_date"]>time()){?>
+                                            <?php if($v["status"]==0){ ?>
+                                                <span data-v-345ba354="" style="color: #ff4949;">
+                                                    未审核
+                                                </span>
+                                            <?php }else if($v["status"]==2){?>
+                                                <span data-v-345ba354="" style="color: #ff4949;">
+                                                    审核失败
+                                                </span>
+                                            <?php }else if($v["expiration_date"]>time()){?>
                                                 <span data-v-345ba354="" style="color: rgb(54, 221, 124);">
                                                     有效
                                                 </span>
@@ -250,13 +256,19 @@ use yii\helpers\Url;
                                     </td>
                                     <td class="el-table_5_column_36  ">
                                         <div class="cell el-tooltip" style="width: 134px;">
-                                            <button data-v-345ba354="" type="button" class="el-button el-button--text el-button--small">
-                                                <span>编辑</span>
-                                            </button>
-                                            <span data-v-345ba354="" style="color: rgb(234, 235, 236);">|</span>
-                                            <button data-v-345ba354="" type="button" class="el-button el-button--text el-button--small">
-                                                <span><i data-v-345ba354="" class="el-icon-delete"></i></span>
-                                            </button>
+                                            <a href="<?= Yii::$service->url->geturl("/shop/store/seecoupon?id={$v["coupon_id"]}") ?>">
+                                                <button data-v-345ba354="" type="button" class="el-button el-button--text el-button--small">
+                                                    <span>查看</span>
+                                                </button>
+                                            </a>
+                                            <?php if($v["expiration_date"]>time()){?>
+                                                <span data-v-345ba354="" style="color: rgb(234, 235, 236);">|</span>
+                                                <a href="<?= Yii::$service->url->geturl("/shop/store/delcou?id={$v['coupon_id']}") ?>">
+                                                    <button data-v-345ba354="" type="button" class="el-button el-button--text el-button--small">
+                                                        <span><i data-v-345ba354="" class="el-icon-delete"></i></span>
+                                                    </button>
+                                                </a>
+                                            <?php } ?>
                                         </div>
                                     </td>
                                 </tr>
@@ -281,10 +293,10 @@ use yii\helpers\Url;
                             </div>
                         </div>
                         <div data-v-345ba354="" style="margin-top: 40px;">
-                            <button data-v-345ba354="" type="button" class="el-button el-button--default"><!----><!----><span>全选</span>
+                            <button data-v-345ba354="" type="button" class="el-button el-button--default"><span>全选</span>
                             </button>
                             <button data-v-345ba354="" type="button" class="el-button red el-button--danger is-round">
-                                <!----><!----><span>批量删除</span></button>
+                                <span>批量删除</span></button>
                         </div>
                     </div>
                     <div data-v-345ba354="" style="width: 100%; position: relative;">
@@ -307,3 +319,13 @@ use yii\helpers\Url;
         </div>
     </div>
 </div>
+<script>
+    var like = document.querySelectorAll(".like");
+    function sel(e) {
+        if(e.keyCode==13){
+            var status=like[0].value;
+            var name=like[1].value;
+            location.href="<?= Yii::$service->url->geturl("/shop/store/couponindex?") ?>"+`status=${status}&name=${name}`;
+        }
+    }
+</script>
