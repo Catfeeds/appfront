@@ -215,6 +215,7 @@ class GoodsController extends PublicsController
         // 接受数据
         $request = Yii::$app->request;
         $data = $request->post();
+        $kucun=$data['kucun'];
 
         $data['kucun']=$data['kucun']?1:2;
 
@@ -455,8 +456,13 @@ class GoodsController extends PublicsController
 
         $collection = Yii::$app->mongodb->getCollection('product_flat');
 
-        if($collection->insert($arr)){
-            return $this->redirect(['goods/index']);
+        if($a=$collection->insert($arr)){
+
+    
+            $res = Yii::$app->db->createCommand("insert into product_flat_qty (product_id,qty) values ('$a','$kucun')")->execute();
+
+
+             return $this->redirect(['goods/index']);
 
         }else{
             return $this->redirect(['goods/addshopinfo']);
