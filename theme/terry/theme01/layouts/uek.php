@@ -156,7 +156,11 @@ $cssOptions = [
             float: left;
             background: #fff;
         }
-
+        .admin-img img{
+            width:100%;
+            height:100%;
+        }
+        
         .adminname span {
             line-height: 50px;
             font-size: 14px;
@@ -425,8 +429,8 @@ $cssOptions = [
             </ul>
             <div class="header-right">
                 <div class="adminname">
-                    <div class="admin-img"></div>
-                    <span class="name1">商家的名称</span></div>
+                    <div class="admin-img"><img src="<?=$_SESSION[shop_logo]?>" alt=""></div>
+                    <span class="name1"><?=$_SESSION['shop_name']?></span></div>
                 <div class="adminname">
                     <div class="clearimg"></div>
                     <span class="name2">清除缓存</span></div>

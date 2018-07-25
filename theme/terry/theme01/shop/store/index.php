@@ -86,10 +86,12 @@
         height: 159px;
         background: url("/public/img/shop2.png");
     }
-    .zhizhao-img{
+
+    .zhizhao-img {
         width: 100%;
         height: 100%;
     }
+
     .title .details {
         width: 600px;
         height: 120px;
@@ -122,13 +124,12 @@
             <div data-v-3bfc0387="" class="content">
                 <div data-v-3bfc0387="" class="biaoti">
                     <div data-v-3bfc0387="" aria-label="Breadcrumb" role="navigation" class="el-breadcrumb">
-                        <span data-v-3bfc0387="" class="el-breadcrumb__item"><span role="link"
-                                                                                   class="el-breadcrumb__inner is-link">店铺管理</span><span
-                                    role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
-                        <span data-v-3bfc0387="" class="el-breadcrumb__item" aria-current="page"><span role="link"
-                                                                                                       class="el-breadcrumb__inner"><span
-                                        data-v-3bfc0387=""
-                                        style="color: rgb(48, 211, 102); font-weight: bolder;">店铺信息</span></span><span
+                        <span data-v-3bfc0387="" class="el-breadcrumb__item">
+                            <span role="link" class="el-breadcrumb__inner is-link">店铺管理</span>
+                            <span role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
+                        <span data-v-3bfc0387="" class="el-breadcrumb__item" aria-current="page">
+                            <span role="link" class="el-breadcrumb__inner">
+                                <span data-v-3bfc0387="" style="color: rgb(48, 211, 102); font-weight: bolder;">店铺信息</span></span><span
                                     role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
                     </div>
                 </div>
@@ -141,8 +142,9 @@
                         </div>
                         <div data-v-3bfc0387="" class="title">
                             <form data-v-3bfc0387="" class="el-form"
-                                  action="<?= Yii::$service->url->getUrl("/shop/store/editinfo") ?>" enctype="multipart/form-data" method="post">
-                                <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>" />
+                                  action="<?= Yii::$service->url->getUrl("/shop/store/editinfo") ?>"
+                                  enctype="multipart/form-data" method="post">
+                                <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>"/>
                                 <input type="hidden" name="uid" value="<?= $res["uid"] ?>">
                                 <div data-v-3bfc0387="" class="el-row" style="width: 500px;">
                                     <div data-v-3bfc0387="" class="el-form-item">
@@ -151,29 +153,22 @@
                                             <div data-v-3bfc0387="">
                                                 <?= $res["shop_company_name"] ?>
                                             </div>
-                                            <!---->
                                         </div>
                                     </div>
                                     <div data-v-3bfc0387="" class="el-form-item">
                                         <label class="el-form-item__label" style="width: 100px;">*店铺名称</label>
                                         <div class="el-form-item__content" style="margin-left: 100px;">
                                             <div data-v-3bfc0387="" class="el-input">
-                                                <!---->
                                                 <input disabled type="text" autocomplete="off"
                                                        class="el-input__inner" value="<?= $res["shop_name"] ?>"
                                                        name="shop_name"/>
-                                                <!---->
-                                                <!---->
-                                                <!---->
                                             </div>
-                                            <!---->
                                         </div>
                                     </div>
                                     <div data-v-3bfc0387="" class="el-form-item">
                                         <label class="el-form-item__label" style="width: 100px;">*店铺关键字</label>
                                         <div class="el-form-item__content" style="margin-left: 100px;">
                                             <div data-v-3bfc0387="" class="el-input">
-                                                <!---->
                                                 <input type="text" autocomplete="off" placeholder="洗衣、洗鞋、洗家纺、洗窗帘、袋洗"
                                                        class="el-input__inner" name="shop_keywords"
                                                        value="<?= $res["shop_keywords"] ?>"/>
@@ -197,27 +192,27 @@
                                                       name="shop_description"><?= $res["shop_description"] ?></textarea>
                                         </div>
                                     </div>
-<!--                                    <div data-v-3bfc0387="" class="el-form-item">-->
-<!--                                        <label class="el-form-item__label" style="width: 100px;">*营业执照</label>-->
-<!--                                        <div class="el-form-item__content" style="margin-left: 100px;">-->
-<!--                                            <div data-v-3bfc0387=""-->
-<!--                                                 style="width: 600px; display: flex; justify-content: space-between;">-->
-<!--                                                <input type="file" name="file" style="display: none" class="file">-->
-<!--                                                <div data-v-3bfc0387="" class="zhizhao1">-->
-<!---->
-<!--                                                </div>-->
-<!--                                                <div data-v-3bfc0387="" class="zhizhao2">-->
-<!--                                                    -->
+                                    <!--                                    <div data-v-3bfc0387="" class="el-form-item">-->
+                                    <!--                                        <label class="el-form-item__label" style="width: 100px;">*营业执照</label>-->
+                                    <!--                                        <div class="el-form-item__content" style="margin-left: 100px;">-->
+                                    <!--                                            <div data-v-3bfc0387=""-->
+                                    <!--                                                 style="width: 600px; display: flex; justify-content: space-between;">-->
+                                    <!--                                                <input type="file" name="file" style="display: none" class="file">-->
+                                    <!--                                                <div data-v-3bfc0387="" class="zhizhao1">-->
+                                    <!---->
+                                    <!--                                                </div>-->
+                                    <!--                                                <div data-v-3bfc0387="" class="zhizhao2">-->
+                                    <!--                                                    -->
                                     <?php
-//                                                        if($res["business_licence_number_electronic"]){
-//                                                            echo "<img src='".$res["business_licence_number_electronic"]."' class='zhizhao-img'/>";
-//                                                        }
-//                                                    ?>
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                            <!---->
-<!--                                        </div>-->
-<!--                                    </div>-->
+                                    //                                                        if($res["business_licence_number_electronic"]){
+                                    //                                                            echo "<img src='".$res["business_licence_number_electronic"]."' class='zhizhao-img'/>";
+                                    //                                                        }
+                                    //                                                    ?>
+                                    <!--                                                </div>-->
+                                    <!--                                            </div>-->
+                                    <!--                                            <!---->
+                                    <!--                                        </div>-->
+                                    <!--                                    </div>-->
                                 </div>
                         </div>
                     </div>
@@ -233,15 +228,10 @@
                                     <label class="el-form-item__label" style="width: 100px;">*联系方式</label>
                                     <div class="el-form-item__content" style="margin-left: 100px;">
                                         <div data-v-3bfc0387="" class="el-input">
-                                            <!---->
                                             <input type="text" autocomplete="off" placeholder="13567890765"
                                                    class="el-input__inner" name="shop_phone"
                                                    value="<?= $res["shop_phone"] ?>"/>
-                                            <!---->
-                                            <!---->
-                                            <!---->
                                         </div>
-                                        <!---->
                                     </div>
                                 </div>
                                 <div data-v-3bfc0387="" class="el-form-item address">
@@ -263,58 +253,51 @@
                                     <label class="el-form-item__label" style="width: 100px;">*详细地址</label>
                                     <div class="el-form-item__content" style="margin-left: 100px;">
                                         <div data-v-3bfc0387="" class="el-input">
-                                            <!---->
                                             <input type="text" autocomplete="off" placeholder="东北旺东路4号泰山大厦"
                                                    class="el-input__inner" name="shop_address"
                                                    value="<?= $res[shop_address] ?>"/>
-                                            <!---->
-                                            <!---->
-                                            <!---->
                                         </div>
-                                        <!---->
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-<!--                    <div data-v-3bfc0387="" class="bottom2">-->
-<!--                        <div data-v-3bfc0387=""-->
-<!--                             style="width: 328px; height: 42px; line-height: 42px; font-size: 18px; font-weight: bolder;">-->
-<!--                            <div data-v-3bfc0387="" class="col-box"></div>-->
-<!--                            <span data-v-3bfc0387="" style="color: rgb(48, 163, 254);">审核</span>状态-->
-<!--                        </div>-->
-<!--                        <div data-v-3bfc0387="" class="title2">-->
-<!--                            <div data-v-3bfc0387="" class="el-row" style="width: 500px;">-->
-<!--                                <div data-v-3bfc0387="" class="el-form-item">-->
-<!--                                    <label class="el-form-item__label" style="width: 100px;">审核状态</label>-->
-<!--                                    <div class="el-form-item__content" style="margin-left: 100px;">-->
-<!--                                        <div data-v-3bfc0387="">-->
-<!--                                            资料审核成功，店铺申请成功。-->
-<!--                                        </div>-->
-<!--                                        -->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div data-v-3bfc0387="" class="el-form-item" style="width: 800px;">-->
-<!--                                    <label class="el-form-item__label" style="width: 100px;">注意</label>-->
-<!--                                    <div class="el-form-item__content" style="margin-left: 100px;">-->
-<!--                                        <div data-v-3bfc0387="">-->
-<!--                                            修改提交后，会重新审核，请慎重填写提交。如需要改入住信息，请点击更改按钮。-->
-<!--                                        </div>-->
-<!--                                        <button data-v-3bfc0387="" type="button"-->
-<!--                                                class="el-button green el-button--success is-round">-->
-<!--                                            <span>更改入驻信息</span></button>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
+                    <!--                    <div data-v-3bfc0387="" class="bottom2">-->
+                    <!--                        <div data-v-3bfc0387=""-->
+                    <!--                             style="width: 328px; height: 42px; line-height: 42px; font-size: 18px; font-weight: bolder;">-->
+                    <!--                            <div data-v-3bfc0387="" class="col-box"></div>-->
+                    <!--                            <span data-v-3bfc0387="" style="color: rgb(48, 163, 254);">审核</span>状态-->
+                    <!--                        </div>-->
+                    <!--                        <div data-v-3bfc0387="" class="title2">-->
+                    <!--                            <div data-v-3bfc0387="" class="el-row" style="width: 500px;">-->
+                    <!--                                <div data-v-3bfc0387="" class="el-form-item">-->
+                    <!--                                    <label class="el-form-item__label" style="width: 100px;">审核状态</label>-->
+                    <!--                                    <div class="el-form-item__content" style="margin-left: 100px;">-->
+                    <!--                                        <div data-v-3bfc0387="">-->
+                    <!--                                            资料审核成功，店铺申请成功。-->
+                    <!--                                        </div>-->
+                    <!--                                        -->
+                    <!--                                    </div>-->
+                    <!--                                </div>-->
+                    <!--                                <div data-v-3bfc0387="" class="el-form-item" style="width: 800px;">-->
+                    <!--                                    <label class="el-form-item__label" style="width: 100px;">注意</label>-->
+                    <!--                                    <div class="el-form-item__content" style="margin-left: 100px;">-->
+                    <!--                                        <div data-v-3bfc0387="">-->
+                    <!--                                            修改提交后，会重新审核，请慎重填写提交。如需要改入住信息，请点击更改按钮。-->
+                    <!--                                        </div>-->
+                    <!--                                        <button data-v-3bfc0387="" type="button"-->
+                    <!--                                                class="el-button green el-button--success is-round">-->
+                    <!--                                            <span>更改入驻信息</span></button>-->
+                    <!--                                    </div>-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
                     <div data-v-3bfc0387="" style="float: right;margin: 20px 0">
                         <button data-v-3bfc0387="" type="submit" class="el-button green el-button--success is-round">
-                            <!---->
-                            <!----><span>提交</span></button>
+                           <span>提交</span></button>
                         <button data-v-3bfc0387="" type="button" class="el-button red el-button--danger is-round">
-                            <!---->
-                            <!----><span>取消</span></button>
+                            <span>取消</span></button>
                     </div>
                     </form>
                 </div>
@@ -390,14 +373,14 @@
     var file = document.querySelector(".file");
     var zhizhao = document.querySelector(".zhizhao2");
 
-    zhizhao.onclick = function(){
-    	file.click();
-		
-    };	
-    file.onchange = function(){
-    	var reader = new FileReader();
+    zhizhao.onclick = function () {
+        file.click();
+
+    };
+    file.onchange = function () {
+        var reader = new FileReader();
         reader.readAsDataURL(file.files[0]);
-        reader.onloadend = function(e){
+        reader.onloadend = function (e) {
             str = `<img src="${e.target.result}" class="zhizhao-img"/ >`;
             zhizhao.innerHTML = str;
         }

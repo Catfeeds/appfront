@@ -128,8 +128,6 @@ class GoodsController extends PublicsController
 
         // 加载页面和数据分配
         $data['goods']=$rows;
-
-            
         $data['pagination']=$pagination;
         $data['tot']=$tot2;
         $data['tot1']=$tot1;
@@ -359,6 +357,7 @@ class GoodsController extends PublicsController
             "status"=>$data['status'], // 产品的状态，1代表激活，2代表下架
             "qty"=>0,  // 产品的库存，这个字段已经无效，库存在mysql中
             "min_sales_qty"=>1,  // 产品的最小销售个数
+            "kucun"=>$kucun,
             "is_in_stock"=>$data['kucun'],  // 产品 的库存状态，1代表有库存，2代表无库存
             "category"=>[  // 产品的分类id。可以多个
                 $data['one'],
@@ -482,6 +481,8 @@ class GoodsController extends PublicsController
         // 获取数据
         $request = Yii::$app->request;
         $data = $request->post();
+        $data['kucun2']=$data['kucun']?1:2;
+
 
         // 获取需要保留的图片
         $bao=explode(',', $data['bao']);
@@ -570,7 +571,8 @@ class GoodsController extends PublicsController
             "status"=>$data['status'], // 产品的状态，1代表激活，2代表下架
             "qty"=>0,  // 产品的库存，这个字段已经无效，库存在mysql中
             "min_sales_qty"=>1,  // 产品的最小销售个数
-            "is_in_stock"=>$data['kucun'],  // 产品 的库存状态，1代表有库存，2代表无库存
+            "kucun"=>$data['kucun'],
+            "is_in_stock"=>$data['kucun2'],  // 产品 的库存状态，1代表有库存，2代表无库存
             "category"=>[  // 产品的分类id。可以多个
                 $data['classone'],
                 $data['classtwo'],
@@ -762,8 +764,7 @@ class GoodsController extends PublicsController
         // 获取商品数据
         $data=[];
         $data['goods']=Yii::$app->mongodb->getCollection('product_flat')->findOne(['_id'=>$id]);
-        
-
+            
         $data['category']=$this->actionGetclass();
 
         // 加载页面

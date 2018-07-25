@@ -85,23 +85,23 @@
    <div class="main-content">
     <div style="width: 1012px; margin: 0px auto;">
      <div class="main-content1">
-      <div class="dianpu"></div> 
+      <div class="dianpu"><img src="<?=$shop[shop_logo]?>" alt=""></div> 
       <div class="content1-center">
        <div class="col-box"></div> 
        <div class="name">
-        康洁洗衣旗舰店
+        <?=$shop['shop_name']?>
        </div> 
        <div class="message1">
         <div class="jianjie">
          商家简介:
         </div> 
-        <span data-v-af5b5ab4="">灯具千种热销款式，厂家一站式供货，自由退换货。专业人士上门安装，服务到家。</span>
+        <span ><?=$shop['shop_description']?></span>
        </div> 
        <div class="message2">
         <div class="gonggao">
          商家公告:
         </div> 
-        <span data-v-af5b5ab4="">店铺新开张，2018.05.20-05.23所有商品8折优惠</span>
+        <span ><?=$shop['shop_banner']?></span>
        </div>
       </div> 
       <div class="content1-right">
@@ -110,18 +110,18 @@
         <span style="color: rgb(65, 178, 252);">商家</span>信息 
        </div> 
        <ul class="message3">
-        <li data-v-af5b5ab4="">
+        <li >
          <div class="gonggao">
           所属公司：
-         </div> <span data-v-af5b5ab4="">王卓生活用品有限公司</span></li> 
-        <li data-v-af5b5ab4="">
+         </div> <span ><?=$shop['shop_company_name']?></span></li> 
+        <li >
          <div class="gonggao">
           负责人：
-         </div> <span data-v-af5b5ab4="">店长admin</span></li> 
-        <li data-v-af5b5ab4="">
+         </div> <span ><?=$_SESSION['admin_name']?></span></li> 
+        <li >
          <div class="gonggao">
           最后一次登录时间：
-         </div> <span data-v-af5b5ab4="">2018-05-29 09:16:36</span></li>
+         </div> <span ><?php echo date("Y-m-d H:i:s",$_SESSION['time']);?></span></li>
        </ul>
       </div>
      </div> 
@@ -134,7 +134,7 @@
        <li data-v-af5b5ab4="">待处理回复评论（0）</li>
       </ul> 
       <ul class="item">
-       <li data-v-af5b5ab4="">
+       <li >
         <div class="item_box">
          <div class="item_box1">
           今日成交额
@@ -147,7 +147,7 @@
           <div class="jiantou1"></div> 11% 
          </div>
         </div></li> 
-       <li data-v-af5b5ab4="">
+       <li >
         <div class="item_box">
          <div class="item_box1">
           今日成交量
@@ -160,7 +160,7 @@
           <div class="jiantou1"></div> 11% 
          </div>
         </div></li> 
-       <li data-v-af5b5ab4="">
+       <li >
         <div class="item_box">
          <div class="item_box1">
           今日下单量
@@ -173,7 +173,7 @@
           <div class="jiantou2"></div> 11% 
          </div>
         </div></li> 
-       <li data-v-af5b5ab4="">
+       <li >
         <div class="item_box">
          <div class="item_box1">
           今日退货量
@@ -186,7 +186,7 @@
           <div class="jiantou3"></div> 11% 
          </div>
         </div></li> 
-       <li data-v-af5b5ab4="">
+       <li >
         <div class="item_box">
          <div class="item_box1">
           今日点击量
@@ -215,15 +215,15 @@
           <!----></span></label>
        </div>
       </div> 
-      <div data-v-af5b5ab4="">
+      <div >
        <div class="el-table el-table--fit el-table--enable-row-hover el-table--enable-row-transition" style="width: 100%;">
         <div class="hidden-columns">
-         <div data-v-af5b5ab4=""></div> 
-         <div data-v-af5b5ab4=""></div> 
-         <div data-v-af5b5ab4=""></div> 
-         <div data-v-af5b5ab4=""></div> 
-         <div data-v-af5b5ab4=""></div> 
-         <div data-v-af5b5ab4=""></div>
+         <div ></div> 
+         <div ></div> 
+         <div ></div> 
+         <div ></div> 
+         <div ></div> 
+         <div ></div>
         </div>
         <div class="el-table__header-wrapper">
          <table cellspacing="0" cellpadding="0" border="0" class="el-table__header" style="width: 1064px;">
@@ -414,7 +414,7 @@
         <div class="el-table__column-resize-proxy" style="display: none;"></div>
        </div>
       </div>
-      <div data-v-af5b5ab4="">
+      <div >
        <div style="width: 180px; float: right; margin-top: 28px; display: flex; justify-content: space-between;">
         <div style="display: flex;">
          <div class="dian"></div> 总计
@@ -428,7 +428,7 @@
        <button type="button" class="el-button green el-button--success is-round" style="padding:0;">
         <span>导出表格</span></button>
       </div> 
-      <div data-v-af5b5ab4="">
+      <div >
        <div style="width: 400px; font-size: 12px; float: right; display: flex; justify-content: space-between;">
         <div class="button_left">
          首页
@@ -473,22 +473,25 @@
     }
 
     .main-content .col-box {
-        width: 11px;
-        height: 5px;
-        border-radius: 3px;
-        margin-left: 1px;
-        margin-top: 9px;
-        margin-right: 7px;
-        background-color: #37e06f;
-        box-shadow: 0 0 2px #37e06f;
+      width: 11px;
+      height: 5px;
+      border-radius: 3px;
+      margin-left: 1px;
+      margin-top: 9px;
+      margin-right: 7px;
+      background-color: #37e06f;
+      box-shadow: 0 0 2px #37e06f;
     }
 
     .main-content1 .dianpu {
-        float: left;
-        width: 129px;
-        height: 129px;
-        border: 3px solid #eee;
-        background: url("/public/img/dianpu.png") no-repeat center center/100% auto;
+      float: left;
+      width: 129px;
+      height: 129px;
+      border: 3px solid #eee;
+    }
+    .main-content1 .dianpu img{
+      width:100%;
+      height:100%;
     }
 
     .main-content1 .content1-center {
