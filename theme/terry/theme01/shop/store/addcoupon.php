@@ -52,7 +52,7 @@
         width: 42px;
         height: 14px;
         margin-top: 33px;
-        background: url("../../assets/img/jiantou.png");
+        background: url("/public/img/jiantou.png");
     }
 
     .shuaixuan_bottom .danxuan {
