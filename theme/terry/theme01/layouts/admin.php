@@ -41,7 +41,7 @@ $cssOptions = [
     }
     /*头部样式*/
     .header {
-        width: 2000px;
+        width: calc(100% - 162px);
         height: 50px;
         position: fixed;
         top: 0;
@@ -49,11 +49,11 @@ $cssOptions = [
         z-index: 999;
         display: flex;
         background: #eaf6ff;
-        justify-content: left;
+        justify-content: space-between;
     }
 
     .header ul {
-        width: 704px;
+        width: 65%;
         height: 100%;
         display: flex;
         padding-left: 44px;
@@ -78,6 +78,7 @@ $cssOptions = [
 
     .header .header-right {
         height: 100%;
+        width: 35%;
     }
 
     .header .header-right .adminname {
@@ -136,12 +137,13 @@ $cssOptions = [
     /*侧边栏*/
     .aside {
         width: 162px;
-        min-height: 2000px;
+        height: 100%;
         background: #1f262c;
         float: left;
         position: fixed;
         top: 0;
         left: 0;
+        z-index:99999;
     }
 
     .aside .logo {
