@@ -143,6 +143,7 @@
                                     <input type="text" name="keywords" value="<?= $goods['meta_keywords']['meta_keywords_zh']?>" placeholder="<?= $goods['meta_keywords']['meta_keywords_zh']?>"class="el-input__inner">
                                 </div>
                             </div>
+<<<<<<< HEAD
                             <div  class="el-form-item">
 
                                 <style>
@@ -180,11 +181,52 @@
                                             <span>图片一</span>
                                         </div> -->
                                         <span></span>
+=======
+                        </div>
+                        <div  class="el-form-item">
+
+                            <style>
+                                .el-form-item__content>div{
+                                    position: relative;
+                                    cursor: pointer;
+                                }
+                                .el-form-item__content>div>.close{
+                                    position: absolute;
+                                    right:-2px;
+                                    top:-2px;
+                                    background-color: #ccc;
+                                    width:20px;
+                                    height:20px;
+                                    text-align: center;
+                                    line-height: 20px;
+                                    border-radius: 10px;
+                                    cursor: pointer;
+                                    display:none;
+                                }
+
+                                .el-form-item__content>div:hover .close{
+                                    display: block;
+                                }
+
+                            </style>
+                            <input type="hidden" name="del" id="del">
+                            <label class="el-form-item__label" style="width: 120px;">上传商品图片:</label>
+                            <div class="el-form-item__content" style="margin-left: 120px;width: 200%;">
+                                <div onclick="setZhu(this,'<?=$goods['image']['main']['image']?>',0)" class="zhu">
+                                    <div class="close">&times;</div>
+                                    <div  class="shangpin1" >
+                                        <img src="http://img.uekuek.com/media/catalog/product/<?=$goods['image']['main']['image']?>" alt="">
+>>>>>>> 30377fb31c4f4e24e8e35e5c3ecfec603b3e935f
                                     </div>
                                     <?php
                                     foreach($goods['image']['gallery'] as $key => $value){
+<<<<<<< HEAD
                                         ?>
                                         <div onclick="setZhu(this)" class="zhu">
+=======
+                                ?>
+                                        <div onclick="setZhu(this,'<?=$value['image']?>',1)" class="zhu">
+>>>>>>> 30377fb31c4f4e24e8e35e5c3ecfec603b3e935f
                                             <div class="close">&times;</div>
                                             <div  class="shangpin1">
                                                 <img src="http://img.uekuek.com/media/catalog/product/<?=$value['image']?>" alt="">
@@ -197,6 +239,7 @@
 
                                         <?php
                                     }
+<<<<<<< HEAD
                                     ?>
 
 
@@ -207,6 +250,17 @@
                                         </div> -->
                                         <input type="file" name="file[]" style="display:none" id="">
                                     </div>
+=======
+                                 ?>
+                               
+                                
+                                <div class="adsadas">
+                                    <div style="cursor:pointer;"  class="shangpin2"></div>
+                                    <!-- <div style="display: flex;  font-size: 12px; line-height: 30px;">
+                                    	<span>上传图片</span>
+                                    </div> -->
+                                    <input type="file" onchange="uploads(this)" name="file[]" style="display:none" class="img">
+>>>>>>> 30377fb31c4f4e24e8e35e5c3ecfec603b3e935f
                                 </div>
                             </div>
                             <div>
@@ -227,6 +281,34 @@
     </div>
 </div>
 <script>
+
+    // 点击上传按钮
+    $(".shangpin2").click(function () {
+        // 相当于点击文件上传框
+
+        $(".img").eq($(".img").length - 1).click();
+    });
+
+    function uploads(obj) {
+        var file = obj.files[0];
+
+        if (window.FileReader) {
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            //监听文件读取结束后事件
+            reader.onloadend = function (e) {
+
+                $(".adsadas").append($("<input type='file' name='file[]' onchange='uploads(this)' style='display:none' class='img'>"));
+
+                $("<img>").css({
+                    "width": "96px",
+                    "height": "96px"
+                }).attr("class",'zhu').attr("src", e.target.result).insertBefore($(".adsadas"));
+            };
+
+
+        }
+    }
 
     // 获取二级按钮
     function getTwoMenu(obj) {
@@ -251,9 +333,26 @@
 
     // 点击设置主图
 
-    function setZhu(obj){
+    function setZhu(obj,value,idx){
 
         // 取消所有的组图选项
+
+
+
+        // 获取数据
+
+        let val=$("#del").val();
+
+        // 拼接字符串
+
+        let str=val+","+idx+'-'+value;
+
+        $("#del").val(str);
+
+        // 隐藏数据
+
+        $(obj).remove();
+
     }
 
 
@@ -330,6 +429,12 @@
         border:2px solid #e5eff8;
     }
     .el-form-item__content>div{
+        float:left;
+        margin:1px;
+
+    }
+
+    .el-form-item__content>img{
         float:left;
         margin:1px;
 

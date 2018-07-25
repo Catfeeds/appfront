@@ -4,6 +4,7 @@ use yii\widgets\LinkPager;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
+
 ?>
 
 <style>
@@ -23,13 +24,15 @@ use yii\helpers\Url;
 
     .content .shuaixuan {
         height: 46px;
-        width: 100%;
+        width: 800px;
         display: flex;
         justify-content: space-between;
         line-height: 46px;
         color: #a4adb5;
     }
-
+    .content .shuaixuan li{
+        margin:0px 20px;
+    }
     .content .shuaixuan .xiala {
         padding-left: 5px;
         width: 98px;
@@ -39,6 +42,11 @@ use yii\helpers\Url;
         border-radius: 15px;
         background: #f3faff;
         border: 2px solid #e5eff8;
+    }
+
+    .content .shuaixuan .xialas {
+        width: 198px;
+        
     }
     .shuaixuan .el-select:hover {
         border-color: #3CACFE;
@@ -126,7 +134,7 @@ use yii\helpers\Url;
     }
 
     .content .blue {
-        height: 33px;
+        /*height: 33px;*/
         background: #30B5FE;
         border: none;
         box-shadow: 0 0 8px #30B5FE;
@@ -174,45 +182,80 @@ use yii\helpers\Url;
             <div class="content">
                 <div class="biaoti">
                     <div aria-label="Breadcrumb" role="navigation" class="el-breadcrumb">
-                        <span class="el-breadcrumb__item"><span role="link"
-                                                                class="el-breadcrumb__inner is-link">商品管理</span><span
-                                    role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
-                        <span class="el-breadcrumb__item" aria-current="page"><span role="link"
-                                                                                    class="el-breadcrumb__inner"><span
-                                        style="color: rgb(48, 211, 102); font-weight: bolder;">商品列表</span></span><span
-                                    role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
+                        <span class="el-breadcrumb__item">
+                            <span role="link" class="el-breadcrumb__inner is-link">商品管理</span>
+                            <span role="presentation" class="el-breadcrumb__separator">&middot;</span>
+                        </span>
+                        <span class="el-breadcrumb__item" aria-current="page">
+                            <span role="link" class="el-breadcrumb__inner">
+                                <span style="color: rgb(48, 211, 102); font-weight: bolder;">商品列表</span>
+                            </span>
+                            <span role="presentation" class="el-breadcrumb__separator">&middot;</span>
+                        </span>
                     </div>
                 </div>
+                <form action="<?php echo  Yii::$app->request->getHostInfo().Yii::$app->request->url;?>" method="get">
                 <ul class="shuaixuan">
+                
                     <li>分类
-                        <select name="" id="" class="el-select xiala">
-                            <option value="" style="display: none;">全部分类</option>
-                            <option value="">1</option>
-                            <option value="">2</option>
+                        <select name="class" id="" class="el-select xiala xialas">
+                            <option value="0" >全部分类</option>
+                            <?php
+
+                                foreach ($class as $key => $value) {
+                                    echo "<option disabled>".$value['name']['name_zh']."</option>";
+                                    foreach ($value['zi'] as $k => $v) {
+
+                                        if ($_GET['class'] == $v[_id] ) {
+                                            echo "<option selected value='$v[_id]'>".$value['name']['name_zh'].'/'.$v['name']['name_zh']."</option>";
+                                        }else{
+                                            echo "<option value='$v[_id]'>".$value['name']['name_zh'].'/'.$v['name']['name_zh']."</option>";
+                                        }
+                                    }
+                                }
+                            ?>
                         </select>
                     </li>
                     <li>上下架
-                        <select name="" id="" class="el-select xiala">
-                            <option value="" style="display: none;">全部</option>
-                            <option value="">1</option>
-                            <option value="">2</option>
+                        <select name="status" id="" class="el-select xiala">
+                            <?php 
+
+                                if ($_GET['status']==1) {
+                                    # code...
+                                    echo '<option value="0">全部</option>
+                                        <option value="1" selected>上架</option>
+                                        <option value="2">下架</option>';
+                                }else if($_GET['status']==2){
+                                    echo '<option value="0">全部</option>
+                                        <option value="1" >上架</option>
+                                        <option value="2" selected>下架</option>';
+                                }else{
+                                    echo '<option value="0" selected>全部</option>
+                                        <option value="1" >上架</option>
+                                        <option value="2" >下架</option>';
+                                }
+                             ?>
+                            
                         </select>
                     </li>
-                    <li> 商家编号
-                        <input type="text" autocomplete="off" placeholder="请输入订单号" class="input1"/>
-                    </li>
-                    <li> 商家编号
-                        <input type="text" autocomplete="off" placeholder="请输入商品编号/关键字" class="input2"/>
-
-                    </li>
+                   <!--  <li> 商家编号
+                        <input type="text" name="name" placeholder="请输入商品编号/关键字" class="input2"/>
+                    </li> -->
                     <li>
-                        <div class="sousuo"></div>
+                        <!-- <button class="sousuo" style="border:0px"></button> -->
+                        <button type="submit" class="el-button blue el-button--success is-round">
+                            <span> 查询商品 </span>
+                        </button>
                     </li>
+                    
                     <li><a href="<?= Yii::$service->url->getUrl('shop/goods/addclass') ?>" class="">
-                            <button type="button" class="el-button green el-button--success is-round">
-                                <span> 添加商品 </span></button>
-                        </a></li>
+                        <button type="button" class="el-button green el-button--success is-round">
+                            <span> 添加商品 </span>
+                        </button>
+                        </a>
+                    </li>
                 </ul>
+                </form>
 
                 <div class="item">
                     <div class="el-tabs el-tabs--top">
@@ -220,24 +263,32 @@ use yii\helpers\Url;
                             <div class="el-tabs__nav-wrap is-top">
                                 <div class="el-tabs__nav-scroll">
                                     <div role="tablist" class="el-tabs__nav is-top" style="transform: translateX(0px);">
-                                        <div class="el-tabs__active-bar is-top"
-                                             style="width: 92px; transform: translateX(0px);"></div>
-                                        <div id="tab-first" aria-controls="pane-first" role="tab" aria-selected="true"
-                                             tabindex="0" class="el-tabs__item is-top is-active">
-                                            全部商品（2）
+                                        <!-- <div class="el-tabs__active-bar is-top"  style="width: 92px; transform: translateX(0px);"></div> -->
+                                        <style>
+                                            .is_active1{
+                                                border-bottom: 2px solid blue;
+                                            }
+                                            .el-tabs__item a{
+                                                color:#303133;
+                                            }
+                                            .is_active1 a{
+                                                color:blue;
+                                            }
+                                        </style>
+                                        <div style="padding-left:20px;"  class="el-tabs__item is-top <?php echo $_GET['status']==0 ?'is_active1':'';?>">
+                                            <a style="" href="<?php echo  Yii::$app->request->getHostInfo().'/'.Yii::$app->request->pathInfo;?>?class=<?=$_GET['class']?>&status=0">全部商品（<?=$tot?>）</a>
                                         </div>
-                                        <div id="tab-second" aria-controls="pane-second" role="tab" tabindex="-1"
+                                        <div class="el-tabs__item is-top <?php echo $_GET['status']==1 ?'is_active1':'';?>">
+                                            <a style="" href="<?php echo  Yii::$app->request->getHostInfo().'/'.Yii::$app->request->pathInfo;?>?class=<?=$_GET['class']?>&status=1">上架（<?=$tot1?>）</a>
+                                        </div>
+                                        <div  class="el-tabs__item is-top <?php echo $_GET['status']==2 ?'is_active1':'';?>">
+                                            <a style="" href="<?php echo  Yii::$app->request->getHostInfo().'/'.Yii::$app->request->pathInfo;?>?class=<?=$_GET['class']?>&status=2">下架（<?=$tot-$tot1?>）</a>
+                                        </div>
+
+                                          <!--  <div id="tab-second" aria-controls="pane-second" role="tab" tabindex="-1"
                                              class="el-tabs__item is-top">
                                             回收站（1）
-                                        </div>
-                                        <div id="tab-third" aria-controls="pane-third" role="tab" tabindex="-1"
-                                             class="el-tabs__item is-top">
-                                            上架（1）
-                                        </div>
-                                        <div id="tab-fourth" aria-controls="pane-fourth" role="tab" tabindex="-1"
-                                             class="el-tabs__item is-top">
-                                            下架（1）
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -389,7 +440,6 @@ use yii\helpers\Url;
                                                                 <a href="<?= Yii::$service->url->getUrl('shop/goods/status', array('id' => $v['_id'], 'status' => $v['status'])) ?>">
 
                                                                     <?php
-
 
                                                                     if ($v['status'] == 1) {
                                                                         echo '<span class="el-switch__core" style="width: 40px; border-color: rgb(19, 206, 102); background-color: rgb(19, 206, 102);"></span>';

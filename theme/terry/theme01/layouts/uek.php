@@ -6,6 +6,7 @@ $jsOptions = [ # js的配置部分
         'js' => [
             'js/layout-uek.js',
             'js/jquery-3.3.1.min.js',
+            'js/laydate.js'
         ],
     ]
 
@@ -215,6 +216,15 @@ $cssOptions = [
             line-height: 72px;
         }
 
+        .aside-list li.active{
+            border-left: 6px solid #37df72;
+            background: #323f49;
+            box-sizing:border-box;
+        }
+        
+        .aside-list li.active .col-box{
+            background: #37df72;
+        }
         .col-box {
             width: 7px;
             height: 4px;
@@ -237,8 +247,9 @@ $cssOptions = [
             width: calc(100% - 167px);
             top: 80px;
             left: 167px;
-        }
+            /*overflow: hidden;*/
 
+        }
         .el-input--suffix .el-input__inner {
             height: 30px;
             border-radius: 15px;
@@ -378,16 +389,16 @@ $cssOptions = [
             cursor: default;
         }
     </style>
-<?php $this->beginPage() ?>
+    <?php $this->beginPage() ?>
     <!doctype html>
     <html lang="en">
     <head>
+        <title>晋彤商家管理系统</title>
         <?= Yii::$service->page->widget->render('head', $this); ?>
         <?= Yii::$service->page->widget->render('beforeContent', $this); ?>
         <?php $this->beginBody() ?>
 
         <meta charset="UTF-8">
-        <title>Document</title>
     </head>
     <body>
     <div class="">
@@ -435,9 +446,28 @@ $cssOptions = [
     </div>
     </body>
     <script>
+        // 筛选顶部菜单
         var url = location.href.split("/");
 
         document.querySelector("#" + url[4]).classList.add("active");
+
+        // 筛选左侧菜单
+        let asd=document.querySelectorAll(".aside li");
+
+        let str1=url[5];
+        let arr1=str1.split("?");
+
+
+        for (let i=0; i <asd.length ;i++) {
+           let url12=asd[i].getAttribute('href1');
+
+           let n = url12.search('/'+arr1[0]);
+
+           if (n>=1) {
+                asd[i].className='active';
+           };
+        };
+
         let urls = "<?php echo $_SERVER['SERVER_NAME'];?>";
     </script>
     </html>

@@ -2,16 +2,22 @@
     <div style="width: 1012px; margin: 0 auto;">
         <div class="biaoti">
             <div aria-label="Breadcrumb" role="navigation" class="el-breadcrumb">
-                <span class="el-breadcrumb__item"><span role="link"
-                                                        class="el-breadcrumb__inner is-link">商品管理</span><span
-                            role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
-                <span class="el-breadcrumb__item"><span role="link" class="el-breadcrumb__inner"><a href="#/goods"
-                                                                                                    class="">商品列表</a></span><span
-                            role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
-                <span class="el-breadcrumb__item" aria-current="page"><span role="link"
-                                                                            class="el-breadcrumb__inner"><span
-                                style="color: rgb(48, 211, 102); font-weight: bolder;">添加商品</span></span><span
-                            role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
+                <span class="el-breadcrumb__item">
+                    <span class="el-breadcrumb__inner is-link">商品管理</span>
+                    <span class="el-breadcrumb__separator">&middot;</span>
+                </span>
+                <span class="el-breadcrumb__item">
+                    <span role="link" class="el-breadcrumb__inner">
+                        <a href="#/goods"  class="">商品列表</a>
+                    </span>
+                    <span class="el-breadcrumb__separator">&middot;</span>
+                </span>
+                <span class="el-breadcrumb__item" aria-current="page">
+                    <span role="link" class="el-breadcrumb__inner">
+                        <span style="color: rgb(48, 211, 102); font-weight: bolder;">添加商品</span>
+                    </span>
+                    <span class="el-breadcrumb__separator">&middot;</span>
+                </span>
             </div>
         </div>
         <div class="item">
@@ -28,12 +34,14 @@
                 <div class="title">
                     <span style="font-size: 16px;">商品分类：</span>
                     <div aria-label="Breadcrumb" role="navigation" class="el-breadcrumb" style="display: inline-block;">
-                        <span class="el-breadcrumb__item"><span role="link"
-                                                                class="el-breadcrumb__inner"><?= $one ?></span><span
-                                    role="presentation" class="el-breadcrumb__separator">/</span></span>
-                        <span class="el-breadcrumb__item" aria-current="page"><span role="link"
-                                                                                    class="el-breadcrumb__inner"><?= $two ?></span><span
-                                    role="presentation" class="el-breadcrumb__separator">/</span></span>
+                        <span class="el-breadcrumb__item">
+                            <span  class="el-breadcrumb__inner"><?= $one ?></span>
+                            <span class="el-breadcrumb__separator">/</span>
+                        </span>
+                        <span class="el-breadcrumb__item" aria-current="page">
+                            <span role="link" class="el-breadcrumb__inner"><?= $two ?></span>
+                            <span class="el-breadcrumb__separator">/</span>
+                        </span>
                     </div>
                     <div class="neirong">
                         <form class="el-form" method="post" enctype="multipart/form-data"
@@ -42,10 +50,10 @@
                                 <label class="el-form-item__label" style="width: 80px;">商品货号</label>
                                 <div class="el-form-item__content" style="margin-left: 80px;">
                                     <div class="inputbox el-input">
-                                        <input type="text" name="sku" autocomplete="off" class="el-input__inner"/>
+                                        <input type="text" name="sku" placeholder="请输入商品货号" class="el-input__inner"/>
                                     </div>
                                     <div class="tishi">
-                                        商家货号是指商家管理商品的编号，买家不可见，最多可输入20个字符，支持输入中文、英文、字母、_、/和小数点
+                                        商家货号是指商家管理商品的编号，买家不可见，最多可输入20个字符，支持输入英文、字母和_
                                     </div>
                                 </div>
                             </div>
@@ -53,7 +61,7 @@
                                 <label class="el-form-item__label" style="width: 80px;">商品名称</label>
                                 <div class="el-form-item__content" style="margin-left: 80px;">
                                     <div class="inputbox el-input">
-                                        <input type="text" autocomplete="off" name="name" class="el-input__inner"/>
+                                        <input type="text" placeholder="请输入商品名称" name="name" class="el-input__inner"/>
                                     </div>
                                     <div class="tishi">
                                         商品标题名称长度至少1个字符，最长150个汉字
@@ -61,18 +69,17 @@
                                 </div>
                             </div>
                             <div class="el-form-item">
-                                <label class="el-form-item__label" style="width: 80px;">商品简单描述</label>
+                                <label class="el-form-item__label" style="width: 80px;">商品描述</label>
                                 <div class="el-form-item__content" style="margin-left: 80px;">
                                     <textarea id="" cols="30" rows="10" name="description_zh"
-                                              class="details"></textarea>
-
+                                              class="details" placeholder="请输入商品描述"></textarea>
                                 </div>
                             </div>
                             <div class="el-form-item">
                                 <label class="el-form-item__label" style="width: 80px;">价格</label>
                                 <div class="el-form-item__content" style="margin-left: 80px;">
                                     <div class="inputbox el-input">
-                                        <input type="text" autocomplete="off" name="price" class="el-input__inner"/>
+                                        <input type="text"  placeholder="请输入商品的价格" name="price" class="el-input__inner"/>
                                     </div>
                                     <div class="tishi">
                                         价格必须是在0.01-99999999之间的数字，且不能高于市场价，此价格为商品实际销售价格，如果商品存在规格，该价格显示最低价格
@@ -84,8 +91,7 @@
                                 <label class="el-form-item__label" style="width: 80px;">折扣价</label>
                                 <div class="el-form-item__content" style="margin-left: 80px;">
                                     <div class="inputbox el-input">
-                                        <input type="text" autocomplete="off" name="special_price"
-                                               class="el-input__inner"/>
+                                        <input type="text" placeholder="请输入商品的折扣价格" name="special_price"class="el-input__inner"/>
                                     </div>
                                 </div>
                             </div>
@@ -121,7 +127,6 @@
                     // 点击上传按钮
                     $(".sadad").click(function () {
                         // 相当于点击文件上传框
-
 
                         $(".img").eq($(".img").length - 1).click();
                     });
@@ -166,17 +171,43 @@
                     <div>
                         <span style="margin-left: 70px; color: rgb(59, 172, 254);">建议:</span>不要添加太多的文字，这样看起来更清晰。
                     </div>
-                    <div style="width: 100%; margin-left: 70px; margin-top: 15px;">
-                        <a href="#/GoodsAdd2" class="router-link-exact-active router-link-active"></a>
+                    <div style="width: 100%; margin-left: 70px; margin-top: 15px;" class="qweasd1">
                         <div class="shangchuan"></div>
+                        <input type="file" name="asd[]"  onchange='uploads1(this)'  id="" class='img2 el-upload__input'> 
                     </div>
+
+                    <script>
+                        // 点击上传按钮
+                        $(".shangchuan").click(function () {
+                            // 相当于点击文件上传框
+
+                            $(".img2").eq($(".img2").length - 1).click();
+                        });
+
+                        function uploads1(obj) {
+                            var file = obj.files[0];
+
+                            if (window.FileReader) {
+                                var reader = new FileReader();
+                                reader.readAsDataURL(file);
+                                //监听文件读取结束后事件
+                                reader.onloadend = function (e) {
+
+                                    $(".qweasd1").append($("<input type='file' name='asd[]' onchange='uploads1(this)' class='img el-upload__input'>"));
+                                    $("<img>").css({
+                                        // "width": "218px",
+                                        "height": "312px"
+                                    }).attr("src", e.target.result).appendTo($(".qweasd1"));
+                                };
+                            }
+                        }
+                    </script>
                     <div class="el-form-item" style="margin-top: 10px">
                         <label class="el-form-item__label" style="width: 80px;">文字描述</label>
                         <div class="el-form-item__content" style="margin-left: 80px;">
-                            <div class="inputbox el-input">
-                                <input type="text" autocomplete="off" class="el-input__inner"/>
-                            </div>
+                            <textarea name="" id="" class="detail" placeholder="请输入商品文字描述" cols="30" rows="10" name="description_zh1"></textarea>
                         </div>
+
                     </div>
                 </div>
                 <div style="width: 328px; height: 42px; line-height: 42px; font-size: 18px; font-weight: bolder; margin-top: 15px;">
@@ -253,6 +284,16 @@
     })
 </script>
 <style>
+    .detail{
+        width: 350px;
+        height: 84px;
+        outline: none;
+        resize: none;
+        border-radius: 5px;
+        background: #f3faff;
+        border: 2px solid #e5eff8;
+    }
+
 
     .avatar-uploader .el-upload {
         border: 1px dashed #d9d9d9;
@@ -367,7 +408,8 @@
 
     .bottom .message {
         width: 100%;
-        height: 570px;
+        /*height: 570px;*/
+        height: auto;
         padding-left: 25px;
         box-sizing: border-box;
         line-height: 28px;
@@ -380,6 +422,8 @@
         width: 218px;
         height: 312px;
         background: #bbdff6;
+        cursor: pointer;
+        display:inline-block;
         background: url("/public/img/shangchuan.png") no-repeat center center/100% auto;
     }
 

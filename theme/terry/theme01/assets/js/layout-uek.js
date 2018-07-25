@@ -12,8 +12,7 @@
         store: [
             {"name":"店铺信息","url":"/shop/store/index"},
             {"name":"店铺图片设置","url":"/shop/store/setimg"},
-            {"name":"优惠卷管理","url":"/shop/store/couponindex"},
-
+            {"name":"优惠卷管理","url":"/shop/store/couponindex"}
         ],
         account: [
             {"name":"实名认证","url":"/shop/account/realname"},
@@ -33,7 +32,7 @@
 
     var str = `<div class="logo"></div><ul class=\"aside-list\">`;
     arr.forEach(function (val,index) {
-        str+=`<li>
+        str+=`<li href1="${val.url}">
                 <div class="col-box"></div> 
                 <a href="${val.url}" class="router-link-exact-active router-link-active">${val.name}</a>
             </li> `;

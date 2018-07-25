@@ -1,11 +1,8 @@
 <?php
-
     use yii\widgets\LinkPager;
     use yii\helpers\Html;
     use yii\helpers\Url;
-
 ?>
-
 <div class="main-content">
    <div style="width: 1012px; margin: 0px auto;">
     <div >
@@ -17,24 +14,35 @@
        </div>
       </div>
       <div class="shuaixuan">
+        <form action="<?php echo  Yii::$app->request->getHostInfo().Yii::$app->request->url;?>" method="get">
        <ul style="width: 400px; display: flex; justify-content: space-between;">
         <li>
-            <select name="" id="" class="el-select xiala">
-                <option value="" style="display: none;">全部分类</option>
-                <option value="">1</option>
-                <option value="">2</option>
+            <select name="class" id="" class="el-select xiala">
+               <option value="0" >全部分类</option>
+                <?php
+                    foreach ($class as $key => $value) {
+                        echo "<option disabled>".$value['name']['name_zh']."</option>";
+                        foreach ($value['zi'] as $k => $v) {
+                            if ($_GET['class'] == $v[_id] ) {
+                                echo "<option selected value='$v[_id]'>".$value['name']['name_zh'].'/'.$v['name']['name_zh']."</option>";
+                            }else{
+                                echo "<option value='$v[_id]'>".$value['name']['name_zh'].'/'.$v['name']['name_zh']."</option>";
+                            }
+                        }
+                    }
+                ?>
             </select>
         <li>
-         <div class="el-input" style="width: 200px;">
-
-          <input type="text" autocomplete="off" placeholder="请输入关键词搜索" class="el-input__inner" />
-
-
-
-         </div></li>
+          <div class="el-input" style="width: 200px;">
+            <input type="text" name="name" value="<?=$_GET['name']?>" placeholder="请输入关键词搜索" class="el-input__inner" />
+          </div>
+        </li>
         <li>
-         <div class="sousuo"></div></li>
-       </ul>
+          <!-- <div class="sousuo"></div> -->
+          <button class="sousuo" style="border:0px;"></button>
+        </li>
+      </ul>
+      </form>
       </div>
       <div class="item">
        <div class="el-table el-table--fit el-table--enable-row-hover el-table--enable-row-transition" style="width: 100%;">
@@ -84,7 +92,7 @@
              </div></th>
             <th colspan="1" rowspan="1" class="el-table_3_column_19     is-leaf">
              <div class="cell">
-              评价类型
+              商品名
              </div></th>
             <th colspan="1" rowspan="1" class="el-table_3_column_20     is-leaf">
              <div class="cell">
@@ -143,15 +151,15 @@
               <?=$value['product_spu']?>
              </div></td>
             <td class="el-table_3_column_19  ">
-             <div class="cell el-tooltip" style="width: 100px;">
+             <div class="cell el-tooltip" title="<?=$value['goodsname']?>" style="width: 100px;">
               <?=$value['goodsname']?>
              </div></td>
             <td class="el-table_3_column_20  ">
-             <div class="cell el-tooltip" style="width: 199px;">
+             <div class="cell el-tooltip" title="<?=$value['summary']?>" style="width: 199px;">
               <?=$value['summary']?>
              </div></td>
             <td class="el-table_3_column_21  ">
-             <div class="cell el-tooltip" style="width: 100px;">
+             <div class="cell el-tooltip"  title="<?=$value['review_content']?>" style="width: 100px;">
               <?=$value['review_content']?>
              </div></td>
             <td class="el-table_3_column_22  ">

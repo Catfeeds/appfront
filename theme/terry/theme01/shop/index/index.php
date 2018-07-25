@@ -84,7 +84,7 @@
     <div class="logo"></div>
    </div> 
    <div class="main-content">
-    <div style="width: 1064px; margin: 0px auto;">
+    <div style="width: 1012px; margin: 0px auto;">
      <div class="main-content1">
       <div class="dianpu"></div> 
       <div class="content1-center">

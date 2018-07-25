@@ -29,7 +29,7 @@
     }
 
     .main-content .item {
-        width:100%;
+        width: 100%;
     }
 
     .main-content .item .bottom {
@@ -43,7 +43,7 @@
         font-size: 12px;
         padding-left: 22px;
         padding-bottom: 20px;
-       box-sizing: border-box;
+        box-sizing: border-box;
 
     }
 
@@ -58,7 +58,7 @@
     }
 
     .bottom .title .shangpinbg {
-        width:100px;
+        width: 56px;
         height: 56px;
         background: #BBDFF6;
         border-radius: 3px;
@@ -101,6 +101,12 @@
     table {
         font-size: 14px;
     }
+    .el-step__head .el-step__line{
+        border-color: #c0c4cc;
+    }
+    .el-step__head.is-finish .el-step__line{
+        border-color: #409EFF;
+    }
 </style>
 <div class="main-content">
     <div style="width: 1064px; margin: 0 auto;">
@@ -110,21 +116,25 @@
                         class="el-breadcrumb__item"><span
                             role="link" class="el-breadcrumb__inner is-link">订单管理</span><span role="presentation"
                                                                                               class="el-breadcrumb__separator">·</span></span>
-                <span data-v-2b6e6d92="" class="el-breadcrumb__item"><span role="link"
-                                                                           class="el-breadcrumb__inner">订单列表</span><span
-                            role="presentation" class="el-breadcrumb__separator">·</span></span> <span
-                        data-v-2b6e6d92=""
-                        class="el-breadcrumb__item"
-                        aria-current="page"><span
-                            role="link" class="el-breadcrumb__inner"><span data-v-2b6e6d92=""
-                                                                           style="color: rgb(48, 211, 102); font-weight: bolder;">查看详情</span></span><span
-                            role="presentation" class="el-breadcrumb__separator">·</span></span></div>
+                <span data-v-2b6e6d92="" class="el-breadcrumb__item">
+                    <a href="<?= Yii::$service->url->geturl("/shop/orders/index") ?>">
+                        <span role="link" class="el-breadcrumb__inner">订单列表</span>
+                    </a>
+                        <span role="presentation" class="el-breadcrumb__separator">·</span>
+                    </span>
+                    <span data-v-2b6e6d92="" class="el-breadcrumb__item" aria-current="page">
+                        <span role="link" class="el-breadcrumb__inner">
+                            <span data-v-2b6e6d92="" style="color: rgb(48, 211, 102); font-weight: bolder;">查看详情</span>
+                        </span>
+                        <span role="presentation" class="el-breadcrumb__separator">·</span>
+                    </span>
+            </div>
         </div>
         <div data-v-2b6e6d92="" class="item">
             <div data-v-2b6e6d92="" class="el-steps el-steps--horizontal" style="margin-bottom: 20px;">
                 <div data-v-2b6e6d92="" class="el-step is-horizontal is-center"
                      style="flex-basis: 20%; margin-right: 0px;">
-                    <div class="el-step__head is-finish">
+                    <div class="el-step__head <?= $res["order_status"]>-1?"is-finish":""?>">
                         <div class="el-step__line" style="margin-right: 0px;"><i class="el-step__line-inner"
                                                                                  style="transition-delay: 0ms; border-width: 1px; width: 100%;"></i>
                         </div>
@@ -133,13 +143,15 @@
                         </div>
                     </div>
                     <div class="el-step__main">
-                        <div class="el-step__title is-finish">提交订单</div>
-                        <div class="el-step__description is-finish">2018-03-20 12:00:02</div>
+                        <div class="el-step__title <?= $res["order_status"]>-1?"is-finish":""?>">提交订单</div>
+                        <?php if($res["order_status"]>-1){ ?>
+                            <div class="el-step__description is-finish">2018-03-20 12:00:02</div>
+                        <?php } ?>
                     </div>
                 </div>
                 <div data-v-2b6e6d92="" class="el-step is-horizontal is-center"
                      style="flex-basis: 20%; margin-right: 0px;">
-                    <div class="el-step__head is-finish">
+                    <div class="el-step__head <?= $res["order_status"]>0?"is-finish":""?>">
                         <div class="el-step__line" style="margin-right: 0px;"><i class="el-step__line-inner"
                                                                                  style="transition-delay: 150ms; border-width: 1px; width: 100%;"></i>
                         </div>
@@ -148,13 +160,15 @@
                         </div>
                     </div>
                     <div class="el-step__main">
-                        <div class="el-step__title is-finish">支付订单</div>
-                        <div class="el-step__description is-finish">2018-03-20 12:00:02</div>
+                        <div class="el-step__title <?= $res["order_status"]>0?"is-finish":""?>">支付订单</div>
+                        <?php if($res["order_status"]>0){ ?>
+                            <div class="el-step__description is-finish">2018-03-20 12:00:02</div>
+                        <?php } ?>
                     </div>
                 </div>
                 <div data-v-2b6e6d92="" class="el-step is-horizontal is-center"
                      style="flex-basis: 20%; margin-right: 0px;">
-                    <div class="el-step__head is-finish">
+                    <div class="el-step__head <?= $res["order_status"]>1?"is-finish":""?>">
                         <div class="el-step__line" style="margin-right: 0px;"><i class="el-step__line-inner"
                                                                                  style="transition-delay: 300ms; border-width: 1px; width: 100%;"></i>
                         </div>
@@ -163,36 +177,42 @@
                         </div>
                     </div>
                     <div class="el-step__main">
-                        <div class="el-step__title is-finish">商家取件</div>
-                        <div class="el-step__description is-finish">2018-03-20 12:00:02</div>
+                        <div class="el-step__title <?= $res["order_status"]>1?"is-finish":""?>">接单</div>
+                        <?php if($res["order_status"]>1){ ?>
+                            <div class="el-step__description is-finish">2018-03-20 12:00:02</div>
+                        <?php } ?>
                     </div>
                 </div>
                 <div data-v-2b6e6d92="" class="el-step is-horizontal is-center"
                      style="flex-basis: 20%; margin-right: 0px;">
-                    <div class="el-step__head is-finish">
+                    <div class="el-step__head <?= $res["order_status"]>2?"is-finish":""?>">
                         <div class="el-step__line" style="margin-right: 0px;"><i class="el-step__line-inner"
                                                                                  style="transition-delay: 450ms; border-width: 0px; width: 0%;"></i>
                         </div>
-                        <div class="el-step__icon is-text"><!---->
+                        <div class="el-step__icon is-text">
                             <div class="el-step__icon-inner">4</div>
                         </div>
                     </div>
                     <div class="el-step__main">
-                        <div class="el-step__title is-finish">确认送达</div>
-                        <div class="el-step__description is-finish">2018-03-20 12:00:02</div>
+                        <div class="el-step__title <?= $res["order_status"]>2?"is-finish":""?>">确认送达</div>
+                        <?php if($res["order_status"]>2){ ?>
+                            <div class="el-step__description is-finish">2018-03-20 12:00:02</div>
+                        <?php } ?>
                     </div>
                 </div>
                 <div data-v-2b6e6d92="" class="el-step is-horizontal is-center"
                      style="flex-basis: 20%; max-width: 20%;">
-                    <div class="el-step__head is-process">
+                    <div class="el-step__head <?= $res["order_status"]>3?"is-finish":""?>">
                         <div class="el-step__line"><i class="el-step__line-inner"></i></div>
-                        <div class="el-step__icon is-text"><!---->
+                        <div class="el-step__icon is-text">
                             <div class="el-step__icon-inner">5</div>
                         </div>
                     </div>
                     <div class="el-step__main">
-                        <div class="el-step__title is-process">评价</div>
-                        <div class="el-step__description is-process"></div>
+                        <div class="el-step__title <?= $res["order_status"]>3?"is-finish":""?>">评价</div>
+                        <?php if($res["order_status"]>3){ ?>
+                            <div class="el-step__description is-finish">2018-03-20 12:00:02</div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -278,7 +298,7 @@
                                         <div class="cell"><?= $res["increment_id"] ?></div>
                                     </td>
                                     <td class="el-table_2_column_12  ">
-                                        <div class="cell">522836190</div>
+                                        <div class="cell"><?= $res["order_remark"] ?></div>
                                     </td>
                                     <td class="el-table_2_column_13  ">
                                         <div class="cell"><?= $res["payment_method"] ?></div>
@@ -290,7 +310,11 @@
                                         <div class="cell">2016-05-02 18:00</div>
                                     </td>
                                     <td class="el-table_2_column_16  ">
-                                        <div class="cell"><?= $res["order_status"] ?></div>
+                                        <div class="cell"><?php
+                                            $arr = ["待支付", "待接单", "待确认", "待评价", "已完成", "已退单"];
+                                            echo $arr[$res["order_status"]];
+                                            ?>
+                                        </div>
                                     </td>
                                     <td class="el-table_2_column_17  ">
                                         <div class="cell">2016-05-02 18:00</div>
@@ -405,109 +429,6 @@
             <div data-v-2b6e6d92="" class="bottom">
                 <div data-v-2b6e6d92="" class="bottom_top">
                     <div data-v-2b6e6d92="" class="col-box"></div>
-                    <span data-v-2b6e6d92="" style="color: rgb(48, 163, 254);">其他</span>信息
-<!--                    <i data-v-2b6e6d92="" class="el-icon-edit"></i>-->
-                    <button data-v-2b6e6d92="" type="button" class="blue el-button--primary is-round">编辑
-                    </button>
-                </div>
-
-                <div data-v-2b6e6d92="" class="title">
-                    <div data-v-2b6e6d92=""
-                         class="el-table el-table--fit el-table--enable-row-hover el-table--enable-row-transition"
-                         style="width: 100%;">
-                        <div class="hidden-columns">
-                            <div data-v-2b6e6d92=""></div>
-                            <div data-v-2b6e6d92=""></div>
-                            <div data-v-2b6e6d92=""></div>
-                            <div data-v-2b6e6d92=""></div>
-                            <div data-v-2b6e6d92=""></div>
-                            <div data-v-2b6e6d92=""></div>
-                        </div>
-                        <div class="el-table__header-wrapper">
-                            <table cellspacing="0" cellpadding="0" border="0" class="el-table__header"
-                                   style="width: 933px;">
-                                <colgroup>
-                                    <col name="el-table_4_column_25" width="200">
-                                    <col name="el-table_4_column_26" width="120">
-                                    <col name="el-table_4_column_27" width="120">
-                                    <col name="el-table_4_column_28" width="200">
-                                    <col name="el-table_4_column_29" width="200">
-                                    <col name="el-table_4_column_30" width="200">
-                                    <col name="gutter" width="0">
-                                </colgroup>
-                                <thead class="has-gutter">
-                                <tr style="font-size: 14px;color: #B1DBFE;">
-                                    <th colspan="1" rowspan="1" class="el-table_4_column_25     is-leaf">
-                                        <div class="cell">发票抬头:(个人普通发票)</div>
-                                    </th>
-                                    <th colspan="1" rowspan="1" class="el-table_4_column_26     is-leaf">
-                                        <div class="cell">发票内容</div>
-                                    </th>
-                                    <th colspan="1" rowspan="1" class="el-table_4_column_27     is-leaf">
-                                        <div class="cell">识别码</div>
-                                    </th>
-                                    <th colspan="1" rowspan="1" class="el-table_4_column_28     is-leaf">
-                                        <div class="cell">缺货处理</div>
-                                    </th>
-                                    <th colspan="1" rowspan="1" class="el-table_4_column_29     is-leaf">
-                                        <div class="cell">卖家留言</div>
-                                    </th>
-                                    <th colspan="1" rowspan="1" class="el-table_4_column_30     is-leaf">
-                                        <div class="cell">买家留言</div>
-                                    </th>
-                                    <th class="gutter" style="width: 0px; display: none;"></th>
-                                </tr>
-                                </thead>
-                            </table>
-                        </div>
-                        <div class="el-table__body-wrapper is-scrolling-none">
-                            <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
-                                   style="width: 933px;">
-                                <colgroup>
-                                    <col name="el-table_4_column_25" width="200">
-                                    <col name="el-table_4_column_26" width="120">
-                                    <col name="el-table_4_column_27" width="120">
-                                    <col name="el-table_4_column_28" width="200">
-                                    <col name="el-table_4_column_29" width="200">
-                                    <col name="el-table_4_column_30" width="200">
-                                </colgroup>
-                                <tbody>
-                                <tr class="el-table__row">
-                                    <td class="el-table_4_column_25  ">
-                                        <div class="cell">个人</div>
-                                    </td>
-                                    <td class="el-table_4_column_26  ">
-                                        <div class="cell">不开发票</div>
-                                    </td>
-                                    <td class="el-table_4_column_27  ">
-                                        <div class="cell">无</div>
-                                    </td>
-                                    <td class="el-table_4_column_28  ">
-                                        <div class="cell">待所有货款补齐后发货</div>
-                                    </td>
-                                    <td class="el-table_4_column_29  ">
-                                        <div class="cell">无</div>
-                                    </td>
-                                    <td class="el-table_4_column_30  ">
-                                        <div class="cell">
-                                            <?php
-                                            if ($res["order_remark"] == "") {
-                                                echo "无";
-                                            } else {
-                                                echo $res["order_remark"];
-                                            }
-                                            ?>
-                                        </div>
-                                    </td>
-                                </tr><!----></tbody>
-                            </table><!----><!----></div><!----><!----><!----><!---->
-                        <div class="el-table__column-resize-proxy" style="display: none;"></div>
-                    </div>
-                </div>
-            </div>
-            <div data-v-2b6e6d92="" class="bottom">
-                <div data-v-2b6e6d92="" class="bottom_top">
-                    <div data-v-2b6e6d92="" class="col-box"></div>
                     <span data-v-2b6e6d92="" style="color: rgb(48, 163, 254);">商品</span>信息
                 </div>
                 <div data-v-2b6e6d92="" class="title">
@@ -528,13 +449,12 @@
                             <table cellspacing="0" cellpadding="0" border="0" class="el-table__header"
                                    style="width: 933px;">
                                 <colgroup>
-                                    <col name="el-table_5_column_31" width="300">
-                                    <col name="el-table_5_column_32" width="140">
-                                    <col name="el-table_5_column_33" width="120">
-                                    <col name="el-table_5_column_34" width="120">
-                                    <col name="el-table_5_column_35" width="120">
-                                    <col name="el-table_5_column_36" width="120">
-                                    <col name="el-table_5_column_37" width="120">
+                                    <col name="el-table_5_column_31" width="230">
+                                    <col name="el-table_5_column_32" width="170">
+                                    <col name="el-table_5_column_33" width="160">
+                                    <col name="el-table_5_column_34" width="160">
+                                    <col name="el-table_5_column_35" width="160">
+                                    <col name="el-table_5_column_36" width="160">
                                     <col name="gutter" width="0">
                                 </colgroup>
                                 <thead class="has-gutter">
@@ -557,9 +477,6 @@
                                     <th colspan="1" rowspan="1" class="el-table_5_column_36     is-leaf">
                                         <div class="cell">小计</div>
                                     </th>
-                                    <th colspan="1" rowspan="1" class="el-table_5_column_37     is-leaf">
-                                        <div class="cell">操作</div>
-                                    </th>
                                     <th class="gutter" style="width: 0; display: none;"></th>
                                 </tr>
                                 </thead>
@@ -569,21 +486,22 @@
                             <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
                                    style="width: 933px;">
                                 <colgroup>
-                                    <col name="el-table_5_column_31" width="300">
-                                    <col name="el-table_5_column_32" width="140">
-                                    <col name="el-table_5_column_33" width="120">
-                                    <col name="el-table_5_column_34" width="120">
-                                    <col name="el-table_5_column_35" width="120">
-                                    <col name="el-table_5_column_36" width="120">
-                                    <col name="el-table_5_column_37" width="120">
+                                    <col name="el-table_5_column_31" width="230">
+                                    <col name="el-table_5_column_32" width="170">
+                                    <col name="el-table_5_column_33" width="160">
+                                    <col name="el-table_5_column_34" width="160">
+                                    <col name="el-table_5_column_35" width="160">
+                                    <col name="el-table_5_column_36" width="160">
                                 </colgroup>
                                 <tbody>
                                 <?php foreach ($res["goodDatas"] as $v) { ?>
                                     <tr class="el-table__row">
                                         <td class="el-table_5_column_31  ">
                                             <div class="cell">
-                                                <div data-v-2b6e6d92="" style="display: flex;">
-                                                    <div data-v-2b6e6d92="" class="shangpinbg"></div>
+                                                <div data-v-2b6e6d92="" style="display: flex;align-items: center">
+                                                    <div data-v-2b6e6d92="" class="shangpinbg">
+                                                        <img src="">
+                                                    </div>
                                                     <span data-v-2b6e6d92=""
                                                           style="margin-left: 10px;"><?= $v["name"] ?></span></div>
                                             </div>
@@ -603,14 +521,11 @@
                                         <td class="el-table_5_column_36  ">
                                             <div class="cell"><?= $v["row_total"] ?></div>
                                         </td>
-                                        <td class="el-table_5_column_37  ">
-                                            <div class="cell">发货单已生成</div>
-                                        </td>
                                     </tr>
                                 <?php } ?>
                                 <tr>
                                     <td colspan="7">
-                                        <div style="float:right;text-align: center;box-sizing: border-box;padding-right: 25px">
+                                        <div style="float:right;text-align: center;box-sizing: border-box;padding-right: 75px">
                                             <div style="color: #41b2fc;margin-bottom: 5px">合计</div>
                                             <span>
                                                 <?= $res["subtotal"] ?>
@@ -698,150 +613,19 @@
                                         <div class="cell"><?= $res["subtotal_with_discount"] ?></div>
                                     </td>
                                     <td class="el-table_6_column_41  ">
-                                        <div class="cell"><?= $res["subtotal"] ?></div>
+                                        <div class="cell"><?= $res["coin_num"] ?>个</div>
                                     </td>
                                     <td class="el-table_6_column_42  ">
                                         <div class="cell"><?= "-" . $res["subtotal_with_discount"] ?></div>
                                     </td>
                                     <td class="el-table_6_column_43  ">
-                                        <div class="cell"><?= $res["subtotal"] ?></div>
+                                        <div class="cell"><?= $res["grand_total"] ?></div>
                                     </td>
                                     <td class="el-table_6_column_44  ">
-                                        <div class="cell"><?= $res["subtotal"] ?></div>
+                                        <div class="cell"><?= $res["grand_total"] - $res["subtotal_with_discount"] ?></div>
                                     </td>
                                 </tr><!----></tbody>
                             </table><!----><!----></div><!----><!----><!----><!---->
-                        <div class="el-table__column-resize-proxy" style="display: none;"></div>
-                    </div>
-                </div>
-            </div>
-            <div data-v-2b6e6d92="" class="bottom">
-                <div data-v-2b6e6d92="" class="bottom_top">
-                    <div data-v-2b6e6d92="" class="col-box"></div>
-                    <span data-v-2b6e6d92="" style="color: rgb(48, 163, 254);">取件</span>操作
-                </div>
-                <div data-v-2b6e6d92="" class="title">
-                    <div data-v-2b6e6d92=""
-                         class="el-table el-table--fit el-table--enable-row-hover el-table--enable-row-transition"
-                         style="width: 100%;">
-                        <div class="hidden-columns">
-                            <div data-v-2b6e6d92=""></div>
-                            <div data-v-2b6e6d92=""></div>
-                            <div data-v-2b6e6d92=""></div>
-                            <div data-v-2b6e6d92=""></div>
-                            <div data-v-2b6e6d92=""></div>
-                            <div data-v-2b6e6d92=""></div>
-                        </div>
-                        <div class="el-table__header-wrapper">
-                            <table cellspacing="0" cellpadding="0" border="0" class="el-table__header"
-                                   style="width: 933px;">
-                                <colgroup>
-                                    <col name="el-table_7_column_45" width="160">
-                                    <col name="el-table_7_column_46" width="155">
-                                    <col name="el-table_7_column_47" width="155">
-                                    <col name="el-table_7_column_48" width="155">
-                                    <col name="el-table_7_column_49" width="155">
-                                    <col name="el-table_7_column_50" width="260">
-                                    <col name="gutter" width="0">
-                                </colgroup>
-                                <thead class="has-gutter">
-                                <tr style="font-size: 14px;color: #B1DBFE;">
-                                    <th colspan="1" rowspan="1" class="el-table_7_column_45     is-leaf">
-                                        <div class="cell">操作者</div>
-                                    </th>
-                                    <th colspan="1" rowspan="1" class="el-table_7_column_46     is-leaf">
-                                        <div class="cell">操作时间</div>
-                                    </th>
-                                    <th colspan="1" rowspan="1" class="el-table_7_column_47     is-leaf">
-                                        <div class="cell">订单状态</div>
-                                    </th>
-                                    <th colspan="1" rowspan="1" class="el-table_7_column_48     is-leaf">
-                                        <div class="cell">付款状态</div>
-                                    </th>
-                                    <th colspan="1" rowspan="1" class="el-table_7_column_49     is-leaf">
-                                        <div class="cell">发货状态</div>
-                                    </th>
-                                    <th colspan="1" rowspan="1" class="el-table_7_column_50     is-leaf">
-                                        <div class="cell">备注</div>
-                                    </th>
-                                    <th class="gutter" style="width: 0px; display: none;"></th>
-                                </tr>
-                                </thead>
-                            </table>
-                        </div>
-                        <div class="el-table__body-wrapper is-scrolling-none">
-                            <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
-                                   style="width: 933px;">
-                                <colgroup>
-                                    <col name="el-table_7_column_45" width="160">
-                                    <col name="el-table_7_column_46" width="155">
-                                    <col name="el-table_7_column_47" width="155">
-                                    <col name="el-table_7_column_48" width="155">
-                                    <col name="el-table_7_column_49" width="155">
-                                    <col name="el-table_7_column_50" width="260">
-                                </colgroup>
-                                <tbody>
-                                <tr class="el-table__row">
-                                    <td class="el-table_7_column_45  ">
-                                        <div class="cell">ADMIN</div>
-                                    </td>
-                                    <td class="el-table_7_column_46  ">
-                                        <div class="cell">2018-05-02 18:00</div>
-                                    </td>
-                                    <td class="el-table_7_column_47  ">
-                                        <div class="cell">已分单</div>
-                                    </td>
-                                    <td class="el-table_7_column_48  ">
-                                        <div class="cell">已付款</div>
-                                    </td>
-                                    <td class="el-table_7_column_49  ">
-                                        <div class="cell">收货确认</div>
-                                    </td>
-                                    <td class="el-table_7_column_50  ">
-                                        <div class="cell"></div>
-                                    </td>
-                                </tr>
-                                <tr class="el-table__row">
-                                    <td class="el-table_7_column_45  ">
-                                        <div class="cell">ADMIN</div>
-                                    </td>
-                                    <td class="el-table_7_column_46  ">
-                                        <div class="cell">2018-05-02 18:00</div>
-                                    </td>
-                                    <td class="el-table_7_column_47  ">
-                                        <div class="cell">已确认</div>
-                                    </td>
-                                    <td class="el-table_7_column_48  ">
-                                        <div class="cell">已付款</div>
-                                    </td>
-                                    <td class="el-table_7_column_49  ">
-                                        <div class="cell">已发货</div>
-                                    </td>
-                                    <td class="el-table_7_column_50  ">
-                                        <div class="cell"></div>
-                                    </td>
-                                </tr>
-                                <tr class="el-table__row">
-                                    <td class="el-table_7_column_45  ">
-                                        <div class="cell">ADMIN</div>
-                                    </td>
-                                    <td class="el-table_7_column_46  ">
-                                        <div class="cell">2018-05-02 18:00</div>
-                                    </td>
-                                    <td class="el-table_7_column_47  ">
-                                        <div class="cell">已分单</div>
-                                    </td>
-                                    <td class="el-table_7_column_48  ">
-                                        <div class="cell">已付款</div>
-                                    </td>
-                                    <td class="el-table_7_column_49  ">
-                                        <div class="cell">发货中</div>
-                                    </td>
-                                    <td class="el-table_7_column_50  ">
-                                        <div class="cell"></div>
-                                    </td>
-                                </tr></tbody>
-                            </table></div>
                         <div class="el-table__column-resize-proxy" style="display: none;"></div>
                     </div>
                 </div>

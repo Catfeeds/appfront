@@ -31,10 +31,11 @@ class StoreController extends PublicsController
     
     /*商铺管理首页*/
     public function actionIndex(){
-      
+
+
         //return $this->render($this->action->id, $data);
         $uid = $_SESSION["uid"];
-        $res = Yii::$app->db->createCommand("select * from ns_shop where uid=$uid")->queryOne();
+        $res = Yii::$app->db->createCommand("select * from shop where uid=$uid")->queryOne();
         $addressInfo = parent::getAddressInfo();
         $datas["res"] = $res;
         $datas["province"] = $addressInfo["province"];
@@ -50,7 +51,7 @@ class StoreController extends PublicsController
 
         $datas = $req->post();
 
-        $sql = "update ns_shop set shop_keywords='{$datas['shop_keywords']}',shop_banner='{$datas['shop_banner']}',shop_phone='{$datas['shop_phone']}',province_id='{$datas['province_id']}',city_id='{$datas['city_id']}',shop_address='{$datas['shop_address']}',shop_description='{$datas['shop_description']}'  where uid={$datas['uid']}";
+        $sql = "update shop set shop_keywords='{$datas['shop_keywords']}',shop_banner='{$datas['shop_banner']}',shop_phone='{$datas['shop_phone']}',province_id='{$datas['province_id']}',city_id='{$datas['city_id']}',shop_address='{$datas['shop_address']}',shop_description='{$datas['shop_description']}'  where uid={$datas['uid']}";
 
         $res = Yii::$app->db->createCommand($sql)->execute();
 
@@ -96,7 +97,7 @@ class StoreController extends PublicsController
 //                if (move_uploaded_file($tmp_name,$folder.$newName)) {
 //                    $img = $newName;
 //
-//                    $sql = "update ns_shop_apply set shop_name='{$datas['shop_name']}',  where uid={$datas['uid']}";
+//                    $sql = "update shop_apply set shop_name='{$datas['shop_name']}',  where uid={$datas['uid']}";
 //                }
 //            }
 //        }
@@ -107,7 +108,7 @@ class StoreController extends PublicsController
     public function actionSetimg(){
 
         $uid = $_SESSION["uid"];
-        $res = Yii::$app->db->createCommand("select ns_shop.shop_logo,ns_shop.shop_avatar from ns_shop where uid=$uid")->queryOne();
+        $res = Yii::$app->db->createCommand("select shop.shop_logo,shop.shop_avatar from shop where uid=$uid")->queryOne();
 
         $datas["res"] = $res;
         $datas["imgUrl"] = Yii::$app->params["img"];
@@ -166,7 +167,7 @@ class StoreController extends PublicsController
 
                     if (move_uploaded_file($tmp_name,$folder.$newName)) {
 
-                        $res = Yii::$app->db->createCommand("update ns_shop set shop_logo='{$post['shop_logo']}',shop_avatar='{$post['shop_avatar']}' where uid={$_SESSION['uid']}")->execute();
+                        $res = Yii::$app->db->createCommand("update shop set shop_logo='{$post['shop_logo']}',shop_avatar='{$post['shop_avatar']}' where uid={$_SESSION['uid']}")->execute();
 
                     }
                 }
@@ -179,14 +180,19 @@ class StoreController extends PublicsController
     //返回优惠卷管理首页
     public function actionCouponindex(){
 
+
         $count = Yii::$app->db->createCommand("select count(*) num from sales_coupon where created_person=6")->queryAll();
+
+        $count = Yii::$app->db->createCommand("select count(*) num from sales_coupon where uid={$_SESSION["uid"]}")->queryAll();
+
+
         //实例化分页对象
         // 实例化分页对象
         $pagination = new Pagination([
             'defaultPageSize' => 1,
             'totalCount' => $count[0]['num'],
         ]);
-        $res = Yii::$app->db->createCommand("select * from sales_coupon where created_person=6 limit $pagination->offset,$pagination->limit")->queryAll();
+        $res = Yii::$app->db->createCommand("select * from sales_coupon where uid={$_SESSION["uid"]} limit $pagination->offset,$pagination->limit")->queryAll();
         $datas["res"] = $res;
         $datas["pagination"] = $pagination;
         $datas["num"] = $count[0]['num'];
@@ -196,6 +202,36 @@ class StoreController extends PublicsController
 
     //返回添加优惠券页面
     public function actionAddcoupon(){
+
         return $this->render($this->action->id);
+
+        // 查看所有分类数据
+        $query = new Query;
+
+        // 进行数据查询
+        $class=$query->from('category')
+            ->where(['level'=>1,"parent_id"=>"0"])
+            ->all();
+        $datas["class"] = $class;
+        return $this->render($this->action->id,$datas);
+    }
+
+    //添加优惠卷
+    public function actionGetgoods(){
+
+        $res = Yii::$app->request;
+        $category = json_decode($res->get("category"));
+        $query = new Query();
+        $res = [];
+        foreach ($category as $v){
+
+            $where[category][0]=$v;
+            $res1 = $query->from("product_flat")->where($where)->all();
+            foreach ($res1 as $v1){
+                $res[]=$v1;
+            }
+        }
+        echo json_encode($res);
+        exit();
     }
 }
