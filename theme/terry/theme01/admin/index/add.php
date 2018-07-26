@@ -1,32 +1,40 @@
-
 <div class="main-content">
-    <div class="add">
+    <div id="platdata">
+        <div class="adminmannager-title">
+            <span>数据中心</span>&nbsp;
+            <span>·&nbsp;平台数据</span>
+        </div>
+        <div class="add">
 
-        <form method="post" action="<?= Yii::$service->url->getUrl('/admin/index/editadmin') ?>" onsubmit="return check_submit()">
-          <div>
-              <span>用户名：</span>
-              <input type="text" name="username" id="username">
-              <label id="result_name"></label>
-          </div>
-            <div>
-                <span>密&nbsp;&nbsp;&nbsp;码：</span>
-                <input type="password" name="password_hash" id="password">
-                <label id="result_pwd"></label>
-            </div>
-           <div>
-                <span>邮&nbsp;&nbsp;&nbsp;箱：</span>
-                <input type="email" name="email">
-               <label>(请填写正确的邮箱格式！)</label>
-            </div>
-            <div>
-                <span>姓&nbsp;&nbsp;&nbsp;名：</span>
-                <input type="text" name="person">
-            </div>
-            <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>"/>
-            <input type="submit" onsubmit="check_submit()">
-        </form>
+            <form method="post" action="<?= Yii::$service->url->getUrl('/admin/index/editadmin') ?>" onsubmit="return check_submit()">
+                <div>
+                    <span>用户名：</span>
+                    <input type="text" name="username" id="username">
+                    <label id="result_name"></label>
+                </div>
+                <div>
+                    <span>密&nbsp;&nbsp;&nbsp;码：</span>
+                    <input type="password" name="password_hash" id="password">
+                    <label id="result_pwd"></label>
+                </div>
+                <div>
+                    <span>邮&nbsp;&nbsp;&nbsp;箱：</span>
+                    <input type="email" name="email">
+                    <label>(请填写正确的邮箱格式！)</label>
+                </div>
+                <div>
+                    <span>姓&nbsp;&nbsp;&nbsp;名：</span>
+                    <input type="text" name="person">
+                </div>
+                <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>"/>
+                <input type="submit" onsubmit="check_submit()">
+            </form>
+        </div>
+
+
     </div>
 </div>
+
 <script>
     var flag = false;
     //======================判断用户名==================================

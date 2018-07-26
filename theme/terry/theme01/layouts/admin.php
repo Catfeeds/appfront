@@ -680,7 +680,7 @@ $cssOptions = [
     #platdata {
         width: 1110px;
         min-height: 500px;
-        padding: 27px 0 0 68px;
+        padding: 27px 0 0 0;
         margin:0 auto;
     }
 
@@ -2370,13 +2370,10 @@ $cssOptions = [
         color: #fff;
     }
     .add{
-        width: 600px;
+        width: 100%;
         height: 400px;
-        margin:0 auto;
-        background: rgba(238,238,238,0.7);
         margin-top:50px;
         border-radius: 6px;
-        padding:20px;
     }
     .add form{
         width: 100%;
