@@ -71,22 +71,23 @@ class IndexController extends AppfrontController
         $password_hash = password_hash($req->post(password_hash),PASSWORD_DEFAULT);
         $email = $req->post(email);
         $person = $req->post(person);
+        $status = 1;
+        //判断提交是否正确
+        $r = 1;
         //判断管理员是否存在
-        $arr = Yii::$app->db->createCommand("select * from admin_user where username='$username'")->queryOne();
-        $data["name"] = $arr["username"];
-        if($data["name"]){
-            return $this->redirect(["/admin/index/add"],$data);
+        $arr = Yii::$app->db->createCommand("select count(*) as num from admin_user where username='$username'")->queryOne();
+        if($req->post(password_hash)==""||$username==""||$email==""||$person==""){
+            return $this->redirect(["/admin/index/add"]);
+        } else if($arr["num"] != 0){
+            return $this->redirect(["/admin/index/add"]);
         }
         else
         {
-            $res = Yii::$app->db->createCommand("insert into admin_user (username,password_hash,email,person) values ('$username','$password_hash','$email','$person')")->execute();
+            $data['r'] = $r;
+            $res = Yii::$app->db->createCommand("insert into admin_user (username,password_hash,email,person,status) values ('$username','$password_hash','$email','$person','$status')")->execute();
+            return $this->redirect(["/admin/index/index"]);
         }
-        /*var_dump($arr);
-        exit;*/
-        //插入数据
 
-
-        return $this->redirect(["/admin/index/index"]);
     }
     //会员管理
     public function actionMember(){
