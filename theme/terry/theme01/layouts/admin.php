@@ -680,7 +680,7 @@ $cssOptions = [
     #platdata {
         width: 1110px;
         min-height: 500px;
-        padding: 27px 0 0 68px;
+        padding: 27px 0 0 0;
         margin:0 auto;
     }
 
@@ -2370,13 +2370,10 @@ $cssOptions = [
         color: #fff;
     }
     .add{
-        width: 500px;
+        width: 100%;
         height: 400px;
-        margin:0 auto;
-        background: rgba(238,238,238,0.7);
         margin-top:50px;
         border-radius: 6px;
-        padding:20px;
     }
     .add form{
         width: 100%;
@@ -2405,7 +2402,7 @@ $cssOptions = [
         box-sizing: border-box;
     }
     .add form input[type="submit"]{
-        width:100px;
+        width:200px;
         height: 36px;
         border-radius: 18px;
         border:none;
@@ -2413,13 +2410,14 @@ $cssOptions = [
         text-align: center;
         line-height: 30px;
         background:deepskyblue;
-        margin-top:50px;
         display:block;
+        /*margin-left:150px;*/
+        margin-top:50px;
         color:#fff;
         float: left;
-        margin-left:100px;
+        cursor:pointer;
     }
-    .add form button{
+    /*.add form button{
         width:100px;
         height: 36px;
         border-radius: 18px;
@@ -2433,7 +2431,7 @@ $cssOptions = [
         color:#fff;
         float: left;
         margin-left:100px;
-    }
+    }*/
 </style>
 <?php $this->beginPage() ?>
     <!doctype html>
