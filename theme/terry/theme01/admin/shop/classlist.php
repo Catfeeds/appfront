@@ -59,6 +59,10 @@ use yii\helpers\Url;
         cursor:pointer;
         line-height: 30px;
     }
+    .caozuo a{
+        font-size: 25px;
+        margin:0px 2px;
+    }
 </style>
 <div class="main-content">
 <div class="adminmannager">
@@ -79,7 +83,7 @@ use yii\helpers\Url;
     <div class="admin-table">
         <div class="admin-tablename">
             <div class="admin-tablenamebox"></div>
-            <span class="admin-tablename1">分类</span><span class="admin-tablename2">列表</span>
+            <span class="admin-tablename1"><?php echo isset($_GET['name'])?$_GET['name']."分类":"分类";?></span><span class="admin-tablename2">列表</span>
         </div>
         <table border="0" class="admin-tablelist1 active">
             <tr>
@@ -99,7 +103,17 @@ use yii\helpers\Url;
                 ?>
                     <tr>
                         <td ><div style="width:80px;overflow:hidden"><?=$value[_id]?></div></td>
-                        <td><?=$value[name][name_zh]?></td>
+                        <td>
+                            <?php 
+                                // if(!$_GET['id']){
+                            ?>
+                                <!-- <a style="color:#67bcff;" href="<?= Yii::$service->url->getUrl('admin/shop/classlist', array('id' => $value['_id'])) ?>"><?=$value[name][name_zh]?></a> -->
+                            <?php
+                                // }else{
+                                    echo $value[name][name_zh];
+                                // }
+                             ?>
+                        </td>
                         <td><input onchange="sort(this,'<?=$value[_id]?>')" style="width:50px;height:30px;text-align:center;" type="sort" value="<?=$value['sort']?>"></td>
                         <td><?=$value[description][description_zh]?></td>
                         <td><?=$value[meta_keywords][meta_keywords_zh]?></td>
@@ -123,10 +137,11 @@ use yii\helpers\Url;
                             ?>
 
                         </td>
-                        <td>
-                            <a href="">添加二级分类</a>|
-                            <a href="">修改</a>|
-                            <a href="<?= Yii::$service->url->getUrl('admin/shop/classdel', array('id' => $value['_id'])) ?>">删除</a>
+                        <td class="caozuo">
+                            <a title="查看子类" href="<?= Yii::$service->url->getUrl('admin/shop/classlist', array('id' => $value['_id'],'name'=>$value[name][name_zh])) ?>">☰</a>
+                            <a title="添加子类" href="<?= Yii::$service->url->getUrl('admin/shop/classadd', array('id' => $value['_id'],'level'=>2,'name'=>$value[name][name_zh],'type'=>$value['type'])) ?>">✚</a>
+                            <a title="修改分类" href="<?= Yii::$service->url->getUrl('admin/shop/classfind', array('id' => $value['_id'])) ?>">✎</a>
+                            <a title="删除分类" href="<?= Yii::$service->url->getUrl('admin/shop/classdel', array('id' => $value['_id'])) ?>">×</a>
                         </td>
                     </tr>
                 <?php
@@ -144,7 +159,12 @@ use yii\helpers\Url;
 
         let  val=$(obj).val();
 
-        console.log(val);
+        // 获取数据的ID
+        $.get("<?= Yii::$service->url->getUrl('admin/shop/classeditsort') ?>",{id:id,sort:val},function(data){
+            
+            location.reload();
+        
+        });
 
     }
 </script>

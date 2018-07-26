@@ -1,3 +1,11 @@
+<?php
+
+use yii\widgets\LinkPager;
+use yii\helpers\Html;
+use yii\helpers\Url;
+
+
+?>
 <div class="main-content">
     <div class="adminmannager">
         <!--用户管理-管理员管理-->
@@ -6,22 +14,28 @@
             <span>·&nbsp;账户管理</span>
         </div>
         <div class="adminmannager-search">
-            <span>会员名称</span>
-            <input type="text">
-            <span class="search-ID">ID</span>
-            <input type="text">
+            <form action="<?= Yii::$service->url->getUrl('/admin/index/member') ?>" method="get">
 
-            <div class="xiala">
-                <span class="search-ID">等级</span>
-                <select name="member-level" id="member-level">
-                    <option value="">白银会员</option>
-                </select>
-                <div class="xialaimg"></div>
-            </div>
+                <span>会员名称</span>
+                <input type="text" name="firstname">
+                <span class="search-ID">ID</span>
+                <input type="text" name="id">
 
-            <div class="search-img">
-                <img src="/public/adminimg/search.png" alt="">
-            </div>
+                <div class="xiala">
+                    <span class="search-ID">等级</span>
+                    <select name="member-level" id="member-level" name="level">
+                        <option value="普通会员">普通会员</option>
+                        <option value="白金会员">白银会员</option>
+                        <option value="黄金会员">黄金会员</option>
+
+                    </select>
+                    <div class="xialaimg"></div>
+                </div>
+                <div class="indexsearch">
+                    <input class="search-img" type="submit" value="">
+                </div>
+            </form>
+
         </div>
         <!--管理员列表-->
         <div class="admin-table">
@@ -38,18 +52,16 @@
                     <th>上次访问时间</th>
                     <th>相关操作</th>
                 </tr>
-                <?php foreach ($arr as $v){?>
+                <?php foreach ($rows as $v){?>
                 <tr>
-                    <td><?php echo $v["ID"]+1?></td>
-                    <td><?php echo $v["member_name"]?></td>
-                    <td><?php echo $v["member_level"] ?></td>
+                    <td><?php echo $v["id"]?></td>
+                    <td><?php echo $v["firstname"]?></td>
+                    <td><?php echo $v["level"] ?></td>
                     <td>
-                        <?php if ($v["member_status"]==1){
-                            echo "正常";
-                        }else{echo "不正常";} ?>
+                        正常
                     </td>
                     <td>
-                        <?php echo $v["updated_time"]?>
+                        <?php echo $v["updated_at"]?>
                     </td>
                     <td>
                         <a style="color: #41b2fc" href="/vipinfo">查看</a>
@@ -63,6 +75,81 @@
                 </tr>
                 <?php }?>
             </table>
+
+        </div>
+        <div style="width: 100%; position: relative;height: 50px;">
+            <div style="font-size: 12px; position: absolute; bottom: 0; right: 0; display: flex; justify-content: space-between;">
+                <?php
+                echo LinkPager::widget([
+                    'pagination' => $pagination,
+                    'firstPageLabel' => '首页',
+                    'lastPageLabel' => '尾页',
+
+                    'nextPageLabel' => '>',
+                    'prevPageLabel' => '<',
+                ]);
+
+
+                ?>
+                <style>
+                    .pagination {
+                        white-space: nowrap;
+                        padding: 2px 5px;
+                        color: #303133;
+                        font-weight: 700;
+                    }
+
+                    .pagination li {
+                        padding: 0 4px;
+                        background: #fff;
+                        font-size: 13px;
+                        min-width: 35.5px;
+                        height: 28px;
+                        line-height: 28px;
+                        box-sizing: border-box;
+                        display: inline-block;
+                    }
+
+                    .pagination li.first {
+                        width: 54px;
+                        height: 20px;
+                        background: #edf8ff;
+                        border: 2px solid #e8f6ff;
+                        border-radius: 10px;
+                        color: #41b2fc;
+                        line-height: 18px;
+                        text-align: center;
+                        margin-top: 8px;
+                    }
+
+                    .pagination li.last {
+                        width: 54px;
+                        height: 20px;
+                        background: #51b7fc;
+                        border: 2px solid #51b7fc;
+                        border-radius: 10px;
+                        color: #fff;
+                        line-height: 18px;
+                        text-align: center;
+                        margin-top: 8px;
+                    }
+                    .pagination li.first a{
+                        color: #51b7fc;
+                    }
+                    .pagination li.last a{
+                        color: #fff;
+                    }
+                    .pagination li a {
+                        color: #000;
+                        font-weight: bold;
+                    }
+
+                    .pagination li.active a {
+                        color: #409EFF;
+                        cursor: default;
+                    }
+                </style>
+            </div>
         </div>
     </div>
 </div>

@@ -1,6 +1,6 @@
     var arrs = {
         index: [
-            {"name":"管理员管理","url":"/admin/index/index"},
+            {"name":"管理员管理","url":"/admin/index/aindex"},
             {"name":"会员管理","url":"/admin/index/member"},
             {"name":"店铺管理","url":"/admin/index/shop"}
         ],

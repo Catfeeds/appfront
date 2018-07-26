@@ -102,27 +102,21 @@
                 </span>
             </div>
         </div>
-        <form method="post" enctype="multipart/form-data" action="<?= Yii::$service->url->geturl("/admin/shop/classinsert") ?>" class="el-form" enctype="application/x-www-form-urlencoded">
+        <form method="post" enctype="multipart/form-data" action="<?= Yii::$service->url->geturl("/admin/shop/classedit") ?>" class="el-form" enctype="application/x-www-form-urlencoded">
         <div class="bottom">
             <div class="title">
                 <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>"/>
                 <div class="el-row" style="width: 850px;">
-                    <div class="el-form-item">
-                        <label class="el-form-item__label" style="width: 150px;">*所属分类</label>
-                        <div class="el-form-item__content" style="margin-left: 150px;">
-                            <div class="el-input" style="width: 500px;">
-                                <input type="text" name="" readonly placeholder="顶级分类" value="<?php echo isset($_GET['name'])?$_GET['name']:'顶级分类';?>" class="el-input__inner">
-                            </div>
-
-                            <input type="hidden" name="parent_id" value="<?php echo isset($_GET['id'])?$_GET['id']:0;?>">
-                            <input type="hidden" name="level" value="<?php echo isset($_GET['level'])?$_GET['level']:1?>">
-                        </div>
-                    </div>
+                    
+                    <input type="hidden" name="_id" value="<?=$class['_id']?>">
+                    <input type="hidden" name="parent_id" value="<?=$class['parent_id']?>">
+                    <input type="hidden" name="level" value="<?=$class['level']?>">
+            
                     <div class="el-form-item">
                         <label class="el-form-item__label" style="width: 150px;">*分类名称</label>
                         <div class="el-form-item__content" style="margin-left: 150px;">
                             <div class="el-input" style="width: 500px;">
-                                <input type="text" name="name" placeholder="名称可输入20个字符，支持输入中文、字母、数字、_、/和小数点" class="el-input__inner">
+                                <input type="text" name="name" value="<?=$class['name']['name_zh']?>" placeholder="名称可输入20个字符，支持输入中文、字母、数字、_、/和小数点" class="el-input__inner">
                             </div>
                         </div>
                     </div>
@@ -130,7 +124,7 @@
                         <label class="el-form-item__label" style="width: 150px;">*分类描述</label>
                         <div class="el-form-item__content" style="margin-left: 150px;">
                             <div class="el-input" style="width: 500px;">
-                                <input type="text" name="description" placeholder="请输入分类的描述" class="el-input__inner">
+                                <input type="text" name="description" value="<?=$class['description']['description_zh']?>" placeholder="请输入分类的描述" class="el-input__inner">
                             </div>
                         </div>
                     </div>
@@ -139,7 +133,7 @@
                         <label class="el-form-item__label" style="width: 150px;">*分类关键字</label>
                         <div class="el-form-item__content" style="margin-left: 150px;">
                             <div class="el-input" style="width: 500px;">
-                                <input type="text" name="meta_keywords" placeholder="请输入分类关键字" class="el-input__inner">
+                                <input type="text" name="meta_keywords" value="<?=$class['meta_keywords']['meta_keywords_zh']?>" placeholder="请输入分类关键字" class="el-input__inner">
                             </div>
                         </div>
                     </div>
@@ -151,7 +145,7 @@
 
                                     <?php 
 
-                                        if ($_GET['type']==1) {
+                                        if ($class['type']==1) {
                                             # code...
                                             echo '<option selected  value="1">商家</option>
                                                 <option  value="2">水司</option>';
@@ -173,8 +167,22 @@
                         <div class="el-form-item__content" style="margin-left: 150px;">
                             <div class="el-input" style="width: 500px;">
                                 <select name="menu_show" id="" class="el-input__inner">
-                                    <option  value="1">显示</option>
+                                    <!-- <option  value="1">显示</option>
                                     <option  value="2">隐藏</option>
+ -->
+                                    <?php 
+
+                                        if ($class['menu_show']==1) {
+                                            # code...
+                                            echo '<option selected  value="1">显示</option>
+                                                <option  value="2">隐藏</option>';
+                                        }else{
+                                            echo '<option  value="1">显示</option>
+                                                <option selected value="2">隐藏</option>';
+                                        }
+
+
+                                     ?>
                                 </select>
                             </div>
                         </div>
@@ -206,7 +214,7 @@
                         <label class="el-form-item__label" style="width: 150px;">*分类排序</label>
                         <div class="el-form-item__content" style="margin-left: 150px;">
                             <div class="el-input" style="width: 500px;">
-                                <input type="text" name="sort" placeholder="请输入分类的排序，数值越大越靠前" class="el-input__inner">
+                                <input type="text" name="sort" value="<?=$value['sort']?>" placeholder="请输入分类的排序，数值越大越靠前" class="el-input__inner">
                             </div>
                         </div>
                     </div>
