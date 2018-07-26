@@ -132,19 +132,10 @@
                         </div>
                         <div data-v-242c0cfe="" class="title1">
                                 <div data-v-242c0cfe="" class="el-row" style="width: 500px;">
-<<<<<<< HEAD
                                     <div style="font-size: 14px">
                                         <span style="width: 100px;line-height: 40px;margin-left: 50px;">审核状态：</span>
                                         <span style="color: rgb(55, 223, 113); font-weight: bolder;">
                                                  审核成功</span>
-=======
-                                    <div data-v-242c0cfe="" class="el-form-item"><label class="el-form-item__label"
-                                                                                        style="width: 100px;line-height: 40px">审核状态</label>
-                                        <div class="el-form-item__content" style="margin-left: 100px;">
-                                            <div data-v-242c0cfe=""
-                                                 style="color: rgb(55, 223, 113); font-weight: bolder;">审核成功
-                                            </div></div>
->>>>>>> 8cc6af68143fb990e29b1e23fed1656bca8444bd
                                     </div>
                                 </div>
                         </div>

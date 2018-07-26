@@ -282,25 +282,18 @@
                                         <div class="cell el-tooltip"><?= $res["payment_method"] ?></div>
                                     </td>
                                     <td class="el-table_2_column_14  ">
-<<<<<<< HEAD
-                                        <div class="cell el-tooltip">2018-05-02 18:00</div>
-                                    </td>
-                                    <td class="el-table_2_column_15  ">
-                                        <div class="cell el-tooltip">2016-05-02 18:00</div>
-=======
-                                        <div class="cell" title="<?=date("Y-m-d H:i:s",$res[created_at])?>">
+                                        <div class="cell el-tooltip" title="<?=date("Y-m-d H:i:s",$res[created_at])?>">
                                             <?php if($res[created_at]){ ?>
                                                 <?= date("Y-m-d H:i:s",$res[created_at]) ?>
                                             <?php } ?>
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_15  ">
-                                        <div class="cell" title="<?=date("Y-m-d H:i:s",$res[created_at])?>">
+                                        <div class="cell el-tooltip" title="<?=date("Y-m-d H:i:s",$res[created_at])?>">
                                             <?php if($res[paypal_order_datetime]){ ?>
                                                 <?= date("Y-m-d H:i:s",$res[paypal_order_datetime]) ?>
                                             <?php } ?>
                                         </div>
->>>>>>> 8cc6af68143fb990e29b1e23fed1656bca8444bd
                                     </td>
                                     <td class="el-table_2_column_16  ">
                                         <div class="cell el-tooltip"><?php
@@ -310,25 +303,18 @@
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_17  ">
-<<<<<<< HEAD
-                                        <div class="cell el-tooltip">2016-05-02 18:00</div>
-                                    </td>
-                                    <td class="el-table_2_column_18  ">
-                                        <div class="cell el-tooltip">2016-05-02 18:00</div>
-=======
-                                        <div class="cell" title="<?=date("Y-m-d H:i:s",$res[receipt_at])?>">
+                                        <div class="cell el-tooltip" title="<?=date("Y-m-d H:i:s",$res[receipt_at])?>">
                                             <?php if($res[receipt_at]){ ?>
                                                 <?= date("Y-m-d H:i:s",$res[receipt_at]) ?>
                                             <?php } ?>
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_18  ">
-                                        <div class="cell" title="<?=date("Y-m-d H:i:s",$res[evaluate_at])?>">
+                                        <div class="cell el-tooltip" title="<?=date("Y-m-d H:i:s",$res[evaluate_at])?>">
                                             <?php if($res[evaluate_at]){ ?>
                                                 <?= date("Y-m-d H:i:s",$res[evaluate_at]) ?>
                                             <?php } ?>
                                         </div>
->>>>>>> 8cc6af68143fb990e29b1e23fed1656bca8444bd
                                     </td>
                                 </tr>
                                 </tbody>
@@ -420,15 +406,11 @@
                                         <div class="cell el-tooltip"><?= $res["customer_address_country"] . $res["customer_address_state"] . $res["customer_address_city"] . $res["customer_address_street1"] ?></div>
                                     </td>
                                     <td class="el-table_3_column_22  ">
-<<<<<<< HEAD
-                                        <div class="cell el-tooltip">2016-05-02 18:00</div>
-=======
                                         <div class="cell" title="<?=date("Y-m-d H:i:s",$res[confirm_at])?>">
                                             <?php if($res[confirm_at]){ ?>
                                                 <?= date("Y-m-d H:i:s",$res[confirm_at]) ?>
                                             <?php } ?>
                                         </div>
->>>>>>> 8cc6af68143fb990e29b1e23fed1656bca8444bd
                                     </td>
                                     <td class="el-table_3_column_23  ">
                                         <div class="cell el-tooltip"><?= $res["customer_address_zip"] ?></div>
@@ -436,15 +418,10 @@
                                     <td class="el-table_3_column_24  ">
                                         <div class="cell el-tooltip"><?= $res["customer_email"] ?></div>
                                     </td>
-<<<<<<< HEAD
-                                </tr></tbody>
-                            </table></div>
-=======
                                 </tr>
                                 </tbody>
                             </table>
                         </div>
->>>>>>> 8cc6af68143fb990e29b1e23fed1656bca8444bd
                         <div class="el-table__column-resize-proxy" style="display: none;"></div>
                     </div>
                 </div>
@@ -557,7 +534,7 @@
                                     </td>
                                 </tr>
                                 </tbody>
-                            </table><!----><!----></div><!----><!----><!----><!---->
+                            </table></div>
                         <div class="el-table__column-resize-proxy" style="display: none;"></div>
                     </div>
                 </div>
