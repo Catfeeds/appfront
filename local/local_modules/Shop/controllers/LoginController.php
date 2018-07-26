@@ -68,6 +68,7 @@ class LoginController extends AppfrontController
                 // 商家
 
                 $_SESSION["shop_id"] = $res2['shop_id'];
+                $_SESSION["shop_type"] = $res2['shop_type'];
 
                 if ($res2[shop_type]==2) {
                     # code...
