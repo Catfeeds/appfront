@@ -17,11 +17,16 @@
            <label class="el-form-item__label" style="width: 150px;">*真实姓名</label>
            <div class="el-form-item__content" style="margin-left: 150px;">
             <div  class="el-input" style="width: 500px;">
-             <input type="text" disabled autocomplete="off" placeholder="王卓" value="<?= $res["contacts_name"] ?>" class="el-input__inner" />
+             
+             <input type="text" autocomplete="off" placeholder="王卓" class="el-input__inner" />
+             
+             
+             
             </div> 
             <div >
              为确保您的账户安全，请填写本人的实名认证信息。
             </div>
+            
            </div>
           </div> 
           <div  class="el-form-item">
@@ -29,7 +34,7 @@
            <div class="el-form-item__content" style="margin-left: 150px;">
             <div  class="el-input" style="width: 500px;">
              
-             <input disabled value="<?= $res[contacts_card_no] ?>" type="text" autocomplete="off" placeholder="342605121212121200" class="el-input__inner" />
+             <input type="text" autocomplete="off" placeholder="342605121212121200" class="el-input__inner" />
              
              
              
@@ -41,12 +46,34 @@
            <label class="el-form-item__label" style="width: 150px;">*身份证正面图片</label>
            <div class="el-form-item__content" style="margin-left: 150px;">
             <div  style="display: flex; justify-content: space-between;">
-             <div  class="el-input" style="display: flex;align-items: center;justify-content: space-around;width: 500px;background: #f3faff;border: 2px solid #e5eff8;border-radius: 20px;padding: 10px;">
+             <div  class="el-input" style="width: 500px;">
               
-                <img src="<?= Yii::$app->params["img"].$res[contacts_card_electronic_2] ?>" title="身份证正面" style="width: 220px;height: 150px;margin-right: 20px"/>
-                 <img src="<?= Yii::$app->params["img"].$res[contacts_card_electronic_3] ?>" title="身份证背面" style="width: 220px;height: 150px"/>
-
-             </div>
+              <input type="text" autocomplete="off" placeholder="http:test1.ecmoban.com/seller_imgs/seller_logo/seller_logo1.jpg" class="el-input__inner" />
+              
+              
+              
+             </div> 
+             <button  type="button" class="el-button el-button--primary is-round">
+              
+              <span>上传</span></button>
+            </div>
+            
+           </div>
+          </div> 
+          <div  class="el-form-item">
+           <label class="el-form-item__label" style="width: 150px;">*身份证背面图片</label>
+           <div class="el-form-item__content" style="margin-left: 150px;">
+            <div  style="display: flex; justify-content: space-between;">
+             <div  class="el-input" style="width: 500px;">
+              
+              <input type="text" autocomplete="off" placeholder="http:test1.ecmoban.com/seller_imgs/seller_logo/seller_logo1.jpg" class="el-input__inner" />
+              
+              
+              
+             </div> 
+             <button  type="button" class="el-button el-button--primary is-round">
+              
+              <span>上传</span></button>
             </div>
             
            </div>
@@ -56,7 +83,7 @@
            <div class="el-form-item__content" style="margin-left: 150px;">
             <div  class="el-input" style="width: 500px;">
              
-             <input disabled value="<?= $res["bank_name"] ?>" type="text" autocomplete="off" placeholder="上海建设银行中山支行" class="el-input__inner" />
+             <input type="text" autocomplete="off" placeholder="上海建设银行中山支行" class="el-input__inner" />
              
              
              
@@ -69,7 +96,7 @@
            <div class="el-form-item__content" style="margin-left: 150px;">
             <div  class="el-input" style="width: 500px;">
              
-             <input disabled value="<?= $res["bank_account_number"] ?>" type="text" autocomplete="off" placeholder="123456789123456789" class="el-input__inner" />
+             <input type="text" autocomplete="off" placeholder="123456789123456789" class="el-input__inner" />
              
              
              
@@ -82,7 +109,7 @@
            <div class="el-form-item__content" style="margin-left: 150px;">
             <div  class="el-input" style="width: 500px;">
              
-             <input disabled value="<?= $res[contacts_phone] ?>" type="text" autocomplete="off" placeholder="13112341234" class="el-input__inner" />
+             <input type="text" autocomplete="off" placeholder="13112341234" class="el-input__inner" />
              
              
              
@@ -90,22 +117,22 @@
             
            </div>
           </div> 
-<!--          <div  class="el-form-item">-->
-<!--           <label class="el-form-item__label" style="width: 150px;">*手机号码</label>-->
-<!--           <div class="el-form-item__content" style="margin-left: 150px;">-->
-<!--            <div >-->
-<!--             已认证-->
-<!--            </div>-->
-<!--            -->
-<!--           </div>-->
-<!--          </div>-->
+          <div  class="el-form-item">
+           <label class="el-form-item__label" style="width: 150px;">*手机号码</label>
+           <div class="el-form-item__content" style="margin-left: 150px;">
+            <div >
+             已认证
+            </div>
+            
+           </div>
+          </div>
          </div>
         </form>
        </div>
       </div> 
-<!--      <button  type="button" class="el-button el-button--primary is-round">-->
-<!--       -->
-<!--       <span>确定</span></button>-->
+      <button  type="button" class="el-button el-button--primary is-round">
+       
+       <span>确定</span></button>
      </div>
     </div>
    </div>

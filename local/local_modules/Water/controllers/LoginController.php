@@ -7,7 +7,7 @@
  * @license http://www.fecshop.com/license/
  */
 
-namespace appfront\local\local_modules\shop\controllers;
+namespace appfront\local\local_modules\water\controllers;
 
 use fecshop\app\appfront\modules\AppfrontController;
 use Yii;
