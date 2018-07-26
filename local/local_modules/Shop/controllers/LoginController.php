@@ -27,7 +27,7 @@ class LoginController extends AppfrontController
         parent::init();
         // Yii::$service->page->theme->layoutFile = 'category_view.php';
 
-          Yii::$service->page->theme->layoutFile = 'main.php';
+        Yii::$service->page->theme->layoutFile = 'main.php';
     }  
 
     // 登陆页面
@@ -52,11 +52,14 @@ class LoginController extends AppfrontController
         $password_hash = $req->post(password_hash);
         $firstname = $req->post(firstname);
 
-        $sql = "select * from customer where firstname='$firstname'";
+        $sql = "select customer.*,shop.shop_id from customer,shop where customer.firstname='$firstname' and customer.id=shop.uid";
         $res = Yii::$app->db->createCommand($sql)->queryOne();
         if(password_verify($password_hash,$res["password_hash"])){
             $_SESSION["login"] = "yes";
             $_SESSION["uid"] = $res["id"];
+            $_SESSION["shop_id"] = $res["shop_id"];
+            $_SESSION["admin_name"] = $firstname;
+            $_SESSION["time"] = time();
             return $this->redirect(["index/index"]);
         }else{
             return $this->redirect(["login/index"]);
@@ -92,6 +95,8 @@ class LoginController extends AppfrontController
     public function actionOut(){
 
         unset($_SESSION["login"]);
+        unset($_SESSION["uid"]);
+        unset($_SESSION["shop_id"]);
 
         return $this->redirect("/shop/login/index");
     }

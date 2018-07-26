@@ -15,7 +15,6 @@
    		</div>
     </div>
 
-
     <div  class="item">
         <div  class="bottom">
             <div style="width: 528px; height: 42px; line-height: 42px; font-size: 18px; font-weight: bolder;">
@@ -25,12 +24,12 @@
                 编号：<span  style="color: rgb(48, 163, 254);"><?= $goods['_id']?></span>
             </div>
             <div  class="title" style="box-sizing:border-box">
-                <form  class="el-form" method="post" action="<?= Yii::$service->url->getUrl('shop/goods/edit') ?>">
-                    <div  class="el-row" style="width: 800px;">
+                <form  class="el-form" method="post" enctype="multipart/form-data" action="<?= Yii::$service->url->getUrl('shop/goods/edit') ?>">
+                    <div  class="el-row" style="width: 500px;">
                         <div  class="el-form-item">
                             <label class="el-form-item__label" style="width: 120px;">货号:</label>
                             <div class="el-form-item__content" style="margin-left: 120px;">
-                                <div><?= $goods['spu']?></div>
+                                <div style="height: 28px;line-height:28px"><?= $goods['spu']?></div>
                             </div>
                             <input type="hidden" name="_id" value="<?= $goods['_id']?>">
                         </div>
@@ -49,7 +48,7 @@
                                 <div  class="el-select">
                                     <div class="el-input el-input--suffix">
                                     	
-                                    	<select name="classone" onchange="getTwoMenu(this)" class="el-input__inner" style="width:230px;line-height:30px;" id="s1">
+                                    	<select name="classone" onchange="getTwoMenu(this)" class="el-input__inner" style="width:180px;line-height:30px;" id="s1">
                                     		<?php foreach ($category as $key => $value) {?>
 
 												<?php
@@ -68,7 +67,7 @@
 											?>
                                     	</select>
 
-                                    	<select name="classtwo" class="el-input__inner" style="width:230px;line-height:30px;" id="s2">
+                                    	<select name="classtwo" class="el-input__inner" style="width:190px;line-height:30px;" id="s2">
                                     		<?php foreach ($class as $key => $value) {?>
 												<?php
 													if ($goods['category'][1] == $value["_id"]) {
@@ -112,7 +111,7 @@
                         <div  class="el-form-item">
                         	<label class="el-form-item__label" style="width: 120px;">上下架:</label>
                             <div class="el-form-item__content" style="margin-left: 120px;">
-                                <div  role="switch" aria-checked="true" class="el-switch is-checked" style="height: 40px;width:150px;display:flex;justify-content: space-around">
+                                <div  role="switch" aria-checked="true" class="el-switch is-checked" style="height: 30px;width:150px;display:flex;justify-content: space-around">
 									<?php 
 										if($goods['status']==1){
 											echo '<label><input type="radio" name="status" value="1" id="" checked class="shangjia"> 上架</label>
@@ -145,6 +144,12 @@
                             </div>
                         </div>
                         <div  class="el-form-item">
+                            <label class="el-form-item__label" style="width: 120px;">商品库存:</label>
+                            <div class="el-form-item__content" style="margin-left: 120px;">
+                                <input type="text" name="kucun" value="<?= $goods['kuncun']?>" placeholder="请输入商品库存"class="el-input__inner">
+                            </div>
+                        </div>
+                        <div  class="el-form-item">
 
                             <style>
                                 .el-form-item__content>div{
@@ -170,9 +175,10 @@
                                 }
 
                             </style>
+                            
                             <label class="el-form-item__label" style="width: 120px;">上传商品图片:</label>
-                            <div class="el-form-item__content" style="margin-left: 120px;width: 95%;">
-                                <div onclick="setZhu(this)" class="zhu">
+                            <div class="el-form-item__content" style="margin-left: 120px;width: 200%;">
+                                <div onclick="setZhu(this,'<?=$goods['image']['main']['image']?>',0)" class="zhu">
                                     <div class="close">&times;</div>
                                     <div  class="shangpin1" >
                                         <img src="http://img.uekuek.com/media/catalog/product/<?=$goods['image']['main']['image']?>" alt="">
@@ -183,9 +189,13 @@
                                     <span></span>
                                 </div>
                                 <?php 
+
+                                if ($goods['image']['gallery']) {
+                                    # code...
+                               
                                     foreach($goods['image']['gallery'] as $key => $value){
                                 ?>
-                                        <div onclick="setZhu(this)" class="zhu">
+                                        <div onclick="setZhu(this,'<?=$value['image']?>',1)" class="zhu">
                                             <div class="close">&times;</div>
                                             <div  class="shangpin1">
                                                 <img src="http://img.uekuek.com/media/catalog/product/<?=$value['image']?>" alt="">
@@ -193,24 +203,33 @@
                                             <!-- <div style="display: flex; font-size: 12px; line-height: 30px;">
                                                 <span>图片<?php echo $key+1;?></span>
                                             </div> -->
+
+                                            <?php 
+                                                $zxc.=",".$value['image'];
+
+                                             ?>
                                             <span></span>
                                         </div>
 
                                 <?php
                                     }
-                                 ?>
+                                }
+                                ?>
                                
                                 
-                                <div >
+                                <div class="adsadas">
                                     <div style="cursor:pointer;"  class="shangpin2"></div>
                                     <!-- <div style="display: flex;  font-size: 12px; line-height: 30px;">
                                     	<span>上传图片</span>
                                     </div> -->
-                                    <input type="file" name="file[]" style="display:none" id="">
+                                    <input type="file" onchange="uploads(this)" name="file[]" style="display:none" class="img">
                                 </div>
                             </div>
+
+                            <input type="hidden" name="bao" id="bao" value=",<?=$goods['image']['main']['image']?><?=$zxc?>">
+                            <input type="hidden" name="del" id="del" value="">
                         </div>
-                        <div  style="width:padding-left: 40px;text-align:center">
+                        <div>
                             <button  type="submit" class="el-button blue el-button--primary is-round">
                                 <span>保存</span>
                             </button>
@@ -227,6 +246,34 @@
     </div>
 </div>
 <script>
+
+    // 点击上传按钮
+    $(".shangpin2").click(function () {
+        // 相当于点击文件上传框
+
+        $(".img").eq($(".img").length - 1).click();
+    });
+
+    function uploads(obj) {
+        var file = obj.files[0];
+
+        if (window.FileReader) {
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            //监听文件读取结束后事件
+            reader.onloadend = function (e) {
+
+                $(".adsadas").append($("<input type='file' name='file[]' onchange='uploads(this)' style='display:none' class='img'>"));
+
+                $("<img>").css({
+                    "width": "96px",
+                    "height": "96px"
+                }).attr("class",'zhu').attr("src", e.target.result).insertBefore($(".adsadas"));
+            };
+
+
+        }
+    }
 
     // 获取二级按钮
     function getTwoMenu(obj) {
@@ -251,9 +298,29 @@
 
     // 点击设置主图
 
-    function setZhu(obj){
+    function setZhu(obj,value,idx){
 
         // 取消所有的组图选项
+
+
+
+        // 获取数据
+
+        let val=$("#del").val();
+        let bao=$("#bao").val();
+
+        // 获取保留的图片
+        $("#bao").val(bao.replace(','+value,''));
+        // 拼接字符串
+
+        let str=val+","+idx+'-'+value;
+
+        $("#del").val(str);
+
+        // 隐藏数据
+
+        $(obj).remove();
+
     }
 
 
@@ -348,10 +415,10 @@
         height: 35px;
         background: #30B5FE;
         border:none;
-        box-shadow:0 0px 8px #30B5FE;
+        box-shadow:0 0 8px #30B5FE;
     }
     .title .details{
-        width: 100%;
+        width: 600px;
         height:116px;
         outline:none;
         resize:none;
@@ -360,6 +427,12 @@
         border:2px solid #e5eff8;
     }
     .el-form-item__content>div{
+        float:left;
+        margin:1px;
+
+    }
+
+    .el-form-item__content>img{
         float:left;
         margin:1px;
 

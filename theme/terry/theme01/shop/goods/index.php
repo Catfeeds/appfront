@@ -4,6 +4,7 @@ use yii\widgets\LinkPager;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
+
 ?>
 
 <style>
@@ -23,24 +24,36 @@ use yii\helpers\Url;
 
     .content .shuaixuan {
         height: 46px;
-        width: 100%;
+        width: 770px;
         display: flex;
         justify-content: space-between;
         line-height: 46px;
         color: #a4adb5;
+        font-size: 12px;
     }
-
+    .content .shuaixuan li{
+        margin:0px 20px;
+    }
     .content .shuaixuan .xiala {
-        padding-left: 5px;
+        padding-left: 10px;
         width: 98px;
         outline: none;
-        font-size: 12px;
         height: 30px;
         border-radius: 15px;
         background: #f3faff;
         border: 2px solid #e5eff8;
+        color:#9eabb5;
+        font-size: 14px;
+    }
+
+    .content .shuaixuan .xialas {
+        width: 198px;
+        
     }
     .shuaixuan .el-select:hover {
+        border-color: #c0c4cc;
+    }
+    .shuaixuan .el-select:focus {
         border-color: #3CACFE;
     }
 
@@ -80,6 +93,7 @@ use yii\helpers\Url;
 
     .content .item {
         width: 100%;
+        margin-top:10px;
     }
 
     .item .picture {
@@ -114,6 +128,7 @@ use yii\helpers\Url;
         background: #FD5E4E;
         border: none;
         box-shadow: 0 0 8px #FD5E4E;
+        padding-top: 10px;
     }
 
     .content .green {
@@ -126,10 +141,12 @@ use yii\helpers\Url;
     }
 
     .content .blue {
+        width: 112px;
         height: 33px;
         background: #30B5FE;
         border: none;
         box-shadow: 0 0 8px #30B5FE;
+        padding-top: 10px;
     }
 
     .content .button_left {
@@ -165,54 +182,93 @@ use yii\helpers\Url;
         margin-top: 10px;
         margin-right: 5px;
     }
+    .contents .ddd{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
 
 
 </style>
 <div class="main-content">
-    <div style="width: 1064px; margin: 0px auto;">
+    <div style="width: 1012px; margin: 0 auto;">
         <div>
             <div class="content">
                 <div class="biaoti">
                     <div aria-label="Breadcrumb" role="navigation" class="el-breadcrumb">
-                        <span class="el-breadcrumb__item"><span role="link"
-                                                                class="el-breadcrumb__inner is-link">商品管理</span><span
-                                    role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
-                        <span class="el-breadcrumb__item" aria-current="page"><span role="link"
-                                                                                    class="el-breadcrumb__inner"><span
-                                        style="color: rgb(48, 211, 102); font-weight: bolder;">商品列表</span></span><span
-                                    role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
+                        <span class="el-breadcrumb__item">
+                            <span role="link" class="el-breadcrumb__inner is-link">商品管理</span>
+                            <span role="presentation" class="el-breadcrumb__separator">&middot;</span>
+                        </span>
+                        <span class="el-breadcrumb__item" aria-current="page">
+                            <span role="link" class="el-breadcrumb__inner">
+                                <span style="color: rgb(48, 211, 102); font-weight: bolder;">商品列表</span>
+                            </span>
+                            <span role="presentation" class="el-breadcrumb__separator">&middot;</span>
+                        </span>
                     </div>
                 </div>
+                <form action="<?php echo  Yii::$app->request->getHostInfo().Yii::$app->request->url;?>" method="get">
                 <ul class="shuaixuan">
                     <li>分类
-                        <select name="" id="" class="el-select xiala">
-                            <option value="" style="display: none;">全部分类</option>
-                            <option value="">1</option>
-                            <option value="">2</option>
+                        <select name="class" id="" class="el-select xiala xialas" style="margin-left:10px">
+                            <option value="0">全部分类</option>
+                            <?php
+
+                                foreach ($class as $key => $value) {
+                                    echo "<option disabled style='color: #000'>".$value['name']['name_zh']."</option>";
+                                    foreach ($value['zi'] as $k => $v) {
+
+                                        if ($_GET['class'] == $v[_id] ) {
+                                            echo "<option selected value='$v[_id]'>".$value['name']['name_zh'].'/'.$v['name']['name_zh']."</option>";
+                                        }else{
+                                            echo "<option value='$v[_id]'>".$value['name']['name_zh'].'/'.$v['name']['name_zh']."</option>";
+                                        }
+                                    }
+                                }
+                            ?>
                         </select>
                     </li>
                     <li>上下架
-                        <select name="" id="" class="el-select xiala">
-                            <option value="" style="display: none;">全部</option>
-                            <option value="">1</option>
-                            <option value="">2</option>
+                        <select name="status" id="" class="el-select xiala" style="margin-left: 10px">
+                            <?php 
+
+                                if ($_GET['status']==1) {
+                                    # code...
+                                    echo '<option value="0">全部</option>
+                                        <option value="1" selected>上架</option>
+                                        <option value="2">下架</option>';
+                                }else if($_GET['status']==2){
+                                    echo '<option value="0">全部</option>
+                                        <option value="1" >上架</option>
+                                        <option value="2" selected>下架</option>';
+                                }else{
+                                    echo '<option value="0" selected>全部</option>
+                                        <option value="1" >上架</option>
+                                        <option value="2" >下架</option>';
+                                }
+                             ?>
+                            
                         </select>
                     </li>
-                    <li> 商家编号
-                        <input type="text" autocomplete="off" placeholder="请输入订单号" class="input1"/>
-                    </li>
-                    <li> 商家编号
-                        <input type="text" autocomplete="off" placeholder="请输入商品编号/关键字" class="input2"/>
-
-                    </li>
+                   <!--  <li> 商家编号
+                        <input type="text" name="name" placeholder="请输入商品编号/关键字" class="input2"/>
+                    </li> -->
                     <li>
-                        <div class="sousuo"></div>
+                        <!-- <button class="sousuo" style="border:0px"></button> -->
+                        <button type="submit" class="el-button blue el-button--success is-round">
+                            <span> 查询商品 </span>
+                        </button>
                     </li>
+                    
                     <li><a href="<?= Yii::$service->url->getUrl('shop/goods/addclass') ?>" class="">
-                            <button type="button" class="el-button green el-button--success is-round">
-                                <span> 添加商品 </span></button>
-                        </a></li>
+                        <button type="button" class="el-button green el-button--success is-round">
+                            <span> 添加商品 </span>
+                        </button>
+                        </a>
+                    </li>
                 </ul>
+                </form>
 
                 <div class="item">
                     <div class="el-tabs el-tabs--top">
@@ -220,24 +276,33 @@ use yii\helpers\Url;
                             <div class="el-tabs__nav-wrap is-top">
                                 <div class="el-tabs__nav-scroll">
                                     <div role="tablist" class="el-tabs__nav is-top" style="transform: translateX(0px);">
-                                        <div class="el-tabs__active-bar is-top"
-                                             style="width: 92px; transform: translateX(0px);"></div>
-                                        <div id="tab-first" aria-controls="pane-first" role="tab" aria-selected="true"
-                                             tabindex="0" class="el-tabs__item is-top is-active">
-                                            全部商品（2）
+                                        <!-- <div class="el-tabs__active-bar is-top"  style="width: 92px; transform: translateX(0px);"></div> -->
+                                        <style>
+                                            .is_active1{
+                                                border-bottom: 2px solid #3CACFE;
+                                            }
+                                            .el-tabs__item a{
+                                                color:#303133;
+                                            }
+                                            .is_active1 a{
+                                                font-weight: bold;
+                                                color: #30a2fe;
+                                            }
+                                        </style>
+                                        <div style="padding-left:20px;"  class="el-tabs__item is-top <?php echo $_GET['status']==0 ?'is_active1':'';?>">
+                                            <a style="" href="<?php echo  Yii::$app->request->getHostInfo().'/'.Yii::$app->request->pathInfo;?>?class=<?=$_GET['class']?>&status=0">全部商品（<?=$tot?>）</a>
                                         </div>
-                                        <div id="tab-second" aria-controls="pane-second" role="tab" tabindex="-1"
+                                        <div class="el-tabs__item is-top <?php echo $_GET['status']==1 ?'is_active1':'';?>">
+                                            <a style="" href="<?php echo  Yii::$app->request->getHostInfo().'/'.Yii::$app->request->pathInfo;?>?class=<?=$_GET['class']?>&status=1">上架（<?=$tot1?>）</a>
+                                        </div>
+                                        <div  class="el-tabs__item is-top <?php echo $_GET['status']==2 ?'is_active1':'';?>">
+                                            <a style="" href="<?php echo  Yii::$app->request->getHostInfo().'/'.Yii::$app->request->pathInfo;?>?class=<?=$_GET['class']?>&status=2">下架（<?=$tot-$tot1?>）</a>
+                                        </div>
+
+                                          <!--  <div id="tab-second" aria-controls="pane-second" role="tab" tabindex="-1"
                                              class="el-tabs__item is-top">
                                             回收站（1）
-                                        </div>
-                                        <div id="tab-third" aria-controls="pane-third" role="tab" tabindex="-1"
-                                             class="el-tabs__item is-top">
-                                            上架（1）
-                                        </div>
-                                        <div id="tab-fourth" aria-controls="pane-fourth" role="tab" tabindex="-1"
-                                             class="el-tabs__item is-top">
-                                            下架（1）
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -258,16 +323,16 @@ use yii\helpers\Url;
                                     </div>
                                     <div class="el-table__header-wrapper">
                                         <table cellspacing="0" cellpadding="0" border="0" class="el-table__header"
-                                               style="width: 1064px;">
+                                               style="width: 1012px;">
                                             <colgroup>
                                                 <col name="el-table_2_column_7" width="55"/>
-                                                <col name="el-table_2_column_8" width="120"/>
+                                                <col name="el-table_2_column_8" width="150"/>
                                                 <col name="el-table_2_column_9" width="200"/>
-                                                <col name="el-table_2_column_10" width="148"/>
-                                                <col name="el-table_2_column_11" width="147"/>
-                                                <col name="el-table_2_column_12" width="147"/>
-                                                <col name="el-table_2_column_13" width="147"/>
-                                                <col name="el-table_2_column_14" width="100"/>
+                                                <col name="el-table_2_column_10" width="100"/>
+                                                <col name="el-table_2_column_11" width="150"/>
+                                                <col name="el-table_2_column_12" width="100"/>
+                                                <col name="el-table_2_column_13" width="150"/>
+                                                <col name="el-table_2_column_14" width="107"/>
                                                 <col name="gutter" width="0"/>
                                             </colgroup>
                                             <thead class="has-gutter">
@@ -275,12 +340,11 @@ use yii\helpers\Url;
                                                 <th colspan="1" rowspan="1"
                                                     class="el-table_2_column_7   el-table-column--selection  is-leaf">
                                                     <div class="cell">
-                                                        <label role="checkbox" class="el-checkbox"><span
-                                                                    aria-checked="mixed"
-                                                                    class="el-checkbox__input"><span
-                                                                        class="el-checkbox__inner"></span><input
-                                                                        type="checkbox" aria-hidden="true"
-                                                                        class="el-checkbox__original" value=""/></span>
+                                                        <label role="checkbox" class="el-checkbox">
+                                                            <span class="el-checkbox__input">
+                                                                <span class="el-checkbox__inner"></span>
+                                                                <input type="checkbox" class="el-checkbox__original" value=""/>
+                                                            </span>
                                                         </label>
                                                     </div>
                                                 </th>
@@ -325,71 +389,70 @@ use yii\helpers\Url;
                                         </table>
                                     </div>
                                     <div class="el-table__body-wrapper is-scrolling-none">
-                                        <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
-                                               style="width: 1064px;">
+                                        <table cellspacing="0" cellpadding="0" border="0" class="el-table__body" style="width: 1012px;">
                                             <colgroup>
                                                 <col name="el-table_2_column_7" width="55"/>
-                                                <col name="el-table_2_column_8" width="120"/>
+                                                <col name="el-table_2_column_8" width="150"/>
                                                 <col name="el-table_2_column_9" width="200"/>
-                                                <col name="el-table_2_column_10" width="148"/>
-                                                <col name="el-table_2_column_11" width="147"/>
-                                                <col name="el-table_2_column_12" width="147"/>
-                                                <col name="el-table_2_column_13" width="147"/>
-                                                <col name="el-table_2_column_14" width="100"/>
+                                                <col name="el-table_2_column_10" width="100"/>
+                                                <col name="el-table_2_column_11" width="150"/>
+                                                <col name="el-table_2_column_12" width="100"/>
+                                                <col name="el-table_2_column_13" width="150"/>
+                                                <col name="el-table_2_column_14" width="107"/>
                                             </colgroup>
-                                            <tbody>
+                                            <tbody style="font-size: 12px;color:#82898e">
                                             <?php foreach ($goods as $v) { ?>
-                                                <tr class="el-table__row" style="font-size: 14px">
+                                                <tr class="el-table__row">
                                                     <td class="el-table_2_column_7  el-table-column--selection">
-                                                        <div class="cell">
-                                                            <label role="checkbox" class="el-checkbox"><span
-                                                                        aria-checked="mixed" class="el-checkbox__input"><span
-                                                                            class="el-checkbox__inner"></span><input
-                                                                            type="checkbox" aria-hidden="true"
-                                                                            class="el-checkbox__original"
-                                                                            value=""/></span>
-                                                                <!----></label>
+                                                        <div class="cell el-tooltip">
+                                                            <label role="checkbox" class="el-checkbox">
+                                                                <span class="el-checkbox__input">
+                                                                    <span class="el-checkbox__inner"></span>
+                                                                    <input type="checkbox"  class="el-checkbox__original" value=""/>
+                                                                </span>
+                                                            </label>
                                                         </div>
                                                     </td>
-                                                    <td class="el-table_2_column_8  ">
-                                                        <div class="cell">
+                                                    <td class="el-table_2_column_8">
+                                                        <div class="cell el-tooltip" title="<?= $v["_id"]; ?>">
                                                             <?= $v["_id"]; ?>
                                                         </div>
                                                     </td>
-                                                    <td class="el-table_2_column_9  ">
-                                                        <div class="cell" style="position: relative">
+                                                    <td class="el-table_2_column_9">
+                                                        <div class="cell el-tooltip">
                                                             <div class="picture">
                                                                 <img src="http://img.uekuek.com/media/catalog/product/<?= $v['image']['main']['image'] ?>"
                                                                      alt="">
                                                             </div>
                                                             <div class="contents">
-                                                                <div>
+                                                                <div title="<?= $v["sku"] ?>" class="ddd">
                                                                     <span style="color: rgb(186, 190, 193);">货号：</span><?= $v["sku"] ?>
                                                                 </div>
-                                                                <div><?= $v["name"]["name_zh"] ?></div>
+                                                                <div title="<?=  $v["name"]["name_zh"] ?>" class="ddd" >
+                                                                    <span style="color: rgb(186, 190, 193);">商品名：</span><?= $v["name"]["name_zh"] ?>
+                                                                  </div>
                                                                 <div><span style="color: rgb(186, 190, 193);">运费：</span>按固定运费
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td class="el-table_2_column_10  ">
+                                                    <td class="el-table_2_column_10">
                                                         <div class="cell el-tooltip"
                                                              style="width: 115px;"><?= $v["price"] ?>
                                                             / <?= $v['special_price'] ?></div>
                                                     </td>
-                                                    <td class="el-table_2_column_11  ">
-                                                        <div class="cell el-tooltip" style="width: 146px;">
+                                                    <td class="el-table_2_column_11">
+                                                        <div class="cell el-tooltip">
                                                             <?= $v['className'] ?> > <?= $v['class2Name'] ?>
                                                         </div>
                                                     </td>
-                                                    <td class="el-table_2_column_12  ">
-                                                        <div class="cell el-tooltip" style="width: 146px;">
+                                                    <td class="el-table_2_column_12">
+                                                        <div class="cell el-tooltip">
                                                             <div role="switch" aria-checked="true"
                                                                  class="el-switch is-checked">
                                                                 <a href="<?= Yii::$service->url->getUrl('shop/goods/status', array('id' => $v['_id'], 'status' => $v['status'])) ?>">
 
                                                                     <?php
-
 
                                                                     if ($v['status'] == 1) {
                                                                         echo '<span class="el-switch__core" style="width: 40px; border-color: rgb(19, 206, 102); background-color: rgb(19, 206, 102);"></span>';
@@ -402,13 +465,13 @@ use yii\helpers\Url;
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td class="el-table_2_column_13  ">
-                                                        <div class="cell el-tooltip" style="width: 146px;">
+                                                    <td class="el-table_2_column_13">
+                                                        <div class="cell el-tooltip" title="<?= date("Y-m-d H:i:s", $v["created_at"]) ?>" style="width: 146px;">
                                                             <?= date("Y-m-d H:i:s", $v["created_at"]) ?>
                                                         </div>
                                                     </td>
-                                                    <td class="el-table_2_column_14  ">
-                                                        <div class="cell el-tooltip" style="width: 99px;">
+                                                    <td class="el-table_2_column_14">
+                                                        <div class="cell el-tooltip">
                                                             <a href="<?= Yii::$service->url->getUrl('shop/goods/find', array('id' => $v['_id'])) ?>"
                                                                class="">
                                                                 <button type="button"
@@ -447,7 +510,6 @@ use yii\helpers\Url;
                                     </div>
                                     <div style="margin-top: 40px;">
                                         <button type="button" class="el-button el-button--default">
-
                                             <span>全选</span></button>
                                         <button type="button" class="el-button red el-button--danger is-round">
 

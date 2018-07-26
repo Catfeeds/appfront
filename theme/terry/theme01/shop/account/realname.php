@@ -1,6 +1,6 @@
 
   <div class="main-content">
-   <div style="width: 1064px; margin: 0px auto;">
+   <div style="width: 1012px; margin: 0px auto;">
     <div >
      <div  class="content">
       <div  class="biaoti">
