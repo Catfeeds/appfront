@@ -93,7 +93,6 @@ use yii\helpers\Url;
                 <div data-v-345ba354="" class="shuaixuan">
                     <ul data-v-345ba354="" style="width: 500px; display: flex; justify-content: space-between;">
                         <li data-v-345ba354="">
-<<<<<<< HEAD
                             <div data-v-345ba354="" class="el-select" style="display: inline-block;">
                                 <select name="class" id="" class="el-select xiala" style="margin-left:10px">
                                     <option value="0" style="display: none">请选择优惠券状态</option>
@@ -101,49 +100,11 @@ use yii\helpers\Url;
                                     <option value="">1</option>
                                     <option value="">1</option>
                                 </select>
-=======
-                            <div data-v-345ba354="" class="el-select" style="width: 200px; display: inline-block;">
-                                <!---->
-                                <div class="el-input el-input--suffix"><input onchange="sel(event)" type="text" autocomplete="off"
-                                                                                     placeholder="请输入优惠券状态"
-                                                                                     readonly="readonly"
-                                                                                     class="el-input__inner like">
-                                    <!----><span class="el-input__suffix"><span class="el-input__suffix-inner"><i
-                                                    class="el-select__caret el-input__icon el-icon-arrow-up"></i><!----></span>
-                                        <!----></span><!----></div>
-                                <div class="el-select-dropdown el-popper" style="display: none; min-width: 200px;">
-                                    <div class="el-scrollbar" style="">
-                                        <div class="el-select-dropdown__wrap el-scrollbar__wrap"
-                                             style="margin-bottom: -17px; margin-right: -17px;">
-                                            <ul class="el-scrollbar__view el-select-dropdown__list"><!---->
-                                                <li data-v-345ba354="" class="el-select-dropdown__item"><span>1</span>
-                                                </li>
-                                                <li data-v-345ba354="" class="el-select-dropdown__item"><span>2</span>
-                                                </li>
-                                                <li data-v-345ba354="" class="el-select-dropdown__item"><span>3</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="el-scrollbar__bar is-horizontal">
-                                            <div class="el-scrollbar__thumb" style="transform: translateX(0%);"></div>
-                                        </div>
-                                        <div class="el-scrollbar__bar is-vertical">
-                                            <div class="el-scrollbar__thumb" style="transform: translateY(0%);"></div>
-                                        </div>
-                                    </div><!----></div>
->>>>>>> 8cc6af68143fb990e29b1e23fed1656bca8444bd
-                            </div>
                         </li>
                         <li data-v-345ba354="">
                             <div data-v-345ba354="" class="el-input" style="width: 200px;">
-<<<<<<< HEAD
-                                <input type="text" autocomplete="off" placeholder="请输入优惠券名称/关键字"
-                                       class="el-input__inner">
-                            </div>
-=======
                                 <input type="text" onkeydown="sel(event)" autocomplete="off" placeholder="请输入优惠券名称" class="el-input__inner like">
                                </div>
->>>>>>> 8cc6af68143fb990e29b1e23fed1656bca8444bd
                         </li>
                         <li data-v-345ba354="">
                             <div data-v-345ba354="" class="sousuo" onclick="sel(event)"></div>
@@ -239,7 +200,6 @@ use yii\helpers\Url;
                                 </colgroup>
                                 <tbody style="font-size: 12px;color:#82898e;">
                                 <?php foreach ($res as $v) { ?>
-
                                     <tr class="el-table__row">
                                         <td class="el-table_5_column_29  el-table-column--selection">
                                             <div class="cell">
@@ -249,7 +209,6 @@ use yii\helpers\Url;
                                                     <input type="checkbox" aria-hidden="true"
                                                            class="el-checkbox__original" value="">
                                                 </span>
-<<<<<<< HEAD
                                                 </label>
                                             </div>
                                         </td>
@@ -272,66 +231,26 @@ use yii\helpers\Url;
                                         </td>
                                         <td class="el-table_5_column_35  ">
                                             <div class="cell">
-                                                <?php if ($v["expiration_date"] > time()) { ?>
-                                                    <span data-v-345ba354="" style="color: rgb(54, 221, 124);">
-=======
-                                            </label>
-                                        </div>
-                                    </td>
-                                    <td class="el-table_5_column_30  ">
-                                        <div class="cell el-tooltip" title="<?= $v["coupon_name"] ?>" style="width: 199px;"><?= $v["coupon_name"] ?></div>
-                                    </td>
-                                    <td class="el-table_5_column_31  ">
-                                        <div class="cell el-tooltip" style="width: 138px;"><?= $v["discount"] ?></div>
-                                    </td>
-                                    <td class="el-table_5_column_32  ">
-                                        <div class="cell el-tooltip" style="width: 134px;"><?= $v["conditions"] ?></div>
-                                    </td>
-                                    <td class="el-table_5_column_33  ">
-                                        <div class="cell el-tooltip" title="<?= date("Y-m-d H:i:s",$v["start_date"]) ?>" style="width: 134px;"><?= date("Y-m-d H:i:s",$v["start_date"]) ?></div>
-                                    </td>
-                                    <td class="el-table_5_column_34  ">
-                                        <div class="cell el-tooltip" title="<?= date("Y-m-d H:i:s",$v["expiration_date"]) ?>" style="width: 134px;"><?= date("Y-m-d H:i:s",$v["expiration_date"]) ?></div>
-                                    </td>
-                                    <td class="el-table_5_column_35  ">
-                                        <div class="cell">
-                                            <?php if($v["status"]==0){ ?>
-                                                <span data-v-345ba354="" style="color: #ff4949;">
+                                                <?php if($v["status"]==0){ ?>
+                                                    <span data-v-345ba354="" style="color: #ff4949;">
                                                     未审核
                                                 </span>
-                                            <?php }else if($v["status"]==2){?>
-                                                <span data-v-345ba354="" style="color: #ff4949;">
+                                                <?php }else if($v["status"]==2){?>
+                                                    <span data-v-345ba354="" style="color: #ff4949;">
                                                     审核失败
                                                 </span>
-                                            <?php }else if($v["expiration_date"]>time()){?>
-                                                <span data-v-345ba354="" style="color: rgb(54, 221, 124);">
->>>>>>> 8cc6af68143fb990e29b1e23fed1656bca8444bd
+                                                <?php }else if($v["expiration_date"]>time()){?>
+                                                    <span data-v-345ba354="" style="color: rgb(54, 221, 124);">
                                                     有效
                                                 </span>
                                                 <?php } else { ?>
                                                     <span data-v-345ba354="" style="color: #ff4949;">
                                                     无效
                                                 </span>
-<<<<<<< HEAD
                                                 <?php } ?>
                                             </div>
-                                        </td>
-                                        <td class="el-table_5_column_36  ">
-                                            <div class="cell el-tooltip" style="width: 134px;">
-                                                <button data-v-345ba354="" type="button"
-                                                        class="el-button el-button--text el-button--small">
-                                                    <span>编辑</span>
-                                                </button>
-                                                <span data-v-345ba354="" style="color: rgb(234, 235, 236);">|</span>
-                                                <button data-v-345ba354="" type="button"
-                                                        class="el-button el-button--text el-button--small">
-                                                    <span><i data-v-345ba354="" class="el-icon-delete"></i></span>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-=======
-                                            <?php } ?>
+                                        </div>
+                                    </td>
                                         </div>
                                     </td>
                                     <td class="el-table_5_column_36  ">
@@ -352,7 +271,6 @@ use yii\helpers\Url;
                                         </div>
                                     </td>
                                 </tr>
->>>>>>> 8cc6af68143fb990e29b1e23fed1656bca8444bd
                                 <?php } ?>
                                 </tbody>
                             </table>
