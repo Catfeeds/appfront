@@ -9,7 +9,6 @@
 
 namespace appfront\local\local_modules\shop\controllers;
 
-use fecshop\app\appfront\modules\AppfrontController;
 use Yii;
 use yii\web\Response;
 use yii\mongodb\Query;
@@ -31,10 +30,11 @@ class IndexController extends PublicsController
     }
     
     public function actionIndex(){
+    	
 
     	// 获取shop_id
 
-    	$shop_id=$_SESSION['shop_id'];
+    	echo $shop_id=$_SESSION['shop_id'];
 
 
     	// 获取商品信息
@@ -48,16 +48,10 @@ class IndexController extends PublicsController
 
     	$data['shop']=$shop;
 
+
+
     	$_SESSION['shop_name']=$shop['shop_name'];
     	$_SESSION['shop_logo']=$shop['shop_logo'];
-
-
-
-    			// echo "<pre>";
-    			// print_r($shop);
-    			// echo "</pre>";
-
-    			// exit;
     		
 
         return $this->render($this->action->id,$data);

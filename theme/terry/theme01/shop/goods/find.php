@@ -111,14 +111,14 @@
                         <div  class="el-form-item">
                         	<label class="el-form-item__label" style="width: 120px;">上下架:</label>
                             <div class="el-form-item__content" style="margin-left: 120px;">
-                                <div  role="switch" aria-checked="true" class="el-switch is-checked" style="height: 30px;width:150px;display:flex;justify-content: space-around">
+                                <div  role="switch" aria-checked="true" class="el-switch is-checked" style="height: 30px;width:150px;display:flex;justify-content: space-around;position: relative;">
 									<?php 
 										if($goods['status']==1){
-											echo '<label><input type="radio" name="status" value="1" id="" checked class="shangjia"> 上架</label>
-                                				<label><input type="radio" name="status" id="" value="2" class="xiajia"> 下架</label>';
+											echo '<label class="radio"><input type="radio" name="status" value="1" checked class="shangjia">上架<i></i></label>
+                                				<label class="radio"><input type="radio" name="status" id="" value="2" class="xiajia"> 下架<i></i></label>';
 										}else{
-											echo '<label><input type="radio" name="status" value="1" id="" class="shangjia"> 上架</label>
-                                				<label><input type="radio" name="status" id="" value="2"checked class="xiajia"> 下架</label>';
+											echo '<label class="radio"><input type="radio" name="status" value="1" id="" class="shangjia"> 上架<i></i></label>
+                                				<label class="radio"><input type="radio" name="status" id="" value="2"checked class="xiajia"> 下架<i></i></label>';
 										}
 									?>
                                 </div>
@@ -437,4 +437,52 @@
         margin:1px;
 
     }
+
+    .el-switch .radio {
+        position: relative;
+        display: inline-block;
+        font-weight: 400;
+        color: #0c4757;
+        padding-left: 25px;
+        cursor: pointer;
+    }
+
+    .el-switch .radio input {
+        position: absolute;
+        left: -9999px;
+    }
+
+    .el-switch .radio i {
+        display: block;
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 15px;
+        height: 15px;
+        outline: 0;
+        border: 1px solid #e4e4e4;
+        background: #ffffff;
+        border-radius: 50%;
+        transition: border-color .3s;
+        -webkit-transition: border-color .3s;
+    }
+
+    .el-switch .radio input + i:after {
+        position: absolute;
+        content: '';
+        top: 3px;
+        left: 3px;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background-color: #30A3FE;
+        opacity: 0;
+        transition: opacity .1s;
+        -webkit-transition: opacity .1s;
+    }
+
+    .el-switch .radio input:checked + i:after {
+        opacity: 1;
+    }
+
 </style>

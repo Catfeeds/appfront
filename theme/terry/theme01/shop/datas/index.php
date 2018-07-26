@@ -10,38 +10,13 @@
        </div>
       </div> 
       <ul  class="shuaixuan">
-       <li >
-        <div  class="el-select" style="width: 150px;">
-         <!---->
-         <div class="el-input el-input--suffix">
-          <!---->
-          <input type="text" autocomplete="off" placeholder="最近一周" readonly="readonly" class="el-input__inner" />
-          <!---->
-          <span class="el-input__suffix"><span class="el-input__suffix-inner"><i class="el-select__caret el-input__icon el-icon-arrow-up"></i>
-            <!----></span>
-           <!----></span>
-          <!---->
-         </div>
-         <div class="el-select-dropdown el-popper" style="display: none; min-width: 150px;">
-          <div class="el-scrollbar" style="">
-           <div class="el-select-dropdown__wrap el-scrollbar__wrap" style="margin-bottom: -17px; margin-right: -17px;">
-            <ul class="el-scrollbar__view el-select-dropdown__list">
-             <!---->
-             <li  class="el-select-dropdown__item"><span>1</span></li>
-             <li  class="el-select-dropdown__item"><span>2</span></li>
-             <li  class="el-select-dropdown__item"><span>3</span></li>
-            </ul>
-           </div>
-           <div class="el-scrollbar__bar is-horizontal">
-            <div class="el-scrollbar__thumb" style="transform: translateX(0%);"></div>
-           </div>
-           <div class="el-scrollbar__bar is-vertical">
-            <div class="el-scrollbar__thumb" style="transform: translateY(0%);"></div>
-           </div>
-          </div>
-          <!---->
-         </div>
-        </div></li> 
+       <li>
+           <select name="" id="" class="el-select xiala">
+               <option value="" style="display: none;">最近一周</option>
+               <option value="">1</option>
+               <option value="">2</option>
+           </select>
+        </li>
        <li >时间段选择 
         <div  class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
          <i class="el-input__icon el-range__icon el-icon-time"></i>
@@ -50,7 +25,7 @@
          <input placeholder="结束日期" name="" class="el-range-input" />
          <i class="el-input__icon el-range__close-icon"></i>
         </div></li> 
-       <li ><button  type="button" class="el-button el-button--primary is-round">
+       <li ><button  type="button" class="el-button blue el-button--primary is-round">
          <!---->
          <!----><span>查询</span></button></li>
       </ul> 
@@ -142,19 +117,18 @@
              <input placeholder="结束日期" name="" class="el-range-input" />
              <i class="el-input__icon el-range__close-icon"></i>
             </div></li> 
-           <li  style="margin-top: 5px;"><button  type="button" class="el-button el-button--primary is-round" style="width: 50px; height: 30px; line-height: 5px; font-size: 12px; padding-left: 12px;">
+           <li  style="margin-top: 5px;"><button  type="button" class="el-button blue1 el-button--primary is-round">
              <!---->
              <!----><span> 确定 </span></button></li>
           </ul> 
           <div  class="tu1"></div> 
-          <div >
-           <button  type="button" class="el-button el-button--primary is-round">
-            <!---->
-            <!----><span>导出图片</span></button> 
-           <button  type="button" class="el-button el-button--success is-round">
+          <div style="display: flex;justify-content: center">
+           <button  type="button" class="el-button blue el-button--primary is-round">
+               <span>导出图片</span></button>
+           <button  type="button" class="el-button green el-button--success is-round">
             <!---->
             <!----><span>导出表格</span></button> 
-           <button  type="button" class="el-button el-button--warning is-round">
+           <button  type="button" class="el-button yellow el-button--warning is-round">
             <!---->
             <!----><span>导出报告</span></button>
           </div>
@@ -201,21 +175,17 @@
              <input placeholder="结束日期" name="" class="el-range-input" />
              <i class="el-input__icon el-range__close-icon"></i>
             </div></li> 
-           <li  style="margin-top: 5px;"><button  type="button" class="el-button el-button--primary is-round" style="width: 50px; height: 30px; line-height: 5px; font-size: 12px; padding-left: 12px;">
-             <!---->
-             <!----><span> 确定 </span></button></li>
+           <li  style="margin-top: 5px;"><button  type="button" class="el-button blue1 el-button--primary is-round">
+                   <span>确定</span></button></li>
           </ul> 
           <div  class="tu2"></div> 
-          <div >
-           <button  type="button" class="el-button el-button--primary is-round">
-            <!---->
-            <!----><span>导出图片</span></button> 
-           <button  type="button" class="el-button el-button--success is-round">
-            <!---->
-            <!----><span>导出表格</span></button> 
-           <button  type="button" class="el-button el-button--warning is-round">
-            <!---->
-            <!----><span>导出报告</span></button>
+          <div style="display: flex;justify-content: center">
+           <button  type="button" class="el-button blue el-button--primary is-round">
+            <span>导出图片</span></button>
+           <button  type="button" class="el-button green el-button--success is-round">
+               <span>导出表格</span></button>
+           <button  type="button" class="el-button yellow el-button--warning is-round">
+               <span>导出报告</span></button>
           </div>
          </div> 
          <div  class="contents">
@@ -258,7 +228,7 @@
            <input placeholder="结束日期" name="" class="el-range-input" />
            <i class="el-input__icon el-range__close-icon"></i>
           </div></li> 
-         <li ><button  type="button" class="el-button el-button--primary is-round" style="width: 50px; height: 30px; line-height: 5px; font-size: 12px; padding-left: 12px;">
+         <li ><button  type="button" class="el-button blue1 el-button--primary is-round">
            <!---->
            <!----><span> 确定 </span></button></li>
         </ul>
@@ -297,10 +267,27 @@
     }
     .content .shuaixuan {
         height: 46px;
-        width: 900px;
+        width: 850px;
         display: flex;
         justify-content: space-between;
         line-height: 46px;
+    }
+    .content .shuaixuan .xiala {
+        padding-left: 5px;
+        width: 120px;
+        outline: none;
+        height: 30px;
+        border-radius: 15px;
+        background: #f3faff;
+        border: 2px solid #e5eff8;
+        color: #9eabb5;
+        font-size: 14px;
+    }
+    .shuaixuan .el-select:hover {
+        border-color: #c0c4cc;
+    }
+    .shuaixuan .el-select:focus {
+        border-color: #3CACFE;
     }
     .content .item {
         width: 1000px;
@@ -322,6 +309,7 @@
         height: 30px;
         font-size: 18px;
         line-height: 30px;
+        color: #858B90;
     }
     .item_box .item_box2 {
         height: 35px;
@@ -430,5 +418,46 @@
         width: 100%;
         height: 500px;
         background: url("/public/img/zhexiantu.png") no-repeat center center /100% auto;
+    }
+  /*  .content .blue {
+        width: 112px;
+        height: 33px;
+        background: #30B5FE;
+        border: none;
+        box-shadow: 0 0 8px #30B5FE;
+        padding-top: 10px;
+    }*/
+
+    .content .blue {
+        height: 33px;
+        background: #30B5FE;
+        border: none;
+        box-shadow: 0 0 8px #30B5FE;
+        padding-top: 10px;
+    }
+    .content .blue1{
+        width: 50px;
+        height: 30px;
+        line-height: 5px;
+        font-size: 12px;
+        padding-left: 12px;
+        border: none;
+        background:#30B5FE ;
+        box-shadow: 0 0 8px #30B5FE;
+    }
+    .content .yellow {
+        height: 33px;
+        background: #FAC83A;
+        border: none;
+        box-shadow: 0 0 8px #FAC83A;
+        padding-top: 10px;
+    }
+
+    .content .green {
+        height: 33px;
+        background: #37DF73;
+        border: none;
+        box-shadow: 0 0 8px #37DF73;
+        padding-top: 10px;
     }
 </style>

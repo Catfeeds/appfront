@@ -27,7 +27,7 @@ class LoginController extends AppfrontController
         parent::init();
         // Yii::$service->page->theme->layoutFile = 'category_view.php';
 
-          Yii::$service->page->theme->layoutFile = 'main.php';
+        Yii::$service->page->theme->layoutFile = 'main.php';
     }  
 
     // 登陆页面

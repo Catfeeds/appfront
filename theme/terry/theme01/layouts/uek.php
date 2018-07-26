@@ -77,8 +77,6 @@ $cssOptions = [
             color: #409EFF;
             cursor: default;
         }
-    </style>
-    <style>
         * {
             margin: 0;
             padding: 0;
