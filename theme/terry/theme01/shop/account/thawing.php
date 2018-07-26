@@ -1,6 +1,9 @@
 
   <div  class="main-content">
-   <div  style="width: 1012px; margin: 0px auto;">
+      <?php if($_SESSION[shop_state ]!=2){ ?>
+          <div>店铺未被冻结，该功能暂时无法使用。</div>
+      <?php }else{?>
+          <div  style="width: 1012px; margin: 0px auto;">
     <div   class="content">
      <div  class="biaoti">
        账户管理&middot;
@@ -53,7 +56,17 @@
            <label class="el-form-item__label" style="width: 100px;">审核状态</label>
            <div class="el-form-item__content" style="margin-left: 100px;">
             <div >
-             暂无审核记录
+                <?php if($res){?>
+                    <?php
+                        if($res["status"]==0){
+                            echo "正在等待审核。";
+                        }else{
+                            echo "审核失败";
+                        }
+                    ?>
+                <?php }else{ ?>
+                    暂无审核记录
+                <?php}?>
             </div>
             
            </div>
@@ -68,6 +81,7 @@
      </div>
     </div>
    </div>
+      <?php } ?>
   </div>
 <style>
     .content {

@@ -388,6 +388,11 @@ $cssOptions = [
             color: #409EFF;
             cursor: default;
         }
+        .ddd{
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
     </style>
     <?php $this->beginPage() ?>
     <!doctype html>
@@ -426,9 +431,9 @@ $cssOptions = [
                     </a></li>
             </ul>
             <div class="header-right">
-                <div class="adminname">
+                <div class="adminname ddd">
                     <div class="admin-img"><img src="<?=$_SESSION[shop_logo]?>" alt=""></div>
-                    <span class="name1"><?=$_SESSION['shop_name']?></span></div>
+                    <span class="name1" title="<?= $_SESSION['shop_name'] ?>"><?=$_SESSION['shop_name']?></span></div>
                 <div class="adminname">
                     <div class="clearimg"></div>
                     <span class="name2">清除缓存</span></div>

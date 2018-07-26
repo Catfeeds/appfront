@@ -61,7 +61,19 @@ class AccountController extends PublicsController
     // 账户解冻
 
     public function actionThawing(){
-        return $this->render($this->action->id);
+
+        $datas = [];
+        if($_SESSION["shop_state"]==2){
+
+            $res = Yii::$app->db->createCommand("select thaw_info.*,shop.freezing_time,shop.freezing_cause from thaw_info,shop where thaw_info.uid=shop.uid and shop.uid={$_SESSION["uid"]} order by id desc")->queryOne();
+
+            if($res){
+                $datas["res"] = $res;
+            }
+
+        }
+
+        return $this->render($this->action->id,$datas);
     }
 
 
