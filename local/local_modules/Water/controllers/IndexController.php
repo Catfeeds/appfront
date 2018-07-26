@@ -9,6 +9,7 @@
 
 namespace appfront\local\local_modules\water\controllers;
 
+use appfront\local\local_modules\shop\controllers\PublicsController;
 use fecshop\app\appfront\modules\AppfrontController;
 use Yii;
 use yii\web\Response;
@@ -21,7 +22,7 @@ use yii\mongodb\Query;
  */
 
 // 水司首页控制器
-class IndexController extends AppfrontController
+class IndexController extends PublicsController
 {
 
     public function init()
