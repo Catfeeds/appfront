@@ -30,13 +30,11 @@ class IndexController extends PublicsController
     }
     
     public function actionIndex(){
-    	if (!$_SESSION['shop_id']) {
-            return $this->redirect("/shop/login/index");
-    	}
+    	
 
     	// 获取shop_id
 
-    	$shop_id=$_SESSION['shop_id'];
+    	echo $shop_id=$_SESSION['shop_id'];
 
 
     	// 获取商品信息
@@ -49,6 +47,8 @@ class IndexController extends PublicsController
     	// 数据格式化
 
     	$data['shop']=$shop;
+
+
 
     	$_SESSION['shop_name']=$shop['shop_name'];
     	$_SESSION['shop_logo']=$shop['shop_logo'];
