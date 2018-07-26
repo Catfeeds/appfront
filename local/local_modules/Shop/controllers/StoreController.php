@@ -267,7 +267,7 @@ class StoreController extends PublicsController
         $expiration_date = strtotime($data[1]);
         $coupon_code = "CO".time().$_SESSION["shop_id"];
 
-        $res = Yii::$app->db->createCommand("insert into sales_coupon (uid,shop_id,start_date,coupon_name,coupon_code,expiration_date,users_per_customer,conditions,discount,goods,status) values ('{$_SESSION['uid']}','{$_SESSION["shop_id"]}','$start_date','{$post['coupon_name']}','$coupon_code','$expiration_date','1','{$post["conditions"]}','{$post["discount"]}','$goods'),0")->execute();
+        $res = Yii::$app->db->createCommand("insert into sales_coupon (uid,shop_id,start_date,coupon_name,coupon_code,expiration_date,users_per_customer,conditions,discount,goods,status) values ('{$_SESSION['uid']}','{$_SESSION["shop_id"]}','$start_date','{$post['coupon_name']}','$coupon_code','$expiration_date','1','{$post["conditions"]}','{$post["discount"]}','$goods',0)")->execute();
 
         return $this->redirect("/shop/store/couponindex");
     }
