@@ -9,7 +9,7 @@
 
 namespace appfront\local\local_modules\water\controllers;
 
-use appfront\local\local_modules\shop\controllers\PublicsController;
+use appfront\local\local_modules\water\controllers\PublicsController;
 use fecshop\app\appfront\modules\AppfrontController;
 use Yii;
 use yii\web\Response;

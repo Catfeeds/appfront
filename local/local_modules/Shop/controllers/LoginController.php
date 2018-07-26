@@ -85,8 +85,6 @@ class LoginController extends AppfrontController
                 return $this->redirect(["/apply/apply/index"]);
             }
             
-            
-            
         }else{
             return $this->redirect(["login/index"]);
         }
