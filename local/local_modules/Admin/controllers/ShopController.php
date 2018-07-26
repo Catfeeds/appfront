@@ -36,8 +36,20 @@ class ShopController extends AppfrontController
         return $this->render($this->action->id);
     }
 
+
+//=========================水司管理===============================
+
     //水司
     public function actionWater(){
         return $this->render($this->action->id);
+    }
+
+//=========================分类管理===============================
+
+    // 分类管理
+
+    public function actionClasslist(){
+        return $this->render($this->action->id);
+
     }
 }

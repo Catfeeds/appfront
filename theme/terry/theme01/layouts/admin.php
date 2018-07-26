@@ -2514,7 +2514,7 @@ $cssOptions = [
 
         // 筛选左侧菜单
 
-       /* let asd=document.querySelectorAll(".aside li");
+        let asd=document.querySelectorAll(".aside-list li");
 
         let str1=url[5];
         let arr1=str1.split("?");
@@ -2528,7 +2528,7 @@ $cssOptions = [
             if (n>=1) {
                 asd[i].className='active';
             };
-        };*/
+        };
 
         let urls = "<?php echo $_SERVER['SERVER_NAME'];?>";
     </script>
