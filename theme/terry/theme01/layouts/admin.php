@@ -258,7 +258,7 @@ $cssOptions = [
     }
 
     /*搜索框*/
-    .adminmannager-search input {
+    .adminmannager-search input{
         width: 200px;
         height: 32px;
         border: 2px solid #ebf6ff;
@@ -271,6 +271,7 @@ $cssOptions = [
         padding: 0 10px;
         box-sizing: border-box;
     }
+
 
     /*会员管理下拉框*/
     .adminmannager-search select {
@@ -304,27 +305,28 @@ $cssOptions = [
         pointer-events: none;
     }*/
 
-    .search-img {
+    .adminmannager-search .search-img {
         width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: url('/public/adminimg/search.png') no-repeat center center/60% 60%;
+        margin:0;
+        border:none;
+        padding: 0;
+    }
+    .adminmannager-search .indexsearch{
+        width:  40px;
         height: 40px;
         margin-left: 40px;
         margin-top: 5px;
         border-radius: 50%;
-        background: #3bacfe;
         float: left;
+        background: #41b2fc
     }
-
     .search-img, .addadmin:hover {
         cursor: pointer;
     }
 
-    .search-img img {
-        width: 20px;
-        height: 20px;
-        display: block;
-        margin: 0 auto;
-        margin-top: 10px;
-    }
 
     .addadmin {
         width: 150px;
@@ -337,6 +339,7 @@ $cssOptions = [
         border: none;
         font-size: 14px;
         color: #fff;
+        outline: none;
     }
 
     /*管理员列表*/

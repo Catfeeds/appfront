@@ -8,20 +8,25 @@
             <span>·&nbsp;<a href="/shuisic" style="color: #30d366;">商家</a></span>
         </div>
         <div class="adminmannager-search">
-            <div class="xiala">
-                <span class="search-ID"  style="margin-left:0px;">地区</span>
-                <select name="member-level" id="member-level">
-                    <option value="">全部</option>
-                </select>
-                <div class="xialaimg1"></div>
-            </div>
-            <span style="margin-left:10px;">管理员名称</span>
-            <input type="text">
-            <span class="search-ID">ID</span>
-            <input type="text">
-            <div class="search-img">
-                <img src="/public/adminimg/search.png" alt="">
-            </div>
+            <form action="<?= Yii::$service->url->getUrl('/admin/index/member') ?>" method="get">
+                <div class="xiala">
+                    <span class="search-ID"  style="margin-left:0px;">地区</span>
+                    <select name="member-level" id="member-level">
+                        <?php foreach ($province as $v){?>
+                            <option value="<?php echo $v['province_name'];?>"><?php echo $v['province_name'];?></option>
+                        <?php }?>
+
+                    </select>
+                    <div class="xialaimg1"></div>
+                </div>
+                <span style="margin-left:10px;">管理员名称</span>
+                <input type="text">
+                <span class="search-ID">ID</span>
+                <input type="text">
+                <div class="indexsearch">
+                    <input class="search-img" type="submit" value="">
+                </div>
+            </form>
         </div>
         <!--管理员列表-->
         <div class="admin-table">
