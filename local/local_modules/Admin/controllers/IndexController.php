@@ -85,7 +85,7 @@ class IndexController extends AppfrontController
         {
             $data['r'] = $r;
             $res = Yii::$app->db->createCommand("insert into admin_user (username,password_hash,email,person,status) values ('$username','$password_hash','$email','$person','$status')")->execute();
-            return $this->redirect(["/admin/index/index"],$data);
+            return $this->redirect(["/admin/index/index"]);
         }
 
     }

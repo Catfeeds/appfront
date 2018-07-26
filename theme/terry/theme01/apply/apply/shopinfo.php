@@ -12,7 +12,6 @@
          <i class="el-step__line-inner" style="transition-delay: 0ms; border-width: 1px; width: 100%;"></i>
         </div>
         <div class="el-step__icon is-text">
-         
          <div class="el-step__icon-inner">
           1
          </div>
@@ -92,84 +91,325 @@
        <div class="admin-tablenamebox" style="margin-top: 18px;"></div> 
        <span class="admin-tablename2" style="margin-left: 6px; font-size: 14px;">店铺经营信息</span>
       </div> 
-      <form class="el-form">
+      <form id="el-form" class="el-form" method="post" enctype="multipart/form-data" action="">
+      <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>" />
        <div class="el-form-item">
-        <label class="el-form-item__label" style="width: 80px;">企业名称</label>
+        <label class="el-form-item__label" style="width: 80px;">店铺名称</label>
         <div class="el-form-item__content" style="margin-left: 80px;">
          <div class="el-input">
-          
-          <input type="text" autocomplete="off" class="el-input__inner" />
-          
-          
-          
+          <input type="text" name="shop_name" autocomplete="off" class="el-input__inner" value="<?php echo $shopinfo['post']['shop_name']?>"/>
          </div>
-         
         </div>
        </div> 
-       <div class="el-form-item">
-        <label class="el-form-item__label" style="width: 80px;">店铺分类</label>
-        <div class="el-form-item__content" style="margin-left: 80px;">
-         <div class="el-select">
+       <div  class="el-form-item nnnn">
+         <label class="el-form-item__label" style="width: 80px;">店铺logo</label><!-- shop_logo -->
+         <div class="el-form-item__content" style="margin-left: 80px;">
+          <div  style="width: 500px; height: 250px; 
+  		<?php if($shopinfo['img'][0]){?>
+  		background:url(http://img.uekuek.com/media/catalog/product/<?php echo $shopinfo['img'][0];?>) no-repeat;
+  		<?php }else if($shopinfo['imgs']['img0']){?>
+	  	background: url(http://img.uekuek.com/media/catalog/product/<?php echo $shopinfo['imgs']['img0'];?>) no-repeat;
+	  	<?php }else{?>
+	  	 background: rgb(243, 250, 255);
+	  	<?php }?>
+	  position: relative;">
+	  	   <input type="hidden" name="img0" class="img0" value="<?php echo $shopinfo['img'][0];?>"/>
+           <input  type="file" multiple="multiple" class="file" name="file[]" onchange="uploads(this)"/>
+           <a  href="javascript:0" style="pointer-events: none; display: block; width: 50px; height: 50px; border-radius: 50%; background: rgb(48, 163, 254); position: absolute; margin: auto 210px; top: 0px; bottom: 0px; font-size: 30px; color: rgb(255, 255, 255); line-height: 50px; text-align: center;">+</a>
+          </div> 
           
-          <div class="el-input el-input--suffix">
+         </div>
+        </div>
+        <div  class="el-form-item nnnn">
+         <label class="el-form-item__label" style="width: 80px;">店铺横幅</label><!-- shop_banner -->
+         <div class="el-form-item__content" style="margin-left: 80px;">
+          <div  style="width: 500px; height: 250px;
+	   <?php if($shopinfo['img'][1]){?>
+  		background:url(http://img.uekuek.com/media/catalog/product/<?php echo $shopinfo['img'][1];?>) no-repeat;
+  		<?php }else if($shopinfo['imgs']['img1']){?>
+	  	background: url(http://img.uekuek.com/media/catalog/product/<?php echo $shopinfo['imgs']['img1'];?>) no-repeat;
+	  	<?php }else{?>
+	  	 background: rgb(243, 250, 255);
+	  	<?php }?>
+	  position: relative;">
+	  	   <input type="hidden" name="img1" class="img1" value="<?php echo $shopinfo['img'][1];?>"/>
+           <input  type="file" multiple="multiple" class="file" name="file[]" onchange="uploads(this)"/>
+           <a  href="javascript:0" style="pointer-events: none; display: block; width: 50px; height: 50px; border-radius: 50%; background: rgb(48, 163, 254); position: absolute; margin: auto 210px; top: 0px; bottom: 0px; font-size: 30px; color: rgb(255, 255, 255); line-height: 50px; text-align: center;">+</a>
+          </div> 
+          
+         </div>
+        </div>
+        <div  class="el-form-item nnnn">
+         <label class="el-form-item__label" style="width: 80px;">店铺头像</label><!-- shop_avatar -->
+         <div class="el-form-item__content" style="margin-left: 80px;">
+          <div  style="width: 500px; height: 250px; 
+	   <?php if($shopinfo['img'][2]){?>
+  		background:url(http://img.uekuek.com/media/catalog/product/<?php echo $shopinfo['img'][2];?>) no-repeat;
+  		<?php }else if($shopinfo['imgs']['img2']){?>
+	  	background: url(http://img.uekuek.com/media/catalog/product/<?php echo $shopinfo['imgs']['img2'];?>) no-repeat;
+	  	<?php }else{?>
+	  	 background: rgb(243, 250, 255);
+	  	<?php }?>
+	  position: relative;">
+	  	   <input type="hidden" name="img2" class="img2" value="<?php echo $shopinfo['img'][2];?>"/>
+           <input  type="file" multiple="multiple" class="file" name="file[]" onchange="uploads(this)"/>
+           <a  href="javascript:0" style="pointer-events: none; display: block; width: 50px; height: 50px; border-radius: 50%; background: rgb(48, 163, 254); position: absolute; margin: auto 210px; top: 0px; bottom: 0px; font-size: 30px; color: rgb(255, 255, 255); line-height: 50px; text-align: center;">+</a>
+          </div> 
+          
+         </div>
+        </div>
+       <div  class="el-form-item">
+         <label class="el-form-item__label" style="width: 80px;">店铺所在地</label>
+         <!-- province_id  city_id   district_id -->
+         <div class="el-form-item__content" style="margin-left: 80px;">
+          <div  class="el-select">
            
-           <input type="text" autocomplete="off" placeholder="请选择" readonly="readonly" class="el-input__inner" />
-           
-           <span class="el-input__suffix"><span class="el-input__suffix-inner"><i class="el-select__caret el-input__icon el-icon-arrow-up"></i>
+           <div class="el-input el-input--suffix">
+            
+            <input type="text" autocomplete="off" placeholder="请选择" readonly="readonly" class="el-input__inner" />
+            
+            <span class="el-input__suffix"><span class="el-input__suffix-inner">
+            <select name="province_id" class="province">
+            	<option></option>
+            <?php 
+            	foreach ($province as $k=>$v){
+            ?>
+            		<option value="<?php echo $v['province_id']?>"><?php echo $v['province_name']?></option>
+            <?php }?>
+            	
+            </select>
+            <i class="el-select__caret el-input__icon el-icon-arrow-up"></i>
+              </span>
              </span>
-            </span>
-           
-          </div>
-          <div class="el-select-dropdown el-popper" style="display: none; min-width: 279px;">
-           <div class="el-scrollbar" style="">
-            <div class="el-select-dropdown__wrap el-scrollbar__wrap" style="margin-bottom: -17px; margin-right: -17px;">
-             <ul class="el-scrollbar__view el-select-dropdown__list">
-              
-              <li class="el-select-dropdown__item"><span style="float: left;">北京</span> <span style="float: right; color: rgb(132, 146, 166); font-size: 13px;">Beijing</span></li>
-              <li class="el-select-dropdown__item"><span style="float: left;">上海</span> <span style="float: right; color: rgb(132, 146, 166); font-size: 13px;">Shanghai</span></li>
-              <li class="el-select-dropdown__item"><span style="float: left;">南京</span> <span style="float: right; color: rgb(132, 146, 166); font-size: 13px;">Nanjing</span></li>
-              <li class="el-select-dropdown__item"><span style="float: left;">成都</span> <span style="float: right; color: rgb(132, 146, 166); font-size: 13px;">Chengdu</span></li>
-              <li class="el-select-dropdown__item"><span style="float: left;">深圳</span> <span style="float: right; color: rgb(132, 146, 166); font-size: 13px;">Shenzhen</span></li>
-              <li class="el-select-dropdown__item"><span style="float: left;">广州</span> <span style="float: right; color: rgb(132, 146, 166); font-size: 13px;">Guangzhou</span></li>
-             </ul>
-            </div>
-            <div class="el-scrollbar__bar is-horizontal">
-             <div class="el-scrollbar__thumb" style="transform: translateX(0%);"></div>
-            </div>
-            <div class="el-scrollbar__bar is-vertical">
-             <div class="el-scrollbar__thumb" style="transform: translateY(0%);"></div>
-            </div>
+            
            </div>
+           <div class="el-select-dropdown el-popper" style="display: none; min-width: 279px;">
+            <div class="el-scrollbar" style="">
+             <div class="el-select-dropdown__wrap el-scrollbar__wrap" style="margin-bottom: -17px; margin-right: -17px;">
+             </div>
+             <div class="el-scrollbar__bar is-horizontal">
+              <div class="el-scrollbar__thumb" style="transform: translateX(0%);"></div>
+             </div>
+             <div class="el-scrollbar__bar is-vertical">
+              <div class="el-scrollbar__thumb" style="transform: translateY(0%);"></div>
+             </div>
+            </div>
+            
+           </div>
+          </div> 
+          <div  class="el-select">
            
+           <div class="el-input el-input--suffix">
+            
+            <input type="text" autocomplete="off" placeholder="请选择" readonly="readonly" class="el-input__inner" />
+            
+            <span class="el-input__suffix"><span class="el-input__suffix-inner">
+            <select name="city_id" class="city"><option></option>
+            </select>
+            
+            <i class="el-select__caret el-input__icon el-icon-arrow-up"></i>
+              </span>
+             </span>
+            
+           </div>
+           <div class="el-select-dropdown el-popper" style="display: none; min-width: 279px;">
+            <div class="el-scrollbar" style="">
+             <div class="el-select-dropdown__wrap el-scrollbar__wrap" style="margin-bottom: -17px; margin-right: -17px;">
+             </div>
+             <div class="el-scrollbar__bar is-horizontal">
+              <div class="el-scrollbar__thumb" style="transform: translateX(0%);"></div>
+             </div>
+             <div class="el-scrollbar__bar is-vertical">
+              <div class="el-scrollbar__thumb" style="transform: translateY(0%);"></div>
+             </div>
+            </div>
+            
+           </div>
+          </div> 
+          <div  class="el-select">
+           
+           <div class="el-input el-input--suffix">
+            
+            <input type="text" autocomplete="off" placeholder="请选择" readonly="readonly" class="el-input__inner" />
+            
+            <span class="el-input__suffix"><span class="el-input__suffix-inner">
+            <select name="district_id" class="district"><option></option>
+            </select>
+            <i class="el-select__caret el-input__icon el-icon-arrow-up"></i>
+              </span>
+             </span>
+            
+           </div>
+           <div class="el-select-dropdown el-popper" style="display: none; min-width: 279px;">
+            <div class="el-scrollbar" style="">
+             <div class="el-select-dropdown__wrap el-scrollbar__wrap" style="margin-bottom: -17px; margin-right: -17px;">
+             </div>
+             <div class="el-scrollbar__bar is-horizontal">
+              <div class="el-scrollbar__thumb" style="transform: translateX(0%);"></div>
+             </div>
+             <div class="el-scrollbar__bar is-vertical">
+              <div class="el-scrollbar__thumb" style="transform: translateY(0%);"></div>
+             </div>
+            </div>
+            
+           </div>
           </div>
          </div>
-         
+        </div>
+        <script type="text/javascript">
+			var proid="<?php echo $shopinfo['post']['province_id']?>";
+			var cityid="<?php echo $shopinfo['post']['city_id']?>";
+			var distid="<?php echo $shopinfo['post']['district_id']?>";
+			$(function(){
+				if(proid>0){
+					$(".province").val(proid);
+					changePro(proid);
+					if(cityid>0){
+						$(".city").val(cityid);
+						changeCity(cityid);
+						if(distid>0){
+							$(".district").val(distid);
+						}
+					}
+				}
+			})
+			$(".province").change(function(){
+				changePro($(this).val());
+				
+			})
+			$(".city").change(function(){
+				changeCity($(this).val());
+			})
+			function changePro(province_id){
+				$.ajax({
+					type:"get",
+					url: "<?= Yii::$service->url->getUrl('apply/apply/getcity') ?>",
+					data:{"province_id":province_id},
+					async:false,
+					success:function(msg){
+						var row =JSON.parse(msg);
+						$(".city").find(".aa").remove();
+						$(".district").find(".aa").remove();
+						$.each(row,function(k,v){
+							$(".city").append("<option value='"+v.city_id+"' class='aa'>"+v.city_name+"</option>");
+						})
+					}
+				})
+			}
+			function changeCity(city_id){
+				$.ajax({
+					type:"get",
+					url: "<?= Yii::$service->url->getUrl('apply/apply/getdistrict') ?>",
+					data:{"city_id":city_id},
+					async:false,
+					success:function(msg){
+						var row =JSON.parse(msg);
+						$(".district").find(".aa").remove();
+						$.each(row,function(k,v){
+							$(".district").append("<option value='"+v.district_id+"' class='aa' >"+v.district_name+"</option>");
+						})
+					}
+				})
+			}
+			
+			
+        </script>
+        <div class="el-form-item">
+	        <label class="el-form-item__label" style="width: 80px;">店铺默认配送区域</label>
+	        <div class="el-form-item__content" style="margin-left: 80px;">
+	         <div class="el-input">
+	          <input type="text" name="shop_region" autocomplete="off" class="el-input__inner"  value="<?php echo $shopinfo['post']['shop_region']?>"/>
+	         </div>
+	        </div>
+	       </div>
+	       
+	        <div class="el-form-item">
+	        <label class="el-form-item__label" style="width: 80px;">店铺公众号</label>
+	        <div class="el-form-item__content" style="margin-left: 80px;">
+	         <div class="el-input">
+	          <input type="text" name="shop_qrcode" autocomplete="off" class="el-input__inner"  value="<?php echo $shopinfo['post']['shop_qrcode']?>"/>
+	         </div>
+	        </div>
+	       </div>
+       <div class="el-form-item">
+        <label class="el-form-item__label" style="width: 80px;">详细地址</label>
+        <div class="el-form-item__content" style="margin-left: 80px;">
+         <div class="el-input">
+          <input type="text" name="shop_address" autocomplete="off" class="el-input__inner" value="<?php echo $shopinfo['post']['shop_address']?>"/>
+         </div>
         </div>
        </div> 
        <div class="el-form-item">
-        <label class="el-form-item__label" style="width: 80px;">店铺公告</label>
+        <label class="el-form-item__label" style="width: 80px;">邮政编码</label>
         <div class="el-form-item__content" style="margin-left: 80px;">
-         <div style="width: 800px; height: 300px; background: rgb(234, 246, 255);"></div>
-         
+         <div class="el-input">
+          <input type="text" name="shop_zip" autocomplete="off" class="el-input__inner" value="<?php echo $shopinfo['post']['shop_zip']?>"/>
+         </div>
         </div>
        </div>
-      </form> 
+       <div class="el-form-item">
+        <label class="el-form-item__label" style="width: 80px;">店铺关闭原因</label>
+        <div class="el-form-item__content" style="margin-left: 80px;">
+         <div class="el-input">
+          <input type="text" name="shop_close_info" autocomplete="off" class="el-input__inner" value="<?php echo $shopinfo['post']['shop_close_info']?>"/>
+         </div>
+        </div>
+       </div>
+       <div class="el-form-item">
+        <label class="el-form-item__label" style="width: 80px;">店铺seo关键字</label>
+        <div class="el-form-item__content" style="margin-left: 80px;">
+         <div class="el-input">
+          <input type="text" name="shop_keywords" autocomplete="off" class="el-input__inner" value="<?php echo $shopinfo['post']['shop_keywords']?>"/>
+         </div>
+        </div>
+       </div>
+       <div class="el-form-item">
+        <label class="el-form-item__label" style="width: 80px;">店铺seo描述</label>
+        <div class="el-form-item__content" style="margin-left: 80px;">
+         <div class="el-input">
+          <input type="text" name="shop_description" autocomplete="off" class="el-input__inner" value="<?php echo $shopinfo['post']['shop_description']?>"/>
+         </div>
+        </div>
+       </div>
+       <div class="el-form-item">
+        <label class="el-form-item__label" style="width: 80px;">商家电话</label>
+        <div class="el-form-item__content" style="margin-left: 80px;">
+         <div class="el-input">
+          <input type="text" name="shop_phone" autocomplete="off" class="el-input__inner" value="<?php echo $shopinfo['post']['shop_phone']?>"/>
+         </div>
+        </div>
+       </div>
+       <script>
+                    function uploads(obj) {
+                    	var file = obj.files[0];
+
+                        if (window.FileReader) {
+                            var reader = new FileReader();
+                            reader.readAsDataURL(file);
+                            //监听文件读取结束后事件
+                            reader.onloadend = function (e) {
+                            	$(obj).parent("div").css({
+                                    "background": "url("+e.target.result+") no-repeat",
+                                });
+                            };
+                        }
+                    }
+
+                </script>
+        </form>
       <div style="margin-top: 50px;">
        <div style="width: 800px; display: flex; justify-content: space-around;">
         
-        <a href="<?= Yii::$service->url->getUrl('apply/apply/companyinfo') ?>">
-            <button type="button" class="el-button el-button--primary is-round">
+            <button  type="button" class="el-button el-button--primary is-round" onclick='shopload("<?= Yii::$service->url->getUrl('apply/apply/companyinfo') ?>")'>
                 <span>上一步</span>
             </button>
-        </a> 
         
-        <a href="<?= Yii::$service->url->getUrl('apply/apply/waitaudit') ?>">
-            <button type="button" class="el-button el-button--primary is-round">
+            <button type="button" class="el-button el-button--primary is-round" onclick='shopload("<?= Yii::$service->url->getUrl('apply/apply/waitaudit') ?>")'>
                 <span>下一步</span>
             </button>
-        </a>
        </div>
       </div>
+     
      </div>
     </div>
    </div> 
@@ -178,5 +418,14 @@
    </div>
   </div>
   <script>
-
+  	function shopload(url){
+  		$("#el-form").attr("action",url);
+  		$("#el-form").submit();
+  	}
+	/* $(".el-button").onclick()
+  
+	$("#el-form").submit
+	$("form").submit(function(e){
+		  alert("Submitted");
+		}); */
   </script>
