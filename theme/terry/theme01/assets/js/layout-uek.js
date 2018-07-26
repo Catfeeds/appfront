@@ -1,7 +1,6 @@
     var arrs = {
         goods: [
             {"name":"商品列表","url":"/shop/goods/index"},
-            // {"name":"分类管理","url":"/sh op/goods/categorylist"},
             {"name":"用户评价","url":"/shop/goods/commentlist"}
         ],
         orders: [
@@ -17,7 +16,7 @@
             // {"name":"咨询管理","url":""}
         ],
         account: [
-            {"name":"实名认证","url":"/shop/account/realname"},
+            {"name":"账户信息","url":"/shop/account/realname"},
             {"name":"账单列表","url":"/shop/account/index"},
             {"name":"资金列表","url":"/shop/account/money"},
             {"name":"账户解冻","url":"/shop/account/thawing"}

@@ -22,7 +22,7 @@ use yii\mongodb\Query;
  */
 
 // 水司首页控制器
-class IndexController extends PublicsController
+class StoreController extends PublicsController
 {
 
     public function init()
@@ -31,32 +31,31 @@ class IndexController extends PublicsController
         // 加载模板页面
         Yii::$service->page->theme->layoutFile = 'water.php';
     }
-    
+
+    //返回店铺信息页面
     public function actionIndex(){
 
-        // 获取shop_id
 
-        echo $shop_id=$_SESSION['shop_id'];
+        return $this->render($this->action->id);
 
+    }
 
-        // 获取商品信息
-
-        $sql = "select * from shop where shop_id = $shop_id";
-
-        $shop = Yii::$app->db->createCommand($sql)->queryOne();
+    //返回店铺图片设置页面
+    public function actionSetimg(){
 
 
-        // 数据格式化
+        return $this->render($this->action->id);
 
-        $data['shop']=$shop;
+    }
 
-
-
-        $_SESSION['shop_name']=$shop['shop_name'];
-        $_SESSION['shop_logo']=$shop['shop_logo'];
+    //返回优惠卷管理首页
+    public function actionCouponindex(){
 
 
-        return $this->render($this->action->id,$data);
+        $datas["res"] = [];
+        $datas["pagination"] = [];
+
+        return $this->render($this->action->id,$datas);
 
     }
     

@@ -21,8 +21,8 @@ use yii\mongodb\Query;
  * @since 1.0
  */
 
-// 水司首页控制器
-class IndexController extends PublicsController
+// 水司订单管理控制器
+class OrdersController extends PublicsController
 {
 
     public function init()
@@ -31,33 +31,32 @@ class IndexController extends PublicsController
         // 加载模板页面
         Yii::$service->page->theme->layoutFile = 'water.php';
     }
-    
+
+    //返回维修服务订单页面
     public function actionIndex(){
 
-        // 获取shop_id
-
-        echo $shop_id=$_SESSION['shop_id'];
-
-
-        // 获取商品信息
-
-        $sql = "select * from shop where shop_id = $shop_id";
-
-        $shop = Yii::$app->db->createCommand($sql)->queryOne();
-
-
-        // 数据格式化
-
-        $data['shop']=$shop;
-
-
-
-        $_SESSION['shop_name']=$shop['shop_name'];
-        $_SESSION['shop_logo']=$shop['shop_logo'];
-
-
-        return $this->render($this->action->id,$data);
+        return $this->render($this->action->id);
 
     }
-    
+
+    //返回商品订单页面
+    public function actionShop(){
+
+        return $this->render($this->action->id);
+
+    }
+
+    //返回纠纷列表页面
+    public function actionDispute(){
+
+        return $this->render($this->action->id);
+
+    }
+
+    //返回缺货列表页面
+    public function actionLack(){
+
+        return $this->render($this->action->id);
+
+    }
 }
