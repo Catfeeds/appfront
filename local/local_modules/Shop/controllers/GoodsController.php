@@ -187,8 +187,6 @@ class GoodsController extends PublicsController
 
         $folder ='../../appimage/common/media/catalog/product/';
         
-
-         
         $file=$_FILES['file'];
 
         // 获取用户上传的数量
