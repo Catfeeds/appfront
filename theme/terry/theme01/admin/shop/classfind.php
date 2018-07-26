@@ -204,9 +204,10 @@
 
                                     }
                                 </style>
-                                <div class="addImg">+</div>
+                                <div class="addImg"><img src="http://img.uekuek.com/media/catalog/<?=$class[img]?>" alt=""></div>
                                 <input onchange="uploads(this)" type="file" name="img" style="display:none" id="files">
                             </div>
+                            <input type="hidden" name="oldimg" value="<?=$class['img']?>">
                         </div>
                     </div>
 
@@ -214,7 +215,7 @@
                         <label class="el-form-item__label" style="width: 150px;">*分类排序</label>
                         <div class="el-form-item__content" style="margin-left: 150px;">
                             <div class="el-input" style="width: 500px;">
-                                <input type="text" name="sort" value="<?=$value['sort']?>" placeholder="请输入分类的排序，数值越大越靠前" class="el-input__inner">
+                                <input type="text" name="sort" value="<?=$class['sort']?>" placeholder="请输入分类的排序，数值越大越靠前" class="el-input__inner">
                             </div>
                         </div>
                     </div>

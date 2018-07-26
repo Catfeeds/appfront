@@ -60,6 +60,7 @@ class OrdersController extends PublicsController
         }else{
             $sql = " select sales_flat_order.*,sales_coupon.* from sales_flat_order,sales_coupon where sales_flat_order.shop_id={$_SESSION["shop_id"]} and sales_flat_order.coupon_code=sales_coupon.coupon_code limit $pagination->offset , $pagination->limit";
         }
+
         $arr = Yii::$app->db->createCommand($sql)->queryAll();
 
         $sql = "select * from sales_flat_order_item where order_id in (";
@@ -80,6 +81,8 @@ class OrdersController extends PublicsController
         };
         $all = Yii::$app->db->createCommand("select o.order_status from sales_flat_order o where shop_id='{$_SESSION["shop_id"]}'")->queryAll();
 
+               
+            
         //查询所有的
         $datas["orders"] = $arr;
         $datas["pagination"] = $pagination;
