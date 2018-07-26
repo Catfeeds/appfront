@@ -405,23 +405,26 @@ $cssOptions = [
         <div class="aside"></div>
         <div class="header">
             <ul>
-                <li id="index"><a href="<?= Yii::$service->url->getUrl('shop/index/index') ?>"
+                <li id="index"><a href="<?= Yii::$service->url->getUrl('water/index/index') ?>"
                                   class="router-link-exact-active router-link-active">
                         首页
                     </a></li>
-                <li id="goods"><a href="<?= Yii::$service->url->getUrl('shop/goods/index') ?>" class="">
+                <li id="service"><a href="<?= Yii::$service->url->getUrl('water/service/index') ?>" class="">
+                        维修服务
+                    </a></li>
+                <li id="goods"><a href="<?= Yii::$service->url->getUrl('water/goods/index') ?>" class="">
                         商品管理
                     </a></li>
-                <li id="orders"><a href="<?= Yii::$service->url->getUrl('shop/orders/index') ?>" class="">
+                <li id="orders"><a href="<?= Yii::$service->url->getUrl('water/orders/index') ?>" class="">
                         订单管理
                     </a></li>
-                <li id="store"><a href="<?= Yii::$service->url->getUrl('shop/store/index') ?>" class="">
+                <li id="store"><a href="<?= Yii::$service->url->getUrl('water/store/index') ?>" class="">
                         店铺管理
                     </a></li>
-                <li id="account"><a href="<?= Yii::$service->url->getUrl('shop/account/index') ?>" class="">
+                <li id="account"><a href="<?= Yii::$service->url->getUrl('water/account/index') ?>" class="">
                         账户管理
                     </a></li>
-                <li id="datas"><a href="<?= Yii::$service->url->getUrl('shop/datas/index') ?>" class="">
+                <li id="datas"><a href="<?= Yii::$service->url->getUrl('water/datas/index') ?>" class="">
                         数据统计
                     </a></li>
             </ul>
@@ -433,7 +436,7 @@ $cssOptions = [
                     <div class="clearimg"></div>
                     <span class="name2">清除缓存</span></div>
                 <div class="adminname">
-                    <a href="<?= Yii::$service->url->getUrl("/shop/login/out") ?>">
+                    <a href="<?= Yii::$service->url->getUrl("/water/login/out") ?>">
                         <div class="out"></div>
                         <span class="name3 tuichu">退出</span></div>
                 </a>

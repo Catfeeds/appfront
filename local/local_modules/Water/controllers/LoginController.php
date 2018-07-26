@@ -7,7 +7,7 @@
  * @license http://www.fecshop.com/license/
  */
 
-namespace appfront\local\local_modules\shop\controllers;
+namespace appfront\local\local_modules\water\controllers;
 
 use fecshop\app\appfront\modules\AppfrontController;
 use Yii;
@@ -52,37 +52,18 @@ class LoginController extends AppfrontController
         $password_hash = $req->post(password_hash);
         $firstname = $req->post(firstname);
 
-        $sql = "select customer.* from customer where customer.firstname='$firstname'";
+        $sql = "select customer.*,shop.shop_id,shop.shop_type from customer,shop where customer.firstname='$firstname' and customer.id=shop.uid";
         $res = Yii::$app->db->createCommand($sql)->queryOne();
         if(password_verify($password_hash,$res["password_hash"])){
-            // 保存用户基本信息
             $_SESSION["login"] = "yes";
             $_SESSION["uid"] = $res["id"];
+            $_SESSION["shop_id"] = $res["shop_id"];
             $_SESSION["admin_name"] = $firstname;
             $_SESSION["time"] = time();
-            $sql = "select shop.* from shop where shop.uid=$res[id];";
-
-            $res2 = Yii::$app->db->createCommand($sql)->queryOne();
-
-            if ($res2) {
-                // 商家
-
-                $_SESSION["shop_id"] = $res2['shop_id'];
-                $_SESSION["shop_type"] = $res2['shop_type'];
-
-                if ($res2[shop_type]==2) {
-                    # code...
-                    return $this->redirect(["/shop/index/index"]);
-                // 水司
-                }else if($res2[shop_type]==1){
-                    return $this->redirect(["/water/index/index"]);
-
-                }else{
-                    return $this->redirect(["/apply/apply/index"]);
-
-                }
-            }else{
-                return $this->redirect(["/apply/apply/index"]);
+            if($res["shop_type"]==2){
+                return $this->redirect("/shop/index/index");
+            }else if($res["shop_type"]==1){
+                return $this->redirect("/water/index/index");
             }
         }else{
             return $this->redirect(["login/index"]);
