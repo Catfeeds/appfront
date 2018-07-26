@@ -2453,7 +2453,7 @@ $cssOptions = [
         <div class="header">
             <ul>
                 <li id="index">
-                    <a href="/admin/index/index">
+                    <a href="/admin/index/aindex">
                         用户管理
                     </a>
                 </li>

@@ -33,7 +33,7 @@ class IndexController extends AppfrontController
     }
 //=========================用户管理、管理员管理===============================
     //管理员管理
-    public function actionIndex(){
+    public function actionAindex(){
         $req = Yii::$app->request;
         $person = $req->get(person);
         $ID = $req->get(ID);

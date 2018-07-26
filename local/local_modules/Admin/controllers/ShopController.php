@@ -54,10 +54,18 @@ class ShopController extends AppfrontController
         // 查看所有分类数据
         $query = new Query;
 
+        if ($_GET['id']) {
+            # code...
+            $where['parent_id']=$_GET['id'];
+        }else{
+            $where['parent_id']="0";
+
+        }
+
         // 进行数据查询
         $class=$query->from('category')
                      ->orderBy("sort desc")
-                     ->where(["parent_id"=>"0"])
+                     ->where($where)
                      ->all();
 
         $data['class']=$class;
@@ -238,6 +246,23 @@ class ShopController extends AppfrontController
         }
     }
 
+    public function actionClasseditsort(){
+        // 获取数据
+        $request = Yii::$app->request;
+        $data = $request->get();
+
+        $arr["_id"]=$data['id'];
+        $arr["sort"]=$data['sort'];
+
+
+        // 修改审核状态
+
+        // 修改商品的上下架
+
+        $res=Yii::$app->mongodb->getCollection('category')->save($arr);
+        
+    }
+
     // 分类删除操作
 
     public function actionClassdel(){
@@ -265,5 +290,35 @@ class ShopController extends AppfrontController
             return $this->redirect($_SERVER['HTTP_REFERER']);
             exit;
         }
+    }
+
+    // 查看分类的页面
+
+    public function actionClassfind(){
+
+        // 获取数据
+        $request = Yii::$app->request;
+        $id = $request->get('id');
+        
+        // 获取商品数据
+        $data['class']=Yii::$app->mongodb->getCollection('category')->findOne(['_id'=>$id]);
+        
+
+        // 加载页面
+        return $this->render($this->action->id,$data);
+    }
+
+    // 分类的修改功能
+
+    public function actionClassedit(){
+
+        // 获取数据
+        $request = Yii::$app->request;
+        $data = $request->post();
+
+                echo "<pre>";
+                print_r($data);
+                echo "</pre>";
+            
     }
 }
