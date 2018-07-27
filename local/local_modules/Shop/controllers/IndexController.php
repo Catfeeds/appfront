@@ -34,7 +34,7 @@ class IndexController extends PublicsController
 
     	// 获取shop_id
 
-    	echo $shop_id=$_SESSION['shop_id'];
+    	$shop_id=$_SESSION['shop_id'];
 
 
     	// 获取商品信息

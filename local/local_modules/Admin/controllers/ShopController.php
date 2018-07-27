@@ -54,10 +54,18 @@ class ShopController extends AppfrontController
         // 查看所有分类数据
         $query = new Query;
 
+        if ($_GET['id']) {
+            # code...
+            $where['parent_id']=$_GET['id'];
+        }else{
+            $where['parent_id']="0";
+
+        }
+
         // 进行数据查询
         $class=$query->from('category')
                      ->orderBy("sort desc")
-                     ->where(["parent_id"=>"0"])
+                     ->where($where)
                      ->all();
 
         $data['class']=$class;
@@ -238,6 +246,23 @@ class ShopController extends AppfrontController
         }
     }
 
+    public function actionClasseditsort(){
+        // 获取数据
+        $request = Yii::$app->request;
+        $data = $request->get();
+
+        $arr["_id"]=$data['id'];
+        $arr["sort"]=$data['sort'];
+
+
+        // 修改审核状态
+
+        // 修改商品的上下架
+
+        $res=Yii::$app->mongodb->getCollection('category')->save($arr);
+        
+    }
+
     // 分类删除操作
 
     public function actionClassdel(){
@@ -264,6 +289,161 @@ class ShopController extends AppfrontController
         }else{
             return $this->redirect($_SERVER['HTTP_REFERER']);
             exit;
+        }
+    }
+
+    // 查看分类的页面
+
+    public function actionClassfind(){
+
+        // 获取数据
+        $request = Yii::$app->request;
+        $id = $request->get('id');
+        
+        // 获取商品数据
+        $data['class']=Yii::$app->mongodb->getCollection('category')->findOne(['_id'=>$id]);
+
+        // 加载页面
+        return $this->render($this->action->id,$data);
+    }
+
+    // 分类的修改功能
+
+    public function actionClassedit(){
+
+        // 获取数据
+        $request = Yii::$app->request;
+        $data = $request->post();
+
+        // 上传分类图片
+
+        //文件上传存放的目录  
+
+        $folder ='../../appimage/common/media/catalog/';
+         
+        $file=$_FILES['img'];
+
+        // 获取用户上传的数量
+
+        $size=count($file['name']);
+
+        // 接收文件名
+        $name=$file['name'];
+
+        // 接收临时目录
+        $tmp_name=$file['tmp_name'];
+
+        // 错误编码
+
+        $error=$file['error'];
+
+        if ($error==0) {
+
+            // 检测文件是否来自于表单
+            if (is_uploaded_file($tmp_name)) {
+                # code...
+                // 新的文件名
+                $ext=substr($name,strrpos($name,'.'));
+
+                $newName=time().rand().$ext;
+
+                // 进行上传
+
+                if (move_uploaded_file($tmp_name,$folder.$newName)) {
+                    
+                }
+            }
+        }
+
+
+        $arr=[
+            "_id"=>$data['_id'],
+            "created_at"=>time(),
+            "created_user_id"=>0,
+            "updated_at"=>0,
+            "type"=>$data['type'],
+            "parent_id"=>$data['parent_id'],
+            "name"=>[
+                "name_en"=>"",
+                "name_fr"=>"",
+                "name_de"=>"",
+                "name_es"=>"",
+                "name_ru"=>"",
+                "name_pt"=>"",
+                "name_zh"=>$data['name'],
+
+            ],
+            "status"=>1,
+            "url_key"=>"",
+            "description"=>[
+                "description_en"=>"",
+                "description_fr"=>"",
+                "description_de"=>"",
+                "description_es"=>"",
+                "description_ru"=>"",
+                "description_pt"=>"",
+                "description_zh"=>"$data[description]",
+            ],
+            "title"=>[
+                "title_en"=>"",
+                "title_fr"=>"",
+                "title_de"=>"",
+                "title_es"=>"",
+                "title_ru"=>"",
+                "title_pt"=>"",
+                "title_zh"=>"$data[name]",
+            ],
+
+            "meta_description"=>[
+                "meta_description_en"=>"",
+                "meta_description_fr"=>"",
+                "meta_description_de"=>"",
+                "meta_description_es"=>"",
+                "meta_description_ru"=>"",
+                "meta_description_pt"=>"",
+                "meta_description_zh"=>"$data[description]",
+            ],
+            "meta_keywords"=>[
+                "meta_keywords_en"=>"",
+                "meta_keywords_fr"=>"",
+                "meta_keywords_de"=>"",
+                "meta_keywords_es"=>"",
+                "meta_keywords_ru"=>"",
+                "meta_keywords_pt"=>"",
+                "meta_keywords_zh"=>"$data[meta_keywords]",
+            ],
+
+            "menu_custom"=>[
+                "menu_custom_en"=>"",
+                "menu_custom_fr"=>"",
+                "menu_custom_de"=>"",
+                "menu_custom_es"=>"",
+                "menu_custom_ru"=>"",
+                "menu_custom_pt"=>"",
+                "menu_custom_zh"=>"",
+            ],
+
+            "level"=>(int)$data[level],
+            "filter_product_attr_selected"=>"style,dresses-length,pattern-type,sleeve-length,collar,color",
+            "filter_product_attr_unselected"=>0,
+            "menu_show"=>$data['menu_show'],
+            "sort"=>$data['sort'],
+            "img"=>$newName,
+        ];
+
+
+            
+
+        $collection = Yii::$app->mongodb->getCollection('category');
+
+        if($a=$collection->insert($arr)){
+
+
+             return $this->redirect(['shop/classlist']);
+
+        }else{
+            return $this->redirect($_SERVER['HTTP_REFERER']);
+
         }
     }
 }
