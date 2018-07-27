@@ -219,7 +219,7 @@ $cssOptions = [
         width: 1100px;
         margin:0 auto;
         /*height: 100%;*/
-        padding: 27px 0 27px 0;
+        padding: 27px 0 27px 27px;
         box-sizing: border-box;
     }
 
