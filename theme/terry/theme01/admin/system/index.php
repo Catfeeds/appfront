@@ -20,7 +20,7 @@
             </div>
             <!--选项卡内容-->
             <div class="system-content">
-                <button class="system-add">添加</button>
+                <a href="/admin/system/banneradd" title="添加banner图" class="system-add" style="display:block;text-align:center;">添加</a>
                 <table border="0" class="table-list">
                     <tr>
                         <th>
@@ -35,12 +35,20 @@
                         <th>点击次数</th>
                         <th>操作</th>
                     </tr>
+                    <?php 
+
+
+                        for(){
+
+
+
+                     ?>
                     <tr>
                         <td>
-                    <span>
-                        <div class="system-box"></div>
-                        <span style="margin-left:18px">01</span>
-                    </span>
+                        <span>
+                            <div class="system-box"></div>
+                            <span style="margin-left:18px">01</span>
+                        </span>
                         </td>
                         <td>水是生命之源</td>
                         <td>www.12345.com</td>
@@ -58,121 +66,10 @@
                             <a href="javascript:0" class="delete"></a>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                    <span>
-                        <div class="system-box"></div>
-                        <span style="margin-left:18px">01</span>
-                    </span>
-                        </td>
-                        <td>水是生命之源</td>
-                        <td>www.12345.com</td>
-                        <td><span>2018-05-17</span>&nbsp;<span>18:25</span></td>
-                        <td>首页</td>
-                        <td>
-                            <input type="text" value="1">
-                        </td>
-                        <td>
-                            <span>324</span>
-                        </td>
-                        <td>
-                            <a href="" style="color: #2dacff">编辑</a>
-                            <label>|</label>&nbsp;
-                            <a href="javascript:0" class="delete"></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                    <span>
-                        <div class="system-box"></div>
-                        <span style="margin-left:18px">01</span>
-                    </span>
-                        </td>
-                        <td>水是生命之源</td>
-                        <td>www.12345.com</td>
-                        <td><span>2018-05-17</span>&nbsp;<span>18:25</span></td>
-                        <td>首页</td>
-                        <td>
-                            <input type="text" value="1">
-                        </td>
-                        <td>
-                            <span>324</span>
-                        </td>
-                        <td>
-                            <a href="" style="color: #2dacff">编辑</a>
-                            <label>|</label>&nbsp;
-                            <a href="javascript:0" class="delete"></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                    <span>
-                        <div class="system-box"></div>
-                        <span style="margin-left:18px">01</span>
-                    </span>
-                        </td>
-                        <td>水是生命之源</td>
-                        <td>www.12345.com</td>
-                        <td><span>2018-05-17</span>&nbsp;<span>18:25</span></td>
-                        <td>首页</td>
-                        <td>
-                            <input type="text" value="1">
-                        </td>
-                        <td>
-                            <span>324</span>
-                        </td>
-                        <td>
-                            <a href="" style="color: #2dacff">编辑</a>
-                            <label>|</label>&nbsp;
-                            <a href="javascript:0" class="delete"></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                    <span>
-                        <div class="system-box"></div>
-                        <span style="margin-left:18px">01</span>
-                    </span>
-                        </td>
-                        <td>水是生命之源</td>
-                        <td>www.12345.com</td>
-                        <td><span>2018-05-17</span>&nbsp;<span>18:25</span></td>
-                        <td>首页</td>
-                        <td>
-                            <input type="text" value="1">
-                        </td>
-                        <td>
-                            <span>324</span>
-                        </td>
-                        <td>
-                            <a href="" style="color: #2dacff">编辑</a>
-                            <label>|</label>&nbsp;
-                            <a href="javascript:0" class="delete"></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                    <span>
-                        <div class="system-box"></div>
-                        <span style="margin-left:18px">01</span>
-                    </span>
-                        </td>
-                        <td>水是生命之源</td>
-                        <td>www.12345.com</td>
-                        <td><span>2018-05-17</span>&nbsp;<span>18:25</span></td>
-                        <td>首页</td>
-                        <td>
-                            <input type="text" value="1">
-                        </td>
-                        <td>
-                            <span>324</span>
-                        </td>
-                        <td>
-                            <a href="" style="color: #2dacff">编辑</a>
-                            <label>|</label>&nbsp;
-                            <a href="javascript:0" class="delete"></a>
-                        </td>
-                    </tr>
+                    <?php 
+
+                        }
+                     ?>
                 </table>
 
                 <div class="adminpagination" style="width: 98%">
