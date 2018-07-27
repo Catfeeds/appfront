@@ -135,7 +135,11 @@ use yii\helpers\Url;
                     <?php }?>
                     <td>待审核</td>
                     <td>
+<<<<<<< HEAD
                         <a href="/admin/review/wreview?shop_id=<?php echo $v['shop_id']?>" style="color: #2dacff">查看</a>
+=======
+                        <a href="/admin/review/wreview" style="color: #2dacff">查看</a>
+>>>>>>> e0bf97aa33514a4c06f6d56d6aa9dc69b5f17bbf
                     </td>
                 </tr>
                  <?php }?>

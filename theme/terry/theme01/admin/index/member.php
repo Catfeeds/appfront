@@ -23,7 +23,7 @@ use yii\helpers\Url;
 
                 <div class="xiala">
                     <span class="search-ID">等级</span>
-                    <select name="member-level" id="member-level" name="level">
+                    <select name="level" id="member-level">
                         <option value="普通会员">普通会员</option>
                         <option value="白金会员">白银会员</option>
                         <option value="黄金会员">黄金会员</option>

@@ -197,7 +197,7 @@ class ReviewController extends AppfrontController
     	$province_id=$_GET['province_id'];
     	$sql="SELECT * FROM sys_city WHERE province_id=".$province_id;
     	$city = Yii::$app->db->createCommand($sql)->queryAll();
-    	return json_encode($city);
+    	return json_encode($city);//对json进行编码
     }
     /*
      *根据省份id获取城市
