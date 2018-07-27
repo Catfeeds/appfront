@@ -64,7 +64,7 @@ use yii\helpers\Url;
                         <?php echo $v["updated_at"]?>
                     </td>
                     <td>
-                        <a style="color: #41b2fc" href="/vipinfo">查看</a>
+                        <a style="color: #41b2fc" href="<?= Yii::$service->url->getUrl('admin/index/wmember',array('id'=>$v['id']))?>">查看</a>
                         &nbsp;<label>|</label>&nbsp;
                         <a style="color: #41b2fc" href="javascript:0">删除</a>
                         &nbsp;<label>|</label>&nbsp;

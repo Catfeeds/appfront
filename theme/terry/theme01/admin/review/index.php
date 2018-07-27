@@ -56,7 +56,7 @@
                     <td><span>2018-05-17</span>&nbsp;<span>18:25</span></td>
                     <td>待审核</td>
                     <td>
-                        <a to="" style="color: #2dacff">查看</a>
+                        <a href="/admin/review/wreview" style="color: #2dacff">查看</a>
                         <label>|</label>&nbsp;
                         <a href="javascript:0" class="delete"></a>
                     </td>

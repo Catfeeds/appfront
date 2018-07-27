@@ -5,14 +5,13 @@
         <div class="adminmannager-title">
             <span>店铺管理</span>&nbsp;
             <!--跳转水司-->
-            <span>·&nbsp;<a href="/admin/index/water" style="color: #30d366;">商家</a></span>
+            <span>·&nbsp;<a href="/admin/index/productor" style="color: #30d366;">商家</a></span>
         </div>
         <div class="adminmannager-search">
             <form action="<?= Yii::$service->url->getUrl('/admin/index/member') ?>" method="get">
                 <div class="xiala">
                     <span class="search-ID"  style="margin-left:0px;">地区</span>
                     <select name="member-level" id="member-level">
-                        <option value="0">全部</option>
                         <?php foreach ($province as $v){?>
                             <option value="<?php echo $v['province_id'];?>"><?php echo $v['province_name'];?></option>
                         <?php }?>
@@ -43,7 +42,7 @@
                     <th>上次访问时间</th>
                     <th style="flex:1.5;">操作</th>
                 </tr>
-                <?php foreach ($res as $v){?>
+
                     <tr>
                         <td><?=$v['shop_id']?></td>
                         <td><?=$v['shop_name']?></td>
@@ -59,7 +58,7 @@
                             <a href="" class="delete" style="left:211px;"></a>
                         </td>
                     </tr>
-                <?php }?>
+
 
             </table >
         </div>

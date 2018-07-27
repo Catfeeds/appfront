@@ -45,4 +45,8 @@ class ReviewController extends AppfrontController
     public function actionNopass(){
         return $this->render($this->action->id);
     }
+    //审核管理
+    public function actionWreview(){
+        return $this->render($this->action->id);
+    }
 }
