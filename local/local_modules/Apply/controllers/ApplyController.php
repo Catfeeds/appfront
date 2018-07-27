@@ -150,6 +150,14 @@ class ApplyController extends AppfrontController
      	//用户登录之后才能进行商家入驻，uid为用户id
      	$arr3['uid']=0;
      	unset($arr3['_csrf']);
+     	unset($arr3['img0']);
+     	unset($arr3['img1']);
+     	unset($arr3['img2']);
+     	unset($arr3['img3']);
+     	unset($arr3['img4']);
+     	unset($arr3['img5']);
+     	unset($arr3['img6']);
+     	unset($arr3['img7']);
      	Yii::$app->db->createCommand()->insert('shop',$arr3)->execute();
      	
      	return $this->render($this->action->id);
