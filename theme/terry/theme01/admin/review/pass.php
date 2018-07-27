@@ -1,24 +1,35 @@
+<?php
+use yii\widgets\LinkPager;
+use yii\helpers\Html;
+use yii\helpers\Url;
+?>
+
 <div class="main-content">
     <div class="ShopMannager">
         <div class="ShopMannager-title">
             <span>已通过列表</span>
         </div>
         <div class="ShopMannager-search">
+        <form id="el-form" class="el-form" method="post"  action="<?= Yii::$service->url->getUrl('admin/review/pass') ?>">
+     	    <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>" />
             <div class="search" style="margin-left:0;">
                 <span>名称</span>
-                <input type="text">
-            </div>
-            <div class="search">
-                <span>ID</span>
-                <input type="text">
+                <input type="text" name="shop_name" value="<?php echo $shop_name;?>">
             </div>
             <div class="xiala" style="margin-left:20px;">
                 <span class="search-ID">类型</span>
-                <select name="member-level" id="member-level">
-                    <option value="">全部</option>
+                <select name="shop_type" id="shop_type">
+                    <option value="0">请选择类型</option>
+                    <option value="1">水司</option>
+                    <option value="2">商家</option>
                 </select>
                 <div class="xialaimg1"></div>
             </div>
+            <script type="text/javascript">
+				$(function(){
+					$("#shop_type").val("<?php echo $shop_type?>");
+				})
+            </script>
             <div class="xiala" style="margin-left:20px;color:#49e17a">
                 <span class="search-ID" style="color:#49e17a">地区</span>
                 <select name="member-level" id="member-level" style="color:#49e17a">
@@ -27,8 +38,9 @@
                 <div class="xialaimg1"></div>
             </div>
             <div class="ShopMannagersearch-img">
-                <img src="/public/adminimg/search.png" alt="">
+                <img src="/public/adminimg/search.png" alt="" onclick="$('#el-form').submit()">
             </div>
+         </form>
         </div>
         <!--待审核列表-->
         <div class="wait-list">
@@ -39,62 +51,110 @@
                     </th>
                     <th>名称</th>
                     <th>类型</th>
-                    <th>创建</th>
                     <th>审核状态</th>
                     <th>操作</th>
                 </tr>
+                  <?php foreach($list as $k=>$v){?>
                 <tr>
                     <td>
-                        <div id="check">
-                            <span>
-                                <input type="checkbox" class="input_check" id="check1">
-                                <label for="check1"></label>
-                            </span>
-                        </div>
-                        <div style="margin-left:6px;">01</div>
+                        <div style="margin-left:6px;"><?php echo $k+1?></div>
                     </td>
-                    <td>万荣县自来水厂</td>
+                    <td><?php echo $v['shop_name']?></td>
+                    <?php if($v['shop_type']==1){?>
                     <td>水司</td>
-                    <td><span>2018-05-17</span>&nbsp;<span>18:25</span></td>
-                    <td style="color: #64e1a7">已通过</td>
+                    <?php }else{?>
+                    <td>商家</td>
+                    <?php }?>
+                    <?php if($v['shop_state']==0){?>
+                    <td>关闭</td>
+                    <?php }else if($v['shop_state']==1){?>
+                    <td>开启</td>
+                    <?php }else if($v['shop_state']==2){?>
+                    <td>冻结</td>
+                    <?php }?>
                     <td>
-                        <a href="" style="color: #2dacff">编辑</a>
-                        <label>|</label>&nbsp;
-                        <a href="javascript:0" class="delete"></a>
+                        <a to="" style="color: #2dacff">查看</a>
                     </td>
                 </tr>
+                 <?php }?>
             </table>
         </div>
 
         <div class="adminpagination">
-            <div class="pagination">
-                <div class="block">
-                    <div class="admincount">
-                        <div class="admincountall">
-                            <span style="color: #3db0ff">·</span>&nbsp;<span>总计</span><span>206</span><span>记录</span>
-                        </div>
-                        <div class="admintotalpage">
-                            <span style="color: #29c99a">·</span>&nbsp;<span>分</span><span
-                                style="color: #29c99a">82</span><span>页</span>
-                        </div>
-                        <div class="admintotalpage">
-                            <span style="color: #29c99a">·</span>&nbsp;<span>每页</span>
-                            <input type="text" style="display: inline-block;width: 40px;height: 20px;border-radius: 10px;
-                            border: 1px solid #ebf6ff;background: #f3faff;outline: none;padding:0 5px;
-                            box-sizing: border-box;text-align: center;color:#29c99a;line-height: 20px; "
-                                   value="10">
-                        </div>
-                    </div>
-                    <div style="float: right;">
-                        <button class="firstpage-box">首页</button>
-                        <el-pagination
-                            layout="prev, pager, next"
-                            :total="50">
-                        </el-pagination>
-                        <button class="lastpage-box">末页</button>
-                    </div>
-                </div>
-            </div>
+           <div style="width: 100%; position: relative;height: 50px;">
+        <div style="font-size: 12px; position: absolute; bottom: 0; right: 0; display: flex; justify-content: space-between;">
+            <?php
+            echo LinkPager::widget([
+                'pagination' => $pagination,
+                'firstPageLabel' => '首页',
+                'lastPageLabel' => '尾页',
+
+                'nextPageLabel' => '>',
+                'prevPageLabel' => '<',
+            ]);
+
+
+            ?>
+            <style>
+                .pagination {
+                    white-space: nowrap;
+                    padding: 2px 5px;
+                    color: #303133;
+                    font-weight: 700;
+                }
+
+                .pagination li {
+                    padding: 0 4px;
+                    background: #fff;
+                    font-size: 13px;
+                    min-width: 35.5px;
+                    height: 28px;
+                    line-height: 28px;
+                    box-sizing: border-box;
+                    display: inline-block;
+                }
+
+                .pagination li.first {
+                    width: 54px;
+                    height: 20px;
+                    background: #edf8ff;
+                    border: 2px solid #e8f6ff;
+                    border-radius: 10px;
+                    color: #41b2fc;
+                    line-height: 18px;
+                    text-align: center;
+                    margin-top: 8px;
+                }
+
+                .pagination li.last {
+                    width: 54px;
+                    height: 20px;
+                    background: #51b7fc;
+                    border: 2px solid #51b7fc;
+                    border-radius: 10px;
+                    color: #fff;
+                    line-height: 18px;
+                    text-align: center;
+                    margin-top: 8px;
+                }
+                .pagination li.first a{
+                    color: #51b7fc;
+                }
+                .pagination li.last a{
+                    color: #fff;
+                }
+                .pagination li a {
+                    color: #000;
+                    font-weight: bold;
+                }
+
+                .pagination li.active a {
+                    color: #409EFF;
+                    cursor: default;
+                }
+            </style>
+        </div>
+    </div>
         </div>
     </div>
 </div>
