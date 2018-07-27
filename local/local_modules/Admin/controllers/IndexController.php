@@ -183,7 +183,7 @@ class IndexController extends AppfrontController
             $rows = $query->select('*')
                 ->from('customer')
                 ->where([
-                    'id'=>$id
+                    'level'=>$level
                 ])->offset($pagination->offset)
                 ->limit($pagination->limit)->all();
         }
@@ -240,8 +240,6 @@ class IndexController extends AppfrontController
         $req = Yii::$app->request;
         $id = $req->get(id);
         $res = Yii::$app->db->createCommand("select * from customer where id='$id'")->queryAll();
-        var_dump($res);
-        exit;
         $data['res'] = $res;
         return $this->render($this->action->id,$data);
     }

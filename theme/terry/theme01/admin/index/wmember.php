@@ -37,9 +37,8 @@ use yii\helpers\Url;
                     <tr>
                         <td>性别:</td>
                         <td>
-                            <div class="money-box money-box1" style="margin:0;margin-left:10px;margin-top:1px;"></div>
-                            <input type="radio" value="1"><span style="float:left;margin-left:10px">男</span>
-                            <input type="radio" value="0"><span style="float:left;margin-left:10px">女</span>
+                            <input type="radio" value="1" name="sex" style="margin-left:10px;"><span style="margin-left:10px">男</span>
+                            <input type="radio" value="0" name="sex" style="margin-left:10px"><span style="margin-left:10px">女</span>
                         </td>
                     </tr>
                     <tr>
