@@ -25,15 +25,27 @@ use yii\helpers\Url;
                 </select>
                 <div class="xialaimg1"></div>
             </div>
-            <script type="text/javascript">
-				$(function(){
-					$("#shop_type").val("<?php echo $shop_type?>");
-				})
-            </script>
-            <div class="xiala" style="margin-left:20px;color:#49e17a">
-                <span class="search-ID" style="color:#49e17a">地区</span>
-                <select name="member-level" id="member-level" style="color:#49e17a">
-                    <option value="">全部</option>
+           <div class="xiala xialapro" style="margin-left:20px;color:#49e17a">
+                <span class="search-ID" style="color:#49e17a">地区省</span>
+                <select name="province_id" id="province_id" style="color:#49e17a">
+                    <option value="0">请选择省</option>
+                    <?php foreach ($province as $k=>$v){?>
+                    	<option value="<?php echo $v['province_id']?>"><?php echo $v['province_name']?></option>
+                    <?php }?>
+                </select>
+                <div class="xialaimg1"></div>
+            </div>
+            <div class="xiala xialacity" style="margin-left:20px;color:#49e17a;">
+                <span class="search-ID" style="color:#49e17a">市</span>
+                <select name="city_id" id="city_id" style="color:#49e17a">
+                    <option value="0">请选择市</option>
+                </select>
+                <div class="xialaimg1"></div>
+            </div>
+            <div class="xiala xialadis" style="margin-left:20px;color:#49e17a;">
+                <span class="search-ID" style="color:#49e17a">县</span>
+                <select name="district_id" id="district_id" style="color:#49e17a">
+                    <option value="0">请选择县</option>
                 </select>
                 <div class="xialaimg1"></div>
             </div>
@@ -42,6 +54,62 @@ use yii\helpers\Url;
             </div>
          </form>
         </div>
+        <script type="text/javascript">
+		        var proid="<?php echo $province_id?>";
+				var cityid="<?php echo $city_id?>";
+				var distid="<?php echo $district_id?>";
+				$(function(){
+					$("#shop_type").val("<?php echo $shop_type?>");
+					if(proid>0){
+						$("#province_id").val(proid);
+						changePro(proid);
+						if(cityid>0){
+							$("#city_id").val(cityid);
+							changeCity(cityid);
+							if(distid>0){
+								$("#district_id").val(distid);
+							}
+						}
+					}
+				})
+				$("#province_id").change(function(){
+					changePro($(this).val());
+				})
+				$("#city_id").change(function(){
+					changeCity($(this).val());
+				})
+				function changePro(province_id){
+					$.ajax({
+						type:"get",
+						url: "<?= Yii::$service->url->getUrl('admin/review/getcity') ?>",
+						data:{"province_id":province_id},
+						async:false,
+						success:function(msg){
+							var row =JSON.parse(msg);
+							$("#city_id").find(".aa").remove();
+							$("#district_id").find(".aa").remove();
+							$.each(row,function(k,v){
+								$("#city_id").append("<option value='"+v.city_id+"' class='aa'>"+v.city_name+"</option>");
+							})
+						}
+					})
+				}
+				function changeCity(city_id){
+					$.ajax({
+						type:"get",
+						url: "<?= Yii::$service->url->getUrl('admin/review/getdistrict') ?>",
+						data:{"city_id":city_id},
+						async:false,
+						success:function(msg){
+							var row =JSON.parse(msg);
+							$("#district_id").find(".aa").remove();
+							$.each(row,function(k,v){
+								$("#district_id").append("<option value='"+v.district_id+"' class='aa' >"+v.district_name+"</option>");
+							})
+						}
+					})
+				}
+        </script>
         <!--待审核列表-->
         <div class="wait-list">
             <table border="0" class="ProductorData-tablelist wait-tablelist">
@@ -67,7 +135,7 @@ use yii\helpers\Url;
                     <?php }?>
                     <td>未通过</td>
                     <td>
-                        <a to="" style="color: #2dacff">查看</a>
+                        <a href="/admin/review/nopasswreview?shop_id=<?php echo $v['shop_id']?>" style="color: #2dacff">查看</a>
                     </td>
                 </tr>
                  <?php }?>

@@ -55,8 +55,22 @@ use yii\helpers\Url;
          </form>
         </div>
         <script type="text/javascript">
+		        var proid="<?php echo $province_id?>";
+				var cityid="<?php echo $city_id?>";
+				var distid="<?php echo $district_id?>";
 				$(function(){
 					$("#shop_type").val("<?php echo $shop_type?>");
+					if(proid>0){
+						$("#province_id").val(proid);
+						changePro(proid);
+						if(cityid>0){
+							$("#city_id").val(cityid);
+							changeCity(cityid);
+							if(distid>0){
+								$("#district_id").val(distid);
+							}
+						}
+					}
 				})
 				$("#province_id").change(function(){
 					changePro($(this).val());
@@ -121,13 +135,7 @@ use yii\helpers\Url;
                     <?php }?>
                     <td>待审核</td>
                     <td>
-<<<<<<< HEAD
-                        <a to="" style="color: #2dacff">查看</a>
-=======
-                        <a href="/admin/review/wreview" style="color: #2dacff">查看</a>
-                        <label>|</label>&nbsp;
-                        <a href="javascript:0" class="delete"></a>
->>>>>>> ef4a7c52bf56b8d7329b2dacbbc73dbc5849ed40
+                        <a href="/admin/review/wreview?shop_id=<?php echo $v['shop_id']?>" style="color: #2dacff">查看</a>
                     </td>
                 </tr>
                  <?php }?>

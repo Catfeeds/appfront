@@ -10,9 +10,8 @@
             <span style="color: #516676;">·&nbsp;<router-link to="/ShopMannager"><?php echo $row['shop_name']?></router-link></span>&nbsp;
             <span>·&nbsp;查看</span>
         </div>
-        <form id="el-form" class="el-form" method="post"  action="<?= Yii::$service->url->getUrl('admin/review/examine') ?>">
+        <form id="el-form" class="el-form" method="post"  action="<?= Yii::$service->url->getUrl('admin/review/pass') ?>">
      	    <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>" />
-     	    <input type="hidden" name="shop_id" value="<?php echo $row['shop_id']?>" />
         <!--管理员列表-->
         <div class="admin-table" style="margin:0;">
             <div class="admin-tablename">
@@ -369,74 +368,8 @@
 
         <!--审核状态-->
         <div class="adminmannager" style="border-top:1px solid #eee; padding-top:0;">
-            <div class="admin-tablename" style="margin-top:0;">
-                <div class="admin-tablenamebox"></div>
-                <span class="admin-tablename1">审核</span><span class="admin-tablename2">结果</span>
-            </div>
-            <div class="wreview-check">
-              <!--  <div style="height: 100%;line-height: 40px;float:left;">
-                    <div id="check" style="position: relative; margin-top:15px;">
-                            <div>
-                                <input type="checkbox" class="input_check" id="check1">
-                                <label for="check1"></label>
-                            </div>
-                    </div>  
-                    <span>通过</span>
-                </div>
-                <div style="height: 100%;line-height: 40px;float:left;margin-left:50px;">
-                    <div id="check" style="position: relative; margin-top:15px;">
-                        <div>
-                            <input type="checkbox" class="input_check" id="check1">
-                            <label for="check1"></label>
-                        </div>
-                    </div>
-                    <span>未通过</span>
-                </div>-->
-                <div style="height: 100%;line-height: 40px;margin-left:20px;">
-                	<label><input type="radio" name="shop_state" value="1"/>通过</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                	<label><input type="radio" name="shop_state" value="4"/>不通过</label>
-                </div>
-            </div>
-            <textarea name="reason" id="reason" placeholder="未通过原因"
-             style="width: 900px;height: 200px;display: block;background: rgba(0,223,207,0.3);border:none;outline: none;
-padding: 20px;"></textarea>
-            <div style="height: 50px;width: 100%;line-height:40px;font-size: 14px;">
-                <span style="float: left;">通知审核结果：</span>
-                <!-- <div style="height: 100%;line-height: 40px;float:left;">
-                    <div id="check" style="position: relative; margin-top:15px;">
-                        <div>
-                            <input type="checkbox" class="input_check" id="check1">
-                            <label for="check1"></label>
-                        </div>
-                    </div>
-                    <span>邮件</span>
-                </div>
-                <div style="height: 100%;line-height: 40px;float:left;margin-left:20px;">
-                    <div id="check" style="position: relative; margin-top:15px;">
-                        <div>
-                            <input type="checkbox" class="input_check" id="check1">
-                            <label for="check1"></label>
-                        </div>
-                    </div>
-                    <span>短信</span>
-                </div>
-                <div style="height: 100%;line-height: 40px;float:left;margin-left:20px;">
-                    <div id="check" style="position: relative; margin-top:15px;">
-                        <div>
-                            <input type="checkbox" class="input_check" id="check1">
-                            <label for="check1"></label>
-                        </div>
-                    </div>
-                    <span>人工</span>
-                </div>-->
-                <div style="height: 100%;line-height: 40px;margin-left:20px;">
-                	<label><input type="radio" name="notice" value="1"/>邮件</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                	<label><input type="radio" name="notice" value="2"/>短信</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                	<label><input type="radio" name="notice" value="3"/>人工</label>
-                </div>
-            </div>
             <button style="margin-top:10px;width: 100px;height: 36px;color:#fff;line-height: 36px;text-align: center;
-background: #37df73;border-radius: 16px;border:none;outline: none;display: block" type="submit">确定</button>
+background: #37df73;border-radius: 16px;border:none;outline: none;display: block" type="submit">返回</button>
         </div>
 
         </form>
