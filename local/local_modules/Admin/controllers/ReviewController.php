@@ -159,4 +159,8 @@ class ReviewController extends AppfrontController
     	$district= Yii::$app->db->createCommand($sql)->queryAll();
     	return json_encode($district);
     }
+    //审核管理
+    public function actionWreview(){
+        return $this->render($this->action->id);
+    }
 }

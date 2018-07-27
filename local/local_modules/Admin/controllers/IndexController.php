@@ -235,12 +235,27 @@ class IndexController extends AppfrontController
         return $this->render($this->action->id,$data);
 
     }
+    //查看会员
+    public function actionWmember(){
+        $req = Yii::$app->request;
+        $id = $req->get(id);
+        $res = Yii::$app->db->createCommand("select * from customer where id='$id'")->queryAll();
+        var_dump($res);
+        exit;
+        $data['res'] = $res;
+        return $this->render($this->action->id,$data);
+    }
     //==============================用户管理、店铺管理====================================
     public function actionShop(){
         $req = Yii::$app->request;
         $province = Yii::$app->db->createCommand('select * from sys_province')->queryAll();
-       /* var_dump($province);
-        exit;*/
+        $res = Yii::$app->db->createCommand('select * from shop')->queryAll();
+        $data['province'] = $province;
+        $data['res'] = $res;
+        return $this->render($this->action->id,$data);
+    }
+    public function actionWater(){
+        $province = Yii::$app->db->createCommand('select * from sys_province')->queryAll();
         $data['province'] = $province;
         return $this->render($this->action->id,$data);
     }

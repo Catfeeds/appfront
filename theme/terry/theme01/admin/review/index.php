@@ -121,7 +121,13 @@ use yii\helpers\Url;
                     <?php }?>
                     <td>待审核</td>
                     <td>
+<<<<<<< HEAD
                         <a to="" style="color: #2dacff">查看</a>
+=======
+                        <a href="/admin/review/wreview" style="color: #2dacff">查看</a>
+                        <label>|</label>&nbsp;
+                        <a href="javascript:0" class="delete"></a>
+>>>>>>> ef4a7c52bf56b8d7329b2dacbbc73dbc5849ed40
                     </td>
                 </tr>
                  <?php }?>
