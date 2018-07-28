@@ -152,7 +152,7 @@ $cssOptions = [
             border-radius: 50%;
             margin-top: 8px;
             float: left;
-            background: url("<?=$_SESSION[shop_logo]?>")center center /100% auto;
+            background: url("http://img.uekuek.com/images/<?=$_SESSION[shop_logo]?>")center center /100% auto;
         }
         .admin-img img{
             width:100%;

@@ -98,21 +98,31 @@ class LoginController extends AppfrontController
 
         $password_hash = password_hash($req->post(password_hash),PASSWORD_DEFAULT);
         $firstname = $req->post(firstname);
+        $password = $req->post(password_hash);
+        $repassword = $req->post(repassword);
 
-        //判断用户名是否存在
-        $arr = Yii::$app->db->createCommand("select count(*) as num from customer where firstname='$firstname'")->queryOne();
-        if($req->post(password_hash)==""||$firstname==""){
-            return $this->redirect(["login/regedit"]);
-        } else if($arr["num"] != 0){
-            return $this->redirect(["login/regedit"]);
-        }else{
-            $res = Yii::$app->db->createCommand("insert into customer (password_hash,firstname) values ('$password_hash','$firstname')")->execute();
-            if($res == 1){
-                return $this->redirect(["login/index"]);
-            }else{
+
+        // 判断密码是否一致
+        if ($password==$repassword && $repassword) {
+            //判断用户名是否存在
+            $arr = Yii::$app->db->createCommand("select count(*) as num from customer where firstname='$firstname'")->queryOne();
+            if($req->post(password_hash)==""||$firstname==""){
                 return $this->redirect(["login/regedit"]);
+            } else if($arr["num"] != 0){
+                return $this->redirect(["login/regedit"]);
+            }else{
+                $res = Yii::$app->db->createCommand("insert into customer (password_hash,firstname) values ('$password_hash','$firstname')")->execute();
+                if($res == 1){
+                    return $this->redirect(["login/index"]);
+                }else{
+                    return $this->redirect(["login/regedit"]);
+                }
             }
+        }else{
+            return $this->redirect(["login/regedit"]);
         }
+
+        
     }
 
     //退出登陆
