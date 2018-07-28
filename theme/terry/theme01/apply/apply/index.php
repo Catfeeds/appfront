@@ -1,10 +1,23 @@
+<style>
+  
 
+  .header-logo h2{
+    color:#fff;
+    line-height: 81px;
+    margin-left: 100px;
+    font-weight: normal;
+  }
+
+  .neirong{
+    display:none;
+  }
+</style>
    <div  class="settle">
     <header >
-     <div  class="header-logo">
+     <div  class="header-logo" style="width:100%">
       <a href="/apply/apply/index">
        <img src="/public/imgs/login.png" alt="" /> 
-       <h1>晋彤后台管理系统</h1>
+       <h2>晋彤后台管理系统</h2>
       </a>
      </div>
     </header> 
@@ -64,35 +77,110 @@
       <span  class="admin-tablename1">入驻</span>
       <span  class="admin-tablename2">指南</span>
      </div> 
-     <ul >
-      <li  class="active"><a  href="#/index" class="router-link-exact-active router-link-active">招商方向</a></li> 
-      <li ><a  href="#/index" class="router-link-exact-active router-link-active">招商标准</a></li> 
-      <li ><a  href="#/index" class="router-link-exact-active router-link-active">资质要求</a></li> 
-      <li ><a  href="#/index" class="router-link-exact-active router-link-active">资费标准</a></li>
+     <ul class="menuss">
+      <li  class="active"><a  href="javascript:;" class="router-link-exact-active router-link-active">招商方向</a></li> 
+      <li ><a  href="javascript:;" class="router-link-exact-active router-link-active">招商标准</a></li> 
+      <li ><a  href="javascript:;" class="router-link-exact-active router-link-active">资质要求</a></li> 
+      <li ><a  href="javascript:;" class="router-link-exact-active router-link-active">资费标准</a></li>
      </ul> 
-     <div  style="width: 438px;">
-      <div >
-       <h1  class="ruzhuname1" style="line-height: 40px;">平台招商方向</h1> 
-       <div  class="ruzhuname2">
-        <h1  class="ruzhuname2" style="line-height: 40px;">1、品牌</h1> 
-        <h2  class="ruzhuname2">国际国内知名品牌</h2> 
-        <p >开放平台将一如既往的最大程度地维护卖家的品牌利益，尊重品牌传统和内涵， 欢迎优质品牌旗舰店入驻 ,请参见《2014年开放平台重点招募品牌》</p>
-       </div>
-      </div> 
-      <div >
-       <div  class="ruzhuname2">
-        <h1  class="ruzhuname2" style="line-height: 40px;">2、货品</h1> 
-        <h2  class="ruzhuname2">国际国内知名品牌</h2> 
-        <p >开放平台将一如既往的最大程度地维护卖家的品牌利益，尊重品牌传统和内涵， 欢迎优质品牌旗舰店入驻 ,请参见《2014年开放平台重点招募品牌》</p>
-       </div>
-      </div> 
-      <div >
-       <div  class="ruzhuname2">
-        <h1  class="ruzhuname2" style="line-height: 40px;">3、垂直电商</h1> 
-        <h2  class="ruzhuname2">国际国内知名品牌</h2> 
-        <p >开放平台将一如既往的最大程度地维护卖家的品牌利益，尊重品牌传统和内涵， 欢迎优质品牌旗舰店入驻 ,请参见《2014年开放平台重点招募品牌》</p>
-       </div>
-      </div>
+     <div class="neirong" style="width: 100%;display:block;">
+        <div >
+         <h1  class="ruzhuname1" style="line-height: 40px;">平台招商方向</h1> 
+         <div  class="ruzhuname2">
+          <h1  class="ruzhuname2" style="line-height: 40px;">1、品牌</h1> 
+          <h2  class="ruzhuname2">国际国内知名品牌</h2> 
+          <p >开放平台将一如既往的最大程度地维护卖家的品牌利益，尊重品牌传统和内涵， 维护卖家的品牌利益，尊重品牌传统和内涵， 维护卖家的品牌利益，尊重品牌传统和内涵， 维护卖家的品牌利益，尊重品牌传统和内涵， 欢迎优质品牌旗舰店入驻 ,请参见《2014年开放平台重点招募品牌》</p>
+         </div>
+        </div> 
+        <div >
+         <div  class="ruzhuname2">
+          <h1  class="ruzhuname2" style="line-height: 40px;">2、货品</h1> 
+          <h2  class="ruzhuname2">国际国内知名品牌</h2> 
+          <p >开放平台将一如既往的最大程度地维护卖家的品牌利益，尊重品牌传统和内涵， 欢迎优质品牌旗舰店入驻 ,请参见《2014年开放平台重点招募品牌》</p>
+         </div>
+        </div> 
+        <div >
+         <div  class="ruzhuname2">
+          <h1  class="ruzhuname2" style="line-height: 40px;">3、垂直电商</h1> 
+          <h2  class="ruzhuname2">国际国内知名品牌</h2> 
+          <p >开放平台将一如既往的最大程度地维护卖家的品牌利益，尊重品牌传统和内涵， 欢迎优质品牌旗舰店入驻 ,请参见《2014年开放平台重点招募品牌》</p>
+         </div>
+        </div>
+     </div>
+
+     <div class="neirong" style="width: 100%">
+        <div >
+         <h1  class="ruzhuname1" style="line-height: 40px;">招商标准</h1> 
+         <div  class="ruzhuname2">
+          <h1  class="ruzhuname2" style="line-height: 40px;">1、品牌</h1> 
+          <h2  class="ruzhuname2">国际国内知名品牌</h2> 
+          <p >开放平台将一如既往的最大程度地维护卖家的品牌利益，尊重品牌传统和内涵， 维护卖家的品牌利益，尊重品牌传统和内涵， 维护卖家的品牌利益，尊重品牌传统和内涵， 维护卖家的品牌利益，尊重品牌传统和内涵， 欢迎优质品牌旗舰店入驻 ,请参见《2014年开放平台重点招募品牌》</p>
+         </div>
+        </div> 
+        <div >
+         <div  class="ruzhuname2">
+          <h1  class="ruzhuname2" style="line-height: 40px;">2、货品</h1> 
+          <h2  class="ruzhuname2">国际国内知名品牌</h2> 
+          <p >开放平台将一如既往的最大程度地维护卖家的品牌利益，尊重品牌传统和内涵， 欢迎优质品牌旗舰店入驻 ,请参见《2014年开放平台重点招募品牌》</p>
+         </div>
+        </div> 
+        <div >
+         <div  class="ruzhuname2">
+          <h1  class="ruzhuname2" style="line-height: 40px;">3、垂直电商</h1> 
+          <h2  class="ruzhuname2">国际国内知名品牌</h2> 
+          <p >开放平台将一如既往的最大程度地维护卖家的品牌利益，尊重品牌传统和内涵， 欢迎优质品牌旗舰店入驻 ,请参见《2014年开放平台重点招募品牌》</p>
+         </div>
+        </div>
+     </div>
+
+     <div class="neirong" style="width: 100%">
+        <div >
+         <h1  class="ruzhuname1" style="line-height: 40px;">资质要求</h1> 
+         <div  class="ruzhuname2">
+          <h1  class="ruzhuname2" style="line-height: 40px;">1、品牌</h1> 
+          <h2  class="ruzhuname2">国际国内知名品牌</h2> 
+          <p >开放平台将一如既往的最大程度地维护卖家的品牌利益，尊重品牌传统和内涵， 维护卖家的品牌利益，尊重品牌传统和内涵， 维护卖家的品牌利益，尊重品牌传统和内涵， 维护卖家的品牌利益，尊重品牌传统和内涵， 欢迎优质品牌旗舰店入驻 ,请参见《2014年开放平台重点招募品牌》</p>
+         </div>
+        </div> 
+        <div >
+         <div  class="ruzhuname2">
+          <h1  class="ruzhuname2" style="line-height: 40px;">2、货品</h1> 
+          <h2  class="ruzhuname2">国际国内知名品牌</h2> 
+          <p >开放平台将一如既往的最大程度地维护卖家的品牌利益，尊重品牌传统和内涵， 欢迎优质品牌旗舰店入驻 ,请参见《2014年开放平台重点招募品牌》</p>
+         </div>
+        </div> 
+        <div >
+         <div  class="ruzhuname2">
+          <h1  class="ruzhuname2" style="line-height: 40px;">3、垂直电商</h1> 
+          <h2  class="ruzhuname2">国际国内知名品牌</h2> 
+          <p >开放平台将一如既往的最大程度地维护卖家的品牌利益，尊重品牌传统和内涵， 欢迎优质品牌旗舰店入驻 ,请参见《2014年开放平台重点招募品牌》</p>
+         </div>
+        </div>
+     </div>
+
+     <div class="neirong" style="width: 100%">
+        <div >
+         <h1  class="ruzhuname1" style="line-height: 40px;">资费标准</h1> 
+         <div  class="ruzhuname2">
+          <h1  class="ruzhuname2" style="line-height: 40px;">1、品牌</h1> 
+          <h2  class="ruzhuname2">国际国内知名品牌</h2> 
+          <p >开放平台将一如既往的最大程度地维护卖家的品牌利益，尊重品牌传统和内涵， 维护卖家的品牌利益，尊重品牌传统和内涵， 维护卖家的品牌利益，尊重品牌传统和内涵， 维护卖家的品牌利益，尊重品牌传统和内涵， 欢迎优质品牌旗舰店入驻 ,请参见《2014年开放平台重点招募品牌》</p>
+         </div>
+        </div> 
+        <div >
+         <div  class="ruzhuname2">
+          <h1  class="ruzhuname2" style="line-height: 40px;">2、货品</h1> 
+          <h2  class="ruzhuname2">国际国内知名品牌</h2> 
+          <p >开放平台将一如既往的最大程度地维护卖家的品牌利益，尊重品牌传统和内涵， 欢迎优质品牌旗舰店入驻 ,请参见《2014年开放平台重点招募品牌》</p>
+         </div>
+        </div> 
+        <div >
+         <div  class="ruzhuname2">
+          <h1  class="ruzhuname2" style="line-height: 40px;">3、垂直电商</h1> 
+          <h2  class="ruzhuname2">国际国内知名品牌</h2> 
+          <p >开放平台将一如既往的最大程度地维护卖家的品牌利益，尊重品牌传统和内涵， 欢迎优质品牌旗舰店入驻 ,请参见《2014年开放平台重点招募品牌》</p>
+         </div>
+        </div>
      </div>
     </div> 
     <div  style="width: 100%; height: 30px; line-height: 30px; text-align: center; margin-top: 100px; font-size: 12px; color: rgb(153, 153, 153);">
@@ -100,3 +188,11 @@
     </div>
    </div>
   </div>
+<script>
+  $(".menuss li").click(function(){
+    $(this).addClass("active").siblings().removeClass("active");
+    let idx=$(this).index();
+
+    $(".neirong").eq(idx).show().siblings(".neirong").hide();
+  });
+</script>

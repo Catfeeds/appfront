@@ -85,7 +85,7 @@
    <div class="main-content">
     <div style="width: 1012px; margin: 0px auto;">
      <div class="main-content1">
-      <div class="dianpu"></div>
+      <div class="dianpu" style="background: url('http://img.uekuek.com/images/<?=$shop[shop_logo]?>')no-repeat center center /100% auto;"></div>
       <div class="content1-center">
        <div class="col-box"></div> 
        <div class="name">
@@ -488,7 +488,7 @@
       width: 129px;
       height: 129px;
       border: 3px solid #eee;
-        background: url("<?=$shop[shop_logo]?>")no-repeat center center /100% auto;
+      
     }
 
     .main-content1 .content1-center {
