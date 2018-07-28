@@ -130,14 +130,12 @@
                             <div class="col-box"></div>
                             <span style="color: rgb(48, 163, 254);">审核</span>状态
                         </div>
-                        <div class="title1">
-                                <div class="el-row" style="width: 500px;">
-                                    <div class="el-form-item"><label class="el-form-item__label"
-                                                                                        style="width: 100px;line-height: 40px">审核状态</label>
-                                        <div class="el-form-item__content" style="margin-left: 100px;">
-                                            <div style="color: rgb(55, 223, 113); font-weight: bolder;">审核成功
-                                            </div>
-                                        </div>
+                        <div data-v-242c0cfe="" class="title1">
+                                <div data-v-242c0cfe="" class="el-row" style="width: 500px;">
+                                    <div style="font-size: 14px">
+                                        <span style="width: 100px;line-height: 40px;margin-left: 50px;">审核状态：</span>
+                                        <span style="color: rgb(55, 223, 113); font-weight: bolder;">
+                                                 审核成功</span>
                                     </div>
                                 </div>
                         </div>

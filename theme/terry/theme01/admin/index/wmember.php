@@ -27,29 +27,35 @@ use yii\helpers\Url;
                     <tr>
                         <td>会员编号:</td>
                         <td>
-                            <input type="text" value="<?= $res['id']?>">
+                            <input type="text" value="<?= $res['id']?>" name="id">
                         </td>
                     </tr>
                     <tr>
                         <td>会员名称:</td>
-                        <td><input type="text" value=""></td>
+                        <td>
+                            <input type="text" value="<?= $res['firstname']?>" name="firstname">
+                        </td>
                     </tr>
                     <tr>
                         <td>性别:</td>
                         <td>
-                            <input type="radio" value="1" name="sex" style="margin-left:10px;"><span style="margin-left:10px">男</span>
-                            <input type="radio" value="0" name="sex" style="margin-left:10px"><span style="margin-left:10px">女</span>
+                            <input type="radio" value="1" name="sex" style="margin-left:10px;"
+                            <?php if($res['sex']==1){echo "checked";}?>>
+                            <span style="margin-left:10px">男</span>
+                            <input type="radio" value="0" name="sex" style="margin-left:10px"
+                                <?php if($res['sex']==0){echo "checked";}?>>
+                            <span style="margin-left:10px">女</span>
                         </td>
                     </tr>
                     <tr>
                         <td>会员等级:</td>
                         <td>
                             <div class="xiala" style="margin:0;margin-left:10px;width: 300px;">
-                                <select name="member-level" id="member-level"
+                                <select name="level" id="member-level"
                                         style="width: 300px;background: #f3faff;margin:0;height: 36px">
-                                    <option value="">普通会员</option>
-                                    <option value="">白金会员</option>
-                                    <option value="">黄金会员</option>
+                                    <option value="0" <?php if($res['level']==0){echo 'selected';}?>>普通会员</option>
+                                    <option value="1" <?php if($res['level']==1){echo 'selected';}?>>白金会员</option>
+                                    <option value="2" <?php if($res['level']==2){echo 'selected';}?>>黄金会员</option>
                                 </select>
                                 <div class="xialaimg1" style="width: 30px;height: 30px;top:3px;"></div>
                             </div>
@@ -58,17 +64,17 @@ use yii\helpers\Url;
                     <tr>
                         <td>累计充值:</td>
                         <td>
-                            <input type="text" value="￥123">
+                            <input type="text" value="￥<?php echo $res['coin']?>">
                         </td>
                     </tr>
                     <tr>
                         <td>账号状态:</td>
                         <td>
                             <div class="xiala" style="margin:0;margin-left:10px;width: 300px;">
-                                <select name="member-level" id="member-level"
+                                <select name="status" id="status"
                                         style="width: 300px;background: #f3faff;margin:0;height: 36px">
-                                    <option value="">正常</option>
-                                    <option value="">不正常</option>
+                                    <option value="" <?php if($res['status']==1){echo 'selected';}?>>正常</option>
+                                    <option value="" <?php if($res['status']==0){echo 'selected';}?>>不正常</option>
                                 </select>
                                 <div class="xialaimg1" style="width: 30px;height: 30px;top:3px;"></div>
                             </div>
@@ -77,7 +83,7 @@ use yii\helpers\Url;
                     <tr>
                         <td>账户余额:</td>
                         <td>
-                            <input type="text" value="￥123">
+                            <input type="text" value="￥<?php echo $res['money']?>">
                             <button style="outline: none;width: 100px;height: 36px;color:#fff;line-height: 36px;text-align: center;
 background: #30b7fe;border-radius: 16px;float: left;margin-left:10px;border:none;" @click="dofind">查看详情</button>
                         </td>

@@ -5,7 +5,8 @@ $jsOptions = [ # js的配置部分
         # 在当前options下的js文件
         'js' => [
             'js/jquery-3.3.1.min.js',
-            'js/layout-admin.js'
+            'js/layout-admin.js',
+            'js/laydate.js'
         ],
     ]
 
@@ -24,6 +25,7 @@ $cssOptions = [
 
 
 ?>
+
 <style>
     * {
         margin: 0;
@@ -216,7 +218,7 @@ $cssOptions = [
 
     /*用户管理-管理员管理*/
     .adminmannager {
-        width: 1100px;
+        width: 1012px;
         margin:0 auto;
         /*height: 100%;*/
         padding: 27px 0 27px 27px;
@@ -704,6 +706,7 @@ $cssOptions = [
 
     .main-content {
         /*overflow: hidden;*/
+        /*width: 1012px;*/
     }
 
     #platdata .tongji {
@@ -2427,7 +2430,12 @@ $cssOptions = [
         width: 900px;
         height: 400px;
     }
-
+    .admincount span{
+        font-size: 14px;
+    }
+    table tr:hover{
+        background: rgba(238,238,238,0.2);
+    }
 </style>
 <?php $this->beginPage() ?>
     <!doctype html>
@@ -2479,14 +2487,14 @@ $cssOptions = [
             <div class="header-right" style="width: 416px;float: right;">
                 <div class="adminname">
                     <div class="admin-img"></div>
-                    <span class="name1">管理员名称</span>
+                    <span class="name1"><?=$_SESSION['message_name']?></span>
                 </div>
                 <div class="adminname">
                     <div class="clearimg"></div>
                     <span class="name2">清除缓存</span>
                 </div>
                 <div class="adminname">
-                    <a href="/loginin">
+                    <a href="/admin/login/out" title="退出页面">
                         <div class="out"></div>
                         <span class="name3">退出</span>
                     </a>
@@ -2500,6 +2508,7 @@ $cssOptions = [
     </div>
     </body>
     <script>
+
 
         // 筛选顶部菜单
         var url = location.href.split("/");
@@ -2525,6 +2534,16 @@ $cssOptions = [
         };
 
         let urls = "<?php echo $_SERVER['SERVER_NAME'];?>";
+
+
+        laydate.render({
+            elem:'.el-range-input1',
+            fixed:false
+        })
+        laydate.render({
+            elem:'.el-range-input2',
+            fixed:false
+        })
     </script>
     </html>
 <?php $this->endPage() ?>

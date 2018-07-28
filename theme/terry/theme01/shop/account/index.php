@@ -25,15 +25,26 @@ use yii\helpers\Url;
                             <option value="">1</option>
                             <option value="">2</option>
                         </select>
+
                     <li>时间段选择
                         <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
                             <i class="el-input__icon el-range__icon el-icon-time"></i>
-                            <input placeholder="开始日期" name="" class="el-range-input"/>
+                            <input placeholder="开始日期" name="" class="el-range-input" />
                             <span class="el-range-separator">至</span>
                             <input placeholder="结束日期" name="" class="el-range-input"/>
                             <i class="el-input__icon el-range__close-icon"></i>
                         </div>
                     </li>
+                    <style>
+                        .layui-laydate .layui-this{
+                            background: #30B5FE !important;
+                        }
+                    </style>
+                    <script>
+                        laydate.render({
+                                elem:'.el-range-input'
+                            })
+                    </script>
                     <li>
                         <div class="el-input" style="width: 200px;">
                             <input type="text" autocomplete="off" placeholder="请输入关键字搜索" class="el-input__inner"/>

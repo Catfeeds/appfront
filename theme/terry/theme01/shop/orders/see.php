@@ -537,7 +537,7 @@
                                     </td>
                                 </tr>
                                 </tbody>
-                            </table><!----><!----></div><!----><!----><!----><!---->
+                            </table></div>
                         <div class="el-table__column-resize-proxy" style="display: none;"></div>
                     </div>
                 </div>

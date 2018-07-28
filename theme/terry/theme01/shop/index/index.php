@@ -85,7 +85,7 @@
    <div class="main-content">
     <div style="width: 1012px; margin: 0px auto;">
      <div class="main-content1">
-      <div class="dianpu"><img src="<?=$shop[shop_logo]?>" alt=""></div> 
+      <div class="dianpu"></div>
       <div class="content1-center">
        <div class="col-box"></div> 
        <div class="name">
@@ -95,7 +95,7 @@
         <div class="jianjie">
          商家简介:
         </div> 
-        <span ><?=$shop['shop_description']?></span>
+        <span><?=$shop['shop_description']?></span>
        </div> 
        <div class="message2">
         <div class="gonggao">
@@ -113,7 +113,7 @@
         <li >
          <div class="gonggao">
           所属公司：
-         </div> <span ><?=$shop['shop_company_name']?></span></li> 
+         </div> <span><?=$shop['shop_company_name']?></span></li>
         <li >
          <div class="gonggao">
           负责人：
@@ -488,10 +488,7 @@
       width: 129px;
       height: 129px;
       border: 3px solid #eee;
-    }
-    .main-content1 .dianpu img{
-      width:100%;
-      height:100%;
+        background: url("<?=$shop[shop_logo]?>")no-repeat center center /100% auto;
     }
 
     .main-content1 .content1-center {
@@ -519,23 +516,43 @@
         font-size: 12px;
         color: #bdc3c9;
         margin-left: 20px;
-        line-height: 18px;
+        line-height: 23px;
     }
+    .main-content1 .message1 span{
+        width: 296px;
+        height: 46px;
+        line-height: 23px;
+        overflow: hidden;
+        /*转换为webkit内核浏览器中的盒子*/
+        display: -webkit-box;
+        /*需要几行就写几*/
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
 
     .main-content1 .message2 {
         width: 360px;
         height: 42px;
-        line-height: 42px;
+        line-height: 40px;
         font-size: 12px;
         color: #bdc3c9;
         margin-left: 20px;
+    }
+    .main-content1 .message2  span{
+        display: inline-block;
+        width: 296px;
+        height: 40px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 
     .message1 .jianjie {
         width: 64px;
         height: 100%;
         font-size: 12px;
-        line-height: 18px;
+        line-height: 22px;
         font-weight: bold;
         color: #82898e;
         float: left;
@@ -545,7 +562,7 @@
         width: 64px;
         height: 100%;
         font-size: 12px;
-        line-height: 42px;
+        line-height: 40px;
         font-weight: bold;
         color: #82898e;
         float: left;
@@ -582,7 +599,11 @@
         color: #82898e;
         float: left;
     }
-
+    .message3 span{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
     .main-content2 {
         width:100%;
     }
@@ -594,6 +615,10 @@
         background: #eaf6ff;
         font-weight: bolder;
     }
+    .main-content2 .biaoti li{
+        cursor:pointer;
+    }
+
 
     .main-content2 .item {
         margin-top: 28px;
@@ -736,16 +761,6 @@
         padding-left: 18px;
     }
 
-    .message2 .gonggao {
-       
-      line-height: normal; 
-        
-    }
 
-    .main-content1 .message2 span{
-      line-height: normal;
-      overflow: hidden;
-      text-overflow:ellipsis;
-      
-    }
+
 </style>

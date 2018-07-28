@@ -100,6 +100,7 @@
         border-radius: 5px;
         background: #f3faff;
         border: 2px solid #e5eff8;
+        padding:10px;
     }
 
     .content .red {

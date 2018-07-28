@@ -100,6 +100,7 @@ use yii\helpers\Url;
                                     <option value="">1</option>
                                     <option value="">1</option>
                                 </select>
+                            </div>
                         </li>
                         <li data-v-345ba354="">
                             <div data-v-345ba354="" class="el-input" style="width: 200px;">
@@ -223,14 +224,14 @@ use yii\helpers\Url;
                                         </td>
                                         <td class="el-table_5_column_33  ">
                                             <div class="cell el-tooltip"
-                                                 title="<?= date("Y-m-d H:i:s", $v["created_at"]) ?>"><?= date("Y-m-d H:i:s", $v["created_at"]) ?></div>
+                                                 title="<?= date("Y-m-d H:i:s", $v["start_date"]) ?>"><?= date("Y-m-d H:i:s", $v["start_date"]) ?></div>
                                         </td>
                                         <td class="el-table_5_column_34  ">
                                             <div class="cell el-tooltip"
                                                  title="<?= date("Y-m-d H:i:s", $v["expiration_date"]) ?>"><?= date("Y-m-d H:i:s", $v["expiration_date"]) ?></div>
                                         </td>
-                                        <td class="el-table_5_column_35  ">
-                                            <div class="cell">
+                                    <td class="el-table_5_column_35  ">
+                                        <div class="cell">
                                                 <?php if($v["status"]==0){ ?>
                                                     <span data-v-345ba354="" style="color: #ff4949;">
                                                     未审核
@@ -248,9 +249,6 @@ use yii\helpers\Url;
                                                     无效
                                                 </span>
                                                 <?php } ?>
-                                            </div>
-                                        </div>
-                                    </td>
                                         </div>
                                     </td>
                                     <td class="el-table_5_column_36  ">
