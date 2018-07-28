@@ -167,7 +167,9 @@ class ApplyController extends AppfrontController
      	unset($arr3['img6']);
      	unset($arr3['img7']);
      	Yii::$app->db->createCommand()->insert('shop',$arr3)->execute();
-     	
+
+     	$_SESSION['shop_id']=Yii::$app->db->getLastInsertID();
+     	$_SESSION['shop_type']=$arr3['shop_type'];
         return $this->redirect("/apply/apply/waitaudit");
 
      }

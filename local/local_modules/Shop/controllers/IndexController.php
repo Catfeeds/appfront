@@ -30,7 +30,6 @@ class IndexController extends PublicsController
     }
     
     public function actionIndex(){
-    	
 
     	// 获取shop_id
 
