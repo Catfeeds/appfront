@@ -18,9 +18,9 @@
                 <div class="timer">
                     <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
                         <i class="el-input__icon el-range__icon el-icon-time"></i>
-                        <input placeholder="开始日期" name="" class="el-range-input" />
+                        <input placeholder="开始日期" name="" class="el-range-input1 el-range-input" />
                         <span class="el-range-separator">至</span>
-                        <input placeholder="结束日期" name="" class="el-range-input"/>
+                        <input placeholder="结束日期" name="" class="el-range-input2 el-range-input"/>
                         <i class="el-input__icon el-range__icon el-icon-time"></i>
                     </div>
                 </div>
@@ -102,9 +102,9 @@ margin-top:4px;"
                         <div class="timer">
                             <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
                                 <i class="el-input__icon el-range__icon el-icon-time"></i>
-                                <input placeholder="开始日期" name="" class="el-range-input" />
+                                <input placeholder="开始日期" name="" class="el-range-input1 el-range-input" />
                                 <span class="el-range-separator">至</span>
-                                <input placeholder="结束日期" name="" class="el-range-input"/>
+                                <input placeholder="结束日期" name="" class="el-range-input2 el-range-input"/>
                                 <i class="el-input__icon el-range__icon el-icon-time"></i>
                             </div>
                         </div>
@@ -160,9 +160,9 @@ margin-top:4px;"
                         <div class="timer">
                             <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
                                 <i class="el-input__icon el-range__icon el-icon-time"></i>
-                                <input placeholder="开始日期" name="" class="el-range-input" />
+                                <input placeholder="开始日期" name="" class="el-range-input1 el-range-input" />
                                 <span class="el-range-separator">至</span>
-                                <input placeholder="结束日期" name="" class="el-range-input"/>
+                                <input placeholder="结束日期" name="" class="el-range-input2 el-range-input"/>
                                 <i class="el-input__icon el-range__icon el-icon-time"></i>
                             </div>
                         </div>
@@ -218,9 +218,9 @@ margin-top:4px;"
                         <div class="timer">
                             <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
                                 <i class="el-input__icon el-range__icon el-icon-time"></i>
-                                <input placeholder="开始日期" name="" class="el-range-input" />
+                                <input placeholder="开始日期" name="" class="el-range-input1 el-range-input" />
                                 <span class="el-range-separator">至</span>
-                                <input placeholder="结束日期" name="" class="el-range-input"/>
+                                <input placeholder="结束日期" name="" class="el-range-input2 el-range-input"/>
                                 <i class="el-input__icon el-range__icon el-icon-time"></i>
                             </div>
                         </div>
@@ -276,9 +276,9 @@ margin-top:4px;"
                         <div class="timer">
                             <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
                                 <i class="el-input__icon el-range__icon el-icon-time"></i>
-                                <input placeholder="开始日期" name="" class="el-range-input" />
+                                <input placeholder="开始日期" name="" class="el-range-input1 el-range-input" />
                                 <span class="el-range-separator">至</span>
-                                <input placeholder="结束日期" name="" class="el-range-input"/>
+                                <input placeholder="结束日期" name="" class="el-range-input2 el-range-input"/>
                                 <i class="el-input__icon el-range__icon el-icon-time"></i>
                             </div>
                         </div>
@@ -334,9 +334,9 @@ margin-top:4px;"
                         <div class="timer">
                             <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
                                 <i class="el-input__icon el-range__icon el-icon-time"></i>
-                                <input placeholder="开始日期" name="" class="el-range-input" />
+                                <input placeholder="开始日期" name="" class="el-range-input1 el-range-input" />
                                 <span class="el-range-separator">至</span>
-                                <input placeholder="结束日期" name="" class="el-range-input"/>
+                                <input placeholder="结束日期" name="" class="el-range-input2 el-range-input"/>
                                 <i class="el-input__icon el-range__icon el-icon-time"></i>
                             </div>
                         </div>
@@ -392,9 +392,9 @@ margin-top:4px;"
                         <div class="timer">
                             <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
                                 <i class="el-input__icon el-range__icon el-icon-time"></i>
-                                <input placeholder="开始日期" name="" class="el-range-input" />
+                                <input placeholder="开始日期" name="" class="el-range-input1 el-range-input" />
                                 <span class="el-range-separator">至</span>
-                                <input placeholder="结束日期" name="" class="el-range-input"/>
+                                <input placeholder="结束日期" name="" class="el-range-input2 el-range-input"/>
                                 <i class="el-input__icon el-range__icon el-icon-time"></i>
                             </div>
                         </div>

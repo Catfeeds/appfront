@@ -18,9 +18,9 @@
                 <div class="timer">
                     <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
                         <i class="el-input__icon el-range__icon el-icon-time"></i>
-                        <input placeholder="开始日期" name="" class="el-range-input" />
+                        <input placeholder="开始日期" name="" class="el-range-input el-range-input1" />
                         <span class="el-range-separator">至</span>
-                        <input placeholder="结束日期" name="" class="el-range-input"/>
+                        <input placeholder="结束日期" name="" class="el-range-input el-range-input2"/>
                         <i class="el-input__icon el-range__icon el-icon-time"></i>
                     </div>
                 </div>
@@ -97,9 +97,9 @@ margin-top:4px;"
                         <div class="timer">
                             <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
                                 <i class="el-input__icon el-range__icon el-icon-time"></i>
-                                <input placeholder="开始日期" name="" class="el-range-input" />
+                                <input placeholder="开始日期" name="" class="el-range-input el-range-input1" />
                                 <span class="el-range-separator">至</span>
-                                <input placeholder="结束日期" name="" class="el-range-input"/>
+                                <input placeholder="结束日期" name="" class="el-range-input el-range-input2"/>
                                 <i class="el-input__icon el-range__icon el-icon-time"></i>
                             </div>
                         </div>
@@ -259,3 +259,8 @@ margin-top:4px;"
         </div>
     </div>
 </div>
+<style>
+    .layui-laydate .layui-this{
+        background: #30B5FE !important;
+    }
+</style>
