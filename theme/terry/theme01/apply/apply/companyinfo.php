@@ -268,7 +268,7 @@
          <label class="el-form-item__label" style="width: 80px;">身份证</label><!-- contacts_card_electronic_2     contacts_card_electronic_3 -->
          <div class="el-form-item__content" style="margin-left: 80px;">
           <div >
-           <div  style="width: 270px; height: 160px; 
+           <div  style="width: 270px; height: 160px; float:left;
 	  <?php if($companyinfo['img'][2]){?>
   		background:url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][2];?>) no-repeat;
   		<?php }else if($companyinfo['imgc']['img2']){?>
@@ -291,7 +291,7 @@
              
             </div>
            </div> 
-           <div  style="width: 270px; height: 160px;
+           <div  style="width: 270px; height: 160px;float: left;margin-left:50px;
 	  <?php if($companyinfo['img'][3]){?>
   		background:url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][3];?>) no-repeat;
   		<?php }else if($companyinfo['imgc']['img3']){?>

@@ -350,9 +350,11 @@ $cssOptions = [
         /*padding-right: 100px;*/
         margin-top: 8px;
     }
+    input{
+        outline:none;
+    }
 
     .admin-tablename {
-        /*width: 100%;*/
         height: 80px;
         line-height: 80px;
         font-size: 18px;
@@ -1795,8 +1797,8 @@ $cssOptions = [
         color: #748a99;
     }
     .settle{
-        width: 100%;
-        height: 100%;
+        width: 1300px;
+        margin:0 auto;
     }
     .settle header{
         width: 100%;
@@ -1877,7 +1879,7 @@ $cssOptions = [
         margin-top: 50px;
     }
     .settle-p{
-        width: 1112px;
+        width: 100%;
         /* height: 200px;*/
         margin: 0 auto;
         margin-top: 79px;
@@ -2440,6 +2442,7 @@ $cssOptions = [
     .system-content table tr:hover{
         background: rgba(238,238,238,0.2);
     }
+
 </style>
 <?php $this->beginPage() ?>
     <!doctype html>
