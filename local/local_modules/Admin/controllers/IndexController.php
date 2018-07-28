@@ -94,7 +94,7 @@ class IndexController extends AppfrontController
     //实现添加功能
     public function actionEditadmin()
     {
-
+        $session = \Yii::$app->session;
         $req = Yii::$app->request;
         //获取数据
         $username = $req->post(username);
@@ -113,7 +113,7 @@ class IndexController extends AppfrontController
         } else {
             $data['r'] = $r;
             $res = Yii::$app->db->createCommand("insert into admin_user (username,password_hash,email,person,status) values ('$username','$password_hash','$email','$person','$status')")->execute();
-            return $this->redirect(["/admin/index/index"]);
+            return $this->redirect(["/admin/index/aindex"]);
         }
 
     }
@@ -233,6 +233,9 @@ class IndexController extends AppfrontController
 
         $data["pagination"] = $pagination;
         $data["rows"] = $rows;
+        $data["firstname"] = $firstname;
+        $data['id'] = $id;
+        $data['level'] = $level;
 
         return $this->render($this->action->id, $data);
 
@@ -243,7 +246,7 @@ class IndexController extends AppfrontController
     {
         $req = Yii::$app->request;
         $id = $req->get(id);
-        $res = Yii::$app->db->createCommand("select * from customer where id='$id'")->queryAll();
+        $res = Yii::$app->db->createCommand("select * from customer where id='$id'")->queryOne();
         $data['res'] = $res;
         return $this->render($this->action->id, $data);
     }

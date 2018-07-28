@@ -42,7 +42,7 @@ class OrdersController extends PublicsController
             $flag = $get['flag']-1;
             $sql = " select count(*) tot from sales_flat_order where shop_id={$_SESSION["shop_id"]} and order_status={$flag}";
         }else{
-            $sql = " select count(*) tot from sales_flat_order where shop_id={$_SESSION["shop_id"]}";
+            $sql = " select count(*) tot from sales_flat_order where shop_id={$_SESSION["shop_id"]} and order_status<5";
         }
         //查询订单表数量
         $countArr = Yii::$app->db->createCommand($sql)->queryOne();
@@ -58,7 +58,7 @@ class OrdersController extends PublicsController
             $flag = $get['flag']-1;
             $sql = " select sales_flat_order.*,sales_coupon.* from sales_flat_order,sales_coupon where sales_flat_order.shop_id={$_SESSION["shop_id"]} and sales_flat_order.order_status={$flag} and sales_flat_order.coupon_code=sales_coupon.coupon_code limit $pagination->offset , $pagination->limit";
         }else{
-            $sql = " select sales_flat_order.*,sales_coupon.* from sales_flat_order,sales_coupon where sales_flat_order.shop_id={$_SESSION["shop_id"]} and sales_flat_order.coupon_code=sales_coupon.coupon_code limit $pagination->offset , $pagination->limit";
+            $sql = " select sales_flat_order.*,sales_coupon.* from sales_flat_order,sales_coupon where sales_flat_order.shop_id={$_SESSION["shop_id"]} and sales_flat_order.coupon_code=sales_coupon.coupon_code and order_status<5 limit $pagination->offset , $pagination->limit";
         }
 
         $arr = Yii::$app->db->createCommand($sql)->queryAll();
@@ -69,7 +69,6 @@ class OrdersController extends PublicsController
         };
         // $sql = substr($sql, 0, -1);
         $sql .= "0)";
-
         $arr1 = Yii::$app->db->createCommand($sql)->queryAll();
         foreach ($arr as $k => &$v) {
             $v["goodDatas"] = [];
@@ -79,7 +78,7 @@ class OrdersController extends PublicsController
                 }
             }
         };
-        $all = Yii::$app->db->createCommand("select o.order_status from sales_flat_order o where shop_id='{$_SESSION["shop_id"]}'")->queryAll();
+        $all = Yii::$app->db->createCommand("select o.order_status from sales_flat_order o where shop_id='{$_SESSION["shop_id"]}' and order_status<5")->queryAll();
 
                
             
@@ -99,7 +98,7 @@ class OrdersController extends PublicsController
         $request = Yii::$app->request;
         $order_id = $request->get('order_id');
         //按order_id查询订单详情
-        $res = Yii::$app->db->createCommand("select * from sales_flat_order where order_id=$order_id")->queryOne();
+        $res = Yii::$app->db->createCommand("select sales_coupon.*,sales_flat_order.* from sales_coupon,sales_flat_order where order_id=$order_id")->queryOne();
         //按order_id查询订单产品详情
         $sql = "select sales_flat_order_item.*,product_flat_qty.qty as kc from sales_flat_order_item,product_flat_qty where sales_flat_order_item.order_id=$order_id and sales_flat_order_item.product_id=product_flat_qty.product_id";
         $res1 = Yii::$app->db->createCommand($sql)->queryAll();
@@ -160,9 +159,83 @@ class OrdersController extends PublicsController
         $res = Yii::$app->request;
         $order_id = $res->get("order_id");
 
+
         $res = Yii::$app->db->createCommand("update sales_flat_order set order_status=2,receipt_at=".time()." where order_id={$order_id}")->execute();
 
         return $this->redirect("/shop/orders/index");
 
     }
+
+    //纠纷列表
+    public function actionDispute(){
+
+        $data = [];
+
+        return $this->render($this->action->id);
+
+    }
+
+    //添加订单
+
+    public function actionAddorder(){
+
+        $req = Yii::$app->request;
+
+        $get = $req->get();
+
+        $order = [
+
+            "increment_id"=>$get["increment_id"],//订单编号
+            "order_remark"=>$get["order_remark"],//备注
+//            "payment_method"=>$get["payment_method"],//支付方式
+            "created_at"=>time(),//提交时间
+//            "paypal_order_datetime"=>$get["paypal_order_datetime"],
+            "order_status"=>$get["order_status"],//订单状态
+            "customer_firstname"=>$get["customer_firstname"],//客户姓名
+            "customer_telephone"=>$get["customer_telephone"],//客户电话
+            "customer_address_country"=>$get["customer_address_country"],//客户省
+            "customer_address_state"=>$get["customer_address_state"],//市
+            "customer_address_city"=>$get["customer_address_city"],//区
+            "customer_address_street1"=>$get["customer_address_street1"],//详细地址
+            "customer_address_zip"=>$get["customer_address_zip"],//邮编
+            "customer_email"=>$get["customer_email"],//邮箱
+            "subtotal"=>$get["subtotal"],//总额
+            "discount_amount"=>$get["discount_amount"],//折扣金额
+            "discount_rate"=>$get["discount_rate"],//折扣率
+            "coin_num"=>$get["coin_num"],//金币数量
+            "grand_total"=>$get["grand_total"],
+            "subtotal_with_discount"=>$get["subtotal_with_discount"],//订单减少金额
+            "coupon_code"=>$get["coupon_code"],
+            "shop_id"=>$get["shop_id"]
+        ];
+        $goods = [
+            "name"=>$get["name"],
+            "sku"=>$get["sku"],
+            "price"=>$get["price"],
+            "qty"=>$get["qty"],
+            "row_total"=>$get["row_total"]
+        ];
+
+
+
+        $res = Yii::$app->db->createCommand()->insert(sales_flat_order,$order)->execute();
+        $goods["order_id"] = Yii::$app->db->getLastInsertID();
+
+
+        $qty = [
+            "product_id"=>Yii::$app->db->getLastInsertID(),
+            "qty"=>10
+        ];
+        $goods["product_id"] = Yii::$app->db->getLastInsertID();
+
+        Yii::$app->db->createCommand()->insert(product_flat_qty,$qty)->execute();
+
+        $res = Yii::$app->db->createCommand()->insert(sales_flat_order_item,$goods)->execute();
+
+
+
+    }
 }
+
+//http://appfront.uekuek.com/shop/orders/addorder?increment_id=20180728&order_remark=ddd&order_status=0&customer_firstname=潘将兵&customer_telephone=13220289300&customer_address_country=山西&customer_address_state=太原市&customer_address_city=小店区&customer_address_street1=学府街&customer_address_zip=030500&customer_email=fecshop@123.com&subtotal=500.00&discount_amount=450&discount_rate=0.9&coin_num=0&grand_total=80&coupon_code=1&shop_id=1&name=衣服&sku=123456789&price=500.00&qty=1&kc=100&uid=5&row_total=500
+?>

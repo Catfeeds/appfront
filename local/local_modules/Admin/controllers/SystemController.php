@@ -45,10 +45,10 @@ class SystemController extends AppfrontController
             'totalCount' => $tot,
         ]);
 
-        $res = Yii::$app->db->createCommand("select * from banner limit $pagination->offset,$pagination->limit")->queryAll();
+        $res = Yii::$app->db->createCommand("select * from banner order by sort desc limit $pagination->offset,$pagination->limit")->queryAll();
         
         // 数据格式化
-        $data["res"] = $res;
+        $data["data"] = $res;
         $data["pagination"] = $pagination;
         $data["num"] = $tot;
         $data["page"] = $pagination->limit;
@@ -68,7 +68,27 @@ class SystemController extends AppfrontController
 
     public function actionBannerfind(){
 
-        return $this->render($this->action->id);
+        // 获取数据
+        $request = Yii::$app->request;
+        $id = $request->get("id");
+
+        // 查询数据
+        
+        $row=Yii::$app->db->createCommand("select * from banner where id=$id")->queryOne();
+
+        $data['data']=$row;
+        return $this->render($this->action->id,$data);
+
+    }
+
+    // banner的修改排序
+
+    public function actionBannersort(){
+        // 获取数据
+        $request = Yii::$app->request;
+        $data = $request->get();
+
+        Yii::$app->db->createCommand("update banner set sort=$data[sort] where id=$data[id]")->execute();   
 
     }
 
@@ -76,7 +96,27 @@ class SystemController extends AppfrontController
 
     public function actionBannerdel(){
 
-        return $this->render($this->action->id);
+        // 获取数据
+        $request = Yii::$app->request;
+        $id = $request->get('id');
+
+        // 删除数据
+
+        $data = Yii::$app->db->createCommand("select * from banner where id = $id")->queryOne();
+            
+        // 发送sql语句
+
+        if(Yii::$app->db->createCommand()->delete("banner","id=$id")->execute()){
+
+            // 如果删除成功，删除对应图片
+            if ($data['img']&&file_exists("../../appimage/common/media/".$data['img'])) {
+                unlink("../../appimage/common/media/".$data['img']);
+            }
+            return $this->redirect($_SERVER['HTTP_REFERER']);
+        }else{
+            return $this->redirect($_SERVER['HTTP_REFERER']);
+        }
+
 
     }
 
@@ -132,7 +172,7 @@ class SystemController extends AppfrontController
             "sort" => $data['sort'],
             "type" => $data['type'],
             "img"=>$newName,
-
+            "create_time"=>time(),
         ];
 
         // 执行插入数据
@@ -154,8 +194,80 @@ class SystemController extends AppfrontController
 
     // banner的数据修改
     public function actionBannersave(){
+        // 获取表单提交数据
+        $request = Yii::$app->request;
+        $data = $request->post();
+
+        // 上传分类图片
+
+        if ($_FILES['img']['name']) {
+            
+            //文件上传存放的目录  
+
+            $folder ='../../appimage/common/media/';
+             
+            $file=$_FILES['img'];
+
+            // 获取用户上传的数量
+
+            $size=count($file['name']);
+
+            // 接收文件名
+            $name=$file['name'];
+
+            // 接收临时目录
+            $tmp_name=$file['tmp_name'];
+
+            // 错误编码
+
+            $error=$file['error'];
+
+            if ($error==0) {
+
+                // 检测文件是否来自于表单
+                if (is_uploaded_file($tmp_name)) {
+                    # code...
+                    // 新的文件名
+                    $ext=substr($name,strrpos($name,'.'));
+
+                    $newName=time().rand().$ext;
+
+                    // 进行上传
+
+                    if (move_uploaded_file($tmp_name,$folder.$newName)) {
+                        
+                    }
+                }
+            }
+        }
+
         
-        return $this->render($this->action->id);
+
+        $newName=$newName?$newName:$data['oldImg'];
+
+
+        
+            
+
+        // 格式化数据
+
+        $time=time();
+        // 执行插入数据
+        $res=Yii::$app->db->createCommand("update banner set title='$data[name]',url='$data[url]',sort='$data[sort]',type='$data[type]',img='$newName',update_time='$time' where id=$data[id]")->execute();
+
+        if($res){
+
+            // 如果删除成功，删除对应图片
+            if ($data['oldImg']&&file_exists("../../appimage/common/media/".$data['oldImg'])) {
+                unlink("../../appimage/common/media/".$data['oldImg']);
+            }
+             return $this->redirect(['/admin/system/index']);
+
+        }else{
+            return $this->redirect($_SERVER['HTTP_REFERER']);
+
+        }
+            
     }
 
 

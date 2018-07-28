@@ -26,15 +26,22 @@ class PublicsController extends AppfrontController
     public function init()
     {
         parent::init();
-        
+
+        // 如果未登录
         if(!($_SESSION["login"] == "yes")){
             $_SESSION["uid"] = 0;
             $_SESSION["shop_id"] = 0;
             return $this->redirect("/shop/login/index");
         }
+        // 如果不是商家
         if ($_SESSION['shop_type']!=2) {
             # code...
             return $this->redirect("/water/index/index");
+        }
+        // 如果等待状态
+        if ($_SESSION['shop_state']==3) {
+            # code...
+            return $this->redirect("/apply/apply/waitaudit");
 
         }
 

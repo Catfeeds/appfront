@@ -5,7 +5,8 @@ $jsOptions = [ # js的配置部分
         # 在当前options下的js文件
         'js' => [
             'js/jquery-3.3.1.min.js',
-            'js/layout-admin.js'
+            'js/layout-admin.js',
+            'js/laydate.js'
         ],
     ]
 
@@ -24,6 +25,7 @@ $cssOptions = [
 
 
 ?>
+
 <style>
     * {
         margin: 0;
@@ -2427,7 +2429,6 @@ $cssOptions = [
         width: 900px;
         height: 400px;
     }
-
 </style>
 <?php $this->beginPage() ?>
     <!doctype html>
@@ -2525,6 +2526,10 @@ $cssOptions = [
         };
 
         let urls = "<?php echo $_SERVER['SERVER_NAME'];?>";
+
+        laydate.render({
+            elem:'.el-range-input'
+        })
     </script>
     </html>
 <?php $this->endPage() ?>

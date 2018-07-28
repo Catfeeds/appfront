@@ -348,6 +348,7 @@ use yii\helpers\Url;
                                                                     <div title="<?= $v["coupon_name"] ?>">
                                                                         使用优惠券：<?= $v["coupon_name"] ?></div>
                                                                     <div title="<?= $v["coin_num"] ?>">使用金币：<?= $v["coin_num"] ?></div>
+                                                                    <div title="<?= $v["discount_amount"] ?>">折扣：<?= $v["discount_amount"] ?></div>
                                                                     <div title="<?= $v["grand_total"] - $v["subtotal_with_discount"] ?>">
                                                                         应付金额：<?= $v["grand_total"] - $v["subtotal_with_discount"] ?></div>
                                                                 </div>

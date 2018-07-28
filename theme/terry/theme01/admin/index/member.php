@@ -17,16 +17,16 @@ use yii\helpers\Url;
             <form action="<?= Yii::$service->url->getUrl('/admin/index/member') ?>" method="get">
 
                 <span>会员名称</span>
-                <input type="text" name="firstname">
+                <input type="text" name="firstname" value="<?php if ($firstname!=null){echo $firstname;}?>">
                 <span class="search-ID">ID</span>
-                <input type="text" name="id">
+                <input type="text" name="id" value="<?php if ($id!=null){echo $id;}?>">
 
                 <div class="xiala">
                     <span class="search-ID">等级</span>
                     <select name="level" id="member-level">
-                        <option value="普通会员">普通会员</option>
-                        <option value="白金会员">白银会员</option>
-                        <option value="黄金会员">黄金会员</option>
+                        <option value="0" <?php if ($level==0){echo "selected";}?>>普通会员</option>
+                        <option value="1" <?php if ($level==1){echo "selected";}?>>白银会员</option>
+                        <option value="2" <?php if ($level==2){echo "selected";}?>>黄金会员</option>
 
                     </select>
                     <div class="xialaimg"></div>
@@ -56,12 +56,12 @@ use yii\helpers\Url;
                 <tr>
                     <td><?php echo $v["id"]?></td>
                     <td><?php echo $v["firstname"]?></td>
-                    <td><?php echo $v["level"] ?></td>
+                    <td><?php if($v['level']==0){echo '普通会员';}else if($v['level']==1){echo '白金会员';}else if ($v['level']==2){echo '黄金会员';}?></td>
                     <td>
                         正常
                     </td>
                     <td>
-                        <?php echo $v["updated_at"]?>
+                        <?php echo date('Y-m-d',$v["updated_at"]);?>
                     </td>
                     <td>
                         <a style="color: #41b2fc" href="<?= Yii::$service->url->getUrl('admin/index/wmember',array('id'=>$v['id']))?>">查看</a>
