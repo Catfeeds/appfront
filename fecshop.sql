@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50711
 File Encoding         : 65001
 
-Date: 2018-07-27 16:11:55
+Date: 2018-07-28 09:19:08
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -556,16 +556,17 @@ CREATE TABLE `banner` (
   `img` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '图片',
   `sort` int(11) DEFAULT NULL COMMENT '排序',
   `type` int(11) DEFAULT NULL COMMENT '轮播图位置',
-  `time` int(11) DEFAULT NULL COMMENT '操作时间',
+  `create_time` int(11) DEFAULT NULL COMMENT '操作时间',
   `num` int(11) DEFAULT NULL COMMENT '点击次数',
+  `update_time` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of banner
 -- ----------------------------
-INSERT INTO `banner` VALUES ('1', '首页-=00001', 'http://www.baidu.com', '153266358732016.jpg', '10', '1', null, null);
-INSERT INTO `banner` VALUES ('2', '首页-=00001', 'http://www.baidu.com', '153266372520489.jpg', '10', '1', null, null);
+INSERT INTO `banner` VALUES ('4', '无权无钱无权', 'http://www.baidu.com', '1532686804446.jpg', '2', '2', '1532682759', null, '1532686804');
+INSERT INTO `banner` VALUES ('5', '无权无钱无权121', 'http://www.baidu.com', '15326868219193.jpg', '21', '2', '1532682793', null, '1532686958');
 
 -- ----------------------------
 -- Table structure for `coin_record`
@@ -1012,6 +1013,9 @@ CREATE TABLE `sales_flat_order` (
   `if_is_return_stock` int(5) NOT NULL DEFAULT '2' COMMENT '1,代表订单归还了库存，2代表订单没有归还库存，此状态作用：用来标示pending订单是否释放产品库存',
   `payment_token` varchar(255) DEFAULT NULL COMMENT '支付过程中使用的token，譬如paypal express支付',
   `version` int(5) NOT NULL DEFAULT '0' COMMENT '订单支付成功后，需要更改订单状态和扣除库存，为了防止多次执行扣除库存，进而使用版本号，默认为0，执行一次更改订单状态为processing，则累加1，执行完查询version是否为1，如果不为1，则说明执行过了，事务则回滚。',
+  `discount_rate` float(10,0) DEFAULT NULL COMMENT '折扣率',
+  `discount_amount` float(10,0) DEFAULT NULL COMMENT '折扣金额',
+  `refund_at` int(11) DEFAULT NULL,
   PRIMARY KEY (`order_id`),
   KEY `customer_id` (`customer_id`),
   KEY `increment_id` (`increment_id`),
@@ -1022,7 +1026,7 @@ CREATE TABLE `sales_flat_order` (
 -- ----------------------------
 -- Records of sales_flat_order
 -- ----------------------------
-INSERT INTO `sales_flat_order` VALUES ('1', '2018', '2', '1', '1532324653', null, '1532510036', null, null, '2', null, null, null, '500.00', null, '500.00', null, '50.00', null, '1', null, '2', '', '123@QQ.COM', '潘将兵', '', null, null, '200', '1', '微信支付', null, null, null, '13220289999', '山西省', '吕梁市', '孝义市', '030500', '的撒大', null, '好好好', '', null, null, null, null, null, null, null, null, null, null, null, null, null, null, '2018-07-26 08:39:29', null, '2', null, '0');
+INSERT INTO `sales_flat_order` VALUES ('1', '2018', '2', '1', '1532324653', null, '1532510036', null, null, '2', null, null, null, '500.00', null, '500.00', null, '50.00', null, '1', null, '2', '', '123@QQ.COM', '潘将兵', '', null, null, '200', '1', '微信支付', null, null, null, '13220289999', '山西省', '吕梁市', '孝义市', '030500', '的撒大', null, '好好好', '', null, null, null, null, null, null, null, null, null, null, null, null, null, null, '2018-07-26 08:39:29', null, '2', null, '0', null, null, null);
 
 -- ----------------------------
 -- Table structure for `sales_flat_order_item`
