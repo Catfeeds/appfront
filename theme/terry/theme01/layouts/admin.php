@@ -219,7 +219,7 @@ $cssOptions = [
 
     /*用户管理-管理员管理*/
     .adminmannager {
-        width: 1012px;
+        width: 1100px;
         margin:0 auto;
         /*height: 100%;*/
         padding: 27px 0 27px 27px;
