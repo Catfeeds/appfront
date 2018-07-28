@@ -260,7 +260,7 @@ use yii\helpers\Url;
                                                     <span>查看</span>
                                                 </button>
                                             </a>
-                                            <?php if($v["expiration_date"]>time()){?>
+                                            <?php if($v["expiration_date"]>time()&&$v["status"]==1){?>
                                                 <span data-v-345ba354="" style="color: rgb(234, 235, 236);">|</span>
                                                 <a href="<?= Yii::$service->url->geturl("/shop/store/delcou?id={$v['coupon_id']}") ?>">
                                                     <button data-v-345ba354="" type="button" class="el-button el-button--text el-button--small">
