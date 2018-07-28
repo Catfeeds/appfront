@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50711
 File Encoding         : 65001
 
-Date: 2018-07-26 20:06:00
+Date: 2018-07-27 16:11:55
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -557,12 +557,15 @@ CREATE TABLE `banner` (
   `sort` int(11) DEFAULT NULL COMMENT '排序',
   `type` int(11) DEFAULT NULL COMMENT '轮播图位置',
   `time` int(11) DEFAULT NULL COMMENT '操作时间',
+  `num` int(11) DEFAULT NULL COMMENT '点击次数',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of banner
 -- ----------------------------
+INSERT INTO `banner` VALUES ('1', '首页-=00001', 'http://www.baidu.com', '153266358732016.jpg', '10', '1', null, null);
+INSERT INTO `banner` VALUES ('2', '首页-=00001', 'http://www.baidu.com', '153266372520489.jpg', '10', '1', null, null);
 
 -- ----------------------------
 -- Table structure for `coin_record`
@@ -847,7 +850,7 @@ CREATE TABLE `sales_coupon` (
   `status` tinyint(4) DEFAULT NULL COMMENT '优惠券的状态 0 未审核 1审核通过 2 审核失败',
   PRIMARY KEY (`coupon_id`),
   KEY `coupon_code` (`coupon_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sales_coupon
@@ -1079,78 +1082,82 @@ CREATE TABLE `session_storage` (
 -- ----------------------------
 DROP TABLE IF EXISTS `shop`;
 CREATE TABLE `shop` (
-  `shop_id` int(11) NOT NULL COMMENT '店铺索引id',
-  `shop_name` varchar(50) NOT NULL DEFAULT '' COMMENT '店铺名称',
-  `shop_type` int(11) NOT NULL DEFAULT '0' COMMENT '店铺类型等级 1 代表水司 2 代表商家',
-  `uid` int(11) NOT NULL DEFAULT '0' COMMENT '店铺管理员id',
-  `shop_company_name` varchar(50) NOT NULL DEFAULT '' COMMENT '店铺公司名称',
-  `province_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '店铺所在省份ID',
+  `shop_id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '店铺索引id',
+  `shop_name` varchar(50) DEFAULT '' COMMENT '店铺名称',
+  `shop_type` int(11) DEFAULT '0' COMMENT '店铺类型等级 1 代表水司 2 代表商家',
+  `uid` int(11) DEFAULT '0' COMMENT '店铺管理员id',
+  `shop_company_name` varchar(50) DEFAULT '' COMMENT '店铺公司名称',
+  `province_id` mediumint(8) unsigned DEFAULT '0' COMMENT '店铺所在省份ID',
   `district_id` mediumint(8) DEFAULT NULL COMMENT '店铺所在县',
-  `city_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '店铺所在市ID',
-  `shop_address` varchar(100) NOT NULL DEFAULT '' COMMENT '详细地区',
-  `shop_zip` varchar(10) NOT NULL DEFAULT '' COMMENT '邮政编码',
-  `shop_state` tinyint(1) NOT NULL DEFAULT '1' COMMENT '店铺状态，0关闭，1开启，2审核中，3 审核失败',
-  `shop_close_info` varchar(255) NOT NULL DEFAULT '' COMMENT '店铺关闭原因',
-  `shop_logo` varchar(255) NOT NULL DEFAULT '' COMMENT '店铺logo',
-  `shop_banner` varchar(255) NOT NULL DEFAULT '' COMMENT '店铺横幅',
-  `shop_avatar` varchar(150) NOT NULL DEFAULT '' COMMENT '店铺头像',
-  `shop_keywords` varchar(255) NOT NULL DEFAULT '' COMMENT '店铺seo关键字',
-  `shop_description` varchar(255) NOT NULL DEFAULT '' COMMENT '店铺seo描述',
-  `shop_phone` varchar(20) NOT NULL DEFAULT '' COMMENT '商家电话',
-  `shop_recommend` tinyint(1) NOT NULL DEFAULT '0' COMMENT '推荐，0为否，1为是，默认为0',
-  `shop_credit` int(10) NOT NULL DEFAULT '0' COMMENT '店铺信用',
-  `shop_desccredit` float NOT NULL DEFAULT '0' COMMENT '描述相符度分数',
-  `shop_servicecredit` float NOT NULL DEFAULT '0' COMMENT '服务态度分数',
-  `shop_deliverycredit` float NOT NULL DEFAULT '0' COMMENT '发货速度分数',
-  `shop_collect` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '店铺收藏数量',
-  `shop_sales` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '店铺销售额（不计算退款）',
-  `shop_account` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '店铺账户余额',
-  `shop_cash` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '店铺可提现金额',
-  `live_store_name` varchar(255) NOT NULL DEFAULT '' COMMENT '商铺名称',
-  `live_store_address` varchar(255) NOT NULL DEFAULT '' COMMENT '商家地址',
-  `live_store_tel` varchar(255) NOT NULL DEFAULT '' COMMENT '商铺电话',
-  `shop_region` varchar(50) NOT NULL DEFAULT '' COMMENT '店铺默认配送区域',
-  `shop_qrcode` varchar(255) NOT NULL DEFAULT '' COMMENT '店铺公众号',
-  `shop_create_time` int(11) NOT NULL DEFAULT '0' COMMENT '店铺时间',
-  `shop_end_time` int(11) NOT NULL DEFAULT '0' COMMENT '店铺关闭时间',
-  `shop_platform_commission_rate` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '平台抽取佣金比率',
-  `company_employee_count` int(10) unsigned NOT NULL DEFAULT '1' COMMENT '员工总数',
-  `company_registered_capital` int(10) NOT NULL DEFAULT '0' COMMENT '注册资金',
-  `contacts_name` varchar(50) NOT NULL DEFAULT '' COMMENT '联系人姓名',
-  `contacts_phone` varchar(20) NOT NULL DEFAULT '' COMMENT '联系人电话',
-  `contacts_email` varchar(50) NOT NULL DEFAULT '' COMMENT '联系人邮箱',
-  `contacts_card_no` varchar(255) NOT NULL DEFAULT '' COMMENT '申请人身份证号',
-  `contacts_card_electronic_1` varchar(255) NOT NULL DEFAULT '' COMMENT '申请人手持身份证电子版',
-  `contacts_card_electronic_2` varchar(255) NOT NULL DEFAULT '' COMMENT '申请人身份证正面',
-  `contacts_card_electronic_3` varchar(255) NOT NULL DEFAULT '' COMMENT '申请人身份证反面',
-  `business_licence_number` varchar(50) NOT NULL DEFAULT '' COMMENT '营业执照号',
-  `business_sphere` varchar(1000) NOT NULL DEFAULT '' COMMENT '法定经营范围',
-  `business_licence_number_electronic` varchar(50) NOT NULL DEFAULT '' COMMENT '营业执照电子版',
-  `organization_code` varchar(50) NOT NULL DEFAULT '' COMMENT '组织机构代码',
-  `organization_code_electronic` varchar(50) NOT NULL DEFAULT '' COMMENT '组织机构代码电子版',
-  `general_taxpayer` varchar(255) NOT NULL DEFAULT '' COMMENT '一般纳税人证明',
-  `bank_account_name` varchar(50) NOT NULL DEFAULT '' COMMENT '银行开户名',
-  `bank_account_number` varchar(50) NOT NULL DEFAULT '' COMMENT '公司银行账号',
-  `bank_name` varchar(50) NOT NULL DEFAULT '' COMMENT '开户银行支行名称',
-  `bank_code` varchar(50) NOT NULL DEFAULT '' COMMENT '支行联行号',
-  `bank_address` varchar(50) NOT NULL DEFAULT '' COMMENT '开户银行所在地',
-  `bank_licence_electronic` varchar(50) NOT NULL DEFAULT '' COMMENT '开户银行许可证电子版',
-  `is_settlement_account` tinyint(1) NOT NULL DEFAULT '1' COMMENT '开户行账号是否为结算账号 1-开户行就是结算账号 2-独立的计算账号',
-  `settlement_bank_account_name` varchar(50) NOT NULL DEFAULT '' COMMENT '结算银行开户名',
-  `settlement_bank_account_number` varchar(50) NOT NULL DEFAULT '' COMMENT '结算公司银行账号',
-  `settlement_bank_name` varchar(50) NOT NULL DEFAULT '' COMMENT '结算开户银行支行名称',
-  `settlement_bank_code` varchar(50) NOT NULL DEFAULT '' COMMENT '结算支行联行号',
-  `settlement_bank_address` varchar(50) NOT NULL DEFAULT '' COMMENT '结算开户银行所在地',
-  `tax_registration_certificate` varchar(50) NOT NULL DEFAULT '' COMMENT '税务登记证号',
-  `tax_registration_certificate_electronic` varchar(50) NOT NULL DEFAULT '' COMMENT '税务登记证号电子版',
-  `taxpayer_id` varchar(50) NOT NULL DEFAULT '' COMMENT '纳税人识别号',
+  `city_id` mediumint(8) unsigned DEFAULT '0' COMMENT '店铺所在市ID',
+  `shop_address` varchar(100) DEFAULT '' COMMENT '详细地区',
+  `shop_zip` varchar(10) DEFAULT '' COMMENT '邮政编码',
+  `shop_state` tinyint(1) DEFAULT '1' COMMENT '店铺状态，0关闭，1开启，2审核中，3 审核失败',
+  `shop_close_info` varchar(255) DEFAULT '' COMMENT '店铺关闭原因',
+  `shop_logo` varchar(255) DEFAULT '' COMMENT '店铺logo',
+  `shop_banner` varchar(255) DEFAULT '' COMMENT '店铺横幅',
+  `shop_avatar` varchar(150) DEFAULT '' COMMENT '店铺头像',
+  `shop_keywords` varchar(255) DEFAULT '' COMMENT '店铺seo关键字',
+  `shop_description` varchar(255) DEFAULT '' COMMENT '店铺seo描述',
+  `shop_phone` varchar(20) DEFAULT '' COMMENT '商家电话',
+  `shop_recommend` tinyint(1) DEFAULT '0' COMMENT '推荐，0为否，1为是，默认为0',
+  `shop_credit` int(10) DEFAULT '0' COMMENT '店铺信用',
+  `shop_desccredit` float DEFAULT '0' COMMENT '描述相符度分数',
+  `shop_servicecredit` float DEFAULT '0' COMMENT '服务态度分数',
+  `shop_deliverycredit` float DEFAULT '0' COMMENT '发货速度分数',
+  `shop_collect` int(10) unsigned DEFAULT '0' COMMENT '店铺收藏数量',
+  `shop_sales` decimal(10,2) DEFAULT '0.00' COMMENT '店铺销售额（不计算退款）',
+  `shop_account` decimal(10,2) DEFAULT '0.00' COMMENT '店铺账户余额',
+  `shop_cash` decimal(10,2) DEFAULT '0.00' COMMENT '店铺可提现金额',
+  `live_store_name` varchar(255) DEFAULT '' COMMENT '商铺名称',
+  `live_store_address` varchar(255) DEFAULT '' COMMENT '商家地址',
+  `live_store_tel` varchar(255) DEFAULT '' COMMENT '商铺电话',
+  `shop_region` varchar(50) DEFAULT '' COMMENT '店铺默认配送区域',
+  `shop_qrcode` varchar(255) DEFAULT '' COMMENT '店铺公众号',
+  `shop_create_time` int(11) DEFAULT '0' COMMENT '店铺时间',
+  `shop_end_time` int(11) DEFAULT '0' COMMENT '店铺关闭时间',
+  `shop_platform_commission_rate` decimal(10,2) DEFAULT '0.00' COMMENT '平台抽取佣金比率',
+  `company_employee_count` int(10) unsigned DEFAULT '1' COMMENT '员工总数',
+  `company_registered_capital` int(10) DEFAULT '0' COMMENT '注册资金',
+  `contacts_name` varchar(50) DEFAULT '' COMMENT '联系人姓名',
+  `contacts_phone` varchar(20) DEFAULT '' COMMENT '联系人电话',
+  `contacts_email` varchar(50) DEFAULT '' COMMENT '联系人邮箱',
+  `contacts_card_no` varchar(255) DEFAULT '' COMMENT '申请人身份证号',
+  `contacts_card_electronic_1` varchar(255) DEFAULT '' COMMENT '申请人手持身份证电子版',
+  `contacts_card_electronic_2` varchar(255) DEFAULT '' COMMENT '申请人身份证正面',
+  `contacts_card_electronic_3` varchar(255) DEFAULT '' COMMENT '申请人身份证反面',
+  `business_licence_number` varchar(50) DEFAULT '' COMMENT '营业执照号',
+  `business_sphere` varchar(1000) DEFAULT '' COMMENT '法定经营范围',
+  `business_licence_number_electronic` varchar(50) DEFAULT '' COMMENT '营业执照电子版',
+  `organization_code` varchar(50) DEFAULT '' COMMENT '组织机构代码',
+  `organization_code_electronic` varchar(50) DEFAULT '' COMMENT '组织机构代码电子版',
+  `general_taxpayer` varchar(255) DEFAULT '' COMMENT '一般纳税人证明',
+  `bank_account_name` varchar(50) DEFAULT '' COMMENT '银行开户名',
+  `bank_account_number` varchar(50) DEFAULT '' COMMENT '公司银行账号',
+  `bank_name` varchar(50) DEFAULT '' COMMENT '开户银行支行名称',
+  `bank_code` varchar(50) DEFAULT '' COMMENT '支行联行号',
+  `bank_address` varchar(50) DEFAULT '' COMMENT '开户银行所在地',
+  `bank_licence_electronic` varchar(50) DEFAULT '' COMMENT '开户银行许可证电子版',
+  `is_settlement_account` tinyint(1) DEFAULT '1' COMMENT '开户行账号是否为结算账号 1-开户行就是结算账号 2-独立的计算账号',
+  `settlement_bank_account_name` varchar(50) DEFAULT '' COMMENT '结算银行开户名',
+  `settlement_bank_account_number` varchar(50) DEFAULT '' COMMENT '结算公司银行账号',
+  `settlement_bank_name` varchar(50) DEFAULT '' COMMENT '结算开户银行支行名称',
+  `settlement_bank_code` varchar(50) DEFAULT '' COMMENT '结算支行联行号',
+  `settlement_bank_address` varchar(50) DEFAULT '' COMMENT '结算开户银行所在地',
+  `tax_registration_certificate` varchar(50) DEFAULT '' COMMENT '税务登记证号',
+  `tax_registration_certificate_electronic` varchar(50) DEFAULT '' COMMENT '税务登记证号电子版',
+  `taxpayer_id` varchar(50) DEFAULT '' COMMENT '纳税人识别号',
+  `freezing_time` int(11) DEFAULT NULL,
+  `freezing_cause` text,
+  `reason` text COMMENT '审核不通过原因',
+  `notice` tinyint(4) DEFAULT NULL COMMENT '通知审核结果:1邮件  2短信 3人工',
   PRIMARY KEY (`shop_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=16384 COMMENT='店铺数据表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=16384 COMMENT='店铺数据表';
 
 -- ----------------------------
 -- Records of shop
 -- ----------------------------
-INSERT INTO `shop` VALUES ('1', '山西优逸客官方旗舰店', '2', '3', '山西优逸客', '1', null, '1', 'asdsadasdasdadasd', '', '1', '', 'http://img.uekuek.com/images/1532509890927.png', '优逸客科技有限公司，简称“优逸客”，是我国100家“大众创业、万众创新\"', '', 'dasda、大萨达所多、asd、asd、阿森松岛、asd、ad、a', '优逸客科技有限公司，简称“优逸客”，是我国100家“大众创业、万众创新”重点扶持机构之一', '18734136852', '0', '0', '0', '0', '0', '0', '0.00', '0.00', '0.00', '', '', '', '', '', '0', '0', '0.00', '1', '0', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '1', '', '', '', '', '', '', '', '');
+INSERT INTO `shop` VALUES ('1', '山西优逸客官方旗舰店', '2', '3', '山西优逸客', '1', null, '1', 'asdsadasdasdadasd', '', '1', '', 'http://img.uekuek.com/images/1532509890927.png', '优逸客科技有限公司，简称“优逸客”，是我国100家“大众创业、万众创新\"', '', 'dasda、大萨达所多、asd、asd、阿森松岛、asd、ad、a', '优逸客科技有限公司，简称“优逸客”，是我国100家“大众创业、万众创新”重点扶持机构之一', '18734136852', '0', '0', '0', '0', '0', '0', '0.00', '0.00', '0.00', '', '', '', '', '', '0', '0', '0.00', '1', '0', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '1', '', '', '', '', '', '', '', '', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for `static_block`
@@ -4468,6 +4475,25 @@ INSERT INTO `sys_province` VALUES ('31', '6', '新疆维吾尔自治区', '0');
 INSERT INTO `sys_province` VALUES ('32', '8', '香港特别行政区', '0');
 INSERT INTO `sys_province` VALUES ('33', '8', '澳门特别行政区', '0');
 INSERT INTO `sys_province` VALUES ('34', '8', '台湾省', '0');
+
+-- ----------------------------
+-- Table structure for `thaw_info`
+-- ----------------------------
+DROP TABLE IF EXISTS `thaw_info`;
+CREATE TABLE `thaw_info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `desc` text CHARACTER SET utf8,
+  `voucher` varchar(255) DEFAULT NULL,
+  `create_date` int(11) DEFAULT NULL,
+  `uid` int(11) NOT NULL,
+  `status` tinyint(1) DEFAULT NULL COMMENT '0 未审核 1审核通过 2未通过',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of thaw_info
+-- ----------------------------
+INSERT INTO `thaw_info` VALUES ('1', '我们', '', null, '5', '1');
 
 -- ----------------------------
 -- Table structure for `url_rewrite`

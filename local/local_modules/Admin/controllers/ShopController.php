@@ -70,8 +70,6 @@ class ShopController extends AppfrontController
 
         $data['class']=$class;
 
-              
-        
         return $this->render($this->action->id,$data);
     }
 
@@ -301,7 +299,7 @@ class ShopController extends AppfrontController
         $id = $request->get('id');
         
         // 获取商品数据
-        $data['class']=Yii::$app->mongodb->getCollection('category')->findOne(['_id'=>$id]);
+        $data['class']=Yii::$app->mongodb->getCollection('category')->findOne(['_id'=>"$id"]);
 
         // 加载页面
         return $this->render($this->action->id,$data);
@@ -317,47 +315,54 @@ class ShopController extends AppfrontController
 
         // 上传分类图片
 
-        //文件上传存放的目录  
+        if ($_FILES['img']['name']) {
+            
+            //文件上传存放的目录  
 
-        $folder ='../../appimage/common/media/catalog/';
-         
-        $file=$_FILES['img'];
+            $folder ='../../appimage/common/media/catalog/';
+             
+            $file=$_FILES['img'];
 
-        // 获取用户上传的数量
+            // 获取用户上传的数量
 
-        $size=count($file['name']);
+            $size=count($file['name']);
 
-        // 接收文件名
-        $name=$file['name'];
+            // 接收文件名
+            $name=$file['name'];
 
-        // 接收临时目录
-        $tmp_name=$file['tmp_name'];
+            // 接收临时目录
+            $tmp_name=$file['tmp_name'];
 
-        // 错误编码
+            // 错误编码
 
-        $error=$file['error'];
+            $error=$file['error'];
 
-        if ($error==0) {
+            if ($error==0) {
 
-            // 检测文件是否来自于表单
-            if (is_uploaded_file($tmp_name)) {
-                # code...
-                // 新的文件名
-                $ext=substr($name,strrpos($name,'.'));
+                // 检测文件是否来自于表单
+                if (is_uploaded_file($tmp_name)) {
+                    # code...
+                    // 新的文件名
+                    $ext=substr($name,strrpos($name,'.'));
 
-                $newName=time().rand().$ext;
+                    $newName=time().rand().$ext;
 
-                // 进行上传
+                    // 进行上传
 
-                if (move_uploaded_file($tmp_name,$folder.$newName)) {
-                    
+                    if (move_uploaded_file($tmp_name,$folder.$newName)) {
+                        
+                    }
                 }
             }
         }
 
+        
+
+        $newName=$newName?$newName:$data['oldimg'];
+
 
         $arr=[
-            "_id"=>$data['_id'],
+            "_id"=>$data[_id],
             "created_at"=>time(),
             "created_user_id"=>0,
             "updated_at"=>0,
@@ -436,9 +441,12 @@ class ShopController extends AppfrontController
 
         $collection = Yii::$app->mongodb->getCollection('category');
 
-        if($a=$collection->insert($arr)){
+        if($a=$collection->save($arr)){
 
-
+            // 如果删除成功，删除对应图片
+            if ($data['oldimg']&&file_exists("../../appimage/common/media/catalog/".$data['oldimg'])) {
+                unlink("../../appimage/common/media/catalog/".$data['oldimg']);
+            }
              return $this->redirect(['shop/classlist']);
 
         }else{

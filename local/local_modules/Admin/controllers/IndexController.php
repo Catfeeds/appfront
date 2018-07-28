@@ -233,6 +233,9 @@ class IndexController extends AppfrontController
 
         $data["pagination"] = $pagination;
         $data["rows"] = $rows;
+        $data["firstname"] = $firstname;
+        $data['id'] = $id;
+        $data['level'] = $level;
 
         return $this->render($this->action->id, $data);
 
