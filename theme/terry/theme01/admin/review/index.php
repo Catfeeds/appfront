@@ -125,7 +125,7 @@ use yii\helpers\Url;
                 <tr style="font-size: 14px;color: #30a2fe;text-align: left;height: 50px;">
                     <th
                             class="el-table_2_column_11     is-leaf">
-                        <div class="cell">ID</div>
+                        <div class="cell">编号</div>
                     </th>
                     <th
                             class="el-table_2_column_12     is-leaf">
@@ -162,8 +162,8 @@ use yii\helpers\Url;
                 <?php foreach($list as $k=>$v){?>
                     <tr class="el-table__row" style="height:36px;font-size: 14px;">
                         <td class="el-table_2_column_11  ">
-                            <div class="cell el-tooltip" title="<?= $v["increment_id"] ?>">
-                                <?php echo $k?>
+                            <div class="cell el-tooltip" title="<?= $k+1 ?>">
+                                <?php echo $k+1?>
                             </div>
                         </td>
                         <td class="el-table_2_column_12">
