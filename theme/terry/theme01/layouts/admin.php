@@ -2434,7 +2434,10 @@ $cssOptions = [
     .admincount span{
         font-size: 14px;
     }
-    table tr:hover{
+    .admin-table table tr:hover{
+        background: rgba(238,238,238,0.2);
+    }
+    .system-content table tr:hover{
         background: rgba(238,238,238,0.2);
     }
 </style>

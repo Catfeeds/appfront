@@ -153,9 +153,9 @@ use yii\helpers\Url;
                    style="width: 1012px;">
                 <colgroup>
                     <col name="el-table_2_column_6" width="120">
-                    <col name="el-table_2_column_7" width="150">
-                    <col name="el-table_2_column_8" width="150">
-                    <col name="el-table_2_column_9" width="150">
+                    <col name="el-table_2_column_7" width="200">
+                    <col name="el-table_2_column_8" width="200">
+                    <col name="el-table_2_column_9" width="200">
                     <col name="el-table_2_column_10" width="150">
                 </colgroup>
                 <tbody style="font-size: 12px;color:#82898e">
@@ -163,7 +163,7 @@ use yii\helpers\Url;
                     <tr class="el-table__row" style="height:36px;font-size: 14px;">
                         <td class="el-table_2_column_11  ">
                             <div class="cell el-tooltip" title="<?= $v["increment_id"] ?>">
-                                <?php echo $k+1?>
+                                <?php echo $k?>
                             </div>
                         </td>
                         <td class="el-table_2_column_12">
@@ -195,29 +195,6 @@ use yii\helpers\Url;
                     </tr>
                 <?php } ?>
                 </tbody>
-            </table>
-        </div>
-
-        <div class="wait-list">
-            <table border="0" class="ProductorData-tablelist wait-tablelist">
-
-                  <?php foreach($list as $k=>$v){?>
-                <tr>
-                    <td>
-                        <div style="margin-left:6px;"><?php echo $k+1?></div>
-                    </td>
-                    <td><?php echo $v['shop_name']?></td>
-                    <?php if($v['shop_type']==1){?>
-                    <td>水司</td>
-                    <?php }else{?>
-                    <td>商家</td>
-                    <?php }?>
-                    <td>待审核</td>
-                    <td>
-                        <a href="/admin/review/wreview?shop_id=<?php echo $v['shop_id']?>" style="color: #2dacff">查看</a>
-                    </td>
-                </tr>
-                 <?php }?>
             </table>
         </div>
 
