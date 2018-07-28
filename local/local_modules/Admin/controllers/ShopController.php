@@ -228,7 +228,7 @@ class ShopController extends PublicsController
         $data = $request->get();
 
         $arr["_id"]=$data['id'];
-        $arr["menu_show"]=$data['menu_show'];
+        $arr["menu_show"]=(int)$data['menu_show'];
 
         // 修改审核状态
 
