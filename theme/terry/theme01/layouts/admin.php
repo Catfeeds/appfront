@@ -32,6 +32,7 @@ $cssOptions = [
         padding: 0;
         list-style: none;
         text-decoration: none;
+        font-family: "微软雅黑";
     }
 
     html, body {
@@ -208,7 +209,7 @@ $cssOptions = [
     /*主内容*/
     .main-content {
         width: calc(100% - 167px);
-        min-height: 587px;
+        /*min-height: 587px;*/
         background: #fff;
         float: left;
         color: #333;
@@ -706,6 +707,7 @@ $cssOptions = [
 
     .main-content {
         /*overflow: hidden;*/
+        /*width: 1012px;*/
     }
 
     #platdata .tongji {
@@ -2463,7 +2465,7 @@ $cssOptions = [
                     </a>
                 </li>
                 <li id="shop">
-                    <a href="/admin/shop/index">
+                    <a href="/admin/shop/classlist">
                         店铺管理
                     </a>
                 </li>

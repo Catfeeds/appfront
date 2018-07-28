@@ -33,14 +33,25 @@ class ShujuController extends PublicsController
 //=========================数据中心===============================
     //平台数据
     public function actionIndex(){
+
         return $this->render($this->action->id);
     }
     //商家数据
     public function actionShop(){
-        return $this->render($this->action->id);
+        $pagination = new Pagination([
+            'defaultPageSize' => 2,
+            'totalCount' => 2,
+        ]);
+        $data['pagination'] = $pagination;
+        return $this->render($this->action->id,$data);
     }
     //水司数据
     public function actionWater(){
-        return $this->render($this->action->id);
+        $pagination = new Pagination([
+            'defaultPageSize' => 2,
+            'totalCount' => 2,
+        ]);
+        $data['pagination'] = $pagination;
+        return $this->render($this->action->id,$data);
     }
 }

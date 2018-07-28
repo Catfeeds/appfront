@@ -46,19 +46,19 @@
                     <td>万荣县</td>
                     <td>2018.05.29 14:00:00</td>
                     <td>
-                        <a to="/sPOrder" style="color: #41b2fc">订单管理</a>
+                        <a href="/sPOrder" style="color: #41b2fc">订单管理</a>
                         &nbsp;<label>|</label>&nbsp;
-                        <a style="color: #41b2fc" to="/smannager">商品管理</a>
+                        <a style="color: #41b2fc" href="/smannager">商品管理</a>
                         &nbsp;<label>|</label>&nbsp;
-                        <a style="color: #41b2fc" to="/scategory">分类管理</a>
+                        <a style="color: #41b2fc" href="/scategory">分类管理</a>
                         &nbsp;<label>|</label>&nbsp;
-                        <a to="/spingjia" style="color: #41b2fc">评价管理</a>
+                        <a href="/spingjia" style="color: #41b2fc">评价管理</a>
                         &nbsp;<label>|</label>&nbsp;
-                        <a style="color: #41b2fc" to="/scousult">咨询管理</a>
+                        <a style="color: #41b2fc" href="/scousult">咨询管理</a>
                         &nbsp;<label>|</label>&nbsp;
-                        <a to="/scoupan" style="color: #41b2fc" >优惠券管理</a>
+                        <a href="/scoupan" style="color: #41b2fc" >优惠券管理</a>
                         &nbsp;<label>|</label>&nbsp;
-                        <a style="color: #41b2fc" to="/sactivity">活动管理</a>
+                        <a style="color: #41b2fc" href="/sactivity">活动管理</a>
                     </td>
                 </tr>
             </table>

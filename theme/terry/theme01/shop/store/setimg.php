@@ -91,7 +91,7 @@
                                                  style="display: flex; justify-content: space-between;">
                                                 <div class="el-input" style="width: 480px;">
                                                     <input type="text" name="shop_logo"
-                                                           value="<?= $res["shop_logo"] ?>"
+                                                           value="<?= Yii::$app->params["img"]."/images/".$res["shop_logo"] ?>"
                                                            class="el-input__inner">
                                                     <input accept="image/*" type="file" style="display: none;" name="file[]">
                                                 </div>
@@ -111,7 +111,7 @@
                                                 <div class="el-input" style="width: 480px;">
                                                     <input type="file" style="display: none;" name="file[]" accept="image/jpeg">
                                                     <input type="text" autocomplete="off"
-                                                           class="el-input__inner" value="<?= $res["shop_avatar"] ?>"
+                                                           class="el-input__inner" value="<?= Yii::$app->params["img"]."/images/".$res["shop_avatar"] ?>"
                                                            name="shop_avatar"></div>
                                                 <button type="button"
                                                         class="el-button green el-button--success is-round sc" style="line-height: 10px">

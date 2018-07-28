@@ -28,6 +28,13 @@ class ApplyController extends AppfrontController
         // Yii::$service->page->theme->layoutFile = 'category_view.php';
 
         Yii::$service->page->theme->layoutFile = 'apply.php';
+
+        // 如果未登录
+        if(!($_SESSION["login"] == "yes")){
+            $_SESSION["uid"] = 0;
+            $_SESSION["shop_id"] = 0;
+            return $this->redirect("/shop/login/index");
+        }
     }
 
     // 商家入驻的展示页面
