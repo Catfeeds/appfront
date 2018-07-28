@@ -127,7 +127,7 @@ class ApplyController extends AppfrontController
     	
      }
      // 等待审核
-     public function actionWaitaudit(){
+     public function actionWaitaudit1(){
      	$arr1=$_SESSION['companyinfo']['post'];
      	$arr2=$_POST;
      	$arr3=array_merge($arr1,$arr2);
@@ -149,7 +149,7 @@ class ApplyController extends AppfrontController
      	$arr3['shop_avatar']=$arr5[2];
      	$arr3['shop_state']=3;//店铺状态，0关闭，1开启，2冻结，3 待审核  4未通过
      	//用户登录之后才能进行商家入驻，uid为用户id
-     	$arr3['uid']=0;
+     	$arr3['uid']=$_SESSION['uid'];
      	unset($arr3['_csrf']);
      	unset($arr3['img0']);
      	unset($arr3['img1']);
@@ -161,7 +161,14 @@ class ApplyController extends AppfrontController
      	unset($arr3['img7']);
      	Yii::$app->db->createCommand()->insert('shop',$arr3)->execute();
      	
-     	return $this->render($this->action->id);
+        return $this->redirect("/apply/apply/waitaudit");
+
+     }
+
+     // 等待页面
+     public function actionWaitaudit(){
+        return $this->render($this->action->id);
+
      }
     /*
      *根据省份id获取城市 

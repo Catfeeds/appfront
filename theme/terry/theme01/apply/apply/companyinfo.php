@@ -1,8 +1,10 @@
    <div  id="index1">
     <header >
      <div  class="index1-logo">
-      <img  src="/public/imgs/login.png" alt="" /> 
-      <h1 >晋彤后台管理系统</h1>
+      <a href="/apply/apply/index">
+       <img src="/public/imgs/login.png" alt="" /> 
+       <h1>晋彤后台管理系统</h1>
+      </a>
      </div> 
      <div  style="float: right; padding-top: 50px; box-sizing: border-box; margin-right: 50px; width: 553px;">
       <div  class="el-steps el-steps--horizontal">
@@ -110,7 +112,7 @@
        <?php }?>
       </div> 
       <div  class="index2-tip">
-       <p > *&nbsp;一下所需要上传的电子版资质文件仅支持JPG／GIF／PNG格式图片，大小请控制在400K之内 </p>
+       <p > *&nbsp;以下所需要上传的电子版资质文件仅支持JPG／GIF／PNG格式图片，大小请控制在400K之内 </p>
       </div> 
       <div  class="index2-shui">
        <div  class="admin-tablename" style="height: 40px; line-height: 40px;">
