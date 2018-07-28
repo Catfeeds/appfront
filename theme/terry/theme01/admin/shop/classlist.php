@@ -132,9 +132,9 @@ use yii\helpers\Url;
                         <td>
                             <?php 
                                 if ($value['menu_show']==1) {
-                                    echo "<span class='success'><a href='".Yii::$service->url->getUrl('admin/shop/classeditshow', array('id' => $value[_id],'menu_show',2))."'>显示</a></span>";
+                                    echo "<span class='success'><a href='".Yii::$service->url->getUrl('admin/shop/classeditshow', array('id' => $value[_id],'menu_show'=>2))."'>显示</a></span>";
                                 }else{
-                                    echo "<span class='warning'><a href='".Yii::$service->url->getUrl('admin/shop/classeditshow', array('id' => $value[_id],'menu_show',1))."'>隐藏</a></span>";
+                                    echo "<span class='warning'><a href='".Yii::$service->url->getUrl('admin/shop/classeditshow', array('id' => $value[_id],'menu_show'=>1))."'>隐藏</a></span>";
                                 }
                             ?>
 

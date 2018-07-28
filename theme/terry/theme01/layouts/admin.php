@@ -244,7 +244,7 @@ $cssOptions = [
         height: 48px;
         margin-top: 30px;
         /*background: #ff6700;*/
-        padding-right: 100px;
+        /*padding-right: 100px;*/
         box-sizing: border-box;
     }
 
@@ -2434,7 +2434,10 @@ $cssOptions = [
     .admincount span{
         font-size: 14px;
     }
-    table tr:hover{
+    .admin-table table tr:hover{
+        background: rgba(238,238,238,0.2);
+    }
+    .system-content table tr:hover{
         background: rgba(238,238,238,0.2);
     }
 </style>

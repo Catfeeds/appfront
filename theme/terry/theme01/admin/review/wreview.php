@@ -393,7 +393,7 @@
                     <span>未通过</span>
                 </div>-->
                 <div style="height: 100%;line-height: 40px;margin-left:20px;">
-                	<label><input type="radio" name="shop_state" value="1"/>通过</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                	<label><input type="radio" name="shop_state" value="1" checked/>通过</label>&nbsp;&nbsp;&nbsp;&nbsp;
                 	<label><input type="radio" name="shop_state" value="4"/>不通过</label>
                 </div>
             </div>
@@ -430,7 +430,7 @@ padding: 20px;"></textarea>
                     <span>人工</span>
                 </div>-->
                 <div style="height: 100%;line-height: 40px;margin-left:20px;">
-                	<label><input type="radio" name="notice" value="1"/>邮件</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                	<label><input type="radio" name="notice" checked value="1"/>邮件</label>&nbsp;&nbsp;&nbsp;&nbsp;
                 	<label><input type="radio" name="notice" value="2"/>短信</label>&nbsp;&nbsp;&nbsp;&nbsp;
                 	<label><input type="radio" name="notice" value="3"/>人工</label>
                 </div>
