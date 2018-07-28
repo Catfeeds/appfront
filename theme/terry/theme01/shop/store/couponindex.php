@@ -105,7 +105,7 @@ use yii\helpers\Url;
                         <li data-v-345ba354="">
                             <div data-v-345ba354="" class="el-input" style="width: 200px;">
                                 <input type="text" onkeydown="sel(event)" autocomplete="off" placeholder="请输入优惠券名称" class="el-input__inner like">
-                               </div>
+                            </div>
                         </li>
                         <li data-v-345ba354="">
                             <div data-v-345ba354="" class="sousuo" onclick="sel(event)"></div>
@@ -230,8 +230,8 @@ use yii\helpers\Url;
                                             <div class="cell el-tooltip"
                                                  title="<?= date("Y-m-d H:i:s", $v["expiration_date"]) ?>"><?= date("Y-m-d H:i:s", $v["expiration_date"]) ?></div>
                                         </td>
-                                    <td class="el-table_5_column_35  ">
-                                        <div class="cell">
+                                        <td class="el-table_5_column_35  ">
+                                            <div class="cell">
                                                 <?php if($v["status"]==0){ ?>
                                                     <span data-v-345ba354="" style="color: #ff4949;">
                                                     未审核
@@ -249,26 +249,26 @@ use yii\helpers\Url;
                                                     无效
                                                 </span>
                                                 <?php } ?>
-                                        </div>
-                                    </td>
-                                    <td class="el-table_5_column_36  ">
-                                        <div class="cell el-tooltip" style="width: 134px;">
-                                            <a href="<?= Yii::$service->url->geturl("/shop/store/seecoupon?id={$v["coupon_id"]}") ?>">
-                                                <button data-v-345ba354="" type="button" class="el-button el-button--text el-button--small">
-                                                    <span>查看</span>
-                                                </button>
-                                            </a>
-                                            <?php if($v["expiration_date"]>time()&&$v["status"]==1){?>
-                                                <span data-v-345ba354="" style="color: rgb(234, 235, 236);">|</span>
-                                                <a href="<?= Yii::$service->url->geturl("/shop/store/delcou?id={$v['coupon_id']}") ?>">
+                                            </div>
+                                        </td>
+                                        <td class="el-table_5_column_36  ">
+                                            <div class="cell el-tooltip" style="width: 134px;">
+                                                <a href="<?= Yii::$service->url->geturl("/shop/store/seecoupon?id={$v["coupon_id"]}") ?>">
                                                     <button data-v-345ba354="" type="button" class="el-button el-button--text el-button--small">
-                                                        <span><i data-v-345ba354="" class="el-icon-delete"></i></span>
+                                                        <span>查看</span>
                                                     </button>
                                                 </a>
-                                            <?php } ?>
-                                        </div>
-                                    </td>
-                                </tr>
+                                                <?php if($v["expiration_date"]>time()&&$v["status"]==1){?>
+                                                    <span data-v-345ba354="" style="color: rgb(234, 235, 236);">|</span>
+                                                    <a href="<?= Yii::$service->url->geturl("/shop/store/delcou?id={$v['coupon_id']}") ?>">
+                                                        <button data-v-345ba354="" type="button" class="el-button el-button--text el-button--small">
+                                                            <span><i data-v-345ba354="" class="el-icon-delete"></i></span>
+                                                        </button>
+                                                    </a>
+                                                <?php } ?>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 <?php } ?>
                                 </tbody>
                             </table>
@@ -322,8 +322,8 @@ use yii\helpers\Url;
         if(e.keyCode!=13&&e.type=="keydown"){
             return;
         }
-            var status=like[0].value;
-            var name=like[1].value;
-            location.href="<?= Yii::$service->url->geturl("/shop/store/couponindex?") ?>"+`status=${status}&name=${name}`;
+        var status=like[0].value;
+        var name=like[1].value;
+        location.href="<?= Yii::$service->url->geturl("/shop/store/couponindex?") ?>"+`status=${status}&name=${name}`;
     }
 </script>
