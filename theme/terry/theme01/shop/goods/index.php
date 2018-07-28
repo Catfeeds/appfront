@@ -44,6 +44,7 @@ use yii\helpers\Url;
         border: 2px solid #e5eff8;
         color:#9eabb5;
         font-size: 14px;
+        cursor: pointer;
     }
 
     .content .shuaixuan .xialas {
@@ -284,7 +285,6 @@ use yii\helpers\Url;
                                                 color:#303133;
                                             }
                                             .is_active1 a{
-                                                font-weight: bold;
                                                 color: #30a2fe;
                                             }
                                         </style>

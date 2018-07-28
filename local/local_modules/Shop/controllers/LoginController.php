@@ -64,6 +64,9 @@ class LoginController extends AppfrontController
 
             $res2 = Yii::$app->db->createCommand($sql)->queryOne();
 
+
+
+
             if ($res2) {
                 // 商家
 

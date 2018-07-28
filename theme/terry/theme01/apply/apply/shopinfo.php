@@ -165,95 +165,24 @@
          <!-- province_id  city_id   district_id -->
          <div class="el-form-item__content" style="margin-left: 80px;">
           <div  class="el-select">
-           
-           <div class="el-input el-input--suffix">
-            
-            <input type="text" autocomplete="off" placeholder="请选择" readonly="readonly" class="el-input__inner" />
-            
-            <span class="el-input__suffix"><span class="el-input__suffix-inner">
-            <select name="province_id" class="province">
-            	<option></option>
-            <?php 
-            	foreach ($province as $k=>$v){
-            ?>
-            		<option value="<?php echo $v['province_id']?>"><?php echo $v['province_name']?></option>
-            <?php }?>
-            	
-            </select>
-            <i class="el-select__caret el-input__icon el-icon-arrow-up"></i>
-              </span>
-             </span>
-            
-           </div>
-           <div class="el-select-dropdown el-popper" style="display: none; min-width: 279px;">
-            <div class="el-scrollbar" style="">
-             <div class="el-select-dropdown__wrap el-scrollbar__wrap" style="margin-bottom: -17px; margin-right: -17px;">
-             </div>
-             <div class="el-scrollbar__bar is-horizontal">
-              <div class="el-scrollbar__thumb" style="transform: translateX(0%);"></div>
-             </div>
-             <div class="el-scrollbar__bar is-vertical">
-              <div class="el-scrollbar__thumb" style="transform: translateY(0%);"></div>
-             </div>
-            </div>
-            
-           </div>
-          </div> 
+              <select name="" id="" class="xiala province">
+                  <option value="" style="display: none;">请选择省份</option>
+                  <?php
+                  foreach ($province as $k=>$v){
+                      ?>
+                      <option value="<?php echo $v['province_id']?>"><?php echo $v['province_name']?></option>
+                  <?php }?>
+              </select>
+          </div>
           <div  class="el-select">
-           
-           <div class="el-input el-input--suffix">
-            
-            <input type="text" autocomplete="off" placeholder="请选择" readonly="readonly" class="el-input__inner" />
-            
-            <span class="el-input__suffix"><span class="el-input__suffix-inner">
-            <select name="city_id" class="city"><option></option>
-            </select>
-            
-            <i class="el-select__caret el-input__icon el-icon-arrow-up"></i>
-              </span>
-             </span>
-            
+              <select name="" id="" class="xiala city">
+                  <option value="" style="display: none">请选择城市</option>
+              </select>
            </div>
-           <div class="el-select-dropdown el-popper" style="display: none; min-width: 279px;">
-            <div class="el-scrollbar" style="">
-             <div class="el-select-dropdown__wrap el-scrollbar__wrap" style="margin-bottom: -17px; margin-right: -17px;">
-             </div>
-             <div class="el-scrollbar__bar is-horizontal">
-              <div class="el-scrollbar__thumb" style="transform: translateX(0%);"></div>
-             </div>
-             <div class="el-scrollbar__bar is-vertical">
-              <div class="el-scrollbar__thumb" style="transform: translateY(0%);"></div>
-             </div>
-            </div>
-            
-           </div>
-          </div> 
           <div  class="el-select">
-           
-           <div class="el-input el-input--suffix">
-            
-            <input type="text" autocomplete="off" placeholder="请选择" readonly="readonly" class="el-input__inner" />
-            
-            <span class="el-input__suffix"><span class="el-input__suffix-inner">
-            <select name="district_id" class="district"><option></option>
-            </select>
-            <i class="el-select__caret el-input__icon el-icon-arrow-up"></i>
-              </span>
-             </span>
-            
-           </div>
-           <div class="el-select-dropdown el-popper" style="display: none; min-width: 279px;">
-            <div class="el-scrollbar" style="">
-             <div class="el-select-dropdown__wrap el-scrollbar__wrap" style="margin-bottom: -17px; margin-right: -17px;">
-             </div>
-             <div class="el-scrollbar__bar is-horizontal">
-              <div class="el-scrollbar__thumb" style="transform: translateX(0%);"></div>
-             </div>
-             <div class="el-scrollbar__bar is-vertical">
-              <div class="el-scrollbar__thumb" style="transform: translateY(0%);"></div>
-             </div>
-            </div>
-            
+              <select name="" id="" class="xiala district">
+                  <option value="" style="display: none;">请选择区/县</option>
+              </select>
            </div>
           </div>
          </div>
@@ -431,3 +360,25 @@
 		  alert("Submitted");
 		}); */
   </script>
+  <style>
+     .xiala {
+          padding-left: 5px;
+          width: 100px;
+          outline: none;
+          font-size: 12px;
+          height: 30px;
+          border-radius: 15px;
+          background: #f3faff;
+          border: 2px solid #e5eff8;
+      }
+      .xiala:hover {
+          border-color: #3CACFE;
+      }
+     input.el-input__inner {
+         height: 30px;
+         border-radius: 15px;
+         background: #f3faff;
+         border: 2px solid #e5eff8;
+     }
+
+  </style>
