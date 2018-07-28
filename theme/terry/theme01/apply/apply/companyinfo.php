@@ -110,7 +110,7 @@
        <?php }?>
       </div> 
       <div  class="index2-tip">
-       <p > *&nbsp;一下所需要上传的电子版资质文件仅支持JPG／GIF／PNG格式图片，大小请控制在400K之内 </p>
+       <p > *&nbsp;以下所需要上传的电子版资质文件仅支持JPG／GIF／PNG格式图片，大小请控制在400K之内 </p>
       </div> 
       <div  class="index2-shui">
        <div  class="admin-tablename" style="height: 40px; line-height: 40px;">
