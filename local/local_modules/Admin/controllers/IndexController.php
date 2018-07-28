@@ -250,6 +250,15 @@ class IndexController extends AppfrontController
         $data['res'] = $res;
         return $this->render($this->action->id, $data);
     }
+    //删除会员
+    public function actionDelmember(){
+        $req = Yii::$app->request;
+        $id = $req->get(id);
+        $sql = "delete from customer where id='$id'";
+        $res = Yii::$app->db->createCommand($sql)->execute();
+        echo $id;
+        return $this->redirect(["/admin/index/member"]);
+    }
     //==============================用户管理、店铺管理====================================
     //加载市区
     public function actionGetcity()

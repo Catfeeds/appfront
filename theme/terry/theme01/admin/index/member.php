@@ -66,7 +66,7 @@ use yii\helpers\Url;
                     <td>
                         <a style="color: #41b2fc" href="<?= Yii::$service->url->getUrl('admin/index/wmember',array('id'=>$v['id']))?>">查看</a>
                         &nbsp;<label>|</label>&nbsp;
-                        <a style="color: #41b2fc" href="javascript:0">删除</a>
+                        <a style="color: #41b2fc" href="<?= Yii::$service->url->getUrl('admin/index/delmember',array('id'=>$v['id']))?>">删除</a>
                         &nbsp;<label>|</label>&nbsp;
                         <a style="color: #ff5932" href="javascript:0">移入黑名单</a>
                         &nbsp;<label>|</label>&nbsp;
