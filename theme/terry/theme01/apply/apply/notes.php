@@ -5,8 +5,10 @@
    <div id="index1">
     <header>
      <div class="index1-logo">
-      <img src="/public/imgs/login.png" alt="" /> 
-      <h1>晋彤后台管理系统</h1>
+      <a href="/apply/apply/index">
+       <img src="/public/imgs/login.png" alt="" /> 
+       <h1>晋彤后台管理系统</h1>
+      </a>
      </div> 
      <div style="float: right; padding-top: 50px; box-sizing: border-box; margin-right: 50px; width: 553px;">
       <div class="el-steps el-steps--horizontal">

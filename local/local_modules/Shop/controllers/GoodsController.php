@@ -48,7 +48,7 @@ class GoodsController extends PublicsController
         $status = $request->get('status');
 
         // 查询条件
-        // $where['shop_id'] =$shop_id;
+        $where['shop_id'] =$shop_id;
        
         $query = new Query;
         if ($category) {
@@ -337,6 +337,7 @@ class GoodsController extends PublicsController
         $arr=[
             "created_at"=>time(),
             "created_user_id"=>$_SESSION["uid"],
+            "shop_id"=>$_SESSION["shop_id"],
             'name'=>[
                 "name_en"=>"",
                 "name_fr"=>"",
@@ -555,6 +556,7 @@ class GoodsController extends PublicsController
             "_id"=>$data['_id'],
             "updated_at"=>time(),
             "created_user_id"=>$_SESSION["uid"],
+            "shop_id"=>$_SESSION["shop_id"],
             'name'=>[
                 "name_en"=>"",
                 "name_fr"=>"",
@@ -801,7 +803,7 @@ class GoodsController extends PublicsController
         $shop_id=$_SESSION['shop_id'];
 
         // 查询条件
-        // $where['shop_id']=$shop_id;
+        $where['shop_id']=$shop_id;
         if ($class) {
             $where['category'][1]=$class;
         }
@@ -884,7 +886,9 @@ class GoodsController extends PublicsController
         
         // 判断
         if ($res) {
+            
         }else{
+            
         }
             
     }
