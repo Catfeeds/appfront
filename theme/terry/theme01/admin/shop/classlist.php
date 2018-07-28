@@ -12,6 +12,7 @@ use yii\helpers\Url;
         padding-left: 17px;
         margin-bottom: 20px;
         width: 100%;
+        justify-content: ;
 
     }
 
