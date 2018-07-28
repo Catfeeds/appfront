@@ -48,10 +48,10 @@ use yii\helpers\Url;
                        style="width: 1012px;">
                     <colgroup>
                         <col name="el-table_2_column_6" width="120">
-                        <col name="el-table_2_column_7" width="160">
-                        <col name="el-table_2_column_8" width="160">
-                        <col name="el-table_2_column_9" width="160">
-                        <col name="el-table_2_column_10" width="160">
+                        <col name="el-table_2_column_7" width="150">
+                        <col name="el-table_2_column_8" width="150">
+                        <col name="el-table_2_column_9" width="150">
+                        <col name="el-table_2_column_10" width="150">
                         <col name="el-table_2_column_11" width="400">
                     </colgroup>
                     <thead class="has-gutter">
@@ -90,10 +90,10 @@ use yii\helpers\Url;
                        style="width: 1012px;">
                     <colgroup>
                         <col name="el-table_2_column_6" width="120">
-                        <col name="el-table_2_column_7" width="160">
-                        <col name="el-table_2_column_8" width="160">
-                        <col name="el-table_2_column_9" width="160">
-                        <col name="el-table_2_column_10" width="160">
+                        <col name="el-table_2_column_7" width="150">
+                        <col name="el-table_2_column_8" width="150">
+                        <col name="el-table_2_column_9" width="150">
+                        <col name="el-table_2_column_10" width="150">
                         <col name="el-table_2_column_11" width="400">
                     </colgroup>
                     <tbody style="font-size: 12px;color:#82898e">

@@ -138,7 +138,6 @@ use yii\helpers\Url;
                                         <span><i data-v-6045fa9c="" class="el-icon-delete"></i></span>
                                     </button>
                                 </a>
-
                             </div>
                         </td>
                     </tr>

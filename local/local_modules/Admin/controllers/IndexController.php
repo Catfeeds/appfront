@@ -29,6 +29,11 @@ class IndexController extends PublicsController
         Yii::$service->page->theme->layoutFile = 'admin.php';
     }
 //=========================用户管理、管理员管理===============================
+
+    public function actionIndex()
+    {
+        return $this->redirect(["/admin/index/aindex"]);
+    }
     //管理员管理
     public function actionAindex()
     {

@@ -109,7 +109,7 @@ use yii\helpers\Url;
                             <col name="el-table_2_column_1" width="120">
                             <col name="el-table_2_column_2" width="200">
                             <col name="el-table_2_column_3" width="200">
-                            <col name="el-table_2_column_4" width="250">
+                            <col name="el-table_2_column_4" width="200">
                             <col name="el-table_2_column_5" width="300">
                         </colgroup>
                         <thead class="has-gutter">
@@ -146,7 +146,7 @@ use yii\helpers\Url;
                             <col name="el-table_2_column_1" width="120">
                             <col name="el-table_2_column_2" width="200">
                             <col name="el-table_2_column_3" width="200">
-                            <col name="el-table_2_column_4" width="250">
+                            <col name="el-table_2_column_4" width="200">
                             <col name="el-table_2_column_5" width="300">
                         </colgroup>
                         <tbody style="font-size: 12px;color:#82898e">
