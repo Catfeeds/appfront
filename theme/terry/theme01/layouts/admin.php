@@ -244,7 +244,7 @@ $cssOptions = [
         height: 48px;
         margin-top: 30px;
         /*background: #ff6700;*/
-        padding-right: 100px;
+        /*padding-right: 100px;*/
         box-sizing: border-box;
     }
 

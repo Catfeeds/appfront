@@ -24,8 +24,8 @@
                 </select>
                 <div class="xialaimg1" style="top:12px;"></div>
             </div>
-            <div class="search-img">
-                <img src="/public/adminimg/search.png" alt="">
+            <div class="indexsearch">
+                <input class="search-img" type="submit" value="">
             </div>
             <button class="addadmin" style="width: 100px;">导出表格</button>
         </div>
@@ -56,39 +56,7 @@
                         <a style="color: #ff5932" href="javascript:0">冻结账号</a>
                     </td>
                 </tr>
-            </table >
-            <div class="adminpagination" style="width: 98%">
-                <div class="pagination">
-                    <div class="block">
-                        <div class="admincount">
-                            <div class="admincountall">
-                                <span style="color: #3db0ff">·</span>&nbsp;<span>总计</span><span>206</span><span>记录</span>
-                            </div>
-                            <div class="admintotalpage">
-                                <span style="color: #29c99a">·</span>&nbsp;<span>分</span><span style="color: #29c99a">82</span><span>页</span>
-                            </div>
-                        </div>
-                        <div>
-                            <button class="firstpage-box">首页</button>
-                            <el-pagination
-                                layout="prev, pager, next"
-                                :total="50">
-                            </el-pagination>
-                            <button class="lastpage-box">末页</button>
-                        </div>
-                    </div>
-                    <!--<div class="block">
-                        <span class="demonstration">大于 7 页时的效果</span>
-                        <el-pagination
-                                layout="prev, pager, next"
-                                :total="1000">
-                        </el-pagination>
-                    </div>-->
-                </div>
-            </div>
+            </table>
         </div>
-
-        <com-footer></com-footer>
-    </div>
 
 </div>

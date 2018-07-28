@@ -122,7 +122,7 @@ use yii\helpers\Url;
                     <col name="el-table_2_column_10" width="150">
                 </colgroup>
                 <thead class="has-gutter">
-                <tr style="font-size: 14px;color: #B1DBFE;text-align: left;height: 50px;">
+                <tr style="font-size: 14px;color: #30a2fe;text-align: left;height: 50px;">
                     <th
                             class="el-table_2_column_11     is-leaf">
                         <div class="cell">ID</div>
