@@ -23,7 +23,7 @@ use yii\helpers\Url;
 
                 <div class="xiala">
                     <span class="search-ID">等级</span>
-                    <select name="member-level" id="member-level" name="level">
+                    <select name="level" id="member-level">
                         <option value="普通会员">普通会员</option>
                         <option value="白金会员">白银会员</option>
                         <option value="黄金会员">黄金会员</option>
@@ -64,7 +64,7 @@ use yii\helpers\Url;
                         <?php echo $v["updated_at"]?>
                     </td>
                     <td>
-                        <a style="color: #41b2fc" href="/vipinfo">查看</a>
+                        <a style="color: #41b2fc" href="<?= Yii::$service->url->getUrl('admin/index/wmember',array('id'=>$v['id']))?>">查看</a>
                         &nbsp;<label>|</label>&nbsp;
                         <a style="color: #41b2fc" href="javascript:0">删除</a>
                         &nbsp;<label>|</label>&nbsp;
