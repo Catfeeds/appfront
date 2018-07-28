@@ -54,7 +54,16 @@
         margin-top: 33px;
         background: url("/public/img/jiantou.png");
     }
+    .shuaixuan_bottom .checked-class{
+        line-height: 24px;
+    }
 
+    .shuaixuan_bottom [onclick="dianji(this)"]{
+        line-height: 24px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
     .shuaixuan_bottom .danxuan {
         width: 20px;
         height: 20px;
@@ -147,7 +156,7 @@
                         </div>
                         <div data-v-63f72479="" class="el-form-item"><label class="el-form-item__label"
                                                                             style="width: 150px;">*使用范围</label>
-                            <div class="el-form-item__content" style="margin-left: 150px;"><label data-v-63f72479=""
+                            <div class="el-form-item__content" style="margin-left: 150px;margin-top: 3px;"><label data-v-63f72479=""
                                                                                                   role="radio"
                                                                                                   aria-checked="true"
                                                                                                   tabindex="0"

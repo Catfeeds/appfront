@@ -26,7 +26,7 @@ use yii\helpers\Url;
                 <div class="xialaimg1"></div>
             </div>
            <div class="xiala xialapro" style="margin-left:20px;color:#49e17a">
-                <span class="search-ID" style="color:#49e17a">地区省</span>
+                <span class="search-ID" style="color:#a4adb5">地区省</span>
                 <select name="province_id" id="province_id" style="color:#49e17a">
                     <option value="0">请选择省</option>
                     <?php foreach ($province as $k=>$v){?>
@@ -36,14 +36,14 @@ use yii\helpers\Url;
                 <div class="xialaimg1"></div>
             </div>
             <div class="xiala xialacity" style="margin-left:20px;color:#49e17a;">
-                <span class="search-ID" style="color:#49e17a">市</span>
+                <span class="search-ID" style="color:#a4adb5">市</span>
                 <select name="city_id" id="city_id" style="color:#49e17a">
                     <option value="0">请选择市</option>
                 </select>
                 <div class="xialaimg1"></div>
             </div>
             <div class="xiala xialadis" style="margin-left:20px;color:#49e17a;">
-                <span class="search-ID" style="color:#49e17a">县</span>
+                <span class="search-ID" style="color:#a4adb5">县</span>
                 <select name="district_id" id="district_id" style="color:#49e17a">
                     <option value="0">请选择县</option>
                 </select>

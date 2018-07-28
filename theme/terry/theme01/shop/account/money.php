@@ -26,11 +26,7 @@
         </div></li> 
        <li >
         <div  class="el-input" style="width: 200px;">
-         
          <input type="text" autocomplete="off" placeholder="请输入关键字搜索" class="el-input__inner" />
-         
-         
-         
         </div></li> 
        <li >
         <div  class="sousuo"></div></li>
@@ -59,7 +55,7 @@
            <col name="gutter" width="0" />
           </colgroup>
           <thead class="has-gutter">
-           <tr class="">
+           <tr style="font-size: 14px;color: #B1DBFE;">
             <th colspan="1" rowspan="1" class="el-table_2_column_10   el-table-column--selection  is-leaf">
              <div class="cell">
               <label role="checkbox" class="el-checkbox"><span aria-checked="mixed" class="el-checkbox__input"><span class="el-checkbox__inner"></span><input type="checkbox" aria-hidden="true" class="el-checkbox__original" value="" /></span>
@@ -105,7 +101,7 @@
            <col name="el-table_2_column_15" width="169" />
            <col name="el-table_2_column_16" width="169" />
           </colgroup>
-          <tbody>
+          <tbody style="font-size: 12px;color:#82898e">
            <tr class="el-table__row">
             <td class="el-table_2_column_10  el-table-column--selection">
              <div class="cell">
@@ -199,16 +195,9 @@
               <a  href="#/AccountMoney1" class="">资金明细</a>
              </div></td>
            </tr>
-           
           </tbody>
          </table>
-         
-         
         </div>
-        
-        
-        
-        
         <div class="el-table__column-resize-proxy" style="display: none;"></div>
        </div> 
        <div  style="float: right; margin-top: 20px;">
@@ -219,10 +208,10 @@
         <button  type="button" class="el-button el-button--default">
          
          <span>全选</span></button> 
-        <button  type="button" class="el-button el-button--success is-round">
+        <button  type="button" class="el-button green el-button--success is-round">
          
          <span>导出</span></button> 
-        <button  type="button" class="el-button el-button--primary is-round">
+        <button  type="button" class="el-button blue el-button--primary is-round">
          
          <span>打印</span></button>
        </div> 

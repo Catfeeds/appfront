@@ -4,8 +4,9 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
 <style>
-    
-
+    th{
+        border-bottom: 1px solid #fff;
+    }
     .admin-tablelist1 {
         font-size: 14px;
         padding-left: 17px;
@@ -64,7 +65,6 @@ use yii\helpers\Url;
         margin:0px 2px;
     }
 
-
 </style>
 <div class="main-content">
 <div class="adminmannager">
@@ -87,8 +87,8 @@ use yii\helpers\Url;
             <div class="admin-tablenamebox"></div>
             <span class="admin-tablename1"><?php echo isset($_GET['name'])?$_GET['name']."分类":"分类";?></span><span class="admin-tablename2">列表</span>
         </div>
-        <table border="0" class="admin-tablelist1 active">
-            <tr>
+        <table border="1" cellpadding="0" cellspacing="0" class="admin-tablelist1 active">
+            <tr style="">
                 <th>ID</th>
                 <th>名称</th>
                 <th>排序</th>

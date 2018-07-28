@@ -46,13 +46,11 @@ use yii\helpers\Url;
                             <select name="customer_address_state" class="xiala">
                             </select>
                             <select name="customer_address_city" class="xiala">
-
                             </select>
                             <div class="details">
                                 <input name="customer_address_street1" type="text" placeholder="请填写详细地址" class="input"
                                        value="<?= $res["customer_address_street1"] ?>">
                             </div>
-
                         </div>
                     </div>
                 </div>

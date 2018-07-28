@@ -32,6 +32,7 @@ $cssOptions = [
         padding: 0;
         list-style: none;
         text-decoration: none;
+        font-family: "微软雅黑";
     }
 
     html, body {
@@ -218,7 +219,7 @@ $cssOptions = [
 
     /*用户管理-管理员管理*/
     .adminmannager {
-        width: 1100px;
+        width: 1012px;
         margin:0 auto;
         /*height: 100%;*/
         padding: 27px 0 27px 27px;
@@ -706,6 +707,7 @@ $cssOptions = [
 
     .main-content {
         /*overflow: hidden;*/
+        /*width: 1012px;*/
     }
 
     #platdata .tongji {
