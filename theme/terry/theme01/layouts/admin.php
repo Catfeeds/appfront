@@ -2465,7 +2465,7 @@ $cssOptions = [
                     </a>
                 </li>
                 <li id="shop">
-                    <a href="/admin/shop/index">
+                    <a href="/admin/shop/classlist">
                         店铺管理
                     </a>
                 </li>

@@ -18,7 +18,7 @@ use yii\helpers\Url;
 <!--                省-->
                 <div class="xiala xialapro" style="color:#49e17a">
                     <span class="search-ID" style="color:#8d8d8d;margin-left:0;">地区省</span>
-                    <select name="province_id" id="province_id" style="color:#49e17a">
+                    <select name="province_id" id="province_id" style="color:#a4adb5">
                         <option value="0">请选择省</option>
                         <?php foreach ($province as $k=>$v){?>
                             <option value="<?php echo $v['province_id']?>"><?php echo $v['province_name']?></option>
@@ -29,7 +29,7 @@ use yii\helpers\Url;
 <!--                市-->
                 <div class="xiala xialapro" style="color:#3CACFE">
                     <span class="search-ID" style="color:#8d8d8d">市</span>
-                    <select name="city_id" id="city_id" style="color:#49e17a">
+                    <select name="city_id" id="city_id" style="color:#a4adb5">
                         <option value="0">请选择市</option>
                     </select>
                     <div class="xialaimg1"></div>
@@ -37,7 +37,7 @@ use yii\helpers\Url;
 <!--                县-->
                 <div class="xiala xialapro" style="color:#3CACFE">
                     <span class="search-ID" style="color:#8d8d8d">县</span>
-                    <select name="district_id" id="district_id" style="color:#49e17a">
+                    <select name="district_id" id="district_id" style="color:#a4adb5">
                         <option value="0">请选择县</option>
                     </select>
                     <div class="xialaimg1"></div>
