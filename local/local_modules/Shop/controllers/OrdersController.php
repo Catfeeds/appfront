@@ -42,7 +42,7 @@ class OrdersController extends PublicsController
             $flag = $get['flag']-1;
             $sql = " select count(*) tot from sales_flat_order where shop_id={$_SESSION["shop_id"]} and order_status={$flag}";
         }else{
-            $sql = " select count(*) tot from sales_flat_order where shop_id={$_SESSION["shop_id"]}";
+            $sql = " select count(*) tot from sales_flat_order where shop_id={$_SESSION["shop_id"]} and order_status<5";
         }
         //查询订单表数量
         $countArr = Yii::$app->db->createCommand($sql)->queryOne();
@@ -58,7 +58,7 @@ class OrdersController extends PublicsController
             $flag = $get['flag']-1;
             $sql = " select sales_flat_order.*,sales_coupon.* from sales_flat_order,sales_coupon where sales_flat_order.shop_id={$_SESSION["shop_id"]} and sales_flat_order.order_status={$flag} and sales_flat_order.coupon_code=sales_coupon.coupon_code limit $pagination->offset , $pagination->limit";
         }else{
-            $sql = " select sales_flat_order.*,sales_coupon.* from sales_flat_order,sales_coupon where sales_flat_order.shop_id={$_SESSION["shop_id"]} and sales_flat_order.coupon_code=sales_coupon.coupon_code limit $pagination->offset , $pagination->limit";
+            $sql = " select sales_flat_order.*,sales_coupon.* from sales_flat_order,sales_coupon where sales_flat_order.shop_id={$_SESSION["shop_id"]} and sales_flat_order.coupon_code=sales_coupon.coupon_code and order_status<5 limit $pagination->offset , $pagination->limit";
         }
         $arr = Yii::$app->db->createCommand($sql)->queryAll();
 
@@ -78,7 +78,7 @@ class OrdersController extends PublicsController
                 }
             }
         };
-        $all = Yii::$app->db->createCommand("select o.order_status from sales_flat_order o where shop_id='{$_SESSION["shop_id"]}'")->queryAll();
+        $all = Yii::$app->db->createCommand("select o.order_status from sales_flat_order o where shop_id='{$_SESSION["shop_id"]}' and order_status<5")->queryAll();
 
         //查询所有的
         $datas["orders"] = $arr;
@@ -96,7 +96,7 @@ class OrdersController extends PublicsController
         $request = Yii::$app->request;
         $order_id = $request->get('order_id');
         //按order_id查询订单详情
-        $res = Yii::$app->db->createCommand("select * from sales_flat_order where order_id=$order_id")->queryOne();
+        $res = Yii::$app->db->createCommand("select sales_coupon.*,sales_flat_order.* from sales_coupon,sales_flat_order where order_id=$order_id")->queryOne();
         //按order_id查询订单产品详情
         $sql = "select sales_flat_order_item.*,product_flat_qty.qty as kc from sales_flat_order_item,product_flat_qty where sales_flat_order_item.order_id=$order_id and sales_flat_order_item.product_id=product_flat_qty.product_id";
         $res1 = Yii::$app->db->createCommand($sql)->queryAll();
@@ -157,9 +157,19 @@ class OrdersController extends PublicsController
         $res = Yii::$app->request;
         $order_id = $res->get("order_id");
 
+
         $res = Yii::$app->db->createCommand("update sales_flat_order set order_status=2,receipt_at=".time()." where order_id={$order_id}")->execute();
 
         return $this->redirect("/shop/orders/index");
+
+    }
+
+    //纠纷列表
+    public function actionDispute(){
+
+        $data = [];
+
+        return $this->render($this->action->id);
 
     }
 }
