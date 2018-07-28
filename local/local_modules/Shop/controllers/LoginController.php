@@ -52,15 +52,39 @@ class LoginController extends AppfrontController
         $password_hash = $req->post(password_hash);
         $firstname = $req->post(firstname);
 
-        $sql = "select customer.*,shop.shop_id from customer,shop where customer.firstname='$firstname' and customer.id=shop.uid";
+        $sql = "select customer.* from customer where customer.firstname='$firstname'";
         $res = Yii::$app->db->createCommand($sql)->queryOne();
         if(password_verify($password_hash,$res["password_hash"])){
+            // 保存用户基本信息
             $_SESSION["login"] = "yes";
             $_SESSION["uid"] = $res["id"];
-            $_SESSION["shop_id"] = $res["shop_id"];
             $_SESSION["admin_name"] = $firstname;
             $_SESSION["time"] = time();
-            return $this->redirect(["index/index"]);
+            $sql = "select shop.* from shop where shop.uid=$res[id];";
+
+            $res2 = Yii::$app->db->createCommand($sql)->queryOne();
+
+            if ($res2) {
+                // 商家
+
+                $_SESSION["shop_id"] = $res2['shop_id'];
+                $_SESSION["shop_type"] = $res2['shop_type'];
+                $_SESSION["shop_state"] = $res2['shop_state'];
+
+                if ($res2[shop_type]==2) {
+                    # code...
+                    return $this->redirect(["/shop/index/index"]);
+                // 水司
+                }else if($res2[shop_type]==1){
+                    return $this->redirect(["/water/index/index"]);
+
+                }else{
+                    return $this->redirect(["/apply/apply/index"]);
+
+                }
+            }else{
+                return $this->redirect(["/apply/apply/index"]);
+            }
         }else{
             return $this->redirect(["login/index"]);
         }
@@ -97,7 +121,8 @@ class LoginController extends AppfrontController
         unset($_SESSION["login"]);
         unset($_SESSION["uid"]);
         unset($_SESSION["shop_id"]);
-
+        unset($_SESSION["admin_name"]);
+        unset($_SESSION["time"]);
         return $this->redirect("/shop/login/index");
     }
     

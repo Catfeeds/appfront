@@ -31,8 +31,13 @@ class PublicsController extends AppfrontController
             $_SESSION["uid"] = 0;
             $_SESSION["shop_id"] = 0;
             return $this->redirect("/shop/login/index");
+        }
+        if ($_SESSION['shop_type']!=2) {
+            # code...
+            return $this->redirect("/water/index/index");
 
         }
+
     }
 
     static public function getAddressInfo(){

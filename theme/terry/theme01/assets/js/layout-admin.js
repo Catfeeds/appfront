@@ -1,6 +1,6 @@
     var arrs = {
         index: [
-            {"name":"管理员管理","url":"/admin/index/index"},
+            {"name":"管理员管理","url":"/admin/index/aindex"},
             {"name":"会员管理","url":"/admin/index/member"},
             {"name":"店铺管理","url":"/admin/index/shop"}
         ],
@@ -10,7 +10,7 @@
             {"name":"水司数据","url":"/admin/shuju/water"}
         ],
         shop: [
-            {"name":"分类管理","url":"/admin/shop/index"},
+            {"name":"分类管理","url":"/admin/shop/classlist"},
             {"name":"商家","url":"/admin/shop/index"},
             {"name":"水司","url":"/admin/shop/water"}
         ],
@@ -39,7 +39,7 @@
 
     var str = `<div class="logo"></div><ul class=\"aside-list\">`;
     arr.forEach(function (val,index) {
-        str+=`<li>
+        str+=`<li href1="${val.url}">
                 <div class="col-box"></div> 
                 <a href="${val.url}" class="router-link-exact-active router-link-active"><span>${val.name}</span></a>
             </li> `;

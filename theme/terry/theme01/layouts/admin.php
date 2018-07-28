@@ -258,7 +258,7 @@ $cssOptions = [
     }
 
     /*搜索框*/
-    .adminmannager-search input {
+    .adminmannager-search input{
         width: 200px;
         height: 32px;
         border: 2px solid #ebf6ff;
@@ -271,6 +271,7 @@ $cssOptions = [
         padding: 0 10px;
         box-sizing: border-box;
     }
+
 
     /*会员管理下拉框*/
     .adminmannager-search select {
@@ -304,27 +305,28 @@ $cssOptions = [
         pointer-events: none;
     }*/
 
-    .search-img {
+    .adminmannager-search .search-img {
         width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: url('/public/adminimg/search.png') no-repeat center center/60% 60%;
+        margin:0;
+        border:none;
+        padding: 0;
+    }
+    .adminmannager-search .indexsearch{
+        width:  40px;
         height: 40px;
         margin-left: 40px;
         margin-top: 5px;
         border-radius: 50%;
-        background: #3bacfe;
         float: left;
+        background: #41b2fc
     }
-
     .search-img, .addadmin:hover {
         cursor: pointer;
     }
 
-    .search-img img {
-        width: 20px;
-        height: 20px;
-        display: block;
-        margin: 0 auto;
-        margin-top: 10px;
-    }
 
     .addadmin {
         width: 150px;
@@ -337,6 +339,7 @@ $cssOptions = [
         border: none;
         font-size: 14px;
         color: #fff;
+        outline: none;
     }
 
     /*管理员列表*/
@@ -680,7 +683,7 @@ $cssOptions = [
     #platdata {
         width: 1110px;
         min-height: 500px;
-        padding: 27px 0 0 68px;
+        padding: 27px 0 0 0;
         margin:0 auto;
     }
 
@@ -2370,13 +2373,10 @@ $cssOptions = [
         color: #fff;
     }
     .add{
-        width: 500px;
+        width: 100%;
         height: 400px;
-        margin:0 auto;
-        background: rgba(238,238,238,0.7);
         margin-top:50px;
         border-radius: 6px;
-        padding:20px;
     }
     .add form{
         width: 100%;
@@ -2405,7 +2405,7 @@ $cssOptions = [
         box-sizing: border-box;
     }
     .add form input[type="submit"]{
-        width:100px;
+        width:200px;
         height: 36px;
         border-radius: 18px;
         border:none;
@@ -2413,13 +2413,14 @@ $cssOptions = [
         text-align: center;
         line-height: 30px;
         background:deepskyblue;
-        margin-top:50px;
         display:block;
+        /*margin-left:150px;*/
+        margin-top:50px;
         color:#fff;
         float: left;
-        margin-left:100px;
+        cursor:pointer;
     }
-    .add form button{
+    /*.add form button{
         width:100px;
         height: 36px;
         border-radius: 18px;
@@ -2433,7 +2434,7 @@ $cssOptions = [
         color:#fff;
         float: left;
         margin-left:100px;
-    }
+    }*/
 </style>
 <?php $this->beginPage() ?>
     <!doctype html>
@@ -2452,7 +2453,7 @@ $cssOptions = [
         <div class="header">
             <ul>
                 <li id="index">
-                    <a href="/admin/index/index">
+                    <a href="/admin/index/aindex">
                         用户管理
                     </a>
                 </li>
@@ -2514,7 +2515,7 @@ $cssOptions = [
 
         // 筛选左侧菜单
 
-       /* let asd=document.querySelectorAll(".aside li");
+        let asd=document.querySelectorAll(".aside-list li");
 
         let str1=url[5];
         let arr1=str1.split("?");
@@ -2528,7 +2529,7 @@ $cssOptions = [
             if (n>=1) {
                 asd[i].className='active';
             };
-        };*/
+        };
 
         let urls = "<?php echo $_SERVER['SERVER_NAME'];?>";
     </script>

@@ -166,13 +166,13 @@
                     </li>
                 </ul>
 
-                <div class="forget">
+                <!-- <div class="forget">
                     <div class="forget1">
                         <div></div>
                         <a href="<?= Yii::$service->url->getUrl('shop/login/reg') ?>">注册</a>
                     </div>
 
-                </div>
+                </div> -->
                 <div style="width: 100%;height: 34px;margin-top:38px;">
                     <button class="submit">登录</button>
                 </div>

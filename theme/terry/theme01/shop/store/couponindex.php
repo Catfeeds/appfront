@@ -100,7 +100,10 @@ use yii\helpers\Url;
                                     <option value="">1</option>
                                     <option value="">1</option>
                                 </select>
+<<<<<<< HEAD
                             </div>
+=======
+>>>>>>> bebd3cae7ee685f19e08fe7cec3ce8672eaf93b4
                         </li>
                         <li data-v-345ba354="">
                             <div data-v-345ba354="" class="el-input" style="width: 200px;">
@@ -201,7 +204,6 @@ use yii\helpers\Url;
                                 </colgroup>
                                 <tbody style="font-size: 12px;color:#82898e;">
                                 <?php foreach ($res as $v) { ?>
-
                                     <tr class="el-table__row">
                                         <td class="el-table_5_column_29  el-table-column--selection">
                                             <div class="cell">
@@ -233,6 +235,7 @@ use yii\helpers\Url;
                                         </td>
                                         <td class="el-table_5_column_35  ">
                                             <div class="cell">
+<<<<<<< HEAD
                                                 <?php if ($v["expiration_date"] > time()) { ?>
                                                     <span data-v-345ba354="" style="color: rgb(54, 221, 124);">
                                             </span>
@@ -257,15 +260,24 @@ use yii\helpers\Url;
                                         <div class="cell">
                                             <?php if($v["status"]==0){ ?>
                                                 <span data-v-345ba354="" style="color: #ff4949;">
+=======
+                                                <?php if($v["status"]==0){ ?>
+                                                    <span data-v-345ba354="" style="color: #ff4949;">
+>>>>>>> bebd3cae7ee685f19e08fe7cec3ce8672eaf93b4
                                                     未审核
                                                 </span>
-                                            <?php }else if($v["status"]==2){?>
-                                                <span data-v-345ba354="" style="color: #ff4949;">
+                                                <?php }else if($v["status"]==2){?>
+                                                    <span data-v-345ba354="" style="color: #ff4949;">
                                                     审核失败
                                                 </span>
+<<<<<<< HEAD
                                             <?php }else if($v["expiration_date"]>time()){?>
                                                 <span data-v-345ba354="" style="color: rgb(54, 221, 124);">
 
+=======
+                                                <?php }else if($v["expiration_date"]>time()){?>
+                                                    <span data-v-345ba354="" style="color: rgb(54, 221, 124);">
+>>>>>>> bebd3cae7ee685f19e08fe7cec3ce8672eaf93b4
                                                     有效
                                                 </span>
                                                 <?php } else { ?>
@@ -274,6 +286,7 @@ use yii\helpers\Url;
                                                 </span>
                                                 <?php } ?>
                                             </div>
+<<<<<<< HEAD
                                         </td>
                                         <td class="el-table_5_column_36  ">
                                             <div class="cell el-tooltip" style="width: 134px;">
@@ -290,6 +303,10 @@ use yii\helpers\Url;
                                         </td>
                                     </tr>
                                             <?php } ?>
+=======
+                                        </div>
+                                    </td>
+>>>>>>> bebd3cae7ee685f19e08fe7cec3ce8672eaf93b4
                                         </div>
                                     </td>
                                     <td class="el-table_5_column_36  ">

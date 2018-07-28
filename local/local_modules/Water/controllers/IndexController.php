@@ -9,6 +9,7 @@
 
 namespace appfront\local\local_modules\water\controllers;
 
+use appfront\local\local_modules\water\controllers\PublicsController;
 use fecshop\app\appfront\modules\AppfrontController;
 use Yii;
 use yii\web\Response;
@@ -21,7 +22,7 @@ use yii\mongodb\Query;
  */
 
 // 水司首页控制器
-class IndexController extends AppfrontController
+class IndexController extends PublicsController
 {
 
     public function init()
@@ -33,7 +34,29 @@ class IndexController extends AppfrontController
     
     public function actionIndex(){
 
-        return $this->render($this->action->id);
+        // 获取shop_id
+
+        echo $shop_id=$_SESSION['shop_id'];
+
+
+        // 获取商品信息
+
+        $sql = "select * from shop where shop_id = $shop_id";
+
+        $shop = Yii::$app->db->createCommand($sql)->queryOne();
+
+
+        // 数据格式化
+
+        $data['shop']=$shop;
+
+
+
+        $_SESSION['shop_name']=$shop['shop_name'];
+        $_SESSION['shop_logo']=$shop['shop_logo'];
+
+
+        return $this->render($this->action->id,$data);
 
     }
     

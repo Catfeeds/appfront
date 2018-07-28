@@ -79,10 +79,12 @@
     table {
         font-size: 14px;
     }
-    .el-step__head .el-step__line{
+
+    .el-step__head .el-step__line {
         border-color: #c0c4cc;
     }
-    .el-step__head.is-finish .el-step__line{
+
+    .el-step__head.is-finish .el-step__line {
         border-color: #409EFF;
     }
 </style>
@@ -100,7 +102,7 @@
                     </a>
                         <span role="presentation" class="el-breadcrumb__separator">·</span>
                     </span>
-                    <span data-v-2b6e6d92="" class="el-breadcrumb__item" aria-current="page">
+                <span data-v-2b6e6d92="" class="el-breadcrumb__item" aria-current="page">
                         <span role="link" class="el-breadcrumb__inner">
                             <span data-v-2b6e6d92="" style="color: rgb(48, 211, 102); font-weight: bolder;">查看详情</span>
                         </span>
@@ -112,7 +114,7 @@
             <div data-v-2b6e6d92="" class="el-steps el-steps--horizontal" style="margin-bottom: 20px;">
                 <div data-v-2b6e6d92="" class="el-step is-horizontal is-center"
                      style="flex-basis: 20%; margin-right: 0px;">
-                    <div class="el-step__head <?= $res["order_status"]>-1?"is-finish":""?>">
+                    <div class="el-step__head <?= $res["order_status"] > -1 ? "is-finish" : "" ?>">
                         <div class="el-step__line" style="margin-right: 0px;"><i class="el-step__line-inner"
                                                                                  style="transition-delay: 0ms; border-width: 1px; width: 100%;"></i>
                         </div>
@@ -121,15 +123,15 @@
                         </div>
                     </div>
                     <div class="el-step__main">
-                        <div class="el-step__title <?= $res["order_status"]>-1?"is-finish":""?>">提交订单</div>
-                        <?php if($res["order_status"]>-1){ ?>
-                            <div class="el-step__description is-finish"><?= date("Y-m-d H:i:s",$res[created_at]) ?></div>
+                        <div class="el-step__title <?= $res["order_status"] > -1 ? "is-finish" : "" ?>">提交订单</div>
+                        <?php if ($res["order_status"] > -1) { ?>
+                            <div class="el-step__description is-finish"><?= date("Y-m-d H:i:s", $res[created_at]) ?></div>
                         <?php } ?>
                     </div>
                 </div>
                 <div data-v-2b6e6d92="" class="el-step is-horizontal is-center"
                      style="flex-basis: 20%; margin-right: 0px;">
-                    <div class="el-step__head <?= $res["order_status"]>0?"is-finish":""?>">
+                    <div class="el-step__head <?= $res["order_status"] > 0 ? "is-finish" : "" ?>">
                         <div class="el-step__line" style="margin-right: 0px;"><i class="el-step__line-inner"
                                                                                  style="transition-delay: 150ms; border-width: 1px; width: 100%;"></i>
                         </div>
@@ -138,15 +140,15 @@
                         </div>
                     </div>
                     <div class="el-step__main">
-                        <div class="el-step__title <?= $res["order_status"]>0?"is-finish":""?>">支付订单</div>
-                        <?php if($res["order_status"]>0){ ?>
-                            <div class="el-step__description is-finish"><?= date("Y-m-d H:i:s",$res[paypal_order_datetime]) ?></div>
+                        <div class="el-step__title <?= $res["order_status"] > 0 ? "is-finish" : "" ?>">支付订单</div>
+                        <?php if ($res["order_status"] > 0) { ?>
+                            <div class="el-step__description is-finish"><?= date("Y-m-d H:i:s", $res[paypal_order_datetime]) ?></div>
                         <?php } ?>
                     </div>
                 </div>
                 <div data-v-2b6e6d92="" class="el-step is-horizontal is-center"
                      style="flex-basis: 20%; margin-right: 0px;">
-                    <div class="el-step__head <?= $res["order_status"]>1?"is-finish":""?>">
+                    <div class="el-step__head <?= $res["order_status"] > 1 ? "is-finish" : "" ?>">
                         <div class="el-step__line" style="margin-right: 0px;"><i class="el-step__line-inner"
                                                                                  style="transition-delay: 300ms; border-width: 1px; width: 100%;"></i>
                         </div>
@@ -155,15 +157,15 @@
                         </div>
                     </div>
                     <div class="el-step__main">
-                        <div class="el-step__title <?= $res["order_status"]>1?"is-finish":""?>">接单</div>
-                        <?php if($res["order_status"]>1){ ?>
-                            <div class="el-step__description is-finish"><?= date("Y-m-d H:i:s",$res[receipt_at]) ?></div>
+                        <div class="el-step__title <?= $res["order_status"] > 1 ? "is-finish" : "" ?>">接单</div>
+                        <?php if ($res["order_status"] > 1) { ?>
+                            <div class="el-step__description is-finish"><?= date("Y-m-d H:i:s", $res[receipt_at]) ?></div>
                         <?php } ?>
                     </div>
                 </div>
                 <div data-v-2b6e6d92="" class="el-step is-horizontal is-center"
                      style="flex-basis: 20%; margin-right: 0px;">
-                    <div class="el-step__head <?= $res["order_status"]>2?"is-finish":""?>">
+                    <div class="el-step__head <?= $res["order_status"] > 2 ? "is-finish" : "" ?>">
                         <div class="el-step__line" style="margin-right: 0px;"><i class="el-step__line-inner"
                                                                                  style="transition-delay: 450ms; border-width: 0px; width: 0%;"></i>
                         </div>
@@ -172,24 +174,24 @@
                         </div>
                     </div>
                     <div class="el-step__main">
-                        <div class="el-step__title <?= $res["order_status"]>2?"is-finish":""?>">确认送达</div>
-                        <?php if($res["order_status"]>2){ ?>
-                            <div class="el-step__description is-finish"><?= date("Y-m-d H:i:s",$res[confirm_at]) ?></div>
+                        <div class="el-step__title <?= $res["order_status"] > 2 ? "is-finish" : "" ?>">确认送达</div>
+                        <?php if ($res["order_status"] > 2) { ?>
+                            <div class="el-step__description is-finish"><?= date("Y-m-d H:i:s", $res[confirm_at]) ?></div>
                         <?php } ?>
                     </div>
                 </div>
                 <div data-v-2b6e6d92="" class="el-step is-horizontal is-center"
                      style="flex-basis: 20%; max-width: 20%;">
-                    <div class="el-step__head <?= $res["order_status"]>3?"is-finish":""?>">
+                    <div class="el-step__head <?= $res["order_status"] > 3 ? "is-finish" : "" ?>">
                         <div class="el-step__line"><i class="el-step__line-inner"></i></div>
                         <div class="el-step__icon is-text">
                             <div class="el-step__icon-inner">5</div>
                         </div>
                     </div>
                     <div class="el-step__main">
-                        <div class="el-step__title <?= $res["order_status"]>3?"is-finish":""?>">评价</div>
-                        <?php if($res["order_status"]>3){ ?>
-                            <div class="el-step__description is-finish"><?= date("Y-m-d H:i:s",$res[evaluate_at]) ?></div>
+                        <div class="el-step__title <?= $res["order_status"] > 3 ? "is-finish" : "" ?>">评价</div>
+                        <?php if ($res["order_status"] > 3) { ?>
+                            <div class="el-step__description is-finish"><?= date("Y-m-d H:i:s", $res[evaluate_at]) ?></div>
                         <?php } ?>
                     </div>
                 </div>
@@ -281,17 +283,30 @@
                                     <td class="el-table_2_column_13  ">
                                         <div class="cell el-tooltip"><?= $res["payment_method"] ?></div>
                                     </td>
+<<<<<<< HEAD
                                     <td class="el-table_2_column_14  ">
                                         <div class="cell el-tooltip" title="<?=date("Y-m-d H:i:s",$res[created_at])?>">
                                             <?php if($res[created_at]){ ?>
                                                 <?= date("Y-m-d H:i:s",$res[created_at]) ?>
+=======
+                                    <td class="el-table_2_column_15  ">
+                                        <div class="cell" title="<?= date("Y-m-d H:i:s", $res[created_at]) ?>">
+                                            <?php if ($res[created_at]) { ?>
+                                                <?= date("Y-m-d H:i:s", $res[created_at]) ?>
+>>>>>>> bebd3cae7ee685f19e08fe7cec3ce8672eaf93b4
                                             <?php } ?>
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_15  ">
+<<<<<<< HEAD
                                         <div class="cell el-tooltip" title="<?=date("Y-m-d H:i:s",$res[created_at])?>">
                                             <?php if($res[paypal_order_datetime]){ ?>
                                                 <?= date("Y-m-d H:i:s",$res[paypal_order_datetime]) ?>
+=======
+                                        <div class="cell" title="<?= date("Y-m-d H:i:s", $res[created_at]) ?>">
+                                            <?php if ($res[paypal_order_datetime]) { ?>
+                                                <?= date("Y-m-d H:i:s", $res[paypal_order_datetime]) ?>
+>>>>>>> bebd3cae7ee685f19e08fe7cec3ce8672eaf93b4
                                             <?php } ?>
                                         </div>
                                     </td>
@@ -303,16 +318,28 @@
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_17  ">
+<<<<<<< HEAD
                                         <div class="cell el-tooltip" title="<?=date("Y-m-d H:i:s",$res[receipt_at])?>">
                                             <?php if($res[receipt_at]){ ?>
                                                 <?= date("Y-m-d H:i:s",$res[receipt_at]) ?>
+=======
+                                        <div class="cell" title="<?= date("Y-m-d H:i:s", $res[receipt_at]) ?>">
+                                            <?php if ($res[receipt_at]) { ?>
+                                                <?= date("Y-m-d H:i:s", $res[receipt_at]) ?>
+>>>>>>> bebd3cae7ee685f19e08fe7cec3ce8672eaf93b4
                                             <?php } ?>
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_18  ">
+<<<<<<< HEAD
                                         <div class="cell el-tooltip" title="<?=date("Y-m-d H:i:s",$res[evaluate_at])?>">
                                             <?php if($res[evaluate_at]){ ?>
                                                 <?= date("Y-m-d H:i:s",$res[evaluate_at]) ?>
+=======
+                                        <div class="cell" title="<?= date("Y-m-d H:i:s", $res[evaluate_at]) ?>">
+                                            <?php if ($res[evaluate_at]) { ?>
+                                                <?= date("Y-m-d H:i:s", $res[evaluate_at]) ?>
+>>>>>>> bebd3cae7ee685f19e08fe7cec3ce8672eaf93b4
                                             <?php } ?>
                                         </div>
                                     </td>
@@ -406,9 +433,16 @@
                                         <div class="cell el-tooltip"><?= $res["customer_address_country"] . $res["customer_address_state"] . $res["customer_address_city"] . $res["customer_address_street1"] ?></div>
                                     </td>
                                     <td class="el-table_3_column_22  ">
+<<<<<<< HEAD
                                         <div class="cell" title="<?=date("Y-m-d H:i:s",$res[confirm_at])?>">
                                             <?php if($res[confirm_at]){ ?>
                                                 <?= date("Y-m-d H:i:s",$res[confirm_at]) ?>
+=======
+                                        <div class="cell  el-tooltip"
+                                             title="<?= date("Y-m-d H:i:s", $res[confirm_at]) ?>">
+                                            <?php if ($res[confirm_at]) { ?>
+                                                <?= date("Y-m-d H:i:s", $res[confirm_at]) ?>
+>>>>>>> bebd3cae7ee685f19e08fe7cec3ce8672eaf93b4
                                             <?php } ?>
                                         </div>
                                     </td>
