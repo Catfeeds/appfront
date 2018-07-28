@@ -1,39 +1,166 @@
-<div class="main-content">
-    <div id="platdata">
-        <div class="adminmannager-title">
-            <span>数据中心</span>&nbsp;
-            <span>·&nbsp;平台数据</span>
+<style>
+    .demo-input {
+        padding-left: 10px;
+        height: 30px;
+        min-width: 300px;
+        line-height: 38px;
+        border: 1px solid #e6e6e6;
+        background-color: #f3faff;
+        border-radius: 30px;
+        outline: none;
+    }
+
+    .demo-input:hover {
+        border-color: #c0c4cc;
+    }
+
+    .demo-input:focus {
+        border-color: #3CACFE;
+    }
+
+    .main-content .biaoti {
+        height: 52px;
+        font-size: 12px;
+        line-height: 52px;
+        font-weight: bolder;
+    }
+
+    .main-content .bottom {
+        width: 100%;
+    }
+
+    .title .shuaixuan {
+        margin-top: 15px;
+        display: flex;
+    }
+
+    .left_box {
+        width: 309px;
+        height: 333px;
+        background: #f8fcff;
+        border: 2px solid #ebf6ff;
+        padding-left: 17px;
+    }
+
+    .title .shuaixuan .shuaixuan_top {
+        line-height: 55px;
+        font-size: 14px;
+        color: #9bd2fd;
+    }
+
+    .bottom .jiantou {
+        width: 42px;
+        height: 14px;
+        margin-top: 33px;
+        background: url("/public/img/jiantou.png");
+    }
+
+    .shuaixuan_bottom .danxuan {
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+    }
+
+    .main-content .red {
+        height: 35px;
+        background: #FD5E4E;
+        border: none;
+        box-shadow: 0 0px 8px #FD5E4E;
+    }
+
+    .main-content .green {
+        height: 35px;
+        background: #37DF73;
+        border: none;
+        box-shadow: 0 0px 8px #37DF73;
+        margin-right: 20px;
+    }
+
+    .el-form-item {
+        /*line-height: 40px;*/
+    }
+
+    .el-form-item__content {
+        line-height: normal;
+    }
+</style>
+
+<div data-v-63f72479="" class="main-content">
+    <div data-v-63f72479="" style="width: 1064px; margin: 0px auto; margin-top:50px;">
+        <div data-v-63f72479="" class="biaoti">
+            <div data-v-63f72479="" aria-label="Breadcrumb" role="navigation" class="el-breadcrumb"><span
+                        data-v-63f72479="" class="el-breadcrumb__item"><span role="link"
+                                                                             class="el-breadcrumb__inner is-link">用户管理</span><span
+                            role="presentation" class="el-breadcrumb__separator">·</span></span> <span
+                        data-v-63f72479="" class="el-breadcrumb__item"><span role="link" class="el-breadcrumb__inner">管理员管理</span><span
+                            role="presentation" class="el-breadcrumb__separator">·</span></span> <span
+                        data-v-63f72479="" class="el-breadcrumb__item" aria-current="page"><span role="link"
+                                                                                                 class="el-breadcrumb__inner"><span
+                                data-v-63f72479=""
+                                style="color: rgb(48, 211, 102); font-weight: bolder;">添加用户</span></span><span
+                            role="presentation" class="el-breadcrumb__separator">·</span></span></div>
         </div>
-        <div class="add">
+        <div data-v-63f72479="" class="bottom">
+            <div data-v-63f72479="" class="title">
+                <form data-v-63f72479="" method="post" action="<?= Yii::$service->url->getUrl('/admin/index/editadmin') ?>" class="el-form" enctype="application/x-www-form-urlencoded"
+                      onsubmit="return check_submit()">
+                    <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>"/>
+                    <div data-v-63f72479="" class="el-row" style="width: 850px;">
+                        <div data-v-63f72479="" class="el-form-item">
+                            <label class="el-form-item__label"
+                                   style="width: 150px;">*用户名</label>
+                            <div class="el-form-item__content" style="margin-left: 150px;">
+                                <div data-v-63f72479="" class="el-input" style="width: 300px;">
+                                    <input type="text" name="username"  class="el-input__inner" id="username">
+                                </div>
+                                <label id="result_name"></label>
+                            </div>
+                        </div>
+                        <div data-v-63f72479="" class="el-form-item">
+                            <label class="el-form-item__label"
+                                   style="width: 150px;">*密码</label>
+                            <div class="el-form-item__content" style="margin-left: 150px;">
+                                <div data-v-63f72479="" class="el-input" style="width: 300px;">
+                                    <input type="password" name="password_hash"  class="el-input__inner" id="password">
+                                </div>
+                                <label id="result_pwd"></label>
+                            </div>
+                        </div>
+                        <div data-v-63f72479="" class="el-form-item">
+                            <label class="el-form-item__label"
+                                   style="width: 150px;">*邮箱</label>
+                            <div class="el-form-item__content" style="margin-left: 150px;">
+                                <div data-v-63f72479="" class="el-input" style="width: 300px;">
+                                    <input type="email" name="email"  class="el-input__inner">
+                                </div>
+                                <label>(请填写正确的邮箱格式！)</label>
+                            </div>
+                        </div>
+                        <div data-v-63f72479="" class="el-form-item">
+                            <label class="el-form-item__label"
+                                   style="width: 150px;">*姓名</label>
+                            <div class="el-form-item__content" style="margin-left: 150px;">
+                                <div data-v-63f72479="" class="el-input" style="width: 300px;">
+                                    <input type="text" name="person"  class="el-input__inner">
+                                </div>
+                            </div>
+                        </div>
 
-            <form method="post" action="<?= Yii::$service->url->getUrl('/admin/index/editadmin') ?>" onsubmit="return check_submit()">
-                <div>
-                    <span>用户名：</span>
-                    <input type="text" name="username" id="username">
-                    <label id="result_name"></label>
-                </div>
-                <div>
-                    <span>密&nbsp;&nbsp;&nbsp;码：</span>
-                    <input type="password" name="password_hash" id="password">
-                    <label id="result_pwd"></label>
-                </div>
-                <div>
-                    <span>邮&nbsp;&nbsp;&nbsp;箱：</span>
-                    <input type="email" name="email">
-                    <label>(请填写正确的邮箱格式！)</label>
-                </div>
-                <div>
-                    <span>姓&nbsp;&nbsp;&nbsp;名：</span>
-                    <input type="text" name="person">
-                </div>
-                <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>"/>
-                <input type="submit" onsubmit="check_submit()">
-            </form>
+                    </div>
+            </div>
         </div>
-
-
+        <div data-v-63f72479="" style="float: right;">
+            <button data-v-63f72479="" type="submit" class="el-button green el-button--success is-round"><!---->
+                <!----><span>提交</span></button>
+            <a data-v-63f72479="" href="#/ShopCouponEdit" class="">
+                <button data-v-63f72479="" type="reset" class="el-button red el-button--danger is-round"><!---->
+                    <!----><span>重置</span></button>
+            </a></div>
+        </form>
     </div>
 </div>
+</div>
+
 
 <script>
     var flag = false;

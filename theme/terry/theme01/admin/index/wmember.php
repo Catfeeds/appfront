@@ -32,13 +32,17 @@ use yii\helpers\Url;
                     </tr>
                     <tr>
                         <td>会员名称:</td>
-                        <td><input type="text" value=""></td>
+                        <td><input type="text" value="<?= $res['firstname']?>"></td>
                     </tr>
                     <tr>
                         <td>性别:</td>
                         <td>
-                            <input type="radio" value="1" name="sex" style="margin-left:10px;"><span style="margin-left:10px">男</span>
-                            <input type="radio" value="0" name="sex" style="margin-left:10px"><span style="margin-left:10px">女</span>
+                            <input type="radio" value="1" name="sex" style="margin-left:10px;"
+                            <?php if($res['sex']==1){echo "checked";}?>
+                            ><span style="margin-left:10px">男</span>
+                            <input type="radio" value="0" name="sex" style="margin-left:10px"
+                                <?php if($res['sex']==0){echo "checked";}?>
+                            ><span style="margin-left:10px">女</span>
                         </td>
                     </tr>
                     <tr>
@@ -47,9 +51,9 @@ use yii\helpers\Url;
                             <div class="xiala" style="margin:0;margin-left:10px;width: 300px;">
                                 <select name="member-level" id="member-level"
                                         style="width: 300px;background: #f3faff;margin:0;height: 36px">
-                                    <option value="">普通会员</option>
-                                    <option value="">白金会员</option>
-                                    <option value="">黄金会员</option>
+                                    <option value="0" <?php if($res['level']==0){echo 'selected';}?>>普通会员</option>
+                                    <option value="1" <?php if($res['level']==1){echo 'selected';}?>>白金会员</option>
+                                    <option value="2" <?php if($res['level']==2){echo 'selected';}?>>黄金会员</option>
                                 </select>
                                 <div class="xialaimg1" style="width: 30px;height: 30px;top:3px;"></div>
                             </div>
