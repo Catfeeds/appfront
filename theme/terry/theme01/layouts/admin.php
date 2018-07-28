@@ -2480,14 +2480,14 @@ $cssOptions = [
             <div class="header-right" style="width: 416px;float: right;">
                 <div class="adminname">
                     <div class="admin-img"></div>
-                    <span class="name1">管理员名称</span>
+                    <span class="name1"><?=$_SESSION['message_name']?></span>
                 </div>
                 <div class="adminname">
                     <div class="clearimg"></div>
                     <span class="name2">清除缓存</span>
                 </div>
                 <div class="adminname">
-                    <a href="/loginin">
+                    <a href="/admin/login/out" title="退出页面">
                         <div class="out"></div>
                         <span class="name3">退出</span>
                     </a>

@@ -21,7 +21,7 @@ use yii\web\UploadedFile;
  */
 
 // 系统管理控制器
-class SystemController extends AppfrontController
+class SystemController extends PublicsController
 {
 
     public function init()
@@ -258,10 +258,10 @@ class SystemController extends AppfrontController
         if($res){
 
             // 如果删除成功，删除对应图片
-            if ($data['oldImg']&&file_exists("../../appimage/common/media/".$data['oldImg'])) {
+            if ($data['oldImg'] != $newName && $data['oldImg'] &&file_exists("../../appimage/common/media/".$data['oldImg'])) {
                 unlink("../../appimage/common/media/".$data['oldImg']);
             }
-             return $this->redirect(['/admin/system/index']);
+            return $this->redirect(['/admin/system/index']);
 
         }else{
             return $this->redirect($_SERVER['HTTP_REFERER']);

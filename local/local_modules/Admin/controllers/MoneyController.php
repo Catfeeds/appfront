@@ -21,7 +21,7 @@ use yii\web\UploadedFile;
  */
 
 // 后台首页控制器
-class MoneyController extends AppfrontController
+class MoneyController extends PublicsController
 {
 
     public function init()

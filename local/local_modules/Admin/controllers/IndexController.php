@@ -19,7 +19,7 @@ use yii\db\Query;
  * @since 1.0
  */
 // 后台首页控制器
-class IndexController extends AppfrontController
+class IndexController extends PublicsController
 {
 
     public function init()
