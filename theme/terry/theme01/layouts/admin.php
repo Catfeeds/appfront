@@ -208,7 +208,7 @@ $cssOptions = [
     /*主内容*/
     .main-content {
         width: calc(100% - 167px);
-        min-height: 587px;
+        /*min-height: 587px;*/
         background: #fff;
         float: left;
         color: #333;

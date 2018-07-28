@@ -160,9 +160,11 @@ use yii\helpers\Url;
             <input type="text" style="display: inline-block;width: 40px;height: 20px;border-radius: 10px;
                             border: 1px solid #ebf6ff;background: #f3faff;outline: none;padding:0 5px;
                             box-sizing: border-box;text-align: center;color:#29c99a;line-height: 20px; "
-                   value="10">
+                   value="2">
         </div>
     </div>
+
+
     <div style="width: 100%; position: relative;height: 50px;">
 
         <div style="font-size: 12px; position: absolute; bottom: 0; right: 0; display: flex; justify-content: space-between;">
