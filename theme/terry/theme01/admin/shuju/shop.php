@@ -85,13 +85,6 @@ background: #32d699;border-radius: 18px;text-align: center;line-height: 32px;col
                         <button class="lastpage-box">末页</button>
                     </div>
                 </div>
-                <!--<div class="block">
-                    <span class="demonstration">大于 7 页时的效果</span>
-                    <el-pagination
-                            layout="prev, pager, next"
-                            :total="1000">
-                    </el-pagination>
-                </div>-->
             </div>
         </div>
         <com-footer></com-footer>

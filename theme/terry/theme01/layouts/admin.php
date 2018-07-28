@@ -2429,6 +2429,12 @@ $cssOptions = [
         width: 900px;
         height: 400px;
     }
+    .admincount span{
+        font-size: 14px;
+    }
+    table tr:hover{
+        background: rgba(238,238,238,0.2);
+    }
 </style>
 <?php $this->beginPage() ?>
     <!doctype html>
@@ -2501,6 +2507,7 @@ $cssOptions = [
     </div>
     </body>
     <script>
+
 
         // 筛选顶部菜单
         var url = location.href.split("/");
