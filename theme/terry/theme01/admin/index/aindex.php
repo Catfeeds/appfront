@@ -149,11 +149,11 @@ use yii\helpers\Url;
     </div>
     <div class="admincount" style="justify-content: flex-end;margin-bottom: 0px;margin-top:30px;font-size: 14px;">
         <div class="admincountall">
-            <span style="color: #3db0ff">·</span>&nbsp;<span>总计</span><span>206</span><span>记录</span>
+            <span style="color: #3db0ff">·</span>&nbsp;<span>总计</span><span><?=$tot?></span><span>记录</span>
         </div>
         <div class="admintotalpage">
             <span style="color: #29c99a">·</span>&nbsp;<span>分</span><span
-                    style="color: #29c99a">82</span><span>页</span>
+                    style="color: #29c99a"><?= $tot/2?></span><span>页</span>
         </div>
         <div class="admintotalpage">
             <span style="color: #29c99a">·</span>&nbsp;<span>每页</span>

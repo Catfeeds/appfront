@@ -82,6 +82,7 @@ class IndexController extends AppfrontController
 
         $data["pagination"] = $pagination;
         $data["rows"] = $rows;
+        $data['tot'] = $tot;
         return $this->render($this->action->id, $data);
     }
 
