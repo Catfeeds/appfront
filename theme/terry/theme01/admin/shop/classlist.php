@@ -12,7 +12,6 @@ use yii\helpers\Url;
         padding-left: 17px;
         margin-bottom: 20px;
         width: 100%;
-
     }
 
     .admin-tablelist1 tr {
@@ -37,28 +36,27 @@ use yii\helpers\Url;
         line-height: 32px;
         font-weight: bold;
     }
-    .success{
+    .success a{
         display:inline-block;
         width:50px;
         height:30px;
-        background-color: #37DF73;
         border-radius: 10px;
-        color:#fff;
         font-weight: bold;
         cursor:pointer;
         line-height: 30px;
+        color: #67bcff;
     }
 
-    .warning{
+    .warning a{
         display:inline-block;
         width:50px;
         height:30px;
-        background-color: #F44444;
         border-radius: 10px;
         color:#fff;
         font-weight: bold;
         cursor:pointer;
         line-height: 30px;
+        color: #f66;
     }
     .caozuo a{
         font-size: 25px;
@@ -81,170 +79,27 @@ use yii\helpers\Url;
         </div>
         <a class="addadmin" href="/admin/shop/classadd">添加顶级分类</a>
     </div>
-
-
     <!--管理员列表-->
     <div class="admin-table">
         <div class="admin-tablename">
             <div class="admin-tablenamebox"></div>
             <span class="admin-tablename1"><?php echo isset($_GET['name'])?$_GET['name']."分类":"分类";?></span><span class="admin-tablename2">列表</span>
         </div>
-
-        <div class="el-table__body-wrapper is-scrolling-left">
-            <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
-                   style="width: 1012px;">
-                <colgroup>
-                    <col name="el-table_2_column_6" width="120">
-                    <col name="el-table_2_column_7" width="150">
-                    <col name="el-table_2_column_8" width="150">
-                    <col name="el-table_2_column_9" width="150">
-                    <col name="el-table_2_column_10" width="150">
-                    <col name="el-table_2_column_11" width="400">
-                </colgroup>
-                <thead class="has-gutter">
-                <tr style="font-size: 14px;color: #B1DBFE;text-align: left;height: 50px;">
-                    <th
-                            class="el-table_2_column_11     is-leaf">
-                        <div class="cell">ID</div>
-                    </th>
-                    <th
-                            class="el-table_2_column_12     is-leaf">
-                        <div class="cell">名称</div>
-                    </th>
-                    <th
-                            class="el-table_2_column_13     is-leaf">
-                        <div class="cell">排序</div>
-                    </th>
-                    <th colspan="1" rowspan="1"
-                        class="el-table_2_column_14     is-leaf">
-                        <div class="cell">描述</div>
-                    </th>
-                    <th colspan="1" rowspan="1"
-                        class="el-table_2_column_14     is-leaf">
-                        <div class="cell">关键字</div>
-                    </th>
-                    <th
-                            class="el-table_2_column_15     is-leaf">
-                        <div class="cell">类型</div>
-                    </th>
-                    <th
-                            class="el-table_2_column_15     is-leaf">
-                        <div class="cell">照片</div>
-                    </th>
-                    <th
-                            class="el-table_2_column_15     is-leaf">
-                        <div class="cell">状态</div>
-                    </th>
-                    <th
-                            class="el-table_2_column_15     is-leaf">
-                        <div class="cell">操作</div>
-                    </th>
-                    <th class="gutter" style="width: 0px; display: none;"></th>
+        <table border="0" cellpadding="0" cellspacing="0" class="admin-tablelist1 active el-table__header el-table">
+            <thead class="has-gutter">
+                <tr style="font-size: 14px;color: #B1DBFE;">
+                    <th class="is-leaf">ID</th>
+                    <th class="is-leaf">名称</th>
+                    <th class="is-leaf">排序</th>
+                    <th class="is-leaf">描述</th>
+                    <th class="is-leaf">关键字</th>
+                    <th class="is-leaf">类型</th>
+                    <th class="is-leaf">照片</th>
+                    <th class="is-leaf">显示</th>
+                    <th class="is-leaf" style="width: 120px">操作</th>
                 </tr>
-                </thead>
-            </table>
-        </div>
-        <div class="el-table__body-wrapper is-scrolling-left">
-            <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
-                   style="width: 1012px;">
-                <colgroup>
-                    <col name="el-table_2_column_6" width="120">
-                    <col name="el-table_2_column_7" width="150">
-                    <col name="el-table_2_column_8" width="150">
-                    <col name="el-table_2_column_9" width="150">
-                    <col name="el-table_2_column_10" width="150">
-                    <col name="el-table_2_column_11" width="400">
-                </colgroup>
-                <tbody style="font-size: 12px;color:#82898e">
-                <?php
-                foreach ($class as $key => $value) {
-                    ?>
-                    <tr class="el-table__row" style="height:36px;font-size: 14px;">
-                        <td class="el-table_2_column_11  ">
-                            <div class="cell el-tooltip" ?>">
-                                <?=$value[_id]?>
-                            </div>
-                        </td>
-                        <td class="el-table_2_column_12">
-                            <div class="cell el-tooltip">
-                                <?php
-                                // if(!$_GET['id']){
-                                ?>
-                                <!-- <a style="color:#67bcff;" href="<?= Yii::$service->url->getUrl('admin/shop/classlist', array('id' => $value['_id'])) ?>"><?=$value[name][name_zh]?></a> -->
-                                <?php
-                                // }else{
-                                echo $value[name][name_zh];
-                                // }
-                                ?>
-                            </div>
-                        </td>
-
-                        <td class="el-table_2_column_14">
-                            <div class="cell el-tooltip" title="<?= $v["payment_method"] ?>">
-                                <input onchange="sort(this,'<?=$value[_id]?>')" style="width:50px;height:30px;text-align:center;" type="sort" value="<?=$value['sort']?>">
-                            </div>
-                        </td>
-                        <td class="el-table_2_column_13">
-                            <div class="cell el-tooltip">
-                                <?=$value[description][description_zh]?>
-                            </div>
-                        </td>
-                        <td class="el-table_2_column_14">
-                            <div class="cell el-tooltip" title="<?= $v["payment_method"] ?>">
-                                <?=$value[meta_keywords][meta_keywords_zh]?>
-                            </div>
-                        </td>
-                        <td class="el-table_2_column_14">
-                            <div class="cell el-tooltip" title="<?= $v["payment_method"] ?>">
-                                <?php
-                                if ($value['type']==1) {
-                                    echo "<span>商家分类</span>";
-                                }else{
-                                    echo "<span>水司分类</span>";
-                                }
-                                ?>
-                            </div>
-                        </td>
-                        <td class="el-table_2_column_14">
-                            <div class="cell el-tooltip" title="<?= $v["payment_method"] ?>">
-                                <img style="width:90px;margin:5px;" src="http://img.uekuek.com/media/catalog/<?=$value[img]?>" alt="">
-                            </div>
-                        </td>
-                        <td class="el-table_2_column_14">
-                            <div class="cell el-tooltip" title="<?= $v["payment_method"] ?>">
-                                <img style="width:90px;margin:5px;" src="http://img.uekuek.com/media/catalog/<?=$value[img]?>" alt="">
-                            </div>
-                        </td>
-                        <td class="el-table_2_column_18">
-                            <a style="color: #41b2fc" href="<?= Yii::$service->url->getUrl('admin/index/wmember',array('id'=>$v['id']))?>">查看</a>
-                            &nbsp;<label>|</label>&nbsp;
-                            <a style="color: #41b2fc" href="<?= Yii::$service->url->getUrl('admin/index/delmember',array('id'=>$v['id']))?>">删除</a>
-                            &nbsp;<label>|</label>&nbsp;
-                            <a style="color: #ff5932" href="javascript:0">移入黑名单</a>
-                            &nbsp;<label>|</label>&nbsp;
-                            <a style="color: #41b2fc" href="javascript:0">冻结账号</a>
-                        </td>
-                    </tr>
-                <?php } ?>
-                </tbody>
-            </table>
-        </div>
-        <table border="1" cellpadding="0" cellspacing="0" class="admin-tablelist1 active">
-            <tr style="">
-                <th>ID</th>
-                <th>名称</th>
-                <th>排序</th>
-                <th>描述</th>
-                <th>关键字</th>
-                <th>类型</th>
-                <th>照片</th>
-                <th>显示</th>
-                <th>操作</th>
-            </tr>
-            
-
-
-
+            </thead>
+            <tbody style="font-size: 12px;color: #82898e;">
             <?php
                 foreach ($class as $key => $value) {
                 ?>
@@ -273,7 +128,7 @@ use yii\helpers\Url;
                                 }
                             ?>
                         </td>
-                        <td><img style="width:90px;margin:5px;" src="http://img.uekuek.com/media/catalog/<?=$value[img]?>" alt=""></td>
+                        <td><img style="width:70px;margin:5px;" src="http://img.uekuek.com/media/catalog/<?=$value[img]?>" alt=""></td>
                         <td>
                             <?php 
                                 if ($value['menu_show']==1) {
@@ -284,19 +139,20 @@ use yii\helpers\Url;
                             ?>
 
                         </td>
-                        <td class="el-table_2_column_18">
+                        <td style="200px">
                             <a style="color: #41b2fc" href="<?= Yii::$service->url->getUrl('admin/shop/classlist', array('id' => $value['_id'],'name'=>$value[name][name_zh])) ?>">查看</a>
-                            &nbsp;<label>|</label>&nbsp;
+
                             <a style="color: #41b2fc" href="<?= Yii::$service->url->getUrl('admin/shop/classadd', array('id' => $value['_id'],'level'=>2,'name'=>$value[name][name_zh],'type'=>$value['type'])) ?>">添加</a>
-                            &nbsp;<label>|</label>&nbsp;
-                            <a style="color: #ff5932" href="<?= Yii::$service->url->getUrl('admin/shop/classfind', array('id' => $value['_id'])) ?>">修改</a>
-                            &nbsp;<label>|</label>&nbsp;
-                            <a style="color: #41b2fc" href="<?= Yii::$service->url->getUrl('admin/shop/classdel', array('id' => $value['_id'])) ?>">删除</a>
+
+                            <a style="color:  #41b2fc" href="<?= Yii::$service->url->getUrl('admin/shop/classfind', array('id' => $value['_id'])) ?>">修改</a>
+
+                            <a style="color: #ff5932" href="<?= Yii::$service->url->getUrl('admin/shop/classdel', array('id' => $value['_id'])) ?>">删除</a>
                         </td>
                     </tr>
                 <?php
                 }
              ?>
+            </tbody>
         </table >
     </div>
 
