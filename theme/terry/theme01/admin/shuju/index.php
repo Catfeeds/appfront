@@ -16,30 +16,12 @@
             <div class="block" style="float: left;line-height: 48px; margin-left: 20px;position: relative;">
                 <span class="demonstration">时间段选择</span>
                 <div class="timer">
-                    <el-date-picker
-                            v-model="value1"
-                            type="date"
-                    >
-                    </el-date-picker>
-                    <div style="width: 26px;height: 26px;border-radius: 50%;
-                background: #30a3fe; position: absolute;top:0;bottom:0;margin:auto 0;
-                left:248px;pointer-events: none">
-                        <img src="/public/adminimg/date.png" style="width: 12px;height: 12px;display:block;
-margin:0 auto;margin-top:7px;">
-                    </div>
-                </div>
-                <span style="margin:0 6px">~</span>
-                <div class="timer">
-                    <el-date-picker
-                            v-model="value2"
-                            type="date"
-                    >
-                    </el-date-picker>
-                    <div style="width: 26px;height: 26px;border-radius: 50%;
-                background: #30a3fe; position: absolute;top:0;bottom:0;margin:auto 0;
-                right:5px;pointer-events: none">
-                        <img src="/public/adminimg/date.png" style="width: 12px;height: 12px;display:block;
-margin:0 auto;margin-top:7px;">
+                    <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
+                        <i class="el-input__icon el-range__icon el-icon-time"></i>
+                        <input placeholder="开始日期" name="" class="el-range-input1 el-range-input" />
+                        <span class="el-range-separator">至</span>
+                        <input placeholder="结束日期" name="" class="el-range-input2 el-range-input"/>
+                        <i class="el-input__icon el-range__icon el-icon-time"></i>
                     </div>
                 </div>
 
@@ -118,31 +100,12 @@ margin:0 auto;margin-top:7px;">
 margin-top:4px;"
                     >
                         <div class="timer">
-                            <el-date-picker
-                                    v-model="value1"
-                                    type="date"
-                                    placeholder="请选择开始时间"
-                            >
-                            </el-date-picker>
-                            <div style="width: 26px;height: 26px;border-radius: 50%;
-                background: #30a3fe; position: absolute;top:0;bottom:0;margin:auto 0;
-                right:215px;pointer-events: none">
-                                <img src="/public/adminimg/date.png" style="width: 12px;height: 12px;display:block;
-margin:0 auto;margin-top:7px;">
-                            </div>
-                        </div>
-                        <div class="timer">
-                            <el-date-picker
-                                    v-model="value2"
-                                    type="date"
-                                    placeholder="请选择结束时间"
-                            >
-                            </el-date-picker>
-                            <div style="width: 26px;height: 26px;border-radius: 50%;
-                background: #30a3fe; position: absolute;top:0;bottom:0;margin:auto 0;
-                right:5px;pointer-events: none">
-                                <img src="/public/adminimg/date.png" style="width: 12px;height: 12px;display:block;
-margin:0 auto;margin-top:7px;">
+                            <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
+                                <i class="el-input__icon el-range__icon el-icon-time"></i>
+                                <input placeholder="开始日期" name="" class="el-range-input1 el-range-input" />
+                                <span class="el-range-separator">至</span>
+                                <input placeholder="结束日期" name="" class="el-range-input2 el-range-input"/>
+                                <i class="el-input__icon el-range__icon el-icon-time"></i>
                             </div>
                         </div>
 
@@ -195,31 +158,12 @@ margin:0 auto;margin-top:7px;">
 margin-top:4px;"
                     >
                         <div class="timer">
-                            <el-date-picker
-                                    v-model="value1"
-                                    type="date"
-                                    placeholder="请选择开始时间"
-                            >
-                            </el-date-picker>
-                            <div style="width: 26px;height: 26px;border-radius: 50%;
-                background: #30a3fe; position: absolute;top:0;bottom:0;margin:auto 0;
-                right:210px;pointer-events: none">
-                                <img src="/public/adminimg/date.png" style="width: 12px;height: 12px;display:block;
-margin:0 auto;margin-top:7px;">
-                            </div>
-                        </div>
-                        <div class="timer">
-                            <el-date-picker
-                                    v-model="value2"
-                                    type="date"
-                                    placeholder="请选择结束时间"
-                            >
-                            </el-date-picker>
-                            <div style="width: 26px;height: 26px;border-radius: 50%;
-                background: #30a3fe; position: absolute;top:0;bottom:0;margin:auto 0;
-                right:5px;pointer-events: none">
-                                <img src="/public/adminimg/date.png" style="width: 12px;height: 12px;display:block;
-margin:0 auto;margin-top:7px;">
+                            <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
+                                <i class="el-input__icon el-range__icon el-icon-time"></i>
+                                <input placeholder="开始日期" name="" class="el-range-input1 el-range-input" />
+                                <span class="el-range-separator">至</span>
+                                <input placeholder="结束日期" name="" class="el-range-input2 el-range-input"/>
+                                <i class="el-input__icon el-range__icon el-icon-time"></i>
                             </div>
                         </div>
 
@@ -272,31 +216,12 @@ margin:0 auto;margin-top:7px;">
 margin-top:4px;"
                     >
                         <div class="timer">
-                            <el-date-picker
-                                    v-model="value1"
-                                    type="date"
-                                    placeholder="请选择开始时间"
-                            >
-                            </el-date-picker>
-                            <div style="width: 26px;height: 26px;border-radius: 50%;
-                background: #30a3fe; position: absolute;top:0;bottom:0;margin:auto 0;
-                right:210px;pointer-events: none">
-                                <img src="/public/adminimg/date.png" style="width: 12px;height: 12px;display:block;
-margin:0 auto;margin-top:7px;">
-                            </div>
-                        </div>
-                        <div class="timer">
-                            <el-date-picker
-                                    v-model="value2"
-                                    type="date"
-                                    placeholder="请选择结束时间"
-                            >
-                            </el-date-picker>
-                            <div style="width: 26px;height: 26px;border-radius: 50%;
-                background: #30a3fe; position: absolute;top:0;bottom:0;margin:auto 0;
-                right:5px;pointer-events: none">
-                                <img src="/public/adminimg/date.png" style="width: 12px;height: 12px;display:block;
-margin:0 auto;margin-top:7px;">
+                            <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
+                                <i class="el-input__icon el-range__icon el-icon-time"></i>
+                                <input placeholder="开始日期" name="" class="el-range-input1 el-range-input" />
+                                <span class="el-range-separator">至</span>
+                                <input placeholder="结束日期" name="" class="el-range-input2 el-range-input"/>
+                                <i class="el-input__icon el-range__icon el-icon-time"></i>
                             </div>
                         </div>
 
@@ -349,31 +274,12 @@ margin:0 auto;margin-top:7px;">
 margin-top:4px;"
                     >
                         <div class="timer">
-                            <el-date-picker
-                                    v-model="value1"
-                                    type="date"
-                                    placeholder="请选择开始时间"
-                            >
-                            </el-date-picker>
-                            <div style="width: 26px;height: 26px;border-radius: 50%;
-                background: #30a3fe; position: absolute;top:0;bottom:0;margin:auto 0;
-                right:210px;pointer-events: none">
-                                <img src="/public/adminimg/date.png" style="width: 12px;height: 12px;display:block;
-margin:0 auto;margin-top:7px;">
-                            </div>
-                        </div>
-                        <div class="timer">
-                            <el-date-picker
-                                    v-model="value2"
-                                    type="date"
-                                    placeholder="请选择结束时间"
-                            >
-                            </el-date-picker>
-                            <div style="width: 26px;height: 26px;border-radius: 50%;
-                background: #30a3fe; position: absolute;top:0;bottom:0;margin:auto 0;
-                right:5px;pointer-events: none">
-                                <img src="/public/adminimg/date.png" style="width: 12px;height: 12px;display:block;
-margin:0 auto;margin-top:7px;">
+                            <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
+                                <i class="el-input__icon el-range__icon el-icon-time"></i>
+                                <input placeholder="开始日期" name="" class="el-range-input1 el-range-input" />
+                                <span class="el-range-separator">至</span>
+                                <input placeholder="结束日期" name="" class="el-range-input2 el-range-input"/>
+                                <i class="el-input__icon el-range__icon el-icon-time"></i>
                             </div>
                         </div>
 
@@ -426,31 +332,12 @@ margin:0 auto;margin-top:7px;">
 margin-top:4px;"
                     >
                         <div class="timer">
-                            <el-date-picker
-                                    v-model="value1"
-                                    type="date"
-                                    placeholder="请选择开始时间"
-                            >
-                            </el-date-picker>
-                            <div style="width: 26px;height: 26px;border-radius: 50%;
-                background: #30a3fe; position: absolute;top:0;bottom:0;margin:auto 0;
-                right:210px;pointer-events: none">
-                                <img src="/public/adminimg/date.png" style="width: 12px;height: 12px;display:block;
-margin:0 auto;margin-top:7px;">
-                            </div>
-                        </div>
-                        <div class="timer">
-                            <el-date-picker
-                                    v-model="value2"
-                                    type="date"
-                                    placeholder="请选择结束时间"
-                            >
-                            </el-date-picker>
-                            <div style="width: 26px;height: 26px;border-radius: 50%;
-                background: #30a3fe; position: absolute;top:0;bottom:0;margin:auto 0;
-                right:5px;pointer-events: none">
-                                <img src="/public/adminimg/date.png" style="width: 12px;height: 12px;display:block;
-margin:0 auto;margin-top:7px;">
+                            <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
+                                <i class="el-input__icon el-range__icon el-icon-time"></i>
+                                <input placeholder="开始日期" name="" class="el-range-input1 el-range-input" />
+                                <span class="el-range-separator">至</span>
+                                <input placeholder="结束日期" name="" class="el-range-input2 el-range-input"/>
+                                <i class="el-input__icon el-range__icon el-icon-time"></i>
                             </div>
                         </div>
 
@@ -503,31 +390,12 @@ margin:0 auto;margin-top:7px;">
 margin-top:4px;"
                     >
                         <div class="timer">
-                            <el-date-picker
-                                    v-model="value1"
-                                    type="date"
-                                    placeholder="请选择开始时间"
-                            >
-                            </el-date-picker>
-                            <div style="width: 26px;height: 26px;border-radius: 50%;
-                background: #30a3fe; position: absolute;top:0;bottom:0;margin:auto 0;
-                right:210px;pointer-events: none">
-                                <img src="/public/adminimg/date.png" style="width: 12px;height: 12px;display:block;
-margin:0 auto;margin-top:7px;">
-                            </div>
-                        </div>
-                        <div class="timer">
-                            <el-date-picker
-                                    v-model="value2"
-                                    type="date"
-                                    placeholder="请选择结束时间"
-                            >
-                            </el-date-picker>
-                            <div style="width: 26px;height: 26px;border-radius: 50%;
-                background: #30a3fe; position: absolute;top:0;bottom:0;margin:auto 0;
-                right:5px;pointer-events: none">
-                                <img src="/public/adminimg/date.png" style="width: 12px;height: 12px;display:block;
-margin:0 auto;margin-top:7px;">
+                            <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
+                                <i class="el-input__icon el-range__icon el-icon-time"></i>
+                                <input placeholder="开始日期" name="" class="el-range-input1 el-range-input" />
+                                <span class="el-range-separator">至</span>
+                                <input placeholder="结束日期" name="" class="el-range-input2 el-range-input"/>
+                                <i class="el-input__icon el-range__icon el-icon-time"></i>
                             </div>
                         </div>
 
@@ -566,3 +434,8 @@ margin:0 auto;margin-top:7px;">
         </div>
     </div>
 </div>
+<style>
+    .layui-laydate .layui-this{
+        background: #30B5FE !important;
+    }
+</style>

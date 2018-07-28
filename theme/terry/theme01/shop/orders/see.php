@@ -644,13 +644,13 @@
                                         <div class="cell"><?= $res["subtotal"] ?></div>
                                     </td>
                                     <td class="el-table_6_column_40  ">
-                                        <div class="cell"><?= $res["subtotal_with_discount"] ?></div>
+                                        <div class="cell"><?= $res["discount_amount"] ?></div>
                                     </td>
                                     <td class="el-table_6_column_41  ">
                                         <div class="cell"><?= $res["coin_num"] ?>个</div>
                                     </td>
                                     <td class="el-table_6_column_42  ">
-                                        <div class="cell"><?= "-" . $res["subtotal_with_discount"] ?></div>
+                                        <div class="cell"><?= "-" . $res["discount"] ?></div>
                                     </td>
                                     <td class="el-table_6_column_43  ">
                                         <div class="cell"><?= $res["grand_total"] ?></div>

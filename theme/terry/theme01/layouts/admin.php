@@ -5,7 +5,8 @@ $jsOptions = [ # js的配置部分
         # 在当前options下的js文件
         'js' => [
             'js/jquery-3.3.1.min.js',
-            'js/layout-admin.js'
+            'js/layout-admin.js',
+            'js/laydate.js'
         ],
     ]
 
@@ -24,6 +25,7 @@ $cssOptions = [
 
 
 ?>
+
 <style>
     * {
         margin: 0;
@@ -41,7 +43,7 @@ $cssOptions = [
     }
     /*头部样式*/
     .header {
-        width: calc(100% - 162px);
+        width: calc(100% - 167px);
         height: 50px;
         position: fixed;
         top: 0;
@@ -53,10 +55,11 @@ $cssOptions = [
     }
 
     .header ul {
-        width: 65%;
+        width: 636px;
         height: 100%;
         display: flex;
         padding-left: 44px;
+        float: left;
     }
 
     .header ul li {
@@ -78,15 +81,14 @@ $cssOptions = [
 
     .header .header-right {
         height: 100%;
-        width: 35%;
+        display: flex;
     }
 
     .header .header-right .adminname {
         width: 120px;
         height: 100%;
-        /*background: forestgreen;*/
-        float: left;
         margin-left: 10px;
+
     }
 
     .admin-img {
@@ -205,21 +207,21 @@ $cssOptions = [
 
     /*主内容*/
     .main-content {
-        width: calc(100% - 162px);
+        width: calc(100% - 167px);
         min-height: 587px;
         background: #fff;
         float: left;
         color: #333;
         margin-top: 50px;
-        margin-left: 162px;
+        margin-left: 167px;
     }
 
     /*用户管理-管理员管理*/
     .adminmannager {
         width: 1100px;
         margin:0 auto;
-        height: 100%;
-        padding: 27px 0 0 0;
+        /*height: 100%;*/
+        padding: 27px 0 27px 27px;
         box-sizing: border-box;
     }
 
@@ -532,10 +534,10 @@ $cssOptions = [
     }
 
     .ShopMannager {
-        width: 1100px;
+        width: 1120px;
         margin:0 auto;
         height: 100%;
-        padding: 27px 0 0 0;
+        padding: 27px 10px 0 10px;
         box-sizing: border-box;
     }
 
@@ -976,7 +978,7 @@ $cssOptions = [
     #check {
         float: left;
         width: 14px;
-        height: 100%;
+        /*height: 100%;*/
     }
 
     #check .input_check {
@@ -1597,9 +1599,6 @@ $cssOptions = [
         border:0;
         width: 15px;
         height: 15px;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
         outline: none;
     }
     .vip-list tr td{
@@ -2420,21 +2419,16 @@ $cssOptions = [
         float: left;
         cursor:pointer;
     }
-    /*.add form button{
-        width:100px;
-        height: 36px;
-        border-radius: 18px;
-        border:none;
-        outline: none;
-        text-align: center;
-        line-height: 30px;
-        background: #ff7504;
-        margin-top:50px;
-        display:block;
-        color:#fff;
-        float: left;
-        margin-left:100px;
-    }*/
+    .wreview-check{
+        height: 40px;
+        width: 100%;
+        line-height: 40px;
+        font-size: 14px;
+    }
+    .wreview-check textarea{
+        width: 900px;
+        height: 400px;
+    }
 </style>
 <?php $this->beginPage() ?>
     <!doctype html>
@@ -2483,7 +2477,7 @@ $cssOptions = [
                     </a>
                 </li>
             </ul>
-            <div class="header-right">
+            <div class="header-right" style="width: 416px;float: right;">
                 <div class="adminname">
                     <div class="admin-img"></div>
                     <span class="name1">管理员名称</span>
@@ -2532,6 +2526,16 @@ $cssOptions = [
         };
 
         let urls = "<?php echo $_SERVER['SERVER_NAME'];?>";
+
+
+        laydate.render({
+            elem:'.el-range-input1',
+            fixed:false
+        })
+        laydate.render({
+            elem:'.el-range-input2',
+            fixed:false
+        })
     </script>
     </html>
 <?php $this->endPage() ?>

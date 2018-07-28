@@ -90,73 +90,61 @@
         <div class="biaoti">
             <div  class="el-breadcrumb">
                 <span class="el-breadcrumb__item">
-                    <span role="link" class="el-breadcrumb__inner is-link">店铺管理</span>
+                    <span role="link" class="el-breadcrumb__inner is-link">系统管理</span>
                     <span  class="el-breadcrumb__separator">·</span>
                 </span>
                 <span class="el-breadcrumb__item">
-                    <span class="el-breadcrumb__inner">分类管理</span>
+                    <span class="el-breadcrumb__inner">平台信息</span>
+                    <span class="el-breadcrumb__separator">·</span>
+                </span>
+                <span class="el-breadcrumb__item">
+                    <span class="el-breadcrumb__inner">Banner管理</span>
                     <span class="el-breadcrumb__separator">·</span>
                 </span>
                 <span class="el-breadcrumb__item" >
-                    <span style="color: rgb(48, 211, 102); font-weight: bolder;">修改分类</span>
+                    <span style="color: rgb(48, 211, 102); font-weight: bolder;">添加Banner</span>
                 </span>
             </div>
         </div>
-
-        <form method="post" enctype="multipart/form-data" action="<?= Yii::$service->url->geturl("/admin/shop/classedit") ?>" class="el-form" enctype="application/x-www-form-urlencoded">
+        <form method="post" enctype="multipart/form-data" action="<?= Yii::$service->url->geturl("/admin/system/bannerinsert") ?>" class="el-form" enctype="application/x-www-form-urlencoded">
         <div class="bottom">
             <div class="title">
                 <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>"/>
                 <div class="el-row" style="width: 850px;">
-                    
-                    <input type="hidden" name="_id" value="<?=$class['_id']?>">
-                    <input type="hidden" name="parent_id" value="<?=$class['parent_id']?>">
-                    <input type="hidden" name="level" value="<?=$class['level']?>">
-            
                     <div class="el-form-item">
-                        <label class="el-form-item__label" style="width: 150px;">*分类名称</label>
+                        <label class="el-form-item__label" style="width: 150px;">*Banner名称</label>
                         <div class="el-form-item__content" style="margin-left: 150px;">
                             <div class="el-input" style="width: 500px;">
-                                <input type="text" name="name" value="<?=$class['name']['name_zh']?>" placeholder="名称可输入20个字符，支持输入中文、字母、数字、_、/和小数点" class="el-input__inner">
+                                <input type="text" name="name" placeholder="名称可输入20个字符，支持输入中文、字母、数字、_、/和小数点" class="el-input__inner">
                             </div>
                         </div>
                     </div>
                     <div class="el-form-item">
-                        <label class="el-form-item__label" style="width: 150px;">*分类描述</label>
+                        <label class="el-form-item__label" style="width: 150px;">*Banner跳转地址</label>
                         <div class="el-form-item__content" style="margin-left: 150px;">
                             <div class="el-input" style="width: 500px;">
-                                <input type="text" name="description" value="<?=$class['description']['description_zh']?>" placeholder="请输入分类的描述" class="el-input__inner">
+                                <input type="text" name="url" placeholder="请输入轮播图的跳转地址" class="el-input__inner">
                             </div>
                         </div>
                     </div>
 
                     <div class="el-form-item">
-                        <label class="el-form-item__label" style="width: 150px;">*分类关键字</label>
+                        <label class="el-form-item__label" style="width: 150px;">*Banner排序</label>
                         <div class="el-form-item__content" style="margin-left: 150px;">
                             <div class="el-input" style="width: 500px;">
-                                <input type="text" name="meta_keywords" value="<?=$class['meta_keywords']['meta_keywords_zh']?>" placeholder="请输入分类关键字" class="el-input__inner">
+                                <input type="text" name="sort" placeholder="请输入分类的排序，数值越大越靠前" class="el-input__inner">
                             </div>
                         </div>
                     </div>
+
                     <div class="el-form-item">
-                        <label class="el-form-item__label" style="width: 150px;">*分类类型</label>
+                        <label class="el-form-item__label" style="width: 150px;">*Banner类型</label>
                         <div class="el-form-item__content" style="margin-left: 150px;">
                             <div class="el-input" style="width: 500px;">
                                 <select name="type" id="" class="el-input__inner">
 
-                                    <?php 
-
-                                        if ($class['type']==1) {
-                                            # code...
-                                            echo '<option selected  value="1">商家</option>
-                                                <option  value="2">水司</option>';
-                                        }else{
-                                            echo '<option  value="1">商家</option>
-                                                <option selected value="2">水司</option>';
-                                        }
-
-
-                                     ?>
+                                    <option value="1">首页</option>
+                                    <option value="2">其他</option>
                                     
                                 </select>
                             </div>
@@ -164,32 +152,7 @@
                     </div>
 
                     <div class="el-form-item">
-                        <label class="el-form-item__label" style="width: 150px;">*显示隐藏</label>
-                        <div class="el-form-item__content" style="margin-left: 150px;">
-                            <div class="el-input" style="width: 500px;">
-                                <select name="menu_show" id="" class="el-input__inner">
-                                    <!-- <option  value="1">显示</option>
-                                    <option  value="2">隐藏</option>
- -->
-                                    <?php 
-
-                                        if ($class['menu_show']==1) {
-                                            # code...
-                                            echo '<option selected  value="1">显示</option>
-                                                <option  value="2">隐藏</option>';
-                                        }else{
-                                            echo '<option  value="1">显示</option>
-                                                <option selected value="2">隐藏</option>';
-                                        }
-
-
-                                     ?>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="el-form-item">
-                        <label class="el-form-item__label" style="width: 150px;">*分类照片</label>
+                        <label class="el-form-item__label" style="width: 150px;">*Banner照片</label>
                         <div class="el-form-item__content" style="margin-left: 150px;">
                             <div class="el-input" style="width: 500px;">
                                 <style>
@@ -205,27 +168,19 @@
 
                                     }
                                 </style>
-                                <div class="addImg"><img height="100%" src="http://img.uekuek.com/media/catalog/<?=$class[img]?>" alt=""></div>
+                                <div class="addImg">+</div>
                                 <input onchange="uploads(this)" type="file" name="img" style="display:none" id="files">
                             </div>
-                            <input type="hidden" name="oldimg" value="<?=$class['img']?>">
                         </div>
                     </div>
 
-                     <div class="el-form-item">
-                        <label class="el-form-item__label" style="width: 150px;">*分类排序</label>
-                        <div class="el-form-item__content" style="margin-left: 150px;">
-                            <div class="el-input" style="width: 500px;">
-                                <input type="text" name="sort" value="<?=$class['sort']?>" placeholder="请输入分类的排序，数值越大越靠前" class="el-input__inner">
-                            </div>
-                        </div>
-                    </div>
+                     
                 </div>
             </div>
         </div>
         <div style="float: right;">
             <button type="submit" class="el-button green el-button--success is-round">
-                <span>修改分类</span></button>
+                <span>添加</span></button>
             <a href="#/ShopCouponEdit" class="">
                 <button type="reset" class="el-button red el-button--danger is-round">
                 <span>重置</span></button>

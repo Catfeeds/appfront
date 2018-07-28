@@ -63,6 +63,8 @@ use yii\helpers\Url;
         font-size: 25px;
         margin:0px 2px;
     }
+
+
 </style>
 <div class="main-content">
 <div class="adminmannager">
@@ -74,8 +76,8 @@ use yii\helpers\Url;
     <div class="adminmannager-search">
         <span>分类名称</span>
         <input type="text">
-        <div class="search-img">
-            <img src="/public/adminimg/search.png" alt="">
+        <div class="indexsearch ">
+            <input type="submit" class="search-img" value="">
         </div>
         <a class="addadmin" href="/admin/shop/classadd">添加顶级分类</a>
     </div>
