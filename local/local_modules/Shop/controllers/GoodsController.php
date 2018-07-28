@@ -339,7 +339,7 @@ class GoodsController extends PublicsController
             "created_user_id"=>$_SESSION["uid"],
             "shop_id"=>$_SESSION["shop_id"],
             'name'=>[
-                "name_en"=>"",
+                "name_en"=>$data['name'],
                 "name_fr"=>"",
                 "name_de"=>"",
                 "name_es"=>"",
@@ -353,11 +353,11 @@ class GoodsController extends PublicsController
 
             "weight"=>0.3,  // 产品重量 
             "score"=>0, // 产品的评分，这个可以通过销量值填写进去
-            "status"=>$data['status'], // 产品的状态，1代表激活，2代表下架
+            "status"=>(int)$data['status'], // 产品的状态，1代表激活，2代表下架
             "qty"=>0,  // 产品的库存，这个字段已经无效，库存在mysql中
             "min_sales_qty"=>1,  // 产品的最小销售个数
             "kucun"=>$kucun,
-            "is_in_stock"=>$data['kucun'],  // 产品 的库存状态，1代表有库存，2代表无库存
+            "is_in_stock"=>(int)$data['kucun'],  // 产品 的库存状态，1代表有库存，2代表无库存
             "category"=>[  // 产品的分类id。可以多个
                 $data['one'],
                 $data['tow'],
@@ -371,7 +371,7 @@ class GoodsController extends PublicsController
             "price"=>$data['price'],  // 产品的销售价格
             "special_price"=>$data['special_price'],  // 产品的销售价格
             "meta_keywords"=> [ // 产品meta信息
-               "meta_keywords_en"=>"",
+               "meta_keywords_en"=>$data['keywords'],
                "meta_keywords_fr"=>"",
                "meta_keywords_de"=>"",
                "meta_keywords_es"=>"",
@@ -381,16 +381,16 @@ class GoodsController extends PublicsController
             ],
 
             "meta_description"=>[// 产品meta信息
-                "meta_description_en"=>"",
+                "meta_description_en"=>"$data[description_zh]",
                 "meta_description_fr"=>"",
                 "meta_description_de"=>"",
                 "meta_description_es"=>"",
                 "meta_description_ru"=>"",
                 "meta_description_pt"=>"",
-                "meta_description_zh"=>"description"
+                "meta_description_zh"=>"$data[description_zh]"
             ] ,
             "description"=>[// 产品meta信息
-                "description_en"=>"",
+                "description_en"=>"$data[description_zh1]",
                 "description_fr"=>"",
                 "description_de"=>"",
                 "description_es"=>"",
@@ -399,7 +399,7 @@ class GoodsController extends PublicsController
                 "description_zh"=>"$data[description_zh1]"
             ] ,
             "short_description"=>[// 产品meta信息
-                "short_description_en"=>"",
+                "short_description_en"=>"$data[description_zh]",
                 "short_description_fr"=>"",
                 "short_description_de"=>"",
                 "short_description_es"=>"",
@@ -558,7 +558,7 @@ class GoodsController extends PublicsController
             "created_user_id"=>$_SESSION["uid"],
             "shop_id"=>$_SESSION["shop_id"],
             'name'=>[
-                "name_en"=>"",
+                "name_en"=>$data['name'],
                 "name_fr"=>"",
                 "name_de"=>"",
                 "name_es"=>"",
@@ -568,10 +568,10 @@ class GoodsController extends PublicsController
             ],
             "weight"=>0.3,  // 产品重量 
             "score"=>0, // 产品的评分，这个可以通过销量值填写进去
-            "status"=>$data['status'], // 产品的状态，1代表激活，2代表下架
+            "status"=>(int)$data['status'], // 产品的状态，1代表激活，2代表下架
             "qty"=>0,  // 产品的库存，这个字段已经无效，库存在mysql中
             "min_sales_qty"=>1,  // 产品的最小销售个数
-            "kucun"=>$data['kucun'],
+            "kucun"=>(int)$data['kucun'],
             "is_in_stock"=>$data['kucun2'],  // 产品 的库存状态，1代表有库存，2代表无库存
             "category"=>[  // 产品的分类id。可以多个
                 $data['classone'],
@@ -586,7 +586,7 @@ class GoodsController extends PublicsController
             "price"=>$data['price'],  // 产品的销售价格
             "special_price"=>$data['special_price'],  // 产品的销售价格
             "meta_keywords"=> [ // 产品meta信息
-               "meta_keywords_en"=>"",
+               "meta_keywords_en"=>$data['keywords'],
                "meta_keywords_fr"=>"",
                "meta_keywords_de"=>"",
                "meta_keywords_es"=>"",
@@ -596,25 +596,25 @@ class GoodsController extends PublicsController
             ],
 
             "meta_description"=>[// 产品meta信息
-                "meta_description_en"=>"",
+                "meta_description_en"=>"$data[short_description]",
                 "meta_description_fr"=>"",
                 "meta_description_de"=>"",
                 "meta_description_es"=>"",
                 "meta_description_ru"=>"",
                 "meta_description_pt"=>"",
-                "meta_description_zh"=>"description"
+                "meta_description_zh"=>"$data[short_description]"
             ] ,
             "description"=>[// 产品meta信息
-                "description_en"=>"",
+                "description_en"=>"$data[short_description]",
                 "description_fr"=>"",
                 "description_de"=>"",
                 "description_es"=>"",
                 "description_ru"=>"",
                 "description_pt"=>"",
-                "description_zh"=>"description"
+                "description_zh"=>"$data[short_description]"
             ] ,
             "short_description"=>[// 产品meta信息
-                "short_description_en"=>"",
+                "short_description_en"=>"$data[short_description]",
                 "short_description_fr"=>"",
                 "short_description_de"=>"",
                 "short_description_es"=>"",
@@ -744,7 +744,7 @@ class GoodsController extends PublicsController
 
         // 修改商品的上下架
 
-        $res=Yii::$app->mongodb->getCollection('product_flat')->update(['_id'=>$id],['$set'=>['status'=>$status]]);
+        $res=Yii::$app->mongodb->getCollection('product_flat')->update(['_id'=>$id],['$set'=>['status'=>(int)$status]]);
         
         // 判断
         if ($res) {

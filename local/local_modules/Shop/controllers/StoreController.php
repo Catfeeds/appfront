@@ -252,7 +252,7 @@ class StoreController extends PublicsController
 
         $post = $res->post();
 
-        var_dump($post);
+        // var_dump($post);
         $goods = "";
         if($post["flag"]==1||count($post["goods1"])<=0||count($post["goods"])<=0){
             $goods = 0;

@@ -22,7 +22,7 @@ use yii\web\UploadedFile;
  */
 
 // 后台首页控制器
-class ReviewController extends AppfrontController
+class ReviewController extends PublicsController
 {
 
     public function init()

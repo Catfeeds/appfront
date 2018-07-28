@@ -27,7 +27,7 @@ class ApplyController extends AppfrontController
         parent::init();
         // Yii::$service->page->theme->layoutFile = 'category_view.php';
 
-        Yii::$service->page->theme->layoutFile = 'main2.php';
+        Yii::$service->page->theme->layoutFile = 'apply.php';
     }
 
     // 商家入驻的展示页面
@@ -278,7 +278,7 @@ class ApplyController extends AppfrontController
     public function actionUpload($files){
     	//文件上传存放的目录
     	
-    	$folder ='../../appimage/common/media/catalog/product/';
+    	$folder ='../../appimage/common/images/';
     	$file=$files['file'];
     	// 获取用户上传的数量
     	$size=count($file['name']);

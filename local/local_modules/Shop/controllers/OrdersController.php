@@ -56,9 +56,9 @@ class OrdersController extends PublicsController
         //查询订单产品表
         if($get["flag"]){
             $flag = $get['flag']-1;
-            $sql = " select sales_flat_order.*,sales_coupon.* from sales_flat_order,sales_coupon where sales_flat_order.shop_id={$_SESSION["shop_id"]} and sales_flat_order.order_status={$flag} and sales_flat_order.coupon_code=sales_coupon.coupon_code limit $pagination->offset , $pagination->limit";
+            $sql = " select sales_flat_order.*,sales_coupon.* from sales_flat_order,sales_coupon where sales_flat_order.shop_id={$_SESSION["shop_id"]} and sales_flat_order.order_status={$flag} and sales_flat_order.coupon_code=sales_coupon.coupon_id limit $pagination->offset , $pagination->limit";
         }else{
-            $sql = " select sales_flat_order.*,sales_coupon.* from sales_flat_order,sales_coupon where sales_flat_order.shop_id={$_SESSION["shop_id"]} and sales_flat_order.coupon_code=sales_coupon.coupon_code and order_status<5 limit $pagination->offset , $pagination->limit";
+            $sql = " select sales_flat_order.*,sales_coupon.* from sales_flat_order,sales_coupon where sales_flat_order.shop_id={$_SESSION["shop_id"]} and sales_flat_order.coupon_code=sales_coupon.coupon_id and order_status<5 limit $pagination->offset , $pagination->limit";
         }
 
         $arr = Yii::$app->db->createCommand($sql)->queryAll();
@@ -237,5 +237,5 @@ class OrdersController extends PublicsController
     }
 }
 
-//http://appfront.uekuek.com/shop/orders/addorder?increment_id=20180728&order_remark=ddd&order_status=0&customer_firstname=潘将兵&customer_telephone=13220289300&customer_address_country=山西&customer_address_state=太原市&customer_address_city=小店区&customer_address_street1=学府街&customer_address_zip=030500&customer_email=fecshop@123.com&subtotal=500.00&discount_amount=450&discount_rate=0.9&coin_num=0&grand_total=80&coupon_code=1&shop_id=1&name=衣服&sku=123456789&price=500.00&qty=1&kc=100&uid=5&row_total=500
+//http://appfront.uekuek.com/shop/orders/addorder?increment_id=20180728&order_remark=ddd&order_status=0&customer_firstname=潘将兵&customer_telephone=13220289300&customer_address_country=山西&customer_address_state=太原市&customer_address_city=小店区&customer_address_street1=学府街&customer_address_zip=030500&customer_email=fecshop@123.com&subtotal=500.00&discount_amount=450&discount_rate=0.9&coin_num=0&grand_total=80&coupon_code=2&shop_id=3&name=衣服&sku=123456789&price=500.00&qty=1&kc=100&uid=5&row_total=500
 ?>
