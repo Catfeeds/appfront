@@ -37,28 +37,27 @@ use yii\helpers\Url;
         line-height: 32px;
         font-weight: bold;
     }
-    .success{
+    .success a{
         display:inline-block;
         width:50px;
         height:30px;
-        background-color: #37DF73;
         border-radius: 10px;
-        color:#fff;
         font-weight: bold;
         cursor:pointer;
         line-height: 30px;
+        color: #67bcff;
     }
 
-    .warning{
+    .warning a{
         display:inline-block;
         width:50px;
         height:30px;
-        background-color: #F44444;
         border-radius: 10px;
         color:#fff;
         font-weight: bold;
         cursor:pointer;
         line-height: 30px;
+        color: #f66;
     }
     .caozuo a{
         font-size: 25px;
@@ -87,20 +86,22 @@ use yii\helpers\Url;
             <div class="admin-tablenamebox"></div>
             <span class="admin-tablename1"><?php echo isset($_GET['name'])?$_GET['name']."分类":"分类";?></span><span class="admin-tablename2">列表</span>
         </div>
-        <table border="1" cellpadding="0" cellspacing="0" class="admin-tablelist1 active">
-            <tr style="">
-                <th>ID</th>
-                <th>名称</th>
-                <th>排序</th>
-                <th>描述</th>
-                <th>关键字</th>
-                <th>类型</th>
-                <th>照片</th>
-                <th>显示</th>
-                <th>操作</th>
-            </tr>
-            
-            <?php 
+        <table border="0" cellpadding="0" cellspacing="0" class="admin-tablelist1 active el-table__header el-table">
+            <thead class="has-gutter">
+                <tr style="font-size: 14px;color: #B1DBFE;">
+                    <th class="is-leaf">ID</th>
+                    <th class="is-leaf">名称</th>
+                    <th class="is-leaf">排序</th>
+                    <th class="is-leaf">描述</th>
+                    <th class="is-leaf">关键字</th>
+                    <th class="is-leaf">类型</th>
+                    <th class="is-leaf">照片</th>
+                    <th class="is-leaf">显示</th>
+                    <th class="is-leaf" style="width: 120px">操作</th>
+                </tr>
+            </thead>
+            <tbody style="font-size: 12px;color: #82898e;">
+            <?php
                 foreach ($class as $key => $value) {
                 ?>
                     <tr>
@@ -128,7 +129,7 @@ use yii\helpers\Url;
                                 }
                             ?>
                         </td>
-                        <td><img style="width:90px;margin:5px;" src="http://img.uekuek.com/media/catalog/<?=$value[img]?>" alt=""></td>
+                        <td><img style="width:70px;margin:5px;" src="http://img.uekuek.com/media/catalog/<?=$value[img]?>" alt=""></td>
                         <td>
                             <?php 
                                 if ($value['menu_show']==1) {
@@ -139,7 +140,7 @@ use yii\helpers\Url;
                             ?>
 
                         </td>
-                        <td class="caozuo">
+                        <td class="caozuo" style="200px">
                             <a title="查看子类" href="<?= Yii::$service->url->getUrl('admin/shop/classlist', array('id' => $value['_id'],'name'=>$value[name][name_zh])) ?>">☰</a>
                             <a title="添加子类" href="<?= Yii::$service->url->getUrl('admin/shop/classadd', array('id' => $value['_id'],'level'=>2,'name'=>$value[name][name_zh],'type'=>$value['type'])) ?>">✚</a>
                             <a title="修改分类" href="<?= Yii::$service->url->getUrl('admin/shop/classfind', array('id' => $value['_id'])) ?>">✎</a>
@@ -149,6 +150,7 @@ use yii\helpers\Url;
                 <?php
                 }
              ?>
+            </tbody>
         </table >
     </div>
 
