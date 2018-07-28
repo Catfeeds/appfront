@@ -311,19 +311,6 @@ use yii\helpers\Url;
                                                                 <div class="cell el-tooltip" title="<?= $v["increment_id"] ?>">
                                                                     <?= $v["increment_id"] ?></div>
                                                             </td>
-                                                            <!--                                                    <td class="el-table_2_column_11  ">-->
-                                                            <!--                                                        <div class="cell" style="display: flex;height: 150px;">-->
-                                                            <!--                                                            <div data-v-6045fa9c="" class="picture"></div>-->
-                                                            <!--                                                            <div data-v-6045fa9c="" class="contents">-->
-                                                            <!--                                                                --><?php //foreach ($v["goodDatas"] as $val) { ?>
-                                                            <!--                                                                    <div data-v-6045fa9c="">货号：-->
-                                                            <? //= $val["sku   "] ?><!--</div>-->
-                                                            <!--                                                                    <div data-v-6045fa9c="">-->
-                                                            <? //= $val["name"] ?><!--</div>-->
-                                                            <!--                                                                --><?php //} ?>
-                                                            <!--                                                            </div>-->
-                                                            <!--                                                        </div>-->
-                                                            <!--                                                    </td>-->
                                                             <td class="el-table_2_column_12">
                                                                 <div class="cell el-tooltip">
                                                                     655.00
@@ -392,7 +379,8 @@ use yii\helpers\Url;
                                                         </tr>
                                                     <?php } ?>
                                                     </tbody>
-                                                </table><!----><!----></div><!----><!----><!----><!---->
+                                                </table>
+                                            </div>
                                             <div class="el-table__column-resize-proxy" style="display: none;"></div>
                                         </div>
                                         <div data-v-6045fa9c="" style="position: relative;">
