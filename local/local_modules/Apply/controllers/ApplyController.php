@@ -127,7 +127,7 @@ class ApplyController extends AppfrontController
     	
      }
      // 等待审核
-     public function actionWaitaudit(){
+     public function actionWaitaudit1(){
      	$arr1=$_SESSION['companyinfo']['post'];
      	$arr2=$_POST;
      	$arr3=array_merge($arr1,$arr2);
@@ -161,7 +161,14 @@ class ApplyController extends AppfrontController
      	unset($arr3['img7']);
      	Yii::$app->db->createCommand()->insert('shop',$arr3)->execute();
      	
-     	return $this->render($this->action->id);
+        return $this->redirect("/apply/apply/waitaudit");
+
+     }
+
+     // 等待页面
+     public function actionWaitaudit(){
+        return $this->render($this->action->id);
+
      }
     /*
      *根据省份id获取城市 

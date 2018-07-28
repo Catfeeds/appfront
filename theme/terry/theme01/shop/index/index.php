@@ -736,4 +736,16 @@
         padding-left: 18px;
     }
 
+    .message2 .gonggao {
+       
+      line-height: normal; 
+        
+    }
+
+    .main-content1 .message2 span{
+      line-height: normal;
+      overflow: hidden;
+      text-overflow:ellipsis;
+      
+    }
 </style>
