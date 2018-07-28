@@ -27,7 +27,7 @@
         color: #b4c2cc;
     }
     .submit{
-        display: block;
+        display: inline-block;
         width: 208px;
         height: 33px;
         border:0;
@@ -172,8 +172,13 @@
                         <input type="password" name="repassword" id="">
                     </li>
                 </ul>
-
-                <div style="width: 100%;height: 34px;cursor: pointer;margin-top:38px;">
+                <div class="forget">
+                    <div class="forget1">
+                        <div></div>
+                        <a href="<?= Yii::$service->url->getUrl('shop/login/index') ?>">登录</a>
+                    </div>
+                </div>
+                <div style="display:flex;justify-content:center;width: 100%;height: 34px;cursor: pointer;margin-top:50px;text-align:center">
                     <button style="cursor: pointer" class="submit">注册</button>
                 </div>
 
@@ -181,3 +186,5 @@
         </div>
     </form>
 </div>
+
+    
