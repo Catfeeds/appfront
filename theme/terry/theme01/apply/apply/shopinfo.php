@@ -1,3 +1,19 @@
+<style>
+    .xiala {
+        padding-left: 5px;
+        width: 100px;
+        outline: none;
+        font-size: 12px;
+        height: 30px;
+        border-radius: 15px;
+        background: #f3faff;
+        border: 2px solid #e5eff8;
+    }
+    .xiala:hover {
+        border-color: #3CACFE;
+    }
+
+</style>
   <div id="index1">
    <header>
     <div class="index1-logo">
@@ -164,27 +180,27 @@
          <label class="el-form-item__label" style="width: 80px;">店铺所在地</label>
          <!-- province_id  city_id   district_id -->
          <div class="el-form-item__content" style="margin-left: 80px;">
-          <div  class="el-select">
-              <select name="" id="" class="xiala province">
-                  <option value="" style="display: none;">请选择省份</option>
-                  <?php
-                  foreach ($province as $k=>$v){
-                      ?>
-                      <option value="<?php echo $v['province_id']?>"><?php echo $v['province_name']?></option>
-                  <?php }?>
-              </select>
-          </div>
-          <div  class="el-select">
-              <select name="" id="" class="xiala city">
-                  <option value="" style="display: none">请选择城市</option>
-              </select>
-           </div>
-          <div  class="el-select">
-              <select name="" id="" class="xiala district">
-                  <option value="" style="display: none;">请选择区/县</option>
-              </select>
-           </div>
-          </div>
+             <div  class="el-select">
+                 <select name="province_id" id="" class="xiala province">
+                     <option value="" style="display: none;">请选择省份</option>
+                     <?php
+                     foreach ($province as $k=>$v){
+                         ?>
+                         <option value="<?php echo $v['province_id']?>"><?php echo $v['province_name']?></option>
+                     <?php }?>
+                 </select>
+             </div>
+             <div  class="el-select">
+                 <select name="city_id" id="" class="xiala city">
+                     <option value="" style="display: none">请选择城市</option>
+                 </select>
+             </div>
+             <div  class="el-select">
+                 <select name="district_id" id="" class="xiala district">
+                     <option value="" style="display: none;">请选择区/县</option>
+                 </select>
+             </div>
+
          </div>
         </div>
         <script type="text/javascript">
@@ -361,9 +377,9 @@
 		}); */
   </script>
   <style>
-     .xiala {
+      .main-content .item .xiala {
           padding-left: 5px;
-          width: 100px;
+          width: 98px;
           outline: none;
           font-size: 12px;
           height: 30px;
@@ -371,14 +387,7 @@
           background: #f3faff;
           border: 2px solid #e5eff8;
       }
-      .xiala:hover {
+      .item .xiala:hover {
           border-color: #3CACFE;
       }
-     input.el-input__inner {
-         height: 30px;
-         border-radius: 15px;
-         background: #f3faff;
-         border: 2px solid #e5eff8;
-     }
-
   </style>
