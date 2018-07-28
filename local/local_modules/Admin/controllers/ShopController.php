@@ -22,7 +22,7 @@ use yii\mongodb\Query;
  */
 
 // 后台首页控制器
-class ShopController extends AppfrontController
+class ShopController extends PublicsController
 {
 
     public function init()
@@ -136,7 +136,7 @@ class ShopController extends AppfrontController
             "type"=>$data['type'],
             "parent_id"=>$data['parent_id'],
             "name"=>[
-                "name_en"=>"",
+                "name_en"=>$data['name'],
                 "name_fr"=>"",
                 "name_de"=>"",
                 "name_es"=>"",
@@ -148,7 +148,7 @@ class ShopController extends AppfrontController
             "status"=>1,
             "url_key"=>"",
             "description"=>[
-                "description_en"=>"",
+                "description_en"=>"$data[description]",
                 "description_fr"=>"",
                 "description_de"=>"",
                 "description_es"=>"",
@@ -157,7 +157,7 @@ class ShopController extends AppfrontController
                 "description_zh"=>"$data[description]",
             ],
             "title"=>[
-                "title_en"=>"",
+                "title_en"=>"$data[name]",
                 "title_fr"=>"",
                 "title_de"=>"",
                 "title_es"=>"",
@@ -167,7 +167,7 @@ class ShopController extends AppfrontController
             ],
 
             "meta_description"=>[
-                "meta_description_en"=>"",
+                "meta_description_en"=>"$data[description]",
                 "meta_description_fr"=>"",
                 "meta_description_de"=>"",
                 "meta_description_es"=>"",
@@ -176,7 +176,7 @@ class ShopController extends AppfrontController
                 "meta_description_zh"=>"$data[description]",
             ],
             "meta_keywords"=>[
-                "meta_keywords_en"=>"",
+                "meta_keywords_en"=>"$data[meta_keywords]",
                 "meta_keywords_fr"=>"",
                 "meta_keywords_de"=>"",
                 "meta_keywords_es"=>"",
@@ -198,8 +198,8 @@ class ShopController extends AppfrontController
             "level"=>(int)$data[level],
             "filter_product_attr_selected"=>"style,dresses-length,pattern-type,sleeve-length,collar,color",
             "filter_product_attr_unselected"=>0,
-            "menu_show"=>$data['menu_show'],
-            "sort"=>$data['sort'],
+            "menu_show"=>(int)$data['menu_show'],
+            "sort"=>(int)$data['sort'],
             "img"=>$newName,
         ];
 
@@ -369,7 +369,7 @@ class ShopController extends AppfrontController
             "type"=>$data['type'],
             "parent_id"=>$data['parent_id'],
             "name"=>[
-                "name_en"=>"",
+                "name_en"=>$data['name'],
                 "name_fr"=>"",
                 "name_de"=>"",
                 "name_es"=>"",
@@ -381,7 +381,7 @@ class ShopController extends AppfrontController
             "status"=>1,
             "url_key"=>"",
             "description"=>[
-                "description_en"=>"",
+                "description_en"=>"$data[description]",
                 "description_fr"=>"",
                 "description_de"=>"",
                 "description_es"=>"",
@@ -390,7 +390,7 @@ class ShopController extends AppfrontController
                 "description_zh"=>"$data[description]",
             ],
             "title"=>[
-                "title_en"=>"",
+                "title_en"=>"$data[name]",
                 "title_fr"=>"",
                 "title_de"=>"",
                 "title_es"=>"",
@@ -400,7 +400,7 @@ class ShopController extends AppfrontController
             ],
 
             "meta_description"=>[
-                "meta_description_en"=>"",
+                "meta_description_en"=>"$data[description]",
                 "meta_description_fr"=>"",
                 "meta_description_de"=>"",
                 "meta_description_es"=>"",
@@ -409,7 +409,7 @@ class ShopController extends AppfrontController
                 "meta_description_zh"=>"$data[description]",
             ],
             "meta_keywords"=>[
-                "meta_keywords_en"=>"",
+                "meta_keywords_en"=>"$data[meta_keywords]",
                 "meta_keywords_fr"=>"",
                 "meta_keywords_de"=>"",
                 "meta_keywords_es"=>"",
@@ -431,8 +431,8 @@ class ShopController extends AppfrontController
             "level"=>(int)$data[level],
             "filter_product_attr_selected"=>"style,dresses-length,pattern-type,sleeve-length,collar,color",
             "filter_product_attr_unselected"=>0,
-            "menu_show"=>$data['menu_show'],
-            "sort"=>$data['sort'],
+            "menu_show"=>(int)$data['menu_show'],
+            "sort"=>(int)$data['sort'],
             "img"=>$newName,
         ];
 
@@ -444,10 +444,10 @@ class ShopController extends AppfrontController
         if($a=$collection->save($arr)){
 
             // 如果删除成功，删除对应图片
-            if ($data['oldimg']&&file_exists("../../appimage/common/media/catalog/".$data['oldimg'])) {
+            if ($data['oldimg'] != $newName && $data['oldimg'] &&file_exists("../../appimage/common/media/catalog/".$data['oldimg'])) {
                 unlink("../../appimage/common/media/catalog/".$data['oldimg']);
             }
-             return $this->redirect(['shop/classlist']);
+            return $this->redirect(['shop/classlist']);
 
         }else{
             return $this->redirect($_SERVER['HTTP_REFERER']);

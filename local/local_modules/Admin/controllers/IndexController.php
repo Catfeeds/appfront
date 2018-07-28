@@ -19,7 +19,7 @@ use yii\db\Query;
  * @since 1.0
  */
 // 后台首页控制器
-class IndexController extends AppfrontController
+class IndexController extends PublicsController
 {
 
     public function init()
@@ -82,6 +82,7 @@ class IndexController extends AppfrontController
 
         $data["pagination"] = $pagination;
         $data["rows"] = $rows;
+        $data['tot'] = $tot;
         return $this->render($this->action->id, $data);
     }
 
@@ -125,7 +126,7 @@ class IndexController extends AppfrontController
         $id = $req->get(id);
         $sql = "update admin_user set status=2 where id='$id'";
         $res = Yii::$app->db->createCommand($sql)->execute();
-        return $this->redirect(["/admin/index/index"]);
+        return $this->redirect(["/admin/index/aindex"]);
     }
 
     //冻结账号status改为3
@@ -135,7 +136,7 @@ class IndexController extends AppfrontController
         $id = $req->get(id);
         $sql = "update admin_user set status=3 where id='$id'";
         $res = Yii::$app->db->createCommand($sql)->execute();
-        return $this->redirect(["/admin/index/index"]);
+        return $this->redirect(["/admin/index/aindex"]);
     }
 
     //删除管理员账号
@@ -145,7 +146,7 @@ class IndexController extends AppfrontController
         $id = $req->get(id);
         $sql = "delete from admin_user where id = '$id'";
         $res = Yii::$app->db->createCommand($sql)->execute();
-        return $this->redirect(["/admin/index/index"]);
+        return $this->redirect(["/admin/index/aindex"]);
     }
     //===========================用户管理、会员管理=======================================
     //会员管理增加了一个字段
@@ -250,6 +251,35 @@ class IndexController extends AppfrontController
         $data['res'] = $res;
         return $this->render($this->action->id, $data);
     }
+    //删除会员
+    public function actionDelmember(){
+        $req = Yii::$app->request;
+        $id = $req->get(id);
+        $sql = "delete from customer where id='$id'";
+        $res = Yii::$app->db->createCommand($sql)->execute();
+        echo $id;
+        return $this->redirect(["/admin/index/member"]);
+    }
+    //移入黑名单status改为2
+    public function actionMblacklist()
+    {
+        $req = Yii::$app->request;
+        $id = $req->get(id);
+        $sql = "update admin_user set status=2 where id='$id'";
+        $res = Yii::$app->db->createCommand($sql)->execute();
+        return $this->redirect(["/admin/index/index"]);
+    }
+
+    //冻结账号status改为3
+    public function actionMfreeze()
+    {
+        $req = Yii::$app->request;
+        $id = $req->get(id);
+        $sql = "update admin_user set status=3 where id='$id'";
+        $res = Yii::$app->db->createCommand($sql)->execute();
+        return $this->redirect(["/admin/index/index"]);
+    }
+
     //==============================用户管理、店铺管理====================================
     //加载市区
     public function actionGetcity()
