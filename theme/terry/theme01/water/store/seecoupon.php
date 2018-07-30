@@ -94,7 +94,7 @@
                                                                              class="el-breadcrumb__inner is-link">店铺管理</span><span
                             role="presentation" class="el-breadcrumb__separator">·</span></span> <span
                         data-v-63f72479="" class="el-breadcrumb__item">
-                        <a href="<?= Yii::$service->url->geturl("/shop/store/couponindex") ?>">
+                        <a href="<?= Yii::$service->url->geturl("/water/store/couponindex") ?>">
                             <span role="link" class="el-breadcrumb__inner">优惠券管理</span>
                         </a>
                     <span role="presentation" class="el-breadcrumb__separator">·</span></span> <span
@@ -106,7 +106,7 @@
         </div>
         <div data-v-63f72479="" class="bottom">
             <div data-v-63f72479="" class="title">
-                <form data-v-63f72479="" method="post" action="<?= Yii::$service->url->geturl("/shop/store/addcou") ?>"
+                <form data-v-63f72479="" method="post" action="<?= Yii::$service->url->geturl("/water/store/addcou") ?>"
                       class="el-form" enctype="application/x-www-form-urlencoded">
                     <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>"/>
                     <div data-v-63f72479="" class="el-row" style="width: 850px;">
@@ -202,7 +202,7 @@
 
     var category = document.querySelector("#info").innerHTML.split("|");
     var checked_goods = document.querySelector(".checked-goods");
-    fetch("/shop/store/getgoods1?category="+JSON.stringify(category)).then(function (e) {
+    fetch("/water/store/getgoods1?category="+JSON.stringify(category)).then(function (e) {
         return e.json();
     }).then(function (e) {
         var str="";
