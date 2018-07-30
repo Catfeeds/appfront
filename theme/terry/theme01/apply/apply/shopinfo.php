@@ -605,10 +605,10 @@
                 </div>
             </div>
         </div>
-   </div> 
-   <div style="width: 100%; height: 30px; line-height: 30px; text-align: center; margin-top: 100px; font-size: 12px; color: rgb(153, 153, 153);">
-    <span>@2015-2018&nbsp;dscmall.cn&nbsp;&nbsp;版本所有ICP备案号：DSC00000249 POWERED</span>
    </div>
+      <div style="width: 100%; height: 80px; line-height: 80px; text-align: center; margin-top: 40px; font-size: 12px; color: rgb(153, 153, 153);">
+          <span>@2015-2018&nbsp;dscmall.cn&nbsp;&nbsp;版本所有ICP备案号：DSC00000249 POWERED</span>
+      </div>
   </div>
   <script>
   	function shopload(url){
