@@ -3,15 +3,15 @@
 <body>
 
     <div id="index1" style="overflow-x:auto;">
-        <div style="width: 1300px;margin:0 auto;">
-            <header style="display: flex;justify-content: space-between">
+        <div style="width: 1160px;margin:0 auto;">
+            <header style="width: 1160px;display: flex;justify-content: space-between">
                 <div class="index1-logo" style="float: none">
                     <a href="/apply/apply/index">
                         <img src="/public/imgs/login.png" alt=""/>
                         <h1>晋彤后台管理系统</h1>
                     </a>
                 </div>
-                <div style="padding-top: 50px; box-sizing: border-box; width: 553px;">
+                <div style=" box-sizing: border-box; width: 553px;">
                     <div class="el-steps el-steps--horizontal">
                         <div class="el-step is-horizontal is-center" style="flex-basis: 25%; margin-right: 0px;">
                             <div class="el-step__head is-finish">
@@ -105,11 +105,11 @@
                             <span class="admin-tablename1">用户</span>
                             <span class="admin-tablename2">资格</span>
                         </div>
-                        <div style="width: 100%; padding-left: 16px; box-sizing: border-box;">
+                        <div style="width: 100%; box-sizing: border-box;">
                             <div>
-                                <div class="ruzhuname2">
-                                    <p>本公司的服务仅入驻商户首先注册成为印购会员，其填写的任何信息应遵守国家法规，不得包含违法、涉嫌侵犯他人权利或干扰印购正常运营秩序
-                                        相关信息，商户成功取得印购网会员账号后，应妥善保管并正确使用账号，不得将账号转让给任何第三方使用。</p>
+                                <div class="ruzhuname2" style="padding-left: 16px;box-sizing: border-box;">
+                                    <p>本公司的服务仅入驻商户首先注册成为晋彤会员，其填写的任何信息应遵守国家法规，不得包含违法、涉嫌侵犯他人权利或干扰晋彤正常运营秩序
+                                        相关信息，商户成功取得晋彤网会员账号后，应妥善保管并正确使用账号，不得将账号转让给任何第三方使用。</p>
                                 </div>
                             </div>
                         </div>
@@ -118,11 +118,11 @@
                             <span class="admin-tablename1">您的</span>
                             <span class="admin-tablename2">资料</span>
                         </div>
-                        <div style="width: 100%; padding-left: 16px; box-sizing: border-box;">
+                        <div style="width: 100%; box-sizing: border-box;">
                             <div>
-                                <div class="ruzhuname2">
-                                    <p>本公司的服务仅入驻商户首先注册成为印购会员，其填写的任何信息应遵守国家法规，不得包含违法、涉嫌侵犯他人权利或干扰印购正常运营秩序
-                                        相关信息，商户成功取得印购网会员账号后，应妥善保管并正确使用账号，不得将账号转让给任何第三方使用。</p>
+                                <div class="ruzhuname2"style="padding-left: 16px;box-sizing: border-box;">
+                                    <p>本公司的服务仅入驻商户首先注册成为晋彤会员，其填写的任何信息应遵守国家法规，不得包含违法、涉嫌侵犯他人权利或干扰晋彤正常运营秩序
+                                        相关信息，商户成功取得晋彤网会员账号后，应妥善保管并正确使用账号，不得将账号转让给任何第三方使用。</p>
                                 </div>
                             </div>
                         </div>
@@ -130,11 +130,11 @@
                             <div class="admin-tablenamebox" style="margin-top: 18px;"></div>
                             <span class="admin-tablename1">违约</span>
                         </div>
-                        <div style="width: 100%; padding-left: 16px; box-sizing: border-box;">
+                        <div style="width: 100%; box-sizing: border-box;">
                             <div>
-                                <div class="ruzhuname2">
-                                    <p>本公司的服务仅入驻商户首先注册成为印购会员，其填写的任何信息应遵守国家法规，不得包含违法、涉嫌侵犯他人权利或干扰印购正常运营秩序
-                                        相关信息，商户成功取得印购网会员账号后，应妥善保管并正确使用账号，不得将账号转让给任何第三方使用。</p>
+                                <div class="ruzhuname2"style="padding-left: 16px;box-sizing: border-box;">
+                                    <p>本公司的服务仅入驻商户首先注册成为晋彤会员，其填写的任何信息应遵守国家法规，不得包含违法、涉嫌侵犯他人权利或干扰晋彤正常运营秩序
+                                        相关信息，商户成功取得晋彤网会员账号后，应妥善保管并正确使用账号，不得将账号转让给任何第三方使用。</p>
                                 </div>
                             </div>
                         </div>
