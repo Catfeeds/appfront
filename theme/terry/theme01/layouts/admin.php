@@ -48,7 +48,7 @@ $cssOptions = [
         height: 50px;
         position: fixed;
         top: 0;
-        left:162px;
+        left:167px;
         z-index: 999;
         display: flex;
         background: #eaf6ff;
@@ -1951,10 +1951,11 @@ $cssOptions = [
         width: 100%;
     }
     #index1 header{
-        width:1300px;
+        width:100%;
         height: 139px;
-        margin:0 auto;
         margin-top:30px;
+        display: flex;
+        justify-content: space-between;
     }
     .index1-logo{
         height: 100%;
@@ -1962,7 +1963,6 @@ $cssOptions = [
         text-align: center;
         padding-top:20px;
         box-sizing: border-box;
-        float: left;
     }
     .index1-logo h1{
         font-size: 14px;
@@ -1974,9 +1974,6 @@ $cssOptions = [
     }
     .index2-content1{
         width: 1008px;
-        /*float:right;*/
-        /*background: red;*/
-        /*margin-right:50px;*/
         margin:0 auto;
     }
     .index2{
@@ -2036,11 +2033,14 @@ $cssOptions = [
         width: 279px;
     }
     .el-form-item__content{
-        margin-left:135px !important;
+        margin-left:175px !important;
     }
     .el-form-item__label{
-        width:135px !important;
+        width:168px !important;
 
+    }
+    .el-form-item{
+        line-height: 40px !important;
     }
     .el-upload--picture-card{
         width: 273px;
