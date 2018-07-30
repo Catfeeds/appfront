@@ -91,9 +91,9 @@ background: #30b7fe;border-radius: 16px;float: left;margin-left:10px;border:none
                     <tr>
                         <td>金币余额:</td>
                         <td>
-                            <input type="text" value="299(个)">
+                            <input type="text" value="<?= $res['coin']?>(个)">
                             <button style="outline: none;width: 100px;height: 36px;color:#fff;line-height: 36px;text-align: center;
-background: #30b7fe;border-radius: 16px;float: left;margin-left:10px;border:none;"@click="getinfo">查看详情</button>
+background: #30b7fe;border-radius: 16px;float: left;margin-left:10px;border:none;">查看详情</button>
                         </td>
                     </tr>
                     <tr>

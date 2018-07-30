@@ -39,7 +39,7 @@
                         <td valign="top">
                             <div style="height: 180px;">
                                 <div style="height: 162px;width: 276px;
-									background:url(http://img.uekuek.com/images/<?php echo $row['business_licence_number_electronic'];?>) no-repeat;
+									background:url(http://img.uekuek.com/images/<?php echo $row['business_licence_number_electronic'];?>) no-repeat none center center/100% 100%;
 									border-radius: 2px;"></div>
 			               </div>
 
@@ -80,7 +80,7 @@
                         <td valign="top">
                             <div style="height: 180px;">
                                 <div style="height: 162px;width: 276px;
-									background:url(http://img.uekuek.com/images/<?php echo $row['contacts_card_electronic_1'];?>) no-repeat;
+									background:url(http://img.uekuek.com/images/<?php echo $row['contacts_card_electronic_1'];?>) no-repeat none center center/100% 100%;
 									border-radius: 2px;"></div>
 			               </div>
 
@@ -91,13 +91,13 @@
                         <td valign="top">
                             <div style="height: 100%;width: 276px;float:left;text-align: center">
                                 <div style="height: 162px;width: 276px;
-									background:url(http://img.uekuek.com/images/<?php echo $row['contacts_card_electronic_2'];?>) no-repeat;
+									background:url(http://img.uekuek.com/images/<?php echo $row['contacts_card_electronic_2'];?>) no-repeat none center center/100% 100%;
 									border-radius: 2px;"></div>
                                 <span style="display:block;margin-top:20px;">正面</span>
                             </div>
                             <div style="height: 100%;width: 276px;float:left;margin-left:20px;text-align: center">
                                 <div style="height: 162px;width: 276px;
-									background:url(http://img.uekuek.com/images/<?php echo $row['contacts_card_electronic_3'];?>) no-repeat;
+									background:url(http://img.uekuek.com/images/<?php echo $row['contacts_card_electronic_3'];?>) no-repeat none center center/100% 100%;
 								border-radius: 2px;"></div>
                                 <span style="display:block;margin-top:20px;">反面</span>
                             </div>
@@ -204,7 +204,7 @@
                         <td valign="top">
                             <div style="height: 180px;">
                                 <div style="height: 162px;width: 276px;
-									background:url(http://img.uekuek.com/images/<?php echo $row['general_taxpayer'];?>) no-repeat;
+									background:url(http://img.uekuek.com/images/<?php echo $row['general_taxpayer'];?>) no-repeat none center center/100% 100%;
 									border-radius: 2px;"></div>
 			               </div>
 
@@ -215,7 +215,7 @@
                         <td valign="top">
                             <div style="height: 180px;">
                                 <div style="height: 162px;width: 276px;
-									background:url(http://img.uekuek.com/images/<?php echo $row['organization_code_electronic'];?>) no-repeat;
+									background:url(http://img.uekuek.com/images/<?php echo $row['organization_code_electronic'];?>) no-repeat none center center/100% 100%;
 									border-radius: 2px;"></div>
 			               </div>
 
@@ -226,7 +226,7 @@
                         <td valign="top">
                             <div style="height: 180px;">
                                 <div style="height: 162px;width: 276px;
-									background:url(http://img.uekuek.com/images/<?php echo $row['bank_licence_electronic'];?>) no-repeat;
+									background:url(http://img.uekuek.com/images/<?php echo $row['bank_licence_electronic'];?>) no-repeat none center center/100% 100%;
 									border-radius: 2px;"></div>
 			               </div>
 
@@ -237,7 +237,7 @@
                         <td valign="top">
                             <div style="height: 180px;">
                                 <div style="height: 162px;width: 276px;
-									background:url(http://img.uekuek.com/images/<?php echo $row['tax_registration_certificate_electronic'];?>) no-repeat;
+									background:url(http://img.uekuek.com/images/<?php echo $row['tax_registration_certificate_electronic'];?>) no-repeat none center center/100% 100%;
 									border-radius: 2px;"></div>
 			               </div>
 
@@ -269,7 +269,7 @@
                         <td valign="top">
                             <div style="height: 180px;">
                                 <div style="height: 162px;width: 276px;
-									background:url(http://img.uekuek.com/images/<?php echo $row['shop_logo'];?>) no-repeat;
+									background:url(http://img.uekuek.com/images/<?php echo $row['shop_logo'];?>) no-repeat none center center/100% 100%;
 									border-radius: 2px;"></div>
 			               </div>
 
@@ -280,7 +280,7 @@
 	                        <td valign="top">
 	                            <div style="height: 180px;">
 	                                <div style="height: 162px;width: 276px;
-										background:url(http://img.uekuek.com/images/<?php echo $row['shop_banner'];?>) no-repeat;
+										background:url(http://img.uekuek.com/images/<?php echo $row['shop_banner'];?>) no-repeat none center center/100% 100%;
 										border-radius: 2px;"></div>
 				               </div>
 	
@@ -291,7 +291,7 @@
 	                        <td valign="top">
 	                            <div style="height: 180px;">
 	                                <div style="height: 162px;width: 276px;
-										background:url(http://img.uekuek.com/images/<?php echo $row['shop_avatar'];?>) no-repeat;
+										background:url(http://img.uekuek.com/images/<?php echo $row['shop_avatar'];?>) no-repeat none center center/100% 100%;
 										border-radius: 2px;"></div>
 				               </div>
 	
@@ -365,7 +365,6 @@
         </div>
 
 
-
         <!--审核状态-->
         <div class="adminmannager" style="border-top:1px solid #eee; padding-top:0;">
             <div class="admin-tablename" style="margin-top:0;">
@@ -373,9 +372,10 @@
                 <span class="admin-tablename1">审核</span><span class="admin-tablename2">结果</span>
             </div>
             <div name="reason" id="reason"
-             style="width: 900px;height: 200px;display: block;background: rgba(0,223,207,0.3);border:none;outline: none;
-padding: 20px;"><?php echo $row['reason']?></div>
-            <button style="margin-top:10px;width: 100px;height: 36px;color:#fff;line-height: 36px;text-align: center;
+             style="width: 900px;height: 200px;display: block;background: rgba(0,223,207,0.3);border:none;outline:;
+padding: 20px;"><?php echo $row['reason']?>
+            </div>
+            <button style="margin-bottom:50px;margin-top:10px;width: 100px;height: 36px;color:#fff;line-height: 36px;text-align: center;
 background: #37df73;border-radius: 16px;border:none;outline: none;display: block" type="submit">返回</button>
         </div>
 
