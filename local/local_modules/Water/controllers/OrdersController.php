@@ -174,7 +174,7 @@ class OrdersController extends PublicsController
 
         $data["res"] = $res;
         $data["pagination"] = $pagination;
-        $data["count"] = $count;
+        $data["count"] = $count[0]['tot'];
 
 
         return $this->render($this->action->id, $data);
