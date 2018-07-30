@@ -242,6 +242,7 @@ class IndexController extends PublicsController
         $data["firstname"] = $firstname;
         $data['id'] = $id;
         $data['level'] = $level;
+        $data['tot'] = $tot;
 
         return $this->render($this->action->id, $data);
 

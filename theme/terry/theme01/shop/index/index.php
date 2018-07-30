@@ -95,13 +95,13 @@
         <div class="jianjie">
          商家简介:
         </div> 
-        <span><?=$shop['shop_description']?></span>
+        <span title="<?=$shop['shop_description']?>"><?=$shop['shop_description']?></span>
        </div> 
        <div class="message2">
         <div class="gonggao">
          商家公告:
         </div> 
-        <span ><?=$shop['shop_banner']?></span>
+        <span  title="<?=$shop['shop_banner']?>"><?=$shop['shop_banner']?></span>
        </div>
       </div> 
       <div class="content1-right">

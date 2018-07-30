@@ -26,8 +26,8 @@ use yii\helpers\Url;
                 <div class="xialaimg1"></div>
             </div>
            <div class="xiala xialapro" style="margin-left:20px;color:#49e17a">
-                <span class="search-ID" style="color:#49e17a">地区省</span>
-                <select name="province_id" id="province_id" style="color:#49e17a">
+                <span class="search-ID" style="color:#a4adb5">地区省</span>
+                <select name="province_id" id="province_id" style="color:#a4adb5">
                     <option value="0">请选择省</option>
                     <?php foreach ($province as $k=>$v){?>
                     	<option value="<?php echo $v['province_id']?>"><?php echo $v['province_name']?></option>
@@ -36,15 +36,15 @@ use yii\helpers\Url;
                 <div class="xialaimg1"></div>
             </div>
             <div class="xiala xialacity" style="margin-left:20px;color:#49e17a;">
-                <span class="search-ID" style="color:#49e17a">市</span>
-                <select name="city_id" id="city_id" style="color:#49e17a">
+                <span class="search-ID" style="color:#a4adb5">市</span>
+                <select name="city_id" id="city_id" style="color:#a4adb5">
                     <option value="0">请选择市</option>
                 </select>
                 <div class="xialaimg1"></div>
             </div>
             <div class="xiala xialadis" style="margin-left:20px;color:#49e17a;">
-                <span class="search-ID" style="color:#49e17a">县</span>
-                <select name="district_id" id="district_id" style="color:#49e17a">
+                <span class="search-ID" style="color:#a4adb5">县</span>
+                <select name="district_id" id="district_id" style="color:#a4adb5">
                     <option value="0">请选择县</option>
                 </select>
                 <div class="xialaimg1"></div>
@@ -112,34 +112,92 @@ use yii\helpers\Url;
         </script>
         <!--待审核列表-->
         <div class="wait-list">
-            <table border="0" class="ProductorData-tablelist wait-tablelist">
-                <tr>
-                    <th>
-                        ID
-                    </th>
-                    <th>名称</th>
-                    <th>类型</th>
-                    <th>审核状态</th>
-                    <th>操作</th>
-                </tr>
-                  <?php foreach($list as $k=>$v){?>
-                <tr>
-                    <td>
-                        <div style="margin-left:6px;"><?php echo $k+1?></div>
-                    </td>
-                    <td><?php echo $v['shop_name']?></td>
-                    <?php if($v['shop_type']==1){?>
-                    <td>水司</td>
-                    <?php }else{?>
-                    <td>商家</td>
-                    <?php }?>
-                    <td>未通过</td>
-                    <td>
-                        <a href="/admin/review/nopasswreview?shop_id=<?php echo $v['shop_id']?>" style="color: #2dacff">查看</a>
-                    </td>
-                </tr>
-                 <?php }?>
-            </table>
+            <div class="el-table__body-wrapper is-scrolling-left" style="margin-top:20px;">
+                <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
+                       style="width: 1012px;">
+                    <colgroup>
+                        <col name="el-table_2_column_6" width="120">
+                        <col name="el-table_2_column_7" width="200">
+                        <col name="el-table_2_column_8" width="200">
+                        <col name="el-table_2_column_9" width="200">
+                        <col name="el-table_2_column_10" width="150">
+                    </colgroup>
+                    <thead class="has-gutter">
+                    <tr style="font-size: 14px;color: #B1DBFE;text-align: left;height: 50px;">
+                        <th
+                                class="el-table_2_column_11     is-leaf">
+                            <div class="cell">ID</div>
+                        </th>
+                        <th
+                                class="el-table_2_column_12     is-leaf">
+                            <div class="cell">名称</div>
+                        </th>
+                        <th
+                                class="el-table_2_column_13     is-leaf">
+                            <div class="cell">类型</div>
+                        </th>
+                        <th colspan="1" rowspan="1"
+                            class="el-table_2_column_14     is-leaf">
+                            <div class="cell">审核状态</div>
+                        </th>
+                        <th
+                                class="el-table_2_column_15     is-leaf">
+                            <div class="cell">操作</div>
+                        </th>
+                        <th class="gutter" style="width: 0px; display: none;"></th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="el-table__body-wrapper is-scrolling-left">
+                <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
+                       style="width: 1012px;">
+                    <colgroup>
+                        <col name="el-table_2_column_6" width="120">
+                        <col name="el-table_2_column_7" width="200">
+                        <col name="el-table_2_column_8" width="200">
+                        <col name="el-table_2_column_9" width="200">
+                        <col name="el-table_2_column_10" width="150">
+                    </colgroup>
+                    <tbody style="font-size: 12px;color:#82898e">
+                    <?php foreach($list as $k=>$v){?>
+                        <tr class="el-table__row" style="height:36px;font-size: 14px;">
+                            <td class="el-table_2_column_11  ">
+                                <div class="cell el-tooltip" title="<?= $v["increment_id"] ?>">
+                                    <?php echo $k+1?>
+                                </div>
+                            </td>
+                            <td class="el-table_2_column_12">
+                                <div class="cell el-tooltip">
+                                    <?php echo $v['shop_name']?>
+                                </div>
+                            </td>
+                            <?php if($v['shop_type']==1){?>
+                                <td class="el-table_2_column_14">
+                                    <div class="cell el-tooltip" title="<?= $v["payment_method"] ?>">
+                                        水司
+                                    </div>
+                                </td>
+                            <?php }else{?>
+                                <td class="el-table_2_column_13">
+                                    <div class="cell el-tooltip">
+                                        商家
+                                    </div>
+                                </td>
+                            <?php }?>
+                                <td class="el-table_2_column_14">
+                                    <div class="cell el-tooltip" title="<?= $v["payment_method"] ?>">
+                                        未通过
+                                    </div>
+                                </td>
+                            <td class="el-table_2_column_18">
+                                <a href="/admin/review/nopasswreview?shop_id=<?php echo $v['shop_id']?>" style="color: #2dacff">查看</a>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <div class="adminpagination">

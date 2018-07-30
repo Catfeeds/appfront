@@ -113,7 +113,7 @@
                         <div data-v-63f72479="" class="el-form-item"><label class="el-form-item__label"
                                                                             style="width: 150px;">优惠券名称</label>
                             <div class="el-form-item__content" style="margin-left: 150px;">
-                                <div data-v-63f72479="" class="el-input" style="width: 500px;"><!----><input
+                                <div data-v-63f72479="" class="el-input" style="width: 300px;"><!----><input
                                             value="<?= $res["coupon_name"] ?>" disabled type="text" name="coupon_name"
                                             autocomplete="off"
                                             placeholder="名称可输入20个字符，支持输入中文、字母、数字、_、/和小数点"

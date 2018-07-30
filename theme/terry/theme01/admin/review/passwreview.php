@@ -1,3 +1,8 @@
+<style>
+    .vipinfo table tr:first-child:hover{
+        background: #fff;
+    }
+</style>
 <div class="main-content">
     <div class="adminmannager">
         <!--用户管理-管理员管理-->

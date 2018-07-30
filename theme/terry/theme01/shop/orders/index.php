@@ -330,14 +330,14 @@ use yii\helpers\Url;
                                                             </td>
                                                             <td class="el-table_2_column_15">
                                                                 <div class="cell el-tooltip">
-                                                                    <div title="<?= $v["grand_total"] ?>">
-                                                                        总金额：<?= $v["grand_total"] ?></div>
+                                                                <div title="<?= $v["grand_total"] ?>">
+                                                                        总金额：<span style="color: #566168;font-weight: bold"><?= $v["grand_total"] ?></span></div>
                                                                     <div title="<?= $v["coupon_name"] ?>">
-                                                                        使用优惠券：<?= $v["coupon_name"] ?></div>
-                                                                    <div title="<?= $v["coin_num"] ?>">使用金币：<?= $v["coin_num"] ?></div>
-                                                                    <div title="<?= $v["discount_amount"] ?>">折扣：<?= $v["discount_amount"] ?></div>
+                                                                        使用优惠券：<span style="color: #FF8F71;font-weight: bold"><?= $v["coupon_name"] ?></span></div>
+                                                                    <div title="<?= $v["coin_num"] ?>">使用金币：<span style="color: #FFD545;font-weight: bold"><?= $v["coin_num"] ?></span></div>
+                                                                    <div title="<?= $v["discount_amount"] ?>">折扣：<span style="color: #1FD98C;font-weight: bold"><?= $v["discount_amount"] ?></span></div>
                                                                     <div title="<?= $v["grand_total"] - $v["subtotal_with_discount"] ?>">
-                                                                        应付金额：<?= $v["grand_total"] - $v["subtotal_with_discount"] ?></div>
+                                                                        应付金额：<span style="color:#3BACFE;font-weight: bold"><?= $v["grand_total"] - $v["subtotal_with_discount"] ?></span></div>
                                                                 </div>
                                                             </td>
                                                             <td class="el-table_2_column_16">

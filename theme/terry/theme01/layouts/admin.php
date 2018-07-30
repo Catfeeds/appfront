@@ -32,6 +32,7 @@ $cssOptions = [
         padding: 0;
         list-style: none;
         text-decoration: none;
+        font-family: "微软雅黑";
     }
 
     html, body {
@@ -208,7 +209,7 @@ $cssOptions = [
     /*主内容*/
     .main-content {
         width: calc(100% - 167px);
-        min-height: 587px;
+        /*min-height: 587px;*/
         background: #fff;
         float: left;
         color: #333;
@@ -218,7 +219,7 @@ $cssOptions = [
 
     /*用户管理-管理员管理*/
     .adminmannager {
-        width: 1012px;
+        width: 1100px;
         margin:0 auto;
         /*height: 100%;*/
         padding: 27px 0 27px 27px;
@@ -243,7 +244,7 @@ $cssOptions = [
         height: 48px;
         margin-top: 30px;
         /*background: #ff6700;*/
-        padding-right: 100px;
+        /*padding-right: 100px;*/
         box-sizing: border-box;
     }
 
@@ -349,9 +350,11 @@ $cssOptions = [
         /*padding-right: 100px;*/
         margin-top: 8px;
     }
+    input{
+        outline:none;
+    }
 
     .admin-tablename {
-        /*width: 100%;*/
         height: 80px;
         line-height: 80px;
         font-size: 18px;
@@ -1794,8 +1797,8 @@ $cssOptions = [
         color: #748a99;
     }
     .settle{
-        width: 100%;
-        height: 100%;
+        width: 1300px;
+        margin:0 auto;
     }
     .settle header{
         width: 100%;
@@ -1876,7 +1879,7 @@ $cssOptions = [
         margin-top: 50px;
     }
     .settle-p{
-        width: 1112px;
+        width: 100%;
         /* height: 200px;*/
         margin: 0 auto;
         margin-top: 79px;
@@ -2433,9 +2436,13 @@ $cssOptions = [
     .admincount span{
         font-size: 14px;
     }
-    table tr:hover{
+    .admin-table table tr:hover{
         background: rgba(238,238,238,0.2);
     }
+    .system-content table tr:hover{
+        background: rgba(238,238,238,0.2);
+    }
+
 </style>
 <?php $this->beginPage() ?>
     <!doctype html>
@@ -2464,7 +2471,7 @@ $cssOptions = [
                     </a>
                 </li>
                 <li id="shop">
-                    <a href="/admin/shop/index">
+                    <a href="/admin/shop/classlist">
                         店铺管理
                     </a>
                 </li>

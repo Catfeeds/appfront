@@ -132,18 +132,21 @@ use yii\helpers\Url;
                         <td>
                             <?php 
                                 if ($value['menu_show']==1) {
-                                    echo "<span class='success'><a href='".Yii::$service->url->getUrl('admin/shop/classeditshow', array('id' => $value[_id],'menu_show',2))."'>显示</a></span>";
+                                    echo "<span class='success'><a href='".Yii::$service->url->getUrl('admin/shop/classeditshow', array('id' => $value[_id],'menu_show'=>2))."'>显示</a></span>";
                                 }else{
-                                    echo "<span class='warning'><a href='".Yii::$service->url->getUrl('admin/shop/classeditshow', array('id' => $value[_id],'menu_show',1))."'>隐藏</a></span>";
+                                    echo "<span class='warning'><a href='".Yii::$service->url->getUrl('admin/shop/classeditshow', array('id' => $value[_id],'menu_show'=>1))."'>隐藏</a></span>";
                                 }
                             ?>
 
                         </td>
-                        <td class="caozuo" style="200px">
-                            <a title="查看子类" href="<?= Yii::$service->url->getUrl('admin/shop/classlist', array('id' => $value['_id'],'name'=>$value[name][name_zh])) ?>">☰</a>
-                            <a title="添加子类" href="<?= Yii::$service->url->getUrl('admin/shop/classadd', array('id' => $value['_id'],'level'=>2,'name'=>$value[name][name_zh],'type'=>$value['type'])) ?>">✚</a>
-                            <a title="修改分类" href="<?= Yii::$service->url->getUrl('admin/shop/classfind', array('id' => $value['_id'])) ?>">✎</a>
-                            <a title="删除分类" href="<?= Yii::$service->url->getUrl('admin/shop/classdel', array('id' => $value['_id'])) ?>">×</a>
+                        <td style="200px">
+                            <a style="color: #41b2fc" href="<?= Yii::$service->url->getUrl('admin/shop/classlist', array('id' => $value['_id'],'name'=>$value[name][name_zh])) ?>">查看</a>
+
+                            <a style="color: #41b2fc" href="<?= Yii::$service->url->getUrl('admin/shop/classadd', array('id' => $value['_id'],'level'=>2,'name'=>$value[name][name_zh],'type'=>$value['type'])) ?>">添加</a>
+
+                            <a style="color:  #41b2fc" href="<?= Yii::$service->url->getUrl('admin/shop/classfind', array('id' => $value['_id'])) ?>">修改</a>
+
+                            <a style="color: #ff5932" href="<?= Yii::$service->url->getUrl('admin/shop/classdel', array('id' => $value['_id'])) ?>">删除</a>
                         </td>
                     </tr>
                 <?php
