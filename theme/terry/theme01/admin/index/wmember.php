@@ -85,7 +85,7 @@ use yii\helpers\Url;
                         <td>
                             <input type="text" value="￥<?php echo $res['money']?>" name="money">
                             <button style="outline: none;width: 100px;height: 36px;color:#fff;line-height: 36px;text-align: center;
-background: #30b7fe;border-radius: 16px;float: left;margin-left:10px;border:none;" @click="dofind">查看详情</button>
+background: #30b7fe;border-radius: 16px;float: left;margin-left:10px;border:none;" id="wmoney">查看详情</button>
                         </td>
                     </tr>
                     <tr>
@@ -188,7 +188,48 @@ background: #37df75;border-radius: 16px;float: left;margin-left:10px;border:none
             <button style="margin-top:50px;width: 100px;height: 36px;color:#fff;line-height: 36px;text-align: center;
 background: #30b7fe;border-radius: 16px;float: left;border:none;outline: none;margin-bottom:50px;">保存修改</button>
         </div>
+        <!--余额详情-->
+        <div class="find-mask">
+            <div class="find-maskc">
+                <div class="admin-table">
+                    <div class="admin-tablename">
+                        <span class="admin-tablename1">余额查询</span>
+                        <a href="javascript:0" style="float:right; font-size: 30px;color:#e0e0e0;line-height: 30px;
+margin-right:20px;display: block;width: 32px;height: 32px;margin-top:20px;">×</a>
+                    </div>
+                    <table border="0" class="admin-tablelist active">
+                        <tr>
+                            <th>操作日期</th>
+                            <th>用户操作</th>
+                            <th>账户余额</th>
+                        </tr>
 
-        <com-footer></com-footer>
+
+                        <tr>
+                            <td>2018.05.29 18:25:56</td>
+                            <td>消费￥199</td>
+                            <td>￥499</td>
+                        </tr>/* $.ajax({
+                        url:'/admin/index/wmember',
+                        data:{
+                        id:$res['id']
+                        },
+                        success:function (msg) {
+
+                        }
+                        })*/
+                    </table >
+
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+<script>
+    $(function(){
+        $("#wmoney").click(function(){
+            $(".find-mask").addClass('find-maskactive');
+
+        })
+    })
+</script>

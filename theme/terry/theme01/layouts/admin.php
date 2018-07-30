@@ -1547,6 +1547,7 @@ $cssOptions = [
     }
     .find-maskactive{
         display: block;
+        z-index: 9999999999;
     }
     .find-maskc{
         width: 667px;

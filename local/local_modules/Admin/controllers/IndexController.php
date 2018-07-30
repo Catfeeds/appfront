@@ -277,8 +277,6 @@ class IndexController extends PublicsController
         $id = $req->get(id);
         $sql = "update customer set status=3 where id='$id'";
         $res = Yii::$app->db->createCommand($sql)->execute();
-        echo "成功移入黑名单！";
-        exit;
         return $this->redirect(["/admin/index/member"]);
 
     }
@@ -290,10 +288,15 @@ class IndexController extends PublicsController
         $id = $req->get(id);
         $sql = "update customer set status=2 where id='$id'";
         $res = Yii::$app->db->createCommand($sql)->execute();
-        echo "冻结成功！";
-        exit;
         return $this->redirect(["/admin/index/member"]);
     }
+    //余额查询
+    /*public function actionWmoney(){
+        $req = Yii::$app->request;
+        $id = $req->get(id);
+        $leftmoney = Yii::$app->db->createCommand('select * from ')
+
+    }*/
 
     //==============================用户管理、店铺管理====================================
     //加载市区
