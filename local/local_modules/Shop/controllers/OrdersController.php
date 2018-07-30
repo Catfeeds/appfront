@@ -15,8 +15,6 @@ use yii\web\Response;
 use yii\mongodb\Query;
 use yii\data\Pagination;
 
-
-
 /**
  * @author Terry Zhao <2358269014@qq.com>
  * @since 1.0
@@ -56,13 +54,32 @@ class OrdersController extends PublicsController
         //查询订单产品表
         if($get["flag"]){
             $flag = $get['flag']-1;
-            $sql = " select sales_flat_order.*,sales_coupon.* from sales_flat_order,sales_coupon where sales_flat_order.shop_id={$_SESSION["shop_id"]} and sales_flat_order.order_status={$flag} and sales_flat_order.coupon_code=sales_coupon.coupon_code limit $pagination->offset , $pagination->limit";
-        }else{
-            $sql = " select sales_flat_order.*,sales_coupon.* from sales_flat_order,sales_coupon where sales_flat_order.shop_id={$_SESSION["shop_id"]} and sales_flat_order.coupon_code=sales_coupon.coupon_code and order_status<5 limit $pagination->offset , $pagination->limit";
+            $sql = " select sales_flat_order.* from sales_flat_order where sales_flat_order.shop_id={$_SESSION["shop_id"]} and sales_flat_order.order_status={$flag} limit $pagination->offset , $pagination->limit";
+        }else {
+            $sql = " select sales_flat_order.* from sales_flat_order where sales_flat_order.shop_id={$_SESSION["shop_id"]} and order_status<5 limit $pagination->offset , $pagination->limit";
         }
 
         $arr = Yii::$app->db->createCommand($sql)->queryAll();
 
+        $sql = "select * from sales_coupon where coupon_id in(";
+
+        foreach ($arr as $v){
+
+            if($v[coupon_code]){
+                $sql = $sql.$v[coupon_code].",";
+            }
+        }
+        $sql = $sql."0)";
+
+        $cou = Yii::$app->db->createCommand($sql)->queryAll();
+
+        foreach ($arr as &$v){
+            foreach ($cou as $v1){
+                if($v1['coupon_id'] == $v['coupon_code']){
+                    $v = array_merge($v,$v1);
+                }
+            }
+        }
         $sql = "select * from sales_flat_order_item where order_id in (";
         foreach ($arr as $v) {
             $sql = $sql . $v["order_id"] . ",";
@@ -98,7 +115,14 @@ class OrdersController extends PublicsController
         $request = Yii::$app->request;
         $order_id = $request->get('order_id');
         //按order_id查询订单详情
-        $res = Yii::$app->db->createCommand("select sales_coupon.*,sales_flat_order.* from sales_coupon,sales_flat_order where order_id=$order_id")->queryOne();
+        $res = Yii::$app->db->createCommand("select sales_flat_order.* from sales_flat_order where order_id=$order_id")->queryOne();
+        if($res["coupon_code"]){
+            $cou = Yii::$app->db->createCommand("select * from sales_coupon where coupon_id={$res["coupon_code"]}")->queryOne();
+
+            if($cou){
+                $res = array_merge($res,$cou);
+                }
+        }
         //按order_id查询订单产品详情
         $sql = "select sales_flat_order_item.*,product_flat_qty.qty as kc from sales_flat_order_item,product_flat_qty where sales_flat_order_item.order_id=$order_id and sales_flat_order_item.product_id=product_flat_qty.product_id";
         $res1 = Yii::$app->db->createCommand($sql)->queryAll();
@@ -150,7 +174,7 @@ class OrdersController extends PublicsController
         $res = Yii::$app->db->createCommand($sql)->execute();
 
 
-        return $this->redirect(['orders/see?order_id=' . $order_id]);
+        return $this->redirect(['orders/see?order_id=',$order_id]);
     }
 
     //接单
@@ -171,7 +195,22 @@ class OrdersController extends PublicsController
 
         $data = [];
 
-        return $this->render($this->action->id);
+        $count = Yii::$app->db->createCommand("select count(*) tot from sales_flat_order where order_status in(5,6)")->queryAll();
+
+        // 实例化分页对象
+        $pagination = new Pagination([
+            'defaultPageSize' => 10,
+            'totalCount' => $count[0]['tot'],
+        ]);
+
+        $res = Yii::$app->db->createCommand("select * from sales_flat_order where order_status in(5,6)")->queryAll();
+
+        $data["res"] = $res;
+        $data["pagination"] = $pagination;
+        $data["count"] = $count;
+
+
+        return $this->render($this->action->id,$data);
 
     }
 
@@ -237,5 +276,5 @@ class OrdersController extends PublicsController
     }
 }
 
-//http://appfront.uekuek.com/shop/orders/addorder?increment_id=20180728&order_remark=ddd&order_status=0&customer_firstname=潘将兵&customer_telephone=13220289300&customer_address_country=山西&customer_address_state=太原市&customer_address_city=小店区&customer_address_street1=学府街&customer_address_zip=030500&customer_email=fecshop@123.com&subtotal=500.00&discount_amount=450&discount_rate=0.9&coin_num=0&grand_total=80&coupon_code=1&shop_id=1&name=衣服&sku=123456789&price=500.00&qty=1&kc=100&uid=5&row_total=500
+//http://appfront.uekuek.com/shop/orders/addorder?increment_id=20180728&order_remark=ddd&order_status=0&customer_firstname=潘将兵&customer_telephone=13220289300&customer_address_country=山西&customer_address_state=太原市&customer_address_city=小店区&customer_address_street1=学府街&customer_address_zip=030500&customer_email=fecshop@123.com&subtotal=500.00&discount_amount=450&discount_rate=0.9&coin_num=0&grand_total=80&coupon_code=2&shop_id=3&name=衣服&sku=123456789&price=500.00&qty=1&kc=100&uid=5&row_total=500
 ?>

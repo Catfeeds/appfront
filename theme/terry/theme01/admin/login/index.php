@@ -27,7 +27,7 @@
         color: #b4c2cc;
     }
     .submit{
-        display: inline-block;
+        display: block;
         width: 208px;
         height: 33px;
         border:0;
@@ -58,6 +58,8 @@
         background: url("/public/background.png") no-repeat top center/100% 100%;
         overflow: hidden;
     }
+
+
     .login-box{
         width: 441px;
         height: 332px;
@@ -100,12 +102,14 @@
         border:2px solid #ebf6ff;
         box-sizing: border-box;
         border-radius: 16px;
-        margin: 3px auto;
+        margin: 0 auto;
         background: #f3faff;
         position: relative;
         line-height: 32px;
     }
-   
+    .login-l ul li:last-child{
+        margin-top:10px;
+    }
     .login-l ul li img{
         display: block;
         width: 18px;
@@ -127,7 +131,7 @@
         height: 100%;
         border:0;
         float: left;
-        width: 180px;
+        width: 200px;
         outline: none;
         padding-left:6px;
         background: #f3faff;
@@ -146,45 +150,33 @@
     }
 </style>
 <div id="loginin">
-    <form action="<?= Yii::$service->url->getUrl('shop/login/reg') ?>" method="post">
+    <form action="<?= Yii::$service->url->getUrl('admin/login/check') ?>" method="post">
         <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>" />
         <div class="login-box">
             <div class="login-logo">
                 <img src="/public/login.png" alt="">
-                <span>晋彤商家管理系统</span>
+                <span>晋彤后台管理系统</span>
             </div>
             <div class="login-l">
                 <ul>
                     <li>
                         <img src="/public/account.png" alt="">
-                        <span>账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;户</span>
-                        <input type="text" name="firstname">
-                    </li>
-
-                    <li>
-                        <img src="/public/pwd.png" alt="">
-                        <span>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</span>
-                        <input type="password" name="password_hash">
+                        <span>账户</span>
+                        <input type="text" name="username" placeholder="">
                     </li>
                     <li>
                         <img src="/public/pwd.png" alt="">
-                        <span>确认密码</span>
-                        <input type="password" name="repassword" id="">
+                        <span>密码</span>
+                        <input type="password" name="password" placeholder="">
                     </li>
                 </ul>
-                <div class="forget">
-                    <div class="forget1">
-                        <div></div>
-                        <a href="<?= Yii::$service->url->getUrl('shop/login/index') ?>">登录</a>
-                    </div>
-                </div>
-                <div style="display:flex;justify-content:center;width: 100%;height: 34px;cursor: pointer;margin-top:50px;text-align:center">
-                    <button style="cursor: pointer" class="submit">注册</button>
+
+
+                <div style="width: 100%;height: 34px;cursor: pointer;margin-top:38px;">
+                    <button style="cursor: pointer" class="submit">登录</button>
                 </div>
 
             </div>
         </div>
     </form>
 </div>
-
-    

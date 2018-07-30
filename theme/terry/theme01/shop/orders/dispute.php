@@ -20,7 +20,24 @@
         justify-content: space-between;
         line-height: 46px;
     }
-
+    .content .shuaixuan .xiala {
+        padding-left: 10px;
+        width: 150px;
+        outline: none;
+        height: 30px;
+        border-radius: 15px;
+        background: #f3faff;
+        border: 2px solid #e5eff8;
+        color:#9eabb5;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    .shuaixuan .el-select:hover {
+        border-color: #c0c4cc;
+    }
+    .shuaixuan .el-select:focus {
+        border-color: #3CACFE;
+    }
     .sousuo {
         margin-top: 5px;
         width: 40px;
@@ -41,7 +58,7 @@
     }
 </style>
 <div data-v-29f2ba61="" class="main-content">
-    <div data-v-29f2ba61="" style="width: 1064px; margin: 0px auto;">
+    <div data-v-29f2ba61="" style="width: 1012px; margin: 0 auto;">
         <div data-v-7a00a356="" data-v-29f2ba61="">
             <div data-v-7a00a356="" class="content">
                 <div data-v-7a00a356="" class="biaoti">
@@ -57,67 +74,28 @@
                 </div>
                 <ul data-v-7a00a356="" class="shuaixuan">
                     <li data-v-7a00a356="">
-                        <div data-v-7a00a356="" class="el-select" style="width: 160px;"><!---->
-                            <div class="el-input el-input--suffix"><!----><input type="text" autocomplete="off"
-                                                                                 placeholder="请选择处理状态"
-                                                                                 readonly="readonly"
-                                                                                 class="el-input__inner"><!----><span
-                                        class="el-input__suffix"><span class="el-input__suffix-inner"><i
-                                                class="el-select__caret el-input__icon el-icon-arrow-up"></i>
-                                        <!----></span><!----></span><!----></div>
-                            <div class="el-select-dropdown el-popper" style="display: none; min-width: 160px;">
-                                <div class="el-scrollbar" style="">
-                                    <div class="el-select-dropdown__wrap el-scrollbar__wrap"
-                                         style="margin-bottom: -17px; margin-right: -17px;">
-                                        <ul class="el-scrollbar__view el-select-dropdown__list"><!---->
-                                            <li data-v-7a00a356="" class="el-select-dropdown__item"><span>1</span></li>
-                                            <li data-v-7a00a356="" class="el-select-dropdown__item"><span>2</span></li>
-                                            <li data-v-7a00a356="" class="el-select-dropdown__item"><span>3</span></li>
-                                        </ul>
-                                    </div>
-                                    <div class="el-scrollbar__bar is-horizontal">
-                                        <div class="el-scrollbar__thumb" style="transform: translateX(0%);"></div>
-                                    </div>
-                                    <div class="el-scrollbar__bar is-vertical">
-                                        <div class="el-scrollbar__thumb" style="transform: translateY(0%);"></div>
-                                    </div>
-                                </div><!----></div>
-                        </div>
+                        <select name="class" id="" class="el-select xiala" style="margin-left:10px;">
+                            <option value="" style="display: none;">请选择处理状态</option>
+                            <option value="">1</option>
+                            <option value="">1</option>
+                            <option value="">1</option>
+                        </select>
                     </li>
                     <li data-v-7a00a356="">
-                        <div data-v-7a00a356="" class="el-select" style="width: 160px;"><!---->
-                            <div class="el-input el-input--suffix"><!----><input type="text" autocomplete="off"
-                                                                                 placeholder="请选择纠纷类型"
-                                                                                 readonly="readonly"
-                                                                                 class="el-input__inner"><!----><span
-                                        class="el-input__suffix"><span class="el-input__suffix-inner"><i
-                                                class="el-select__caret el-input__icon el-icon-arrow-up"></i>
-                                        <!----></span><!----></span><!----></div>
-                            <div class="el-select-dropdown el-popper" style="display: none; min-width: 160px;">
-                                <div class="el-scrollbar" style="">
-                                    <div class="el-select-dropdown__wrap el-scrollbar__wrap"
-                                         style="margin-bottom: -17px; margin-right: -17px;">
-                                        <ul class="el-scrollbar__view el-select-dropdown__list"><!---->
-                                            <li data-v-7a00a356="" class="el-select-dropdown__item"><span>1</span></li>
-                                            <li data-v-7a00a356="" class="el-select-dropdown__item"><span>2</span></li>
-                                            <li data-v-7a00a356="" class="el-select-dropdown__item"><span>3</span></li>
-                                        </ul>
-                                    </div>
-                                    <div class="el-scrollbar__bar is-horizontal">
-                                        <div class="el-scrollbar__thumb" style="transform: translateX(0%);"></div>
-                                    </div>
-                                    <div class="el-scrollbar__bar is-vertical">
-                                        <div class="el-scrollbar__thumb" style="transform: translateY(0%);"></div>
-                                    </div>
-                                </div><!----></div>
-                        </div>
+                        <select name="class" id="" class="el-select xiala">
+                            <option value="" style="display: none;">请选择纠纷类型</option>
+                            <option value="">1</option>
+                            <option value="">1</option>
+                            <option value="">1</option>
+                        </select>
                     </li>
                     <li data-v-7a00a356="">
-                        <div data-v-7a00a356="" class="el-input" style="width: 150px;"><!----><input type="text"
+                        <div data-v-7a00a356="" class="el-input" style="width: 160px;">
+                            <input type="text"
                                                                                                      autocomplete="off"
                                                                                                      placeholder="请输入发货单流水号"
                                                                                                      class="el-input__inner">
-                            <!----><!----><!----></div>
+                            </div>
                     </li>
                     <li data-v-7a00a356="">
                         <div data-v-7a00a356="" class="el-input" style="width: 150px;"><!----><input type="text"

@@ -205,7 +205,7 @@
                     <div class="el-form-item" style="margin-top: 10px">
                         <label class="el-form-item__label" style="width: 80px;">文字描述</label>
                         <div class="el-form-item__content" style="margin-left: 80px;">
-                            <textarea name="" id="" class="detail" placeholder="请输入商品文字描述" cols="30" rows="10" name="description_zh1"></textarea>
+                            <textarea name="" id="" class="details" placeholder="请输入商品文字描述" cols="30" rows="10" name="description_zh1"></textarea>
                         </div>
 
                     </div>
@@ -448,7 +448,7 @@
         padding-top: 8px;
     }
 
-    .title .details {
+    .details {
         width: 350px;
         height: 84px;
         outline: none;
@@ -456,6 +456,9 @@
         border-radius: 5px;
         background: #f3faff;
         border: 2px solid #e5eff8;
+        padding:8px;
+        font-size: 14px;
     }
+    textarea::-webkit-input-placeholder{color:#C0C4CC;}
 
 </style>

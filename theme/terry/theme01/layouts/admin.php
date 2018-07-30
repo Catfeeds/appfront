@@ -32,6 +32,7 @@ $cssOptions = [
         padding: 0;
         list-style: none;
         text-decoration: none;
+        font-family: "微软雅黑";
     }
 
     html, body {
@@ -47,7 +48,7 @@ $cssOptions = [
         height: 50px;
         position: fixed;
         top: 0;
-        left:162px;
+        left:167px;
         z-index: 999;
         display: flex;
         background: #eaf6ff;
@@ -208,7 +209,7 @@ $cssOptions = [
     /*主内容*/
     .main-content {
         width: calc(100% - 167px);
-        min-height: 587px;
+        /*min-height: 587px;*/
         background: #fff;
         float: left;
         color: #333;
@@ -218,10 +219,9 @@ $cssOptions = [
 
     /*用户管理-管理员管理*/
     .adminmannager {
-        width: 1100px;
+        width: 1012px;
         margin:0 auto;
-        /*height: 100%;*/
-        padding: 27px 0 27px 27px;
+        padding: 27px 0 0 0;
         box-sizing: border-box;
     }
 
@@ -243,7 +243,7 @@ $cssOptions = [
         height: 48px;
         margin-top: 30px;
         /*background: #ff6700;*/
-        padding-right: 100px;
+        /*padding-right: 100px;*/
         box-sizing: border-box;
     }
 
@@ -349,9 +349,11 @@ $cssOptions = [
         /*padding-right: 100px;*/
         margin-top: 8px;
     }
+    input{
+        outline:none;
+    }
 
     .admin-tablename {
-        /*width: 100%;*/
         height: 80px;
         line-height: 80px;
         font-size: 18px;
@@ -445,7 +447,7 @@ $cssOptions = [
     }
 
     .adminpagination {
-        width: 96%;
+        width: 100%;
         border-top: 1px solid #eee;
         box-sizing: border-box;
         min-height: 120px;
@@ -534,10 +536,10 @@ $cssOptions = [
     }
 
     .ShopMannager {
-        width: 1120px;
+        width: 1012px;
         margin:0 auto;
         height: 100%;
-        padding: 27px 10px 0 10px;
+        padding: 27px 0 0 0;
         box-sizing: border-box;
     }
 
@@ -683,7 +685,7 @@ $cssOptions = [
     }
 
     #platdata {
-        width: 1110px;
+        width: 1012px;
         min-height: 500px;
         padding: 27px 0 0 0;
         margin:0 auto;
@@ -706,6 +708,7 @@ $cssOptions = [
 
     .main-content {
         /*overflow: hidden;*/
+        /*width: 1012px;*/
     }
 
     #platdata .tongji {
@@ -793,8 +796,8 @@ $cssOptions = [
         margin-top:20px;
     }
     .process div{
-        width: 150px;
-        height: 190px;
+        width: 130px;
+        height: 159px;
         float: left;
         background: red;
         margin-right:9px;
@@ -822,7 +825,7 @@ $cssOptions = [
         margin-right: 0;
     }
     .addofplatdata {
-        width: 1100px;
+        width: 100%;
         min-height: 500px;
         margin-top: 30px;
         border-bottom: 1px solid #f5f5f6;
@@ -1793,8 +1796,8 @@ $cssOptions = [
         color: #748a99;
     }
     .settle{
-        width: 100%;
-        height: 100%;
+        width: 1300px;
+        margin:0 auto;
     }
     .settle header{
         width: 100%;
@@ -1875,7 +1878,7 @@ $cssOptions = [
         margin-top: 50px;
     }
     .settle-p{
-        width: 1112px;
+        width: 100%;
         /* height: 200px;*/
         margin: 0 auto;
         margin-top: 79px;
@@ -1939,26 +1942,30 @@ $cssOptions = [
     .ruzhuname2{
         font-size: 14px;
         color: #7f8c97;
+        padding-left:16px;
+        box-sizing: border-box;
     }
     .ruzhuname2 p{
         line-height: 30px;
     }
     #index1{
         width: 100%;
+        overflow:hidden ;
     }
     #index1 header{
-        width:1300px;
+        width:1160px;
         height: 139px;
-        margin:0 auto;
         margin-top:30px;
+        display: flex;
+        justify-content: space-between;
     }
+
     .index1-logo{
         height: 100%;
         width: 250px;
         text-align: center;
         padding-top:20px;
         box-sizing: border-box;
-        float: left;
     }
     .index1-logo h1{
         font-size: 14px;
@@ -1970,9 +1977,6 @@ $cssOptions = [
     }
     .index2-content1{
         width: 1008px;
-        /*float:right;*/
-        /*background: red;*/
-        /*margin-right:50px;*/
         margin:0 auto;
     }
     .index2{
@@ -2032,11 +2036,14 @@ $cssOptions = [
         width: 279px;
     }
     .el-form-item__content{
-        margin-left:135px !important;
+        margin-left:175px !important;
     }
     .el-form-item__label{
-        width:135px !important;
+        width:168px !important;
 
+    }
+    .el-form-item{
+        line-height: 40px !important;
     }
     .el-upload--picture-card{
         width: 273px;
@@ -2053,8 +2060,8 @@ $cssOptions = [
         /*  margin-left:50px;*/
     }
     .file{
-        width: 400px;
-        height: 200px;
+        width: 100%;
+        height:100%;
         background: #f3faff;
         opacity: 0;
     }
@@ -2429,6 +2436,18 @@ $cssOptions = [
         width: 900px;
         height: 400px;
     }
+    .admincount span{
+        font-size: 14px;
+    }
+    .admin-table table tr:hover{
+        background: rgba(238,238,238,0.2);
+    }
+    .system-content table tr:hover{
+        background: rgba(238,238,238,0.2);
+    }
+    ..admin-tablelist1{
+        padding:0;
+    }
 </style>
 <?php $this->beginPage() ?>
     <!doctype html>
@@ -2457,7 +2476,7 @@ $cssOptions = [
                     </a>
                 </li>
                 <li id="shop">
-                    <a href="/admin/shop/index">
+                    <a href="/admin/shop/classlist">
                         店铺管理
                     </a>
                 </li>
@@ -2480,14 +2499,14 @@ $cssOptions = [
             <div class="header-right" style="width: 416px;float: right;">
                 <div class="adminname">
                     <div class="admin-img"></div>
-                    <span class="name1">管理员名称</span>
+                    <span class="name1"><?=$_SESSION['message_name']?></span>
                 </div>
                 <div class="adminname">
                     <div class="clearimg"></div>
                     <span class="name2">清除缓存</span>
                 </div>
                 <div class="adminname">
-                    <a href="/loginin">
+                    <a href="/admin/login/out" title="退出页面">
                         <div class="out"></div>
                         <span class="name3">退出</span>
                     </a>
@@ -2501,6 +2520,7 @@ $cssOptions = [
     </div>
     </body>
     <script>
+
 
         // 筛选顶部菜单
         var url = location.href.split("/");
@@ -2527,8 +2547,14 @@ $cssOptions = [
 
         let urls = "<?php echo $_SERVER['SERVER_NAME'];?>";
 
+
         laydate.render({
-            elem:'.el-range-input'
+            elem:'.el-range-input1',
+            fixed:false
+        })
+        laydate.render({
+            elem:'.el-range-input2',
+            fixed:false
         })
     </script>
     </html>

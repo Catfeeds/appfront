@@ -537,7 +537,7 @@
                                     </td>
                                 </tr>
                                 </tbody>
-                            </table><!----><!----></div><!----><!----><!----><!---->
+                            </table></div>
                         <div class="el-table__column-resize-proxy" style="display: none;"></div>
                     </div>
                 </div>
@@ -619,7 +619,11 @@
                                         <div class="cell"><?= $res["coin_num"] ?>个</div>
                                     </td>
                                     <td class="el-table_6_column_42  ">
-                                        <div class="cell"><?= "-" . $res["discount"] ?></div>
+                                        <div class="cell"><?php
+                                                if(isset($res["discount"])){
+                                                    echo "-" . $res["discount"];
+                                                }
+                                            ?></div>
                                     </td>
                                     <td class="el-table_6_column_43  ">
                                         <div class="cell"><?= $res["grand_total"] ?></div>

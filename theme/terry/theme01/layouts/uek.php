@@ -152,7 +152,7 @@ $cssOptions = [
             border-radius: 50%;
             margin-top: 8px;
             float: left;
-            background: #fff;
+            background: url("http://img.uekuek.com/images/<?=$_SESSION[shop_logo]?>")center center /100% auto;
         }
         .admin-img img{
             width:100%;
@@ -432,9 +432,9 @@ $cssOptions = [
             </ul>
             <div class="header-right">
                 <div class="adminname ddd">
-                    <div class="admin-img"><img src="<?=$_SESSION[shop_logo]?>" alt=""></div>
+                    <div class="admin-img"></div>
                     <span class="name1" title="<?= $_SESSION['shop_name'] ?>"><?=$_SESSION['shop_name']?></span></div>
-                <div class="adminname">
+                <div class="adminname" style=" cursor:pointer;">
                     <div class="clearimg"></div>
                     <span class="name2">清除缓存</span></div>
                 <div class="adminname">

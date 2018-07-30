@@ -108,23 +108,70 @@
                             	<input type="text" autocomplete="off" placeholder="按固定运费" readonly="readonly" class="el-input__inner">
                             </div>
                         </div>
+                        <label class="el-form-item__label" style="width: 120px;">上下架:</label>
                         <div  class="el-form-item">
-                        	<label class="el-form-item__label" style="width: 120px;">上下架:</label>
                             <div class="el-form-item__content" style="margin-left: 120px;">
-                                <div  role="switch" aria-checked="true" class="el-switch is-checked" style="height: 30px;width:150px;display:flex;justify-content: space-around">
+                                <div  role="switch" aria-checked="true" class="el-switch is-checked" style="height: 30px;width:150px;display:flex;justify-content: space-around;position: relative;">
 									<?php 
 										if($goods['status']==1){
-											echo '<label><input type="radio" name="status" value="1" id="" checked class="shangjia"> 上架</label>
-                                				<label><input type="radio" name="status" id="" value="2" class="xiajia"> 下架</label>';
+											echo '<div data-v-63f72479="" role="radio" aria-checked="true" tabindex="0" class="el-radio danxuan xuanze is-checked">
+                                    <span class="el-radio__input is-checked x">
+                                        <span class="el-radio__inner is-checked"></span>
+                                        <input name="status" type="radio" aria-hidden="true" tabindex="-1" class="el-radio__original" value="1" checked></span>
+                                            <span class="el-radio__label">上架<!----></span>
+                                </div> <div data-v-63f72479="" role="radio" aria-checked="true" tabindex="0" class="el-radio danxuan xuanze is-checked">
+                                    <span class="el-radio__input x">
+                                        <span class="el-radio__inner"></span>
+                                        <input name="status" type="radio" aria-hidden="true" tabindex="-1" class="el-radio__original" value="2"></span>
+                                            <span class="el-radio__label">下架<!----></span>
+                                </div> ';
 										}else{
-											echo '<label><input type="radio" name="status" value="1" id="" class="shangjia"> 上架</label>
-                                				<label><input type="radio" name="status" id="" value="2"checked class="xiajia"> 下架</label>';
+											echo '<div data-v-63f72479="" role="radio" aria-checked="true" tabindex="0" class="el-radio danxuan xuanze is-checked">
+                                    <span class="el-radio__input x">
+                                        <span class="el-radio__inner "></span>
+                                        <input name="status" type="radio" aria-hidden="true" tabindex="-1" class="el-radio__original" value="1"></span>
+                                            <span class="el-radio__label">上架<!----></span>
+                                </div> <div data-v-63f72479="" role="radio" aria-checked="true" tabindex="0" class="el-radio danxuan xuanze is-checked">
+                                    <span class="el-radio__input is-checked x">
+                                        <span class="el-radio__inner is-checked"></span>
+                                        <input name="status" type="radio" aria-hidden="true" tabindex="-1" class="el-radio__original" value="2" checked></span>
+                                            <span class="el-radio__label">下架<!----></span>
+                                </div> ';
 										}
 									?>
                                 </div>
                             </div>
                         </div>
+                        <script>
+                            var radio = document.querySelectorAll("[type=radio]");
+                            var span = document.querySelectorAll(".x");
+                            var lable = document.querySelectorAll("[role=radio]");
+                            var flag = true;
 
+                            lable.forEach(function (val,index) {
+
+                                val.onclick=function () {
+                                    if(flag) {
+
+                                        if (index == 0) {
+                                            console.log(1)
+                                            flag = false;
+                                            span[0].classList.add("is-checked");
+                                            span[1].classList.remove("is-checked");
+                                            radio[0].click();
+                                        } else {
+                                            flag = false;
+                                            span[1].classList.add("is-checked");
+                                            span[0].classList.remove("is-checked");
+                                            radio[1].click();
+                                        }
+                                    }else {
+                                        flag = true;
+                                    }
+
+                                }
+                            });
+                        </script>
                         <div  class="el-form-item">
                             <label class="el-form-item__label" style="width: 120px;">商品简介:</label>
                             <div class="el-form-item__content" style="margin-left: 120px;">
@@ -425,6 +472,7 @@
         border-radius: 3px;
         background: #f3faff;
         border:2px solid #e5eff8;
+        padding:8px;
     }
     .el-form-item__content>div{
         float:left;
@@ -437,4 +485,52 @@
         margin:1px;
 
     }
+
+    .el-switch .radio {
+        position: relative;
+        display: inline-block;
+        font-weight: 400;
+        color: #0c4757;
+        padding-left: 25px;
+        cursor: pointer;
+    }
+
+    .el-switch .radio input {
+        position: absolute;
+        left: -9999px;
+    }
+
+    .el-switch .radio i {
+        display: block;
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 15px;
+        height: 15px;
+        outline: 0;
+        border: 1px solid #e4e4e4;
+        background: #ffffff;
+        border-radius: 50%;
+        transition: border-color .3s;
+        -webkit-transition: border-color .3s;
+    }
+
+    .el-switch .radio input + i:after {
+        position: absolute;
+        content: '';
+        top: 3px;
+        left: 3px;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background-color: #30A3FE;
+        opacity: 0;
+        transition: opacity .1s;
+        -webkit-transition: opacity .1s;
+    }
+
+    .el-switch .radio input:checked + i:after {
+        opacity: 1;
+    }
+
 </style>

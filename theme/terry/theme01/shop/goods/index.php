@@ -44,6 +44,7 @@ use yii\helpers\Url;
         border: 2px solid #e5eff8;
         color:#9eabb5;
         font-size: 14px;
+        cursor: pointer;
     }
 
     .content .shuaixuan .xialas {
@@ -211,10 +212,9 @@ use yii\helpers\Url;
                 <form action="<?php echo  Yii::$app->request->getHostInfo().Yii::$app->request->url;?>" method="get">
                 <ul class="shuaixuan">
                     <li>分类
-                        <select name="class" id="" class="el-select xiala xialas" style="margin-left:10px">
-                            <option value="0">全部分类</option>
-                            <?php
-
+                        <select name="class" id="" class="el-select xiala xialas" style="margin-left:10px;">
+                                <option value="0">全部分类</option>
+                                <?php
                                 foreach ($class as $key => $value) {
                                     echo "<option disabled style='color: #000'>".$value['name']['name_zh']."</option>";
                                     foreach ($value['zi'] as $k => $v) {
@@ -226,7 +226,7 @@ use yii\helpers\Url;
                                         }
                                     }
                                 }
-                            ?>
+                                ?>
                         </select>
                     </li>
                     <li>上下架
@@ -285,7 +285,6 @@ use yii\helpers\Url;
                                                 color:#303133;
                                             }
                                             .is_active1 a{
-                                                font-weight: bold;
                                                 color: #30a2fe;
                                             }
                                         </style>

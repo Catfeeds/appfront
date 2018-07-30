@@ -91,7 +91,7 @@
                                                  style="display: flex; justify-content: space-between;">
                                                 <div class="el-input" style="width: 480px;">
                                                     <input type="text" name="shop_logo"
-                                                           value="<?= $res["shop_logo"] ?>"
+                                                           value="<?= Yii::$app->params["img"]."/images/".$res["shop_logo"] ?>"
                                                            class="el-input__inner">
                                                     <input accept="image/*" type="file" style="display: none;" name="file[]">
                                                 </div>
@@ -111,7 +111,7 @@
                                                 <div class="el-input" style="width: 480px;">
                                                     <input type="file" style="display: none;" name="file[]" accept="image/jpeg">
                                                     <input type="text" autocomplete="off"
-                                                           class="el-input__inner" value="<?= $res["shop_avatar"] ?>"
+                                                           class="el-input__inner" value="<?= Yii::$app->params["img"]."/images/".$res["shop_avatar"] ?>"
                                                            name="shop_avatar"></div>
                                                 <button type="button"
                                                         class="el-button green el-button--success is-round sc" style="line-height: 10px">
@@ -130,14 +130,12 @@
                             <div class="col-box"></div>
                             <span style="color: rgb(48, 163, 254);">审核</span>状态
                         </div>
-                        <div class="title1">
-                                <div class="el-row" style="width: 500px;">
-                                    <div class="el-form-item"><label class="el-form-item__label"
-                                                                                        style="width: 100px;line-height: 40px">审核状态</label>
-                                        <div class="el-form-item__content" style="margin-left: 100px;">
-                                            <div style="color: rgb(55, 223, 113); font-weight: bolder;">审核成功
-                                            </div>
-                                        </div>
+                        <div data-v-242c0cfe="" class="title1">
+                                <div data-v-242c0cfe="" class="el-row" style="width: 500px;">
+                                    <div style="font-size: 14px">
+                                        <span style="width: 100px;line-height: 40px;margin-left: 50px;">审核状态：</span>
+                                        <span style="color: rgb(55, 223, 113); font-weight: bolder;">
+                                                 审核成功</span>
                                     </div>
                                 </div>
                         </div>

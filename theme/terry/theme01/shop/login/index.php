@@ -63,9 +63,12 @@
         height: 332px;
         background: #fff;
         border-radius: 4px;
-        position: relative;
-        margin:0 auto;
-        margin-top: 7%;
+        position: fixed;
+        left:0px;
+        top:0px;
+        right:0px;
+        bottom:0px;
+        margin:auto;
         overflow: hidden;
     }
     .login-logo{
@@ -150,7 +153,7 @@
         <div class="login-box">
             <div class="login-logo">
                 <img src="/public/login.png" alt="">
-                <span>晋彤后台管理系统</span>
+                <span>晋彤商家管理系统</span>
             </div>
             <div class="login-l">
                 <ul>
@@ -173,8 +176,8 @@
                     </div>
 
                 </div>
-                <div style="width: 100%;height: 34px;margin-top:38px;">
-                    <button class="submit">登录</button>
+                <div style="width: 100%;height: 34px;cursor: pointer;margin-top:38px;">
+                    <button style="cursor: pointer" class="submit">登录</button>
                 </div>
 
             </div>

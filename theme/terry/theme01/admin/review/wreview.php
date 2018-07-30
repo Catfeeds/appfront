@@ -40,7 +40,7 @@
                         <td valign="top">
                             <div style="height: 180px;">
                                 <div style="height: 162px;width: 276px;
-									background:url(http://img.uekuek.com/media/catalog/product/<?php echo $row['business_licence_number_electronic'];?>) no-repeat;
+									background:url(http://img.uekuek.com/images/<?php echo $row['business_licence_number_electronic'];?>) no-repeat;
 									border-radius: 2px;"></div>
 			               </div>
 
@@ -81,7 +81,7 @@
                         <td valign="top">
                             <div style="height: 180px;">
                                 <div style="height: 162px;width: 276px;
-									background:url(http://img.uekuek.com/media/catalog/product/<?php echo $row['contacts_card_electronic_1'];?>) no-repeat;
+									background:url(http://img.uekuek.com/images/<?php echo $row['contacts_card_electronic_1'];?>) no-repeat;
 									border-radius: 2px;"></div>
 			               </div>
 
@@ -92,13 +92,13 @@
                         <td valign="top">
                             <div style="height: 100%;width: 276px;float:left;text-align: center">
                                 <div style="height: 162px;width: 276px;
-									background:url(http://img.uekuek.com/media/catalog/product/<?php echo $row['contacts_card_electronic_2'];?>) no-repeat;
+									background:url(http://img.uekuek.com/images/<?php echo $row['contacts_card_electronic_2'];?>) no-repeat;
 									border-radius: 2px;"></div>
                                 <span style="display:block;margin-top:20px;">正面</span>
                             </div>
                             <div style="height: 100%;width: 276px;float:left;margin-left:20px;text-align: center">
                                 <div style="height: 162px;width: 276px;
-									background:url(http://img.uekuek.com/media/catalog/product/<?php echo $row['contacts_card_electronic_3'];?>) no-repeat;
+									background:url(http://img.uekuek.com/images/<?php echo $row['contacts_card_electronic_3'];?>) no-repeat;
 								border-radius: 2px;"></div>
                                 <span style="display:block;margin-top:20px;">反面</span>
                             </div>
@@ -205,7 +205,7 @@
                         <td valign="top">
                             <div style="height: 180px;">
                                 <div style="height: 162px;width: 276px;
-									background:url(http://img.uekuek.com/media/catalog/product/<?php echo $row['general_taxpayer'];?>) no-repeat;
+									background:url(http://img.uekuek.com/images/<?php echo $row['general_taxpayer'];?>) no-repeat;
 									border-radius: 2px;"></div>
 			               </div>
 
@@ -216,7 +216,7 @@
                         <td valign="top">
                             <div style="height: 180px;">
                                 <div style="height: 162px;width: 276px;
-									background:url(http://img.uekuek.com/media/catalog/product/<?php echo $row['organization_code_electronic'];?>) no-repeat;
+									background:url(http://img.uekuek.com/images/<?php echo $row['organization_code_electronic'];?>) no-repeat;
 									border-radius: 2px;"></div>
 			               </div>
 
@@ -227,7 +227,7 @@
                         <td valign="top">
                             <div style="height: 180px;">
                                 <div style="height: 162px;width: 276px;
-									background:url(http://img.uekuek.com/media/catalog/product/<?php echo $row['bank_licence_electronic'];?>) no-repeat;
+									background:url(http://img.uekuek.com/images/<?php echo $row['bank_licence_electronic'];?>) no-repeat;
 									border-radius: 2px;"></div>
 			               </div>
 
@@ -238,7 +238,7 @@
                         <td valign="top">
                             <div style="height: 180px;">
                                 <div style="height: 162px;width: 276px;
-									background:url(http://img.uekuek.com/media/catalog/product/<?php echo $row['tax_registration_certificate_electronic'];?>) no-repeat;
+									background:url(http://img.uekuek.com/images/<?php echo $row['tax_registration_certificate_electronic'];?>) no-repeat;
 									border-radius: 2px;"></div>
 			               </div>
 
@@ -270,7 +270,7 @@
                         <td valign="top">
                             <div style="height: 180px;">
                                 <div style="height: 162px;width: 276px;
-									background:url(http://img.uekuek.com/media/catalog/product/<?php echo $row['shop_logo'];?>) no-repeat;
+									background:url(http://img.uekuek.com/images/<?php echo $row['shop_logo'];?>) no-repeat;
 									border-radius: 2px;"></div>
 			               </div>
 
@@ -281,7 +281,7 @@
 	                        <td valign="top">
 	                            <div style="height: 180px;">
 	                                <div style="height: 162px;width: 276px;
-										background:url(http://img.uekuek.com/media/catalog/product/<?php echo $row['shop_banner'];?>) no-repeat;
+										background:url(http://img.uekuek.com/images/<?php echo $row['shop_banner'];?>) no-repeat;
 										border-radius: 2px;"></div>
 				               </div>
 	
@@ -292,7 +292,7 @@
 	                        <td valign="top">
 	                            <div style="height: 180px;">
 	                                <div style="height: 162px;width: 276px;
-										background:url(http://img.uekuek.com/media/catalog/product/<?php echo $row['shop_avatar'];?>) no-repeat;
+										background:url(http://img.uekuek.com/images/<?php echo $row['shop_avatar'];?>) no-repeat;
 										border-radius: 2px;"></div>
 				               </div>
 	
@@ -393,7 +393,7 @@
                     <span>未通过</span>
                 </div>-->
                 <div style="height: 100%;line-height: 40px;margin-left:20px;">
-                	<label><input type="radio" name="shop_state" value="1"/>通过</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                	<label><input type="radio" name="shop_state" value="1" checked/>通过</label>&nbsp;&nbsp;&nbsp;&nbsp;
                 	<label><input type="radio" name="shop_state" value="4"/>不通过</label>
                 </div>
             </div>
@@ -430,7 +430,7 @@ padding: 20px;"></textarea>
                     <span>人工</span>
                 </div>-->
                 <div style="height: 100%;line-height: 40px;margin-left:20px;">
-                	<label><input type="radio" name="notice" value="1"/>邮件</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                	<label><input type="radio" name="notice" checked value="1"/>邮件</label>&nbsp;&nbsp;&nbsp;&nbsp;
                 	<label><input type="radio" name="notice" value="2"/>短信</label>&nbsp;&nbsp;&nbsp;&nbsp;
                 	<label><input type="radio" name="notice" value="3"/>人工</label>
                 </div>

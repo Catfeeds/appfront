@@ -42,7 +42,7 @@
                 </tr>
             </table>
             <!--分页-->
-            <div class="adminpagination" style="width: 98%">
+            <!--<div class="adminpagination" style="width: 98%">
                 <div class="banner-delete">
                     <div class="system-box"></div>
                     <span>删除</span>
@@ -69,7 +69,7 @@
                     </div>
 
                 </div>
-            </div>
+            </div>-->
         </div>
         <!--白金会员-->
         <div class="vipruler" style="margin-bottom: 50px;">
@@ -150,7 +150,7 @@ box-sizing: border-box">
             </form>
         </div>
         <button style="width: 120px;height: 32px;border:0;float: left;margin-top:1px;margin-left:40px;
-background: #fc5e4a;border-radius: 18px;text-align: center;line-height: 32px;color: #fff;">
+background: #fc5e4a;border-radius: 18px;text-align: center;line-height: 32px;color: #fff;margin-bottom: 50px;">
             确定
         </button>
     </div>

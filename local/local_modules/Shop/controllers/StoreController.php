@@ -167,7 +167,10 @@ class StoreController extends PublicsController
 
                     if (move_uploaded_file($tmp_name,$folder.$newName)) {
 
-                        $res = Yii::$app->db->createCommand("update shop set shop_logo='{$post['shop_logo']}',shop_avatar='{$post['shop_avatar']}' where uid={$_SESSION['uid']}")->execute();
+                        $shop_logo = explode("images/",$post['shop_logo'])[1];
+                        $shop_avatar = explode("images/",$post['shop_avatar'])[1];
+
+                        $res = Yii::$app->db->createCommand("update shop set shop_logo='{$shop_logo}',shop_avatar='{$shop_avatar}' where uid={$_SESSION['uid']}")->execute();
 
                     }
                 }
@@ -252,7 +255,7 @@ class StoreController extends PublicsController
 
         $post = $res->post();
 
-        var_dump($post);
+        // var_dump($post);
         $goods = "";
         if($post["flag"]==1||count($post["goods1"])<=0||count($post["goods"])<=0){
             $goods = 0;

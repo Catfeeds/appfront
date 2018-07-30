@@ -22,7 +22,7 @@ use yii\web\UploadedFile;
  */
 
 // 后台首页控制器
-class ReviewController extends AppfrontController
+class ReviewController extends PublicsController
 {
 
     public function init()
@@ -230,7 +230,9 @@ class ReviewController extends AppfrontController
     	$notice=$req->post('notice');
     	$shop_state=$req->post('shop_state');
     	$sql="UPDATE shop SET reason='{$reason}',notice='{$notice}',shop_state='{$shop_state}' WHERE shop_id=".$shop_id;
-    	$row= Yii::$app->db->createCommand($sql)->execute();
+    	
+
+        $row= Yii::$app->db->createCommand($sql)->execute();
     	return $this->redirect("/admin/review/index");
     }
     //查看详情

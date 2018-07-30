@@ -54,7 +54,16 @@
         margin-top: 33px;
         background: url("/public/img/jiantou.png");
     }
+    .shuaixuan_bottom .checked-class{
+        line-height: 24px;
+    }
 
+    .shuaixuan_bottom [onclick="dianji(this)"]{
+        line-height: 24px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
     .shuaixuan_bottom .danxuan {
         width: 20px;
         height: 20px;
@@ -145,20 +154,16 @@
                                       style="color: rgb(155, 210, 253); font-weight: bolder; margin-left: 15px;">单位：元（无门槛请设为0）</span>
                                 <!----></div>
                         </div>
-                        <div data-v-63f72479="" class="el-form-item"><label class="el-form-item__label"
-                                                                            style="width: 150px;">*使用范围</label>
-                            <div class="el-form-item__content" style="margin-left: 150px;"><label data-v-63f72479=""
-                                                                                                  role="radio"
-                                                                                                  aria-checked="true"
-                                                                                                  tabindex="0"
-                                                                                                  class="el-radio danxuan xuanze is-checked"><span
-                                            class="el-radio__input is-checked"><span
-                                                class="el-radio__inner"></span><input name="flag" type="radio"
-                                                                                      aria-hidden="true"
-                                                                                      tabindex="-1"
-                                                                                      class="el-radio__original"
-                                                                                      value="1" checked></span><span
-                                            class="el-radio__label">全部商品<!----></span></label> <label data-v-63f72479=""
+                        <div data-v-63f72479="" class="el-form-item">
+                            <label class="el-form-item__label" style="width: 150px;">*使用范围</label>
+                            <div class="el-form-item__content" style="margin-left: 150px;margin-top: 3px;">
+                                <label data-v-63f72479="" role="radio" aria-checked="true" tabindex="0" class="el-radio danxuan xuanze is-checked">
+                                    <span class="el-radio__input is-checked">
+                                        <span class="el-radio__inner"></span>
+                                        <input name="flag" type="radio" aria-hidden="true" tabindex="-1" class="el-radio__original" value="1" checked></span>
+                                            <span class="el-radio__label">全部商品<!----></span>
+                                </label>
+                                <label data-v-63f72479=""
                                                                                                       role="radio"
                                                                                                       tabindex="1"
                                                                                                       class="el-radio danxuan xuanze"><span

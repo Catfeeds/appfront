@@ -27,7 +27,14 @@ class ApplyController extends AppfrontController
         parent::init();
         // Yii::$service->page->theme->layoutFile = 'category_view.php';
 
-        Yii::$service->page->theme->layoutFile = 'main2.php';
+        Yii::$service->page->theme->layoutFile = 'apply.php';
+
+        // 如果未登录
+        if(!($_SESSION["login"] == "yes")){
+            $_SESSION["uid"] = 0;
+            $_SESSION["shop_id"] = 0;
+            return $this->redirect("/shop/login/index");
+        }
     }
 
     // 商家入驻的展示页面
@@ -160,7 +167,9 @@ class ApplyController extends AppfrontController
      	unset($arr3['img6']);
      	unset($arr3['img7']);
      	Yii::$app->db->createCommand()->insert('shop',$arr3)->execute();
-     	
+
+     	$_SESSION['shop_id']=Yii::$app->db->getLastInsertID();
+     	$_SESSION['shop_type']=$arr3['shop_type'];
         return $this->redirect("/apply/apply/waitaudit");
 
      }
@@ -278,7 +287,7 @@ class ApplyController extends AppfrontController
     public function actionUpload($files){
     	//文件上传存放的目录
     	
-    	$folder ='../../appimage/common/media/catalog/product/';
+    	$folder ='../../appimage/common/images/';
     	$file=$files['file'];
     	// 获取用户上传的数量
     	$size=count($file['name']);

@@ -100,6 +100,7 @@
         border-radius: 5px;
         background: #f3faff;
         border: 2px solid #e5eff8;
+        padding:10px;
     }
 
     .content .red {
@@ -150,7 +151,7 @@
                                     <div data-v-3bfc0387="" class="el-form-item">
                                         <label class="el-form-item__label" style="width: 100px;">公司名称</label>
                                         <div class="el-form-item__content" style="margin-left: 100px;">
-                                            <div data-v-3bfc0387="">
+                                            <div style="line-height: 28px">
                                                 <?= $res["shop_company_name"] ?>
                                             </div>
                                         </div>
