@@ -60,7 +60,7 @@
     }
     .login-box{
         width: 441px;
-        height: 332px;
+        height: 380px;
         background: #fff;
         border-radius: 4px;
         position: fixed;
@@ -87,7 +87,7 @@
     }
     .login-l{
         width: 100%;
-        height: 80px;
+        /*height: 80px;*/
         margin-top:20px;
     }
     .login-l ul{
@@ -157,8 +157,14 @@
                 <ul>
                     <li>
                         <img src="/public/account.png" alt="">
-                        <span>账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;户</span>
+                        <span>手&nbsp;&nbsp;机&nbsp;号</span>
                         <input type="text" name="firstname">
+                    </li>
+                    <li>
+                        <img src="/public/account.png" alt="">
+                        <span>验&nbsp;&nbsp;证&nbsp;码</span>
+                        <input type="text" name="firstname" style="">
+                        <button style="position: absolute;height: 100%;width: 80px;background: #36de76;border: none;border-radius: 20px;font-size: 12px;color: #fff;top: 0;right: 0;cursor: pointer">获取验证码</button>
                     </li>
 
                     <li>
@@ -179,7 +185,7 @@
                     </div>
                 </div>
                 <div style="display:flex;justify-content:center;width: 100%;height: 34px;cursor: pointer;margin-top:50px;text-align:center">
-                    <button style="cursor: pointer" class="submit">注册</button>
+                    <button style="cursor: pointer;margin-top: 10px;width: 230px;letter-spacing: 10px" class="submit">注册</button>
                 </div>
 
             </div>

@@ -1,3 +1,11 @@
+<?php
+
+use yii\widgets\LinkPager;
+use yii\helpers\Html;
+use yii\helpers\Url;
+
+?>
+
 <style>
     .content {
         width: 100%;
@@ -20,6 +28,7 @@
         justify-content: space-between;
         line-height: 46px;
     }
+
     .content .shuaixuan .xiala {
         padding-left: 10px;
         width: 150px;
@@ -28,16 +37,19 @@
         border-radius: 15px;
         background: #f3faff;
         border: 2px solid #e5eff8;
-        color:#9eabb5;
+        color: #9eabb5;
         font-size: 14px;
         cursor: pointer;
     }
+
     .shuaixuan .el-select:hover {
         border-color: #c0c4cc;
     }
+
     .shuaixuan .el-select:focus {
         border-color: #3CACFE;
     }
+
     .sousuo {
         margin-top: 5px;
         width: 40px;
@@ -92,10 +104,10 @@
                     <li data-v-7a00a356="">
                         <div data-v-7a00a356="" class="el-input" style="width: 160px;">
                             <input type="text"
-                                                                                                     autocomplete="off"
-                                                                                                     placeholder="请输入发货单流水号"
-                                                                                                     class="el-input__inner">
-                            </div>
+                                   autocomplete="off"
+                                   placeholder="请输入发货单流水号"
+                                   class="el-input__inner">
+                        </div>
                     </li>
                     <li data-v-7a00a356="">
                         <div data-v-7a00a356="" class="el-input" style="width: 150px;"><!----><input type="text"
@@ -162,7 +174,7 @@
                                                 <!----></label></div>
                                     </th>
                                     <th colspan="1" rowspan="1" class="el-table_18_column_145     is-leaf">
-                                        <div class="cell">发货单流水号</div>
+                                        <div class="cell">编号</div>
                                     </th>
                                     <th colspan="1" rowspan="1" class="el-table_18_column_146     is-leaf">
                                         <div class="cell">订单号</div>
@@ -174,7 +186,7 @@
                                         <div class="cell">下单时间</div>
                                     </th>
                                     <th colspan="1" rowspan="1" class="el-table_18_column_149     is-leaf">
-                                        <div class="cell">发货时间</div>
+                                        <div class="cell">支付时间</div>
                                     </th>
                                     <th colspan="1" rowspan="1" class="el-table_18_column_150     is-leaf">
                                         <div class="cell">退款时间</div>
@@ -213,58 +225,88 @@
                                     <col name="el-table_18_column_154" width="100">
                                 </colgroup>
                                 <tbody style="font-size: 12px;color:#82898e">
-                                <tr class="el-table__row">
-                                    <td class="el-table_18_column_144  el-table-column--selection">
-                                        <div class="cell"><label role="checkbox" class="el-checkbox"><span
-                                                        aria-checked="mixed" class="el-checkbox__input"><span
-                                                            class="el-checkbox__inner"></span><input type="checkbox"
-                                                                                                     aria-hidden="true"
-                                                                                                     class="el-checkbox__original"
-                                                                                                     value=""></span>
-                                                <!----></label></div>
-                                    </td>
-                                    <td class="el-table_18_column_145  ">
-                                        <div class="cell">08390809</div>
-                                    </td>
-                                    <td class="el-table_18_column_146  ">
-                                        <div class="cell">DSV0002</div>
-                                    </td>
-                                    <td class="el-table_18_column_147  ">
-                                        <div class="cell el-tooltip" style="width: 83px;">李先生</div>
-                                    </td>
-                                    <td class="el-table_18_column_148  ">
-                                        <div class="cell">2018-5-29 18:25</div>
-                                    </td>
-                                    <td class="el-table_18_column_149  ">
-                                        <div class="cell">2018-5-29 18:25</div>
-                                    </td>
-                                    <td class="el-table_18_column_150  ">
-                                        <div class="cell">2018-5-29 18:25</div>
-                                    </td>
-                                    <td class="el-table_18_column_151  ">
-                                        <div class="cell el-tooltip" style="width: 83px;">退款</div>
-                                    </td>
-                                    <td class="el-table_18_column_152  ">
-                                        <div class="cell el-tooltip" style="width: 83px;">张三</div>
-                                    </td>
-                                    <td class="el-table_18_column_153  ">
-                                        <div class="cell el-tooltip" style="width: 83px;">已处理</div>
-                                    </td>
-                                    <td class="el-table_18_column_154  ">
-                                        <div class="cell el-tooltip" style="width: 99px;"><a data-v-7a00a356=""
-                                                                                             href="#/OrderDetails"
-                                                                                             class="">
+                                <?php foreach ($res as $key => $v) { ?>
+                                    <tr class="el-table__row">
+                                        <td class="el-table_18_column_144  el-table-column--selection">
+                                            <div class="cell"><label role="checkbox" class="el-checkbox"><span
+                                                            aria-checked="mixed" class="el-checkbox__input"><span
+                                                                class="el-checkbox__inner"></span><input type="checkbox"
+                                                                                                         aria-hidden="true"
+                                                                                                         class="el-checkbox__original"
+                                                                                                         value=""></span>
+                                                    <!----></label></div>
+                                        </td>
+                                        <td class="el-table_18_column_145  ">
+                                            <div class="cell"><?= $key + 1 + $pagination->limit * $pagination->offset ?></div>
+                                        </td>
+                                        <td class="el-table_18_column_146  ">
+                                            <div class="cell"
+                                                 title="<?= $v["increment_id"] ?>"><?= $v["increment_id"] ?></div>
+                                        </td>
+                                        <td class="el-table_18_column_147  ">
+                                            <div class="cell el-tooltip" style="width: 83px;"
+                                                 title="<?= $v["customer_firstname"] ?>"><?= $v["customer_firstname"] ?></div>
+                                        </td>
+                                        <td class="el-table_18_column_148  ">
+                                            <div class="cell" title="<?= $v["created_at"] ?>"><?php
+                                                if ($v["created_at"]) {
+                                                    echo date("Y:m:d H:i:s", $v["created_at"]);
+                                                } ?>
+                                            </div>
+                                        </td>
+                                        <td class="el-table_18_column_149  ">
+                                            <div class="cell" title="<?= $v["paypal_order_datetime"] ?>"><?php
+                                                if ($v["paypal_order_datetime"]) {
+                                                    echo date("Y:m:d H:i:s", $v["paypal_order_datetime"]);
+                                                } ?>
+                                            </div>
+                                        </td>
+                                        <td class="el-table_18_column_150  ">
+                                            <div class="cell" title="<?= $v["refund_at"] ?>">
+                                                <?php
+                                                if ($v["refund_at"]) {
+                                                    echo date("Y:m:d H:i:s", $v["refund_at"]);
+                                                }
+                                                ?>
+                                            </div>
+                                        </td>
+                                        <td class="el-table_18_column_151  ">
+                                            <div class="cell el-tooltip" style="width: 83px;">退款</div>
+                                        </td>
+                                        <td class="el-table_18_column_152  ">
+                                            <div class="cell el-tooltip"
+                                                 style="width: 83px;"><?= $v["operator"] ?></div>
+                                        </td>
+                                        <td class="el-table_18_column_153  ">
+                                            <div class="cell el-tooltip" style="width: 83px;">
+                                                <?php
+                                                if ($v["order_status"] == 5) {
+                                                    echo "未处理";
+                                                } else if ($v["order_status"] == 6) {
+                                                    echo "已处理";
+                                                }
+                                                ?>
+                                            </div>
+                                        </td>
+                                        <td class="el-table_18_column_154  ">
+                                            <div class="cell el-tooltip" style="width: 99px;"><a data-v-7a00a356=""
+                                                                                                 href="#/OrderDetails"
+                                                                                                 class="">
+                                                    <a href="<?= Yii::$service->url->geturl("/shop/orders/seedispute?order_id=".$v[order_id]) ?>">
+                                                        <button data-v-7a00a356="" type="button" class="el-button el-button--text el-button--small">
+                                                            <span>查看</span>
+                                                        </button>
+                                                    </a>
+                                                </a> <span data-v-7a00a356=""
+                                                           style="color: rgb(234, 235, 236);">|</span>
                                                 <button data-v-7a00a356="" type="button"
-                                                        class="el-button el-button--text el-button--small"><!---->
-                                                    <!----><span>查看</span></button>
-                                            </a> <span data-v-7a00a356="" style="color: rgb(234, 235, 236);">|</span>
-                                            <button data-v-7a00a356="" type="button"
-                                                    class="el-button el-button--text el-button--small"><!---->
-                                                <!----><span><i data-v-7a00a356="" class="el-icon-delete"></i></span>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
+                                                        class="el-button el-button--text el-button--small">
+                                                    <span><i data-v-7a00a356="" class="el-icon-delete"></i></span>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
                                 </tbody>
                             </table>
                         </div>
@@ -276,12 +318,12 @@
                             <div data-v-7a00a356="" style="display: flex;">
                                 <div data-v-7a00a356="" class="dian"></div>
                                 总计<span data-v-7a00a356=""
-                                        style="color: rgb(61, 176, 255); font-weight: bolder;">206</span>记录
+                                        style="color: rgb(61, 176, 255); font-weight: bolder;"><?= $count ?></span>记录
                             </div>
                             <div data-v-7a00a356="" style="display: flex;">
                                 <div data-v-7a00a356="" class="dian" style="background: rgb(41, 201, 154);"></div>
                                 分<span data-v-7a00a356=""
-                                       style="font-weight: bolder; color: rgb(41, 201, 154);">82</span>页
+                                       style="font-weight: bolder; color: rgb(41, 201, 154);"><?= ceil($count / $pagination->limit) ?></span>页
                             </div>
                         </div>
                         <div data-v-7a00a356="" style="margin-top: 40px;">
@@ -293,8 +335,18 @@
                         </div>
                     </div>
                     <div data-v-7a00a356="" style="width: 100%; position: relative;">
-                        <div data-v-7a00a356="" style="font-size: 12px; position: absolute; bottom: 0px; right: 0px; display: flex; justify-content: space-between;">
+                        <div data-v-7a00a356=""
+                             style="font-size: 12px; position: absolute; bottom: 0px; right: 0px; display: flex; justify-content: space-between;">
+                            <?php
+                            echo LinkPager::widget([
+                                'pagination' => $pagination,
+                                'firstPageLabel' => '首页',
+                                'lastPageLabel' => '尾页',
 
+                                'nextPageLabel' => '>',
+                                'prevPageLabel' => '<',
+                            ]);
+                            ?>
                         </div>
                     </div>
                 </div>
