@@ -1,3 +1,9 @@
+<?php
+use yii\widgets\LinkPager;
+use yii\helpers\Html;
+use yii\helpers\Url;
+?>
+
 <style>
     .content {
         width: 100%;
@@ -162,7 +168,7 @@
                                                 <!----></label></div>
                                     </th>
                                     <th colspan="1" rowspan="1" class="el-table_18_column_145     is-leaf">
-                                        <div class="cell">发货单流水号</div>
+                                        <div class="cell">编号</div>
                                     </th>
                                     <th colspan="1" rowspan="1" class="el-table_18_column_146     is-leaf">
                                         <div class="cell">订单号</div>
@@ -213,7 +219,8 @@
                                     <col name="el-table_18_column_154" width="100">
                                 </colgroup>
                                 <tbody style="font-size: 12px;color:#82898e">
-                                <tr class="el-table__row">
+                                <?php foreach ($res as $key=>$v){ ?>
+                                    <tr class="el-table__row">
                                     <td class="el-table_18_column_144  el-table-column--selection">
                                         <div class="cell"><label role="checkbox" class="el-checkbox"><span
                                                         aria-checked="mixed" class="el-checkbox__input"><span
@@ -224,13 +231,13 @@
                                                 <!----></label></div>
                                     </td>
                                     <td class="el-table_18_column_145  ">
-                                        <div class="cell">08390809</div>
+                                        <div class="cell"><?= $key+1+$pagination->limit*$pagination->offset ?></div>
                                     </td>
                                     <td class="el-table_18_column_146  ">
-                                        <div class="cell">DSV0002</div>
+                                        <div class="cell"><?= $v["increment_id"] ?></div>
                                     </td>
                                     <td class="el-table_18_column_147  ">
-                                        <div class="cell el-tooltip" style="width: 83px;">李先生</div>
+                                        <div class="cell el-tooltip" style="width: 83px;"><?= $v["customer_firstname"] ?></div>
                                     </td>
                                     <td class="el-table_18_column_148  ">
                                         <div class="cell">2018-5-29 18:25</div>
@@ -265,6 +272,7 @@
                                         </div>
                                     </td>
                                 </tr>
+                                <?php } ?>
                                 </tbody>
                             </table>
                         </div>
@@ -276,12 +284,12 @@
                             <div data-v-7a00a356="" style="display: flex;">
                                 <div data-v-7a00a356="" class="dian"></div>
                                 总计<span data-v-7a00a356=""
-                                        style="color: rgb(61, 176, 255); font-weight: bolder;">206</span>记录
+                                        style="color: rgb(61, 176, 255); font-weight: bolder;"><?= $count ?></span>记录
                             </div>
                             <div data-v-7a00a356="" style="display: flex;">
                                 <div data-v-7a00a356="" class="dian" style="background: rgb(41, 201, 154);"></div>
                                 分<span data-v-7a00a356=""
-                                       style="font-weight: bolder; color: rgb(41, 201, 154);">82</span>页
+                                       style="font-weight: bolder; color: rgb(41, 201, 154);"><?= ceil($count/$pagination->limit) ?></span>页
                             </div>
                         </div>
                         <div data-v-7a00a356="" style="margin-top: 40px;">
@@ -294,7 +302,16 @@
                     </div>
                     <div data-v-7a00a356="" style="width: 100%; position: relative;">
                         <div data-v-7a00a356="" style="font-size: 12px; position: absolute; bottom: 0px; right: 0px; display: flex; justify-content: space-between;">
+                            <?php
+                            echo LinkPager::widget([
+                                'pagination' => $pagination,
+                                'firstPageLabel' => '首页',
+                                'lastPageLabel' => '尾页',
 
+                                'nextPageLabel' => '>',
+                                'prevPageLabel' => '<',
+                            ]);
+                            ?>
                         </div>
                     </div>
                 </div>

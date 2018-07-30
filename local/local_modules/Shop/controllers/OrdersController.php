@@ -203,11 +203,11 @@ class OrdersController extends PublicsController
             'totalCount' => $count[0]['tot'],
         ]);
 
-        $res = Yii::$app->db->createCommand("select * from sales_flat_order where order_status in(5,6)")->queryAll();
+        $res = Yii::$app->db->createCommand("select * from sales_flat_order where order_status in(5,6) limit $pagination->offset , $pagination->limit")->queryAll();
 
         $data["res"] = $res;
         $data["pagination"] = $pagination;
-        $data["count"] = $count;
+        $data["count"] = $count[0]['tot'];
 
 
         return $this->render($this->action->id,$data);
