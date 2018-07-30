@@ -447,7 +447,7 @@ $cssOptions = [
     }
 
     .adminpagination {
-        width: 96%;
+        width: 100%;
         border-top: 1px solid #eee;
         box-sizing: border-box;
         min-height: 120px;
