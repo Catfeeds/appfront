@@ -274,6 +274,78 @@ class OrdersController extends PublicsController
 
 
     }
+
+    //查看纠纷订单详情
+    public function actionSeedispute(){
+
+        $req = Yii::$app->request;
+
+        $order_id = $req->get("order_id");
+
+        $res = Yii::$app->db->createCommand("select * from sales_flat_order where order_id=$order_id")->queryOne();
+
+        $goods = Yii::$app->db->createCommand("select * from sales_flat_order_item where order_id=$order_id")->queryAll();
+
+        $res["goods"] = $goods;
+
+        $data["res"] = $res;
+
+        return $this->render($this->action->id,$data);
+
+    }
+
+    //处理纠纷订单
+    public function actionChangejf(){
+
+        $req = Yii::$app->request;
+
+        $order_status = $req->get("order_status");
+
+        $order_id = $req->get("order_id");
+
+        if($order_status==7){
+
+            $one = Yii::$app->db->createCommand("select * from sales_flat_order where order_id=$order_id")->queryOne();
+
+            if($one[created_at]){
+
+                $order_status = 0;
+
+            }
+            if($one[paypal_order_datetime]){
+
+                $order_status = 1;
+
+            }
+            if($one[receipt_at]){
+
+                $order_status = 2;
+
+            }
+            if($one[confirm_at]){
+
+                $order_status = 3;
+
+            }
+
+            if($one[evaluate_at]){
+
+                $order_status = 4;
+
+            }
+        }
+
+        $operator = $_SESSION["admin_name"];
+        $admin_name = time();
+
+
+        $res = Yii::$app->db->createCommand("update sales_flat_order set order_status=$order_status,operator='$operator',refund_at='$admin_name' where order_id=$order_id")->execute();
+
+        return $this->redirect("/shop/orders/dispute");
+    }
+
+
+
 }
 
 //http://appfront.uekuek.com/shop/orders/addorder?increment_id=20180728&order_remark=ddd&order_status=0&customer_firstname=潘将兵&customer_telephone=13220289300&customer_address_country=山西&customer_address_state=太原市&customer_address_city=小店区&customer_address_street1=学府街&customer_address_zip=030500&customer_email=fecshop@123.com&subtotal=500.00&discount_amount=450&discount_rate=0.9&coin_num=0&grand_total=80&coupon_code=2&shop_id=3&name=衣服&sku=123456789&price=500.00&qty=1&kc=100&uid=5&row_total=500
