@@ -102,7 +102,7 @@
         </div>
         <div data-v-63f72479="" class="bottom">
             <div data-v-63f72479="" class="title">
-                <form data-v-63f72479="" method="post" action="<?= Yii::$service->url->geturl("/shop/store/addcou") ?>" class="el-form" enctype="application/x-www-form-urlencoded">
+                <form data-v-63f72479="" method="post" action="<?= Yii::$service->url->geturl("/water/store/addcou") ?>" class="el-form" enctype="application/x-www-form-urlencoded">
                     <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>"/>
                     <div data-v-63f72479="" class="el-row" style="width: 850px;">
                         <div data-v-63f72479="" class="el-form-item"><label class="el-form-item__label"
@@ -257,7 +257,7 @@
                 goods[val.value]=[];
             }
         });
-        fetch("/shop/store/getgoods?" + "category=" + JSON.stringify(category)).then(function (e) {
+        fetch("/water/store/getgoods?" + "category=" + JSON.stringify(category)).then(function (e) {
             return e.json();
         }).then(function (e) {
             var str = "";
