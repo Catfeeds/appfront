@@ -254,7 +254,11 @@ class IndexController extends PublicsController
         $req = Yii::$app->request;
         $id = $req->get(id);
         $res = Yii::$app->db->createCommand("select * from customer where id='$id'")->queryOne();
+        $money = Yii::$app->db->createCommand("select * from money_record where uid='$id'")->queryAll();
+        $address = Yii::$app->db->createCommand("select * from customer_address where customer_id='$id'")->queryAll();
         $data['res'] = $res;
+        $data['money'] = $money;
+        $data['address'] = $address;
         return $this->render($this->action->id, $data);
     }
     //删除会员
