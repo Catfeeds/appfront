@@ -15,7 +15,7 @@
 
 <div class="settle" style="width: 100%;">
     <header style="width: 100%;">
-        <div style="width: 1300px;margin:0 auto;height: auto;">
+        <div style="width: 1160px;margin:0 auto;height: auto;">
             <div class="header-logo" style="width:100%">
                 <a href="/apply/apply/index">
                     <img src="/public/imgs/login.png" alt=""/>
@@ -25,7 +25,7 @@
         </div>
     </header>
     <div class="settle-content">
-        <div style="width: 1300px;margin:0 auto;">
+        <div style="width: 1160px;margin:0 auto;">
             <div class="content1">
                 <div class="content2">
                     <div class="circle1 circle"></div>
@@ -56,7 +56,7 @@
         </div>
     </div>
 
-    <div class="settle-p" style="width: 1300px; padding:0 60px;box-sizing: border-box;margin:0 auto;">
+    <div class="settle-p" style="width: 1160px;margin:0 auto;">
         <div style="width: 100%">
             <div class="admin-tablename">
                 <div class="admin-tablenamebox"></div>

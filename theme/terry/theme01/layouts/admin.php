@@ -219,10 +219,9 @@ $cssOptions = [
 
     /*用户管理-管理员管理*/
     .adminmannager {
-        width: 1100px;
+        width: 1012px;
         margin:0 auto;
-        /*height: 100%;*/
-        padding: 27px 0 27px 27px;
+        padding: 27px 0 0 0;
         box-sizing: border-box;
     }
 
@@ -448,7 +447,7 @@ $cssOptions = [
     }
 
     .adminpagination {
-        width: 96%;
+        width: 100%;
         border-top: 1px solid #eee;
         box-sizing: border-box;
         min-height: 120px;
@@ -537,10 +536,10 @@ $cssOptions = [
     }
 
     .ShopMannager {
-        width: 1120px;
+        width: 1012px;
         margin:0 auto;
         height: 100%;
-        padding: 27px 10px 0 10px;
+        padding: 27px 0 0 0;
         box-sizing: border-box;
     }
 
@@ -686,7 +685,7 @@ $cssOptions = [
     }
 
     #platdata {
-        width: 1110px;
+        width: 1012px;
         min-height: 500px;
         padding: 27px 0 0 0;
         margin:0 auto;
@@ -797,8 +796,8 @@ $cssOptions = [
         margin-top:20px;
     }
     .process div{
-        width: 150px;
-        height: 190px;
+        width: 130px;
+        height: 159px;
         float: left;
         background: red;
         margin-right:9px;
@@ -826,7 +825,7 @@ $cssOptions = [
         margin-right: 0;
     }
     .addofplatdata {
-        width: 1100px;
+        width: 100%;
         min-height: 500px;
         margin-top: 30px;
         border-bottom: 1px solid #f5f5f6;
@@ -1943,20 +1942,24 @@ $cssOptions = [
     .ruzhuname2{
         font-size: 14px;
         color: #7f8c97;
+        padding-left:16px;
+        box-sizing: border-box;
     }
     .ruzhuname2 p{
         line-height: 30px;
     }
     #index1{
         width: 100%;
+        overflow:hidden ;
     }
     #index1 header{
-        width:100%;
+        width:1160px;
         height: 139px;
         margin-top:30px;
         display: flex;
         justify-content: space-between;
     }
+
     .index1-logo{
         height: 100%;
         width: 250px;
@@ -2057,8 +2060,8 @@ $cssOptions = [
         /*  margin-left:50px;*/
     }
     .file{
-        width: 400px;
-        height: 200px;
+        width: 100%;
+        height:100%;
         background: #f3faff;
         opacity: 0;
     }
@@ -2442,7 +2445,9 @@ $cssOptions = [
     .system-content table tr:hover{
         background: rgba(238,238,238,0.2);
     }
-
+    ..admin-tablelist1{
+        padding:0;
+    }
 </style>
 <?php $this->beginPage() ?>
     <!doctype html>
