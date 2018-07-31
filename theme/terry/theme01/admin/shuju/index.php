@@ -89,11 +89,11 @@
             <div class="platdata-header">
                 <div class="platdata-headername">会员新增趋势</div>
                 <div class="platdata-headerright">
-                    <ul>
-                        <li>七天</li>
-                        <li>一个月</li>
-                        <li>一个季度</li>
-                        <li>一年</li>
+                    <ul style="cursor:pointer;">
+                        <li class="week but1" onclick='cut(3,this)' uri='1'>七天</li>
+                        <li class="month but1" onclick='cut(3,this)' uri='2'>一个月</li>
+                        <li class="quarter but1" onclick='cut(3,this)' uri='3'>一个季度</li>
+                        <li class="year but1" onclick='cut(3,this)' uri='4'>一年</li>
                     </ul>
                     <!--时间戳-->
                     <div class="block" style="float: left;line-height: 48px; position: relative;
@@ -113,8 +113,73 @@ margin-top:4px;"
                     <button style="float: left;border:0;margin-top:13px;">确定</button>
                 </div>
             </div>
-            <div id="mychart">
+            <div id="mychart" >
+            
             </div>
+            <script type="text/javascript">           
+           var myChart = echarts.init(document.getElementById('mychart'));
+            // 异步加载数据
+           var url="<?= Yii::$service->url->getUrl('admin/shuju/hours?hours=24') ?>";
+           function cut(type,that){
+               $(".but1").css({"background":"#fff","color":"#99cafe"});
+               $(that).css({"background":"#F3FAFF","color":"red"});
+               if($(that).attr("uri")==1){
+            	   url="<?= Yii::$service->url->getUrl("admin/shuju/week") ?>?type="+type;
+               }else if($(that).attr("uri")==2){
+            	   url="<?= Yii::$service->url->getUrl('admin/shuju/month') ?>?type="+type;
+               }else if($(that).attr("uri")==3){
+            	   url="<?= Yii::$service->url->getUrl('admin/shuju/quarter') ?>?type="+type;
+               }else if($(that).attr("uri")==4){
+            	   url="<?= Yii::$service->url->getUrl('admin/shuju/year') ?>?type="+type;
+               }
+               $.get(url).done(function (data) {
+                  	var row =JSON.parse(data); 
+                      // 填入数据
+      	             myChart.setOption({
+      	          	   title: {
+      	                   text: '会员新增'
+      	               },
+      	               tooltip: {},
+      	               legend: {
+      	                   data:['新增量']
+      	               },
+      	               xAxis: {
+      	                   data:row.dat    /* row.dat */
+      	               },
+      	               yAxis: {},
+      	               series: [{
+      	                   name: '会员',
+      	                   type: 'line',
+      	                   data:row.num    /* row.num */
+      	               }]
+      	           });
+                  });
+           }
+            $.get(url).done(function (data) {
+            	var row =JSON.parse(data); 
+                // 填入数据
+	             myChart.setOption({
+	          	   title: {
+	                   text: '会员新增'
+	               },
+	               tooltip: {},
+	               legend: {
+	                   data:['新增量']
+	               },
+	               xAxis: {
+	                   data:row.dat    /* row.dat */
+	               },
+	               yAxis: {},
+	               series: [{
+	                   name: '会员',
+	                   type: 'line',
+	                   data:row.num    /* row.num */
+	               }]
+	           });
+            });
+//             // 使用刚指定的配置项和数据显示图表。
+//             myChart.setOption(option);
+            </script>
             <div class="chart-b">
                 <button style=" width: 90px;
         height: 27px;
@@ -148,10 +213,10 @@ margin-top:4px;"
                 <div class="platdata-headername">水司新增趋势</div>
                 <div class="platdata-headerright">
                     <ul>
-                        <li>七天</li>
-                        <li>一个月</li>
-                        <li>一个季度</li>
-                        <li>一年</li>
+                        <li class="week but1" onclick='cut(1,this)' uri='1'>七天</li>
+                        <li class="month but1" onclick='cut(1,this)' uri='2'>一个月</li>
+                        <li class="quarter but1" onclick='cut(1,this)' uri='3'>一个季度</li>
+                        <li class="year but1" onclick='cut(1,this)' uri='4'>一年</li>
                     </ul>
                     <!--时间戳-->
                     <div class="block" style="float: left;line-height: 48px; position: relative;
@@ -173,6 +238,68 @@ margin-top:4px;"
             </div>
             <div id="mychart2">
             </div>
+            <script type="text/javascript">           
+           var mychart2 = echarts.init(document.getElementById('mychart2'));
+            // 异步加载数据
+           var url="<?= Yii::$service->url->getUrl('admin/shuju/hours?hours=24') ?>";
+           function cut(type,that){
+               $(".but1").css({"background":"#fff","color":"#99cafe"});
+               $(that).css({"background":"#F3FAFF","color":"red"});
+               if($(that).attr("uri")==1){
+            	   url="<?= Yii::$service->url->getUrl("admin/shuju/week") ?>?type="+type;
+               }else if($(that).attr("uri")==2){
+            	   url="<?= Yii::$service->url->getUrl('admin/shuju/month') ?>?type="+type;
+               }else if($(that).attr("uri")==3){
+            	   url="<?= Yii::$service->url->getUrl('admin/shuju/quarter') ?>?type="+type;
+               }else if($(that).attr("uri")==4){
+            	   url="<?= Yii::$service->url->getUrl('admin/shuju/year') ?>?type="+type;
+               }
+               $.get(url).done(function (data) {
+                  	var row =JSON.parse(data); 
+                      // 填入数据
+                  	mychart2.setOption({
+      	          	   title: {
+      	                   text: '水司新增'
+      	               },
+      	               tooltip: {},
+      	               legend: {
+      	                   data:['新增量']
+      	               },
+      	               xAxis: {
+      	                   data:row.dat    /* row.dat */
+      	               },
+      	               yAxis: {},
+      	               series: [{
+      	                   name: '水司',
+      	                   type: 'line',
+      	                   data:row.num    /* row.num */
+      	               }]
+      	           });
+                  });
+           }
+            $.get(url).done(function (data) {
+            	var row =JSON.parse(data); 
+                // 填入数据
+            	mychart2.setOption({
+	          	   title: {
+	                   text: '水司新增'
+	               },
+	               tooltip: {},
+	               legend: {
+	                   data:['新增量']
+	               },
+	               xAxis: {
+	                   data:row.dat    /* row.dat */
+	               },
+	               yAxis: {},
+	               series: [{
+	                   name: '水司',
+	                   type: 'line',
+	                   data:row.num    /* row.num */
+	               }]
+	           });
+            });
+            </script>
             <div class="chart-b">
                 <button style=" width: 90px;
         height: 27px;

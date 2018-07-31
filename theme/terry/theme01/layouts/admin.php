@@ -6,6 +6,7 @@ $jsOptions = [ # js的配置部分
         'js' => [
             'js/jquery-3.3.1.min.js',
             'js/layout-admin.js',
+            'js/echarts.js',
             'js/laydate.js'
         ],
     ]
@@ -451,6 +452,7 @@ $cssOptions = [
         border-top: 1px solid #eee;
         box-sizing: border-box;
         min-height: 120px;
+        margin-top:15px;
     }
 
     .pagination {
@@ -868,6 +870,7 @@ $cssOptions = [
         text-align: center;
         background: #fff;
         box-sizing: border-box;
+        cursor: pointer;
     }
 
     .platdata-headerright ul li:hover {
@@ -1626,6 +1629,7 @@ $cssOptions = [
         width: 200px;
         text-align: right;
         font-size: 14px;
+        color:#797979;
     }
     .ppro tr td:last-child{
         width: 615px;
@@ -2034,6 +2038,9 @@ $cssOptions = [
     }
     .el-input__inner{
         width: 279px;
+    }
+    .el-input .el-input__inner{
+        border-radius: 20px;
     }
     .el-form-item__content{
         margin-left:175px !important;
@@ -2445,9 +2452,10 @@ $cssOptions = [
     .system-content table tr:hover{
         background: rgba(238,238,238,0.2);
     }
-    ..admin-tablelist1{
+    .admin-tablelist1{
         padding:0;
     }
+
 </style>
 <?php $this->beginPage() ?>
     <!doctype html>
@@ -2522,39 +2530,41 @@ $cssOptions = [
     <script>
 
 
-        // 筛选顶部菜单
-        var url = location.href.split("/");
+        $(function(){
+            // 筛选顶部菜单
+            var url = location.href.split("/");
 
-        document.querySelector("#" + url[4]).classList.add("active");
+            document.querySelector("#" + url[4]).classList.add("active");
 
-        // 筛选左侧菜单
+            // 筛选左侧菜单
 
-        let asd=document.querySelectorAll(".aside-list li");
+            let asd=document.querySelectorAll(".aside-list li");
 
-        let str1=url[5];
-        let arr1=str1.split("?");
+            let str1=url[5];
+            let arr1=str1.split("?");
 
 
-        for (let i=0; i <asd.length ;i++) {
-            let url12=asd[i].getAttribute('href1');
+            for (let i=0; i <asd.length ;i++) {
+                let url12=asd[i].getAttribute('href1');
 
-            let n = url12.search('/'+arr1[0]);
+                let n = url12.search('/'+arr1[0]);
 
-            if (n>=1) {
-                asd[i].className='active';
+                if (n>=1) {
+                    asd[i].className='active';
+                };
             };
-        };
 
-        let urls = "<?php echo $_SERVER['SERVER_NAME'];?>";
+            let urls = "<?php echo $_SERVER['SERVER_NAME'];?>";
 
 
-        laydate.render({
-            elem:'.el-range-input1',
-            fixed:false
-        })
-        laydate.render({
-            elem:'.el-range-input2',
-            fixed:false
+            laydate.render({
+                elem:'.el-range-input1',
+                fixed:false
+            })
+            laydate.render({
+                elem:'.el-range-input2',
+                fixed:false
+            })
         })
     </script>
     </html>
