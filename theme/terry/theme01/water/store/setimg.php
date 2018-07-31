@@ -81,7 +81,7 @@
                             <span style="color: rgb(48, 163, 254);">图片</span>上传
                         </div>
                         <div class="title">
-                            <form class="el-form" action="<?= Yii::$service->url->getUrl("/shop/store/setpic") ?>" method="post" enctype="multipart/form-data">
+                            <form class="el-form" action="<?= Yii::$service->url->getUrl("/water/store/setpic") ?>" method="post" enctype="multipart/form-data">
                                 <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>" />
                                 <div class="el-row" style="width: 800px;">
                                     <div class="el-form-item"><label class="el-form-item__label"

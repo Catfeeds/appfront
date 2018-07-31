@@ -47,11 +47,11 @@ use yii\helpers\Url;
                     </script>
                     <li>
                         <div class="el-input" style="width: 200px;">
-                            <input type="text" autocomplete="off" placeholder="请输入关键字搜索" class="el-input__inner"/>
+                            <input type="text" autocomplete="off" placeholder="请输入关键字搜索" class="el-input__inner keywords" onkeydown="sel(event)"  />
                         </div>
                     </li>
                     <li>
-                        <div class="sousuo"></div>
+                        <div class="sousuo" onclick="sel(event)" ></div>
                     </li>
                 </ul>
                 <div class="item">
@@ -406,3 +406,15 @@ use yii\helpers\Url;
 
 
 </style>
+
+<script>
+    var el_input=document.querySelectorAll('.el-range-input');
+    function sel(e){
+        if(e.keyCode!=13&&e.type=="keydown"){
+            return;
+        }
+        var startdate=el_input[0].value;
+        var enddate=el_input[1].value;
+        location.href="<?= Yii::$service->url->geturl("/water/account/index?") ?>"+`startdate=${startdate}&enddate=${enddate}`;
+    }
+</script>
