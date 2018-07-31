@@ -6,7 +6,8 @@ $jsOptions = [ # js的配置部分
         'js' => [
             'js/layout-uek.js',
             'js/jquery-3.3.1.min.js',
-            'js/laydate.js'
+            'js/laydate.js',
+            'js/echarts.simple.min.js'
         ],
     ]
 
