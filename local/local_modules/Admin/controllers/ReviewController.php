@@ -229,9 +229,8 @@ class ReviewController extends PublicsController
     	$reason=$req->post('reason');
     	$notice=$req->post('notice');
     	$shop_state=$req->post('shop_state');
-    	$sql="UPDATE shop SET reason='{$reason}',notice='{$notice}',shop_state='{$shop_state}' WHERE shop_id=".$shop_id;
-    	
-
+    	$created_at=time();
+    	$sql="UPDATE shop SET reason='{$reason}',notice='{$notice}',shop_state='{$shop_state}',created_at='{$created_at }' WHERE shop_id=".$shop_id;
         $row= Yii::$app->db->createCommand($sql)->execute();
     	return $this->redirect("/admin/review/index");
     }

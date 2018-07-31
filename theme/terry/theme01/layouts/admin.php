@@ -2556,15 +2556,6 @@ $cssOptions = [
 
             let urls = "<?php echo $_SERVER['SERVER_NAME'];?>";
 
-
-            laydate.render({
-                elem:'.el-range-input1',
-                fixed:false
-            })
-            laydate.render({
-                elem:'.el-range-input2',
-                fixed:false
-            })
         })
     </script>
     </html>
