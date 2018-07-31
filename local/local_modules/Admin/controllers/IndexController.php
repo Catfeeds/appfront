@@ -254,7 +254,11 @@ class IndexController extends PublicsController
         $req = Yii::$app->request;
         $id = $req->get(id);
         $res = Yii::$app->db->createCommand("select * from customer where id='$id'")->queryOne();
+        $money = Yii::$app->db->createCommand("select * from money_record where uid='$id'")->queryAll();
+        $address = Yii::$app->db->createCommand("select * from customer_address where customer_id='$id'")->queryAll();
         $data['res'] = $res;
+        $data['money'] = $money;
+        $data['address'] = $address;
         return $this->render($this->action->id, $data);
     }
     //删除会员
@@ -266,24 +270,29 @@ class IndexController extends PublicsController
         echo $id;
         return $this->redirect(["/admin/index/member"]);
     }
-    //移入黑名单status改为2
+    //移入黑名单status改为3
     public function actionMblacklist()
     {
         $req = Yii::$app->request;
         $id = $req->get(id);
-        $sql = "update admin_user set status=2 where id='$id'";
+        $sql = "update customer set status=3 where id='$id'";
         $res = Yii::$app->db->createCommand($sql)->execute();
-        return $this->redirect(["/admin/index/index"]);
+        echo "成功移入黑名单！";
+        exit;
+        return $this->redirect(["/admin/index/member"]);
+
     }
 
-    //冻结账号status改为3
+    //冻结账号status改为2
     public function actionMfreeze()
     {
         $req = Yii::$app->request;
         $id = $req->get(id);
-        $sql = "update admin_user set status=3 where id='$id'";
+        $sql = "update customer set status=2 where id='$id'";
         $res = Yii::$app->db->createCommand($sql)->execute();
-        return $this->redirect(["/admin/index/index"]);
+        echo "冻结成功！";
+        exit;
+        return $this->redirect(["/admin/index/member"]);
     }
 
     //==============================用户管理、店铺管理====================================

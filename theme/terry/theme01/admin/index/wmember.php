@@ -64,14 +64,14 @@ use yii\helpers\Url;
                     <tr>
                         <td>累计充值:</td>
                         <td>
-                            <input type="text" value="￥<?php echo $res['coin']?>">
+                            <input type="text" value="￥<?php echo $money['moneyNum']?>" name="moneyNum">
                         </td>
                     </tr>
                     <tr>
                         <td>账号状态:</td>
                         <td>
                             <div class="xiala" style="margin:0;margin-left:10px;width: 300px;">
-                                <select name="status" id="status"
+                                <select name="status" id="status" name="status"
                                         style="width: 300px;background: #f3faff;margin:0;height: 36px">
                                     <option value="" <?php if($res['status']==1){echo 'selected';}?>>正常</option>
                                     <option value="" <?php if($res['status']==0){echo 'selected';}?>>不正常</option>
@@ -83,7 +83,7 @@ use yii\helpers\Url;
                     <tr>
                         <td>账户余额:</td>
                         <td>
-                            <input type="text" value="￥<?php echo $res['money']?>">
+                            <input type="text" value="￥<?php echo $res['money']?>" name="money">
                             <button style="outline: none;width: 100px;height: 36px;color:#fff;line-height: 36px;text-align: center;
 background: #30b7fe;border-radius: 16px;float: left;margin-left:10px;border:none;" @click="dofind">查看详情</button>
                         </td>
@@ -91,27 +91,27 @@ background: #30b7fe;border-radius: 16px;float: left;margin-left:10px;border:none
                     <tr>
                         <td>金币余额:</td>
                         <td>
-                            <input type="text" value="299(个)">
+                            <input type="text" value="<?= $res['coin']?>(个)" name="coin">
                             <button style="outline: none;width: 100px;height: 36px;color:#fff;line-height: 36px;text-align: center;
-background: #30b7fe;border-radius: 16px;float: left;margin-left:10px;border:none;"@click="getinfo">查看详情</button>
+background: #30b7fe;border-radius: 16px;float: left;margin-left:10px;border:none;">查看详情</button>
                         </td>
                     </tr>
                     <tr>
                         <td>注册时间:</td>
                         <td>
-                            <input type="text" value="2018-05-21">
+                            <input type="text" name="created_at" value="<?php echo date("Y-m-d",$res['created_at'])?>">
                         </td>
                     </tr>
                     <tr>
                         <td>手机号:</td>
                         <td>
-                            <input type="text" value="13409876743">
+                            <input type="text" name="tel" value="<?php echo $res['tel'];?>">
                         </td>
                     </tr>
                     <tr>
                         <td>邮箱地址:</td>
                         <td>
-                            <input type="text" value="1340987674@qq.com">
+                            <input type="text" name="email" value="<?php echo $res['email']?>">
                         </td>
                     </tr>
                     <tr>
@@ -122,55 +122,71 @@ background: #30b7fe;border-radius: 16px;float: left;margin-left:10px;border:none
 
 
             </div>
-            <table border="0" class="admin-tablelist active" style="float: left;">
-                <tr>
-                    <th>收货人</th>
-                    <th style="flex:2;">地址</th>
-                    <th>手机号</th>
-                    <th>编辑</th>
-                </tr>
-                <tr>
-                    <td>
-                        <span style="float: left;">木子</span>
-                        <button style="width: 80px;height: 36px;color:#fff;line-height: 36px;text-align: center;
-background: #37df75;border-radius: 16px;float: left;margin-left:10px;border:none;">默认
-                        </button>
-                    </td>
-                    <td style="flex:2;">山西省太原市迎泽区迎泽大街大南门123号</td>
-                    <td>13400000003</td>
-                    <td>
-                        <a style="color: #30a3fe" href="javascript:0">删除</a>
-                        &nbsp;<label>|</label>&nbsp;
-                        <a style="color: #30a3fe" href="javascript:0">修改</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span style="float: left;">木子</span>
-                    </td>
-                    <td style="flex:2;">山西省太原市迎泽区迎泽大街大南门123号</td>
-                    <td>13400000003</td>
-                    <td>
-                        <a style="color: #30a3fe" href="javascript:0">删除</a>
-                        &nbsp;<label>|</label>&nbsp;
-                        <a style="color: #30a3fe" href="javascript:0">修改</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span style="float: left;">木子</span>
-                    </td>
-                    <td style="flex:2;">山西省太原市迎泽区迎泽大街大南门123号</td>
-                    <td>13400000003</td>
-                    <td>
-                        <a style="color: #30a3fe" href="javascript:0">删除</a>
-                        &nbsp;<label>|</label>&nbsp;
-                        <a style="color: #30a3fe" href="javascript:0">修改</a>
-                    </td>
-                </tr>
-            </table >
-            <button style="width: 100px;height: 36px;color:#fff;line-height: 36px;text-align: center;
-background: #30b7fe;border-radius: 16px;float: left;margin-left:10px;border:none;outline: none;">保存修改</button>
+            <div class="el-table__body-wrapper is-scrolling-left">
+                <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
+                       style="width: 1012px;">
+                    <colgroup>
+                        <col name="el-table_2_column_6" width="150">
+                        <col name="el-table_2_column_7" width="400">
+                        <col name="el-table_2_column_8" width="150">
+                    </colgroup>
+                    <thead class="has-gutter">
+                    <tr style="font-size: 14px;color: #B1DBFE;text-align: left;height: 50px;">
+                        <th
+                                class="el-table_2_column_11     is-leaf">
+                            <div class="cell">收货人</div>
+                        </th>
+                        <th
+                                class="el-table_2_column_12     is-leaf">
+                            <div class="cell">地址</div>
+                        </th>
+                        <th
+                                class="el-table_2_column_13     is-leaf">
+                            <div class="cell">手机号</div>
+                        </th>
+                        <th class="gutter" style="width: 0px; display: none;"></th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="el-table__body-wrapper is-scrolling-left">
+                <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
+                       style="width: 1012px;">
+                    <colgroup>
+                        <col name="el-table_2_column_6" width="150">
+                        <col name="el-table_2_column_7" width="400">
+                        <col name="el-table_2_column_8" width="150">
+                    </colgroup>
+                    <tbody style="font-size: 12px;color:#82898e">
+                    <?php foreach ($address as $v){?>
+                        <tr class="el-table__row" style="height:36px;font-size: 14px;">
+                            <td class="el-table_2_column_11  ">
+                                <div class="cell el-tooltip" title="<?= $v["increment_id"] ?>">
+                                    <span style="float: left;line-height: 36px;"><?= $v['first_name']?></span>
+                                    <?php if($v['is_default']==1){?>
+                                        <button style="width: 60px;height: 28px;color:#fff;line-height: 28px;text-align: center;
+background: #37df75;border-radius: 16px;float: left;margin-left:10px;border:none;margin-top:6px;">默认</button>
+                                    <?php }?>
+                                </div>
+                            </td>
+                            <td class="el-table_2_column_12">
+                                <div class="cell el-tooltip">
+                                    <?php echo $v['city'],$v['street1'],$v['street2'];?>
+                                </div>
+                            </td>
+
+                            <td class="el-table_2_column_14">
+                                <div class="cell el-tooltip" title="<?= $v["payment_method"] ?>">
+                                    <?= $v['telephone']?>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+            <button style="margin-top:50px;width: 100px;height: 36px;color:#fff;line-height: 36px;text-align: center;
+background: #30b7fe;border-radius: 16px;float: left;border:none;outline: none;margin-bottom:50px;">保存修改</button>
         </div>
 
         <com-footer></com-footer>
