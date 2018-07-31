@@ -185,6 +185,9 @@ class OrdersController extends PublicsController
         if ($get["increment_id"]) {
             $sql .= " and increment_id='{$get["increment_id"]}'";
         }
+        if ($get["orderStatus"]) {
+            $sql .= " and order_status='{$get["orderStatus"]}'";
+        }
         $count = Yii::$app->db->createCommand($sql)->queryAll();
 
         // 实例化分页对象
@@ -198,6 +201,9 @@ class OrdersController extends PublicsController
         }
         if ($get["increment_id"]) {
             $sql .= " and increment_id='{$get["increment_id"]}'";
+        }
+        if ($get["orderStatus"]) {
+            $sql .= " and order_status='{$get["orderStatus"]}'";
         }
         $res = Yii::$app->db->createCommand($sql)->queryAll();
 

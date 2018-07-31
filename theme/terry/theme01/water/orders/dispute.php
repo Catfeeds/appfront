@@ -85,13 +85,14 @@ use yii\helpers\Url;
                                     role="presentation" class="el-breadcrumb__separator">·</span></span></div>
                 </div>
                 <ul data-v-7a00a356="" class="shuaixuan">
-                    <li data-v-7a00a356="">
-                        <select name="class" id="" class="el-select xiala" style="margin-left:10px;">
-                            <option value="" style="display: none;">请选择处理状态</option>
-                            <option value="">1</option>
-                            <option value="">1</option>
-                            <option value="">1</option>
-                        </select>
+                    <li data-v-7a00a356="" style="display: flex;align-items: center">
+                        <form>
+                            <select name="class" id="" class="el-select xiala chuli" style="margin-left:10px;">
+                                <option value="" style="display: none;">请选择处理状态</option>
+                                <option value="5">未处理</option>
+                                <option value="6">已处理</option>
+                            </select>
+                        </form>
                     </li>
                     <li data-v-7a00a356="">
                         <select name="class" id="" class="el-select xiala">
@@ -356,11 +357,16 @@ use yii\helpers\Url;
 </div>
 <script>
     $(function(){
-        console.log($(".sousuo"));
+        // console.log($(".chuli"));
+        console.log($(".chuli"));
+        let orderStatus = "";
+        $(".chuli").on("change",function () {
+            orderStatus = $('form').serializeArray()[0]['value'];
+        })
         $(".sousuo").on("click",function () {
             let customer_firstname = $("input.customer_firstname").val();
             let increment_id = $("input.increment_id").val();
-            location.href="<?= Yii::$service->url->geturl("/water/orders/dispute?") ?>"+`customer_firstname=${customer_firstname}&increment_id=${increment_id}`;
+            location.href="<?= Yii::$service->url->geturl("/water/orders/dispute?") ?>"+`customer_firstname=${customer_firstname}&increment_id=${increment_id}&orderStatus=${orderStatus}`;
         })
 
     })
