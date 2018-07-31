@@ -1,3 +1,11 @@
+<?php
+
+    use yii\widgets\LinkPager;
+    use yii\helpers\Html;
+    use yii\helpers\Url;
+
+?>
+
 <div class="box">
     <div class="freeze" style="display: none;">
         <div class="freeze-content">
@@ -134,8 +142,8 @@
             </div>
             <div class="main-content2">
                 <ul class="biaoti">
-                    <li data-v-af5b5ab4="">待处理订单（0）</li>
-                    <li data-v-af5b5ab4="">退换货订单（0）</li>
+                    <li data-v-af5b5ab4="">待处理订单（<?= $wait_handle ?>）</li>
+                    <li data-v-af5b5ab4="">退换货订单（<?= $returnAll ?>）</li>
                     <li data-v-af5b5ab4="">当前店铺活动（0）</li>
                     <li data-v-af5b5ab4="">即将到期店铺活动（0）</li>
                     <li data-v-af5b5ab4="">待处理回复评论（0）</li>
@@ -180,8 +188,21 @@
                             <div class="item_box3">
                                 昨日成交额 <?= $volume1 ?>
 
-                                <div class="jiantou1"></div>
-                                11%
+                                <?php
+
+                                if ($volume1 != 0) {
+                                    $n = (number_format(abs($volume - $volume1) / $turnover1, 2) * 100) . "%";
+                                } else {
+                                    $n = "本月增长" . number_format($volume, 2);
+                                }
+                                if ($volume > $volume1) {
+                                    echo '<div class="jiantou1"></div>' . $n;
+                                } else if ($volume < $volume1) {
+                                    echo '<div class="jiantou2"></div>' . $n;
+                                } else {
+                                    echo '<div class="jiantou3"></div>' . $n;
+                                }
+                                ?>
                             </div>
                         </div>
                     </li>
@@ -191,12 +212,24 @@
                                 今日下单量
                             </div>
                             <div class="item_box2">
-                                1990
+                                <?= $single ?>
                             </div>
                             <div class="item_box3">
-                                昨日下单量 8,222.00
-                                <div class="jiantou2"></div>
-                                11%
+                                昨日下单量 <?= $single1 ?>
+                                <?php
+                                    if ($single1 != 0) {
+                                        $n = (number_format(abs($single - $single1) / $turnover1, 2) * 100) . "%";
+                                    } else {
+                                        $n = "本月增长" . number_format($single, 2);
+                                    }
+                                    if ($single > $single1) {
+                                        echo '<div class="jiantou1"></div>' . $n;
+                                    } else if ($single < $single1) {
+                                        echo '<div class="jiantou2"></div>' . $n;
+                                    } else {
+                                        echo '<div class="jiantou3"></div>' . $n;
+                                    }
+                                ?>
                             </div>
                         </div>
                     </li>
@@ -206,12 +239,24 @@
                                 今日退货量
                             </div>
                             <div class="item_box2">
-                                30
+                                <?= $return ?>
                             </div>
                             <div class="item_box3">
-                                昨日退货量 8,222.00
-                                <div class="jiantou3"></div>
-                                11%
+                                昨日退货量 <?= $return1 ?>
+                                <?php
+                                    if ($return1 != 0) {
+                                        $n = (number_format(abs($return - $return1) / $turnover1, 2) * 100) . "%";
+                                    } else {
+                                        $n = "本月增长" . number_format($single, 2);
+                                    }
+                                    if ($return > $return1) {
+                                        echo '<div class="jiantou1"></div>' . $n;
+                                    } else if ($return < $return1) {
+                                        echo '<div class="jiantou2"></div>' . $n;
+                                    } else {
+                                        echo '<div class="jiantou3"></div>' . $n;
+                                    }
+                                ?>
                             </div>
                         </div>
                     </li>
@@ -221,12 +266,24 @@
                                 今日点击量
                             </div>
                             <div class="item_box2">
-                                3919
+                                <?= $clicks ?>
                             </div>
                             <div class="item_box3">
-                                昨日点击量 8,222.00
-                                <div class="jiantou1"></div>
-                                11%
+                                昨日点击量 <?= $clicks1 ?>
+                                <?php
+                                if ($clicks1 != 0) {
+                                    $n = (number_format(abs($clicks - $clicks1) / $turnover1, 2) * 100) . "%";
+                                } else {
+                                    $n = "本月增长" . number_format($clicks, 2);
+                                }
+                                if ($clicks > $clicks1) {
+                                    echo '<div class="jiantou1"></div>' . $n;
+                                } else if ($clicks < $clicks1) {
+                                    echo '<div class="jiantou2"></div>' . $n;
+                                } else {
+                                    echo '<div class="jiantou3"></div>' . $n;
+                                }
+                                ?>
                             </div>
                         </div>
                     </li>
@@ -240,17 +297,20 @@
                 <div style="font-size: 12px; line-height: 46px; border-bottom: 1px solid rgb(48, 162, 254);">
                     <span style="margin-left: 17px; color: rgb(153, 202, 254);">最近一周单品销量排名</span>
                     <div style="float: right;">
-                        <label role="radio" aria-checked="true" tabindex="0" class="el-radio is-checked"><span
-                                    class="el-radio__input is-checked"><span class="el-radio__inner"></span><input
-                                        type="radio" aria-hidden="true" tabindex="-1" class="el-radio__original"
-                                        value="1"/></span><span class="el-radio__label">按销售量排名
-                                <!----></span></label>
-                        <label role="radio" tabindex="0" class="el-radio"><span class="el-radio__input"><span
-                                        class="el-radio__inner"></span><input type="radio" aria-hidden="true"
-                                                                              tabindex="-1" class="el-radio__original"
-                                                                              value="2"/></span><span
-                                    class="el-radio__label">按销售额排名
-                                <!----></span></label>
+                        <div role="radio" aria-checked="true" tabindex="0" class="el-radio is-checked d">
+                            <span class="el-radio__input <?php if($sort_rule=="nums"){echo "is-checked";} ?>">
+                                <span class="el-radio__inner"></span>
+                                <input type="radio" aria-hidden="true" tabindex="-1" class="el-radio__original" value="1"/>
+                            </span>
+                            <span class="el-radio__label">按销售量排名</span>
+                        </div>
+                        <div role="radio" tabindex="0" class="el-radio d">
+                            <span class="el-radio__input <?php if($sort_rule=="prices"){echo "is-checked";} ?>">
+                                <span class="el-radio__inner"></span>
+                                <input type="radio" aria-hidden="true" tabindex="-1" class="el-radio__original" value="2"/>
+                            </span>
+                            <span class="el-radio__label">按销售额排名</span>
+                        </div>
                     </div>
                 </div>
                 <div>
@@ -325,166 +385,40 @@
                                     <col name="el-table_2_column_16" width="146"/>
                                 </colgroup>
                                 <tbody style="font-size: 12px;color: #82898e">
+                                <?php foreach ($statistics as $k=>$v){ ?>
                                 <tr class="el-table__row">
                                     <td class="el-table_2_column_11  ">
                                         <div class="cell">
-                                            1
+                                            <?= $k+1+$pagination->offset*$pagination->limit ?>
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_12  ">
-                                        <div class="cell">
-                                            ECS00103
+                                        <div class="cell" title="<?= $v['sku'] ?>">
+                                            <?= $v['sku'] ?>
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_13  ">
-                                        <div class="cell">
-                                            JOMOO九牧精铜单冷快开水龙头洗衣机快开水龙头自来水嘴
+                                        <div class="cell" title="<?= $v["name"] ?>">
+                                            <?= $v["name"] ?>
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_14  ">
-                                        <div class="cell">
-                                            1002
+                                        <div class="cell" title="<?= $v["nums"] ?>">
+                                            <?= $v["nums"] ?>
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_15  ">
-                                        <div class="cell">
-                                            10,915
+                                        <div class="cell" title="<?= number_format($v['prices'],2) ?>">
+                                            <?= number_format($v['prices'],2) ?>
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_16  ">
                                         <div class="cell">
-                                            119.99
+                                            <?= number_format($v["prices"]/$v["nums"],2) ?>
                                         </div>
                                     </td>
                                 </tr>
-                                <tr class="el-table__row">
-                                    <td class="el-table_2_column_11  ">
-                                        <div class="cell">
-                                            2
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_12  ">
-                                        <div class="cell">
-                                            ECS00103
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_13  ">
-                                        <div class="cell">
-                                            JOMOO九牧精铜单冷快开水龙头洗衣机快开水龙头自来水嘴
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_14  ">
-                                        <div class="cell">
-                                            1002
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_15  ">
-                                        <div class="cell">
-                                            10,915
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_16  ">
-                                        <div class="cell">
-                                            119.99
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="el-table__row">
-                                    <td class="el-table_2_column_11  ">
-                                        <div class="cell">
-                                            3
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_12  ">
-                                        <div class="cell">
-                                            ECS00103
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_13  ">
-                                        <div class="cell">
-                                            JOMOO九牧精铜单冷快开水龙头洗衣机快开水龙头自来水嘴
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_14  ">
-                                        <div class="cell">
-                                            1002
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_15  ">
-                                        <div class="cell">
-                                            10,915
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_16  ">
-                                        <div class="cell">
-                                            119.99
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="el-table__row">
-                                    <td class="el-table_2_column_11  ">
-                                        <div class="cell">
-                                            4
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_12  ">
-                                        <div class="cell">
-                                            ECS00103
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_13  ">
-                                        <div class="cell">
-                                            JOMOO九牧精铜单冷快开水龙头洗衣机快开水龙头自来水嘴
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_14  ">
-                                        <div class="cell">
-                                            1002
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_15  ">
-                                        <div class="cell">
-                                            10,915
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_16  ">
-                                        <div class="cell">
-                                            119.99
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="el-table__row">
-                                    <td class="el-table_2_column_11  ">
-                                        <div class="cell">
-                                            5
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_12  ">
-                                        <div class="cell">
-                                            ECS00103
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_13  ">
-                                        <div class="cell">
-                                            JOMOO九牧精铜单冷快开水龙头洗衣机快开水龙头自来水嘴
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_14  ">
-                                        <div class="cell">
-                                            1002
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_15  ">
-                                        <div class="cell">
-                                            10,915
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_16  ">
-                                        <div class="cell">
-                                            119.99
-                                        </div>
-                                    </td>
-                                </tr>
+                                <?php } ?>
                                 </tbody>
                             </table>
                         </div>
@@ -496,12 +430,12 @@
                         <div style="display: flex;">
                             <div class="dian"></div>
                             总计
-                            <span style="color: rgb(61, 176, 255); font-weight: bolder;">206</span>记录
+                            <span style="color: rgb(61, 176, 255); font-weight: bolder;"><?= $count ?></span>记录
                         </div>
                         <div style="display: flex;">
                             <div class="dian" style="background: rgb(41, 201, 154);"></div>
                             分
-                            <span style="font-weight: bolder; color: rgb(41, 201, 154);">82</span>页
+                            <span style="font-weight: bolder; color: rgb(41, 201, 154);"><?= ceil($count/$pagination->limit) ?></span>页
                         </div>
                     </div>
                     <button type="button" class="el-button green el-button--success is-round" style="padding:0;">
@@ -509,33 +443,37 @@
                 </div>
                 <div>
                     <div style="width: 400px; font-size: 12px; float: right; display: flex; justify-content: space-between;">
-                        <div class="button_left">
-                            首页
-                        </div>
-                        <div class="el-pagination">
-                            <button type="button" disabled="disabled" class="btn-prev"><i
-                                        class="el-icon el-icon-arrow-left"></i></button>
-                            <ul class="el-pager">
-                                <li class="number active">1</li>
-                                <!---->
-                                <li class="number">2</li>
-                                <li class="number">3</li>
-                                <li class="number">4</li>
-                                <!---->
-                                <li class="number">5</li>
-                            </ul>
-                            <button type="button" class="btn-next"><i class="el-icon el-icon-arrow-right"></i></button>
-                        </div>
-                        <div class="button_right">
-                            末页
-                        </div>
+                        <?php
+                            echo LinkPager::widget([
+                                'pagination' => $pagination,
+                                'firstPageLabel' => '首页',
+                                'lastPageLabel' => '尾页',
+
+                                'nextPageLabel' => '>',
+                                'prevPageLabel' => '<',
+                            ]);
+                        ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
+<script>
+    $(".d").click(function () {
+        $(this).find(".el-radio__input").addClass("is-checked").end().siblings().find(".el-radio__input").removeClass("is-checked");
+        if($(this).find("input").val()==1){
+            location.href="<?= Yii::$service->url->geturl("/shop/index/index?flag=1") ?>";
+        }else {
+            location.href="<?= Yii::$service->url->geturl("/shop/index/index?sort_rule=prices&flag=1") ?>";
+        }
+    });
+    <?php if($flag){ ?>
+        scrollTo(0, document.body.clientHeight);
+    <?php } ?>
+    var datas = <?php echo json_encode($sales_infor)?>;
+    console.log(datas);
+</script>
 <style>
 
     .close {
@@ -831,7 +769,7 @@
     .zhexian {
         width: 1012px;
         height: 370px;
-        background: url("/public/img/zhexiantu.png") no-repeat center center/100% auto;
+        /*background: url("/public/img/zhexiantu.png") no-repeat center center/100% auto;*/
     }
 
     .green {
