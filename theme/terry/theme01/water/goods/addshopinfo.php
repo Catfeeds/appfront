@@ -45,7 +45,7 @@
                     </div>
                     <div class="neirong">
                         <form class="el-form" method="post" enctype="multipart/form-data"
-                              action="<?= Yii::$service->url->getUrl('shop/goods/addgoods1') ?>">
+                              action="<?= Yii::$service->url->getUrl('water/goods/addgoods1') ?>">
                             <div class="el-form-item">
                                 <label class="el-form-item__label" style="width: 80px;">商品货号</label>
                                 <div class="el-form-item__content" style="margin-left: 80px;">
@@ -253,7 +253,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="<?= Yii::$service->url->getUrl('shop/goods/addclass') ?>" class="">
+                <a href="<?= Yii::$service->url->getUrl('water/goods/addclass') ?>" class="">
                     <button type="button" class="el-button blue el-button--primary is-round"
                             style="margin-right: 20px;">
                         <span>上一步，选择商品分类 </span></button>

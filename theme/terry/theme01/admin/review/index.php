@@ -108,7 +108,8 @@ use yii\helpers\Url;
 							})
 						}
 					})
-				}
+				}css({"color":"red","width":"11px"})
+				css("color","red");
         </script>
         <!--待审核列表-->
         <div class="el-table__body-wrapper is-scrolling-left" style="margin-top:20px;">
