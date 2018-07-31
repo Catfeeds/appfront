@@ -208,6 +208,12 @@ class OrdersController extends PublicsController
         } else {
             $sql = " select count(*) tot from sales_flat_order where shop_id={$_SESSION["shop_id"]} and order_status<5 and goods_type='1'";
         }
+        if ($get["customer_firstname"]) {
+            $sql .= " and customer_firstname='{$get["customer_firstname"]}'";
+        }
+        if ($get["increment_id"]) {
+            $sql .= " and increment_id='{$get["increment_id"]}'";
+        }
         //查询订单表数量
         $countArr = Yii::$app->db->createCommand($sql)->queryOne();
 
@@ -218,12 +224,21 @@ class OrdersController extends PublicsController
             'totalCount' => $countArr['tot'],
         ]);
         //查询订单产品表
+        $sql = "select sales_flat_order.* from sales_flat_order where sales_flat_order.shop_id={$_SESSION['shop_id']}";
+        if ($get["customer_firstname"]) {
+            $sql .= " and customer_firstname='{$get["customer_firstname"]}'";
+        }
+        if ($get["increment_id"]) {
+            $sql .= " and increment_id='{$get["increment_id"]}'";
+        }
+        //查询订单产品表
         if ($get["flag"]) {
             $flag = $get['flag'] - 1;
-            $sql = " select sales_flat_order.* from sales_flat_order where sales_flat_order.shop_id={$_SESSION["shop_id"]} and sales_flat_order.order_status={$flag} and goods_type='1' limit $pagination->offset , $pagination->limit";
+            $sql .= "  and sales_flat_order.order_status={$flag} and goods_type='1' limit $pagination->offset , $pagination->limit";
         } else {
-            $sql = " select sales_flat_order.* from sales_flat_order where sales_flat_order.shop_id={$_SESSION["shop_id"]} and order_status<5 and goods_type='1' limit $pagination->offset , $pagination->limit";
+            $sql .= "  and order_status<5 and goods_type='1' limit $pagination->offset , $pagination->limit";
         }
+
 
         $arr = Yii::$app->db->createCommand($sql)->queryAll();
 
