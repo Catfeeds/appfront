@@ -150,7 +150,7 @@ class IndexController extends PublicsController
 
 
         //获取最近一周的销售信息
-        $sales_infor = Yii::$app->db->createCommand("select * from sales_flat_order where created_at>$week_start and created_at<=$week_end")->queryAll();
+        $sales_infor = Yii::$app->db->createCommand("select created_at,paypal_order_datetime from sales_flat_order where created_at>$week_start and created_at<=$week_end")->queryAll();
 
 
         /*
