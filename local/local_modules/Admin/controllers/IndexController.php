@@ -54,10 +54,6 @@ class IndexController extends PublicsController
             'defaultPageSize' => 2,
             'totalCount' => $tot,
         ]);
-        // 进行数据查询
-        $rows = $query->from('admin_user')
-            ->offset($pagination->offset)
-            ->limit($pagination->limit)->all();
 
         //判断是否搜索
         if ($person != null) {
@@ -83,6 +79,12 @@ class IndexController extends PublicsController
                 ])->offset($pagination->offset)
                 ->limit($pagination->limit)->all();
         }
+        else{
+            $rows = $query->from('admin_user')
+                ->offset($pagination->offset)
+                ->limit($pagination->limit)->all();
+        }
+
         // 进行数据查询
 
         $data["pagination"] = $pagination;
@@ -154,12 +156,6 @@ class IndexController extends PublicsController
         return $this->redirect(["/admin/index/aindex"]);
     }
     //===========================用户管理、会员管理=======================================
-
-//查看详情页中修改部分会员信息
-    public function actionUpdatemember(){
-
-
-    }
     //会员首页
     public function actionMember()
     {
@@ -184,28 +180,28 @@ class IndexController extends PublicsController
         // 进行数据查询
 
         //判定搜索
-        if ($firstname != null) {
+        if ($firstname != null && $id == null && $level==null) {
             $rows = $query->select('*')
                 ->from('customer')
                 ->where([
                     'firstname' => $firstname
                 ])->offset($pagination->offset)
                 ->limit($pagination->limit)->all();
-        } else if ($id != null) {
+        } else if ($id != null && $firstname == null && $level==null) {
             $rows = $query->select('*')
                 ->from('customer')
                 ->where([
                     'id' => $id
                 ])->offset($pagination->offset)
                 ->limit($pagination->limit)->all();
-        } else if ($level != null) {
+        } else if ($level != null && $firstname == null && $id==null) {
             $rows = $query->select('*')
                 ->from('customer')
                 ->where([
                     'level' => $level
                 ])->offset($pagination->offset)
                 ->limit($pagination->limit)->all();
-        } else if ($firstname != null && $id != null) {
+        } else if ($firstname != null && $id != null && $level==null) {
             $rows = $query->select('*')
                 ->from('customer')
                 ->where([
@@ -213,7 +209,7 @@ class IndexController extends PublicsController
                     'id' => $id
                 ])->offset($pagination->offset)
                 ->limit($pagination->limit)->all();
-        } else if ($firstname != null && $level != null) {
+        } else if ($firstname != null && $level != null && $id==null) {
             $rows = $query->select('*')
                 ->from('customer')
                 ->where([
@@ -221,7 +217,7 @@ class IndexController extends PublicsController
                     'level' => $level
                 ])->offset($pagination->offset)
                 ->limit($pagination->limit)->all();
-        } else if ($id != null && $level != null) {
+        } else if ($id != null && $level != null && $firstname==null) {
             $rows = $query->select('*')
                 ->from('customer')
                 ->where([
@@ -311,7 +307,7 @@ class IndexController extends PublicsController
     public function actionWmoney(){
         $req = Yii::$app->request;
         $id = $req->get(id);
-        $lm = Yii::$app->db->createCommand("select * from money_record where uid = '$id'")->queryAll();
+        $lm = Yii::$app->db->createCommand("select * from money_record where uid = '$id' and `type` = 0")->queryAll();
         //转时间格式
         foreach ($lm as $k=>$v){
             $lm[$k]['time'] = date("Y-m-d",$v['time']);
@@ -322,7 +318,7 @@ class IndexController extends PublicsController
     public function actionWcoin(){
         $req = Yii::$app->request;
         $id = $req->get(id);
-        $lc = Yii::$app->db->createCommand("select * from coin_record where uid = '$id'")->queryAll();
+        $lc = Yii::$app->db->createCommand("select * from coin_record where uid = '$id' and `type` = 2")->queryAll();
         //转时间格式
         foreach ($lc as $k=>$v){
            $lc[$k]['time'] = date("Y-m-d",$v['time']);
@@ -368,7 +364,7 @@ class IndexController extends PublicsController
         }
         // 实例化分页对象
         $pagination = new Pagination([
-            'defaultPageSize' => 1,
+            'defaultPageSize' => 3,
             'totalCount' => $tot,
         ]);
         // 进行数据查询
@@ -393,6 +389,7 @@ class IndexController extends PublicsController
         $data['pagination'] = $pagination;
         $data['res'] = $res;
         $data['rows'] = $rows;
+        $data['tot'] = $tot;
         return $this->render($this->action->id, $data);
     }
 
@@ -404,4 +401,16 @@ class IndexController extends PublicsController
         return $this->render($this->action->id, $data);
     }
     //查看店铺
+    public function actionWshop()
+    {
+        $req = Yii::$app->request;
+        $id = $req->get(id);
+        var_dump($id);
+        exit;
+        $rows = Yii::$app->db->createCommand("select * from shop where id= '$id'")->queryOne();
+        var_dump($rows);
+        exit;
+        $data['rows'] = $rows;
+        return $this->render($this->action->id,$data);
+    }
 }
