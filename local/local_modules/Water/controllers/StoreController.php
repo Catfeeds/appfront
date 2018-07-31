@@ -57,7 +57,7 @@ class StoreController extends PublicsController
 
         $res = Yii::$app->db->createCommand($sql)->execute();
 
-        return $this->redirect("/shop/store/index");
+        return $this->redirect("/water/store/index");
 
         //文件上传存放的目录
 
@@ -106,18 +106,101 @@ class StoreController extends PublicsController
 
     }
 
-    //返回店铺图片设置页面
+    //返回设置店铺图片页面
     public function actionSetimg(){
 
+        $uid = $_SESSION["uid"];
+        $res = Yii::$app->db->createCommand("select shop.shop_logo,shop.shop_avatar from shop where uid=$uid")->queryOne();
 
-        return $this->render($this->action->id);
+        $datas["res"] = $res;
+        $datas["imgUrl"] = Yii::$app->params["img"];
+
+
+        return $this->render($this->action->id,$datas);
+
+    }
+
+    //编辑店铺页面信息
+    public function actionSetpic(){
+
+        $res = Yii::$app->request;
+        $post = $res->post();
+
+        //文件上传存放的目录
+
+        $folder ='../../appimage/common/images/';
+
+        $file=$_FILES['file'];
+
+        // 获取用户上传的数量
+
+        $size=count($file['name']);
+
+        $img=[];
+        // 文件处理
+
+        for ($i=0; $i < $size; $i++) {
+
+            // 接收文件名
+            $name=$file['name'][$i];
+
+            // 接收临时目录
+            $tmp_name=$file['tmp_name'][$i];
+
+            // 错误编码
+
+            $error=$file['error'][$i];
+
+            if ($error==0) {
+
+                // 检测文件是否来自于表单
+                if (is_uploaded_file($tmp_name)) {
+                    # code...
+                    // 新的文件名
+                    if($i == 0){
+                        $arr = explode("/",$post["shop_logo"]);
+                        $newName = $arr[count($arr)-1];
+                    }
+                    if($i == 1){
+                        $arr = explode("/",$post["shop_avatar"]);
+                        $newName = $arr[count($arr)-1];
+                    }
+                    // 进行上传
+
+                    if (move_uploaded_file($tmp_name,$folder.$newName)) {
+
+                        $shop_logo = explode("images/",$post['shop_logo'])[1];
+                        $shop_avatar = explode("images/",$post['shop_avatar'])[1];
+
+                        $res = Yii::$app->db->createCommand("update shop set shop_logo='{$shop_logo}',shop_avatar='{$shop_avatar}' where uid={$_SESSION['uid']}")->execute();
+
+                    }
+                }
+            }
+        }
+        return $this->redirect("/water/store/setimg");
 
     }
 
     //返回优惠卷管理首页
     public function actionCouponindex(){
 
-        $count = Yii::$app->db->createCommand("select count(*) num from sales_coupon where uid={$_SESSION["uid"]}")->queryAll();
+        //添加搜索条件
+        $request = Yii::$app->request;
+        $status = $request->get('status');
+        $name = $request->get('name');
+
+        //查询总数
+        $sql1="select count(*) num from sales_coupon where uid={$_SESSION['uid']}";
+
+        if($status){
+            $sql1 .=" and status=$status";
+        }
+        if($name){
+            $sql1 .=" and coupon_name like '%$name%'";
+        }
+
+        $count = Yii::$app->db->createCommand($sql1)->queryAll();
 
         //实例化分页对象
         // 实例化分页对象
@@ -125,7 +208,18 @@ class StoreController extends PublicsController
             'defaultPageSize' => 10,
             'totalCount' => $count[0]['num'],
         ]);
-        $res = Yii::$app->db->createCommand("select * from sales_coupon where uid={$_SESSION["uid"]} limit $pagination->offset,$pagination->limit")->queryAll();
+
+
+        $sql="select * from sales_coupon where uid={$_SESSION['uid']}";
+        if($status){
+            $sql .=" and status=$status";
+        }
+        if($name){
+            $sql .=" and coupon_name like '%$name%'";
+        }
+        $sql.=" limit $pagination->offset,$pagination->limit";
+
+        $res = Yii::$app->db->createCommand($sql)->queryAll();
         $datas["res"] = $res;
         $datas["pagination"] = $pagination;
         $datas["num"] = $count[0]['num'];
@@ -226,6 +320,7 @@ class StoreController extends PublicsController
     public function actionSeecoupon(){
 
         $req = Yii::$app->request;
+
         $coupon_id = $req->get("id");
 
         $res = Yii::$app->db->createCommand("select * from sales_coupon where coupon_id=$coupon_id")->queryOne();

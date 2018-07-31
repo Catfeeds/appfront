@@ -403,4 +403,5 @@ class IndexController extends PublicsController
         $data['province'] = $province;
         return $this->render($this->action->id, $data);
     }
+    //查看店铺
 }

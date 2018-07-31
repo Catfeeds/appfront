@@ -210,7 +210,7 @@ class StoreController extends PublicsController
 
         // 进行数据查询
         $class=$query->from('category')
-            ->where(['level'=>1,"parent_id"=>"0"])
+            ->where(['level'=>1,"parent_id"=>"0","type"=>"1"])
             ->all();
         $datas["class"] = $class;
         return $this->render($this->action->id,$datas);

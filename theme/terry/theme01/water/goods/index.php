@@ -212,7 +212,7 @@ use yii\helpers\Url;
                 <form action="<?php echo  Yii::$app->request->getHostInfo().Yii::$app->request->url;?>" method="get">
                     <ul class="shuaixuan">
                         <li>分类
-                            <select name="class" id="" class="el-select xiala xialas" style="margin-left:10px;">
+                            <select name="class" id="class" class="el-select xiala xialas" style="margin-left:10px;">
                                 <option value="0">全部分类</option>
                                 <?php
                                 foreach ($class as $key => $value) {
@@ -449,7 +449,7 @@ use yii\helpers\Url;
                                                         <div class="cell el-tooltip">
                                                             <div role="switch" aria-checked="true"
                                                                  class="el-switch is-checked">
-                                                                <a href="<?= Yii::$service->url->getUrl('shop/goods/status', array('id' => $v['_id'], 'status' => $v['status'])) ?>">
+                                                                <a href="<?= Yii::$service->url->getUrl('water/goods/status', array('id' => $v['_id'], 'status' => $v['status'])) ?>">
 
                                                                     <?php
 
@@ -471,14 +471,14 @@ use yii\helpers\Url;
                                                     </td>
                                                     <td class="el-table_2_column_14">
                                                         <div class="cell el-tooltip">
-                                                            <a href="<?= Yii::$service->url->getUrl('shop/goods/find', array('id' => $v['_id'])) ?>"
+                                                            <a href="<?= Yii::$service->url->getUrl('water/goods/find', array('id' => $v['_id'])) ?>"
                                                                class="">
                                                                 <button type="button"
                                                                         class="el-button el-button--text el-button--small">
                                                                     <span>查看</span></button>
                                                             </a>
                                                             <span style="color: rgb(234, 235, 236);">|</span>
-                                                            <a href="<?= Yii::$service->url->getUrl('shop/goods/del', array('id' => $v['_id'])) ?>">
+                                                            <a href="<?= Yii::$service->url->getUrl('water/goods/del', array('id' => $v['_id'])) ?>">
                                                                 <button type="button"
                                                                         class="el-button el-button--text el-button--small">
                                                                     <span><i style="color: rgb(255, 143, 113);font-style:normal">删除</i></span>
@@ -610,4 +610,5 @@ use yii\helpers\Url;
         </div>
     </div>
 </div>
+
 
