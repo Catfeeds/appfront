@@ -159,9 +159,9 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div class="aaa" style="width: 500px; height: 250px;
                                 <?php if ($companyinfo['img'][0]) { ?>
-                                        background:url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][0];?>) no-repeat;
+                                        background:url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][0];?>) no-repeat center center/100% 100%;
                                 <?php } else if ($companyinfo['imgc']['img0']) { ?>
-                                        background: url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['imgc']['img0'];?>) no-repeat;
+                                        background: url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['imgc']['img0'];?>) no-repeat center center/100% 100%;
                                 <?php } else { ?>
                                         background: rgb(243, 250, 255);
                                 <?php } ?>
@@ -188,8 +188,9 @@
                                         //监听文件读取结束后事件
                                         reader.onloadend = function (e) {
                                             $(obj).parent("div").css({
-                                                "background": "url(" + e.target.result + ") no-repeat",
+                                                "background": "url(" + e.target.result + ") no-repeat center center/100% 100%",
                                             });
+                                            $(obj).next().hide();
                                         };
                                     }
                                 }
@@ -260,9 +261,9 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div style="width: 270px; height: 160px; float:left;
                                 <?php if ($companyinfo['img'][1]) { ?>
-                                        background:url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][1];?>) no-repeat;
+                                        background:url('http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][1];?>) no-repeat center center/100% 100%;
                                 <?php } else if ($companyinfo['imgc']['img1']) { ?>
-                                        background: url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['imgc']['img1'];?>) no-repeat;
+                                        background: url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['imgc']['img1'];?>) no-repeat center center/100% 100% ;
                                 <?php } else { ?>
                                         background: rgb(243, 250, 255);
                                 <?php } ?>
@@ -272,7 +273,7 @@
                                     <input type="file" multiple="multiple" class="file" name="file[]"
                                            onchange="uploads(this)"/>
                                     <a href="javascript:0"
-                                       style="pointer-events: none; display: block; width: 50px; height: 50px; border-radius: 50%; background: rgb(48, 163, 254); position: absolute; margin: auto 110px; top: 0px; bottom: 0px; font-size: 30px; color: rgb(255, 255, 255); line-height: 50px; text-align: center;">+</a>
+                                       style="pointer-events: none; display: <?php if ($companyinfo['img'][1]||$companyinfo['imgc']['img1']) {echo 'none';}else{echo 'block';}?>; width: 50px; height: 50px; border-radius: 50%; background: rgb(48, 163, 254); position: absolute; margin: auto 110px; top: 0px; bottom: 0px; font-size: 30px; color: rgb(255, 255, 255); line-height: 50px; text-align: center;">+</a>
                                 </div>
                                 <div class="el-dialog__wrapper" style="display: none;">
                                     <div class="el-dialog" style="margin-top: 15vh;">
@@ -304,9 +305,9 @@
                                 <div>
                                     <div style="width: 270px; height: 160px; float:left;
                                     <?php if ($companyinfo['img'][2]) { ?>
-                                            background:url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][2];?>) no-repeat;
+                                            background:url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][2];?>) no-repeat center center/100% 100%;
                                     <?php } else if ($companyinfo['imgc']['img2']) { ?>
-                                            background: url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['imgc']['img2'];?>) no-repeat;
+                                            background: url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['imgc']['img2'];?>) no-repeat center center/100% 100%;
                                     <?php } else { ?>
                                             background: rgb(243, 250, 255);
                                     <?php } ?>
@@ -521,9 +522,9 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div style="width: 500px; height: 250px;
                                 <?php if ($companyinfo['img'][4]) { ?>
-                                        background:url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][4];?>) no-repeat;
+                                        background:url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][4];?>) no-repeat center center/100% 100%;
                                 <?php } else if ($companyinfo['imgc']['img4']) { ?>
-                                        background: url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['imgc']['img4'];?>) no-repeat;
+                                        background: url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['imgc']['img4'];?>) no-repeat center center/100% 100%;
                                 <?php } else { ?>
                                         background: rgb(243, 250, 255);
                                 <?php } ?>
@@ -543,9 +544,9 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div style="width: 500px; height: 250px;
                                 <?php if ($companyinfo['img'][5]) { ?>
-                                        background:url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][5];?>) no-repeat;
+                                        background:url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][5];?>) no-repeat center center/100% 100%;
                                 <?php } else if ($companyinfo['imgc']['img5']) { ?>
-                                        background: url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['imgc']['img5'];?>) no-repeat;
+                                        background: url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['imgc']['img5'];?>) no-repeat center center/100% 100%;
                                 <?php } else { ?>
                                         background: rgb(243, 250, 255);
                                 <?php } ?>
@@ -566,11 +567,11 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div style="width: 500px; height: 250px;
                                 <?php if ($companyinfo['img'][6]) { ?>
-                                        background:url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][6];?>) no-repeat;
+                                        background:url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][6];?>) no-repeat center center/100% 100%;
                                 <?php } else if ($companyinfo['imgc']['img6']) { ?>
-                                        background: url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['imgc']['img6'];?>) no-repeat;
+                                        background: url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['imgc']['img6'];?>) no-repeat center center/100% 100%;
                                 <?php } else { ?>
-                                        background: rgb(243, 250, 255);
+                                        background: rgb(243, 250, 255) center center/100% 100%;
                                 <?php } ?>
                                         position: relative;">
                                     <input type="hidden" name="img6" class="img6"
@@ -588,9 +589,9 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div style="width: 500px; height: 250px;
                                 <?php if ($companyinfo['img'][7]) { ?>
-                                        background:url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][7];?>) no-repeat;
+                                        background:url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][7];?>) no-repeat center center/100% 100%;
                                 <?php } else if ($companyinfo['imgc']['img7']) { ?>
-                                        background: url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['imgc']['img7'];?>) no-repeat;
+                                        background: url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['imgc']['img7'];?>) no-repeat center center/100% 100%;
                                 <?php } else { ?>
                                         background: rgb(243, 250, 255);
                                 <?php } ?>

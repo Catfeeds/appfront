@@ -149,7 +149,7 @@ class GoodsController extends PublicsController
         $data=[];
         $data['category']=$query
                         ->from('category')
-                        ->where(['level'=>1,"parent_id"=>"0"])
+                        ->where(['level'=>1,"parent_id"=>"0","type"=>"1"])
                         ->all();
 
         // 加载页面
@@ -778,7 +778,7 @@ class GoodsController extends PublicsController
 
         // 进行数据查询
         $class=$query->from('category')
-                        ->where(['level'=>1,"parent_id"=>"0"])
+                        ->where(['level'=>1,"parent_id"=>"0","type"=>"1"])
                         ->all();
 
         foreach ($class as $key => &$value) {

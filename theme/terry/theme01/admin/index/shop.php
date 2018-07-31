@@ -178,7 +178,7 @@ use yii\helpers\Url;
                                     &nbsp;<label>|</label>&nbsp;
                                     <a style="color: #41b2fc" href="">冻结账号</a>
                                     &nbsp;<label>|</label>&nbsp;
-                                    <a href="" style="color: #41b2fc;left:200px;">查看</a>
+                                    <a href="<?= Yii::$service->url->getUrl('admin/index/wshop',array('id'=>$v['id']))?>" style="color: #41b2fc;left:200px;">查看</a>
                                     <label>|</label>&nbsp;
                                     <a href="<?= Yii::$service->url->getUrl('admin/index/del',array('id'=>$v['id'])) ?>">
                                         <button data-v-6045fa9c="" type="button"  style="color:#FC4C00"

@@ -226,7 +226,9 @@ class StoreController extends PublicsController
         foreach ($category as $v){
 
             $where[category][0]=$v;
+            $where[shop_id]=$_SESSION["shop_id"];
             $res1 = $query->from("product_flat")->where($where)->all();
+
             foreach ($res1 as $v1){
                 $res[]=$v1;
             }

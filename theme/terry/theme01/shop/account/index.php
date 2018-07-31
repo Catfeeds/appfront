@@ -178,11 +178,11 @@ use yii\helpers\Url;
                                     <td class="el-table_2_column_13  ">
                                         <div class="cell el-tooltip">
                                             <div class="ddd">
-                                                订单金额：￥<?= $v['grand_total'] ?>
+                                                订单金额：￥<?= $v['subtotal'] ?>
                                             </div>
                                             <div class="ddd">
                                                 退单金额：￥<?php if($v["order_status"]==6){ ?>
-                                                    <?= $v["grand_total"] - $v["subtotal_with_discount"] ?>
+                                                    <?= $v["subtotal"] - $v["subtotal_with_discount"] ?>
                                                 <?php }else{ ?>
                                                     0
                                                 <?php } ?>

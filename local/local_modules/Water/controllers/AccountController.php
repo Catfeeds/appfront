@@ -14,7 +14,7 @@ use fecshop\app\appfront\modules\AppfrontController;
 use Yii;
 use yii\web\Response;
 use yii\mongodb\Query;
-
+use yii\data\Pagination;
 
 /**
  * @author Terry Zhao <2358269014@qq.com>
@@ -31,12 +31,23 @@ class AccountController extends PublicsController
         // 加载模板页面
         Yii::$service->page->theme->layoutFile = 'water.php';
     }
-
-    //=================================账单列表=================================
+//=================================账单列表=================================
     // 账单列表
     public function actionIndex(){
-        //return $this->render($this->action->id, $data);
-        return $this->render($this->action->id);
+
+        $count = Yii::$app->db->createCommand("select count(*) tot from sales_flat_order where shop_id={$_SESSION["shop_id"]} and order_status>0")->queryAll();
+
+        $pagination = new Pagination([
+            'defaultPageSize' => 10,
+            'totalCount' => $count[0]['tot'],
+        ]);
+
+        $res = Yii::$app->db->createCommand("select * from sales_flat_order where shop_id={$_SESSION["shop_id"]} and order_status>0 limit $pagination->offset , $pagination->limit")->queryAll();
+
+        $data["tot"] = $count[0]["tot"];
+        $data["res"] = $res;
+        $data["pagination"] = $pagination;
+        return $this->render($this->action->id,$data);
     }
 
 //=================================实名认证=================================
