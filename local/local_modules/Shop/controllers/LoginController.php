@@ -138,5 +138,58 @@ class LoginController extends AppfrontController
         unset($_SESSION["time"]);
         return $this->redirect("/shop/login/index");
     }
+
+        // 发送验证码
+    public function actionFasong(){
+
+        //初始化必填
+        $options['accountsid']='442c51c4d2a95aededa6f12a23b26fe4'; //填写自己的
+        $options['token']='887b72f88fc33eacb1b3ad92daa2fd4f'; //填写自己的
+        //初始化 $options必填
+        $ucpass =new \Ucpaas($options);
+                //随机生成6位验证码
+        srand((double)microtime()*1000000);//create a random number feed.
+        // $ychar="0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z";
+        $ychar="0,1,2,3,4,5,6,7,8,9";
+        $list=explode(",",$ychar);
+        for($i=0;$i<6;$i++){
+            $randnum=rand(0,9); // 10+26;
+            $authnum.=$list[$randnum];
+        }
+        //短信验证码（模板短信）,默认以65个汉字（同65个英文）为一条（可容纳字数受您应用名称占用字符影响），超过长度短信平台将会自动分割为多条发送。分割后的多条短信将按照具体占用条数计费。
+        $appId = "e771411626af47b381a704c419e23b16";  //填写自己的
+        $_POST['to']="18734136852";
+        $to = $_POST['to'];
+        $templateId = "191761";
+        $param=$authnum;
+
+        
+
+        //错误信息收集
+        $msgSuc=array(
+            'err'=>0,
+            'info'=>''
+        );
+
+     
+        
+        $arr=$ucpass->templateSMS($appId,$to,$templateId,$param);
+        if (substr($arr,21,6) == 000000) {
+            $_SESSION['dxyzm']=$param;
+            $_SESSION['tel']=$to;
+            $msgSuc['err']=1;
+            $msgSuc['info']='短信验证码已发送成功，请注意查收短信';
+        }else{
+            $msgSuc['err']=0;
+            $msgSuc['info']='短信验证码发送失败，请联系客服';
+        }
+
+                echo "<pre>";
+                print_r($msgSuc);
+                echo "</pre>";
+            
+        // echo json_encode($msgSuc);
+                
+    }
     
 }

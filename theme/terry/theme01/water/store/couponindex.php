@@ -110,8 +110,8 @@ use yii\helpers\Url;
                             <div data-v-345ba354="" class="sousuo" onclick="sel(event)"></div>
                         </li>
                     </ul>
-                    <div data-v-345ba354=""><a data-v-345ba354="" href="#/ShopCouponAdd" class="">
-                            <a href="<?= Yii::$service->url->geturl("/shop/store/addcoupon") ?>">
+                    <div data-v-345ba354=""><a data-v-345ba354="" href="#/WaterCouponAdd" class="">
+                            <a href="<?= Yii::$service->url->geturl("/water/store/addcoupon") ?>">
                                 <button data-v-345ba354="" type="button"
                                         class="el-button green el-button--success is-round">
                                     <span>添加优惠券</span>
@@ -255,14 +255,14 @@ use yii\helpers\Url;
                                     </td>
                                     <td class="el-table_5_column_36  ">
                                         <div class="cell el-tooltip" style="width: 134px;">
-                                            <a href="<?= Yii::$service->url->geturl("/shop/store/seecoupon?id={$v["coupon_id"]}") ?>">
+                                            <a href="<?= Yii::$service->url->geturl("/water/store/seecoupon?id={$v["coupon_id"]}") ?>">
                                                 <button data-v-345ba354="" type="button" class="el-button el-button--text el-button--small">
                                                     <span>查看</span>
                                                 </button>
                                             </a>
                                             <?php if($v["expiration_date"]>time()){?>
                                                 <span data-v-345ba354="" style="color: rgb(234, 235, 236);">|</span>
-                                                <a href="<?= Yii::$service->url->geturl("/shop/store/delcou?id={$v['coupon_id']}") ?>">
+                                                <a href="<?= Yii::$service->url->geturl("/water/store/delcou?id={$v['coupon_id']}") ?>">
                                                     <button data-v-345ba354="" type="button" class="el-button el-button--text el-button--small">
                                                         <span><i data-v-345ba354="" class="el-icon-delete"></i></span>
                                                     </button>
@@ -326,6 +326,6 @@ use yii\helpers\Url;
         }
             var status=like[0].value;
             var name=like[1].value;
-            location.href="<?= Yii::$service->url->geturl("/shop/store/couponindex?") ?>"+`status=${status}&name=${name}`;
+            location.href="<?= Yii::$service->url->geturl("/water/store/couponindex?") ?>"+`status=${status}&name=${name}`;
     }
 </script>
