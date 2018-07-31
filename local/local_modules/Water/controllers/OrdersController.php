@@ -175,16 +175,31 @@ class OrdersController extends PublicsController
     {
 
         $data = [];
-
-        $count = Yii::$app->db->createCommand("select count(*) tot from sales_flat_order where order_status in(5,6)")->queryAll();
+        // 获取数据
+        $request = Yii::$app->request;
+        $get = $request->get();
+        $sql = "select count(*) tot from sales_flat_order where order_status in(5,6)";
+        if ($get["customer_firstname"]) {
+            $sql .= " and customer_firstname='{$get["customer_firstname"]}'";
+        }
+        if ($get["increment_id"]) {
+            $sql .= " and increment_id='{$get["increment_id"]}'";
+        }
+        $count = Yii::$app->db->createCommand($sql)->queryAll();
 
         // 实例化分页对象
         $pagination = new Pagination([
             'defaultPageSize' => 10,
             'totalCount' => $count[0]['tot'],
         ]);
-
-        $res = Yii::$app->db->createCommand("select * from sales_flat_order where order_status in(5,6)")->queryAll();
+        $sql = "select * from sales_flat_order where order_status in(5,6)";
+        if ($get["customer_firstname"]) {
+            $sql .= " and customer_firstname='{$get["customer_firstname"]}'";
+        }
+        if ($get["increment_id"]) {
+            $sql .= " and increment_id='{$get["increment_id"]}'";
+        }
+        $res = Yii::$app->db->createCommand($sql)->queryAll();
 
         $data["res"] = $res;
         $data["pagination"] = $pagination;
