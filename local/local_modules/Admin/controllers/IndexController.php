@@ -154,11 +154,18 @@ class IndexController extends PublicsController
         return $this->redirect(["/admin/index/aindex"]);
     }
     //===========================用户管理、会员管理=======================================
-    //会员管理增加了一个字段
+
+//查看详情页中修改部分会员信息
+    public function actionUpdatemember(){
+
+
+    }
+    //会员首页
     public function actionMember()
     {
         $req = Yii::$app->request;
         $level = $req->get(level);
+
         $firstname = $req->get(firstname);
         $id = $req->get(id);
 
@@ -247,6 +254,16 @@ class IndexController extends PublicsController
         return $this->render($this->action->id, $data);
 
     }
+    //会员信息修改保存
+    public function actionEditwmember(){
+        $req = Yii::$app->request;
+        $arr = $_POST;
+//        var_dump($arr);
+        $sql = "update customer set `level` = '{$arr["level"]}',`tel` = '{$arr["tel"]}',email='{$arr["email"]}',status='{$arr['status']}' where id = '{$arr["id"]}'";
+        $res = Yii::$app->db->createCommand($sql)->execute();
+        return $this->redirect(["/admin/index/wmember?id=".$arr['id']]);
+
+    }
 
     //查看会员
     public function actionWmember()
@@ -290,13 +307,28 @@ class IndexController extends PublicsController
         $res = Yii::$app->db->createCommand($sql)->execute();
         return $this->redirect(["/admin/index/member"]);
     }
-    //余额查询
-    /*public function actionWmoney(){
+    //账户余额查询
+    public function actionWmoney(){
         $req = Yii::$app->request;
         $id = $req->get(id);
-        $leftmoney = Yii::$app->db->createCommand('select * from ')
-
-    }*/
+        $lm = Yii::$app->db->createCommand("select * from money_record where uid = '$id'")->queryAll();
+        //转时间格式
+        foreach ($lm as $k=>$v){
+            $lm[$k]['time'] = date("Y-m-d",$v['time']);
+        }
+        return json_encode($lm);
+    }
+    //金币余额查询
+    public function actionWcoin(){
+        $req = Yii::$app->request;
+        $id = $req->get(id);
+        $lc = Yii::$app->db->createCommand("select * from coin_record where uid = '$id'")->queryAll();
+        //转时间格式
+        foreach ($lc as $k=>$v){
+           $lc[$k]['time'] = date("Y-m-d",$v['time']);
+        }
+        return json_encode($lc);
+    }
 
     //==============================用户管理、店铺管理====================================
     //加载市区

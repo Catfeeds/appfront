@@ -1545,7 +1545,11 @@ $cssOptions = [
         z-index: 999;
         display: none;
     }
-    .find-maskactive{
+    .money-mask.find-maskactive{
+        display: block;
+        z-index: 9999999999;
+    }
+    .coin-mask.find-maskactive{
         display: block;
         z-index: 9999999999;
     }
@@ -1557,6 +1561,7 @@ $cssOptions = [
         position: relative;
         top:5%;
         border-radius: 7px;
+        overflow-y: auto;
     }
     .vipinfo{
         width: 100%;
@@ -2455,7 +2460,19 @@ $cssOptions = [
     .admin-tablelist1{
         padding:0;
     }
-
+    .awreview{
+        width: 400px;
+        height: 100%;
+        background: #fff;
+        border: 1px solid #797979;
+        text-align:center;
+        border-radius: 19px;
+        cursor:pointer;
+    }
+    .awreview:hover{
+        border: 1px solid #41b2fc;
+        background: rgba(65,178,252,0.2);
+    }
 </style>
 <?php $this->beginPage() ?>
     <!doctype html>
