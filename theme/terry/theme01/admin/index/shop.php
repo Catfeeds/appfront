@@ -201,7 +201,7 @@ use yii\helpers\Url;
             </div>
             <div class="admintotalpage">
                 <span style="color: #29c99a">·</span>&nbsp;<span>分</span><span
-                        style="color: #29c99a"><?= ceil($tot/2)?></span><span>页</span>
+                        style="color: #29c99a"><?= ceil($tot/3)?></span><span>页</span>
             </div>
             <div class="admintotalpage">
                 <span style="color: #29c99a">·</span>&nbsp;<span>每页</span>
