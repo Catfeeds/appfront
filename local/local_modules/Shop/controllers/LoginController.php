@@ -93,39 +93,65 @@ class LoginController extends AppfrontController
         }
     }
 
+
     //账号注册
     public  function actionReg(){
-
         //获取数据
         $req = Yii::$app->request;
-
-        $password_hash = password_hash($req->post(password_hash),PASSWORD_DEFAULT);
-        $firstname = $req->post(firstname);
-        $password = $req->post(password_hash);
-        $repassword = $req->post(repassword);
-
-
-        // 判断密码是否一致
-        if ($password==$repassword && $repassword) {
-            //判断用户名是否存在
-            $arr = Yii::$app->db->createCommand("select count(*) as num from customer where firstname='$firstname'")->queryOne();
-            if($req->post(password_hash)==""||$firstname==""){
-                return $this->redirect(["login/regedit"]);
-            } else if($arr["num"] != 0){
-                return $this->redirect(["login/regedit"]);
-            }else{
-                $res = Yii::$app->db->createCommand("insert into customer (password_hash,firstname) values ('$password_hash','$firstname')")->execute();
-                if($res == 1){
-                    return $this->redirect(["login/index"]);
+        if(!empty($req->post())){
+            $password_hash = password_hash($req->post(password_hash),PASSWORD_DEFAULT);
+            $firstname = $req->post(firstname);
+            $code = $req->post(code);
+            $password = $req->post(password_hash);
+            $repassword = $req->post(repassword);
+            if(($code!=$_SESSION['dxyzm']) || ($firstname!=$_SESSION['tel'])){
+                $msgSuc['err']=0;
+                $msgSuc['info']='验证码不正确';
+                echo json_encode($msgSuc);
+                return false;   
+            }
+            // 判断密码是否一致
+            if ($password==$repassword && $repassword) {
+                //判断用户名是否存在
+                $arr = Yii::$app->db->createCommand("select count(*) as num from customer where firstname='$firstname'")->queryOne();
+                if($req->post(password_hash)==""||$firstname==""){
+                    $msgSuc['err']=0;
+                    $msgSuc['info']='手机号或者密码不能为空';''
+                    echo json_encode($msgSuc);
+                    return false; 
+                    // return $this->redirect(["login/regedit"]);
+                } else if($arr["num"] != 0){
+                    $msgSuc['err']=0;
+                    $msgSuc['info']='该手机号已注册';
+                    echo json_encode($msgSuc);
+                    return false; 
+                    // return $this->redirect(["login/regedit"]);
                 }else{
-                    return $this->redirect(["login/regedit"]);
+                    $time = time();
+                    $res = Yii::$app->db->createCommand("insert into customer (password_hash,firstname,created_at,tel) values ('$password_hash','$firstname','$time','$firstname')")->execute();
+                    if($res == 1){
+                        $msgSuc['err']=1;
+                        $msgSuc['info']='注册成功';
+                        echo json_encode($msgSuc);
+                        return false; 
+                        // return $this->redirect(["login/index"]);
+                    }else{
+                        $msgSuc['err']=0;
+                        $msgSuc['info']='注册失败';
+                        echo json_encode($msgSuc);
+                        return false;
+                        // return $this->redirect(["login/regedit"]);
+                    }
                 }
+            }else{
+                $msgSuc['err']=0;
+                $msgSuc['info']='两次输入密码不一致';
+                echo json_encode($msgSuc);
+                // return $this->redirect(["login/regedit"]);
             }
         }else{
             return $this->redirect(["login/regedit"]);
         }
-
-        
     }
 
     //退出登陆
@@ -139,15 +165,26 @@ class LoginController extends AppfrontController
         return $this->redirect("/shop/login/index");
     }
 
-        // 发送验证码
+    // 发送验证码
     public function actionFasong(){
 
+        $req = Yii::$app->request;
+        $firstname = $req->get('mobile');
+        //判断用户名是否存在
+        $arr = Yii::$app->db->createCommand("select count(*) as num from customer where firstname='$firstname'")->queryOne();
+        if($arr['num']!=0){
+            $msgSuc['err']=0;
+            $msgSuc['info']='该手机号已注册';
+            echo json_encode($msgSuc);
+            return false;
+        }
         //初始化必填
         $options['accountsid']='442c51c4d2a95aededa6f12a23b26fe4'; //填写自己的
         $options['token']='887b72f88fc33eacb1b3ad92daa2fd4f'; //填写自己的
         //初始化 $options必填
         $ucpass =new \Ucpaas($options);
-                //随机生成6位验证码
+       
+        //随机生成6位验证码
         srand((double)microtime()*1000000);//create a random number feed.
         // $ychar="0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z";
         $ychar="0,1,2,3,4,5,6,7,8,9";
@@ -158,7 +195,7 @@ class LoginController extends AppfrontController
         }
         //短信验证码（模板短信）,默认以65个汉字（同65个英文）为一条（可容纳字数受您应用名称占用字符影响），超过长度短信平台将会自动分割为多条发送。分割后的多条短信将按照具体占用条数计费。
         $appId = "e771411626af47b381a704c419e23b16";  //填写自己的
-        $_POST['to']="18734136852";
+        $_POST['to']=$firstname;
         $to = $_POST['to'];
         $templateId = "191761";
         $param=$authnum;
@@ -184,11 +221,11 @@ class LoginController extends AppfrontController
             $msgSuc['info']='短信验证码发送失败，请联系客服';
         }
 
-                echo "<pre>";
-                print_r($msgSuc);
-                echo "</pre>";
+                // echo "<pre>";
+                // print_r($msgSuc);
+                // echo "</pre>";
             
-        // echo json_encode($msgSuc);
+        echo json_encode($msgSuc);
                 
     }
     

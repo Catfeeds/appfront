@@ -146,8 +146,8 @@
     }
 </style>
 <div id="loginin">
-    <form action="<?= Yii::$service->url->getUrl('shop/login/reg') ?>" method="post">
-        <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>" />
+    <!-- <form action="<?= Yii::$service->url->getUrl('shop/login/reg') ?>" method="post"> -->
+        <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>" id="_csrf" />
         <div class="login-box">
             <div class="login-logo">
                 <img src="/public/login.png" alt="">
@@ -158,24 +158,24 @@
                     <li>
                         <img src="/public/account.png" alt="">
                         <span>手&nbsp;&nbsp;机&nbsp;号</span>
-                        <input type="text" name="firstname">
+                        <input type="text" name="firstname" id="mobile">
                     </li>
                     <li>
                         <img src="/public/account.png" alt="">
                         <span>验&nbsp;&nbsp;证&nbsp;码</span>
-                        <input type="text" name="firstname" style="">
-                        <button style="position: absolute;height: 100%;width: 80px;background: #36de76;border: none;border-radius: 20px;font-size: 12px;color: #fff;top: 0;right: 0;cursor: pointer">获取验证码</button>
+                        <input type="text" name="code" style="" id="code">
+                        <button style="position: absolute;height: 100%;width: 80px;background: #36de76;border: none;border-radius: 20px;font-size: 12px;color: #fff;top: 0;right: 0;cursor: pointer" onclick="getcode()">获取验证码</button>
                     </li>
 
                     <li>
                         <img src="/public/pwd.png" alt="">
                         <span>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</span>
-                        <input type="password" name="password_hash">
+                        <input type="password" name="password_hash" id="password_hash">
                     </li>
                     <li>
                         <img src="/public/pwd.png" alt="">
                         <span>确认密码</span>
-                        <input type="password" name="repassword" id="">
+                        <input type="password" name="repassword" id="repassword">
                     </li>
                 </ul>
                 <div class="forget">
@@ -185,12 +185,67 @@
                     </div>
                 </div>
                 <div style="display:flex;justify-content:center;width: 100%;height: 34px;cursor: pointer;margin-top:50px;text-align:center">
-                    <button style="cursor: pointer;margin-top: 10px;width: 230px;letter-spacing: 10px" class="submit">注册</button>
+                    <button style="cursor: pointer;margin-top: 10px;width: 230px;letter-spacing: 10px" class="submit" onclick="submit()">注册</button>
                 </div>
 
             </div>
         </div>
-    </form>
+    <!-- </form> -->
 </div>
+<script>
+    function getcode(){
+        var phoneReg = /(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/;
+        //电话
+        var phone = $.trim($('#mobile').val());
+        if (!phoneReg.test(phone)) {
+            alert('请输入有效的手机号码！');
+            return false;
+        }else{
+            $.get("<?= Yii::$service->url->getUrl('shop/login/fasong') ?>",{'mobile':phone},function(data){
+                var data = JSON.parse(data)
+                if(data.err!=1){
+                    alert(data.info)
+                }else{
+                    alert(data.info)                    
+                }
+            })
+        }
+    }
+    function submit(){
+        var phone = $.trim($('#mobile').val());
+        var code = $.trim($('#code').val());
+        var password_hash = $.trim($('#password_hash').val());
+        var repassword = $.trim($('#repassword').val());
+        if(typeof phone == "undefined" || phone == null || phone == ""){
+            alert('手机号不能为空');
+            return false;
+        }
+        if(typeof code == "undefined" || code == null || code == ""){
+            alert('验证码不能为空');
+            return false;
+        }
+        if(typeof password_hash == "undefined" || password_hash == null || password_hash == ""){
+            alert('密码不能为空');
+            return false;
+        }
+        if(typeof repassword == "undefined" || repassword == null || repassword == ""){
+            alert('确认密码不能为空');
+            return false;
+        }
+        if(password_hash != repassword){
+            alert('两次密码不一致');
+            return false;
+        }
+        $.post("<?= Yii::$service->url->getUrl('shop/login/reg') ?>",{'firstname':phone,'code':code,'password_hash':password_hash,'repassword':repassword,'_csrf':$('#_csrf').val()},function(data){
+            var data = JSON.parse(data)
+            if(data.err!=1){
+                alert(data.info)
+            }else{
+                alert(data.info)
+                window.location.href = "<?= Yii::$service->url->getUrl('shop/login/index') ?>";               
+            }
+        })
+    }
+</script>
 
     
