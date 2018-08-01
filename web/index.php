@@ -16,7 +16,11 @@ defined('YII_DEBUG') or define('YII_DEBUG', true);
 defined('YII_ENV') or define('YII_ENV', 'dev');
 
 require(__DIR__ . '/../../vendor/autoload.php');
+<<<<<<< HEAD
 //require(__DIR__ . '/../../vendor/Ucpaas.class.php');
+=======
+require(__DIR__ . '/../../vendor/Ucpaas.class.php');
+>>>>>>> 5085a87c4cd65094516df101eeb0eb3faf6065a9
 require(__DIR__ . '/../../vendor/fancyecommerce/fecshop/yii/Yii.php');
 
 require(__DIR__ . '/../../common/config/bootstrap.php');

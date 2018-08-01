@@ -153,7 +153,6 @@ class GoodsController extends PublicsController
             ->from('category')
             ->where(['level'=>1,"parent_id"=>"0",'type'=>"2"])
             ->all();
-
         // 加载页面
         return $this->render($this->action->id,$data);
 

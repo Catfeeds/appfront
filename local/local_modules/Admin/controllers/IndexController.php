@@ -54,10 +54,6 @@ class IndexController extends PublicsController
             'defaultPageSize' => 2,
             'totalCount' => $tot,
         ]);
-        // 进行数据查询
-        $rows = $query->from('admin_user')
-            ->offset($pagination->offset)
-            ->limit($pagination->limit)->all();
 
         //判断是否搜索
         if ($person != null) {
@@ -83,6 +79,12 @@ class IndexController extends PublicsController
                 ])->offset($pagination->offset)
                 ->limit($pagination->limit)->all();
         }
+        else{
+            $rows = $query->from('admin_user')
+                ->offset($pagination->offset)
+                ->limit($pagination->limit)->all();
+        }
+
         // 进行数据查询
 
         $data["pagination"] = $pagination;
@@ -154,11 +156,12 @@ class IndexController extends PublicsController
         return $this->redirect(["/admin/index/aindex"]);
     }
     //===========================用户管理、会员管理=======================================
-    //会员管理增加了一个字段
+    //会员首页
     public function actionMember()
     {
         $req = Yii::$app->request;
         $level = $req->get(level);
+
         $firstname = $req->get(firstname);
         $id = $req->get(id);
 
@@ -177,28 +180,28 @@ class IndexController extends PublicsController
         // 进行数据查询
 
         //判定搜索
-        if ($firstname != null) {
+        if ($firstname != null && $id == null && $level==null) {
             $rows = $query->select('*')
                 ->from('customer')
                 ->where([
                     'firstname' => $firstname
                 ])->offset($pagination->offset)
                 ->limit($pagination->limit)->all();
-        } else if ($id != null) {
+        } else if ($id != null && $firstname == null && $level==null) {
             $rows = $query->select('*')
                 ->from('customer')
                 ->where([
                     'id' => $id
                 ])->offset($pagination->offset)
                 ->limit($pagination->limit)->all();
-        } else if ($level != null) {
+        } else if ($level != null && $firstname == null && $id==null) {
             $rows = $query->select('*')
                 ->from('customer')
                 ->where([
                     'level' => $level
                 ])->offset($pagination->offset)
                 ->limit($pagination->limit)->all();
-        } else if ($firstname != null && $id != null) {
+        } else if ($firstname != null && $id != null && $level==null) {
             $rows = $query->select('*')
                 ->from('customer')
                 ->where([
@@ -206,7 +209,7 @@ class IndexController extends PublicsController
                     'id' => $id
                 ])->offset($pagination->offset)
                 ->limit($pagination->limit)->all();
-        } else if ($firstname != null && $level != null) {
+        } else if ($firstname != null && $level != null && $id==null) {
             $rows = $query->select('*')
                 ->from('customer')
                 ->where([
@@ -214,7 +217,7 @@ class IndexController extends PublicsController
                     'level' => $level
                 ])->offset($pagination->offset)
                 ->limit($pagination->limit)->all();
-        } else if ($id != null && $level != null) {
+        } else if ($id != null && $level != null && $firstname==null) {
             $rows = $query->select('*')
                 ->from('customer')
                 ->where([
@@ -247,6 +250,16 @@ class IndexController extends PublicsController
         return $this->render($this->action->id, $data);
 
     }
+    //会员信息修改保存
+    public function actionEditwmember(){
+        $req = Yii::$app->request;
+        $arr = $_POST;
+//        var_dump($arr);
+        $sql = "update customer set `level` = '{$arr["level"]}',`tel` = '{$arr["tel"]}',email='{$arr["email"]}',status='{$arr['status']}' where id = '{$arr["id"]}'";
+        $res = Yii::$app->db->createCommand($sql)->execute();
+        return $this->redirect(["/admin/index/wmember?id=".$arr['id']]);
+
+    }
 
     //查看会员
     public function actionWmember()
@@ -277,8 +290,6 @@ class IndexController extends PublicsController
         $id = $req->get(id);
         $sql = "update customer set status=3 where id='$id'";
         $res = Yii::$app->db->createCommand($sql)->execute();
-        echo "成功移入黑名单！";
-        exit;
         return $this->redirect(["/admin/index/member"]);
 
     }
@@ -290,9 +301,29 @@ class IndexController extends PublicsController
         $id = $req->get(id);
         $sql = "update customer set status=2 where id='$id'";
         $res = Yii::$app->db->createCommand($sql)->execute();
-        echo "冻结成功！";
-        exit;
         return $this->redirect(["/admin/index/member"]);
+    }
+    //账户余额查询
+    public function actionWmoney(){
+        $req = Yii::$app->request;
+        $id = $req->get(id);
+        $lm = Yii::$app->db->createCommand("select * from money_record where uid = '$id' and `type` = 0")->queryAll();
+        //转时间格式
+        foreach ($lm as $k=>$v){
+            $lm[$k]['time'] = date("Y-m-d",$v['time']);
+        }
+        return json_encode($lm);
+    }
+    //金币余额查询
+    public function actionWcoin(){
+        $req = Yii::$app->request;
+        $id = $req->get(id);
+        $lc = Yii::$app->db->createCommand("select * from coin_record where uid = '$id' and `type` = 2")->queryAll();
+        //转时间格式
+        foreach ($lc as $k=>$v){
+           $lc[$k]['time'] = date("Y-m-d",$v['time']);
+        }
+        return json_encode($lc);
     }
 
     //==============================用户管理、店铺管理====================================
@@ -333,7 +364,7 @@ class IndexController extends PublicsController
         }
         // 实例化分页对象
         $pagination = new Pagination([
-            'defaultPageSize' => 1,
+            'defaultPageSize' => 3,
             'totalCount' => $tot,
         ]);
         // 进行数据查询
@@ -358,6 +389,7 @@ class IndexController extends PublicsController
         $data['pagination'] = $pagination;
         $data['res'] = $res;
         $data['rows'] = $rows;
+        $data['tot'] = $tot;
         return $this->render($this->action->id, $data);
     }
 
@@ -367,5 +399,18 @@ class IndexController extends PublicsController
         $province = Yii::$app->db->createCommand('select * from sys_province')->queryAll();
         $data['province'] = $province;
         return $this->render($this->action->id, $data);
+    }
+    //查看店铺
+    public function actionWshop()
+    {
+        $req = Yii::$app->request;
+        $id = $req->get(id);
+        var_dump($id);
+        exit;
+        $rows = Yii::$app->db->createCommand("select * from shop where id= '$id'")->queryOne();
+        var_dump($rows);
+        exit;
+        $data['rows'] = $rows;
+        return $this->render($this->action->id,$data);
     }
 }

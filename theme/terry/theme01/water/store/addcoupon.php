@@ -115,8 +115,7 @@
                                     </div>
                             </div>
                         </div>
-                        <div data-v-63f72479="" class="el-form-item"><label class="el-form-item__label"
-                                                                            style="width: 150px;">*有效时间段</label>
+                        <div data-v-63f72479="" class="el-form-item"><label class="el-form-item__label" style="width: 150px;">*有效时间段</label>
                             <div class="el-form-item__content" style="margin-left: 150px;">
                                 <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test10">
                             </div>

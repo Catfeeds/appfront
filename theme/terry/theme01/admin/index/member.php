@@ -41,7 +41,7 @@ use yii\helpers\Url;
         <div class="admin-table">
             <div class="admin-tablename">
                 <div class="admin-tablenamebox"></div>
-                <span class="admin-tablename1"><a href="/vip">会员</a></span><span class="admin-tablename2">列表</span>
+                <span class="admin-tablename1"><a href="javascript:0;">会员</a></span><span class="admin-tablename2">列表</span>
             </div>
             <div class="el-table__body-wrapper is-scrolling-left">
                 <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"

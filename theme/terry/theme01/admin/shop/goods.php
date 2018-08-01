@@ -32,7 +32,7 @@ use yii\helpers\Url;
         font-size: 12px;
     }
     .content .shuaixuan li{
-        margin:0 20px;
+        margin:0px 20px;
     }
     .content .shuaixuan .xiala {
         padding-left: 10px;
@@ -49,7 +49,7 @@ use yii\helpers\Url;
 
     .content .shuaixuan .xialas {
         width: 198px;
-
+        
     }
     .shuaixuan .el-select:hover {
         border-color: #c0c4cc;
@@ -195,24 +195,19 @@ use yii\helpers\Url;
     <div style="width: 1012px; margin: 0 auto;">
         <div>
             <div class="content">
-                <div class="biaoti">
-                    <div aria-label="Breadcrumb" role="navigation" class="el-breadcrumb">
-                        <span class="el-breadcrumb__item">
-                            <span role="link" class="el-breadcrumb__inner is-link">商品管理</span>
-                            <span role="presentation" class="el-breadcrumb__separator">&middot;</span>
-                        </span>
-                        <span class="el-breadcrumb__item" aria-current="page">
-                            <span role="link" class="el-breadcrumb__inner">
-                                <span style="color: rgb(48, 211, 102); font-weight: bolder;">商品列表</span>
-                            </span>
-                            <span role="presentation" class="el-breadcrumb__separator">&middot;</span>
-                        </span>
-                    </div>
-                </div>
+                <div data-v-1ae89237="" class="adminmannager-title">
+                            <span data-v-1ae89237="">
+                                <a data-v-1ae89237="" href="<?= Yii::$service->url->geturl("/admin/shop/index") ?>" class="">商家</a>
+                            </span>&nbsp;
+                            <span data-v-1ae89237="">·&nbsp;
+                                <a data-v-1ae89237="" href=""<?= Yii::$service->url->geturl("/admin/shop/goods?id=$shop_id") ?>"" class=""><?= $shop_name?></a>
+                            </span> 
+                            <span data-v-1ae89237="">·&nbsp;商品管理</span>
+                        </div>
                 <form action="<?php echo  Yii::$app->request->getHostInfo().Yii::$app->request->url;?>" method="get">
-                    <ul class="shuaixuan">
-                        <li>分类
-                            <select name="class" id="class" class="el-select xiala xialas" style="margin-left:10px;">
+                <ul class="shuaixuan">
+                    <li>分类
+                        <select name="class" id="" class="el-select xiala xialas" style="margin-left:10px;">
                                 <option value="0">全部分类</option>
                                 <?php
                                 foreach ($class as $key => $value) {
@@ -227,11 +222,11 @@ use yii\helpers\Url;
                                     }
                                 }
                                 ?>
-                            </select>
-                        </li>
-                        <li>上下架
-                            <select name="status" id="" class="el-select xiala" style="margin-left: 10px">
-                                <?php
+                        </select>
+                    </li>
+                    <li>上下架
+                        <select name="status" id="" class="el-select xiala" style="margin-left: 10px">
+                            <?php 
 
                                 if ($_GET['status']==1) {
                                     # code...
@@ -247,27 +242,27 @@ use yii\helpers\Url;
                                         <option value="1" >上架</option>
                                         <option value="2" >下架</option>';
                                 }
-                                ?>
-
-                            </select>
-                        </li>
-                        <!--  <li> 商家编号
-                             <input type="text" name="name" placeholder="请输入商品编号/关键字" class="input2"/>
-                         </li> -->
-                        <li>
-                            <!-- <button class="sousuo" style="border:0px"></button> -->
-                            <button type="submit" class="el-button blue el-button--success is-round">
-                                <span> 查询商品 </span>
-                            </button>
-                        </li>
-
-                        <li><a href="<?= Yii::$service->url->getUrl('water/goods/addclass') ?>" class="">
-                                <button type="button" class="el-button green el-button--success is-round">
-                                    <span> 添加商品 </span>
-                                </button>
-                            </a>
-                        </li>
-                    </ul>
+                             ?>
+                            
+                        </select>
+                    </li>
+                   <!--  <li> 商家编号
+                        <input type="text" name="name" placeholder="请输入商品编号/关键字" class="input2"/>
+                    </li> -->
+                    <li>
+                        <!-- <button class="sousuo" style="border:0px"></button> -->
+                        <button type="submit" class="el-button blue el-button--success is-round">
+                            <span> 查询商品 </span>
+                        </button>
+                    </li>
+                    
+                    <!-- <li><a href="<?= Yii::$service->url->getUrl('shop/goods/addclass') ?>" class="">
+                        <button type="button" class="el-button green el-button--success is-round">
+                            <span> 添加商品 </span>
+                        </button>
+                        </a>
+                    </li> -->
+                </ul>
                 </form>
 
                 <div class="item">
@@ -289,19 +284,19 @@ use yii\helpers\Url;
                                             }
                                         </style>
                                         <div style="padding-left:20px;"  class="el-tabs__item is-top <?php echo $_GET['status']==0 ?'is_active1':'';?>">
-                                            <a style="" href="<?php echo  Yii::$app->request->getHostInfo().'/'.Yii::$app->request->pathInfo;?>?class=<?=$_GET['class']?>&status=0">全部商品（<?=$tot?>）</a>
+                                            <a style="" href="<?php echo  Yii::$app->request->getHostInfo().'/'.Yii::$app->request->pathInfo;?>?class=<?=$_GET['class']?>&status=0&id=<?=$shop_id?>">全部商品（<?=$tot?>）</a>
                                         </div>
                                         <div class="el-tabs__item is-top <?php echo $_GET['status']==1 ?'is_active1':'';?>">
-                                            <a style="" href="<?php echo  Yii::$app->request->getHostInfo().'/'.Yii::$app->request->pathInfo;?>?class=<?=$_GET['class']?>&status=1">上架（<?=$tot1?>）</a>
+                                            <a style="" href="<?php echo  Yii::$app->request->getHostInfo().'/'.Yii::$app->request->pathInfo;?>?class=<?=$_GET['class']?>&status=1&id=<?=$shop_id?>">上架（<?=$tot1?>）</a>
                                         </div>
                                         <div  class="el-tabs__item is-top <?php echo $_GET['status']==2 ?'is_active1':'';?>">
-                                            <a style="" href="<?php echo  Yii::$app->request->getHostInfo().'/'.Yii::$app->request->pathInfo;?>?class=<?=$_GET['class']?>&status=2">下架（<?=$tot-$tot1?>）</a>
+                                            <a style="" href="<?php echo  Yii::$app->request->getHostInfo().'/'.Yii::$app->request->pathInfo;?>?class=<?=$_GET['class']?>&status=2&id=<?=$shop_id?>">下架（<?=$tot-$tot1?>）</a>
                                         </div>
 
-                                        <!--  <div id="tab-second" aria-controls="pane-second" role="tab" tabindex="-1"
-                                           class="el-tabs__item is-top">
-                                          回收站（1）
-                                      </div> -->
+                                          <!--  <div id="tab-second" aria-controls="pane-second" role="tab" tabindex="-1"
+                                             class="el-tabs__item is-top">
+                                            回收站（1）
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -429,7 +424,7 @@ use yii\helpers\Url;
                                                                 </div>
                                                                 <div title="<?=  $v["name"]["name_zh"] ?>" class="ddd" >
                                                                     <span style="color: rgb(186, 190, 193);">商品名：</span><?= $v["name"]["name_zh"] ?>
-                                                                </div>
+                                                                  </div>
                                                                 <div><span style="color: rgb(186, 190, 193);">运费：</span>按固定运费
                                                                 </div>
                                                             </div>
@@ -449,7 +444,7 @@ use yii\helpers\Url;
                                                         <div class="cell el-tooltip">
                                                             <div role="switch" aria-checked="true"
                                                                  class="el-switch is-checked">
-                                                                <a href="<?= Yii::$service->url->getUrl('water/goods/status', array('id' => $v['_id'], 'status' => $v['status'])) ?>">
+                                                                <a href="<?= Yii::$service->url->getUrl('shop/goods/status', array('id' => $v['_id'], 'status' => $v['status'])) ?>">
 
                                                                     <?php
 
@@ -471,14 +466,14 @@ use yii\helpers\Url;
                                                     </td>
                                                     <td class="el-table_2_column_14">
                                                         <div class="cell el-tooltip">
-                                                            <a href="<?= Yii::$service->url->getUrl('water/goods/find', array('id' => $v['_id'])) ?>"
+                                                            <a href="<?= Yii::$service->url->getUrl('admin/shop/find', array('id' => $v['_id'])) ?>"
                                                                class="">
                                                                 <button type="button"
                                                                         class="el-button el-button--text el-button--small">
                                                                     <span>查看</span></button>
                                                             </a>
                                                             <span style="color: rgb(234, 235, 236);">|</span>
-                                                            <a href="<?= Yii::$service->url->getUrl('water/goods/del', array('id' => $v['_id'])) ?>">
+                                                            <a href="<?= Yii::$service->url->getUrl('shop/goods/del', array('id' => $v['_id'])) ?>">
                                                                 <button type="button"
                                                                         class="el-button el-button--text el-button--small">
                                                                     <span><i style="color: rgb(255, 143, 113);font-style:normal">删除</i></span>
@@ -513,12 +508,12 @@ use yii\helpers\Url;
                                         <button type="button" class="el-button red el-button--danger is-round">
 
                                             <span>批量删除</span></button>
-                                        <button type="button" class="el-button green el-button--success is-round">
+                                        <!-- <button type="button" class="el-button green el-button--success is-round">
 
                                             <span>导出表格</span></button>
                                         <button type="button" class="el-button blue el-button--primary is-round">
 
-                                            <span>导出图片</span></button>
+                                            <span>导出图片</span></button> -->
                                     </div>
                                 </div>
                                 <div style="width: 100%; position: relative;">
@@ -610,5 +605,4 @@ use yii\helpers\Url;
         </div>
     </div>
 </div>
-
 
