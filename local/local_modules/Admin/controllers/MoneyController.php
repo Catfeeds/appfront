@@ -184,4 +184,33 @@ class MoneyController extends PublicsController
     	//     	    	print_r($date);
     	return json_encode($date);
     }
+    //
+    public function actionRank(){
+    	$type=$_GET['type'];
+    	$sql="SELECT A.shop_name, sum(B.items_count) as items, sum(B.grand_total) as grand, (grand/items) as pingjun 
+    			FROM shop as A
+    		    LEFT JOIN sales_flat_order as B on A.shop_id=B.shop_id
+    		   WHERE order_status in(1,3,4,5) ";
+    	if($type==1){
+    		$sql.=" ORDER BY items LIMIT 0,10";
+    	}else if($type==2){
+    		$sql.=" ORDER BY grand LIMIT 0,10";
+    	}
+    	return $sql;
+    	$arr = Yii::$app->db->createCommand($sql)->queryAll();
+    ///	return json_encode($arr);
+     }
+    
+    
 }
+
+
+
+
+
+
+
+
+
+
+

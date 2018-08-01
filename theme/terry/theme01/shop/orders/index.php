@@ -104,14 +104,14 @@ use yii\helpers\Url;
                                 <div data-v-6045fa9c="" class="el-input" style="width: 150px;"><!----><input type="text"
                                                                                                              autocomplete="off"
                                                                                                              placeholder="请输入收货人"
-                                                                                                             class="el-input__inner">
+                                                                                                             class="el-input__inner  customer_firstname" name="customer_firstname">
                                     <!----><!----><!----></div>
                             </li>
                             <li data-v-6045fa9c="">
                                 <div data-v-6045fa9c="" class="el-input" style="width: 150px;"><!----><input type="text"
                                                                                                              autocomplete="off"
                                                                                                              placeholder="请输入订单号"
-                                                                                                             class="el-input__inner">
+                                                                                                             class="el-input__inner increment_id" name="increment_id">
                                     <!----><!----><!----></div>
                             </li>
                             <li data-v-6045fa9c="">
@@ -330,8 +330,8 @@ use yii\helpers\Url;
                                                             </td>
                                                             <td class="el-table_2_column_15">
                                                                 <div class="cell el-tooltip">
-                                                                <div title="<?= $v["grand_total"] ?>">
-                                                                        总金额：<span style="color: #566168;font-weight: bold"><?= $v["grand_total"] ?></span></div>
+                                                                <div title="<?= $v["subtotal"] ?>">
+                                                                        总金额：<span style="color: #566168;font-weight: bold"><?= $v["subtotal"] ?></span></div>
                                                                     <div title="<?= $v["coupon_name"] ?>">
                                                                         使用优惠券：<span style="color: #FF8F71;font-weight: bold"><?= $v["coupon_name"] ?></span></div>
                                                                     <div title="<?= $v["coin_num"] ?>">使用金币：<span style="color: #FFD545;font-weight: bold"><?= $v["coin_num"] ?></span></div>
@@ -431,3 +431,15 @@ use yii\helpers\Url;
         </div>
     </div>
 </div>
+<script>
+    $(function(){
+        console.log($(".sousuo"));
+        $(".sousuo").on("click",function () {
+            let customer_firstname = $("input.customer_firstname").val();
+            let increment_id = $("input.increment_id").val();
+            location.href="<?= Yii::$service->url->geturl("/shop/orders/index?") ?>"+`customer_firstname=${customer_firstname}&increment_id=${increment_id}`;
+        })
+
+    })
+
+</script>

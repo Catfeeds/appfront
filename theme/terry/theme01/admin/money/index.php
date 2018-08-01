@@ -305,7 +305,7 @@ margin-top:4px;"
                 <div class="platdata-headername">本月营业排行TOP10</div>
 
 
-                <div class="xiala" style="float: left;">
+              <!--  <div class="xiala" style="float: left;">
                     <div class="money-box"></div>
                     <span style="font-size: 14px;color:#82898e;margin-left:14px;">区域</span>
                     <select name="member-level" id="member-level">
@@ -321,19 +321,30 @@ margin-top:4px;"
                         <option value="">洗衣</option>
                     </select>
                     <div class="xialaimg1" style="top:20px;"></div>
-                </div>
+                </div>  -->
                 <div class="platdata-headerright">
                     <div class="money-box money-box1">
                     </div>
-                    <span style="font-size: 14px;color:#82898e;margin-left:14px;float: left;">按销售量排行</span>
+                    <span style="font-size: 14px;color:#82898e;margin-left:14px;float: left;cursor:pointer;" onclick='port(1)'>按销售量排行</span>
                     <div class="money-box money-box1">
                     </div>
-                    <span style="font-size: 14px;color:#82898e;margin-left:14px;float: left;">按销售额排行</span>
+                    <span style="font-size: 14px;color:#82898e;margin-left:14px;float: left;cursor:pointer;" onclick='port(2)'>按销售额排行</span>
                     <button
                         style="width:89px;height:32px;background: #36de77;
                                         float: left;border:0;margin-top:13px;line-height: 32px;">导出表格</button>
                 </div>
             </div>
+            <script>
+				function port(type){
+					$.ajax({
+						type:"get",
+						url:"<?= Yii::$service->url->getUrl('admin/money/rank') ?>?type="+type,
+						success:function(msg){
+							console.log(msg)
+						}
+					})
+				}
+            </script>
             <div class="paihang">
                 <table border="0" class="ShopMannager-tablelist money-list">
                     <tr style="border-bottom:2px solid #b2b2b2;box-sizing: border-box;">
@@ -350,69 +361,7 @@ margin-top:4px;"
                         <td>10009</td>
                         <td>119</td>
                     </tr>
-                    <tr>
-                        <td style="color:#30d366">02</td>
-                        <td>爱康街洗衣纺大街21</td>
-                        <td>12344</td>
-                        <td>10009</td>
-                        <td>119</td>
-                    </tr>
-                    <tr>
-                        <td style="color:#fedc95">03</td>
-                        <td>爱康街洗衣纺大街21</td>
-                        <td>12344</td>
-                        <td>10009</td>
-                        <td>119</td>
-                    </tr>
-                    <tr>
-                        <td>04</td>
-                        <td>爱康街洗衣纺大街21</td>
-                        <td>12344</td>
-                        <td>10009</td>
-                        <td>119</td>
-                    </tr>
-                    <tr>
-                        <td>05</td>
-                        <td>爱康街洗衣纺大街21</td>
-                        <td>12344</td>
-                        <td>10009</td>
-                        <td>119</td>
-                    </tr>
-                    <tr>
-                        <td>06</td>
-                        <td>爱康街洗衣纺大街21</td>
-                        <td>12344</td>
-                        <td>10009</td>
-                        <td>119</td>
-                    </tr>
-                    <tr>
-                        <td>07</td>
-                        <td>爱康街洗衣纺大街21</td>
-                        <td>12344</td>
-                        <td>10009</td>
-                        <td>119</td>
-                    </tr>
-                    <tr>
-                        <td>08</td>
-                        <td>爱康街洗衣纺大街21</td>
-                        <td>12344</td>
-                        <td>10009</td>
-                        <td>119</td>
-                    </tr>
-                    <tr>
-                        <td>09</td>
-                        <td>爱康街洗衣纺大街21</td>
-                        <td>12344</td>
-                        <td>10009</td>
-                        <td>119</td>
-                    </tr>
-                    <tr>
-                        <td>10</td>
-                        <td>爱康街洗衣纺大街21</td>
-                        <td>12344</td>
-                        <td>10009</td>
-                        <td>119</td>
-                    </tr>
+                    
                 </table>
             </div>
 

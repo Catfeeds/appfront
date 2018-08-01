@@ -94,11 +94,11 @@ use yii\helpers\Url;
                     <ul data-v-345ba354="" style="width: 500px; display: flex; justify-content: space-between;">
                         <li data-v-345ba354="">
                             <div data-v-345ba354="" class="el-select" style="display: inline-block;">
-                                <select name="class" id="" class="el-select xiala" style="margin-left:10px">
+                                <select name="class" id="" class="el-select xiala like" style="margin-left:10px">
                                     <option value="0" style="display: none">请选择优惠券状态</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
+                                    <option value="0">待审核</option>
+                                    <option value="1">审核通过</option>
+                                    <option value="2">审核失败</option>
                                 </select>
                             </div>
                         </li>
@@ -318,6 +318,8 @@ use yii\helpers\Url;
 </div>
 <script>
     var like = document.querySelectorAll(".like");
+    console.log(like);
+
     function sel(e) {
         if(e.keyCode!=13&&e.type=="keydown"){
             return;
