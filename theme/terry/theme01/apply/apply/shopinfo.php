@@ -330,7 +330,6 @@
        <script>
                     function uploads(obj) {
                     	var file = obj.files[0];
->>>>>>> ea4c88e4ebfe23f2956854755a43207bf1de24a4
 
                                     <div class="el-step__icon-inner">
                                         4
@@ -360,7 +359,7 @@
                                 <label class="el-form-item__label" style="width: 80px;">店铺名称</label>
                                 <div class="el-form-item__content" style="margin-left: 80px;">
                                     <div class="el-input">
-                                        <input type="text" name="shop_name" autocomplete="off" class="el-input__inner" value="<?php echo $shopinfo['post']['shop_name']?>"/>
+                                        <input type="text" name="shop_name" autocomplete="off" class="el-input__inner" value="<?php echo $shopinfo['post']['shop_name']?>" required/>
                                     </div>
                                 </div>
                             </div>
@@ -377,7 +376,7 @@
                                     <?php }?>
                                             position: relative;">
                                         <input type="hidden" name="img0" class="img0" value="<?php echo $shopinfo['img'][0];?>"/>
-                                        <input  type="file" multiple="multiple" class="file" name="file[]" onchange="uploads(this)"/>
+                                        <input  type="file" multiple="multiple" class="file" name="file[]" onchange="uploads(this)" required/>
                                         <a  href="javascript:0" style="pointer-events: none; display: block; width: 50px; height: 50px; border-radius: 50%; background: rgb(48, 163, 254); position: absolute; margin: auto 210px; top: 0px; bottom: 0px; font-size: 30px; color: rgb(255, 255, 255); line-height: 50px; text-align: center;">+</a>
                                     </div>
 
@@ -396,7 +395,7 @@
                                     <?php }?>
                                             position: relative;">
                                         <input type="hidden" name="img1" class="img1" value="<?php echo $shopinfo['img'][1];?>"/>
-                                        <input  type="file" multiple="multiple" class="file" name="file[]" onchange="uploads(this)"/>
+                                        <input  type="file" multiple="multiple" class="file" name="file[]" onchange="uploads(this)" required/>
                                         <a  href="javascript:0" style="pointer-events: none; display: block; width: 50px; height: 50px; border-radius: 50%; background: rgb(48, 163, 254); position: absolute; margin: auto 210px; top: 0px; bottom: 0px; font-size: 30px; color: rgb(255, 255, 255); line-height: 50px; text-align: center;">+</a>
                                     </div>
 
@@ -415,7 +414,7 @@
                                     <?php }?>
                                             position: relative;">
                                         <input type="hidden" name="img2" class="img2" value="<?php echo $shopinfo['img'][2];?>"/>
-                                        <input  type="file" multiple="multiple" class="file" name="file[]" onchange="uploads(this)"/>
+                                        <input  type="file" multiple="multiple" class="file" name="file[]" onchange="uploads(this)" required/>
                                         <a  href="javascript:0" style="pointer-events: none; display: block; width: 50px; height: 50px; border-radius: 50%; background: rgb(48, 163, 254); position: absolute; margin: auto 210px; top: 0px; bottom: 0px; font-size: 30px; color: rgb(255, 255, 255); line-height: 50px; text-align: center;">+</a>
                                     </div>
 
@@ -506,71 +505,7 @@
 
 
                     </script>
-                    <div class="el-form-item">
-                        <label class="el-form-item__label" style="width: 80px;">店铺默认配送区域</label>
-                        <div class="el-form-item__content" style="margin-left: 80px;">
-                            <div class="el-input">
-                                <input type="text" name="shop_region" autocomplete="off" class="el-input__inner"  value="<?php echo $shopinfo['post']['shop_region']?>"/>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="el-form-item">
-                        <label class="el-form-item__label" style="width: 80px;">店铺公众号</label>
-                        <div class="el-form-item__content" style="margin-left: 80px;">
-                            <div class="el-input">
-                                <input type="text" name="shop_qrcode" autocomplete="off" class="el-input__inner"  value="<?php echo $shopinfo['post']['shop_qrcode']?>"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="el-form-item">
-                        <label class="el-form-item__label" style="width: 80px;">详细地址</label>
-                        <div class="el-form-item__content" style="margin-left: 80px;">
-                            <div class="el-input">
-                                <input type="text" name="shop_address" autocomplete="off" class="el-input__inner" value="<?php echo $shopinfo['post']['shop_address']?>"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="el-form-item">
-                        <label class="el-form-item__label" style="width: 80px;">邮政编码</label>
-                        <div class="el-form-item__content" style="margin-left: 80px;">
-                            <div class="el-input">
-                                <input type="text" name="shop_zip" autocomplete="off" class="el-input__inner" value="<?php echo $shopinfo['post']['shop_zip']?>"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="el-form-item">
-                        <label class="el-form-item__label" style="width: 80px;">店铺关闭原因</label>
-                        <div class="el-form-item__content" style="margin-left: 80px;">
-                            <div class="el-input">
-                                <input type="text" name="shop_close_info" autocomplete="off" class="el-input__inner" value="<?php echo $shopinfo['post']['shop_close_info']?>"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="el-form-item">
-                        <label class="el-form-item__label" style="width: 80px;">店铺seo关键字</label>
-                        <div class="el-form-item__content" style="margin-left: 80px;">
-                            <div class="el-input">
-                                <input type="text" name="shop_keywords" autocomplete="off" class="el-input__inner" value="<?php echo $shopinfo['post']['shop_keywords']?>"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="el-form-item">
-                        <label class="el-form-item__label" style="width: 80px;">店铺seo描述</label>
-                        <div class="el-form-item__content" style="margin-left: 80px;">
-                            <div class="el-input">
-                                <input type="text" name="shop_description" autocomplete="off" class="el-input__inner" value="<?php echo $shopinfo['post']['shop_description']?>"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="el-form-item">
-                        <label class="el-form-item__label" style="width: 80px;">商家电话</label>
-                        <div class="el-form-item__content" style="margin-left: 80px;">
-                            <div class="el-input">
-                                <input type="text" name="shop_phone" autocomplete="off" class="el-input__inner" value="<?php echo $shopinfo['post']['shop_phone']?>"/>
-                            </div>
-                        </div>
-                    </div>
                     <script>
                         function uploads(obj) {
                             var file = obj.files[0];
@@ -589,19 +524,20 @@
                         }
 
                     </script>
+                      <div style="margin-top: 50px;">
+                          <div style="width: 800px; display: flex; justify-content: space-around;">
+
+                              <button  type="button" class="el-button el-button--primary is-round" onclick='shopload("<?= Yii::$service->url->getUrl('apply/apply/companyinfo') ?>")'>
+                                  <span>上一步</span>
+                              </button>
+                              <input type="submit" class="el-button el-button--primary is-round"
+                                     value="下一步"
+                                     onclick='shopload("<?= Yii::$service->url->getUrl('apply/apply/waitaudit1') ?>")'>
+                              </input>
+                          </div>
+                      </div>
                     </form>
-                    <div style="margin-top: 50px;">
-                        <div style="width: 800px; display: flex; justify-content: space-around;">
 
-                            <button  type="button" class="el-button el-button--primary is-round" onclick='shopload("<?= Yii::$service->url->getUrl('apply/apply/companyinfo') ?>")'>
-                                <span>上一步</span>
-                            </button>
-
-                            <button type="button" class="el-button el-button--primary is-round" onclick='shopload("<?= Yii::$service->url->getUrl('apply/apply/waitaudit1') ?>")'>
-                                <span>下一步</span>
-                            </button>
-                        </div>
-                    </div>
 
                 </div>
             </div>
@@ -614,7 +550,18 @@
   <script>
   	function shopload(url){
   		$("#el-form").attr("action",url);
-  		$("#el-form").submit();
+        $("#el-form").submit(function(e){
+            e.preventDefault();
+            let formdata=$('form').serializeArray();
+            $.ajax({
+                url:url,
+                type:'post',
+                data:formdata,
+                success:function (msg) {
+                    location.href=url;
+                }
+            })
+        });
   	}
 	/* $(".el-button").onclick()
   

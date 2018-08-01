@@ -1,3 +1,14 @@
+<style>
+    .del {
+        width: 50px;
+        font-size: 18px;
+        font-weight: bold;
+        color: red;
+        display: none;
+        margin-left: 15px;
+        cursor: pointer;
+    }
+</style>
 <div class="main-content">
     <div class="adminmannager">
         <div class="adminmannager-title">
@@ -13,113 +24,31 @@
                                 <span style="color: #30a3fe">充值</span><span>设置</span>
                             </span>
                 </div>
-                <table border="0" cellspacing="10" cellpadding="1" class="rechargetable">
-                    <tr>
-                        <td>
-                            <span>充值</span>
-                        </td>
-                        <td>
-                            <input type="text" value="49.5"
-                                   style="text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;
+                <table border="0" cellspacing="10" cellpadding="0" class="rechargetable addtab addtag">
+                    <?php foreach ($recharge as $v) { ?>
+                        <tr>
+                            <td>
+                                <span>充值</span>
+                            </td>
+                            <td>
+                                <input id="<?= $v["id"] ?>" type="text" value="<?= $v["actual_payment"] ?>"
+                                       onblur="saveRecharge1(this)"
+                                       style="text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;box-sizing: border-box">
+                                <span>元</span>
+                                <span style="margin:0 4px;">=</span>
+                                <input id="<?= $v["id"] ?>" type="text" value="<?= $v["price"] ?>"
+                                       onblur="saveRecharge2(this)" style="text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;
 box-sizing: border-box">
-                            <span>元</span>
-                            <span style="margin:0 4px;">=</span>
-                            <input type="text" value="50"
-                                   style="text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;
-box-sizing: border-box">
-                            <span>元</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span>充值</span>
-                        </td>
-                        <td>
-                            <input type="text" value="49.5"
-                                   style="text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;
-box-sizing: border-box">
-                            <span>元</span>
-                            <span style="margin:0 4px;">=</span>
-                            <input type="text" value="50"
-                                   style="text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;
-box-sizing: border-box">
-                            <span>元</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span>充值</span>
-                        </td>
-                        <td>
-                            <input type="text" value="49.5"
-                                   style="text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;
-box-sizing: border-box">
-                            <span>元</span>
-                            <span style="margin:0 4px;">=</span>
-                            <input type="text" value="50"
-                                   style="text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;
-box-sizing: border-box">
-                            <span>元</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span>充值</span>
-                        </td>
-                        <td>
-                            <input type="text" value="49.5"
-                                   style="text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;
-box-sizing: border-box">
-                            <span>元</span>
-                            <span style="margin:0 4px;">=</span>
-                            <input type="text" value="50"
-                                   style="text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;
-box-sizing: border-box">
-                            <span>元</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span>充值</span>
-                        </td>
-                        <td>
-                            <input type="text" value="49.5"
-                                   style="text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;
-box-sizing: border-box">
-                            <span>元</span>
-                            <span style="margin:0 4px;">=</span>
-                            <input type="text" value="50"
-                                   style="text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;
-box-sizing: border-box">
-                            <span>元</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span>充值</span>
-                        </td>
-                        <td>
-                            <input type="text" value="49.5"
-                                   style="text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;
-box-sizing: border-box">
-                            <span>元</span>
-                            <span style="margin:0 4px;">=</span>
-                            <input type="text" value="50"
-                                   style="text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;
-box-sizing: border-box">
-                            <span>元</span>
-                        </td>
-                    </tr>
+                                <span>元</span>
+                                <span class="del" id="<?= $v["id"] ?>">✖</span>
+                            </td>
+                        </tr>
+                    <?php } ?>
                 </table>
                 <button style="width: 100px;height: 32px;border:0;float: left;margin-top:1px;
-background: #30a3fe;border-radius: 18px;text-align: center;line-height: 32px;color: #fff;">
+background: #30a3fe;border-radius: 18px;text-align: center;line-height: 32px;color: #fff;" onclick="addTab1()">
                     添加
                 </button>
-                <button style="width: 100px;height: 32px;border:0;float: left;margin-top:1px;margin-left:40px;
-background: #37e06f;border-radius: 18px;text-align: center;line-height: 32px;color: #fff;">
-                    保存
-                </button>
-
             </div>
             <div class="recharge2">
                 <div class="admin-tablename" style="height: 40px;line-height: 40px;">
@@ -139,32 +68,146 @@ box-sizing: border-box">
 box-sizing: border-box">
                     <span>元</span>
                 </div>
-                <table border="0" cellspacing="10" cellpadding="1" class="rechargetable">
-                    <tr>
-                        <td>
-                            <span>消费</span>
-                        </td>
-                        <td>
-                            <input type="text" value="49.5"
-                                   style="text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;
+                <table border="0" cellspacing="10" cellpadding="0" class="rechargetable addtab1 addtag">
+                    <?php foreach ($coin as $v) { ?>
+                        <tr>
+                            <td>
+                                <span>消费</span>
+                            </td>
+                            <td>
+                                <input id="<?= $v[id] ?>" type="text" value="<?= $v["condition"] ?>"
+                                       onblur="saveCoin1(this)"
+                                       style="text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;
 box-sizing: border-box">
-                            <span>元</span>
-                            <span style="margin:0 4px;">可使用</span>
-                            <input type="text" value="50"
-                                   style="text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;
+                                <span>元</span>
+                                <span style="margin:0 4px;">可使用</span>
+                                <input id="<?= $v[id] ?>" type="text" value="<?= $v["coin_num"] ?>"
+                                       onblur="saveCoin2(this)"
+                                       style="text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;
 box-sizing: border-box">
-                            <span>金币</span>
-                        </td>
-                    </tr>
+                                <span>金币</span>
+                                <span class="del" style="display: none" id="<?= $v["id"] ?>">✖</span>
+                            </td>
+                        </tr>
+                    <?php } ?>
                 </table>
-                <button style="width: 100px;height: 32px;border:0;float: left;margin-top:1px;
-background: #30a3fe;border-radius: 18px;text-align: center;line-height: 32px;color: #fff;">
+                <Button style="width: 100px;height: 32px;border:0;float: left;margin-top:1px;
+background: #30a3fe;border-radius: 18px;text-align: center;line-height: 32px;color: #fff;" onclick="addTab()">
                     添加
-                </button>
-
+                </Button>
             </div>
         </div>
-
-
     </div>
 </div>
+<script>
+    function addTab() {
+        $.ajax({
+            url: "<?= Yii::$service->url->geturl("/admin/system/savecoin") ?>",
+            success: function (id) {
+                var tcount = $(".addtab1 tr").length;
+                var tpl = `<tr><td><span>消费</span></td><td>
+        <input id="${id}"  onblur="saveCoin1(this)" type="text" value="" style="text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;box-sizing: border-box">
+            <span>元</span>
+            <span style="margin:0 4px;">可使用</span>
+        <input id="${id}"  onblur="saveCoin2(this)" type="text" value="" style="text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;box-sizing: border-box">
+    <span>金币</span><span class="del"  id="${id}">✖</span>
+    </td>
+    </tr>`;
+                $(".addtab1").append(tpl);
+            }
+        });
+    }
+
+    function saveCoin1(ele) {
+        $.ajax({
+            url: "<?= Yii::$service->url->geturl("/admin/system/savecoin1?") ?>" + `id=${ele.getAttribute("id")}&condition=${ele.value}`,
+            success: function (data) {
+            }
+        });
+    }
+
+    function saveCoin2(ele) {
+        $.ajax({
+            url: "<?= Yii::$service->url->geturl("/admin/system/savecoin2?") ?>" + `id=${ele.getAttribute("id")}&coin_num=${ele.value}`,
+            success: function (data) {
+            }
+        });
+    }
+
+    function addTab1() {
+        $.ajax({
+            url: "<?= Yii::$service->url->geturl("/admin/system/money")?>",
+            success: function (id) {
+                var tcount = $(".addtab tr").length;
+                var tpl = `<tr><td><span>充值</span></td>
+                        <td><input id="${id}" type="text" value="" onblur="saveRecharge1(this)" style="text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;box-sizing: border-box">
+<span>元</span>
+<span style="margin:0 4px;">=</span>
+<input id="${id}" type="text" value="" onblur="saveRecharge2(this)" style="text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;
+box-sizing: border-box">
+<span>元</span>
+<span class="del" id="{$id}">✖</span></td></tr>`;
+                $(".addtab").append(tpl);
+            }
+        });
+    }
+
+    function saveRecharge1(ele) {
+        $.ajax({
+            url: "<?= Yii::$service->url->geturl("/admin/system/saverecharge1?")?>" + `id=${ele.getAttribute("id")}&actual_payment=${ele.value}`,
+            success: function (data) {
+
+            }
+        });
+    }
+
+    function saveRecharge2(ele) {
+        $.ajax({
+            url: "<?= Yii::$service->url->geturl("/admin/system/saverecharge2?")?>" + `id=${ele.getAttribute("id")}&price=${ele.value}`,
+            success: function (data) {
+
+            }
+        });
+    }
+
+
+    $(".addtag").on("mouseenter", "tr", function (e) {
+        $(this).find(".del").show();
+
+    });
+    $(".addtag").on("mouseleave", "tr", function () {
+        $(this).find(".del").hide();
+    });
+
+    //删除一行数
+    let table = document.querySelectorAll("table");
+    table.forEach(function (val) {
+            val.onclick = function (event) {
+                if (event.target.className && event.target.className == "del") {
+                    if ("val.className"=="addtab") {
+                        $.ajax({
+                            url: '<?=Yii::$service->url->geturl("/admin/system/delcoin")?>' + `?id=${event.target.getAttribute("id")}`,
+                            success: function (data) {
+
+                                let delE = event.target.parentNode.parentNode;
+                                let tbody = delE.parentNode;
+                                tbody.removeChild(delE);//删除一行
+                            }
+                        })
+                    } else {
+                        $.ajax({
+                            url: '<?=Yii::$service->url->geturl("/admin/system/delrecharge")?>' + `?id=${event.target.getAttribute("id")}`,
+                            success: function (data) {
+                                let delE = event.target.parentNode.parentNode;
+                                let tbody = delE.parentNode;
+                                tbody.removeChild(delE);//删除一行
+                            }
+                        })
+                    }
+                }
+            }
+        }
+    )
+
+
+</script>
