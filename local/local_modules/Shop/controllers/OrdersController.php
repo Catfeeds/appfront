@@ -48,7 +48,7 @@ class OrdersController extends PublicsController
 
         // 实例化分页对象
         $pagination = new Pagination([
-            'defaultPageSize' => 5,
+            'defaultPageSize' => 1,
             'totalCount' => $countArr['tot'],
         ]);
         //查询订单产品表
@@ -95,7 +95,7 @@ class OrdersController extends PublicsController
                 }
             }
         };
-        $all = Yii::$app->db->createCommand("select o.order_status from sales_flat_order o where shop_id='{$_SESSION["shop_id"]}' and order_status<5")->queryAll();
+        $all = Yii::$app->db->createCommand("select o.order_status from sales_flat_order o where shop_id='{$_SESSION["shop_id"]}' and order_status<5" )->queryAll();
 
                
             
