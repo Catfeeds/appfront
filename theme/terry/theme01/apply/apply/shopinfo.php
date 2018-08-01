@@ -301,7 +301,7 @@
                                 </button>
                                 <input type="submit" class="el-button el-button--primary is-round"
                                        value="下一步"
-                                       onclick='shopload("<?= Yii::$service->url->getUrl('apply/apply/waitaudit1') ?>")'>
+                                       onclick='shopload("<?= Yii::$service->url->getUrl('apply/apply/waitaudit') ?>")'>
                                 </input>
                             </div>
                         </div>
