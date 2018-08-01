@@ -1,12 +1,12 @@
 
   <div  class="main-content">
    <div  style="width: 1012px; margin: 0px auto;">
-    <div>
+    <div  >
      <div  class="content">
       <div  class="biaoti">
        <div  aria-label="Breadcrumb" role="navigation" class="el-breadcrumb">
         <span  class="el-breadcrumb__item"><span role="link" class="el-breadcrumb__inner is-link">账号管理</span><span role="presentation" class="el-breadcrumb__separator">&middot;</span></span> 
-        <span  class="el-breadcrumb__item" aria-current="page"><span role="link" class="el-breadcrumb__inner"><span  style="color: rgb(48, 211, 102);font-weight: bold">资金列表</span></span><span role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
+        <span  class="el-breadcrumb__item" aria-current="page"><span role="link" class="el-breadcrumb__inner"><span  style="color: rgb(48, 211, 102);">资金列表</span></span><span role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
        </div>
       </div> 
       <ul  class="shuaixuan">
@@ -16,14 +16,46 @@
                <option value="">1</option>
                <option value="">2</option>
            </select>
-       <li >时间段选择 
-        <div  class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
-         <i class="el-input__icon el-range__icon el-icon-time"></i>
-         <input placeholder="开始日期" name="" class="el-range-input" />
-         <span class="el-range-separator">至</span>
-         <input placeholder="结束日期" name="" class="el-range-input" />
-         <i class="el-input__icon el-range__close-icon"></i>
-        </div></li> 
+          <li style="
+                display: flex;
+                align-items: center;
+                    ">时间段选择
+              <div class="el-form-item__content" style="margin-left: 10px;">
+                  <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test10">
+              </div>
+          </li>
+          <style>
+              .demo-input {
+                  padding-left: 10px;
+                  height: 30px;
+                  min-width: 300px;
+                  line-height: 38px;
+                  border: 1px solid #e6e6e6;
+                  background-color: #f3faff;
+                  border-radius: 30px;
+                  outline: none;
+              }
+
+              .demo-input:hover {
+                  border-color: #c0c4cc;
+              }
+
+              .demo-input:focus {
+                  border-color: #3CACFE;
+              }
+              .el-form-item__content {
+                  line-height: normal;
+              }
+
+              .el-form-item__content {
+                  line-height: 40px;
+                  position: relative;
+                  font-size: 14px;
+              }
+              .layui-laydate .layui-this{
+                  background: #30B5FE !important;
+              }
+          </style>
        <li >
         <div  class="el-input" style="width: 200px;">
          <input type="text" autocomplete="off" placeholder="请输入关键字搜索" class="el-input__inner" />
@@ -199,16 +231,10 @@
          </table>
         </div>
         <div class="el-table__column-resize-proxy" style="display: none;"></div>
-       </div>
-          <div style="width: 200px; float: right; margin-top: 28px; display: flex; justify-content: space-between;">
-           <div style="display: flex;">
-               <div class="dian"></div> 总计
-               <span style="color: rgb(61, 176, 255); font-weight: bolder;margin:0 5px;">206</span>记录
-           </div>
-           <div style="display: flex;">
-               <div class="dian" style="background: rgb(41, 201, 154);"></div> 分
-               <span style="font-weight: bolder; color: rgb(41, 201, 154);margin:0 5px;">82</span>页
-           </div>
+       </div> 
+       <div  style="float: right; margin-top: 20px;">
+        <span >总计206记录</span>
+        <span  style="margin-left: 20px;">分82页</span>
        </div> 
        <div  style="margin-top: 20px;">
         <button  type="button" class="el-button el-button--default">

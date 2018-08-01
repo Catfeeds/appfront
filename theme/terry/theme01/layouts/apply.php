@@ -44,21 +44,12 @@ $cssOptions = [
 <?php $this->endPage() ?>
 
 <style>
-    html, body {
-        height: 100%;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-    }
-    #app{
-        width: 100%;
-        height:100%;
-    }
     * {
         margin: 0;
         padding: 0;
         list-style: none;
         text-decoration: none;
+        font-family: "微软雅黑";
     }
 
     html, body {
@@ -70,22 +61,23 @@ $cssOptions = [
     }
     /*头部样式*/
     .header {
-        width: 2000px;
+        width: calc(100% - 167px);
         height: 50px;
         position: fixed;
         top: 0;
-        left:162px;
+        left:167px;
         z-index: 999;
         display: flex;
         background: #eaf6ff;
-        justify-content: left;
+        justify-content: space-between;
     }
 
     .header ul {
-        width: 704px;
+        width: 636px;
         height: 100%;
         display: flex;
         padding-left: 44px;
+        float: left;
     }
 
     .header ul li {
@@ -107,14 +99,14 @@ $cssOptions = [
 
     .header .header-right {
         height: 100%;
+        display: flex;
     }
 
     .header .header-right .adminname {
         width: 120px;
         height: 100%;
-        /*background: forestgreen;*/
-        float: left;
         margin-left: 10px;
+
     }
 
     .admin-img {
@@ -147,7 +139,7 @@ $cssOptions = [
     .clearimg {
         width: 17px;
         height: 19px;
-        background: url("/public/imgs/clear.png") center center/100% auto;
+        background: url("/public/adminimg/clear.png") center center/100% auto;
         margin-top: 15px;
         float: left;
         margin-left: 16px;
@@ -156,7 +148,7 @@ $cssOptions = [
     .out {
         width: 17px;
         height: 19px;
-        background: url("/public/imgs/out.png") center center/100% auto;
+        background: url("/public/adminimg/out.png") center center/100% auto;
         margin-top: 15px;
         float: left;
         /* margin-left:10px;*/
@@ -164,19 +156,20 @@ $cssOptions = [
 
     /*侧边栏*/
     .aside {
-        width: 162px;
-        min-height: 2000px;
+        width: 167px;
+        height: 100%;
         background: #1f262c;
         float: left;
         position: fixed;
         top: 0;
         left: 0;
+        z-index:99999;
     }
 
     .aside .logo {
         width: 100%;
         height: 125px;
-        background: url("/public/imgs/logo.png") no-repeat center center/100% auto;
+        background: url("/public/adminimg/logo.png") no-repeat center center/100% auto;
     }
 
     .aside-list li {
@@ -232,20 +225,21 @@ $cssOptions = [
 
     /*主内容*/
     .main-content {
-        width: calc(100% - 162px);
-        min-height: 587px;
+        width: calc(100% - 167px);
+        /*min-height: 587px;*/
         background: #fff;
         float: left;
         color: #333;
         margin-top: 50px;
-        margin-left: 162px;
+        margin-left: 167px;
     }
 
     /*用户管理-管理员管理*/
     .adminmannager {
-        width: 100%;
-        height: 100%;
-        padding: 27px 0 0 68px;
+        width: 1100px;
+        margin:0 auto;
+        /*height: 100%;*/
+        padding: 27px 0 27px 27px;
         box-sizing: border-box;
     }
 
@@ -254,9 +248,9 @@ $cssOptions = [
         font-weight: bolder;
     }
 
-   /* .adminmannager-title span:first-child {
-        color: #516676;
-    }*/
+    /* .adminmannager-title span:first-child {
+         color: #516676;
+     }*/
 
     .adminmannager-title span:last-child {
         color: #30d366;
@@ -267,7 +261,7 @@ $cssOptions = [
         height: 48px;
         margin-top: 30px;
         /*background: #ff6700;*/
-        padding-right: 100px;
+        /*padding-right: 100px;*/
         box-sizing: border-box;
     }
 
@@ -284,7 +278,7 @@ $cssOptions = [
     }
 
     /*搜索框*/
-    .adminmannager-search input {
+    .adminmannager-search input{
         width: 200px;
         height: 32px;
         border: 2px solid #ebf6ff;
@@ -297,6 +291,7 @@ $cssOptions = [
         padding: 0 10px;
         box-sizing: border-box;
     }
+
 
     /*会员管理下拉框*/
     .adminmannager-search select {
@@ -323,34 +318,35 @@ $cssOptions = [
         content: "";
         width: 14px;
         height: 8px;
-        background: url("./assets/img/xiala.png") no-repeat center;
+        background: url("/public/adminimg/xiala.png") no-repeat center;
         position: absolute;
         right: 20px;
         top: 45%;
         pointer-events: none;
     }*/
 
-    .search-img {
+    .adminmannager-search .search-img {
         width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: url('/public/adminimg/search.png') no-repeat center center/60% 60%;
+        margin:0;
+        border:none;
+        padding: 0;
+    }
+    .adminmannager-search .indexsearch{
+        width:  40px;
         height: 40px;
         margin-left: 40px;
         margin-top: 5px;
         border-radius: 50%;
-        background: #3bacfe;
         float: left;
+        background: #41b2fc
     }
-
     .search-img, .addadmin:hover {
         cursor: pointer;
     }
 
-    .search-img img {
-        width: 20px;
-        height: 20px;
-        display: block;
-        margin: 0 auto;
-        margin-top: 10px;
-    }
 
     .addadmin {
         width: 150px;
@@ -363,6 +359,7 @@ $cssOptions = [
         border: none;
         font-size: 14px;
         color: #fff;
+        outline: none;
     }
 
     /*管理员列表*/
@@ -370,9 +367,11 @@ $cssOptions = [
         /*padding-right: 100px;*/
         margin-top: 8px;
     }
+    input{
+        outline:none;
+    }
 
     .admin-tablename {
-        /*width: 100%;*/
         height: 80px;
         line-height: 80px;
         font-size: 18px;
@@ -391,6 +390,7 @@ $cssOptions = [
     .admin-tablename2 {
         float: left;
         color: #4f5b64;
+        letter-spacing: 2px;
     }
 
     .admin-tablenamebox {
@@ -456,7 +456,7 @@ $cssOptions = [
         display: inline-block;
         width: 14px;
         height: 16px;
-        background: url("./assets/img/delete.png") no-repeat center center/100% 100%;
+        background: url("/public/adminimg/delete.png") no-repeat center center/100% 100%;
         position: absolute;
         left: 168px;
         /*bottom: 13px;*/
@@ -544,7 +544,7 @@ $cssOptions = [
         width: 25px;
         height: 25px;
         border-radius: 50%;
-        background: url("/public/imgs/xiala.png") no-repeat center center/100% 100%;
+        background: url("/public/adminimg/xiala.png") no-repeat center center/100% 100%;
         position: absolute;
         right: 6px;
         top: 0;
@@ -555,9 +555,10 @@ $cssOptions = [
     }
 
     .ShopMannager {
-        width: 100%;
+        width: 1120px;
+        margin:0 auto;
         height: 100%;
-        padding: 27px 0 0 68px;
+        padding: 27px 10px 0 10px;
         box-sizing: border-box;
     }
 
@@ -602,13 +603,10 @@ $cssOptions = [
         width: 25px;
         height: 25px;
         border-radius: 50%;
-        background: url("./assets/img/xiala.png") no-repeat center center/100% 100%;
+        background: url("/public/adminimg/xiala.png") no-repeat center center/100% 100%;
         position: absolute;
         right: 5px;
         top: 12px;
-        /*margin:auto 0;
-        top:0;
-        bottom:0;*/
         pointer-events: none;
     }
 
@@ -627,6 +625,7 @@ $cssOptions = [
         border-radius: 18px;
         box-sizing: border-box;
         padding: 0 10px;
+        margin-left:6px;
     }
 
     .ShopMannagersearch-img {
@@ -705,19 +704,11 @@ $cssOptions = [
     }
 
     #platdata {
-        width: 100%;
+        width: 1110px;
         min-height: 500px;
-        padding: 27px 0 0 68px;
+        padding: 27px 0 0 0;
+        margin:0 auto;
     }
-
-    /*时间戳*/
-   /* .el-picker-panel:nth-of-type(1) {
-        top: 154px !important;
-    }*/
-
-    /*.el-picker-panel:nth-of-type(2) {
-        top: 154px !important;
-    }*/
 
     #platdata button {
         width: 60px;
@@ -735,7 +726,8 @@ $cssOptions = [
     }
 
     .main-content {
-        overflow: hidden;
+        /*overflow: hidden;*/
+        /*width: 1012px;*/
     }
 
     #platdata .tongji {
@@ -798,11 +790,6 @@ $cssOptions = [
         margin: auto;
         right: 26px;
     }
-
-    .tongji-number div:first-child {
-        /*margin-top: 5px;*/
-    }
-
     .tongji-number div:first-child span {
         font-size: 24px;
         font-weight: bolder;
@@ -835,25 +822,26 @@ $cssOptions = [
         margin-right:9px;
     }
     .process div:first-child{
-        background: url('./assets/img/m1.png') no-repeat center center/100% auto;
+        background: url('/public/adminimg/m1.png') no-repeat center center/100% auto;
     }
     .process div:nth-child(2){
-        background: url('./assets/img/m2.png') no-repeat center center/100% auto;
+        background: url('/public/adminimg/m2.png') no-repeat center center/100% auto;
     }
     .process div:nth-child(3){
-        background: url('./assets/img/m3.png') no-repeat center center/100% auto;
+        background: url('/public/adminimg/m3.png') no-repeat center center/100% auto;
     }
     .process div:nth-child(4){
-        background: url('./assets/img/m4.png') no-repeat center center/100% auto;
+        background: url('/public/adminimg/m4.png') no-repeat center center/100% auto;
     }
     .process div:nth-child(5){
-        background: url('./assets/img/m5.png') no-repeat center center/100% auto;
+        background: url('/public/adminimg/m5.png') no-repeat center center/100% auto;
     }
     .process div:nth-child(6){
-        background: url('./assets/img/m6.png') no-repeat center center/100% auto;
+        background: url('/public/adminimg/m6.png') no-repeat center center/100% auto;
     }
     .process div:nth-child(7){
-        background: url('./assets/img/m7.png') no-repeat center center/100% auto;
+        background: url('/public/adminimg/m7.png') no-repeat center center/100% auto;
+        margin-right: 0;
     }
     .addofplatdata {
         width: 1100px;
@@ -1012,7 +1000,7 @@ $cssOptions = [
     #check {
         float: left;
         width: 14px;
-        height: 100%;
+        /*height: 100%;*/
     }
 
     #check .input_check {
@@ -1052,17 +1040,17 @@ $cssOptions = [
         display: inline-block;
         width: 14px;
         height: 16px;
-        background: url("./assets/img/delete.png") no-repeat center center/100% 100%;
+        background: url("/public/adminimg/delete.png") no-repeat center center/100% 100%;
         position: absolute;
         left: 40px;
-       top:0;
+        top:0;
         bottom:0;
         margin:auto 0;
     }
     #root{
         width: 330px;
         height: 34px;
-       /* background: #00fff9;*/
+        /* background: #00fff9;*/
         line-height: 30px;
         margin-top:30px;
     }
@@ -1074,7 +1062,7 @@ $cssOptions = [
         position: relative;
     }
     .select-all .checkbox{
-       width: 14px;
+        width: 14px;
         height: 14px;
         border-radius: 50%;
         box-sizing: border-box;
@@ -1216,7 +1204,7 @@ $cssOptions = [
         width: 130px;
     }
     .table-list tr td:last-child{
-       position: relative;
+        position: relative;
     }
     .table-list .delete{
         left:42px;
@@ -1259,7 +1247,7 @@ $cssOptions = [
         position: relative;
     }
     .money-box1{
-        background: url("./assets/img/dui.png") no-repeat center center;
+        background: url("/public/adminimg/dui.png") no-repeat center center;
     }
     .paihang{
         width: 100%;
@@ -1633,9 +1621,6 @@ $cssOptions = [
         border:0;
         width: 15px;
         height: 15px;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
         outline: none;
     }
     .vip-list tr td{
@@ -1671,7 +1656,7 @@ $cssOptions = [
     .b-lisc{
         width: 570px;
         height: 395px;
-        background: url("./assets/img/licence.png") no-repeat center center/100% 100%;
+        background: url("/public/adminimg/licence.png") no-repeat center center/100% 100%;
     }
     .Porderlist ul li{
         width: 120px;
@@ -1710,19 +1695,19 @@ $cssOptions = [
     .producto tr th:nth-child(4),.producto tr th:nth-child(4){
         width: 170px;
     }
-    .producto tr th:nth-child(5),.producto tr th:nth-child(5){
+    .producto tr th:nth-child(6),.producto tr th:nth-child(6){
         width: 182px;
     }
-    .producto tr th:nth-child(6),.producto tr th:nth-child(6){
+    .producto tr th:nth-child(7),.producto tr th:nth-child(7){
         width: 102px;
     }
-    .producto tr th:nth-child(7),.producto tr th:nth-child(6){
+    .producto tr th:nth-child(8),.producto tr th:nth-child(7){
         width: 108px;
     }
-    .producto tr th:nth-child(8){
+    .producto tr th:nth-child(9){
         position: relative;
     }
-    .producto tr th:nth-child(8),.producto tr th:nth-child(8){
+    .producto tr th:nth-child(9),.producto tr th:nth-child(9){
         width: 61px;
     }
     .b-number{
@@ -1784,7 +1769,7 @@ $cssOptions = [
         font-size: 14px;
     }
     .find-maskc p{
-       line-height: 20px;
+        line-height: 20px;
         font-size: 14px;
     }
     .wait-list tr th{
@@ -1830,8 +1815,8 @@ $cssOptions = [
         color: #748a99;
     }
     .settle{
-        width: 100%;
-        height: 100%;
+        width: 1300px;
+        margin:0 auto;
     }
     .settle header{
         width: 100%;
@@ -1860,7 +1845,7 @@ $cssOptions = [
     .settle-content{
         width: 100%;
         height: 540px;
-        background: url("/public/imgs/settle.png") no-repeat center center/100% 100%;
+        background: url("/public/adminimg/settle.png") no-repeat center center/100% 100%;
         position:relative;
     }
     .content2{
@@ -1912,8 +1897,8 @@ $cssOptions = [
         margin-top: 50px;
     }
     .settle-p{
-        width: 1112px;
-       /* height: 200px;*/
+        width: 100%;
+        /* height: 200px;*/
         margin: 0 auto;
         margin-top: 79px;
     }
@@ -1941,7 +1926,7 @@ $cssOptions = [
     .jiantou{
         width: 26px;
         height: 13px;
-        background: url("./assets/img/jiantou.png");
+        background: url("/public/adminimg/jiantou.png");
         float: left;
         margin:45px 80px 0 80px;
     }
@@ -1976,26 +1961,30 @@ $cssOptions = [
     .ruzhuname2{
         font-size: 14px;
         color: #7f8c97;
+        padding-left:16px;
+        box-sizing: border-box;
     }
     .ruzhuname2 p{
         line-height: 30px;
     }
     #index1{
         width: 100%;
+        overflow:hidden ;
     }
     #index1 header{
-        width:1300px;
+        width:1160px;
         height: 139px;
-        margin:0 auto;
         margin-top:30px;
+        display: flex;
+        justify-content: space-between;
     }
+
     .index1-logo{
         height: 100%;
         width: 250px;
         text-align: center;
         padding-top:20px;
         box-sizing: border-box;
-        float: left;
     }
     .index1-logo h1{
         font-size: 14px;
@@ -2007,9 +1996,6 @@ $cssOptions = [
     }
     .index2-content1{
         width: 1008px;
-        /*float:right;*/
-        /*background: red;*/
-        /*margin-right:50px;*/
         margin:0 auto;
     }
     .index2{
@@ -2069,11 +2055,14 @@ $cssOptions = [
         width: 279px;
     }
     .el-form-item__content{
-        margin-left:135px !important;
+        margin-left:175px !important;
     }
     .el-form-item__label{
-        width:135px !important;
+        width:168px !important;
 
+    }
+    .el-form-item{
+        line-height: 40px !important;
     }
     .el-upload--picture-card{
         width: 273px;
@@ -2087,11 +2076,11 @@ $cssOptions = [
         width: 273px;
         height: 162px;
         float:left;
-      /*  margin-left:50px;*/
+        /*  margin-left:50px;*/
     }
     .file{
-        width: 400px;
-        height: 200px;
+        width: 100%;
+        height:100%;
         background: #f3faff;
         opacity: 0;
     }
@@ -2125,7 +2114,8 @@ $cssOptions = [
         width:200px !important;
     }
     .wait-list span{
-        line-height: 24px;
+        line-height: 30px;
+        font-size: 14px;
     }
     .esave{
         width: 80px;
@@ -2244,8 +2234,8 @@ $cssOptions = [
         color:#9ed3fd;
     }
     .ppaihang .money-list tr th:nth-child(2){
-         flex:0.4;
-     }
+        flex:0.4;
+    }
     .ppaihang .money-list tr td:nth-child(2){
         flex:0.4;
     }
@@ -2280,4 +2270,205 @@ $cssOptions = [
         top:0;
         left:0;
     }
+    .sPorderlist{
+        border-bottom:1px solid #eee;
+        margin-top:10px;
+    }
+    .sPorderlist ul{
+        display: flex;
+        justify-content: left;
+        height: 100%;
+    }
+    .sPorderlist ul li{
+        height: 100%;
+        line-height: 60px;
+        margin-right:10px;
+        padding:0 10px;
+        cursor: pointer;
+    }
+    .sPorderlist ul li:hover{
+        background: #30a3fe;
+    }
+    .sPorderlist ul li:hover > a{
+        color:#fff;
+    }
+    .sPorderlist ul li a{
+        color:#30a3fe;
+        font-size: 14px;
+    }
+    .b-number span{
+        line-height: 14px;
+    }
+    .b-number p{
+        line-height: 20px;font-size: 14px;
+    }
+    .repair tr{
+        display: flex;
+    }
+    .repair tr th:first-child, .repair tr td:first-child{
+        flex:0.3;
+    }
+    .repair tr th:nth-child(2), .repair tr td:nth-child(2),.repair tr th:nth-child(4), .repair tr td:nth-child(4){
+        flex:0.3;
+    }
+    .repair tr th:nth-child(3), .repair tr td:nth-child(3){
+        flex:0.2;
+    }
+    .repair tr th:nth-child(5), .repair tr td:nth-child(5){
+        flex:0.5;
+    }
+    .repair tr th:nth-child(6), .repair tr td:nth-child(6){
+        flex:0.8;
+    }
+    .repair tr th:nth-child(7), .repair tr td:nth-child(7), .repair tr th:nth-child(8), .repair tr td:nth-child(8), .repair tr th:nth-child(9), .repair tr td:nth-child(9), .repair tr th:nth-child(10), .repair tr td:nth-child(10){
+        flex:0.3;
+    }
+    .jine span:nth-of-type(odd){
+        color: gray;
+    }
+    .jine span:nth-of-type(even){
+        color: #000;
+    }
+    .fightorder{
+        width: 100%;
+    }
+    .fightorder tr{
+        display: flex;
+    }
+    .fightorder tr th{
+        height: 30px;
+        line-height: 30px;
+    }
+    .fightorder tr th:first-child,.fightorder tr td:first-child,.fightorder tr th:nth-child(2),.fightorder tr td:nth-child(2){
+        flex:0.4;
+    }
+    .fightorder tr th:nth-child(3),.fightorder tr td:nth-child(3){
+        flex:0.3;
+    }
+    .fightorder tr th:nth-child(4),.fightorder tr td:nth-child(4),.fightorder tr th:nth-child(5),.fightorder tr td:nth-child(5),.fightorder tr th:nth-child(6),.fightorder tr td:nth-child(6){
+        flex:0.6;
+    }
+    .fightorder tr th:nth-child(7),.fightorder tr td:nth-child(7),.fightorder tr th:nth-child(9),.fightorder tr td:nth-child(9),.fightorder tr th:nth-child(8),.fightorder tr td:nth-child(8),.fightorder tr th:nth-child(10),.fightorder tr td:nth-child(10){
+        flex:0.3;
+    }
+    .scheck-list tr{
+        display: flex;
+    }
+    .scheck-list tr td:first-child{
+        text-align:right;
+        flex: 0.5;
+        color: gray;
+    }
+    .scheck-list tr td:last-child{
+        flex: 1.5;
+        padding-left:10px;
+    }
+    .scheck-btn{
+        width: 100px;
+        height: 30px;
+        border-radius: 20px;
+        border:0;
+        line-height: 30px;
+        color:#fff;
+        text-align: center;
+    }
+    .scheck-btn1{
+        background: #30a3fe;
+    }
+    .scheck-btn2{
+        background: #26ff00;
+    }
+    .scheck-btn3{
+        background: #ffb802;
+    }
+    .aside-list li.active {
+        border-left: 6px solid #37df72;
+        background: #323f49;
+        box-sizing: border-box;
+    }
+    .header ul li.active {
+        background: #3CACFE;
+        color: #fff;
+    }
+    .header ul li a{
+        width: 100%;
+        height: 100%;
+    }
+    .header ul li.active a {
+        color: #fff;
+    }
+    .add{
+        width: 100%;
+        height: 400px;
+        margin-top:50px;
+        border-radius: 6px;
+    }
+    .add form{
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+    }
+    .add form>div{
+        height: 50px;
+        line-height: 50px;
+    }
+    .add form>div span{
+        font-size: 20px;
+        color:#333;
+    }
+    .add form>div label{
+        font-size: 14px;
+    }
+    .add form>div input{
+        height: 30px;
+        background: rgba(0,213,223,0.2);
+        border-radius: 10px;
+        border:none;
+        outline: none;
+        width: 200px;
+        padding:0 10px;
+        box-sizing: border-box;
+    }
+    .add form input[type="submit"]{
+        width:200px;
+        height: 36px;
+        border-radius: 18px;
+        border:none;
+        outline: none;
+        text-align: center;
+        line-height: 30px;
+        background:deepskyblue;
+        display:block;
+        /*margin-left:150px;*/
+        margin-top:50px;
+        color:#fff;
+        float: left;
+        cursor:pointer;
+    }
+    .wreview-check{
+        height: 40px;
+        width: 100%;
+        line-height: 40px;
+        font-size: 14px;
+    }
+    .wreview-check textarea{
+        width: 900px;
+        height: 400px;
+    }
+    .admincount span{
+        font-size: 14px;
+    }
+    .admin-table table tr:hover{
+        background: rgba(238,238,238,0.2);
+    }
+    .system-content table tr:hover{
+        background: rgba(238,238,238,0.2);
+    }
+    input{
+        outline:none;
+    }
+    button{
+        outline: none;
+    }
+
 </style>

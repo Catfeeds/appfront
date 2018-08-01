@@ -1,3 +1,8 @@
+<?php
+use yii\widgets\LinkPager;
+use yii\helpers\Html;
+use yii\helpers\Url;
+?>
 <div class="main-content">
     <div style="width: 1012px; margin: 0 auto;">
         <div>
@@ -20,22 +25,54 @@
                             <option value="">1</option>
                             <option value="">2</option>
                         </select>
-                    <li>时间段选择
-                        <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
-                            <i class="el-input__icon el-range__icon el-icon-time"></i>
-                            <input placeholder="开始日期" name="" class="el-range-input"/>
-                            <span class="el-range-separator">至</span>
-                            <input placeholder="结束日期" name="" class="el-range-input"/>
-                            <i class="el-input__icon el-range__close-icon"></i>
+
+                    <li style="
+                        display: flex;
+                        align-items: center;
+                    ">时间段选择
+                        <div class="el-form-item__content" style="margin-left: 10px;">
+                            <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test10">
                         </div>
                     </li>
+                    <style>
+                        .demo-input {
+                            padding-left: 10px;
+                            height: 30px;
+                            min-width: 300px;
+                            line-height: 38px;
+                            border: 1px solid #e6e6e6;
+                            background-color: #f3faff;
+                            border-radius: 30px;
+                            outline: none;
+                        }
+
+                        .demo-input:hover {
+                            border-color: #c0c4cc;
+                        }
+
+                        .demo-input:focus {
+                            border-color: #3CACFE;
+                        }
+                        .el-form-item__content {
+                            line-height: normal;
+                        }
+
+                        .el-form-item__content {
+                            line-height: 40px;
+                            position: relative;
+                            font-size: 14px;
+                        }
+                        .layui-laydate .layui-this{
+                            background: #30B5FE !important;
+                        }
+                    </style>
                     <li>
                         <div class="el-input" style="width: 200px;">
-                            <input type="text" autocomplete="off" placeholder="请输入关键字搜索" class="el-input__inner"/>
+                            <input type="text" autocomplete="off" placeholder="请输入关键字搜索" class="el-input__inner keywords" onkeydown="sel(event)"  />
                         </div>
                     </li>
                     <li>
-                        <div class="sousuo"></div>
+                        <div class="sousuo" onclick="sel(event)" ></div>
                     </li>
                 </ul>
                 <div class="item">
@@ -108,7 +145,7 @@
                                     </th>
                                     <th colspan="1" rowspan="1" class="el-table_2_column_17     is-leaf">
                                         <div class="cell">
-                                            入账时间
+                                            支付时间
                                         </div>
                                     </th>
                                     <th colspan="1" rowspan="1" class="el-table_2_column_18     is-leaf">
@@ -141,258 +178,89 @@
                                     <col name="el-table_2_column_19" width="82"/>
                                 </colgroup>
                                 <tbody style="font-size: 12px;color:#82898e">
-                                <tr class="el-table__row">
-                                    <td class="el-table_2_column_11  el-table-column--selection">
-                                        <div class="cell el-tooltip">
-                                            <label role="checkbox" class="el-checkbox"><span aria-checked="mixed"
-                                                                                             class="el-checkbox__input"><span
-                                                            class="el-checkbox__inner"></span><input type="checkbox"
-                                                                                                     aria-hidden="true"
-                                                                                                     class="el-checkbox__original"
-                                                                                                     value=""/></span>
-                                            </label>
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_12  ">
-                                        <div class="cell el-tooltip">
-                                            5033
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_13  ">
-                                        <div class="cell el-tooltip">
-                                            <div class="ddd">
-                                                订单金额：￥672.00
+                                <?php foreach ($res as $v) { ?>
+                                    <tr class="el-table__row">
+                                        <td class="el-table_2_column_11  el-table-column--selection">
+                                            <div class="cell el-tooltip">
+                                                <label role="checkbox" class="el-checkbox"><span aria-checked="mixed"
+                                                                                                 class="el-checkbox__input"><span
+                                                                class="el-checkbox__inner"></span><input type="checkbox"
+                                                                                                         aria-hidden="true"
+                                                                                                         class="el-checkbox__original"
+                                                                                                         value=""/></span>
+                                                </label>
                                             </div>
-                                            <div class="ddd">
-                                                退单金额：￥0.00
+                                        </td>
+                                        <td class="el-table_2_column_12  ">
+                                            <div class="cell el-tooltip">
+                                                <?= $v["order_id"] ?>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_14  ">
-                                        <div class="cell el-tooltip">
-                                            <div class="ddd">
-                                                收取比例：100%
+                                        </td>
+                                        <td class="el-table_2_column_13  ">
+                                            <div class="cell el-tooltip">
+                                                <div class="ddd">
+                                                    订单金额：￥<?= $v['subtotal'] ?>
+                                                </div>
+                                                <div class="ddd">
+                                                    退单金额：￥<?php if($v["order_status"]==6){ ?>
+                                                        <?= $v["subtotal"] - $v["subtotal_with_discount"] ?>
+                                                    <?php }else{ ?>
+                                                        0
+                                                    <?php } ?>
+                                                </div>
                                             </div>
-                                            <div class="ddd">
-                                                折扣比例：￥0.00
+                                        </td>
+                                        <td class="el-table_2_column_14  ">
+                                            <div class="cell el-tooltip">
+                                                <div class="ddd">
+                                                    收取比例：<?= (number_format($v["subtotal_with_discount"]/$v["grand_total"],2)*100)."%" ?>
+                                                </div>
+                                                <div class="ddd">
+                                                    折扣比例：￥<?= $v["subtotal_with_discount"] ?>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_15  ">
-                                        <div class="cell el-tooltip">
-                                            DSV0002
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_16  ">
-                                        <div class="cell el-tooltip">
-                                            2018-5-29 18:25:00
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_17  ">
-                                        <div class="cell el-tooltip">
-                                            2018-5-29 18:25:00
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_18  ">
-                                        <div class="cell el-tooltip">
-                                            已收货
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_19  ">
-                                        <div class="cell el-tooltip">
-                                            余额支付
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="el-table__row">
-                                    <td class="el-table_2_column_11  el-table-column--selection">
-                                        <div class="cell">
-                                            <label role="checkbox" class="el-checkbox"><span aria-checked="mixed"
-                                                                                             class="el-checkbox__input"><span
-                                                            class="el-checkbox__inner"></span><input type="checkbox"
-                                                                                                     aria-hidden="true"
-                                                                                                     class="el-checkbox__original"
-                                                                                                     value=""/></span>
-                                            </label>
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_12  ">
-                                        <div class="cell">
-                                            5033
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_13  ">
-                                        <div class="cell el-tooltip">
-                                            <div class="ddd">
-                                                订单金额：￥672.00
+                                        </td>
+                                        <td class="el-table_2_column_15  ">
+                                            <div class="cell el-tooltip">
+                                                <?= $v["increment_id"] ?>
                                             </div>
-                                            <div class="ddd">
-                                                退单金额：￥0.00
+                                        </td>
+                                        <td class="el-table_2_column_16  ">
+                                            <div class="cell el-tooltip">
+                                                <?= date("Y-m-d H:i:s",$v["created_at"]) ?>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_14  ">
-                                        <div class="cell el-tooltip">
-                                            <div class="ddd">
-                                                收取比例：100%
+                                        </td>
+                                        <td class="el-table_2_column_17  ">
+                                            <div class="cell el-tooltip">
+                                                <?= date("Y-m-d H:i:s",$v["paypal_order_datetime"]) ?>
                                             </div>
-                                            <div class="ddd">
-                                                折扣比例：￥0.00
+                                        </td>
+                                        <td class="el-table_2_column_18  ">
+                                            <div class="cell el-tooltip">
+                                                <?php
+                                                if($v[order_status] == 1){
+                                                    echo "已支付";
+                                                }else if($v[order_status] == 2){
+                                                    echo "已接单";
+                                                }else if($v[order_status] == 3){
+                                                    echo "已确认";
+                                                }else if($v[order_status] == 4){
+                                                    echo "已完成";
+                                                }else if($v[order_status] == 5){
+                                                    echo "<span style='color:red'>申请退货</span>";
+                                                }else if($v[order_status] == 6){
+                                                    echo "<span style='color:red'>以退货</span>";
+                                                }
+                                                ?>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_15  ">
-                                        <div class="cell el-tooltip">
-                                            DSV0002
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_16  ">
-                                        <div class="cell el-tooltip">
-                                            2018-5-29 18:25:00
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_17  ">
-                                        <div class="cell el-tooltip">
-                                            2018-5-29 18:25:00
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_18  ">
-                                        <div class="cell">
-                                            已完成
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_19  ">
-                                        <div class="cell">
-                                            支付宝支付
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="el-table__row">
-                                    <td class="el-table_2_column_11  el-table-column--selection">
-                                        <div class="cell">
-                                            <label role="checkbox" class="el-checkbox"><span aria-checked="mixed"
-                                                                                             class="el-checkbox__input"><span
-                                                            class="el-checkbox__inner"></span><input type="checkbox"
-                                                                                                     aria-hidden="true"
-                                                                                                     class="el-checkbox__original"
-                                                                                                     value=""/></span>
-                                            </label>
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_12  ">
-                                        <div class="cell">
-                                            5033
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_13  ">
-                                        <div class="cell">
-                                            <div>
-                                                订单金额：￥672.00
+                                        </td>
+                                        <td class="el-table_2_column_19  ">
+                                            <div class="cell el-tooltip">
+                                                <?= $v[payment_method] ?>
                                             </div>
-                                            <div>
-                                                退单金额：￥0.00
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_14  ">
-                                        <div class="cell">
-                                            <div>
-                                                收取比例：100%
-                                            </div>
-                                            <div>
-                                                折扣比例：￥0.00
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_15  ">
-                                        <div class="cell">
-                                            DSV0002
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_16  ">
-                                        <div class="cell">
-                                            2018-5-29 18:25:00
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_17  ">
-                                        <div class="cell">
-                                            2018-5-29 18:25:00
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_18  ">
-                                        <div class="cell">
-                                            已完成
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_19  ">
-                                        <div class="cell">
-                                            微信支付
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="el-table__row">
-                                    <td class="el-table_2_column_11  el-table-column--selection">
-                                        <div class="cell">
-                                            <label role="checkbox" class="el-checkbox"><span aria-checked="mixed"
-                                                                                             class="el-checkbox__input"><span
-                                                            class="el-checkbox__inner"></span><input type="checkbox"
-                                                                                                     aria-hidden="true"
-                                                                                                     class="el-checkbox__original"
-                                                                                                     value=""/></span>
-                                            </label>
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_12  ">
-                                        <div class="cell">
-                                            5033
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_13  ">
-                                        <div class="cell">
-                                            <div>
-                                                订单金额：￥672.00
-                                            </div>
-                                            <div>
-                                                退单金额：￥0.00
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_14  ">
-                                        <div class="cell">
-                                            <div>
-                                                收取比例：100%
-                                            </div>
-                                            <div>
-                                                折扣比例：￥0.00
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_15  ">
-                                        <div class="cell">
-                                            DSV0002
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_16  ">
-                                        <div class="cell">
-                                            2018-5-29 18:25:00
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_17  ">
-                                        <div class="cell">
-                                            2018-5-29 18:25:00
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_18  ">
-                                        <div class="cell">
-                                            已完成
-                                        </div>
-                                    </td>
-                                    <td class="el-table_2_column_19  ">
-                                        <div class="cell">
-                                            余额支付
-                                        </div>
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
                                 </tbody>
                             </table>
                         </div>
@@ -408,7 +276,7 @@
                             <div style="display: flex;">
                                 <div class="dian" style="background: rgb(41, 201, 154);"></div>
                                 分
-                                <span style="font-weight: bolder; color: rgb(41, 201, 154);"><?= $pages ?></span>页
+                                <span style="font-weight: bolder; color: rgb(41, 201, 154);"><?= ceil($tot/10) ?></span>页
                             </div>
                         </div>
                         <div style="margin-top: 40px;">
@@ -425,10 +293,16 @@
                     </div>
                     <div style="float: right; margin-top: 50px;">
                         <div class="el-pagination is-background">
-                            <button type="button" disabled="disabled" class="btn-prev"><i
-                                        class="el-icon el-icon-arrow-left"></i></button>
+                            <?php
+                            echo LinkPager::widget([
+                                'pagination' => $pagination,
+                                'firstPageLabel' => '首页',
+                                'lastPageLabel' => '尾页',
 
-                            <button type="button" class="btn-next"><i class="el-icon el-icon-arrow-right"></i></button>
+                                'nextPageLabel' => '>',
+                                'prevPageLabel' => '<',
+                            ]);
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -553,3 +427,26 @@
 
 
 </style>
+
+<script>
+    laydate.render({
+        elem: '#test10'
+        , type: 'datetime'
+        , range: true
+        , theme: "#3CACFE"
+    });
+    var el_input=document.querySelectorAll('.demo-input');
+
+    function sel(e){
+        if(e.keyCode!=13&&e.type=="keydown"){
+            return;
+        }
+        var dates=el_input[0].value.split(' ');
+        if(dates[3]==undefined){
+            dates[3]='';
+        }
+        var startdate=dates[0];
+        var enddate=dates[3];
+        location.href="<?= Yii::$service->url->geturl("/water/account/index?") ?>"+`startdate=${startdate}&enddate=${enddate}`;
+    }
+</script>

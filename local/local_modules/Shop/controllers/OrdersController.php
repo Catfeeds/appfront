@@ -42,22 +42,37 @@ class OrdersController extends PublicsController
         }else{
             $sql = " select count(*) tot from sales_flat_order where shop_id={$_SESSION["shop_id"]} and order_status<5";
         }
+        if ($get["customer_firstname"]) {
+            $sql .= " and customer_firstname='{$get["customer_firstname"]}'";
+        }
+        if ($get["increment_id"]) {
+            $sql .= " and increment_id='{$get["increment_id"]}'";
+        }
         //查询订单表数量
         $countArr = Yii::$app->db->createCommand($sql)->queryOne();
 
 
         // 实例化分页对象
         $pagination = new Pagination([
-            'defaultPageSize' => 5,
+            'defaultPageSize' => 1,
             'totalCount' => $countArr['tot'],
         ]);
         //查询订单产品表
-        if($get["flag"]){
-            $flag = $get['flag']-1;
-            $sql = " select sales_flat_order.* from sales_flat_order where sales_flat_order.shop_id={$_SESSION["shop_id"]} and sales_flat_order.order_status={$flag} limit $pagination->offset , $pagination->limit";
-        }else {
-            $sql = " select sales_flat_order.* from sales_flat_order where sales_flat_order.shop_id={$_SESSION["shop_id"]} and order_status<5 limit $pagination->offset , $pagination->limit";
+        $sql = "select sales_flat_order.* from sales_flat_order where sales_flat_order.shop_id={$_SESSION['shop_id']}";
+        if ($get["customer_firstname"]) {
+            $sql .= " and customer_firstname='{$get["customer_firstname"]}'";
         }
+        if ($get["increment_id"]) {
+            $sql .= " and increment_id='{$get["increment_id"]}'";
+        }
+        //查询订单产品表
+        if ($get["flag"]) {
+            $flag = $get['flag'] - 1;
+            $sql .= "  and sales_flat_order.order_status={$flag} limit $pagination->offset , $pagination->limit";
+        } else {
+            $sql .= "  and order_status<5 limit $pagination->offset , $pagination->limit";
+        }
+
 
         $arr = Yii::$app->db->createCommand($sql)->queryAll();
 
@@ -95,7 +110,7 @@ class OrdersController extends PublicsController
                 }
             }
         };
-        $all = Yii::$app->db->createCommand("select o.order_status from sales_flat_order o where shop_id='{$_SESSION["shop_id"]}' and order_status<5")->queryAll();
+        $all = Yii::$app->db->createCommand("select o.order_status from sales_flat_order o where shop_id='{$_SESSION["shop_id"]}' and order_status<5" )->queryAll();
 
                
             
@@ -173,8 +188,7 @@ class OrdersController extends PublicsController
         $sql = "update sales_flat_order set customer_firstname='$customer_firstname',customer_telephone='$customer_telephone',customer_address_country='$customer_address_country',customer_address_state='$customer_address_state',customer_address_city='$customer_address_city',customer_address_zip='$customer_address_zip',customer_email='$customer_email',customer_address_street1='$customer_address_street1' where order_id=$order_id";
         $res = Yii::$app->db->createCommand($sql)->execute();
 
-
-        return $this->redirect(['orders/see?order_id=',$order_id]);
+        return $this->redirect(['orders/see?order_id='.$order_id]);
     }
 
     //接单
@@ -194,20 +208,41 @@ class OrdersController extends PublicsController
     public function actionDispute(){
 
         $data = [];
-
-        $count = Yii::$app->db->createCommand("select count(*) tot from sales_flat_order where order_status in(5,6)")->queryAll();
+        // 获取数据
+        $request = Yii::$app->request;
+        $get = $request->get();
+        $sql = "select count(*) tot from sales_flat_order where order_status in(5,6)";
+        if ($get["customer_firstname"]) {
+            $sql .= " and customer_firstname='{$get["customer_firstname"]}'";
+        }
+        if ($get["increment_id"]) {
+            $sql .= " and increment_id='{$get["increment_id"]}'";
+        }
+        if ($get["orderStatus"]) {
+            $sql .= " and order_status='{$get["orderStatus"]}'";
+        }
+        $count = Yii::$app->db->createCommand($sql)->queryAll();
 
         // 实例化分页对象
         $pagination = new Pagination([
             'defaultPageSize' => 10,
             'totalCount' => $count[0]['tot'],
         ]);
-
-        $res = Yii::$app->db->createCommand("select * from sales_flat_order where order_status in(5,6)")->queryAll();
+        $sql = "select * from sales_flat_order where order_status in(5,6)";
+        if ($get["customer_firstname"]) {
+            $sql .= " and customer_firstname='{$get["customer_firstname"]}'";
+        }
+        if ($get["increment_id"]) {
+            $sql .= " and increment_id='{$get["increment_id"]}'";
+        }
+        if ($get["orderStatus"]) {
+            $sql .= " and order_status='{$get["orderStatus"]}'";
+        }
+        $res = Yii::$app->db->createCommand($sql)->queryAll();
 
         $data["res"] = $res;
         $data["pagination"] = $pagination;
-        $data["count"] = $count;
+        $data["count"] = $count[0]['tot'];
 
 
         return $this->render($this->action->id,$data);
@@ -274,6 +309,78 @@ class OrdersController extends PublicsController
 
 
     }
+
+    //查看纠纷订单详情
+    public function actionSeedispute(){
+
+        $req = Yii::$app->request;
+
+        $order_id = $req->get("order_id");
+
+        $res = Yii::$app->db->createCommand("select * from sales_flat_order where order_id=$order_id")->queryOne();
+
+        $goods = Yii::$app->db->createCommand("select * from sales_flat_order_item where order_id=$order_id")->queryAll();
+
+        $res["goods"] = $goods;
+
+        $data["res"] = $res;
+
+        return $this->render($this->action->id,$data);
+
+    }
+
+    //处理纠纷订单
+    public function actionChangejf(){
+
+        $req = Yii::$app->request;
+
+        $order_status = $req->get("order_status");
+
+        $order_id = $req->get("order_id");
+
+        if($order_status==7){
+
+            $one = Yii::$app->db->createCommand("select * from sales_flat_order where order_id=$order_id")->queryOne();
+
+            if($one[created_at]){
+
+                $order_status = 0;
+
+            }
+            if($one[paypal_order_datetime]){
+
+                $order_status = 1;
+
+            }
+            if($one[receipt_at]){
+
+                $order_status = 2;
+
+            }
+            if($one[confirm_at]){
+
+                $order_status = 3;
+
+            }
+
+            if($one[evaluate_at]){
+
+                $order_status = 4;
+
+            }
+        }
+
+        $operator = $_SESSION["admin_name"];
+        $admin_name = time();
+
+
+        $res = Yii::$app->db->createCommand("update sales_flat_order set order_status=$order_status,operator='$operator',refund_at='$admin_name' where order_id=$order_id")->execute();
+
+        return $this->redirect("/shop/orders/dispute");
+    }
+
+
+
 }
 
 //http://appfront.uekuek.com/shop/orders/addorder?increment_id=20180728&order_remark=ddd&order_status=0&customer_firstname=潘将兵&customer_telephone=13220289300&customer_address_country=山西&customer_address_state=太原市&customer_address_city=小店区&customer_address_street1=学府街&customer_address_zip=030500&customer_email=fecshop@123.com&subtotal=500.00&discount_amount=450&discount_rate=0.9&coin_num=0&grand_total=80&coupon_code=2&shop_id=3&name=衣服&sku=123456789&price=500.00&qty=1&kc=100&uid=5&row_total=500

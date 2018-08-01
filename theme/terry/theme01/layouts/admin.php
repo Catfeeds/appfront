@@ -6,6 +6,7 @@ $jsOptions = [ # js的配置部分
         'js' => [
             'js/jquery-3.3.1.min.js',
             'js/layout-admin.js',
+            'js/echarts.min.js',
             'js/laydate.js'
         ],
     ]
@@ -48,7 +49,7 @@ $cssOptions = [
         height: 50px;
         position: fixed;
         top: 0;
-        left:162px;
+        left:167px;
         z-index: 999;
         display: flex;
         background: #eaf6ff;
@@ -219,10 +220,9 @@ $cssOptions = [
 
     /*用户管理-管理员管理*/
     .adminmannager {
-        width: 1100px;
+        width: 1012px;
         margin:0 auto;
-        /*height: 100%;*/
-        padding: 27px 0 27px 27px;
+        padding: 27px 0 0 0;
         box-sizing: border-box;
     }
 
@@ -350,9 +350,11 @@ $cssOptions = [
         /*padding-right: 100px;*/
         margin-top: 8px;
     }
+    input{
+        outline:none;
+    }
 
     .admin-tablename {
-        /*width: 100%;*/
         height: 80px;
         line-height: 80px;
         font-size: 18px;
@@ -446,10 +448,11 @@ $cssOptions = [
     }
 
     .adminpagination {
-        width: 96%;
+        width: 100%;
         border-top: 1px solid #eee;
         box-sizing: border-box;
         min-height: 120px;
+        margin-top:15px;
     }
 
     .pagination {
@@ -535,10 +538,10 @@ $cssOptions = [
     }
 
     .ShopMannager {
-        width: 1120px;
+        width: 1012px;
         margin:0 auto;
         height: 100%;
-        padding: 27px 10px 0 10px;
+        padding: 27px 0 0 0;
         box-sizing: border-box;
     }
 
@@ -684,7 +687,7 @@ $cssOptions = [
     }
 
     #platdata {
-        width: 1110px;
+        width: 1012px;
         min-height: 500px;
         padding: 27px 0 0 0;
         margin:0 auto;
@@ -795,8 +798,8 @@ $cssOptions = [
         margin-top:20px;
     }
     .process div{
-        width: 150px;
-        height: 190px;
+        width: 130px;
+        height: 159px;
         float: left;
         background: red;
         margin-right:9px;
@@ -824,7 +827,7 @@ $cssOptions = [
         margin-right: 0;
     }
     .addofplatdata {
-        width: 1100px;
+        width: 100%;
         min-height: 500px;
         margin-top: 30px;
         border-bottom: 1px solid #f5f5f6;
@@ -867,6 +870,7 @@ $cssOptions = [
         text-align: center;
         background: #fff;
         box-sizing: border-box;
+        cursor: pointer;
     }
 
     .platdata-headerright ul li:hover {
@@ -1542,8 +1546,13 @@ $cssOptions = [
         z-index: 999;
         display: none;
     }
-    .find-maskactive{
+    .money-mask.find-maskactive{
         display: block;
+        z-index: 9999999999;
+    }
+    .coin-mask.find-maskactive{
+        display: block;
+        z-index: 9999999999;
     }
     .find-maskc{
         width: 667px;
@@ -1553,6 +1562,7 @@ $cssOptions = [
         position: relative;
         top:5%;
         border-radius: 7px;
+        overflow-y: auto;
     }
     .vipinfo{
         width: 100%;
@@ -1625,6 +1635,7 @@ $cssOptions = [
         width: 200px;
         text-align: right;
         font-size: 14px;
+        color:#797979;
     }
     .ppro tr td:last-child{
         width: 615px;
@@ -1795,8 +1806,8 @@ $cssOptions = [
         color: #748a99;
     }
     .settle{
-        width: 100%;
-        height: 100%;
+        width: 1300px;
+        margin:0 auto;
     }
     .settle header{
         width: 100%;
@@ -1877,7 +1888,7 @@ $cssOptions = [
         margin-top: 50px;
     }
     .settle-p{
-        width: 1112px;
+        width: 100%;
         /* height: 200px;*/
         margin: 0 auto;
         margin-top: 79px;
@@ -1941,26 +1952,30 @@ $cssOptions = [
     .ruzhuname2{
         font-size: 14px;
         color: #7f8c97;
+        padding-left:16px;
+        box-sizing: border-box;
     }
     .ruzhuname2 p{
         line-height: 30px;
     }
     #index1{
         width: 100%;
+        overflow:hidden ;
     }
     #index1 header{
-        width:1300px;
+        width:1160px;
         height: 139px;
-        margin:0 auto;
         margin-top:30px;
+        display: flex;
+        justify-content: space-between;
     }
+
     .index1-logo{
         height: 100%;
         width: 250px;
         text-align: center;
         padding-top:20px;
         box-sizing: border-box;
-        float: left;
     }
     .index1-logo h1{
         font-size: 14px;
@@ -1972,9 +1987,6 @@ $cssOptions = [
     }
     .index2-content1{
         width: 1008px;
-        /*float:right;*/
-        /*background: red;*/
-        /*margin-right:50px;*/
         margin:0 auto;
     }
     .index2{
@@ -2033,12 +2045,18 @@ $cssOptions = [
     .el-input__inner{
         width: 279px;
     }
+    .el-input .el-input__inner{
+        border-radius: 20px;
+    }
     .el-form-item__content{
-        margin-left:135px !important;
+        margin-left:175px !important;
     }
     .el-form-item__label{
-        width:135px !important;
+        width:168px !important;
 
+    }
+    .el-form-item{
+        line-height: 40px !important;
     }
     .el-upload--picture-card{
         width: 273px;
@@ -2055,8 +2073,8 @@ $cssOptions = [
         /*  margin-left:50px;*/
     }
     .file{
-        width: 400px;
-        height: 200px;
+        width: 100%;
+        height:100%;
         background: #f3faff;
         opacity: 0;
     }
@@ -2144,7 +2162,6 @@ $cssOptions = [
     }
     .rechargetable{
         margin-bottom: 20px;
-        font-size: 0;
     }
     .rechargetable tr td{
         height: 40px;
@@ -2441,6 +2458,22 @@ $cssOptions = [
     .system-content table tr:hover{
         background: rgba(238,238,238,0.2);
     }
+    .admin-tablelist1{
+        padding:0;
+    }
+    .awreview{
+        width: 400px;
+        height: 100%;
+        background: #fff;
+        border: 1px solid #797979;
+        text-align:center;
+        border-radius: 19px;
+        cursor:pointer;
+    }
+    .awreview:hover{
+        border: 1px solid #41b2fc;
+        background: rgba(65,178,252,0.2);
+    }
 </style>
 <?php $this->beginPage() ?>
     <!doctype html>
@@ -2515,39 +2548,32 @@ $cssOptions = [
     <script>
 
 
-        // 筛选顶部菜单
-        var url = location.href.split("/");
+        $(function(){
+            // 筛选顶部菜单
+            var url = location.href.split("/");
 
-        document.querySelector("#" + url[4]).classList.add("active");
+            document.querySelector("#" + url[4]).classList.add("active");
 
-        // 筛选左侧菜单
+            // 筛选左侧菜单
 
-        let asd=document.querySelectorAll(".aside-list li");
+            let asd=document.querySelectorAll(".aside-list li");
 
-        let str1=url[5];
-        let arr1=str1.split("?");
+            let str1=url[5];
+            let arr1=str1.split("?");
 
 
-        for (let i=0; i <asd.length ;i++) {
-            let url12=asd[i].getAttribute('href1');
+            for (let i=0; i <asd.length ;i++) {
+                let url12=asd[i].getAttribute('href1');
 
-            let n = url12.search('/'+arr1[0]);
+                let n = url12.search('/'+arr1[0]);
 
-            if (n>=1) {
-                asd[i].className='active';
+                if (n>=1) {
+                    asd[i].className='active';
+                };
             };
-        };
 
-        let urls = "<?php echo $_SERVER['SERVER_NAME'];?>";
+            let urls = "<?php echo $_SERVER['SERVER_NAME'];?>";
 
-
-        laydate.render({
-            elem:'.el-range-input1',
-            fixed:false
-        })
-        laydate.render({
-            elem:'.el-range-input2',
-            fixed:false
         })
     </script>
     </html>

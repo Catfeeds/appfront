@@ -51,7 +51,7 @@ class StoreController extends PublicsController
 
         $datas = $req->post();
 
-        $sql = "update shop set shop_keywords='{$datas['shop_keywords']}',shop_banner='{$datas['shop_banner']}',shop_phone='{$datas['shop_phone']}',province_id='{$datas['province_id']}',city_id='{$datas['city_id']}',shop_address='{$datas['shop_address']}',shop_description='{$datas['shop_description']}'  where uid={$datas['uid']}";
+        $sql = "update shop set shop_keywords='{$datas['shop_keywords']}',shop_banner='{$datas['shop_banner']}',shop_phone='{$datas['shop_phone']}',province_id='{$datas['province_id']}',city_id='{$datas['city_id']}',shop_address='{$datas['shop_address']}',shop_description='{$datas['shop_description']}',district_id='{$datas[district_id]}'  where uid={$datas['uid']}";
 
         $res = Yii::$app->db->createCommand($sql)->execute();
 
@@ -182,11 +182,22 @@ class StoreController extends PublicsController
 
     //返回优惠卷管理首页
     public function actionCouponindex(){
+        //添加搜索条件
+        $request = Yii::$app->request;
+        $status = $request->get('status');
+        $name = $request->get('name');
 
+        //查询总数
+        $sql1="select count(*) num from sales_coupon where uid={$_SESSION['uid']}";
 
+        if($status){
+            $sql1 .=" and status=$status";
+        }
+        if($name){
+            $sql1 .=" and coupon_name like '%$name%'";
+        }
 
-        $count = Yii::$app->db->createCommand("select count(*) num from sales_coupon where uid={$_SESSION["uid"]}")->queryAll();
-
+        $count = Yii::$app->db->createCommand($sql1)->queryAll();
 
         //实例化分页对象
         // 实例化分页对象
@@ -194,7 +205,18 @@ class StoreController extends PublicsController
             'defaultPageSize' => 10,
             'totalCount' => $count[0]['num'],
         ]);
-        $res = Yii::$app->db->createCommand("select * from sales_coupon where uid={$_SESSION["uid"]} limit $pagination->offset,$pagination->limit")->queryAll();
+
+
+        $sql="select * from sales_coupon where uid={$_SESSION['uid']}";
+        if($status){
+            $sql .=" and status=$status";
+        }
+        if($name){
+            $sql .=" and coupon_name like '%$name%'";
+        }
+        $sql.=" limit $pagination->offset,$pagination->limit";
+
+        $res = Yii::$app->db->createCommand($sql)->queryAll();
         $datas["res"] = $res;
         $datas["pagination"] = $pagination;
         $datas["num"] = $count[0]['num'];
@@ -210,7 +232,7 @@ class StoreController extends PublicsController
 
         // 进行数据查询
         $class=$query->from('category')
-            ->where(['level'=>1,"parent_id"=>"0"])
+            ->where(['level'=>1,"parent_id"=>"0","type"=>"1"])
             ->all();
         $datas["class"] = $class;
         return $this->render($this->action->id,$datas);
@@ -226,7 +248,9 @@ class StoreController extends PublicsController
         foreach ($category as $v){
 
             $where[category][0]=$v;
+            $where[shop_id]=$_SESSION["shop_id"];
             $res1 = $query->from("product_flat")->where($where)->all();
+
             foreach ($res1 as $v1){
                 $res[]=$v1;
             }

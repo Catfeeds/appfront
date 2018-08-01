@@ -353,6 +353,7 @@ $cssOptions = [
             box-sizing: border-box;
             display: inline-block;
         }
+
         .pagination li.first {
             width: 54px;
             height: 20px;
@@ -364,6 +365,7 @@ $cssOptions = [
             text-align: center;
             margin-top: 8px;
         }
+
         .pagination li.last {
 
             width: 54px;
@@ -381,6 +383,7 @@ $cssOptions = [
             color: #000;
             font-weight: bold;
         }
+
         .pagination li.active a {
             color: #409EFF;
             cursor: default;

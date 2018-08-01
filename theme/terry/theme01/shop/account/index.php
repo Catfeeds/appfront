@@ -14,7 +14,7 @@ use yii\helpers\Url;
                                     role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
                         <span class="el-breadcrumb__item" aria-current="page"><span role="link"
                                                                                     class="el-breadcrumb__inner"><span
-                                        style="color: rgb(48, 211, 102);font-weight: bold">账单列表</span></span><span role="presentation"
+                                        style="color: rgb(48, 211, 102);">账单列表</span></span><span role="presentation"
                                                                                                   class="el-breadcrumb__separator">&middot;</span></span>
                     </div>
                 </div>
@@ -26,32 +26,53 @@ use yii\helpers\Url;
                             <option value="">2</option>
                         </select>
 
-                    <li>时间段选择
-                        <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
-                            <i class="el-input__icon el-range__icon el-icon-time"></i>
-                            <input placeholder="开始日期" name="" class="el-range-input" />
-                            <span class="el-range-separator">至</span>
-                            <input placeholder="结束日期" name="" class="el-range-input"/>
-                            <i class="el-input__icon el-range__close-icon"></i>
+                    <li style="
+                        display: flex;
+                        align-items: center;
+                    ">时间段选择
+                        <div class="el-form-item__content" style="margin-left: 10px;">
+                            <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test10">
                         </div>
                     </li>
                     <style>
+                        .demo-input {
+                            padding-left: 10px;
+                            height: 30px;
+                            min-width: 300px;
+                            line-height: 38px;
+                            border: 1px solid #e6e6e6;
+                            background-color: #f3faff;
+                            border-radius: 30px;
+                            outline: none;
+                        }
+
+                        .demo-input:hover {
+                            border-color: #c0c4cc;
+                        }
+
+                        .demo-input:focus {
+                            border-color: #3CACFE;
+                        }
+                        .el-form-item__content {
+                            line-height: normal;
+                        }
+
+                        .el-form-item__content {
+                            line-height: 40px;
+                            position: relative;
+                            font-size: 14px;
+                        }
                         .layui-laydate .layui-this{
                             background: #30B5FE !important;
                         }
                     </style>
-                    <script>
-                        laydate.render({
-                                elem:'.el-range-input'
-                            })
-                    </script>
                     <li>
                         <div class="el-input" style="width: 200px;">
-                            <input type="text" autocomplete="off" placeholder="请输入关键字搜索" class="el-input__inner"/>
+                            <input type="text" autocomplete="off" placeholder="请输入关键字搜索" class="el-input__inner" onkeydown="sel(event)" />
                         </div>
                     </li>
                     <li>
-                        <div class="sousuo"></div>
+                        <div class="sousuo" onclick="sel(event)"></div>
                     </li>
                 </ul>
                 <div class="item">
@@ -178,11 +199,11 @@ use yii\helpers\Url;
                                     <td class="el-table_2_column_13  ">
                                         <div class="cell el-tooltip">
                                             <div class="ddd">
-                                                订单金额：￥<?= $v['grand_total'] ?>
+                                                订单金额：￥<?= $v['subtotal'] ?>
                                             </div>
                                             <div class="ddd">
                                                 退单金额：￥<?php if($v["order_status"]==6){ ?>
-                                                    <?= $v["grand_total"] - $v["subtotal_with_discount"] ?>
+                                                    <?= $v["subtotal"] - $v["subtotal_with_discount"] ?>
                                                 <?php }else{ ?>
                                                     0
                                                 <?php } ?>
@@ -246,16 +267,16 @@ use yii\helpers\Url;
                         <div class="el-table__column-resize-proxy" style="display: none;"></div>
                     </div>
                     <div style="position: relative;">
-                        <div style="width: 200px; position: absolute; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
+                        <div style="width: 180px; position: absolute; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
                             <div style="display: flex;">
                                 <div class="dian"></div>
                                 总计
-                                <span style="color: rgb(61, 176, 255); font-weight: bolder;margin:0 5px;"><?= $tot ?></span>记录
+                                <span style="color: rgb(61, 176, 255); font-weight: bolder;"><?= $tot ?></span>记录
                             </div>
                             <div style="display: flex;">
                                 <div class="dian" style="background: rgb(41, 201, 154);"></div>
                                 分
-                                <span style="font-weight: bolder; color: rgb(41, 201, 154);margin:0 5px;"><?= ceil($tot/10) ?></span>页
+                                <span style="font-weight: bolder; color: rgb(41, 201, 154);"><?= ceil($tot/10) ?></span>页
                             </div>
                         </div>
                         <div style="margin-top: 40px;">
@@ -406,3 +427,25 @@ use yii\helpers\Url;
 
 
 </style>
+<script>
+    laydate.render({
+        elem: '#test10'
+        , type: 'datetime'
+        , range: true
+        , theme: "#3CACFE"
+    });
+    var el_input=document.querySelectorAll('.demo-input');
+
+    function sel(e){
+        if(e.keyCode!=13&&e.type=="keydown"){
+            return;
+        }
+        var dates=el_input[0].value.split(' ');
+        if(dates[3]==undefined){
+            dates[3]='';
+        }
+        var startdate=dates[0];
+        var enddate=dates[3];
+        location.href="<?= Yii::$service->url->geturl("/shop/account/index?") ?>"+`startdate=${startdate}&enddate=${enddate}`;
+    }
+</script>

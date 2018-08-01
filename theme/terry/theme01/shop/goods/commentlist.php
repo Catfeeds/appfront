@@ -215,29 +215,84 @@
        </div>
       </div>
       <div style="position: relative;">
-       <div style="width: 200px; position: absolute; top: 20px; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
+       <div style="width: 180px; position: absolute; top: 20px; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
         <div style="display: flex;">
          <div class="dian"></div> 总计
-         <span style="color: rgb(61, 176, 255); font-weight: bolder;margin:0 5px;"><?=$tot ?></span>记录
+         <span style="color: rgb(61, 176, 255); font-weight: bolder;"><?=$tot ?></span>记录
         </div>
         <div style="display: flex;">
          <div class="dian" style="background: rgb(41, 201, 154);"></div> 分
-         <span style="font-weight: bolder; color: rgb(41, 201, 154);margin:0 5px;"><?=$pages ?></span>页
+         <span style="font-weight: bolder; color: rgb(41, 201, 154);"><?=$pages ?></span>页
         </div>
        </div>
       </div>
       <div style="width: 100%; position: relative;">
-       <div style="font-size: 12px; position: absolute; bottom: 0px; top: 50px; right: 0px; display: flex; justify-content: space-between;">
-          <?php
-          echo LinkPager::widget([
-                 'pagination' => $pagination,
-                 'firstPageLabel' => '首页',
-                 'lastPageLabel' => '尾页',
+       <div style="font-size: 12px; position: absolute; bottom: 0; right: 0; display: flex; justify-content: space-between;">
+                                        <?php
+                                        echo LinkPager::widget([
+                                            'pagination' => $pagination,
+                                            'firstPageLabel' => '首页',
+                                            'lastPageLabel' => '尾页',
 
-                 'nextPageLabel' => '>',
-                 'prevPageLabel' => '<',
-               ]);
-           ?>
+                                            'nextPageLabel' => '>',
+                                            'prevPageLabel' => '<',
+                                        ]);
+
+
+                                        ?>
+                                        <style>
+                                            .pagination {
+                                                white-space: nowrap;
+                                                padding: 2px 5px;
+                                                color: #303133;
+                                                font-weight: 700;
+                                            }
+
+                                            .pagination li {
+                                                padding: 0 4px;
+                                                background: #fff;
+                                                font-size: 13px;
+                                                min-width: 35.5px;
+                                                height: 28px;
+                                                line-height: 28px;
+                                                box-sizing: border-box;
+                                                display: inline-block;
+                                            }
+
+                                            .pagination li.first {
+                                                width: 54px;
+                                                height: 20px;
+                                                background: #edf8ff;
+                                                border: 2px solid #e8f6ff;
+                                                border-radius: 10px;
+                                                color: #41b2fc;
+                                                line-height: 18px;
+                                                text-align: center;
+                                                margin-top: 8px;
+                                            }
+
+                                            .pagination li.last {
+                                                width: 54px;
+                                                height: 20px;
+                                                background: #51b7fc;
+                                                border: 2px solid #51b7fc;
+                                                border-radius: 10px;
+                                                color: #fff;
+                                                line-height: 18px;
+                                                text-align: center;
+                                                margin-top: 8px;
+                                            }
+
+                                            .pagination li a {
+                                                color: #000;
+                                                font-weight: bold;
+                                            }
+
+                                            .pagination li.active a {
+                                                color: #409EFF;
+                                                cursor: default;
+                                            }
+                                        </style>
        </div>
       </div>
      </div>

@@ -94,11 +94,11 @@ use yii\helpers\Url;
                     <ul data-v-345ba354="" style="width: 500px; display: flex; justify-content: space-between;">
                         <li data-v-345ba354="">
                             <div data-v-345ba354="" class="el-select" style="display: inline-block;">
-                                <select name="class" id="" class="el-select xiala" style="margin-left:10px">
+                                <select name="class" id="" class="el-select xiala like" style="margin-left:10px">
                                     <option value="0" style="display: none">请选择优惠券状态</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
+                                    <option value="0">待审核</option>
+                                    <option value="1">审核通过</option>
+                                    <option value="2">审核失败</option>
                                 </select>
                             </div>
                         </li>
@@ -281,12 +281,12 @@ use yii\helpers\Url;
                             <div data-v-345ba354="" style="display: flex;">
                                 <div data-v-345ba354="" class="dian"></div>
                                 总计<span data-v-345ba354=""
-                                        style="color: rgb(61, 176, 255); font-weight: bolder;margin:0 5px;"><?= $num ?></span>记录
+                                        style="color: rgb(61, 176, 255); font-weight: bolder;"><?= $num ?></span>记录
                             </div>
                             <div data-v-345ba354="" style="display: flex;">
                                 <div data-v-345ba354="" class="dian" style="background: rgb(41, 201, 154);"></div>
                                 分<span data-v-345ba354=""
-                                       style="font-weight: bolder; color: rgb(41, 201, 154);margin:0 5px;"><?= $page ?></span>页
+                                       style="font-weight: bolder; color: rgb(41, 201, 154);"><?= $page ?></span>页
                             </div>
                         </div>
                         <div data-v-345ba354="" style="margin-top: 40px;">
@@ -318,6 +318,8 @@ use yii\helpers\Url;
 </div>
 <script>
     var like = document.querySelectorAll(".like");
+    console.log(like);
+
     function sel(e) {
         if(e.keyCode!=13&&e.type=="keydown"){
             return;

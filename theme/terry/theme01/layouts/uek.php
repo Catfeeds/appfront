@@ -6,7 +6,9 @@ $jsOptions = [ # js的配置部分
         'js' => [
             'js/layout-uek.js',
             'js/jquery-3.3.1.min.js',
-            'js/laydate.js'
+            'js/laydate.js',
+            'js/echarts.min.js',
+            'js/getTime.js'
         ],
     ]
 
@@ -93,20 +95,23 @@ $cssOptions = [
             top: 0;
             right: 0;
             z-index: 99;
+            display: flex;
             background: #eaf6ff;
+            justify-content: space-around;
         }
 
         .header ul {
-            width: 674px;
+            width: 704px;
             height: 100%;
             display: flex;
+            padding-left: 167px;
         }
 
         .header ul li {
             height: 100%;
             width: 110px;
             text-align: center;
-            line-height: 54px;
+            line-height: 50px;
             font-size: 14px;
             margin-right: 10px;
         }
@@ -132,16 +137,15 @@ $cssOptions = [
         }
 
         .header .header-right {
-            width: 338px;
             height: 100%;
-            display: flex;
-            justify-content: space-around;
         }
 
         .header .header-right .adminname {
+            width: 120px;
             height: 100%;
+            /*background: forestgreen;*/
             float: left;
-            /*margin-left: 10px;*/
+            margin-left: 10px;
         }
 
         .admin-img {
@@ -150,7 +154,7 @@ $cssOptions = [
             border-radius: 50%;
             margin-top: 8px;
             float: left;
-            background: url("http://img.uekuek.com/images/<?=$_SESSION[shop_logo]?>")no-repeat center center /100% auto;
+            background: url("http://img.uekuek.com/images/<?=$_SESSION[shop_logo]?>")center center /100% auto;
         }
         .admin-img img{
             width:100%;
@@ -407,43 +411,39 @@ $cssOptions = [
     <div class="">
         <div class="aside"></div>
         <div class="header">
-            <div style="width: calc(100% - 167px);position: absolute;left:167px;">
-                <div style="width: 1012px;margin:0 auto;display: flex;justify-content: space-around;">
-                    <ul>
-                        <li id="index"><a href="<?= Yii::$service->url->getUrl('shop/index/index') ?>"
-                                          class="router-link-exact-active router-link-active">
-                                首页
-                            </a></li>
-                        <li id="goods"><a href="<?= Yii::$service->url->getUrl('shop/goods/index') ?>" class="">
-                                商品管理
-                            </a></li>
-                        <li id="orders"><a href="<?= Yii::$service->url->getUrl('shop/orders/index') ?>" class="">
-                                订单管理
-                            </a></li>
-                        <li id="store"><a href="<?= Yii::$service->url->getUrl('shop/store/index') ?>" class="">
-                                店铺管理
-                            </a></li>
-                        <li id="account"><a href="<?= Yii::$service->url->getUrl('shop/account/index') ?>" class="">
-                                账户管理
-                            </a></li>
-                        <li id="datas"><a href="<?= Yii::$service->url->getUrl('shop/datas/index') ?>" class="">
-                                数据统计
-                            </a></li>
-                    </ul>
-                    <div class="header-right">
-                        <div class="adminname ddd">
-                            <div class="admin-img"></div>
-                            <span class="name1" title="<?= $_SESSION['shop_name'] ?>"><?=$_SESSION['shop_name']?></span></div>
-                        <div class="adminname" style=" cursor:pointer;width: 100px;">
-                            <div class="clearimg"></div>
-                            <span class="name2">清除缓存</span></div>
-                        <div class="adminname">
-                            <a href="<?= Yii::$service->url->getUrl("/shop/login/out") ?>">
-                                <div class="out"></div>
-                                <span class="name3 tuichu">退出</span></div>
-                        </a>
-                    </div>
-                </div>
+            <ul>
+                <li id="index"><a href="<?= Yii::$service->url->getUrl('shop/index/index') ?>"
+                                  class="router-link-exact-active router-link-active">
+                        首页
+                    </a></li>
+                <li id="goods"><a href="<?= Yii::$service->url->getUrl('shop/goods/index') ?>" class="">
+                        商品管理
+                    </a></li>
+                <li id="orders"><a href="<?= Yii::$service->url->getUrl('shop/orders/index') ?>" class="">
+                        订单管理
+                    </a></li>
+                <li id="store"><a href="<?= Yii::$service->url->getUrl('shop/store/index') ?>" class="">
+                        店铺管理
+                    </a></li>
+                <li id="account"><a href="<?= Yii::$service->url->getUrl('shop/account/index') ?>" class="">
+                        账户管理
+                    </a></li>
+                <li id="datas"><a href="<?= Yii::$service->url->getUrl('shop/datas/index') ?>" class="">
+                        数据统计
+                    </a></li>
+            </ul>
+            <div class="header-right">
+                <div class="adminname ddd">
+                    <div class="admin-img"></div>
+                    <span class="name1" title="<?= $_SESSION['shop_name'] ?>"><?=$_SESSION['shop_name']?></span></div>
+                <div class="adminname" style=" cursor:pointer;">
+                    <div class="clearimg"></div>
+                    <span class="name2">清除缓存</span></div>
+                <div class="adminname">
+                    <a href="<?= Yii::$service->url->getUrl("/shop/login/out") ?>">
+                        <div class="out"></div>
+                        <span class="name3 tuichu">退出</span></div>
+                </a>
             </div>
         </div>
         <?php $this->endBody() ?>
