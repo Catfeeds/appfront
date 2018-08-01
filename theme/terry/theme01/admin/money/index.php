@@ -340,13 +340,25 @@ margin-top:4px;"
 						type:"get",
 						url:"<?= Yii::$service->url->getUrl('admin/money/rank') ?>?type="+type,
 						success:function(msg){
-							console.log(msg)
+							var row=JSON.parse(msg);
+							$("#paih").find(".xtr").remove();
+							var html='';
+							$.each(row,function(k,v){
+							     html+="<tr class='xtr'>"+
+							    			"<td>"+(k+1)+"</td>"+
+							    			"<td>"+v.shop_name+"</td>"+
+							    			"<td>"+v.items+"</td>"+
+							    			"<td>"+v.grand+"</td>"+
+							    			"<td>"+(v.grand/v.items)+"</td>"+
+							    		 "</tr>";
+							})
+							$("#paih").append(html);
 						}
 					})
 				}
             </script>
             <div class="paihang">
-                <table border="0" class="ShopMannager-tablelist money-list">
+                <table border="0" class="ShopMannager-tablelist money-list" id="paih">
                     <tr style="border-bottom:2px solid #b2b2b2;box-sizing: border-box;">
                         <th>排行</th>
                         <th>店铺名称</th>
@@ -354,18 +366,8 @@ margin-top:4px;"
                         <th>销售额（元）</th>
                         <th>均价（元）</th>
                     </tr>
-                    <tr>
-                        <td style="color:#30a3fe">01</td>
-                        <td>爱康街洗衣纺大街21</td>
-                        <td>12344</td>
-                        <td>10009</td>
-                        <td>119</td>
-                    </tr>
-                    
                 </table>
             </div>
-
-
         </div>
     </div>
 </div>
