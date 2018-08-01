@@ -4,7 +4,7 @@ $jsOptions = [ # js的配置部分
         # js options ，来定义位置，条件等
         # 在当前options下的js文件
         'js' => [
-
+          'js/jquery-3.3.1.min.js',
         ],
     ]
 

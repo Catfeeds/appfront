@@ -85,7 +85,7 @@ use yii\helpers\Url;
                                     role="presentation" class="el-breadcrumb__separator">·</span></span></div>
                 </div>
                 <ul data-v-7a00a356="" class="shuaixuan">
-                    <li data-v-7a00a356="">
+                    <li data-v-7a00a356="" style="display: flex;align-items: center">
                         <form>
                             <select name="class" id="" class="el-select xiala chuli" style="margin-left:10px;">
                                 <option value="" style="display: none;">请选择处理状态</option>
