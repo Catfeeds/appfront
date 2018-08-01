@@ -1,3 +1,8 @@
+<style>
+    .has-gutter tr{
+        font-size: 14px;color: #B1DBFE;text-align: left;height: 50px;
+    }
+</style>
 <div class="main-content">
     <div class="ShopMannager">
         <div class="ShopMannager-title">
@@ -43,7 +48,7 @@
                         <col name="el-table_2_column_11" width="500">
                     </colgroup>
                     <thead class="has-gutter">
-                    <tr style="font-size: 14px;color: #B1DBFE;text-align: left;height: 50px;">
+                    <tr valign="top">
                         <th
                                 class="el-table_2_column_11     is-leaf">
                             <div class="cell">ID</div>
@@ -80,7 +85,7 @@
                         <col name="el-table_2_column_11" width="500">
                     </colgroup>
                     <tbody style="font-size: 12px;color:#82898e">
-                        <tr class="el-table__row" style="height:36px;font-size: 14px;">
+                        <tr class="el-table__row" style="height:36px;font-size: 14px;" >
                             <td class="el-table_2_column_11  ">
                                 <div class="cell el-tooltip" title="">
                                    01

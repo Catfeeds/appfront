@@ -126,22 +126,22 @@ class IndexController extends PublicsController
 
     }
 
-    //移入黑名单status改为2
+    //移入黑名单status改为0
     public function actionBlacklist()
     {
         $req = Yii::$app->request;
         $id = $req->get(id);
-        $sql = "update admin_user set status=2 where id='$id'";
+        $sql = "update admin_user set status=0 where id='$id'";
         $res = Yii::$app->db->createCommand($sql)->execute();
         return $this->redirect(["/admin/index/aindex"]);
     }
 
-    //冻结账号status改为3
+    //冻结账号status改为2
     public function actionFreeze()
     {
         $req = Yii::$app->request;
         $id = $req->get(id);
-        $sql = "update admin_user set status=3 where id='$id'";
+        $sql = "update admin_user set status=2 where id='$id'";
         $res = Yii::$app->db->createCommand($sql)->execute();
         return $this->redirect(["/admin/index/aindex"]);
     }
@@ -283,12 +283,12 @@ class IndexController extends PublicsController
         echo $id;
         return $this->redirect(["/admin/index/member"]);
     }
-    //移入黑名单status改为3
+    //移入黑名单status改为0
     public function actionMblacklist()
     {
         $req = Yii::$app->request;
         $id = $req->get(id);
-        $sql = "update customer set status=3 where id='$id'";
+        $sql = "update customer set status=0 where id='$id'";
         $res = Yii::$app->db->createCommand($sql)->execute();
         return $this->redirect(["/admin/index/member"]);
 
@@ -393,24 +393,42 @@ class IndexController extends PublicsController
         return $this->render($this->action->id, $data);
     }
 
-    //店铺
-    public function actionWater()
-    {
-        $province = Yii::$app->db->createCommand('select * from sys_province')->queryAll();
-        $data['province'] = $province;
-        return $this->render($this->action->id, $data);
-    }
     //查看店铺
     public function actionWshop()
     {
         $req = Yii::$app->request;
         $id = $req->get(id);
-        var_dump($id);
-        exit;
-        $rows = Yii::$app->db->createCommand("select * from shop where id= '$id'")->queryOne();
-        var_dump($rows);
-        exit;
+        $rows = Yii::$app->db->createCommand("select * from shop where shop_id= '$id'")->queryOne();
         $data['rows'] = $rows;
         return $this->render($this->action->id,$data);
+    }
+    //删除店铺
+    public function actionDelshop(){
+        $req = Yii::$app->request;
+        $id = $req->get(id);
+        $sql = "delete from shop where shop_id='$id'";
+        $res = Yii::$app->db->createCommand($sql)->execute();
+        echo $id;
+        return $this->redirect(["/admin/index/shop"]);
+    }
+    //移入黑名单status改为0
+    public function actionSblacklist()
+    {
+        $req = Yii::$app->request;
+        $id = $req->get(id);
+        $sql = "update shop set shop_state=0 where shop_id='$id'";
+        $res = Yii::$app->db->createCommand($sql)->execute();
+        return $this->redirect(["/admin/index/shop"]);
+
+    }
+
+    //冻结账号status改为2
+    public function actionSfreeze()
+    {
+        $req = Yii::$app->request;
+        $id = $req->get(id);
+        $sql = "update shop set shop_state=2 where shop_id='$id'";
+        $res = Yii::$app->db->createCommand($sql)->execute();
+        return $this->redirect(["/admin/index/shop"]);
     }
 }
