@@ -102,8 +102,9 @@ margin-top:4px;"
                         <div class="timer">
                             <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
                                 <input type="text" style="width:100%;height:100%;text-align: center;border:none;" name="data" class="demo-input"
-                                       placeholder="<?php echo date('Y-m-d h:i:s',time()),'-',date('Y-m-d h:i:s',time())?>" id="test10">
+                                       placeholder="请选择要查询的时间段" id="test10">
                             </div>
+                            <?php /*echo date('Y-m-d h:i:s',time()),'-',date('Y-m-d h:i:s',time())*/?>
                         </div>
 
                     </div>
@@ -319,7 +320,7 @@ margin-top:4px;"
                         <div class="timer">
                             <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
                                 <input type="text" style="width:100%;height:100%;text-align: center;border:none;" name="data" class="demo-input"
-                                       placeholder="<?php echo date('Y-m-d h:i:s',time()),'-',date('Y-m-d h:i:s',time())?>" id="test11">
+                                       placeholder="请选择要查询的时间段" id="test11">
                             </div>
                         </div>
 
@@ -536,7 +537,7 @@ margin-top:4px;"
                         <div class="timer">
                             <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
                                 <input type="text" style="width:100%;height:100%;text-align: center;border:none;" name="data" class="demo-input"
-                                       placeholder="<?php echo date('Y-m-d h:i:s',time()),'-',date('Y-m-d h:i:s',time())?>" id="test12">
+                                       placeholder="请选择要查询的时间段" id="test12">
                             </div>
                         </div>
 

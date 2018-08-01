@@ -1963,7 +1963,7 @@ $cssOptions = [
         overflow:hidden ;
     }
     #index1 header{
-        width:1160px;
+        width:1012px;
         height: 139px;
         margin-top:30px;
         display: flex;
