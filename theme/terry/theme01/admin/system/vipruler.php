@@ -163,10 +163,13 @@ box-sizing: border-box">
                 </div>
             </form>
         </div>
-        <button style="width: 120px;height: 32px;border:0;float: left;margin-top:1px;margin-left:40px;
-background: #fc5e4a;border-radius: 18px;text-align: center;line-height: 32px;color: #fff;margin-bottom: 50px;">
+        <button class="vipruler_btn">
             确定
         </button>
     </div>
 
 </div>
+<style>
+    .vipruler_btn{width: 120px;height: 32px;border:0;float: left;margin-top:1px;
+        background: #fc5e4a;border-radius: 18px;text-align: center;line-height: 32px;color: #fff;margin-bottom: 50px;}
+</style>
