@@ -84,11 +84,11 @@
             <div class="platdata-header">
                 <div class="platdata-headername">成交额趋势</div>
                 <div class="platdata-headerright">
-                    <ul>
-                        <li>七天</li>
-                        <li>一个月</li>
-                        <li>一个季度</li>
-                        <li>一年</li>
+                    <ul style="cursor:pointer;">
+                        <li class="week but1" onclick='cut(3,this)' uri='1'>七天</li>
+                        <li class="month but1" onclick='cut(3,this)' uri='2'>一个月</li>
+                        <li class="quarter but1" onclick='cut(3,this)' uri='3'>一个季度</li>
+                        <li class="year but1" onclick='cut(3,this)' uri='4'>一年</li>
                     </ul>
                     <!--时间戳-->
                     <div class="block" style="float: left;line-height: 48px; position: relative;
@@ -96,20 +96,181 @@ margin-top:4px;"
                     >
                         <div class="timer">
                             <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
-                                <i class="el-input__icon el-range__icon el-icon-time"></i>
+                            <div class="el-form-item__content" style="width:100%;height:100%;">
+                                <input type="text" style="width:100%;height:100%;" name="data" class="demo-input" placeholder="日期时间范围" id="test10">
+                            </div>
+                                <!-- <i class="el-input__icon el-range__icon el-icon-time"></i>
                                 <input placeholder="开始日期" name="" class="el-range-input el-range-input1" />
                                 <span class="el-range-separator">至</span>
                                 <input placeholder="结束日期" name="" class="el-range-input el-range-input2"/>
-                                <i class="el-input__icon el-range__icon el-icon-time"></i>
+                                <i class="el-input__icon el-range__icon el-icon-time"></i> -->
                             </div>
                         </div>
                     </div>
-                    <button style="float: left;border:0;margin-top:13px;">确定</button>
+                    <button style="float: left;border:0;margin-top:13px;" onclick='atime()'>确定</button>
                 </div>
             </div>
             <div id="mychart">
 
             </div>
+            <script type="text/javascript"> 
+            //日期时间范围
+            laydate.render({
+                elem: '#test10'
+                , type: 'datetime'
+                , range: true
+                , theme: "#3CACFE"
+            });  
+           function atime(){
+               var aval=$('#test10').val();
+               if(aval){ 
+            	   $(".but1").css({"background":"#fff","color":"#99cafe"});
+            	   var sta = aval.substring(0, 10); 
+            	   var end = aval.substring(22,32);
+            	   url="<?= Yii::$service->url->getUrl('admin/money/searchdate') ?>?sta="+sta+"&end="+end;
+            	   $.get(url).done(function (data) {
+                    	var row =JSON.parse(data); 
+                        // 填入数据
+        	             myChart.setOption({
+        	          	   title: {
+        	                   text: ''
+        	               },
+        	               tooltip: {},
+        	               legend: {
+        	                   data:['成交额']
+        	               },
+        	               xAxis: {
+        	                   data:row.dat    /* row.dat */
+        	               },
+        	               yAxis: {},
+        	               series: [{
+        	                   name: '成交额',
+        	                   type: 'line',
+        	                   data:row.num    /* row.num */
+        	               }],
+          	             toolbox: {
+
+           	            	　　show: true,
+           	            	　　feature: {
+
+           	            	　　　　saveAsImage: {
+
+           	            	　　　　show:true,
+
+           	            	　　　　excludeComponents :['toolbox'],
+
+           	            	　　　　pixelRatio: 2
+
+           	            	　　　　}
+
+           	            	　　}
+
+           	            	}
+        	           });
+                    });
+               }
+           }        
+           var myChart = echarts.init(document.getElementById('mychart'));
+            // 异步加载数据
+           var url="<?= Yii::$service->url->getUrl('admin/money/hours?hours=24') ?>";
+           function cut(type,that){
+        	   $('#test10').val("");
+               $(".but1").css({"background":"#fff","color":"#99cafe"});
+               $(that).css({"background":"#F3FAFF","color":"red"});
+               if($(that).attr("uri")==1){
+            	   url="<?= Yii::$service->url->getUrl("admin/money/week") ?>";
+               }else if($(that).attr("uri")==2){
+            	   url="<?= Yii::$service->url->getUrl('admin/money/month') ?>";
+               }else if($(that).attr("uri")==3){
+            	   url="<?= Yii::$service->url->getUrl('admin/money/quarter') ?>";
+               }else if($(that).attr("uri")==4){
+            	   url="<?= Yii::$service->url->getUrl('admin/money/year') ?>";
+               }
+               $.get(url).done(function (data) {
+                  	var row =JSON.parse(data); 
+                      // 填入数据
+      	             myChart.setOption({
+      	          	   title: {
+      	                   text: ''
+      	               },
+      	               tooltip: {},
+      	               legend: {
+      	                   data:['成交额']
+      	               },
+      	               xAxis: {
+      	                   data:row.dat    /* row.dat */
+      	               },
+      	               yAxis: {},
+      	               series: [{
+      	                   name: '成交额',
+      	                   type: 'line',
+      	                   data:row.num    /* row.num */
+      	               }],
+        	             toolbox: {
+
+         	            	　　show: true,
+
+         	            	　　feature: {
+
+         	            	　　　　saveAsImage: {
+
+         	            	　　　　show:true,
+
+         	            	　　　　excludeComponents :['toolbox'],
+
+         	            	　　　　pixelRatio: 2
+
+         	            	　　　　}
+
+         	            	　　}
+
+         	            	}
+      	           });
+                  });
+           }
+            $.get(url).done(function (data) {
+            	var row =JSON.parse(data); 
+                // 填入数据
+	             myChart.setOption({
+	          	   title: {
+	                   text: ''
+	               },
+	               tooltip: {},
+	               legend: {
+	                   data:['成交额']
+	               },
+	               xAxis: {
+	                   data:row.dat    /* row.dat */
+	               },
+	               yAxis: {},
+	               series: [{
+	                   name: '成交额',
+	                   type: 'line',
+	                   data:row.num    /* row.num */
+	               }],
+	               toolbox: {
+
+	  	            	　　show: true,
+	  	            	　　feature: {
+
+	  	            	　　　　saveAsImage: {
+
+	  	            	　　　　show:true,
+
+	  	            	　　　　excludeComponents :['toolbox'],
+
+	  	            	　　　　pixelRatio: 2
+
+	  	            	　　　　}
+
+	  	            	　　}
+
+	  	            	}
+	           });
+            });
+//             // 使用刚指定的配置项和数据显示图表。
+//             myChart.setOption(option);
+            </script>
             <div class="chart-b">
                 <button style=" width: 90px;
         height: 27px;
