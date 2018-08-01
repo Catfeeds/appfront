@@ -131,12 +131,12 @@
                         <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>"/>
                         <input type="hidden" name="shop_type" class="shop_type" value="1"/>
                         <div class="el-form-item">
-                            <label class="el-form-item__label" style="width: 168px !important;" >公司名称</label>
+                            <label class="el-form-item__label" style="width: 168px !important;">公司名称</label>
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div class="el-input">
 
                                     <input type="text" name="shop_company_name" class="el-input__inner"
-                                           value="<?php echo $companyinfo['post']['shop_company_name'] ?>" required />
+                                           value="<?php echo $companyinfo['post']['shop_company_name'] ?>"/>
                                 </div>
 
                             </div>
@@ -148,7 +148,7 @@
 
                                     <input type="text" name="business_licence_number" autocomplete="off"
                                            class="el-input__inner"
-                                           value="<?php echo $companyinfo['post']['business_licence_number'] ?>"  required />
+                                           value="<?php echo $companyinfo['post']['business_licence_number'] ?>"/>
                                 </div>
 
                             </div>
@@ -167,9 +167,9 @@
                                 <?php } ?>
                                         position: relative;">
                                     <input type="hidden" name="img0" class="img0"
-                                           value="<?php echo $companyinfo['img'][0]; ?>"  />
+                                           value="<?php echo $companyinfo['img'][0]; ?>"/>
                                     <input type="file" multiple="multiple" class="file" name="file[]"
-                                           onchange="uploads(this)"   required />
+                                           onchange="uploads(this)"/>
                                     <a href="javascript:0"
                                        style="pointer-events: none; display: block; width: 50px; height: 50px; border-radius: 50%; background: rgb(48, 163, 254); position: absolute; margin: auto 210px; top: 0px; bottom: 0px; font-size: 30px; color: rgb(255, 255, 255); line-height: 50px; text-align: center;">+</a>
                                 </div>
@@ -181,17 +181,16 @@
                             <script>
                                 function uploads(obj) {
                                     var file = obj.files[0];
+
                                     if (window.FileReader) {
                                         var reader = new FileReader();
                                         reader.readAsDataURL(file);
                                         //监听文件读取结束后事件
                                         reader.onloadend = function (e) {
                                             $(obj).parent("div").css({
-
                                                 "background": "url(" + e.target.result + ") no-repeat center center/100% 100%",
                                             });
                                             $(obj).next().hide();
-                                            // $(obj).prev($('input[type=hidden]')).val(e.target.result);
                                         };
                                     }
                                 }
@@ -205,7 +204,7 @@
 
                                     <input type="text" name="company_registered_capital" autocomplete="off"
                                            class="el-input__inner"
-                                           value="<?php echo $companyinfo['post']['company_registered_capital'] ?>"  required/>
+                                           value="<?php echo $companyinfo['post']['company_registered_capital'] ?>"/>
                                 </div>
 
                             </div>
@@ -216,7 +215,7 @@
                                 <div class="el-input">
 
                                     <input type="text" name="contacts_name" autocomplete="off" class="el-input__inner"
-                                           value="<?php echo $companyinfo['post']['contacts_name'] ?>"  required/>
+                                           value="<?php echo $companyinfo['post']['contacts_name'] ?>"/>
                                 </div>
 
                             </div>
@@ -227,7 +226,7 @@
                                 <div class="el-input">
 
                                     <input type="text" name="contacts_phone" autocomplete="off" class="el-input__inner"
-                                           value="<?php echo $companyinfo['post']['contacts_phone'] ?>"  required/>
+                                           value="<?php echo $companyinfo['post']['contacts_phone'] ?>"/>
                                 </div>
 
                             </div>
@@ -238,7 +237,7 @@
                                 <div class="el-input">
 
                                     <input type="text" name="contacts_email" autocomplete="off" class="el-input__inner"
-                                           value="<?php echo $companyinfo['post']['contacts_email'] ?>"  required />
+                                           value="<?php echo $companyinfo['post']['contacts_email'] ?>"/>
                                 </div>
 
                             </div>
@@ -251,7 +250,7 @@
                                 <div class="el-input">
 
                                     <input type="text" name="contacts_card_no" autocomplete="off" class="el-input__inner"
-                                           value="<?php echo $companyinfo['post']['contacts_card_no'] ?>"  required />
+                                           value="<?php echo $companyinfo['post']['contacts_card_no'] ?>"/>
                                 </div>
 
                             </div>
@@ -272,7 +271,7 @@
                                     <input type="hidden" name="img1" class="img1"
                                            value="<?php echo $companyinfo['img'][1]; ?>"/>
                                     <input type="file" multiple="multiple" class="file" name="file[]"
-                                           onchange="uploads(this)"  required />
+                                           onchange="uploads(this)"/>
                                     <a href="javascript:0"
                                        style="pointer-events: none; display: <?php if ($companyinfo['img'][1]||$companyinfo['imgc']['img1']) {echo 'none';}else{echo 'block';}?>; width: 50px; height: 50px; border-radius: 50%; background: rgb(48, 163, 254); position: absolute; margin: auto 110px; top: 0px; bottom: 0px; font-size: 30px; color: rgb(255, 255, 255); line-height: 50px; text-align: center;">+</a>
                                 </div>
@@ -316,7 +315,7 @@
                                         <input type="hidden" name="img2" class="img2"
                                                value="<?php echo $companyinfo['img'][2]; ?>"/>
                                         <input type="file" multiple="multiple" class="file" name="file[]"
-                                               onchange="uploads(this)"  required />
+                                               onchange="uploads(this)"/>
                                         <a href="javascript:0"
                                            style="pointer-events: none; display: block; width: 50px; height: 50px; border-radius: 50%; background: rgb(48, 163, 254); position: absolute; margin: auto 110px; top: 0px; bottom: 0px; font-size: 30px; color: rgb(255, 255, 255); line-height: 50px; text-align: center;">+</a>
                                     </div>
@@ -343,7 +342,7 @@
                                         <input type="hidden" name="img3" class="img3"
                                                value="<?php echo $companyinfo['img'][3]; ?>"/>
                                         <input type="file" multiple="multiple" class="file" name="file[]"
-                                               onchange="uploads(this)"  required/>
+                                               onchange="uploads(this)"/>
                                         <a href="javascript:0"
                                            style="pointer-events: none; display: block; width: 50px; height: 50px; border-radius: 50%; background: rgb(48, 163, 254); position: absolute; margin: auto 110px; top: 0px; bottom: 0px; font-size: 30px; color: rgb(255, 255, 255); line-height: 50px; text-align: center;">+</a>
                                     </div>
@@ -375,7 +374,7 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div class="el-input">
                                     <input type="text" name="bank_account_name" autocomplete="off" class="el-input__inner"
-                                           value="<?php echo $companyinfo['post']['bank_account_name'] ?>"  required />
+                                           value="<?php echo $companyinfo['post']['bank_account_name'] ?>"/>
                                 </div>
                             </div>
                         </div>
@@ -385,7 +384,7 @@
                                 <div class="el-input">
 
                                     <input type="text" name="bank_account_number" autocomplete="off" class="el-input__inner"
-                                           value="<?php echo $companyinfo['post']['bank_account_number'] ?>"  required />
+                                           value="<?php echo $companyinfo['post']['bank_account_number'] ?>"/>
                                 </div>
                             </div>
                         </div>
@@ -394,7 +393,7 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div class="el-input">
                                     <input type="text" name="bank_name" autocomplete="off" class="el-input__inner"
-                                           value="<?php echo $companyinfo['post']['bank_name'] ?>"  required />
+                                           value="<?php echo $companyinfo['post']['bank_name'] ?>"/>
                                 </div>
                             </div>
                         </div>
@@ -403,7 +402,7 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div class="el-input">
                                     <input type="text" name="bank_code" autocomplete="off" class="el-input__inner"
-                                           value="<?php echo $companyinfo['post']['bank_code'] ?>"  required />
+                                           value="<?php echo $companyinfo['post']['bank_code'] ?>"/>
                                 </div>
                             </div>
                         </div>
@@ -412,7 +411,7 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div class="el-input">
                                     <input type="text" name="bank_address" autocomplete="off" class="el-input__inner"
-                                           value="<?php echo $companyinfo['post']['bank_address'] ?>"  required />
+                                           value="<?php echo $companyinfo['post']['bank_address'] ?>"/>
                                 </div>
                             </div>
                         </div>
@@ -422,7 +421,7 @@
                                 <div class="el-input">
                                     <input type="text" name="settlement_bank_account_name" autocomplete="off"
                                            class="el-input__inner"
-                                           value="<?php echo $companyinfo['post']['settlement_bank_account_name'] ?>"  required />
+                                           value="<?php echo $companyinfo['post']['settlement_bank_account_name'] ?>"/>
                                 </div>
                             </div>
                         </div>
@@ -432,7 +431,7 @@
                                 <div class="el-input">
                                     <input type="text" name="settlement_bank_account_number" autocomplete="off"
                                            class="el-input__inner"
-                                           value="<?php echo $companyinfo['post']['settlement_bank_account_number'] ?>"  required />
+                                           value="<?php echo $companyinfo['post']['settlement_bank_account_number'] ?>"/>
                                 </div>
                             </div>
                         </div>
@@ -442,7 +441,7 @@
                                 <div class="el-input">
                                     <input type="text" name="settlement_bank_name" autocomplete="off"
                                            class="el-input__inner"
-                                           value="<?php echo $companyinfo['post']['settlement_bank_name'] ?>"  required />
+                                           value="<?php echo $companyinfo['post']['settlement_bank_name'] ?>"/>
                                 </div>
                             </div>
                         </div>
@@ -452,7 +451,7 @@
                                 <div class="el-input">
                                     <input type="text" name="settlement_bank_code" autocomplete="off"
                                            class="el-input__inner"
-                                           value="<?php echo $companyinfo['post']['settlement_bank_code'] ?>"  required />
+                                           value="<?php echo $companyinfo['post']['settlement_bank_code'] ?>"/>
                                 </div>
                             </div>
                         </div>
@@ -462,7 +461,7 @@
                                 <div class="el-input">
                                     <input type="text" name="settlement_bank_address" autocomplete="off"
                                            class="el-input__inner"
-                                           value="<?php echo $companyinfo['post']['settlement_bank_address'] ?>"  required />
+                                           value="<?php echo $companyinfo['post']['settlement_bank_address'] ?>"/>
                                 </div>
                             </div>
                         </div>
@@ -472,7 +471,7 @@
                                 <div class="el-input">
                                     <input type="text" name="tax_registration_certificate" autocomplete="off"
                                            class="el-input__inner"
-                                           value="<?php echo $companyinfo['post']['tax_registration_certificate'] ?>"  required />
+                                           value="<?php echo $companyinfo['post']['tax_registration_certificate'] ?>"/>
                                 </div>
                             </div>
                         </div>
@@ -481,7 +480,7 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div class="el-input">
                                     <input type="text" name="taxpayer_id" autocomplete="off" class="el-input__inner"
-                                           value="<?php echo $companyinfo['post']['taxpayer_id'] ?>"  required />
+                                           value="<?php echo $companyinfo['post']['taxpayer_id'] ?>"/>
                                 </div>
                             </div>
                         </div>
@@ -491,7 +490,7 @@
                                 <div class="el-input">
                                     <input type="text" name="company_employee_count" autocomplete="off"
                                            class="el-input__inner"
-                                           value="<?php echo $companyinfo['post']['company_employee_count'] ?>" required />
+                                           value="<?php echo $companyinfo['post']['company_employee_count'] ?>"/>
                                 </div>
                             </div>
                         </div>
@@ -500,7 +499,7 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div class="el-input">
                                     <input type="text" name="business_sphere" autocomplete="off" class="el-input__inner"
-                                           value="<?php echo $companyinfo['post']['business_sphere'] ?>"  required />
+                                           value="<?php echo $companyinfo['post']['business_sphere'] ?>"/>
                                 </div>
                             </div>
                         </div>
@@ -509,7 +508,7 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div class="el-input">
                                     <input type="text" name="organization_code" autocomplete="off" class="el-input__inner"
-                                           value="<?php echo $companyinfo['post']['organization_code'] ?>"  required />
+                                           value="<?php echo $companyinfo['post']['organization_code'] ?>"/>
                                 </div>
                             </div>
                         </div>
@@ -518,9 +517,6 @@
                             <p style="font-size: 14px;"><span style="color: rgb(255, 113, 73);">*</span>&nbsp;一般纳税人证明：所属企业具有一般纳税人证明时，此项为必填
                             </p>
                         </div>
-                        <!-- 证明-->
-
-
                         <div class="el-form-item nnnn">
                             <label class="el-form-item__label" style="width: 168px !important;">一般纳税人证明</label><!-- general_taxpayer -->
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
@@ -536,7 +532,7 @@
                                     <input type="hidden" name="img4" class="img4"
                                            value="<?php echo $companyinfo['img'][4]; ?>"/>
                                     <input type="file" multiple="multiple" class="file" name="file[]"
-                                           onchange="uploads(this)"   required/>
+                                           onchange="uploads(this)"/>
                                     <a href="javascript:0"
                                        style="pointer-events: none; display: block; width: 50px; height: 50px; border-radius: 50%; background: rgb(48, 163, 254); position: absolute; margin: auto 210px; top: 0px; bottom: 0px; font-size: 30px; color: rgb(255, 255, 255); line-height: 50px; text-align: center;">+</a>
                                 </div>
@@ -558,12 +554,13 @@
                                     <input type="hidden" name="img5" class="img5"
                                            value="<?php echo $companyinfo['img'][5]; ?>"/>
                                     <input type="file" multiple="multiple" class="file" name="file[]"
-                                           onchange="uploads(this)"   required/>
+                                           onchange="uploads(this)"/>
                                     <a href="javascript:0"
                                        style="pointer-events: none; display: block; width: 50px; height: 50px; border-radius: 50%; background: rgb(48, 163, 254); position: absolute; margin: auto 210px; top: 0px; bottom: 0px; font-size: 30px; color: rgb(255, 255, 255); line-height: 50px; text-align: center;">+</a>
                                 </div>
                             </div>
                         </div>
+
                         <div class="el-form-item nnnn">
                             <label class="el-form-item__label" style="width: 168px !important;">开户银行许可证电子版</label>
                             <!-- bank_licence_electronic -->
@@ -580,7 +577,7 @@
                                     <input type="hidden" name="img6" class="img6"
                                            value="<?php echo $companyinfo['img'][6]; ?>"/>
                                     <input type="file" multiple="multiple" class="file" name="file[]"
-                                           onchange="uploads(this)"   required/>
+                                           onchange="uploads(this)"/>
                                     <a href="javascript:0"
                                        style="pointer-events: none; display: block; width: 50px; height: 50px; border-radius: 50%; background: rgb(48, 163, 254); position: absolute; margin: auto 210px; top: 0px; bottom: 0px; font-size: 30px; color: rgb(255, 255, 255); line-height: 50px; text-align: center;">+</a>
                                 </div>
@@ -602,25 +599,23 @@
                                     <input type="hidden" name="img7" class="img7"
                                            value="<?php echo $companyinfo['img'][7]; ?>"/>
                                     <input type="file" multiple="multiple" class="file" name="file[]"
-                                           onchange="uploads(this)"  required />
+                                           onchange="uploads(this)"/>
                                     <a href="javascript:0"
                                        style="pointer-events: none; display: block; width: 50px; height: 50px; border-radius: 50%; background: rgb(48, 163, 254); position: absolute; margin: auto 210px; top: 0px; bottom: 0px; font-size: 30px; color: rgb(255, 255, 255); line-height: 50px; text-align: center;">+</a>
                                 </div>
                             </div>
                         </div>
-
-                        <div style="width: 800px; display: flex; justify-content: space-around;">
-                            <button type="button" class="el-button el-button--primary is-round"
-                                    onclick='shopload("<?= Yii::$service->url->getUrl('apply/apply/notes') ?>")'>
-                                <span>上一步</span>
-                            </button>
-                            <input type="submit" class="el-button el-button--primary is-round"
-                                   value="下一步"
-                                   onclick='shopload("<?= Yii::$service->url->getUrl('apply/apply/shopinfo') ?>")'>
-                            </input>
-                        </div>
                     </form>
-
+                    <div style="width: 800px; display: flex; justify-content: space-around;">
+                        <button type="button" class="el-button el-button--primary is-round"
+                                onclick='shopload("<?= Yii::$service->url->getUrl('apply/apply/notes') ?>")'>
+                            <span>上一步</span>
+                        </button>
+                        <button type="button" class="el-button el-button--primary is-round"
+                                onclick='shopload("<?= Yii::$service->url->getUrl('apply/apply/shopinfo') ?>")'>
+                            <span>下一步</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -631,21 +626,8 @@
 </div>
 <script>
     function shopload(url) {
-        // $("#el-form").attr("action", url);
-        $("#el-form").submit(function(e){
-            e.preventDefault();
-            let formdata=$('form').serializeArray();
-            // console.log(formdata);
-            $.ajax({
-                url:url,
-                type:'post',
-                data:formdata,
-                success:function (msg) {
-                    console.log(1);
-                    location.href=url;
-                }
-            })
-        });
+        $("#el-form").attr("action", url);
+        $("#el-form").submit();
     }
 
     $(".index-change").click(function () {
@@ -653,35 +635,4 @@
         $(this).addClass("sp router-link-exact-active router-link-active").html('√');
         $(".shop_type").val($(this).attr("value"));
     });
-
-    // $("form").validate({
-    //     submitHandler:function(){
-    //         let formedata =$('form').serialize();
-    //         $.ajax({
-    //             url:"/apply/apply/shopinfo",
-    //             type:"post",
-    //             data:formedata,
-    //             success:function (data) {
-    //                 if (data == "true") {
-    //                     // console.log(data);
-    //                     history.back();
-    //                 }
-    //             }
-    //         })
-    //         $(".buttom").addClass("success");
-    //     },
-    //     rules: {
-    //         shop_company_name:{
-    //             required:true,
-    //         },
-    //         business_license_number:{
-    //             required:true,
-    //         },
-    //
-    //     },
-    //     messages:{
-    //
-    //     }
-    //
-    // })
 </script>
