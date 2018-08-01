@@ -1,12 +1,12 @@
 
   <div  class="main-content">
    <div  style="width: 1012px; margin: 0px auto;">
-    <div  >
+    <div>
      <div  class="content">
       <div  class="biaoti">
        <div  aria-label="Breadcrumb" role="navigation" class="el-breadcrumb">
         <span  class="el-breadcrumb__item"><span role="link" class="el-breadcrumb__inner is-link">账号管理</span><span role="presentation" class="el-breadcrumb__separator">&middot;</span></span> 
-        <span  class="el-breadcrumb__item" aria-current="page"><span role="link" class="el-breadcrumb__inner"><span  style="color: rgb(48, 211, 102);">资金列表</span></span><span role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
+        <span  class="el-breadcrumb__item" aria-current="page"><span role="link" class="el-breadcrumb__inner"><span  style="color: rgb(48, 211, 102);font-weight: bold">资金列表</span></span><span role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
        </div>
       </div> 
       <ul  class="shuaixuan">
@@ -199,10 +199,16 @@
          </table>
         </div>
         <div class="el-table__column-resize-proxy" style="display: none;"></div>
-       </div> 
-       <div  style="float: right; margin-top: 20px;">
-        <span >总计206记录</span>
-        <span  style="margin-left: 20px;">分82页</span>
+       </div>
+          <div style="width: 200px; float: right; margin-top: 28px; display: flex; justify-content: space-between;">
+           <div style="display: flex;">
+               <div class="dian"></div> 总计
+               <span style="color: rgb(61, 176, 255); font-weight: bolder;margin:0 5px;">206</span>记录
+           </div>
+           <div style="display: flex;">
+               <div class="dian" style="background: rgb(41, 201, 154);"></div> 分
+               <span style="font-weight: bolder; color: rgb(41, 201, 154);margin:0 5px;">82</span>页
+           </div>
        </div> 
        <div  style="margin-top: 20px;">
         <button  type="button" class="el-button el-button--default">

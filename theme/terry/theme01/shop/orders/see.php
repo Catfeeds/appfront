@@ -38,7 +38,6 @@
     .bottom .title .shangpinbg {
         width: 56px;
         height: 56px;
-        background: #BBDFF6;
         border-radius: 3px;
     }
 
@@ -502,8 +501,8 @@
                                         <td class="el-table_5_column_31  ">
                                             <div class="cell el-tooltip">
                                                 <div data-v-2b6e6d92="" style="display: flex;align-items: center">
-                                                    <div data-v-2b6e6d92="" class="shangpinbg">
-                                                        <img src="">
+                                                    <div data-v-2b6e6d92="" class="shangpinbg" style="background: url('')no-repeat center center /100% auto">
+<!--                                                        <img src="">-->
                                                     </div>
                                                     <span data-v-2b6e6d92=""
                                                           style="margin-left: 10px;"><?= $v["name"] ?></span></div>

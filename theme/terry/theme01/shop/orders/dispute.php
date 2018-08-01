@@ -272,16 +272,16 @@
                     </div>
                     <div data-v-7a00a356="" style="position: relative;">
                         <div data-v-7a00a356=""
-                             style="width: 180px; position: absolute; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
+                             style="width: 200px; position: absolute; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
                             <div data-v-7a00a356="" style="display: flex;">
                                 <div data-v-7a00a356="" class="dian"></div>
                                 总计<span data-v-7a00a356=""
-                                        style="color: rgb(61, 176, 255); font-weight: bolder;">206</span>记录
+                                        style="color: rgb(61, 176, 255); font-weight: bolder;margin:0 5px;">206</span>记录
                             </div>
                             <div data-v-7a00a356="" style="display: flex;">
                                 <div data-v-7a00a356="" class="dian" style="background: rgb(41, 201, 154);"></div>
                                 分<span data-v-7a00a356=""
-                                       style="font-weight: bolder; color: rgb(41, 201, 154);">82</span>页
+                                       style="font-weight: bolder; color: rgb(41, 201, 154);margin:0 5px;">82</span>页
                             </div>
                         </div>
                         <div data-v-7a00a356="" style="margin-top: 40px;">

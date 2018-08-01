@@ -14,7 +14,7 @@ use yii\helpers\Url;
                                     role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
                         <span class="el-breadcrumb__item" aria-current="page"><span role="link"
                                                                                     class="el-breadcrumb__inner"><span
-                                        style="color: rgb(48, 211, 102);">账单列表</span></span><span role="presentation"
+                                        style="color: rgb(48, 211, 102);font-weight: bold">账单列表</span></span><span role="presentation"
                                                                                                   class="el-breadcrumb__separator">&middot;</span></span>
                     </div>
                 </div>
@@ -246,16 +246,16 @@ use yii\helpers\Url;
                         <div class="el-table__column-resize-proxy" style="display: none;"></div>
                     </div>
                     <div style="position: relative;">
-                        <div style="width: 180px; position: absolute; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
+                        <div style="width: 200px; position: absolute; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
                             <div style="display: flex;">
                                 <div class="dian"></div>
                                 总计
-                                <span style="color: rgb(61, 176, 255); font-weight: bolder;"><?= $tot ?></span>记录
+                                <span style="color: rgb(61, 176, 255); font-weight: bolder;margin:0 5px;"><?= $tot ?></span>记录
                             </div>
                             <div style="display: flex;">
                                 <div class="dian" style="background: rgb(41, 201, 154);"></div>
                                 分
-                                <span style="font-weight: bolder; color: rgb(41, 201, 154);"><?= ceil($tot/10) ?></span>页
+                                <span style="font-weight: bolder; color: rgb(41, 201, 154);margin:0 5px;"><?= ceil($tot/10) ?></span>页
                             </div>
                         </div>
                         <div style="margin-top: 40px;">

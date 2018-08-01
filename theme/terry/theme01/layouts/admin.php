@@ -2144,6 +2144,7 @@ $cssOptions = [
     }
     .rechargetable{
         margin-bottom: 20px;
+        font-size: 0;
     }
     .rechargetable tr td{
         height: 40px;

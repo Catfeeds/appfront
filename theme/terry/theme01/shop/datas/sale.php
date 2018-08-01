@@ -6,7 +6,7 @@
       <div  class="biaoti">
        <div  aria-label="Breadcrumb" role="navigation" class="el-breadcrumb">
         <span  class="el-breadcrumb__item"><span role="link" class="el-breadcrumb__inner is-link">数据统计</span><span role="presentation" class="el-breadcrumb__separator">&middot;</span></span> 
-        <span  class="el-breadcrumb__item" aria-current="page"><span role="link" class="el-breadcrumb__inner"><span  style="color: rgb(48, 211, 102);">销售统计</span></span><span role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
+        <span  class="el-breadcrumb__item" aria-current="page"><span role="link" class="el-breadcrumb__inner"><span  style="color: rgb(48, 211, 102);font-weight: bold">销售统计</span></span><span role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
        </div>
       </div> 
       <ul  class="shuaixuan">

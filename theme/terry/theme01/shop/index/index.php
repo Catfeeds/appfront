@@ -279,33 +279,33 @@
           </colgroup>
           <tbody style="font-size: 12px;color: #82898e">
            <tr class="el-table__row">
-            <td class="el-table_2_column_11  ">
+            <td class="el-table_2_column_11">
              <div class="cell">
               1
              </div></td>
-            <td class="el-table_2_column_12  ">
+            <td class="el-table_2_column_12">
              <div class="cell">
               ECS00103
              </div></td>
-            <td class="el-table_2_column_13  ">
+            <td class="el-table_2_column_13">
              <div class="cell">
               JOMOO九牧精铜单冷快开水龙头洗衣机快开水龙头自来水嘴
              </div></td>
-            <td class="el-table_2_column_14  ">
+            <td class="el-table_2_column_14">
              <div class="cell">
               1002
              </div></td>
-            <td class="el-table_2_column_15  ">
+            <td class="el-table_2_column_15">
              <div class="cell">
               10,915
              </div></td>
-            <td class="el-table_2_column_16  ">
+            <td class="el-table_2_column_16">
              <div class="cell">
               119.99
              </div></td>
            </tr>
            <tr class="el-table__row">
-            <td class="el-table_2_column_11  ">
+            <td class="el-table_2_column_11">
              <div class="cell">
               2
              </div></td>
@@ -415,14 +415,14 @@
        </div>
       </div>
       <div >
-       <div style="width: 180px; float: right; margin-top: 28px; display: flex; justify-content: space-between;">
+       <div style="width: 200px; float: right; margin-top: 28px; display: flex; justify-content: space-between;">
         <div style="display: flex;">
          <div class="dian"></div> 总计
-         <span style="color: rgb(61, 176, 255); font-weight: bolder;">206</span>记录 
+         <span style="color: rgb(61, 176, 255); font-weight: bolder;margin:0 5px;">206</span>记录
         </div> 
         <div style="display: flex;">
          <div class="dian" style="background: rgb(41, 201, 154);"></div> 分
-         <span style="font-weight: bolder; color: rgb(41, 201, 154);">82</span>页 
+         <span style="font-weight: bolder; color: rgb(41, 201, 154);margin:0 5px;">82</span>页
         </div>
        </div> 
        <button type="button" class="el-button green el-button--success is-round" style="padding:0;">

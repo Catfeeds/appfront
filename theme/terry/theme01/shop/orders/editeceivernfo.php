@@ -192,7 +192,7 @@ use yii\helpers\Url;
         border-radius: 15px;
         outline: none;
         font-size: 12px;
-        padding-left:5px;
+        padding-left:10px;
     }
     .item .input:hover {
         border-color: #3CACFE;
