@@ -1,3 +1,17 @@
+<style>
+    .add{
+        width: 120px;
+        height: 32px;
+        border:0;
+        float: right;
+        margin-top:1px;
+        background: #36DD7A;
+        border-radius: 18px;
+        text-align: center;
+        line-height: 32px;
+        color: #fff;
+    }
+</style>
 <div class="main-content">
     <div class="adminmannager">
         <div class="adminmannager-title">
@@ -8,6 +22,9 @@
             <div class="admin-tablename" style="height: 40px;line-height: 40px;">
                 <div class="admin-tablenamebox" style="margin-top:18px;"></div>
                 <span class="admin-tablename2" style="margin-left:6px;font-size: 14px;">特权列表</span>
+                <a href="<?= Yii::$service->url->geturl('admin/system/addruler')?>">
+                    <button class="add">添加</button>
+                </a>
             </div>
             <table border="0" class="table-list vipr">
                 <tr>
@@ -20,26 +37,23 @@
                     <th>特权介绍</th>
                     <th>操作</th>
                 </tr>
+                <?php foreach ($ruler as $v){?>
                 <tr>
                     <td>
-                                <span>
-                        <div class="system-box"></div>
-                        <span style="margin-left:18px">01</span>
+                        <span><div class="system-box"></div>
+                        <span style="margin-left:18px"><?= $v['id']?></span>
                     </span>
                     </td>
-                    <td>小明</td>
-                    <td>会员折扣</td>
+                    <td><img src="http://img.uekuek.com/images/<?= $v[img] ?>"/></td>
+                    <td><?= $v['name']?></td>
+                    <td><span><?= $v["info"]?></span></td>
                     <td>
-                                <span>
-                                    享受商品和服务的优惠折扣，不同等级会员可享受折扣不同
-                                </span>
-                    </td>
-                    <td>
-                        <router-link to="" style="color: #2dacff">编辑</router-link>
+                        <a href="<?= Yii::$service->url->geturl('admin/system/editruler',array('id'=>$v[id]))?>" style="color: #2dacff">编辑</a>
                         <label>|</label>&nbsp;
                         <a href="javascript:0" class="delete"></a>
                     </td>
                 </tr>
+                <?php }?>
             </table>
             <!--分页-->
             <!--<div class="adminpagination" style="width: 98%">
