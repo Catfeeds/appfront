@@ -2527,6 +2527,14 @@ $cssOptions = [
     .content {
         padding-top: 27px!important;
     }
+    .el-input__inner{
+        font-size: 14px !important;
+    }
+    .demo-input{
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
 </style>
 <?php $this->beginPage() ?>
     <!doctype html>

@@ -224,7 +224,7 @@
                             </style>
                             
                             <label class="el-form-item__label" style="width: 120px;">上传商品图片:</label>
-                            <div class="el-form-item__content" style="margin-left: 120px;width: 200%;">
+                            <div class="el-form-item__content" style="margin-left: 120px;">
                                 <div onclick="setZhu(this,'<?=$goods['image']['main']['image']?>',0)" class="zhu">
                                     <div class="close">&times;</div>
                                     <div  class="shangpin1" >
