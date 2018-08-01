@@ -21,11 +21,13 @@ use yii\helpers\Url;
                 </div>
                 <div class="search">
                     <span>商家名称</span>
-                    <input type="text" name="shop_name" value="<?= $shop_name ?>">
+                    <input type="text" name="shop_name" value="<?= $shop_name ?>" placeholder="请输入商家名称">
                 </div>
+                <style>
+
+                </style>
                 <div class="ShopMannagersearch-img">
-                    <button type="submit">
-                        <img src="/public/adminimg/search.png" alt="">
+                    <button type="submit" class="shop_btn">
                     </button>
                 </div>
             </form>
