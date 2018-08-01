@@ -32,7 +32,7 @@ use yii\helpers\Url;
         font-size: 12px;
     }
     .content .shuaixuan li{
-        margin:0px 20px;
+        margin:0 20px;
     }
     .content .shuaixuan .xiala {
         padding-left: 10px;

@@ -16,14 +16,46 @@
                <option value="">1</option>
                <option value="">2</option>
            </select>
-       <li >时间段选择 
-        <div  class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
-         <i class="el-input__icon el-range__icon el-icon-time"></i>
-         <input placeholder="开始日期" name="" class="el-range-input" />
-         <span class="el-range-separator">至</span>
-         <input placeholder="结束日期" name="" class="el-range-input" />
-         <i class="el-input__icon el-range__close-icon"></i>
-        </div></li> 
+       <li style="
+                display: flex;
+                align-items: center;
+                    ">时间段选择
+              <div class="el-form-item__content" style="margin-left: 10px;">
+                  <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test10">
+              </div>
+       </li>
+        <style>
+              .demo-input {
+                  padding-left: 10px;
+                  height: 30px;
+                  min-width: 300px;
+                  line-height: 38px;
+                  border: 1px solid #e6e6e6;
+                  background-color: #f3faff;
+                  border-radius: 30px;
+                  outline: none;
+              }
+
+              .demo-input:hover {
+                  border-color: #c0c4cc;
+              }
+
+              .demo-input:focus {
+                  border-color: #3CACFE;
+              }
+              .el-form-item__content {
+                  line-height: normal;
+              }
+
+              .el-form-item__content {
+                  line-height: 40px;
+                  position: relative;
+                  font-size: 14px;
+              }
+              .layui-laydate .layui-this{
+                  background: #30B5FE !important;
+              }
+          </style>
        <li >
         <div  class="el-input" style="width: 200px;">
          
@@ -317,7 +349,5 @@
         box-shadow: 0 0 8px #30B5FE;
         padding-top: 10px;
     }
-
-
 
 </style>
