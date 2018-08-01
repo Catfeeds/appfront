@@ -30,14 +30,6 @@ use yii\helpers\Url;
                         display: flex;
                         align-items: center;
                     ">时间段选择
-                        <!--<div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
-                            <i class="el-input__icon el-range__icon el-icon-time"></i>
-                            <input placeholder="开始日期" name="" class="el-range-input" />
-                            <span class="el-range-separator">至</span>
-                            <input placeholder="结束日期" name="" class="el-range-input"/>
-                            <i class="el-input__icon el-range__close-icon"></i>
-
-                        </div>-->
                         <div class="el-form-item__content" style="margin-left: 10px;">
                             <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test10">
                         </div>
@@ -74,11 +66,6 @@ use yii\helpers\Url;
                             background: #30B5FE !important;
                         }
                     </style>
-                    <script>
-                        laydate.render({
-                            elem:'.el-range-input'
-                        })
-                    </script>
                     <li>
                         <div class="el-input" style="width: 200px;">
                             <input type="text" autocomplete="off" placeholder="请输入关键字搜索" class="el-input__inner keywords" onkeydown="sel(event)"  />
@@ -448,13 +435,18 @@ use yii\helpers\Url;
         , range: true
         , theme: "#3CACFE"
     });
-    var el_input=document.querySelectorAll('.el-range-input');
+    var el_input=document.querySelectorAll('.demo-input');
+
     function sel(e){
         if(e.keyCode!=13&&e.type=="keydown"){
             return;
         }
-        var startdate=el_input[0].value;
-        var enddate=el_input[1].value;
+        var dates=el_input[0].value.split(' ');
+        if(dates[3]==undefined){
+            dates[3]='';
+        }
+        var startdate=dates[0];
+        var enddate=dates[3];
         location.href="<?= Yii::$service->url->geturl("/water/account/index?") ?>"+`startdate=${startdate}&enddate=${enddate}`;
     }
 </script>

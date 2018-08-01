@@ -86,40 +86,33 @@ use yii\helpers\Url;
             <div style="width: 1012px;margin: 0 auto">
                 <div data-v-6045fa9c="" data-v-7dc5d9bc="">
                     <div data-v-6045fa9c="" class="content">
-                        <div data-v-6045fa9c="" class="biaoti">
-                            <div data-v-6045fa9c="" aria-label="Breadcrumb" role="navigation"
-                                 class="el-breadcrumb"><span
-                                        data-v-6045fa9c="" class="el-breadcrumb__item"><span role="link"
-                                                                                             class="el-breadcrumb__inner is-link">商品管理</span><span
-                                            role="presentation" class="el-breadcrumb__separator">·</span></span> <span
-                                        data-v-6045fa9c="" class="el-breadcrumb__item" aria-current="page"><span
-                                            role="link"
-                                            class="el-breadcrumb__inner"><span
-                                                data-v-6045fa9c=""
-                                                style="color: rgb(48, 211, 102); font-weight: bolder;">订单列表</span></span><span
-                                            role="presentation" class="el-breadcrumb__separator">·</span></span></div>
+                        <div data-v-1ae89237="" class="adminmannager-title">
+                            <span data-v-1ae89237="">
+                                <a data-v-1ae89237="" href="<?= Yii::$service->url->geturl("/admin/shop/index") ?>" class="">商家</a>
+                            </span>&nbsp;
+                            <span data-v-1ae89237="">·&nbsp;
+                                <a data-v-1ae89237="" href=""<?= Yii::$service->url->geturl("/admin/shop/order?id=$shop_id") ?>"" class=""><?= $shop_name?></a>
+                            </span> 
+                            <span data-v-1ae89237="">·&nbsp;订单管理</span>
                         </div>
                         <ul data-v-6045fa9c="" class="shuaixuan">
                             <li data-v-6045fa9c="">
-                                <div data-v-6045fa9c="" class="el-input" style="width: 150px;"><!----><input type="text"
-                                                                                                             autocomplete="off"
-                                                                                                             placeholder="请输入收货人"
-                                                                                                             class="el-input__inner  customer_firstname" name="customer_firstname">
-                                    <!----><!----><!----></div>
+                                <div data-v-6045fa9c="" class="el-input" style="width: 150px;"><!---->
+                                    <input type="text" autocomplete="off" placeholder="请输入收货人" class="el-input__inner">
+                                    <!----><!----><!---->
+                                </div>
                             </li>
                             <li data-v-6045fa9c="">
-                                <div data-v-6045fa9c="" class="el-input" style="width: 150px;"><!----><input type="text"
-                                                                                                             autocomplete="off"
-                                                                                                             placeholder="请输入订单号"
-                                                                                                             class="el-input__inner increment_id" name="increment_id">
-                                    <!----><!----><!----></div>
+                                <div data-v-6045fa9c="" class="el-input" style="width: 150px;"><!---->
+                                    <input type="text" autocomplete="off" placeholder="请输入订单号" class="el-input__inner">
+                                    <!----><!----><!---->
+                                </div>
                             </li>
                             <li data-v-6045fa9c="">
-                                <div data-v-6045fa9c="" class="el-input" style="width: 200px;"><!----><input type="text"
-                                                                                                             autocomplete="off"
-                                                                                                             placeholder="请输入商品编号/关键字"
-                                                                                                             class="el-input__inner">
-                                    <!----><!----><!----></div>
+                                <div data-v-6045fa9c="" class="el-input" style="width: 200px;"><!---->
+                                    <input type="text" autocomplete="off" placeholder="请输入商品编号/关键字" class="el-input__inner">
+                                    <!----><!----><!---->
+                                </div>
                             </li>
                             <li data-v-6045fa9c="">
                                 <div data-v-6045fa9c="" class="sousuo"></div>
@@ -134,14 +127,14 @@ use yii\helpers\Url;
                                                  style="transform: translateX(0px);">
                                                 <div class="el-tabs__active-bar is-top"
                                                      style="width: 120px; transform: translateX(<?= ($flag) * 120 ?>px);"></div>
-                                                <a href="<?= Yii::$service->url->geturl("/shop/orders/index") ?>">
+                                                <a href="<?= Yii::$service->url->geturl("/admin/shop/order?id=$shop_id") ?>">
                                                     <div id="tab-first" aria-controls="pane-first" role="tab"
                                                          aria-selected="true" tabindex="0"
                                                          class="el-tabs__item is-top is-active">
                                                         全部订单(<?= count($all) ?>)
                                                     </div>
                                                 </a>
-                                                <a href=" <?= Yii::$service->url->geturl("/shop/orders/index?flag=1") ?>">
+                                                <a href=" <?= Yii::$service->url->geturl("/admin/shop/order?id=$shop_id&flag=1") ?>">
                                                     <div id="tab-second" aria-controls="pane-second" role="tab"
                                                          tabindex="-1"
                                                          class="el-tabs__item is-top">待支付（<?php
@@ -152,7 +145,7 @@ use yii\helpers\Url;
                                                         ?>）
                                                     </div>
                                                 </a>
-                                                <a href=" <?= Yii::$service->url->geturl("/shop/orders/index?flag=2") ?>">
+                                                <a href=" <?= Yii::$service->url->geturl("/admin/shop/order?id=$shop_id&flag=2") ?>">
                                                     <div id="tab-third" aria-controls="pane-third" role="tab" tabindex="-1"
                                                      class="el-tabs__item is-top">待接单（<?php
                                                     $arr = array_filter($all, function ($val) {
@@ -162,7 +155,7 @@ use yii\helpers\Url;
                                                     ?>）
                                                 </div>
                                                 </a>
-                                                <a href=" <?= Yii::$service->url->geturl("/shop/orders/index?flag=3") ?>">
+                                                <a href=" <?= Yii::$service->url->geturl("/admin/shop/order?id=$shop_id&flag=3") ?>">
                                                     <div id="tab-fourth" aria-controls="pane-fourth" role="tab"
                                                      tabindex="-1"
                                                      class="el-tabs__item is-top">待确认（<?php
@@ -173,7 +166,7 @@ use yii\helpers\Url;
                                                     ?>）
                                                 </div>
                                                 </a>
-                                                <a href=" <?= Yii::$service->url->geturl("/shop/orders/index?flag=4") ?>">
+                                                <a href=" <?= Yii::$service->url->geturl("/admin/shop/order?id=$shop_id&flag=4") ?>">
                                                     <div id="tab-fifth" aria-controls="pane-fifth" role="tab" tabindex="-1"
                                                      class="el-tabs__item is-top">待评价（<?php
                                                     $arr = array_filter($all, function ($val) {
@@ -183,7 +176,7 @@ use yii\helpers\Url;
                                                     ?>）
                                                 </div>
                                                 </a>
-                                                <a href=" <?= Yii::$service->url->geturl("/shop/orders/index?flag=5") ?>">
+                                                <a href=" <?= Yii::$service->url->geturl("/admin/shop/order?id=$shop_id&flag=5") ?>">
                                                     <div id="tab-fifth" aria-controls="pane-fifth" role="tab" tabindex="-1"
                                                      class="el-tabs__item is-top">已完成（<?php
                                                     $arr = array_filter($all, function ($val) {
@@ -330,8 +323,8 @@ use yii\helpers\Url;
                                                             </td>
                                                             <td class="el-table_2_column_15">
                                                                 <div class="cell el-tooltip">
-                                                                <div title="<?= $v["subtotal"] ?>">
-                                                                        总金额：<span style="color: #566168;font-weight: bold"><?= $v["subtotal"] ?></span></div>
+                                                                <div title="<?= $v["grand_total"] ?>">
+                                                                        总金额：<span style="color: #566168;font-weight: bold"><?= $v["grand_total"] ?></span></div>
                                                                     <div title="<?= $v["coupon_name"] ?>">
                                                                         使用优惠券：<span style="color: #FF8F71;font-weight: bold"><?= $v["coupon_name"] ?></span></div>
                                                                     <div title="<?= $v["coin_num"] ?>">使用金币：<span style="color: #FFD545;font-weight: bold"><?= $v["coin_num"] ?></span></div>
@@ -355,7 +348,7 @@ use yii\helpers\Url;
                                                                     <a data-v-6045fa9c="" href="#/OrderListDetails" class="">
                                                                         <button data-v-6045fa9c="" type="button"
                                                                                 class="el-button el-button--text el-button--small">
-                                                                            <a href="<?= Yii::$service->url->getUrl('shop/orders/see?order_id=' . $v['order_id']) ?>"
+                                                                            <a href="<?= Yii::$service->url->getUrl('admin/shop/see?order_id=' . $v['order_id']) ?>"
                                                                                style="color: #41b2fc;">查看</a></button>
                                                                     </a> <span data-v-6045fa9c=""
                                                                                style="color: rgb(234, 235, 236);">|</span>
@@ -407,6 +400,59 @@ use yii\helpers\Url;
                                                     'prevPageLabel' => '<',
                                                 ]);
                                                 ?>
+                                                <style>
+                                .pagination {
+                                    white-space: nowrap;
+                                    padding: 2px 5px;
+                                    color: #303133;
+                                    font-weight: 700;
+                                }
+
+                                .pagination li {
+                                    padding: 0 4px;
+                                    background: #fff;
+                                    font-size: 13px;
+                                    min-width: 35.5px;
+                                    height: 28px;
+                                    line-height: 28px;
+                                    box-sizing: border-box;
+                                    display: inline-block;
+                                }
+
+                                .pagination li.first {
+                                    width: 54px;
+                                    height: 20px;
+                                    background: #edf8ff;
+                                    border: 2px solid #e8f6ff;
+                                    border-radius: 10px;
+                                    color: #41b2fc;
+                                    line-height: 18px;
+                                    text-align: center;
+                                    margin-top: 8px;
+                                }
+
+                                .pagination li.last {
+                                    width: 54px;
+                                    height: 20px;
+                                    background: #51b7fc;
+                                    border: 2px solid #51b7fc;
+                                    border-radius: 10px;
+                                    color: #fff;
+                                    line-height: 18px;
+                                    text-align: center;
+                                    margin-top: 8px;
+                                }
+
+                                .pagination li a {
+                                    color: #000;
+                                    font-weight: bold;
+                                }
+
+                                .pagination li.active a {
+                                    color: #409EFF;
+                                    cursor: default;
+                                }
+                            </style>
                                             </div>
                                         </div>
                                     </div>
@@ -431,15 +477,3 @@ use yii\helpers\Url;
         </div>
     </div>
 </div>
-<script>
-    $(function(){
-        console.log($(".sousuo"));
-        $(".sousuo").on("click",function () {
-            let customer_firstname = $("input.customer_firstname").val();
-            let increment_id = $("input.increment_id").val();
-            location.href="<?= Yii::$service->url->geturl("/shop/orders/index?") ?>"+`customer_firstname=${customer_firstname}&increment_id=${increment_id}`;
-        })
-
-    })
-
-</script>

@@ -42,22 +42,37 @@ class OrdersController extends PublicsController
         }else{
             $sql = " select count(*) tot from sales_flat_order where shop_id={$_SESSION["shop_id"]} and order_status<5";
         }
+        if ($get["customer_firstname"]) {
+            $sql .= " and customer_firstname='{$get["customer_firstname"]}'";
+        }
+        if ($get["increment_id"]) {
+            $sql .= " and increment_id='{$get["increment_id"]}'";
+        }
         //查询订单表数量
         $countArr = Yii::$app->db->createCommand($sql)->queryOne();
 
 
         // 实例化分页对象
         $pagination = new Pagination([
-            'defaultPageSize' => 5,
+            'defaultPageSize' => 1,
             'totalCount' => $countArr['tot'],
         ]);
         //查询订单产品表
-        if($get["flag"]){
-            $flag = $get['flag']-1;
-            $sql = " select sales_flat_order.* from sales_flat_order where sales_flat_order.shop_id={$_SESSION["shop_id"]} and sales_flat_order.order_status={$flag} limit $pagination->offset , $pagination->limit";
-        }else {
-            $sql = " select sales_flat_order.* from sales_flat_order where sales_flat_order.shop_id={$_SESSION["shop_id"]} and order_status<5 limit $pagination->offset , $pagination->limit";
+        $sql = "select sales_flat_order.* from sales_flat_order where sales_flat_order.shop_id={$_SESSION['shop_id']}";
+        if ($get["customer_firstname"]) {
+            $sql .= " and customer_firstname='{$get["customer_firstname"]}'";
         }
+        if ($get["increment_id"]) {
+            $sql .= " and increment_id='{$get["increment_id"]}'";
+        }
+        //查询订单产品表
+        if ($get["flag"]) {
+            $flag = $get['flag'] - 1;
+            $sql .= "  and sales_flat_order.order_status={$flag} limit $pagination->offset , $pagination->limit";
+        } else {
+            $sql .= "  and order_status<5 limit $pagination->offset , $pagination->limit";
+        }
+
 
         $arr = Yii::$app->db->createCommand($sql)->queryAll();
 
@@ -95,7 +110,7 @@ class OrdersController extends PublicsController
                 }
             }
         };
-        $all = Yii::$app->db->createCommand("select o.order_status from sales_flat_order o where shop_id='{$_SESSION["shop_id"]}' and order_status<5 and goods_type='2'" )->queryAll();
+        $all = Yii::$app->db->createCommand("select o.order_status from sales_flat_order o where shop_id='{$_SESSION["shop_id"]}' and order_status<5" )->queryAll();
 
                
             
@@ -173,8 +188,7 @@ class OrdersController extends PublicsController
         $sql = "update sales_flat_order set customer_firstname='$customer_firstname',customer_telephone='$customer_telephone',customer_address_country='$customer_address_country',customer_address_state='$customer_address_state',customer_address_city='$customer_address_city',customer_address_zip='$customer_address_zip',customer_email='$customer_email',customer_address_street1='$customer_address_street1' where order_id=$order_id";
         $res = Yii::$app->db->createCommand($sql)->execute();
 
-
-        return $this->redirect(['orders/see?order_id=',$order_id]);
+        return $this->redirect(['orders/see?order_id='.$order_id]);
     }
 
     //接单
@@ -194,16 +208,37 @@ class OrdersController extends PublicsController
     public function actionDispute(){
 
         $data = [];
-
-        $count = Yii::$app->db->createCommand("select count(*) tot from sales_flat_order where order_status in(5,6)")->queryAll();
+        // 获取数据
+        $request = Yii::$app->request;
+        $get = $request->get();
+        $sql = "select count(*) tot from sales_flat_order where order_status in(5,6)";
+        if ($get["customer_firstname"]) {
+            $sql .= " and customer_firstname='{$get["customer_firstname"]}'";
+        }
+        if ($get["increment_id"]) {
+            $sql .= " and increment_id='{$get["increment_id"]}'";
+        }
+        if ($get["orderStatus"]) {
+            $sql .= " and order_status='{$get["orderStatus"]}'";
+        }
+        $count = Yii::$app->db->createCommand($sql)->queryAll();
 
         // 实例化分页对象
         $pagination = new Pagination([
             'defaultPageSize' => 10,
             'totalCount' => $count[0]['tot'],
         ]);
-
-        $res = Yii::$app->db->createCommand("select * from sales_flat_order where order_status in(5,6) limit $pagination->offset , $pagination->limit")->queryAll();
+        $sql = "select * from sales_flat_order where order_status in(5,6)";
+        if ($get["customer_firstname"]) {
+            $sql .= " and customer_firstname='{$get["customer_firstname"]}'";
+        }
+        if ($get["increment_id"]) {
+            $sql .= " and increment_id='{$get["increment_id"]}'";
+        }
+        if ($get["orderStatus"]) {
+            $sql .= " and order_status='{$get["orderStatus"]}'";
+        }
+        $res = Yii::$app->db->createCommand($sql)->queryAll();
 
         $data["res"] = $res;
         $data["pagination"] = $pagination;
