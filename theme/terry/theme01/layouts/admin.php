@@ -2474,6 +2474,67 @@ $cssOptions = [
         border: 1px solid #41b2fc;
         background: rgba(65,178,252,0.2);
     }
+    .shop_btn{
+        border:none;
+        width: 40px;
+        height: 40px;
+        border-radius:50%;
+        background: url("/public/adminimg/search.png") no-repeat center center/60% 60%;
+        position:relative;
+    }
+
+    .content {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        padding-top: 8px;
+    }
+
+    .content .biaoti {
+        height: 52px;
+        font-size: 12px;
+        line-height: 52px;
+        font-weight: bolder;
+    }
+
+    .content .shuaixuan {
+        height: 46px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        line-height: 46px;
+    }
+
+    .content .item {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .content .red {
+        height: 35px;
+        background: #FD5E4E;
+        border: none;
+        box-shadow: 0 0px 8px #FD5E4E;
+    }
+
+    .content .green {
+        height: 35px;
+        background: #37DF73;
+        border: none;
+        box-shadow: 0 0 8px #37DF73;
+        margin-right: 20px;
+    }
+    .content {
+        padding-top: 27px!important;
+    }
+    .el-input__inner{
+        font-size: 14px !important;
+    }
+    .demo-input{
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
 </style>
 <?php $this->beginPage() ?>
     <!doctype html>

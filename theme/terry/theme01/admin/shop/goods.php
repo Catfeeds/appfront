@@ -12,7 +12,7 @@ use yii\helpers\Url;
         width: 100%;
         height: 100%;
         box-sizing: border-box;
-        padding-top: 8px;
+        padding-top: 20px;
     }
 
     .content .biaoti {
@@ -33,6 +33,7 @@ use yii\helpers\Url;
     }
     .content .shuaixuan li{
         margin:0px 20px;
+        line-height: 46px;
     }
     .content .shuaixuan .xiala {
         padding-left: 10px;
@@ -205,9 +206,11 @@ use yii\helpers\Url;
                             <span data-v-1ae89237="">·&nbsp;商品管理</span>
                         </div>
                 <form action="<?php echo  Yii::$app->request->getHostInfo().Yii::$app->request->url;?>" method="get">
-                <ul class="shuaixuan">
-                    <li>分类
-                        <select name="class" id="" class="el-select xiala xialas" style="margin-left:10px;">
+
+                    <div class="ShopMannager-search">
+                        <div class="xiala">
+                            <span class="search-ID">分类</span>
+                            <select name="class" id="" class="el-select xiala xialas" style="margin-left:10px;">
                                 <option value="0">全部分类</option>
                                 <?php
                                 foreach ($class as $key => $value) {
@@ -222,11 +225,13 @@ use yii\helpers\Url;
                                     }
                                 }
                                 ?>
-                        </select>
-                    </li>
-                    <li>上下架
-                        <select name="status" id="" class="el-select xiala" style="margin-left: 10px">
-                            <?php 
+                            </select>
+                            <div class="xialaimg1"></div>
+                        </div>
+                        <div class="xiala" style="margin-left:20px;">
+                            <span class="search-ID">上下架</span>
+                            <select name="status" id="" class="el-select xiala" style="margin-left: 10px">
+                                <?php
 
                                 if ($_GET['status']==1) {
                                     # code...
@@ -242,28 +247,17 @@ use yii\helpers\Url;
                                         <option value="1" >上架</option>
                                         <option value="2" >下架</option>';
                                 }
-                             ?>
-                            
-                        </select>
-                    </li>
-                    <input type="hidden" name="id" value="<?= $shop_id?>">
-                   <!--  <li> 商家编号
-                        <input type="text" name="name" placeholder="请输入商品编号/关键字" class="input2"/>
-                    </li> -->
-                    <li>
-                        <!-- <button class="sousuo" style="border:0px"></button> -->
-                        <button type="submit" class="el-button blue el-button--success is-round">
-                            <span> 查询商品 </span>
-                        </button>
-                    </li>
-                    
-                    <!-- <li><a href="<?= Yii::$service->url->getUrl('shop/goods/addclass') ?>" class="">
-                        <button type="button" class="el-button green el-button--success is-round">
-                            <span> 添加商品 </span>
-                        </button>
-                        </a>
-                    </li> -->
-                </ul>
+                                ?>
+
+                            </select>
+                            <div class="xialaimg1"></div>
+                        </div>
+                        <input type="hidden" name="id" value="<?= $shop_id?>">
+                        <div class="ShopMannagersearch-img">
+                            <button type="submit" class="shop_btn">
+                            </button>
+                        </div>
+                    </div>
                 </form>
 
                 <div class="item">

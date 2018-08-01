@@ -92,7 +92,7 @@ use yii\helpers\Url;
                                             style="width: 300px;background: #f3faff;margin:0;height: 36px">
                                         <option value="1" <?php if($res['status']==1){echo 'selected';}?>>正常</option>
                                         <option value="2" <?php if($res['status']==2){echo 'selected';}?>>冻结账号</option>
-                                        <option value="3" <?php if($res['status']==3){echo 'selected';}?>>移入黑名单</option>
+                                        <option value="0" <?php if($res['status']==3){echo 'selected';}?>>移入黑名单</option>
                                     </select>
                                     <div class="xialaimg1" style="width: 30px;height: 30px;top:3px;"></div>
                                 </div>
