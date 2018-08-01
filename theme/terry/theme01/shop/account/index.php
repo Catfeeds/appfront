@@ -441,6 +441,9 @@ use yii\helpers\Url;
             return;
         }
         var dates=el_input[0].value.split(' ');
+        if(dates[3]==undefined){
+            dates[3]='';
+        }
         var startdate=dates[0];
         var enddate=dates[3];
         location.href="<?= Yii::$service->url->geturl("/shop/account/index?") ?>"+`startdate=${startdate}&enddate=${enddate}`;
