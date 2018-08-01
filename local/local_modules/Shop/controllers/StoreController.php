@@ -182,11 +182,22 @@ class StoreController extends PublicsController
 
     //返回优惠卷管理首页
     public function actionCouponindex(){
+        //添加搜索条件
+        $request = Yii::$app->request;
+        $status = $request->get('status');
+        $name = $request->get('name');
 
+        //查询总数
+        $sql1="select count(*) num from sales_coupon where uid={$_SESSION['uid']}";
 
+        if($status){
+            $sql1 .=" and status=$status";
+        }
+        if($name){
+            $sql1 .=" and coupon_name like '%$name%'";
+        }
 
-        $count = Yii::$app->db->createCommand("select count(*) num from sales_coupon where uid={$_SESSION["uid"]}")->queryAll();
-
+        $count = Yii::$app->db->createCommand($sql1)->queryAll();
 
         //实例化分页对象
         // 实例化分页对象
@@ -194,7 +205,18 @@ class StoreController extends PublicsController
             'defaultPageSize' => 10,
             'totalCount' => $count[0]['num'],
         ]);
-        $res = Yii::$app->db->createCommand("select * from sales_coupon where uid={$_SESSION["uid"]} limit $pagination->offset,$pagination->limit")->queryAll();
+
+
+        $sql="select * from sales_coupon where uid={$_SESSION['uid']}";
+        if($status){
+            $sql .=" and status=$status";
+        }
+        if($name){
+            $sql .=" and coupon_name like '%$name%'";
+        }
+        $sql.=" limit $pagination->offset,$pagination->limit";
+
+        $res = Yii::$app->db->createCommand($sql)->queryAll();
         $datas["res"] = $res;
         $datas["pagination"] = $pagination;
         $datas["num"] = $count[0]['num'];
