@@ -4,16 +4,16 @@
             <span>数据中心</span>&nbsp;
             <span>·&nbsp;平台数据</span>
         </div>
-        <div class="ShopMannager-search">
+        <!--<div class="ShopMannager-search">
             <div class="xiala">
                 <select name="member-level" id="member-level"
                         style="width: 180px;background: #f3faff;margin-left:0;">
                     <option value="">最近24小时</option>
                 </select>
                 <div class="xialaimg1"></div>
-            </div>
+            </div>-->
             <!--时间戳-->
-            <div class="block" style="float: left;line-height: 48px; margin-left: 20px;position: relative;">
+            <!--<div class="block" style="float: left;line-height: 48px; margin-left: 20px;position: relative;">
                 <span class="demonstration">时间段选择</span>
                 <div class="timer">
                     <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
@@ -26,8 +26,8 @@
                 </div>
 
             </div>
-            <button>查询</button>
-        </div>
+            <button>查询</button>-->
+        <!--</div>-->
         <div class="tongji">
             <ul>
                 <li>
@@ -101,14 +101,8 @@ margin-top:4px;"
                     >
                         <div class="timer">
                             <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
-                            <div class="el-form-item__content" style="width:100%;height:100%;">
-                                <input type="text" style="width:100%;height:100%;" name="data" class="demo-input" placeholder="日期时间范围" id="test10">
-                            </div>
-                                <!-- <i class="el-input__icon el-range__icon el-icon-time"></i>
-                                <input placeholder="开始日期" name=""  class="el-range-input1 el-range-input " id="ange"/>
-                                <span class="el-range-separator">至</span>
-                                <input placeholder="结束日期" name="" class="el-range-input2 el-range-input" />
-                                <i class="el-input__icon el-range__icon el-icon-time"></i> -->
+                                <input type="text" style="width:100%;height:100%;text-align: center;border:none;" name="data" class="demo-input"
+                                       placeholder="<?php echo date('Y-m-d h:i:s',time()),'-',date('Y-m-d h:i:s',time())?>" id="test10">
                             </div>
                         </div>
 
@@ -324,14 +318,8 @@ margin-top:4px;"
                     >
                         <div class="timer">
                             <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
-                            <div class="el-form-item__content" style="width:100%;height:100%;">
-                                <input type="text" style="width:100%;height:100%;" name="data" class="demo-input" placeholder="日期时间范围" id="test11">
-                            </div>
-                                <!-- <i class="el-input__icon el-range__icon el-icon-time"></i>
-                                <input placeholder="开始日期" name=""  class="el-range-input1 el-range-input " id="ange"/>
-                                <span class="el-range-separator">至</span>
-                                <input placeholder="结束日期" name="" class="el-range-input2 el-range-input" />
-                                <i class="el-input__icon el-range__icon el-icon-time"></i> -->
+                                <input type="text" style="width:100%;height:100%;text-align: center;border:none;" name="data" class="demo-input"
+                                       placeholder="<?php echo date('Y-m-d h:i:s',time()),'-',date('Y-m-d h:i:s',time())?>" id="test11">
                             </div>
                         </div>
 
@@ -547,16 +535,11 @@ margin-top:4px;"
                     >
                         <div class="timer">
                             <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
-                            <div class="el-form-item__content" style="width:100%;height:100%;">
-                                <input type="text" style="width:100%;height:100%;" name="data" class="demo-input" placeholder="日期时间范围" id="test12">
-                            </div>
-                                <!-- <i class="el-input__icon el-range__icon el-icon-time"></i>
-                                <input placeholder="开始日期" name=""  class="el-range-input1 el-range-input " id="ange"/>
-                                <span class="el-range-separator">至</span>
-                                <input placeholder="结束日期" name="" class="el-range-input2 el-range-input" />
-                                <i class="el-input__icon el-range__icon el-icon-time"></i> -->
+                                <input type="text" style="width:100%;height:100%;text-align: center;border:none;" name="data" class="demo-input"
+                                       placeholder="<?php echo date('Y-m-d h:i:s',time()),'-',date('Y-m-d h:i:s',time())?>" id="test12">
                             </div>
                         </div>
+
 
                     </div>
                     <button style="float: left;border:0;margin-top:13px;" onclick='ctime()'>确定</button>
@@ -813,7 +796,7 @@ margin-top:4px;"
         <!--支付方式汇总-->
         <div class="addofplatdata" style="float: left;">
             <div class="platdata-header">
-                <div class="platdata-headername">商品服务数据</div>
+                <div class="platdata-headername">支付方式汇总</div>
                 <div class="platdata-headerright">
                     <ul>
                         <li>七天</li>
