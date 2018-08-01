@@ -19,7 +19,6 @@ use yii\web\UploadedFile;
  * @author Terry Zhao <2358269014@qq.com>
  * @since 1.0
  */
-
 // 系统管理控制器
 class SystemController extends PublicsController
 {
@@ -32,11 +31,12 @@ class SystemController extends PublicsController
     }
 //=========================平台信息管理===============================
     //平台信息
-    public function actionIndex(){
+    public function actionIndex()
+    {
 
         // 获取数据的总条数 
-        $totArr=Yii::$app->db->createCommand("select count(*) tot from banner")->queryOne();
-        $tot=$totArr['tot'];
+        $totArr = Yii::$app->db->createCommand("select count(*) tot from banner")->queryOne();
+        $tot = $totArr['tot'];
 
         //实例化分页对象
         // 实例化分页对象
@@ -46,19 +46,20 @@ class SystemController extends PublicsController
         ]);
 
         $res = Yii::$app->db->createCommand("select * from banner order by sort desc limit $pagination->offset,$pagination->limit")->queryAll();
-        
+
         // 数据格式化
         $data["data"] = $res;
         $data["pagination"] = $pagination;
         $data["num"] = $tot;
         $data["page"] = $pagination->limit;
 
-        return $this->render($this->action->id,$data);
+        return $this->render($this->action->id, $data);
     }
 
     // banner的添加页面
 
-    public function actionBanneradd(){
+    public function actionBanneradd()
+    {
 
         return $this->render($this->action->id);
 
@@ -66,35 +67,38 @@ class SystemController extends PublicsController
 
     // banner的修改页面
 
-    public function actionBannerfind(){
+    public function actionBannerfind()
+    {
 
         // 获取数据
         $request = Yii::$app->request;
         $id = $request->get("id");
 
         // 查询数据
-        
-        $row=Yii::$app->db->createCommand("select * from banner where id=$id")->queryOne();
 
-        $data['data']=$row;
-        return $this->render($this->action->id,$data);
+        $row = Yii::$app->db->createCommand("select * from banner where id=$id")->queryOne();
+
+        $data['data'] = $row;
+        return $this->render($this->action->id, $data);
 
     }
 
     // banner的修改排序
 
-    public function actionBannersort(){
+    public function actionBannersort()
+    {
         // 获取数据
         $request = Yii::$app->request;
         $data = $request->get();
 
-        Yii::$app->db->createCommand("update banner set sort=$data[sort] where id=$data[id]")->execute();   
+        Yii::$app->db->createCommand("update banner set sort=$data[sort] where id=$data[id]")->execute();
 
     }
 
     // banner的删除页面
 
-    public function actionBannerdel(){
+    public function actionBannerdel()
+    {
 
         // 获取数据
         $request = Yii::$app->request;
@@ -103,17 +107,17 @@ class SystemController extends PublicsController
         // 删除数据
 
         $data = Yii::$app->db->createCommand("select * from banner where id = $id")->queryOne();
-            
+
         // 发送sql语句
 
-        if(Yii::$app->db->createCommand()->delete("banner","id=$id")->execute()){
+        if (Yii::$app->db->createCommand()->delete("banner", "id=$id")->execute()) {
 
             // 如果删除成功，删除对应图片
-            if ($data['img']&&file_exists("../../appimage/common/media/".$data['img'])) {
-                unlink("../../appimage/common/media/".$data['img']);
+            if ($data['img'] && file_exists("../../appimage/common/media/" . $data['img'])) {
+                unlink("../../appimage/common/media/" . $data['img']);
             }
             return $this->redirect($_SERVER['HTTP_REFERER']);
-        }else{
+        } else {
             return $this->redirect($_SERVER['HTTP_REFERER']);
         }
 
@@ -122,7 +126,8 @@ class SystemController extends PublicsController
 
     // banner的数据插入
 
-    public function actionBannerinsert(){
+    public function actionBannerinsert()
+    {
 
         // 获取表单提交数据
         $request = Yii::$app->request;
@@ -132,51 +137,51 @@ class SystemController extends PublicsController
 
         //文件上传存放的目录  
 
-        $folder ='../../appimage/common/media/';
-         
-        $file=$_FILES['img'];
+        $folder = '../../appimage/common/media/';
+
+        $file = $_FILES['img'];
 
         // 接收文件名
-        $name=$file['name'];
+        $name = $file['name'];
 
         // 接收临时目录
-        $tmp_name=$file['tmp_name'];
+        $tmp_name = $file['tmp_name'];
 
         // 错误编码
 
-        $error=$file['error'];
+        $error = $file['error'];
 
-        if ($error==0) {
+        if ($error == 0) {
 
             // 检测文件是否来自于表单
             if (is_uploaded_file($tmp_name)) {
                 # code...
                 // 新的文件名
-                $ext=substr($name,strrpos($name,'.'));
+                $ext = substr($name, strrpos($name, '.'));
 
-                $newName=time().rand().$ext;
+                $newName = time() . rand() . $ext;
 
                 // 进行上传
 
-                if (move_uploaded_file($tmp_name,$folder.$newName)) {
-                    
+                if (move_uploaded_file($tmp_name, $folder . $newName)) {
+
                 }
             }
         }
 
         // 格式化数据
 
-        $arr=[
+        $arr = [
             "title" => $data['name'],
             "url" => $data['url'],
             "sort" => $data['sort'],
             "type" => $data['type'],
-            "img"=>$newName,
-            "create_time"=>time(),
+            "img" => $newName,
+            "create_time" => time(),
         ];
 
         // 执行插入数据
-        $res=Yii::$app->db->createCommand()->insert('banner',$arr)->execute();
+        $res = Yii::$app->db->createCommand()->insert('banner', $arr)->execute();
 
         // 判断是否添加成功
 
@@ -184,7 +189,7 @@ class SystemController extends PublicsController
             // 添加成功
             return $this->redirect(['/admin/system/index']);
 
-        }else{
+        } else {
             // 添加失败
             return $this->redirect($_SERVER['HTTP_REFERER']);
         }
@@ -193,7 +198,8 @@ class SystemController extends PublicsController
     }
 
     // banner的数据修改
-    public function actionBannersave(){
+    public function actionBannersave()
+    {
         // 获取表单提交数据
         $request = Yii::$app->request;
         $data = $request->post();
@@ -201,26 +207,113 @@ class SystemController extends PublicsController
         // 上传分类图片
 
         if ($_FILES['img']['name']) {
-            
+
             //文件上传存放的目录  
 
-            $folder ='../../appimage/common/media/';
-             
-            $file=$_FILES['img'];
+            $folder = '../../appimage/common/media/';
+
+            $file = $_FILES['img'];
 
             // 获取用户上传的数量
 
-            $size=count($file['name']);
+            $size = count($file['name']);
 
             // 接收文件名
-            $name=$file['name'];
+            $name = $file['name'];
 
             // 接收临时目录
-            $tmp_name=$file['tmp_name'];
+            $tmp_name = $file['tmp_name'];
 
             // 错误编码
 
-            $error=$file['error'];
+            $error = $file['error'];
+
+            if ($error == 0) {
+
+                // 检测文件是否来自于表单
+                if (is_uploaded_file($tmp_name)) {
+                    # code...
+                    // 新的文件名
+                    $ext = substr($name, strrpos($name, '.'));
+
+                    $newName = time() . rand() . $ext;
+
+                    // 进行上传
+
+                    if (move_uploaded_file($tmp_name, $folder . $newName)) {
+
+                    }
+                }
+            }
+        }
+
+
+        $newName = $newName ? $newName : $data['oldImg'];
+
+
+        // 格式化数据
+
+        $time = time();
+        // 执行插入数据
+        $res = Yii::$app->db->createCommand("update banner set title='$data[name]',url='$data[url]',sort='$data[sort]',type='$data[type]',img='$newName',update_time='$time' where id=$data[id]")->execute();
+
+        if ($res) {
+
+            // 如果删除成功，删除对应图片
+            if ($data['oldImg'] != $newName && $data['oldImg'] && file_exists("../../appimage/common/media/" . $data['oldImg'])) {
+                unlink("../../appimage/common/media/" . $data['oldImg']);
+            }
+            return $this->redirect(['/admin/system/index']);
+
+        } else {
+            return $this->redirect($_SERVER['HTTP_REFERER']);
+
+        }
+
+    }
+
+
+//=========================VIP规则管理===============================
+
+    //VIP规则
+    public function actionVipruler()
+    {
+        $ruler = Yii::$app->db->createCommand("select * from privilege")->queryAll();
+        $data['ruler'] = $ruler;
+        return $this->render($this->action->id, $data);
+    }
+
+//VIP规则添加页面
+    public function actionAddruler()
+    {
+        $res = Yii::$app->request;
+        $data = $res->post();
+
+
+        //文件上传存放的目录
+
+        $folder ='../../appimage/common/images/';
+
+        $file=$_FILES['file'];
+
+        // 获取用户上传的数量
+
+        $size=count($file['name']);
+
+        $img=[];
+        // 文件处理
+
+        for ($i=0; $i < $size; $i++) {
+
+            // 接收文件名
+            $name=$file['name'][$i];
+
+            // 接收临时目录
+            $tmp_name=$file['tmp_name'][$i];
+
+            // 错误编码
+
+            $error=$file['error'][$i];
 
             if ($error==0) {
 
@@ -228,60 +321,156 @@ class SystemController extends PublicsController
                 if (is_uploaded_file($tmp_name)) {
                     # code...
                     // 新的文件名
-                    $ext=substr($name,strrpos($name,'.'));
-
-                    $newName=time().rand().$ext;
-
+                    $newName = $name;
                     // 进行上传
 
                     if (move_uploaded_file($tmp_name,$folder.$newName)) {
-                        
+
+                        $img = $newName;
+
+                        $sql ="insert into privilege (name,info,img) values ('{$data['name']}','{$data['short_description']}','{$img}')";
+                        $res = Yii::$app->db->createCommand($sql)->execute();
+
                     }
                 }
             }
         }
 
-        
-
-        $newName=$newName?$newName:$data['oldImg'];
-
-
-        
-            
-
-        // 格式化数据
-
-        $time=time();
-        // 执行插入数据
-        $res=Yii::$app->db->createCommand("update banner set title='$data[name]',url='$data[url]',sort='$data[sort]',type='$data[type]',img='$newName',update_time='$time' where id=$data[id]")->execute();
-
-        if($res){
-
-            // 如果删除成功，删除对应图片
-            if ($data['oldImg'] != $newName && $data['oldImg'] &&file_exists("../../appimage/common/media/".$data['oldImg'])) {
-                unlink("../../appimage/common/media/".$data['oldImg']);
-            }
-            return $this->redirect(['/admin/system/index']);
-
-        }else{
-            return $this->redirect($_SERVER['HTTP_REFERER']);
-
-        }
-            
-    }
-
-
-//=========================VIP规则管理===============================
-
-    //VIP规则
-    public function actionVipruler(){
         return $this->render($this->action->id);
+
     }
+
+    //VIP规则修改编辑页面
+    public function actionEditruler(){
+        //获取数据
+        $request = Yii::$app->request;
+        $id = $request->get("id");
+        //获取规则数据
+        $data=[];
+        $data['ruler']=Yii::$app->db->createCommand("select * from privilege where id={$id}")->queryOne();
+
+//        $sql = "update privilege set name='{$data[name]}',img='{$data[img]}',info='{$data[info]}' where id={$data['id']}";
+
+//        $res = Yii::$app->db->createCommand($sql)->execute();
+
+        return $this->render($this->action->id,$data);
+    }
+    function actionSave(){
+        $req = Yii::$app->request;
+        $data = $req->post();
+
+//        $sql = "update privilege set name='{$data[name]}',img='{$data[img]}',info='{$data[short_description]}' where id={$data['id']}";
+//        $res = Yii::$app->db->createCommand($sql)->execute();
+        return $this->redirect("/admin/system/vipruler");
+    }
+
+
 
 //=========================充值设置管理===============================
 
     //充值设置
-    public function actionRecharge(){
-        return $this->render($this->action->id);
+    public function actionRecharge()
+    {
+        $coin = Yii::$app->db->createCommand("select * from coin_set")->queryAll();
+        $coin1 = Yii::$app->db->createCommand("select * from recharge")->queryAll();
+
+        $datas["coin"] = $coin;
+        $datas['recharge'] = $coin1;
+
+
+        return $this->render($this->action->id, $datas);
     }
+
+//插入金币规则
+    function actionSavecoin()
+    {
+        $arr = [
+            "create_id" => $_SESSION["message_uid"],
+            "create_time" => time()
+        ];
+        $res = Yii::$app->db->createCommand()->insert("coin_set", $arr)->execute();
+
+        $id = Yii::$app->db->getLastInsertID();
+
+        echo $id;
+        exit;
+    }
+
+    function actionSavecoin1()
+    {
+
+        $req = Yii::$app->request;
+        $get = $req->get();
+        $sql = "update coin_set set `condition`='{$get["condition"]}' where id={$get["id"]}";
+
+        $res = Yii::$app->db->createCommand($sql)->execute();
+
+        if ($res == 1) {
+            echo "ok";
+        } else {
+            echo "error";
+        }
+    }
+
+    function actionSavecoin2()
+    {
+
+        $req = Yii::$app->request;
+        $get = $req->get();
+
+        $res = Yii::$app->db->createCommand("update coin_set set coin_num={$get["coin_num"]} where id={$get["id"]}")->execute();
+
+        if ($res == 1) {
+            echo "ok";
+        } else {
+            echo "error";
+        }
+    }
+
+    //充值设置
+    function actionMoney()
+    {
+        $arr = [
+            "create_id" => $_SESSION["message_uid"],
+            "create_time" => time()
+        ];
+        $res = Yii::$app->db->createCommand()->insert("recharge", $arr)->execute();
+
+        $id = Yii::$app->db->getLastInsertID();
+
+        echo $id;
+        exit;
+    }
+
+    function actionSaverecharge1()
+    {
+        $req = Yii::$app->request;
+        $get = $req->get();
+        $res = Yii::$app->db->createCommand("update recharge set actual_payment={$get["actual_payment"]} where id={$get["id"]}")->execute();
+
+    }
+
+    function actionSaverecharge2()
+    {
+        $req = Yii::$app->request;
+        $get = $req->get();
+        $res = Yii::$app->db->createCommand("update recharge set price={$get["price"]} where id={$get["id"]}")->execute();
+    }
+
+    function actionDelcoin()
+    {
+        $req = Yii::$app->request;
+        $get = $req->get();
+        $res = Yii::$app->db->createCommand("delete from coin_set where id={$get["id"]}")->execute();
+        echo 1;
+    }
+
+    function actionDelrecharge()
+    {
+        $req = Yii::$app->request;
+        $get = $req->get();
+        $res = Yii::$app->db->createCommand("delete from recharge where id={$get["id"]}")->execute();
+        echo 1;
+    }
+
 }

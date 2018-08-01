@@ -95,29 +95,34 @@ use yii\helpers\Url;
                             </span> 
                             <span data-v-1ae89237="">·&nbsp;订单管理</span>
                         </div>
-                        <ul data-v-6045fa9c="" class="shuaixuan">
-                            <li data-v-6045fa9c="">
-                                <div data-v-6045fa9c="" class="el-input" style="width: 150px;"><!---->
-                                    <input type="text" autocomplete="off" placeholder="请输入收货人" class="el-input__inner">
-                                    <!----><!----><!---->
-                                </div>
-                            </li>
-                            <li data-v-6045fa9c="">
-                                <div data-v-6045fa9c="" class="el-input" style="width: 150px;"><!---->
-                                    <input type="text" autocomplete="off" placeholder="请输入订单号" class="el-input__inner">
-                                    <!----><!----><!---->
-                                </div>
-                            </li>
-                            <li data-v-6045fa9c="">
-                                <div data-v-6045fa9c="" class="el-input" style="width: 200px;"><!---->
-                                    <input type="text" autocomplete="off" placeholder="请输入商品编号/关键字" class="el-input__inner">
-                                    <!----><!----><!---->
-                                </div>
-                            </li>
-                            <li data-v-6045fa9c="">
-                                <div data-v-6045fa9c="" class="sousuo"></div>
-                            </li>
-                        </ul>
+                        <form action="<?= Yii::$service->url->getUrl('admin/shop/order')?>" method="get">
+                            <input type="hidden" name="id" value="<?=$shop_id?>">
+                            <input type="hidden" name="flag" value="<?=$flag?>">
+                            <ul data-v-6045fa9c="" class="shuaixuan">
+                                <li data-v-6045fa9c="">
+                                    <div data-v-6045fa9c="" class="el-input" style="width: 150px;"><!---->
+                                        <input type="text" name="customer_firstname" value="<?= $customer_firstname?>" autocomplete="off" placeholder="请输入收货人" class="el-input__inner">
+                                        <!----><!----><!---->
+                                    </div>
+                                </li>
+                                <li data-v-6045fa9c="">
+                                    <div data-v-6045fa9c="" class="el-input" style="width: 150px;"><!---->
+                                        <input type="text" name="increment_id" value="<?= $increment_id?>" autocomplete="off" placeholder="请输入订单号" class="el-input__inner">
+                                        <!----><!----><!---->
+                                    </div>
+                                </li>
+<!--                                 <li data-v-6045fa9c="">
+                                    <div data-v-6045fa9c="" class="el-input" style="width: 200px;">
+                                        <input type="text" autocomplete="off" placeholder="请输入商品编号/关键字" class="el-input__inner">
+                                    </div>
+                                </li> -->
+                                <li data-v-6045fa9c="">
+                                    <button type="submit">
+                                        <div data-v-6045fa9c="" class="sousuo"></div>
+                                    </button>
+                                </li>
+                            </ul>
+                        </form>
                         <div data-v-6045fa9c="" class="item">
                             <div data-v-6045fa9c="" class="el-tabs el-tabs--top">
                                 <div class="el-tabs__header is-top">
