@@ -11,31 +11,26 @@ use yii\helpers\Url;
             <span>商家列表</span>
         </div>
         <div class="ShopMannager-search">
-            <div class="xiala">
-                <span class="search-ID">地区</span>
-                <select name="member-level" id="member-level">
-                    <option value="">全部</option>
-                </select>
-                <div class="xialaimg1"></div>
-            </div>
-            <div class="search">
-                <span>商家名称</span>
-                <input type="text">
-            </div>
-            <div class="search">
-                <span>水司ID</span>
-                <input type="text">
-            </div>
-            <div class="xiala" style="margin-left:20px;">
-                <span class="search-ID">地区</span>
-                <select name="member-level" id="member-level">
-                    <option value="">全部</option>
-                </select>
-                <div class="xialaimg1"></div>
-            </div>
-            <div class="ShopMannagersearch-img">
-                <img src="/public/adminimg/search.png" alt="">
-            </div>
+            <form action="<?= Yii::$service->url->getUrl('admin/shop/index') ?>" method="get">
+                <div class="xiala">
+                    <span class="search-ID">地区</span>
+                    <select name="member-level" id="member-level">
+                        <option value="">全部</option>
+                    </select>
+                    <div class="xialaimg1"></div>
+                </div>
+                <div class="search">
+                    <span>商家名称</span>
+                    <input type="text" name="shop_name" value="<?= $shop_name ?>" placeholder="请输入商家名称">
+                </div>
+                <style>
+
+                </style>
+                <div class="ShopMannagersearch-img">
+                    <button type="submit" class="shop_btn">
+                    </button>
+                </div>
+            </form>
         </div>
         <!--管理员列表-->
         <div class="ShopMannager-table">
