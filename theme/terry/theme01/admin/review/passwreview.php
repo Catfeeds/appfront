@@ -38,7 +38,6 @@
                         <td valign="center">注册号（营业执照号）:</td>
                         <td valign="center">
                             <input type="text" value="<?php echo $row['business_licence_number']?>" disabled class="awreview">
-<!--                            <span>--><?php //echo $row['business_licence_number']?><!--</span>-->
                         </td>
                     </tr>
                     <tr>
