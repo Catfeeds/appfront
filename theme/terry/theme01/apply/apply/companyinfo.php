@@ -627,7 +627,9 @@
 <script>
     function shopload(url) {
         $("#el-form").attr("action", url);
-        $("#el-form").submit();
+        $("#el-form").submit(function (e) {
+            
+        });
     }
 
     $(".index-change").click(function () {
