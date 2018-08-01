@@ -9,9 +9,9 @@ use yii\helpers\Url;
     <div class="adminmannager">
         <!--用户管理-管理员管理-->
         <div class="adminmannager-title">
-            <span>店铺管理</span>&nbsp;
+            <span style="color:#333;">店铺管理</span>&nbsp;
             <!--跳转水司-->
-            <span>·&nbsp;<a href="/admin/index/water" style="color: #30d366;">商家</a></span>
+           <!-- <span>·&nbsp;<a href="/admin/index/water" style="color: #30d366;">商家</a></span>-->
         </div>
         <div class="adminmannager-search">
             <form action="<?= Yii::$service->url->getUrl('/admin/index/shop') ?>" method="get">
@@ -174,13 +174,13 @@ use yii\helpers\Url;
                                     </div>
                                 </td>
                                 <td class="el-table_2_column_18">
-                                    <a style="color: #ff5932" href="">移入黑名单</a>
+                                    <a style="color: #ff5932" href="<?= Yii::$service->url->getUrl('admin/index/sblacklist',array('id'=>$v['shop_id']))?>">移入黑名单</a>
                                     &nbsp;<label>|</label>&nbsp;
-                                    <a style="color: #41b2fc" href="">冻结账号</a>
+                                    <a style="color: #41b2fc" href="<?= Yii::$service->url->getUrl('admin/index/sfreeze',array('id'=>$v['shop_id']))?>">冻结账号</a>
                                     &nbsp;<label>|</label>&nbsp;
-                                    <a href="<?= Yii::$service->url->getUrl('admin/index/wshop',array('id'=>$v['id']))?>" style="color: #41b2fc;left:200px;">查看</a>
+                                    <a href="<?= Yii::$service->url->getUrl('admin/index/wshop',array('id'=>$v['shop_id']))?>" style="color: #41b2fc;left:200px;">查看</a>
                                     <label>|</label>&nbsp;
-                                    <a href="<?= Yii::$service->url->getUrl('admin/index/del',array('id'=>$v['id'])) ?>">
+                                    <a href="<?= Yii::$service->url->getUrl('admin/index/delshop',array('id'=>$v['shop_id'])) ?>">
                                         <button data-v-6045fa9c="" type="button"  style="color:#FC4C00"
                                                 class="el-button el-button--text el-button--small">
                                             <span><i data-v-6045fa9c="" class="el-icon-delete"></i></span>
