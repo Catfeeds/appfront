@@ -66,11 +66,6 @@ use yii\helpers\Url;
                             background: #30B5FE !important;
                         }
                     </style>
-                    <script>
-                        laydate.render({
-                            elem:'.el-range-input'
-                        })
-                    </script>
                     <li>
                         <div class="el-input" style="width: 200px;">
                             <input type="text" autocomplete="off" placeholder="请输入关键字搜索" class="el-input__inner keywords" onkeydown="sel(event)"  />
@@ -447,6 +442,9 @@ use yii\helpers\Url;
             return;
         }
         var dates=el_input[0].value.split(' ');
+        if(dates[3]==undefined){
+            dates[3]='';
+        }
         var startdate=dates[0];
         var enddate=dates[3];
         location.href="<?= Yii::$service->url->geturl("/water/account/index?") ?>"+`startdate=${startdate}&enddate=${enddate}`;
