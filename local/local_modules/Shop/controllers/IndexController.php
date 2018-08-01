@@ -53,12 +53,11 @@ class IndexController extends PublicsController
         $timestamp24 = strtotime($dateStr) + 86400;
 
 
-        $todayDatas = Yii::$app->db->createCommand("select * from sales_flat_order where paypal_order_datetime>$timestamp0 and paypal_order_datetime<$timestamp24")->queryAll();
-
+        $todayDatas = Yii::$app->db->createCommand("select * from sales_flat_order where paypal_order_datetime>$timestamp0 and paypal_order_datetime<$timestamp24 and shop_id='{$_SESSION["shop_id"]}'")->queryAll();
         $timestamp0 = strtotime($dateStr) - 24 * 60 * 60;
         $timestamp24 = strtotime($dateStr) + 86400;
 
-        $yesterdayDatas = Yii::$app->db->createCommand("select * from sales_flat_order where paypal_order_datetime>$timestamp0 and paypal_order_datetime<=$timestamp24")->queryAll();
+        $yesterdayDatas = Yii::$app->db->createCommand("select * from sales_flat_order where paypal_order_datetime>$timestamp0 and paypal_order_datetime<=$timestamp24 and shop_id='{$_SESSION["shop_id"]}'")->queryAll();
 
         //成交额
         $turnover = 0;
@@ -81,11 +80,11 @@ class IndexController extends PublicsController
         $clicks1 = 0;
 
         //待处理订单
-        $res = Yii::$app->db->createCommand("select count(*) tot from sales_flat_order where order_status in(1,5)")->queryAll();
+        $res = Yii::$app->db->createCommand("select count(*) tot from sales_flat_order where order_status in(1,5)  and shop_id='{$_SESSION["shop_id"]}'")->queryAll();
         $wait_handle = $res[0][tot];
 
         //退货订单
-        $res = Yii::$app->db->createCommand("select count(*) tot from sales_flat_order where order_status=6")->queryAll();
+        $res = Yii::$app->db->createCommand("select count(*) tot from sales_flat_order where order_status=6  and shop_id='{$_SESSION["shop_id"]}'")->queryAll();
         $returnAll = $res[0][tot];
         foreach ($todayDatas as $key => $v) {
 
@@ -131,7 +130,7 @@ class IndexController extends PublicsController
         $week_start = strtotime($week_start);
         $week_end = strtotime($week_end);
 
-        $count = Yii::$app->db->createCommand("select count(*) tot from sales_flat_order_item where created_at>$week_start and created_at<=$week_end group by sku")->queryAll();
+        $count = Yii::$app->db->createCommand("select count(*) tot from sales_flat_order_item as a,sales_flat_order as b where a.created_at>$week_start and a.created_at<=$week_end and b.shop_id='{$_SESSION["shop_id"]}' and a.order_id=b.order_id group by sku")->queryAll();
 
         $tot = count($count);
         // 实例化分页对象
@@ -146,11 +145,12 @@ class IndexController extends PublicsController
             $sort_rule = "nums";
         }
 
-        $statistics = Yii::$app->db->createCommand("select sum(price) prices,count(item_id) nums,name,sku from sales_flat_order_item where created_at>$week_start and created_at<=$week_end group by sku order by $sort_rule limit $pagination->offset,$pagination->limit")->queryAll();
+        $statistics = Yii::$app->db->createCommand("select sum(a.price) prices,count(a.item_id) nums,name,sku from sales_flat_order_item as a,sales_flat_order as b where a.created_at>$week_start and a.created_at<=$week_end  and b.shop_id='{$_SESSION["shop_id"]}' and b.order_id=a.order_id group by sku order by $sort_rule limit $pagination->offset,$pagination->limit")->queryAll();
+
 
 
         //获取最近一周的销售信息
-        $sales_infor = Yii::$app->db->createCommand("select created_at,paypal_order_datetime from sales_flat_order where created_at>$week_start and created_at<=$week_end")->queryAll();
+        $sales_infor = Yii::$app->db->createCommand("select created_at,paypal_order_datetime from sales_flat_order where created_at>$week_start and created_at<=$week_end and shop_id='{$_SESSION["shop_id"]}'")->queryAll();
 
 
         /*
