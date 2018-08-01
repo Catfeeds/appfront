@@ -37,7 +37,7 @@ class ShopController extends PublicsController
         // 获取数据
         $request = Yii::$app->request;
         $get = $request->get();
-        $sql = " select count(*) tot from shop";
+        $sql = " select count(*) tot from shop where shop_type = 2";
         //查询订单表数量
         $countArr = Yii::$app->db->createCommand($sql)->queryOne();
 
@@ -47,7 +47,7 @@ class ShopController extends PublicsController
             'defaultPageSize' => 5,
             'totalCount' => $countArr['tot'],
         ]);
-        $sql = " select s.shop_id,s.shop_name,p.province_name,d.district_name,c.city_name from shop s ,sys_city c,sys_district d,sys_province p where s.province_id = p.province_id and s.city_id = c.city_id and s.district_id= d.district_id limit $pagination->offset , $pagination->limit";
+        $sql = " select s.shop_id,s.shop_name,p.province_name,d.district_name,c.city_name from shop s ,sys_city c,sys_district d,sys_province p where s.province_id = p.province_id and s.city_id = c.city_id and s.district_id= d.district_id and shop_type = 2 limit $pagination->offset , $pagination->limit";
 
         $arr = Yii::$app->db->createCommand($sql)->queryAll();
 
