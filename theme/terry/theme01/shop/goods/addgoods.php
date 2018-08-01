@@ -1,5 +1,5 @@
 
-  <div class="main-content">
+  <div class="main-content" style="overflow: hidden">
    <div style="width: 1012px; margin: 0px auto;">
     <div class="biaoti">
      <div aria-label="Breadcrumb" role="navigation" class="el-breadcrumb">
