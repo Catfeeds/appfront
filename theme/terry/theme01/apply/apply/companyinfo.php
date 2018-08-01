@@ -635,13 +635,11 @@
         $("#el-form").submit(function(e){
             e.preventDefault();
             let formdata=$('form').serializeArray();
-            // console.log(formdata);
             $.ajax({
                 url:url,
                 type:'post',
                 data:formdata,
                 success:function (msg) {
-                    console.log(1);
                     location.href=url;
                 }
             })
