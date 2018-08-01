@@ -5,107 +5,103 @@
      <div  class="content">
       <div  class="biaoti">
        <div  aria-label="Breadcrumb" role="navigation" class="el-breadcrumb">
-        <span  class="el-breadcrumb__item"><span role="link" class="el-breadcrumb__inner is-link">数据统计</span><span role="presentation" class="el-breadcrumb__separator">&middot;</span></span> 
+        <span  class="el-breadcrumb__item"><span role="link" class="el-breadcrumb__inner is-link">数据统计</span><span role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
         <span  class="el-breadcrumb__item" aria-current="page"><span role="link" class="el-breadcrumb__inner"><span  style="color: rgb(48, 211, 102);">订单统计</span></span><span role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
        </div>
-      </div> 
+      </div>
       <ul  class="shuaixuan">
        <li>
-           <select name="" id="" class="el-select xiala">
-               <option value="" style="display: none;">最近一周</option>
-               <option value="">1</option>
-               <option value="">2</option>
+           <select name="sel" id="sel" class="el-select xiala">
+               <option value="" style="display: none;"></option>
+               <option value="1" selected>最近一周</option>
+               <option value="2">最近一月</option>
+               <option value="3">最近一年</option>
            </select>
         </li>
-       <li >时间段选择 
-        <div  class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
-         <i class="el-input__icon el-range__icon el-icon-time"></i>
-         <input placeholder="开始日期" name="" class="el-range-input" />
-         <span class="el-range-separator">至</span>
-         <input placeholder="结束日期" name="" class="el-range-input" />
-         <i class="el-input__icon el-range__close-icon"></i>
-        </div></li> 
+       <li >时间段选择
+            <input id="test1">
+       </li>
        <li ><button  type="button" class="el-button blue el-button--primary is-round">
          <!---->
          <!----><span>查询</span></button></li>
-      </ul> 
+      </ul>
       <ul  class="item">
        <li >
         <div  class="item_box">
          <div  class="item_box1">
           点击量统计
-         </div> 
+         </div>
          <div  class="item_box2">
           10,915
          </div>
-        </div></li> 
+        </div></li>
        <li >
         <div  class="item_box">
          <div  class="item_box1">
           下单量统计
-         </div> 
+         </div>
          <div  class="item_box2">
           462
          </div>
-        </div></li> 
+        </div></li>
        <li >
         <div  class="item_box">
          <div  class="item_box1">
           成交量统计
-         </div> 
+         </div>
          <div  class="item_box2">
           10,915
          </div>
-        </div></li> 
+        </div></li>
        <li >
         <div  class="item_box">
          <div  class="item_box1">
           退货量统计
-         </div> 
+         </div>
          <div  class="item_box2">
           98
          </div>
-        </div></li> 
+        </div></li>
        <li >
         <div  class="item_box">
          <div  class="item_box1">
           好评率
-         </div> 
+         </div>
          <div  class="item_box2">
           98%
          </div>
-        </div></li> 
+        </div></li>
        <li >
         <div  class="item_box">
          <div  class="item_box1">
           投诉率
-         </div> 
+         </div>
          <div  class="item_box2">
           2%
          </div>
         </div></li>
-      </ul> 
+      </ul>
       <div  class="item1">
        <div  class="box1">
         <div  class="title">
          <div  class="title_left">
           评价汇总
-         </div> 
+         </div>
          <div  class="title_right">
           <div  class="btn active">
            7天
-          </div> 
+          </div>
           <div  class="btn">
            一个月
-          </div> 
+          </div>
           <div  class="btn">
            一个季度
-          </div> 
+          </div>
           <div  class="btn">
            一年
           </div>
          </div>
-        </div> 
+        </div>
         <div  class="bottom">
          <div  class="contents active">
           <ul  style="display: flex; justify-content: space-between;">
@@ -116,54 +112,54 @@
              <span class="el-range-separator">至</span>
              <input placeholder="结束日期" name="" class="el-range-input" />
              <i class="el-input__icon el-range__close-icon"></i>
-            </div></li> 
+            </div></li>
            <li  style="margin-top: 5px;"><button  type="button" class="el-button blue1 el-button--primary is-round">
              <!---->
              <!----><span> 确定 </span></button></li>
-          </ul> 
-          <div  class="tu1"></div> 
+          </ul>
+          <div  class="tu1"></div>
           <div style="display: flex;justify-content: center">
            <button  type="button" class="el-button blue el-button--primary is-round">
                <span>导出图片</span></button>
            <button  type="button" class="el-button green el-button--success is-round">
             <!---->
-            <!----><span>导出表格</span></button> 
+            <!----><span>导出表格</span></button>
            <button  type="button" class="el-button yellow el-button--warning is-round">
             <!---->
             <!----><span>导出报告</span></button>
           </div>
-         </div> 
+         </div>
          <div  class="contents">
           一个月
-         </div> 
+         </div>
          <div  class="contents">
           一个季度
-         </div> 
+         </div>
          <div  class="contents">
           一年
          </div>
         </div>
-       </div> 
+       </div>
        <div  class="box1">
         <div  class="title">
          <div  class="title_left">
           投诉汇总
-         </div> 
+         </div>
          <div  class="title_right">
           <div  class="btn active">
            7天
-          </div> 
+          </div>
           <div  class="btn">
            一个月
-          </div> 
+          </div>
           <div  class="btn">
            一个季度
-          </div> 
+          </div>
           <div  class="btn">
            一年
           </div>
          </div>
-        </div> 
+        </div>
         <div  class="bottom">
          <div  class="contents active">
           <ul  style="display: flex; justify-content: space-between;">
@@ -174,11 +170,11 @@
              <span class="el-range-separator">至</span>
              <input placeholder="结束日期" name="" class="el-range-input" />
              <i class="el-input__icon el-range__close-icon"></i>
-            </div></li> 
+            </div></li>
            <li  style="margin-top: 5px;"><button  type="button" class="el-button blue1 el-button--primary is-round">
                    <span>确定</span></button></li>
-          </ul> 
-          <div  class="tu2"></div> 
+          </ul>
+          <div  class="tu2"></div>
           <div style="display: flex;justify-content: center">
            <button  type="button" class="el-button blue el-button--primary is-round">
             <span>导出图片</span></button>
@@ -187,38 +183,38 @@
            <button  type="button" class="el-button yellow el-button--warning is-round">
                <span>导出报告</span></button>
           </div>
-         </div> 
+         </div>
          <div  class="contents">
           一个月
-         </div> 
+         </div>
          <div  class="contents">
           一个季度
-         </div> 
+         </div>
          <div  class="contents">
           一年
          </div>
         </div>
        </div>
-      </div> 
+      </div>
       <div  class="item2">
        <div  class="title2">
         <div  class="title_left">
          订单数量走势
-        </div> 
+        </div>
         <div  class="title_right">
          <div  class="btn active">
           7天
-         </div> 
+         </div>
          <div  class="btn">
           一个月
-         </div> 
+         </div>
          <div  class="btn">
           一个季度
-         </div> 
+         </div>
          <div  class="btn">
           一年
          </div>
-        </div> 
+        </div>
         <ul  style="display: flex;">
          <li >
           <div  class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange" style="width: 380px;">
@@ -227,22 +223,22 @@
            <span class="el-range-separator">至</span>
            <input placeholder="结束日期" name="" class="el-range-input" />
            <i class="el-input__icon el-range__close-icon"></i>
-          </div></li> 
+          </div></li>
          <li ><button  type="button" class="el-button blue1 el-button--primary is-round">
            <!---->
            <!----><span> 确定 </span></button></li>
         </ul>
-       </div> 
+       </div>
        <div  class="bottom">
         <div  class="contents active">
          <div  class="tu3"></div>
-        </div> 
+        </div>
         <div  class="contents">
          一个月
-        </div> 
+        </div>
         <div  class="contents">
          一个季度
-        </div> 
+        </div>
         <div  class="contents">
          一年
         </div>
@@ -252,6 +248,15 @@
     </div>
    </div>
   </div>
+  <script>
+      //日期时间范围
+      laydate.render({
+          elem: '#test1'
+          , type: 'datetime'
+          , range: true
+          , theme: "#3CACFE"
+      });
+  </script>
 <style>
     .content {
         width: 100%;

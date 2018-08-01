@@ -188,8 +188,7 @@ class OrdersController extends PublicsController
         $sql = "update sales_flat_order set customer_firstname='$customer_firstname',customer_telephone='$customer_telephone',customer_address_country='$customer_address_country',customer_address_state='$customer_address_state',customer_address_city='$customer_address_city',customer_address_zip='$customer_address_zip',customer_email='$customer_email',customer_address_street1='$customer_address_street1' where order_id=$order_id";
         $res = Yii::$app->db->createCommand($sql)->execute();
 
-
-        return $this->redirect(['orders/see?order_id=',$order_id]);
+        return $this->redirect(['orders/see?order_id='.$order_id]);
     }
 
     //接单

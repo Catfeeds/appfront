@@ -15,6 +15,7 @@
       </div>
       <div class="shuaixuan">
         <form action="<?php echo  Yii::$app->request->getHostInfo().Yii::$app->request->url;?>" method="get">
+          <input type="hidden" name="id" value="<?= $shop_id ?>">
        <ul style="width: 400px; display: flex; justify-content: space-between;">
         <li>
             <select name="class" id="" class="el-select xiala" style="">

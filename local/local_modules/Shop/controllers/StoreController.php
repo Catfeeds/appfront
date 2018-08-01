@@ -51,7 +51,7 @@ class StoreController extends PublicsController
 
         $datas = $req->post();
 
-        $sql = "update shop set shop_keywords='{$datas['shop_keywords']}',shop_banner='{$datas['shop_banner']}',shop_phone='{$datas['shop_phone']}',province_id='{$datas['province_id']}',city_id='{$datas['city_id']}',shop_address='{$datas['shop_address']}',shop_description='{$datas['shop_description']}'  where uid={$datas['uid']}";
+        $sql = "update shop set shop_keywords='{$datas['shop_keywords']}',shop_banner='{$datas['shop_banner']}',shop_phone='{$datas['shop_phone']}',province_id='{$datas['province_id']}',city_id='{$datas['city_id']}',shop_address='{$datas['shop_address']}',shop_description='{$datas['shop_description']}',district_id='{$datas[district_id]}'  where uid={$datas['uid']}";
 
         $res = Yii::$app->db->createCommand($sql)->execute();
 

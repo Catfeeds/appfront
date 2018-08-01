@@ -1,10 +1,14 @@
+<style>
+    .wshop_btn{width: 100px;height: 36px;color:#fff;line-height: 36px;text-align: center;
+        background: #37df73;border-radius: 16px;float: left;margin-left:10px;border:none;outline: none;margin-bottom: 50px;}
+</style>
 <div class="main-content">
     <div class="adminmannager">
         <!--用户管理-管理员管理-->
         <div class="adminmannager-title">
             <span>店铺管理</span>&nbsp;
-            <span style="color: #516676;">·&nbsp;<router-link to="/ShopMannager">商家</router-link></span>&nbsp;
-            <span>·&nbsp;小明的店</span>
+            <span style="color: #516676;">·&nbsp;<a href="javascript:0"><?php if($rows['shop_type']==1){echo "水司";}else{echo "商家";}?></a></span>&nbsp;
+            <span>·&nbsp;<?= $rows['shop_name']?></span>
         </div>
         <!--管理员列表-->
         <div class="admin-table" style="margin:0;">
@@ -15,50 +19,73 @@
         </div>
         <div class="vipinfo"style="height: auto;">
             <div>
-                <table border="0" class="ppro">
+                <table border="0" class="ppro" cellspacing="8">
                     <tr>
-                        <td valign="top">公司名称:</td>
-                        <td valign="top">
-                            <span>山西净水有限公司</span>
+                        <td valign="center">公司名称:</td>
+                        <td valign="center">
+                            <input type="text" value="<?php echo $rows['shop_company_name']?>" disabled class="awreview">
                         </td>
                     </tr>
                     <tr>
-                        <td valign="top">注册号（营业执照号）:</td>
-                        <td valign="top">
-                            <span>23809-0203-00340-92</span>
+                        <td valign="center">注册号（营业执照号）:</td>
+                        <td valign="center">
+                            <input type="text" value="<?php echo $rows['business_licence_number']?>" disabled class="awreview">
                         </td>
                     </tr>
                     <tr>
-                        <td valign="top">法定代表人姓名:</td>
-                        <td valign="top">
-                            <span>王欢</span>
+                        <td valign="center">法定代表人姓名:</td>
+                        <td valign="center">
+                            <input type="text" value="<?php echo $rows['contacts_name']?>" disabled class="awreview">
                         </td>
                     </tr>
                     <tr>
-                        <td valign="top">身份证号:</td>
-                        <td valign="top">
-                            <span>138944199444444444</span>
+                        <td valign="center">身份证号:</td>
+                        <td valign="center">
+                            <input type="text" value="<?php echo $rows['contacts_card_no']?>" disabled class="awreview">
                         </td>
                     </tr>
                     <tr>
-                        <td valign="top"><span>法人手持身份证照:</span></td>
-                        <td valign="top">
+                        <td valign="center"><span>法人手持身份证照:</span></td>
+                        <td valign="center">
                             <div style="height: 180px;">
-                                <div style="height: 162px;width: 276px;background: #bbdff6;border-radius: 2px;"></div>
+                                <div style="height: 162px;width: 276px;line-height: 162px;text-align: center;
+                                <?php if($row['contacts_card_electronic_1']){?>
+                                        background:url(http://img.uekuek.com/images/<?php echo $row['contacts_card_electronic_1'];?>) no-repeat center center/100% 100%;
+                                <?php }else{?>
+                                    <?php echo 'background:#eee;'?>
+                                <?php }?>
+                                        border-radius: 2px;">
+                                    <span style="color:#333;"><?php if($row['contacts_card_electronic_1']==null){echo "(空)";}?></span>
+                                </div>
                             </div>
 
                         </td>
                     </tr>
                     <tr>
-                        <td valign="top">身份证:</td>
-                        <td valign="top">
+                        <td valign="center">身份证:</td>
+                        <td valign="center">
                             <div style="height: 100%;width: 276px;float:left;text-align: center">
-                                <div style="height: 162px;width: 276px;background: #f5fbff;
-border-radius: 2px;"></div>
+                                <div style="height: 162px;width: 276px;line-height: 162px;text-align: center;
+                                <?php if($row['contacts_card_electronic_2']){?>
+                                        background:url(http://img.uekuek.com/images/<?php echo $row['contacts_card_electronic_2'];?>) no-repeat center center/100% 100%;
+                                <?php }else{?>
+                                    <?php echo 'background:#eee;'?>
+                                <?php }?>
+                                        border-radius: 2px;">
+                                    <span style="color:#333;"><?php if($row['contacts_card_electronic_2']==null){echo "(空)";}?></span>
+                                </div>
                                 <span style="display:block;margin-top:20px;">正面</span>
                             </div>
                             <div style="height: 100%;width: 276px;float:left;margin-left:20px;text-align: center">
-                                <div style="height: 162px;width: 276px;background: #f5fbff;border-radius: 2px;"></div>
+                                <div style="height: 162px;width: 276px;line-height: 162px;text-align: center;
+                                <?php if($row['contacts_card_electronic_3']){?>
+                                        background:url(http://img.uekuek.com/images/<?php echo $row['contacts_card_electronic_3'];?>) no-repeat center center/100% 100%;
+                                <?php }else{?>
+                                    <?php echo 'background:#eee;'?>
+                                <?php }?>
+                                        border-radius: 2px;">
+                                    <span style="color:#333;"><?php if($row['contacts_card_electronic_3']==null){echo "(空)";}?></span>
+                                </div>
                                 <span style="display:block;margin-top:20px;">反面</span>
                             </div>
 
@@ -69,46 +96,52 @@ border-radius: 2px;"></div>
                         </td>
                     </tr>
                     <tr>
-                        <td valign="top">营业执照所在地:</td>
-                        <td valign="top">
-                            <span>山西省太原市小店区</span>
+                        <td valign="center">营业执照所在地:</td>
+                        <td valign="center">
+                            <input type="text" value="<?php echo $rows['province_id'],$rows['city_id'],$rows['district_id']?>" disabled class="awreview">
                         </td>
                     </tr>
                     <tr>
-                        <td valign="top">y营业执照详细地址:</td>
-                        <td valign="top">
-                            <span>学府街凯通大厦</span>
+                        <td valign="center">营业执照详细地址:</td>
+                        <td valign="center">
+                            <input type="text" value="<?php echo $rows['shop_address']?>" disabled class="awreview">
                         </td>
                     </tr>
                     <tr>
-                        <td valign="top">成立时间:</td>
-                        <td valign="top">
-                            <span>2018.05.21</span>
+                        <td valign="center">成立时间:</td>
+                        <td valign="center">
+                            <input type="text" value="<?php echo date('Y-m-d',$rows['shop_create_time'])?>" disabled class="awreview">
+                        </td>
+                    </tr>
+                    <!--<tr>
+                        <td valign="center">营业期限:</td>
+                        <td valign="center">
+                            <input type="text" value="<?php /*echo $rows['business_sphere']*/?>" disabled class="awreview">
+                        </td>
+                    </tr>-->
+                    <tr>
+                        <td valign="center">注册资本:</td>
+                        <td valign="center">
+                            <input type="text" value="<?php echo $rows['company_registered_capital']?>" disabled class="awreview">
                         </td>
                     </tr>
                     <tr>
-                        <td valign="top">营业期限:</td>
-                        <td valign="top">
-                            <span>2018.05.21至2010.05.21</span>
+                        <td valign="center">经营范围:</td>
+                        <td valign="center">
+                            <input type="text" value="<?php echo $rows['business_sphere']?>" disabled class="awreview">
                         </td>
                     </tr>
                     <tr>
-                        <td valign="top">注册资本:</td>
-                        <td valign="top">
-                            <span>500万</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td valign="top">经营范围:</td>
-                        <td valign="top">
-                            <span>洗衣、洗窗帘、洗鞋</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td valign="top">营业执照电子版:</td>
-                        <td valign="top">
-                            <div class="b-lisc">
-
+                        <td valign="center">营业执照电子版:</td>
+                        <td valign="center">
+                            <div style="height: 395px;width: 570px;line-height: 395px;text-align: center;
+                            <?php if($row['contacts_card_electronic_2']){?>
+                                    background:url(http://img.uekuek.com/images/<?php echo $row['contacts_card_electronic_2'];?>) no-repeat center center/100% 100%;
+                            <?php }else{?>
+                                <?php echo 'background:#eee;'?>
+                            <?php }?>
+                                    border-radius: 2px;">
+                                <span style="color:#333;"><?php if($row['contacts_card_electronic_2']==null){echo "(空)";}?></span>
                             </div>
                         </td>
                     </tr>
@@ -125,23 +158,25 @@ border-radius: 2px;"></div>
             </div>
             <div class="vipinfo"style="height: auto;">
                 <div>
-                    <table border="0" class="ppro">
+                    <table border="0" class="ppro" cellspacing="8">
                         <tr>
-                            <td valign="top">店铺名称:</td>
-                            <td valign="top">
-                                <span>山西净水有限公司</span>
+                            <td valign="center">店铺名称:</td>
+                            <td valign="center">
+                                <input type="text" value="<?php echo $rows['shop_name']?>" disabled class="awreview">
                             </td>
                         </tr>
                         <tr>
-                            <td valign="top">关键词:</td>
-                            <td valign="top">
-                                <span>水管、地漏、水龙头</span>
+                            <td valign="center">关键词:</td>
+                            <td valign="center">
+                                <input type="text" value="<?php echo $rows['shop_keywords']?>" disabled class="awreview">
                             </td>
                         </tr>
                         <tr>
-                            <td valign="top">店铺公告:</td>
-                            <td valign="top">
-                                <span>店铺要有自己的特点,然后把店铺好的特别的写出去就好。还有就是不要给店铺写的太过详细那样在， 别人的心中就没有了神秘感了，现在大</span>
+                            <td valign="center">店铺公告:</td>
+                            <td valign="center">
+                                <span>
+                                    <?php echo $rows['shop_banner']?>
+                                </span>
                             </td>
                         </tr>
                     </table>
@@ -154,8 +189,14 @@ border-radius: 2px;"></div>
                 <div class="admin-tablenamebox"></div>
                 <span class="admin-tablename1">审核</span><span class="admin-tablename2">状态</span>
             </div>
-            <button style="width: 100px;height: 36px;color:#fff;line-height: 36px;text-align: center;
-background: #37df73;border-radius: 16px;float: left;margin-left:10px;border:none;outline: none;">审核完成</button>
+            <button class="wshop_btn">
+                <?php if($rows['shop_state']==0){echo "关闭";}
+                else if ($rows['shop_state']==1){echo "开启";}
+                else if ($rows['shop_state']==2){echo "冻结";}
+                else if ($rows['shop_state']==3){echo "待审核";}
+                else if ($rows['shop_state']==4){echo "未通过";}
+                ?>
+            </button>
         </div>
     </div>
 </div>
