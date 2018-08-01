@@ -66,11 +66,6 @@ use yii\helpers\Url;
                             background: #30B5FE !important;
                         }
                     </style>
-                    <script>
-                        laydate.render({
-                            elem:'.el-range-input'
-                        })
-                    </script>
                     <li>
                         <div class="el-input" style="width: 200px;">
                             <input type="text" autocomplete="off" placeholder="请输入关键字搜索" class="el-input__inner keywords" onkeydown="sel(event)"  />
