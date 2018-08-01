@@ -116,7 +116,7 @@ class LoginController extends AppfrontController
                 $arr = Yii::$app->db->createCommand("select count(*) as num from customer where firstname='$firstname'")->queryOne();
                 if($req->post(password_hash)==""||$firstname==""){
                     $msgSuc['err']=0;
-                    $msgSuc['info']='手机号或者密码不能为空';''
+                    $msgSuc['info']='手机号或者密码不能为空';
                     echo json_encode($msgSuc);
                     return false; 
                     // return $this->redirect(["login/regedit"]);
