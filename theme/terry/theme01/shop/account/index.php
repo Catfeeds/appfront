@@ -68,11 +68,11 @@ use yii\helpers\Url;
                     </style>
                     <li>
                         <div class="el-input" style="width: 200px;">
-                            <input type="text" autocomplete="off" placeholder="请输入关键字搜索" class="el-input__inner"/>
+                            <input type="text" autocomplete="off" placeholder="请输入关键字搜索" class="el-input__inner" onkeydown="sel(event)" />
                         </div>
                     </li>
                     <li>
-                        <div class="sousuo"></div>
+                        <div class="sousuo" onclick="sel(event)"></div>
                     </li>
                 </ul>
                 <div class="item">
