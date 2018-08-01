@@ -104,14 +104,14 @@ use yii\helpers\Url;
                                 <div data-v-6045fa9c="" class="el-input" style="width: 150px;"><!----><input type="text"
                                                                                                              autocomplete="off"
                                                                                                              placeholder="请输入收货人"
-                                                                                                             class="el-input__inner">
+                                                                                                             class="el-input__inner  customer_firstname" name="customer_firstname">
                                     <!----><!----><!----></div>
                             </li>
                             <li data-v-6045fa9c="">
                                 <div data-v-6045fa9c="" class="el-input" style="width: 150px;"><!----><input type="text"
                                                                                                              autocomplete="off"
                                                                                                              placeholder="请输入订单号"
-                                                                                                             class="el-input__inner">
+                                                                                                             class="el-input__inner increment_id" name="increment_id">
                                     <!----><!----><!----></div>
                             </li>
                             <li data-v-6045fa9c="">
@@ -431,3 +431,15 @@ use yii\helpers\Url;
         </div>
     </div>
 </div>
+<script>
+    $(function(){
+        console.log($(".sousuo"));
+        $(".sousuo").on("click",function () {
+            let customer_firstname = $("input.customer_firstname").val();
+            let increment_id = $("input.increment_id").val();
+            location.href="<?= Yii::$service->url->geturl("/shop/orders/index?") ?>"+`customer_firstname=${customer_firstname}&increment_id=${increment_id}`;
+        })
+
+    })
+
+</script>
