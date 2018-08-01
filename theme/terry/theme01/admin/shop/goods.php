@@ -246,6 +246,7 @@ use yii\helpers\Url;
                             
                         </select>
                     </li>
+                    <input type="hidden" name="id" value="<?= $shop_id?>">
                    <!--  <li> 商家编号
                         <input type="text" name="name" placeholder="请输入商品编号/关键字" class="input2"/>
                     </li> -->
