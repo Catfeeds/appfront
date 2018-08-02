@@ -81,7 +81,6 @@
         </div></li>
       </ul>
          <script>
-
              document.querySelector("#test1").addEventListener("blur",function () {
                  document.querySelector(".laydate-btns-confirm").onclick=function () {
                      sel(2);
@@ -94,7 +93,6 @@
                  var t1 = "",t2="";
                  if(flag==1){
                     if(el_select.value==1){
-                        console.log(timeForMat(7));
                         t1 = timeForMat(7)["t2"];
                         t2 = timeForMat(7)["t1"];
                     }else if(el_select.value==2){
@@ -110,6 +108,7 @@
                     var arr = test1.value.split(" - ");
                     t1=arr[0];t2=arr[1];
                  }
+
 
                  $.ajax({
                      url:"/shop/datas/count?t1="+t1+"&t2="+t2,
@@ -133,10 +132,15 @@
                          }
 
                      }
+
                  });
+
+
              }
 
+
          </script>
+
       <div  class="item1">
        <div  class="box1">
         <div  class="title">
@@ -144,16 +148,16 @@
           评价汇总
          </div>
          <div  class="title_right">
-          <div  class="btn active">
+          <div  class="btn active btn1" date="7">
            7天
           </div>
-          <div  class="btn">
+          <div  class="btn btn1" date="30">
            一个月
           </div>
-          <div  class="btn">
+          <div  class="btn btn1" date="90">
            一个季度
           </div>
-          <div  class="btn">
+          <div  class="btn btn1" date="365">
            一年
           </div>
          </div>
@@ -173,7 +177,8 @@
              <!---->
              <!----><span> 确定 </span></button></li>
           </ul>
-          <div  class="tu1"></div>
+          <div  class="tu1">
+          </div>
           <div style="display: flex;justify-content: center">
            <button  type="button" class="el-button blue el-button--primary is-round">
                <span>导出图片</span></button>
@@ -252,6 +257,90 @@
         </div>
        </div>
       </div>
+
+         <script>
+             $(function () {
+                 $('.btn1').on('click',function(){
+                     $('.btn1').removeClass('active').filter(this).addClass('active');
+                     let date=$(this).attr('date');
+                     var t1="",t2="";
+                     if(date==7){
+                         t1 = timeForMat(7)["t2"];
+                         t2 = timeForMat(7)["t1"];
+                     }else if(date == 30){
+                         t1 = timeForMat(30)["t2"];
+                         t2 = timeForMat(30)["t1"];
+                     }else if(date==90){
+                         t1 = timeForMat(120)["t2"];
+                         t2 = timeForMat(120)["t1"];
+                     }else if(date==365){
+                         t1 = timeForMat(365)["t2"];
+                         t2 = timeForMat(365)["t1"];
+                     }
+                     var favorable,reviewable,nagetivable;
+                     $.ajax({
+                         url:"/shop/datas/countdate?t1="+t1+"&t2="+t2,
+                         dataType:'json',
+                         success:function (msg) {
+                             for(let i=0;i<msg.length;i++){
+                                 msg[i]=filtert2(msg[i],t2);
+                             }
+                             favorable=msg[0].length;
+                             reviewable=msg[1].length;
+                             nagetivable=msg[2].length;
+                             getChart(favorable,reviewable,nagetivable);
+                         }
+                     });
+                     function getChart(a,b,c) {
+                         var myChart = echarts.init(document.querySelector('.tu1'));
+                         var option={
+
+                             legend: {
+                                 itemWidth: 20,
+                                 itemHeight: 20,
+                                 orient: 'vertical',
+                                 // top: 'middle',
+                                 bottom: 20,
+                                 right:24,
+                                 data: ['好评', '中评','差评']
+                             },
+                             tooltip : {
+                                 trigger: 'item',
+                                 formatter: "{a} <br/>{b} : {c} ({d}%)"
+                             },
+                             series : [
+                                 {
+                                     type: 'pie',
+                                     radius : '80%',
+                                     center: ['50%', '50%'],
+                                     selectedMode: 'single',
+                                     data:[
+                                         {value:a, name: '好评'},
+                                         {value:b, name: '中评'},
+                                         {value:c, name: '差评'},
+                                     ],
+                                     itemStyle: {
+                                         normal: {
+                                             borderWidth: 10,
+                                             borderColor: '#ffffff',
+                                         },
+
+                                     }
+                                 }
+                             ],
+                             color: ['rgb(48,163,254)','rgb(55,223,116)','rgb(253,203,82)']
+                         };
+                         myChart.setOption(option);
+                     }
+                     function filtert2(arr,t2) {
+                         arr=arr.filter(ele=>{return ele.review_date<t2});
+                         return arr;
+                     }
+                 })
+                 $('.btn1').triggerHandler('click');
+             })
+         </script>
+
       <div  class="item2">
        <div  class="title2">
         <div  class="title_left">
@@ -312,6 +401,7 @@
           , range: true
           , theme: "#3CACFE"
       });
+
   </script>
 <style>
     .content {
@@ -435,7 +525,7 @@
     .item1 .box1 .bottom .contents .tu1 {
         width: 100%;
         height: 330px;
-        background: url("/public/img/tu1.png") no-repeat center center /100% auto;
+        /*background: url("/public/img/tu1.png") no-repeat center center /100% auto;*/
     }
     .item1 .box1 .bottom .contents .tu2 {
         width: 100%;
@@ -522,3 +612,4 @@
         padding-top: 10px;
     }
 </style>
+
