@@ -420,9 +420,7 @@ use yii\helpers\Url;
                                                     </td>
                                                     <td class="el-table_2_column_9">
                                                         <div class="cell el-tooltip">
-                                                            <div class="picture">
-                                                                <img src="http://img.uekuek.com/media/catalog/product/<?= $v['image']['main']['image'] ?>"
-                                                                     alt="">
+                                                            <div class="picture" style="background:url('http://img.uekuek.com/media/catalog/product/<?= $v['image']['main']['image'] ?>')no-repeat center center /100% auto">
                                                             </div>
                                                             <div class="contents">
                                                                 <div title="<?= $v["sku"] ?>" class="ddd">

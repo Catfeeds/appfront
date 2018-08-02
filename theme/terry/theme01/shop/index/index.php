@@ -250,7 +250,7 @@ use yii\helpers\Url;
     }
 
     .freeze {
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
@@ -317,7 +317,7 @@ use yii\helpers\Url;
 
 </style>
 <div class="box">
-    <div class="freeze" style="display: none;">
+    <div class="freeze" style="display:none;">
         <div class="freeze-content">
             <div style="width: 438px; height: 30px; border-bottom: 1px solid rgb(48, 163, 254); color: rgb(48, 163, 254); font-size: 20px; font-weight: bolder;">
                 通知

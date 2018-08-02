@@ -358,10 +358,14 @@
         background: #f3faff;
         border: 2px solid #e5eff8;
         font-size: 14px;
-        color:#9eabb5
+        color:#9eabb5;
+        cursor: pointer;
     }
     .shuaixuan .el-select:hover {
         border-color: #c0c4cc;
+    }
+    .shuaixuan .el-select:focus {
+        border-color: #3CACFE;
     }
     .sousuo {
         margin-top: 5px;

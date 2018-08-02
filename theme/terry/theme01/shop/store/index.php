@@ -20,10 +20,14 @@
         width: 200px;
         padding-left: 10px;
         letter-spacing: 2px;
+        cursor: pointer;
     }
 
     .address select:hover {
         border-color: #c0c4cc;
+    }
+    .address select:focus {
+        border-color: #3CACFE;
     }
 
     .content .biaoti {
@@ -116,6 +120,10 @@
         border: none;
         box-shadow: 0 0 8px #37DF73;
         padding-top: 10px;
+    }
+    .el-form-item__label{
+        width: 100px;
+        color: #A5AEB6;
     }
 </style>
 
