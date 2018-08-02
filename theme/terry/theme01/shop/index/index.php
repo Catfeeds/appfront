@@ -392,77 +392,84 @@ use yii\helpers\Url;
                                     <col name="el-table_2_column_15" width="146"/>
                                     <col name="el-table_2_column_16" width="146"/>
                                 </colgroup>
-                                <tbody style="font-size: 12px;color: #82898e">
-                                <?php foreach ($statistics as $k => $v) { ?>
-                                    <tr class="el-table__row">
-                                        <td class="el-table_2_column_11  ">
-                                            <div class="cell">
-                                                <?= $k + 1 + $pagination->offset * $pagination->limit ?>
-                                            </div>
-                                        </td>
-                                        <td class="el-table_2_column_12  ">
-                                            <div class="cell" title="<?= $v['sku'] ?>">
-                                                <?= $v['sku'] ?>
-                                            </div>
-                                        </td>
-                                        <td class="el-table_2_column_13  ">
-                                            <div class="cell" title="<?= $v["name"] ?>">
-                                                <?= $v["name"] ?>
-                                            </div>
-                                        </td>
-                                        <td class="el-table_2_column_14  ">
-                                            <div class="cell" title="<?= $v["nums"] ?>">
-                                                <?= $v["nums"] ?>
-                                            </div>
-                                        </td>
-                                        <td class="el-table_2_column_15  ">
-                                            <div class="cell" title="<?= number_format($v['prices'], 2) ?>">
-                                                <?= number_format($v['prices'], 2) ?>
-                                            </div>
-                                        </td>
-                                        <td class="el-table_2_column_16  ">
-                                            <div class="cell">
-                                                <?= number_format($v["prices"] / $v["nums"], 2) ?>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                <?php if(count($statistics)>0) { ?>
+                                    <tbody style="font-size: 12px;color: #82898e">
+                                    <?php foreach ($statistics as $k => $v) { ?>
+                                        <tr class="el-table__row">
+                                            <td class="el-table_2_column_11  ">
+                                                <div class="cell">
+                                                    <?= $k + 1 + $pagination->offset * $pagination->limit ?>
+                                                </div>
+                                            </td>
+                                            <td class="el-table_2_column_12  ">
+                                                <div class="cell" title="<?= $v['sku'] ?>">
+                                                    <?= $v['sku'] ?>
+                                                </div>
+                                            </td>
+                                            <td class="el-table_2_column_13  ">
+                                                <div class="cell" title="<?= $v["name"] ?>">
+                                                    <?= $v["name"] ?>
+                                                </div>
+                                            </td>
+                                            <td class="el-table_2_column_14  ">
+                                                <div class="cell" title="<?= $v["nums"] ?>">
+                                                    <?= $v["nums"] ?>
+                                                </div>
+                                            </td>
+                                            <td class="el-table_2_column_15  ">
+                                                <div class="cell" title="<?= number_format($v['prices'], 2) ?>">
+                                                    <?= number_format($v['prices'], 2) ?>
+                                                </div>
+                                            </td>
+                                            <td class="el-table_2_column_16  ">
+                                                <div class="cell">
+                                                    <?= number_format($v["prices"] / $v["nums"], 2) ?>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                    </tbody>
+                                <?php }else{ ?>
+                                    <div style="width: 300px;height: 100px;background: url('/public/empty.jpg') center center/100% auto no-repeat;margin: 0 auto">
+                                    </div>
                                 <?php } ?>
-                                </tbody>
                             </table>
                         </div>
                         <div class="el-table__column-resize-proxy" style="display: none;"></div>
                     </div>
                 </div>
-                <div>
-                    <div style="width: 180px; float: right; margin-top: 28px; display: flex; justify-content: space-between;">
-                        <div style="display: flex;">
-                            <div class="dian"></div>
-                            总计
-                            <span style="color: rgb(61, 176, 255); font-weight: bolder;"><?= $count ?></span>记录
+                <?php if(count($statistics)>0) { ?>
+                    <div>
+                        <div style="width: 180px; float: right; margin-top: 28px; display: flex; justify-content: space-between;">
+                            <div style="display: flex;">
+                                <div class="dian"></div>
+                                总计
+                                <span style="color: rgb(61, 176, 255); font-weight: bolder;"><?= $count ?></span>记录
+                            </div>
+                            <div style="display: flex;">
+                                <div class="dian" style="background: rgb(41, 201, 154);"></div>
+                                分
+                                <span style="font-weight: bolder; color: rgb(41, 201, 154);"><?= ceil($count / $pagination->limit) ?></span>页
+                            </div>
                         </div>
-                        <div style="display: flex;">
-                            <div class="dian" style="background: rgb(41, 201, 154);"></div>
-                            分
-                            <span style="font-weight: bolder; color: rgb(41, 201, 154);"><?= ceil($count / $pagination->limit) ?></span>页
-                        </div>
+                        <button type="button" class="el-button green el-button--success is-round" style="padding:0;">
+                            <span>导出表格</span></button>
                     </div>
-                    <button type="button" class="el-button green el-button--success is-round" style="padding:0;">
-                        <span>导出表格</span></button>
-                </div>
-                <div>
-                    <div style="width: 400px; font-size: 12px; float: right; display: flex; justify-content: space-between;">
-                        <?php
-                        echo LinkPager::widget([
-                            'pagination' => $pagination,
-                            'firstPageLabel' => '首页',
-                            'lastPageLabel' => '尾页',
+                    <div>
+                        <div style="width: 400px; font-size: 12px; float: right; display: flex; justify-content: space-between;">
+                            <?php
+                            echo LinkPager::widget([
+                                'pagination' => $pagination,
+                                'firstPageLabel' => '首页',
+                                'lastPageLabel' => '尾页',
 
-                            'nextPageLabel' => '>',
-                            'prevPageLabel' => '<',
-                        ]);
-                        ?>
+                                'nextPageLabel' => '>',
+                                'prevPageLabel' => '<',
+                            ]);
+                            ?>
+                        </div>
                     </div>
-                </div>
+                <?php } ?>
             </div>
         </div>
     </div>
