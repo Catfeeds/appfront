@@ -118,6 +118,7 @@ use yii\widgets\LinkPager;
                                     <col name="el-table_5_column_35" width="130">
                                     <col name="el-table_5_column_36" width="130">
                                 </colgroup>
+                                <?php if(count($res)){?>
                                 <tbody style="font-size: 12px;color:#82898e;">
                                 <?php foreach ($res as $v) { ?>
                                     <tr class="el-table__row">
@@ -193,10 +194,15 @@ use yii\widgets\LinkPager;
                                     </tr>
                                 <?php } ?>
                                 </tbody>
+                            <?php }else{ ?>
+                                <div style="width: 300px;height: 100px;background: url('/public/empty.jpg') center center/100% auto no-repeat;margin: 0 auto">
+                                </div>
+                            <?php }?>
                             </table>
                         </div>
                         <div class="el-table__column-resize-proxy" style="display: none;"></div>
                     </div>
+                    <?php if($num>0){ ?>
                     <div data-v-345ba354="" style="position: relative;">
                         <div data-v-345ba354=""
                              style="width: 180px; position: absolute; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
@@ -208,7 +214,7 @@ use yii\widgets\LinkPager;
                             <div data-v-345ba354="" style="display: flex;">
                                 <div data-v-345ba354="" class="dian" style="background: rgb(41, 201, 154);"></div>
                                 分<span data-v-345ba354=""
-                                       style="font-weight: bolder; color: rgb(41, 201, 154);"><?= $page ?></span>页
+                                       style="font-weight: bolder; color: rgb(41, 201, 154);"><?= ceil($num/$page) ?></span>页
                             </div>
                         </div>
                         <div data-v-345ba354="" style="margin-top: 40px;">
@@ -219,6 +225,7 @@ use yii\widgets\LinkPager;
                                 <span>批量删除</span></button>
                         </div>
                     </div>
+                <?php }?>
                     <div data-v-345ba354="" style="width: 100%; position: relative;">
                         <div data-v-345ba354=""
                              style="font-size: 12px; position: absolute; bottom: 0px; right: 0px; display: flex; justify-content: space-between;">

@@ -215,53 +215,43 @@ use yii\widgets\LinkPager;
                                                         <col name="el-table_2_column_18" width="80">
                                                     </colgroup>
                                                     <thead class="has-gutter">
-                                                    <tr style="font-size: 14px;color: #B1DBFE;">
-                                                        <th colspan="1" rowspan="1"
-                                                            class="el-table_2_column_7   el-table-column--selection  is-leaf">
-                                                            <div class="cell">
-                                                                <label role="checkbox" class="el-checkbox">
-                                                            <span class="el-checkbox__input">
-                                                                <span class="el-checkbox__inner"></span>
-                                                                <input type="checkbox" class="el-checkbox__original"
-                                                                       value=""/>
-                                                            </span>
-                                                                </label>
-                                                            </div>
-                                                        </th>
-                                                        <th colspan="1" rowspan="1"
-                                                            class="el-table_2_column_11     is-leaf">
-                                                            <div class="cell">订单号</div>
-                                                        </th>
-                                                        <th colspan="1" rowspan="1"
-                                                            class="el-table_2_column_12     is-leaf">
-                                                            <div class="cell">单价</div>
-                                                        </th>
-                                                        <th colspan="1" rowspan="1"
-                                                            class="el-table_2_column_13     is-leaf">
-                                                            <div class="cell">收货人</div>
-                                                        </th>
-                                                        <th colspan="1" rowspan="1"
-                                                            class="el-table_2_column_14     is-leaf">
-                                                            <div class="cell">支付方式</div>
-                                                        </th>
-                                                        <th colspan="1" rowspan="1"
-                                                            class="el-table_2_column_15     is-leaf">
-                                                            <div class="cell">金额标签</div>
-                                                        </th>
-                                                        <th colspan="1" rowspan="1"
-                                                            class="el-table_2_column_16     is-leaf">
-                                                            <div class="cell">订单状态</div>
-                                                        </th>
-                                                        <th colspan="1" rowspan="1"
-                                                            class="el-table_2_column_17     is-leaf">
-                                                            <div class="cell">下单时间</div>
-                                                        </th>
-                                                        <th colspan="1" rowspan="1"
-                                                            class="el-table_2_column_18     is-leaf">
-                                                            <div class="cell">操作</div>
-                                                        </th>
-                                                        <th class="gutter" style="width: 0px; display: none;"></th>
-                                                    </tr>
+                                                        <tr style="font-size: 14px;color: #B1DBFE;">
+                                                            <th colspan="1" rowspan="1" class="el-table_2_column_7   el-table-column--selection  is-leaf">
+                                                                <div class="cell">
+                                                                    <label role="checkbox" class="el-checkbox">
+                                                                        <span class="el-checkbox__input">
+                                                                            <span class="el-checkbox__inner"></span>
+                                                                            <input type="checkbox" class="el-checkbox__original" value=""/>
+                                                                        </span>
+                                                                    </label>
+                                                                </div>
+                                                            </th>
+                                                            <th colspan="1" rowspan="1" class="el-table_2_column_11     is-leaf">
+                                                                <div class="cell">订单号</div>
+                                                            </th>
+                                                            <th colspan="1" rowspan="1" class="el-table_2_column_12     is-leaf">
+                                                                <div class="cell">单价</div>
+                                                            </th>
+                                                            <th colspan="1" rowspan="1" class="el-table_2_column_13     is-leaf">
+                                                                <div class="cell">收货人</div>
+                                                            </th>
+                                                            <th colspan="1" rowspan="1" class="el-table_2_column_14     is-leaf">
+                                                                <div class="cell">支付方式</div>
+                                                            </th>
+                                                            <th colspan="1" rowspan="1" class="el-table_2_column_15     is-leaf">
+                                                                <div class="cell">金额标签</div>
+                                                            </th>
+                                                            <th colspan="1" rowspan="1" class="el-table_2_column_16     is-leaf">
+                                                                <div class="cell">订单状态</div>
+                                                            </th>
+                                                            <th colspan="1" rowspan="1" class="el-table_2_column_17     is-leaf">
+                                                                <div class="cell">下单时间</div>
+                                                            </th>
+                                                            <th colspan="1" rowspan="1" class="el-table_2_column_18     is-leaf">
+                                                                <div class="cell">操作</div>
+                                                            </th>
+                                                            <th class="gutter" style="width: 0px; display: none;"></th>
+                                                        </tr>
                                                     </thead>
                                                 </table>
                                             </div>
@@ -279,6 +269,7 @@ use yii\widgets\LinkPager;
                                                         <col name="el-table_2_column_17" width="100">
                                                         <col name="el-table_2_column_18" width="80">
                                                     </colgroup>
+                                                    <?php if(count($orders)>0){ ?>
                                                     <tbody style="font-size: 12px;color:#82898e">
                                                     <?php foreach ($orders as $v) { ?>
                                                         <tr class="el-table__row">
@@ -383,10 +374,15 @@ use yii\widgets\LinkPager;
                                                         </tr>
                                                     <?php } ?>
                                                     </tbody>
+                                                    <?php }else{ ?>
+                                                        <div style="width: 300px;height: 100px;background: url('/public/empty.jpg') center center/100% auto no-repeat;margin: 0 auto">
+                                                        </div>
+                                                    <?php } ?>
                                                 </table>
                                             </div>
                                             <div class="el-table__column-resize-proxy" style="display: none;"></div>
                                         </div>
+                                        <?php if(count($orders)>0){ ?>
                                         <div style="position: relative;">
                                             <div style="margin-top: 40px;">
                                                 <button data-v-6045fa9c="" type="button"
@@ -398,6 +394,7 @@ use yii\widgets\LinkPager;
                                                     <span>批量删除</span></button>
                                             </div>
                                         </div>
+                                        <?php }?>
                                         <div data-v-6045fa9c="" style="width: 100%; position: relative;">
                                             <div class="order_p">
                                                 <?php

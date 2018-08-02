@@ -76,70 +76,76 @@ use yii\helpers\Url;
                         <col name="el-table_2_column_9" width="120">
                         <col name="el-table_2_column_11" width="500">
                     </colgroup>
-                    <tbody style="font-size: 12px;color:#82898e">
-                        <?php foreach($shop as $v){?>
-                            <tr class="el-table__row" style="height:36px;font-size: 14px;">
-                                <td class="el-table_2_column_11  ">
-                                    <div class="cell el-tooltip" title="">
-                                        <?= $v["shop_id"] ?>
-                                    </div>
-                                </td>
-                                <td class="el-table_2_column_12">
-                                    <div class="cell el-tooltip">
-                                        <?= $v["shop_name"] ?>
-                                    </div>
-                                </td>
-                                <td class="el-table_2_column_14">
-                                    <div class="cell el-tooltip" title="">
-                                        <?= $v["province_name"] ?>
-                                        <?= $v["city_name"] ?>
-                                        <?= $v["district_name"] ?>
-                                    </div>
-                                </td>
-                                <td class="el-table_2_column_13">
-                                    <div class="cell el-tooltip">
-                                        2018.05.29 14:00:00
-                                    </div>
-                                </td>
-                                <td class="el-table_2_column_18">
-                                    <a href="<?= Yii::$service->url->getUrl('admin/shop/order', array('id' => $v['shop_id'])) ?>" style="color: #41b2fc">订单管理</a>
-                                    &nbsp;<label>|</label>&nbsp;
-                                    <a style="color: #41b2fc" href="<?= Yii::$service->url->getUrl('admin/shop/goods', array('id' => $v['shop_id'])) ?>">商品管理</a>
-                                    &nbsp;<label>|</label>&nbsp;
-                                    <a style="color: #41b2fc" href="">分类管理</a>
-                                    &nbsp;<label>|</label>&nbsp;
-                                    <a href="<?= Yii::$service->url->getUrl('admin/shop/commentlist', array('id' => $v['shop_id'])) ?>" style="color: #41b2fc">评价管理</a>
-                                    &nbsp;<label>|</label>&nbsp;
-                                    <a style="color: #41b2fc" href="">咨询管理</a>
-                                    &nbsp;<label>|</label>&nbsp;
-                                    <a href="<?= Yii::$service->url->getUrl('admin/shop/couponindex', array('id' => $v['shop_id'])) ?>" style="color: #41b2fc" >优惠券管理</a>
-                                    &nbsp;<label>|</label>&nbsp;
-                                    <a style="color: #41b2fc" href="">活动管理</a>
-                                </td>
-                            </tr>
-                        <?php } ?>
-                    </tbody>
+                    <?php if($count>0){ ?>
+                        <tbody style="font-size: 12px;color:#82898e">
+                            <?php foreach($shop as $v){?>
+                                <tr class="el-table__row" style="height:36px;font-size: 14px;">
+                                    <td class="el-table_2_column_11  ">
+                                        <div class="cell el-tooltip" title="">
+                                            <?= $v["shop_id"] ?>
+                                        </div>
+                                    </td>
+                                    <td class="el-table_2_column_12">
+                                        <div class="cell el-tooltip">
+                                            <?= $v["shop_name"] ?>
+                                        </div>
+                                    </td>
+                                    <td class="el-table_2_column_14">
+                                        <div class="cell el-tooltip" title="">
+                                            <?= $v["province_name"] ?>
+                                            <?= $v["city_name"] ?>
+                                            <?= $v["district_name"] ?>
+                                        </div>
+                                    </td>
+                                    <td class="el-table_2_column_13">
+                                        <div class="cell el-tooltip">
+                                            2018.05.29
+                                        </div>
+                                    </td>
+                                    <td class="el-table_2_column_18">
+                                        <a href="<?= Yii::$service->url->getUrl('admin/shop/order', array('id' => $v['shop_id'])) ?>" style="color: #41b2fc">订单管理</a>
+                                        &nbsp;<label>|</label>&nbsp;
+                                        <a style="color: #41b2fc" href="<?= Yii::$service->url->getUrl('admin/shop/goods', array('id' => $v['shop_id'])) ?>">商品管理</a>
+                                        &nbsp;<label>|</label>&nbsp;
+                                     <!--    <a style="color: #41b2fc" href="">分类管理</a>
+                                        &nbsp;<label>|</label>&nbsp; -->
+                                        <a href="<?= Yii::$service->url->getUrl('admin/shop/commentlist', array('id' => $v['shop_id'])) ?>" style="color: #41b2fc">评价管理</a>
+                                        &nbsp;<label>|</label>&nbsp;
+                                        <a style="color: #41b2fc" href="">咨询管理</a>
+                                        &nbsp;<label>|</label>&nbsp;
+                                        <a href="<?= Yii::$service->url->getUrl('admin/shop/couponindex', array('id' => $v['shop_id'])) ?>" style="color: #41b2fc" >优惠券管理</a>
+                                      <!--   &nbsp;<label>|</label>&nbsp;
+                                        <a style="color: #41b2fc" href="">活动管理</a> -->
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    <?php }else{ ?>
+                        <div style="width: 300px;height: 100px;background: url('/public/empty.jpg') center center/100% auto no-repeat;margin: 0 auto">
+                        </div>
+                    <?php }?>
                 </table>
             </div>
         </div>
+        <?php if($count>0){ ?>
         <div class="adminpagination">
             <div class="pagination">
                 <div class="block">
-                    <!-- <div class="admincount">
+                    <div class="admincount">
                         <div class="admincountall">
-                            <span style="color: #3db0ff">·</span>&nbsp;<span>总计</span><span>206</span><span>记录</span>
+                            <span style="color: #3db0ff">·</span>&nbsp;<span>总计</span><span><?= $count ?></span><span>记录</span>
                         </div>
                         <div class="admintotalpage">
-                            <span style="color: #29c99a">·</span>&nbsp;<span>分</span><span style="color: #29c99a">82</span><span>页</span>
+                            <span style="color: #29c99a">·</span>&nbsp;<span>分</span><span style="color: #29c99a"><?= ceil($count / $pagination->limit) ?></span><span>页</span>
                         </div>
-                        <div class="admintotalpage">
+                        <!-- <div class="admintotalpage">
                             <span style="color: #29c99a">·</span>&nbsp;<span>每页</span>
                             <input type="text" style="display: inline-block;width: 40px;height: 20px;border-radius: 10px;
                             border: 1px solid #ebf6ff;background: #f3faff;outline: none;padding:0 5px;
                             box-sizing: border-box;text-align: center;color:#29c99a;line-height: 20px; "
                                    value="10" >
-                        </div>
-                    </div> -->
+                        </div> -->
+                    </div>
                     <div style="width: 100%; position: relative;margin-top: 40px;">
                         <div style="font-size: 12px; position: absolute; bottom: 0; right: 0; display: flex; justify-content: space-between;">
                             <?php
@@ -156,5 +162,6 @@ use yii\helpers\Url;
                 </div>
             </div>
         </div>
+        <?php }?>
     </div>
 </div>

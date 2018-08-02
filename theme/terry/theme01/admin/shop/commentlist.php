@@ -155,6 +155,7 @@ use yii\widgets\LinkPager;
                                     <col name="el-table_3_column_22" width="150"/>
                                     <col name="el-table_3_column_23" width="150"/>
                                 </colgroup>
+                                <?php if(count($data)>0){ ?>
                                 <tbody style="font-size: 12px;color:#82898e">
 
                                 <?php foreach ($data as $key => $value) { ?>
@@ -249,12 +250,17 @@ use yii\widgets\LinkPager;
                                 <?php } ?>
 
                                 </tbody>
+                                <?php }else{ ?>
+                                    <div style="width: 300px;height: 100px;background: url('/public/empty.jpg') center center/100% auto no-repeat;margin: 0 auto">
+                                    </div>
+                                <?php }?>
                             </table>
                         </div>
                         <div class="el-table__column-resize-proxy" style="display: none;"></div>
                     </div>
                 </div>
                 <div style="position: relative;">
+                    <?php if(count($data)>0){ ?>
                     <div style="width: 180px; position: absolute; top: 20px; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
                         <div style="display: flex;">
                             <div class="dian"></div>
@@ -267,6 +273,7 @@ use yii\widgets\LinkPager;
                             <span style="font-weight: bolder; color: rgb(41, 201, 154);"><?= $pages ?></span>页
                         </div>
                     </div>
+                    <?php }?>
                 </div>
                 <div style="width: 100%; position: relative;">
                     <div style="font-size: 12px; position: absolute; bottom: 0px; top: 50px; right: 0px; display: flex; justify-content: space-between;">
