@@ -1963,7 +1963,7 @@ $cssOptions = [
         overflow:hidden ;
     }
     #index1 header{
-        width:1160px;
+        width:1012px;
         height: 139px;
         margin-top:30px;
         display: flex;
@@ -2474,6 +2474,126 @@ $cssOptions = [
         border: 1px solid #41b2fc;
         background: rgba(65,178,252,0.2);
     }
+    .shop_btn{
+        border:none;
+        width: 40px;
+        height: 40px;
+        border-radius:50%;
+        background: url("/public/adminimg/search.png") no-repeat center center/60% 60%;
+        position:relative;
+    }
+
+    .content {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        padding-top: 8px;
+    }
+
+    .content .biaoti {
+        height: 52px;
+        font-size: 12px;
+        line-height: 52px;
+        font-weight: bolder;
+    }
+
+    .content .shuaixuan {
+        height: 46px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        line-height: 46px;
+    }
+
+    .content .item {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .content .red {
+        height: 35px;
+        background: #FD5E4E;
+        border: none;
+        box-shadow: 0 0px 8px #FD5E4E;
+    }
+
+    .content .green {
+        height: 35px;
+        background: #37DF73;
+        border: none;
+        box-shadow: 0 0 8px #37DF73;
+        margin-right: 20px;
+    }
+    .content {
+        padding-top: 27px!important;
+    }
+    .el-input__inner{
+        font-size: 14px !important;
+    }
+    .demo-input{
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+    .pagination {
+        white-space: nowrap;
+        padding: 2px 5px;
+        color: #303133;
+        font-weight: 700;
+    }
+
+    .pagination li {
+        padding: 0 4px;
+        background: #fff;
+        font-size: 13px;
+        min-width: 35.5px;
+        height: 28px;
+        line-height: 28px;
+        box-sizing: border-box;
+        display: inline-block;
+    }
+
+    .pagination li.first {
+        width: 54px;
+        height: 20px;
+        background: #edf8ff;
+        border: 2px solid #e8f6ff;
+        border-radius: 10px;
+        color: #41b2fc;
+        line-height: 18px;
+        text-align: center;
+        margin-top: 8px;
+    }
+
+    .pagination li.last {
+        width: 54px;
+        height: 20px;
+        background: #51b7fc;
+        border: 2px solid #51b7fc;
+        border-radius: 10px;
+        color: #fff;
+        line-height: 18px;
+        text-align: center;
+        margin-top: 8px;
+    }
+    .pagination li.first a{
+        color: #51b7fc;
+    }
+    .pagination li.last a{
+        color: #fff;
+    }
+    .pagination li a {
+        color: #000;
+        font-weight: bold;
+    }
+
+    .pagination li.active a {
+        color: #409EFF;
+        cursor: default;
+    }
+    .apagination{font-size: 12px; position: absolute; bottom: 0; right: 0; display: flex; justify-content: space-between;}
+    .paginationbox{width: 100%; position: relative;height: 50px;}
+    button{outline: none!important;}
 </style>
 <?php $this->beginPage() ?>
     <!doctype html>

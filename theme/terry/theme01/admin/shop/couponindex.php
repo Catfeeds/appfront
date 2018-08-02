@@ -1,80 +1,9 @@
 <?php
 
 use yii\widgets\LinkPager;
-use yii\helpers\Html;
-use yii\helpers\Url;
 
 ?>
 
-
-<style>
-    .content {
-        width: 100%;
-        height: 100%;
-        box-sizing: border-box;
-        padding-top: 8px;
-    }
-
-    .content .biaoti {
-        height: 52px;
-        font-size: 12px;
-        line-height: 52px;
-        font-weight: bolder;
-    }
-
-    .content .shuaixuan {
-        height: 46px;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        line-height: 46px;
-    }
-
-    .content .shuaixuan .xiala {
-        padding-left: 10px;
-        width:160px;
-        outline: none;
-        height: 30px;
-        border-radius: 15px;
-        background: #f3faff;
-        border: 2px solid #e5eff8;
-        color:#9eabb5;
-        font-size: 14px;
-    }
-    .shuaixuan .el-select:hover {
-        border-color: #c0c4cc;
-    }
-    .shuaixuan .el-select:focus {
-        border-color: #3CACFE;
-    }
-
-    .sousuo {
-        margin-top: 5px;
-        width: 40px;
-        height: 40px;
-        background: url("/public/img/sousuo.png") no-repeat center center/100% auto;
-    }
-
-    .content .item {
-        width: 100%;
-        margin-top: 10px;
-    }
-
-    .content .red {
-        height: 35px;
-        background: #FD5E4E;
-        border: none;
-        box-shadow: 0 0px 8px #FD5E4E;
-    }
-
-    .content .green {
-        height: 35px;
-        background: #37DF73;
-        border: none;
-        box-shadow: 0 0 8px #37DF73;
-        margin-right: 20px;
-    }
-</style>
 <div data-v-4ce00a5c="" class="main-content">
     <div data-v-4ce00a5c="" style="width: 1012px; margin: 0px auto;">
         <div data-v-345ba354="" data-v-4ce00a5c="">
@@ -90,28 +19,26 @@ use yii\helpers\Url;
                                         style="color: rgb(48, 211, 102); font-weight: bolder;">优惠券管理</span></span><span
                                     role="presentation" class="el-breadcrumb__separator">·</span></span></div>
                 </div>
-                <div data-v-345ba354="" class="shuaixuan">
-                    <ul data-v-345ba354="" style="width: 500px; display: flex; justify-content: space-between;">
-                        <li data-v-345ba354="">
-                            <div data-v-345ba354="" class="el-select" style="display: inline-block;">
-                                <select name="class" id="" class="el-select xiala" style="margin-left:10px">
-                                    <option value="0" style="display: none">请选择优惠券状态</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                </select>
-                            </div>
-                        </li>
-                        <li data-v-345ba354="">
-                            <div data-v-345ba354="" class="el-input" style="width: 200px;">
-                                <input type="text" onkeydown="sel(event)" autocomplete="off" placeholder="请输入优惠券名称" class="el-input__inner like">
-                            </div>
-                        </li>
-                        <li data-v-345ba354="">
-                            <div data-v-345ba354="" class="sousuo" onclick="sel(event)"></div>
-                        </li>
-                    </ul>
-                </div>
+
+                    <div class="adminmannager-search" style="margin-top:0">
+                        <div class="xiala">
+                            <select name="class" id="" class="el-select xiala" style="margin-left:0px;width: 250px">
+                                <option value="0" style="display: none">请选择优惠券状态</option>
+                                <option value="">1</option>
+                                <option value="">1</option>
+                                <option value="">1</option>
+                            </select>
+                            <div class="xialaimg1"></div>
+                        </div>
+                        <!--<span class="search-ID">收货人</span>-->
+                        <input type="text" onkeydown="sel(event)" autocomplete="off" placeholder="请输入优惠券名称"
+                               class="el-input__inner like" style="font-size: 14px">
+                        <div class="ShopMannagersearch-img">
+                            <button type="button" class="shop_btn" onclick="sel(event)">
+                            </button>
+                        </div>
+                    </div>
+
                 <div data-v-345ba354="" class="item">
                     <div data-v-345ba354=""
                          class="el-table el-table--fit el-table--enable-row-hover el-table--enable-row-transition"
@@ -224,15 +151,15 @@ use yii\helpers\Url;
                                         </td>
                                         <td class="el-table_5_column_35  ">
                                             <div class="cell">
-                                                <?php if($v["status"]==0){ ?>
+                                                <?php if ($v["status"] == 0) { ?>
                                                     <span data-v-345ba354="" style="color: #ff4949;">
                                                     未审核
                                                 </span>
-                                                <?php }else if($v["status"]==2){?>
+                                                <?php } else if ($v["status"] == 2) { ?>
                                                     <span data-v-345ba354="" style="color: #ff4949;">
                                                     审核失败
                                                 </span>
-                                                <?php }else if($v["expiration_date"]>time()){?>
+                                                <?php } else if ($v["expiration_date"] > time()) { ?>
                                                     <span data-v-345ba354="" style="color: rgb(54, 221, 124);">
                                                     有效
                                                 </span>
@@ -246,15 +173,18 @@ use yii\helpers\Url;
                                         <td class="el-table_5_column_36  ">
                                             <div class="cell el-tooltip" style="width: 134px;">
                                                 <a href="<?= Yii::$service->url->geturl("admin/shop/seecoupon?id={$v["coupon_id"]}") ?>">
-                                                    <button data-v-345ba354="" type="button" class="el-button el-button--text el-button--small">
+                                                    <button data-v-345ba354="" type="button"
+                                                            class="el-button el-button--text el-button--small">
                                                         <span>查看</span>
                                                     </button>
                                                 </a>
-                                                <?php if($v["expiration_date"]>time()&&$v["status"]==1){?>
+                                                <?php if ($v["expiration_date"] > time() && $v["status"] == 1) { ?>
                                                     <span data-v-345ba354="" style="color: rgb(234, 235, 236);">|</span>
                                                     <a href="<?= Yii::$service->url->geturl("/shop/store/delcou?id={$v['coupon_id']}") ?>">
-                                                        <button data-v-345ba354="" type="button" class="el-button el-button--text el-button--small">
-                                                            <span><i data-v-345ba354="" class="el-icon-delete"></i></span>
+                                                        <button data-v-345ba354="" type="button"
+                                                                class="el-button el-button--text el-button--small">
+                                                            <span><i data-v-345ba354=""
+                                                                     class="el-icon-delete"></i></span>
                                                         </button>
                                                     </a>
                                                 <?php } ?>
@@ -282,7 +212,8 @@ use yii\helpers\Url;
                             </div>
                         </div>
                         <div data-v-345ba354="" style="margin-top: 40px;">
-                            <button data-v-345ba354="" type="button" class="el-button el-button--default"><span>全选</span>
+                            <button data-v-345ba354="" type="button" class="el-button el-button--default">
+                                <span>全选</span>
                             </button>
                             <button data-v-345ba354="" type="button" class="el-button red el-button--danger is-round">
                                 <span>批量删除</span></button>
@@ -310,12 +241,13 @@ use yii\helpers\Url;
 </div>
 <script>
     var like = document.querySelectorAll(".like");
+
     function sel(e) {
-        if(e.keyCode!=13&&e.type=="keydown"){
+        if (e.keyCode != 13 && e.type == "keydown") {
             return;
         }
-        var status=like[0].value;
-        var name=like[1].value;
-        location.href="<?= Yii::$service->url->geturl("/shop/store/couponindex?") ?>"+`status=${status}&name=${name}`;
+        var status = like[0].value;
+        var name = like[1].value;
+        location.href = "<?= Yii::$service->url->geturl("/shop/store/couponindex?") ?>" + `status=${status}&name=${name}`;
     }
 </script>
