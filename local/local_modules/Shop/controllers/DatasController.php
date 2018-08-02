@@ -35,12 +35,31 @@ class DatasController extends PublicsController
     {
 
         $datas = [];
-
-
-
-
-
         return $this->render($this->action->id, $datas);
+
+    }
+
+    //统计好评，投诉
+    public function actionCountdate()
+    {
+        $create_t1=strtotime($_GET["t1"]);
+        $create_t2=strtotime($_GET["t2"]);
+        $query=new Query;
+        $arr1=$query->from("review")
+                     ->where(['rate_star'=>['$gte'=>'4'],'review_date'=>['$gte'=>$create_t1]])
+                     ->all();
+        $arr2=$query->from("review")
+            ->where(['rate_star'=>'3','review_date'=>['$gte'=>$create_t1]])
+            ->all();
+        $arr3=$query->from("review")
+            ->where(['rate_star'=>['$lte'=>'2'],'review_date'=>['$gte'=>$create_t1]])
+            ->all();
+        $arr=[];
+        $arr[0]=$arr1;
+        $arr[1]=$arr2;
+        $arr[2]=$arr3;
+        echo json_encode($arr);
+        exit();
 
     }
 
@@ -87,6 +106,7 @@ where order_status>=5 and refund_at=$created_at1 and refund_at")->queryAll();
         $condition['shop_id'] =$_SESSION["shop_id"];
 
         $res1 = $query->from("review")->where($condition)->all();
+
 
         $res[3] = $res1;
 
