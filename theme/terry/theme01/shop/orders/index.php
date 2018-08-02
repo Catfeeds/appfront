@@ -37,10 +37,12 @@ use yii\helpers\Url;
 
     .content .shuaixuan {
         height: 46px;
-        width: 650px;
+        width: 800px;
         display: flex;
         justify-content: space-between;
         line-height: 46px;
+        color: #a4adb5;
+        font-size: 12px;
     }
 
     .sousuo {
@@ -101,23 +103,23 @@ use yii\helpers\Url;
                         </div>
                         <ul data-v-6045fa9c="" class="shuaixuan">
                             <li data-v-6045fa9c="">
-                                <div data-v-6045fa9c="" class="el-input" style="width: 150px;"><!----><input type="text"
+                                收货人&nbsp;&nbsp;<div data-v-6045fa9c="" class="el-input" style="width: 150px;"><input type="text"
                                                                                                              autocomplete="off"
                                                                                                              placeholder="请输入收货人"
                                                                                                              class="el-input__inner  customer_firstname" name="customer_firstname">
                                     <!----><!----><!----></div>
                             </li>
                             <li data-v-6045fa9c="">
-                                <div data-v-6045fa9c="" class="el-input" style="width: 150px;"><!----><input type="text"
+                                订单号&nbsp;&nbsp;<div data-v-6045fa9c="" class="el-input" style="width: 150px;"><!----><input type="text"
                                                                                                              autocomplete="off"
                                                                                                              placeholder="请输入订单号"
                                                                                                              class="el-input__inner increment_id" name="increment_id">
                                     <!----><!----><!----></div>
                             </li>
                             <li data-v-6045fa9c="">
-                                <div data-v-6045fa9c="" class="el-input" style="width: 200px;"><!----><input type="text"
+                                关键字&nbsp;&nbsp;<div data-v-6045fa9c="" class="el-input" style="width: 200px;"><!----><input type="text"
                                                                                                              autocomplete="off"
-                                                                                                             placeholder="请输入商品编号/关键字"
+                                                                                                             placeholder="请输入关键字"
                                                                                                              class="el-input__inner">
                                     <!----><!----><!----></div>
                             </li>
@@ -280,7 +282,8 @@ use yii\helpers\Url;
                                                     </thead>
                                                 </table>
                                             </div>
-                                            <div class="el-table__body-wrapper is-scrolling-left">
+                                            <?php if(count($orders)>0){ ?>
+                                                <div class="el-table__body-wrapper is-scrolling-left">
                                                 <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
                                                        style="width: 1012px;">
                                                     <colgroup>
@@ -326,7 +329,8 @@ use yii\helpers\Url;
                                                                 </div>
                                                             </td>
                                                             <td class="el-table_2_column_14">
-                                                                <div class="cell el-tooltip" title="<?= $v["payment_method"] ?>"><?= $v["payment_method"] ?></div>
+                                                                <div class=
+                                                                     "cell el-tooltip" title="<?= $v["payment_method"] ?>"><?= $v["payment_method"] ?></div>
                                                             </td>
                                                             <td class="el-table_2_column_15">
                                                                 <div class="cell el-tooltip">
@@ -381,6 +385,9 @@ use yii\helpers\Url;
                                                     </tbody>
                                                 </table>
                                             </div>
+                                            <?php }else{ ?>
+                                                <div style="width: 300px;height: 100px;background: url('/public/empty.jpg') center center/100% auto no-repeat;margin: 0 auto">
+                                            <?php } ?>
                                             <div class="el-table__column-resize-proxy" style="display: none;"></div>
                                         </div>
                                         <div data-v-6045fa9c="" style="position: relative;">
@@ -394,7 +401,22 @@ use yii\helpers\Url;
                                                     <span>批量删除</span></button>
                                             </div>
                                         </div>
-                                        <div data-v-6045fa9c="" style="width: 100%; position: relative;">
+                                            <?php if(count($orders)>0){ ?>
+                                            <div style="position: relative;">
+                                                <div style="width: 200px; position: absolute; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
+                                                    <div style="display: flex;">
+                                                        <div class="dian"></div>
+                                                        总计
+                                                        <span style="color: rgb(61, 176, 255); font-weight: bolder;margin:0 5px;"><?= $count ?></span>记录
+                                                    </div>
+                                                    <div style="display: flex;">
+                                                        <div class="dian" style="background: rgb(41, 201, 154);"></div>
+                                                        分
+                                                        <span style="font-weight: bolder; color: rgb(41, 201, 154);margin:0 5px;"><?= ceil($count/$pagination->limit) ?></span>页
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-v-6045fa9c="" style="width: 100%; position: relative;">
                                             <div data-v-6045fa9c=""
                                                  style="font-size: 12px; position: absolute; bottom: 0px; right: 0px; display: flex; justify-content: space-between;">
                                                 <?php
@@ -409,6 +431,7 @@ use yii\helpers\Url;
                                                 ?>
                                             </div>
                                         </div>
+                                            <?php } ?>
                                     </div>
                                     <div data-v-6045fa9c="" role="tabpanel" aria-hidden="true" id="pane-second"
                                          aria-labelledby="tab-second" class="el-tab-pane" style="display: none;">待支付（1）

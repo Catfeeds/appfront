@@ -441,6 +441,15 @@ class SystemController extends PublicsController
 
 
         return $this->render($this->action->id, $datas);
+
+
+
+
+
+
+
+
+         
     }
 
 //插入金币规则

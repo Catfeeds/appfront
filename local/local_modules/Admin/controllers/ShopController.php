@@ -48,7 +48,7 @@ class ShopController extends PublicsController
 
         // 实例化分页对象
         $pagination = new Pagination([
-            'defaultPageSize' => 1,
+            'defaultPageSize' => 10,
             'totalCount' => $countArr['tot'],
         ]);
         $sql = " select s.shop_id,s.shop_name,p.province_name,d.district_name,c.city_name from shop s ,sys_city c,sys_district d,sys_province p where s.province_id = p.province_id and s.city_id = c.city_id and s.district_id= d.district_id and shop_type = 2";
@@ -60,6 +60,7 @@ class ShopController extends PublicsController
 
  
         //查询所有的
+        $datas["count"] = $countArr['tot'];
         $datas["shop"] = $arr;
         $datas["shop_name"] = $shop_name;
         $datas["pagination"] = $pagination;
@@ -79,9 +80,10 @@ class ShopController extends PublicsController
     // 分类管理
 
     public function actionClasslist(){
-
         // 查看所有分类数据
         $query = new Query;
+
+        $request = Yii::$app->request;
 
         if ($_GET['id']) {
             # code...
@@ -90,14 +92,27 @@ class ShopController extends PublicsController
             $where['parent_id']="0";
 
         }
+        if(!empty($_GET['name'])){
+            $where['name']['name_zh'] = $_GET['name'];
+        }
+        $count = $query->from('category')->where($where)->count();
+
+        //实例化分页对象
+        $pagination = new Pagination([
+            'defaultPageSize' => 5,
+            'totalCount' => $count,
+        ]);
 
         // 进行数据查询
         $class=$query->from('category')
                      ->orderBy("sort desc")
                      ->where($where)
+                     ->offset($pagination->offset)
+                     ->limit($pagination->limit)
                      ->all();
-
         $data['class']=$class;
+        $data['count']=$count;
+        $data["pagination"] = $pagination;
 
         return $this->render($this->action->id,$data);
     }
@@ -763,7 +778,7 @@ class ShopController extends PublicsController
         $shop_id=$request->get('id');
 
         // 查询条件
-        $where['shop_id']=$shop_id;
+       $where['shop_id']=$shop_id;
         if ($class) {
             $where['category'][1]=$class;
         }

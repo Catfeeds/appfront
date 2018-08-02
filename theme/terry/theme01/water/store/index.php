@@ -117,6 +117,10 @@
         box-shadow: 0 0 8px #37DF73;
         padding-top: 10px;
     }
+    .el-form-item__label{
+        width: 100px;
+        color: #A4ADB5;
+    }
 </style>
 
 <div data-v-4ce00a5c="" class="main-content">
@@ -149,7 +153,7 @@
                                 <input type="hidden" name="uid" value="<?= $res["uid"] ?>">
                                 <div data-v-3bfc0387="" class="el-row" style="width: 500px;">
                                     <div data-v-3bfc0387="" class="el-form-item">
-                                        <label class="el-form-item__label" style="width: 100px;">公司名称</label>
+                                        <label class="el-form-item__label">公司名称</label>
                                         <div class="el-form-item__content" style="margin-left: 100px;">
                                             <div style="line-height: 28px">
                                                 <?= $res["shop_company_name"] ?>
@@ -157,7 +161,7 @@
                                         </div>
                                     </div>
                                     <div data-v-3bfc0387="" class="el-form-item">
-                                        <label class="el-form-item__label" style="width: 100px;">*店铺名称</label>
+                                        <label class="el-form-item__label">*店铺名称</label>
                                         <div class="el-form-item__content" style="margin-left: 100px;">
                                             <div data-v-3bfc0387="" class="el-input">
                                                 <input disabled type="text" autocomplete="off"
@@ -167,7 +171,7 @@
                                         </div>
                                     </div>
                                     <div data-v-3bfc0387="" class="el-form-item">
-                                        <label class="el-form-item__label" style="width: 100px;">*店铺关键字</label>
+                                        <label class="el-form-item__label">*店铺关键字</label>
                                         <div class="el-form-item__content" style="margin-left: 100px;">
                                             <div data-v-3bfc0387="" class="el-input">
                                                 <input type="text" autocomplete="off" placeholder="洗衣、洗鞋、洗家纺、洗窗帘、袋洗"
@@ -177,7 +181,7 @@
                                         </div>
                                     </div>
                                     <div data-v-3bfc0387="" class="el-form-item">
-                                        <label class="el-form-item__label" style="width: 100px;">店铺公告</label>
+                                        <label class="el-form-item__label">店铺公告</label>
                                         <div class="el-form-item__content" style="margin-left: 100px;">
                                             <textarea data-v-3bfc0387="" id="" cols="30" rows="10"
                                                       placeholder="店铺新开张，2018.5.20-2018.5.23所有商品打8折" class="details"
@@ -185,7 +189,7 @@
                                         </div>
                                     </div>
                                     <div data-v-3bfc0387="" class="el-form-item">
-                                        <label class="el-form-item__label" style="width: 100px;">店铺简介</label>
+                                        <label class="el-form-item__label" >店铺简介</label>
                                         <div class="el-form-item__content" style="margin-left: 100px;">
                                             <textarea data-v-3bfc0387="" id="" cols="30" rows="10"
                                                       placeholder="灯具千种热销款式，厂家一站式供货，自由退换货。专业人士上门安装，服务到家。"
@@ -236,22 +240,22 @@
                                     </div>
                                 </div>
                                 <div data-v-3bfc0387="" class="el-form-item address">
-                                    <label class="el-form-item__label" style="width: 100px;">*所在省份</label>
+                                    <label class="el-form-item__label">*所在省份</label>
                                     <select type="text" readonly="readonly" class="" name="province_id"
                                             value="<?= $res["province_id"] ?>"></select>
                                 </div>
                                 <div data-v-3bfc0387="" class="el-form-item address">
-                                    <label class="el-form-item__label" style="width: 100px;">*所在城市</label>
+                                    <label class="el-form-item__label">*所在城市</label>
                                     <select type="text" readonly="readonly" class="" name="city_id"
                                             value="<?= $res["city_id"] ?>"></select>
                                 </div>
                                 <div data-v-3bfc0387="" class="el-form-item address">
-                                    <label class="el-form-item__label" style="width: 100px;">*所在区/县</label>
+                                    <label class="el-form-item__label">*所在区/县</label>
                                     <select type="text" readonly="readonly" class="" name="district_id"
                                             value="<?= $res["district_id"] ?>"></select>
                                 </div>
                                 <div data-v-3bfc0387="" class="el-form-item">
-                                    <label class="el-form-item__label" style="width: 100px;">*详细地址</label>
+                                    <label class="el-form-item__label">*详细地址</label>
                                     <div class="el-form-item__content" style="margin-left: 100px;">
                                         <div data-v-3bfc0387="" class="el-input">
                                             <input type="text" autocomplete="off" placeholder="东北旺东路4号泰山大厦"

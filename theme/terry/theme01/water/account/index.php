@@ -271,12 +271,12 @@ use yii\helpers\Url;
                             <div style="display: flex;">
                                 <div class="dian"></div>
                                 总计
-                                <span style="color: rgb(61, 176, 255); font-weight: bolder;"><?= $tot ?></span>记录
+                                <span style="color: rgb(61, 176, 255); font-weight: bolder;margin:0 5px;"><?= $tot ?></span>记录
                             </div>
                             <div style="display: flex;">
                                 <div class="dian" style="background: rgb(41, 201, 154);"></div>
                                 分
-                                <span style="font-weight: bolder; color: rgb(41, 201, 154);"><?= ceil($tot/10) ?></span>页
+                                <span style="font-weight: bolder; color: rgb(41, 201, 154);margin:0 5px;"><?= ceil($tot/10) ?></span>页
                             </div>
                         </div>
                         <div style="margin-top: 40px;">
@@ -331,11 +331,14 @@ use yii\helpers\Url;
         display: flex;
         justify-content: space-between;
         line-height: 46px;
+        color: #a4adb5;
+        font-size: 12px;
     }
+
 
     .content .shuaixuan .xiala {
         padding-left: 5px;
-        width: 98px;
+        width: 120px;
         outline: none;
         height: 30px;
         border-radius: 15px;
@@ -343,6 +346,12 @@ use yii\helpers\Url;
         border: 2px solid #e5eff8;
         color: #9eabb5;
         font-size: 14px;
+    }
+    .shuaixuan .el-select:hover {
+        border-color: #c0c4cc;
+    }
+    .shuaixuan .el-select:focus {
+        border-color: #3CACFE;
     }
 
     .sousuo {

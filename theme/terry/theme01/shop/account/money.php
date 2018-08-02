@@ -231,12 +231,20 @@
          </table>
         </div>
         <div class="el-table__column-resize-proxy" style="display: none;"></div>
-       </div> 
-       <div  style="float: right; margin-top: 20px;">
-        <span >总计206记录</span>
-        <span  style="margin-left: 20px;">分82页</span>
-       </div> 
-       <div  style="margin-top: 20px;">
+       </div>
+       <div  style="margin-top: 20px;position: relative;">
+           <div style="width: 200px; position: absolute; right: 0px; top: 0px; display: flex; justify-content: space-between;">
+               <div style="display: flex;">
+                   <div class="dian"></div>
+                   总计
+                   <span style="color: rgb(61, 176, 255); font-weight: bolder;margin:0 5px;"><?= $tot ?></span>记录
+               </div>
+               <div style="display: flex;">
+                   <div class="dian" style="background: rgb(41, 201, 154);"></div>
+                   分
+                   <span style="font-weight: bolder; color: rgb(41, 201, 154);margin:0 5px;"><?= ceil($tot / 10) ?></span>页
+               </div>
+           </div>
         <button  type="button" class="el-button el-button--default">
          
          <span>全选</span></button> 
@@ -291,6 +299,8 @@
         display: flex;
         justify-content: space-between;
         line-height: 46px;
+        font-size: 12px;
+        color: #a4adb5;
     }
     .content .shuaixuan .xiala {
         padding-left: 5px;

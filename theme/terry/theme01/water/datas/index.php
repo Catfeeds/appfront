@@ -6,42 +6,17 @@
       <div  class="biaoti">
        <div  aria-label="Breadcrumb" role="navigation" class="el-breadcrumb">
         <span  class="el-breadcrumb__item"><span role="link" class="el-breadcrumb__inner is-link">数据统计</span><span role="presentation" class="el-breadcrumb__separator">&middot;</span></span> 
-        <span  class="el-breadcrumb__item" aria-current="page"><span role="link" class="el-breadcrumb__inner"><span  style="color: rgb(48, 211, 102);">订单统计</span></span><span role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
+        <span  class="el-breadcrumb__item" aria-current="page"><span role="link" class="el-breadcrumb__inner"><span  style="color: rgb(48, 211, 102);font-weight: bold">订单统计</span></span><span role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
        </div>
       </div> 
       <ul  class="shuaixuan">
        <li >
-        <div  class="el-select" style="width: 150px;">
-         <!---->
-         <div class="el-input el-input--suffix">
-          <!---->
-          <input type="text" autocomplete="off" placeholder="最近一周" readonly="readonly" class="el-input__inner" />
-          <!---->
-          <span class="el-input__suffix"><span class="el-input__suffix-inner"><i class="el-select__caret el-input__icon el-icon-arrow-up"></i>
-            <!----></span>
-           <!----></span>
-          <!---->
-         </div>
-         <div class="el-select-dropdown el-popper" style="display: none; min-width: 150px;">
-          <div class="el-scrollbar" style="">
-           <div class="el-select-dropdown__wrap el-scrollbar__wrap" style="margin-bottom: -17px; margin-right: -17px;">
-            <ul class="el-scrollbar__view el-select-dropdown__list">
-             <!---->
-             <li  class="el-select-dropdown__item"><span>1</span></li>
-             <li  class="el-select-dropdown__item"><span>2</span></li>
-             <li  class="el-select-dropdown__item"><span>3</span></li>
-            </ul>
-           </div>
-           <div class="el-scrollbar__bar is-horizontal">
-            <div class="el-scrollbar__thumb" style="transform: translateX(0%);"></div>
-           </div>
-           <div class="el-scrollbar__bar is-vertical">
-            <div class="el-scrollbar__thumb" style="transform: translateY(0%);"></div>
-           </div>
-          </div>
-          <!---->
-         </div>
-        </div></li> 
+           <select name="" id="" class="el-select xiala">
+               <option value="" style="display: none;">最近一周</option>
+               <option value="">1</option>
+               <option value="">2</option>
+               <option value="">3</option>
+           </select>
        <li >时间段选择 
         <div  class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
          <i class="el-input__icon el-range__icon el-icon-time"></i>
@@ -301,6 +276,23 @@
         display: flex;
         justify-content: space-between;
         line-height: 46px;
+    }
+    .content .shuaixuan .xiala {
+        padding-left: 5px;
+        width: 120px;
+        outline: none;
+        height: 30px;
+        border-radius: 15px;
+        background: #f3faff;
+        border: 2px solid #e5eff8;
+        color: #9eabb5;
+        font-size: 14px;
+    }
+    .shuaixuan .el-select:hover {
+        border-color: #c0c4cc;
+    }
+    .shuaixuan .el-select:focus {
+        border-color: #3CACFE;
     }
     .content .item {
         width: 1000px;

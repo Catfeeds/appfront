@@ -25,24 +25,19 @@
         <form  class="el-form">
          <div  class="el-row" style="width: 600px;">
           <div  class="el-form-item">
-           <label class="el-form-item__label" style="width: 100px;">申请描述</label>
+           <label class="el-form-item__label" style="width: 100px;">申请描述：</label>
            <div class="el-form-item__content" style="margin-left: 100px;">
-            <textarea  id="" cols="30" rows="10" style="width: 600px; height: 120px; outline: none; resize: none; border-radius: 3px; border-color: rgb(220, 223, 230);"></textarea>
-            
+            <textarea  id="" cols="30" rows="10" class="details"></textarea>
            </div>
           </div> 
           <div  class="el-form-item">
-           <label class="el-form-item__label" style="width: 100px;">凭证上传</label>
+           <label class="el-form-item__label" style="width: 100px;">凭证上传：</label>
            <div class="el-form-item__content" style="margin-left: 100px;">
             <div  style="display: flex; justify-content: space-between;">
              <div  class="el-input">
-              
               <input type="text" autocomplete="off" class="el-input__inner" />
-              
-              
-              
              </div> 
-             <button  type="button" class="el-button el-button--primary is-round">
+             <button  type="button" class="el-button blue el-button--primary is-round" style="margin-left:20px;">
               
               <span>上传</span></button>
             </div>
@@ -50,9 +45,9 @@
            </div>
           </div> 
           <div  class="el-form-item">
-           <label class="el-form-item__label" style="width: 100px;">审核状态</label>
+           <label class="el-form-item__label" style="width: 100px;">审核状态：</label>
            <div class="el-form-item__content" style="margin-left: 100px;">
-            <div >
+            <div style="line-height: 28px;color: #37DF73">
              暂无审核记录
             </div>
             
@@ -60,7 +55,7 @@
           </div>
          </div>
         </form> 
-        <button  type="button" class="el-button el-button--primary is-round">
+        <button  type="button" class="el-button blue el-button--primary is-round">
          
          <span>申请</span></button>
        </div>
@@ -93,5 +88,26 @@
     .message .text {
         margin-top: 27px;
 
+    }
+    .details {
+        width: 600px;
+        height: 120px;
+        outline: none;
+        resize: none;
+        border-radius: 5px;
+        background: #f3faff;
+        border: 2px solid #e5eff8;
+        padding: 10px;
+    }
+    .content .blue {
+        width: 112px;
+        height: 33px;
+        background: #30B5FE;
+        border: none;
+        box-shadow: 0 0 8px #30B5FE;
+        padding-top: 10px;
+    }
+    .el-form-item__label{
+        color: #A4ADB5;
     }
 </style>

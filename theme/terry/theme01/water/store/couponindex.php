@@ -279,16 +279,16 @@ use yii\helpers\Url;
                     </div>
                     <div data-v-345ba354="" style="position: relative;">
                         <div data-v-345ba354=""
-                             style="width: 180px; position: absolute; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
+                             style="width: 200px; position: absolute; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
                             <div data-v-345ba354="" style="display: flex;">
                                 <div data-v-345ba354="" class="dian"></div>
                                 总计<span data-v-345ba354=""
-                                        style="color: rgb(61, 176, 255); font-weight: bolder;"><?= $num ?></span>记录
+                                        style="color: rgb(61, 176, 255); font-weight: bolder;margin:0 5px;"><?= $num ?></span>记录
                             </div>
                             <div data-v-345ba354="" style="display: flex;">
                                 <div data-v-345ba354="" class="dian" style="background: rgb(41, 201, 154);"></div>
                                 分<span data-v-345ba354=""
-                                       style="font-weight: bolder; color: rgb(41, 201, 154);"><?= $page ?></span>页
+                                       style="font-weight: bolder; color: rgb(41, 201, 154);margin:0 5px;"><?= $page ?></span>页
                             </div>
                         </div>
                         <div data-v-345ba354="" style="margin-top: 40px;">

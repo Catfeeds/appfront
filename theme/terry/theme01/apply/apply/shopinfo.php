@@ -301,7 +301,7 @@
                                 </button>
                                 <input type="submit" class="el-button el-button--primary is-round"
                                        value="下一步"
-                                       onclick='shopload("<?= Yii::$service->url->getUrl('apply/apply/waitaudit') ?>")'>
+                                       onclick='shopload("<?= Yii::$service->url->getUrl('apply/apply/waitaudit1') ?>")'>
                                 </input>
                             </div>
                         </div>
@@ -397,7 +397,7 @@
 
 <script>
     function shopload(url) {
-        $("#el-form").attr("action", url);
+        // $("#el-form").attr("action", url);
         $("#el-form").submit(function (e) {
             e.preventDefault();
             let formdata = $('form').serializeArray();

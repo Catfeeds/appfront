@@ -85,7 +85,7 @@
     <div class="main-content">
         <div style="width: 1012px; margin: 0px auto;">
             <div class="main-content1">
-                <div class="dianpu"><img src="<?=$shop[shop_logo]?>" alt=""></div>
+                <div class="dianpu" style="background: url('<?= Yii::$app->params[img]."/images/".$_SESSION[shop_logo]?>')no-repeat center center /100% auto" alt=""></div>
                 <div class="content1-center">
                     <div class="col-box"></div>
                     <div class="name">
@@ -95,13 +95,13 @@
                         <div class="jianjie">
                             商家简介:
                         </div>
-                        <span ><?=$shop['shop_description']?></span>
+                        <span title="<?=$shop['shop_description']?>"><?=$shop['shop_description']?></span>
                     </div>
                     <div class="message2">
                         <div class="gonggao">
                             商家公告:
                         </div>
-                        <span ><?=$shop['shop_banner']?></span>
+                        <span title="<?=$shop['shop_banner']?>"><?=$shop['shop_banner']?></span>
                     </div>
                 </div>
                 <div class="content1-right">
@@ -415,14 +415,14 @@
                     </div>
                 </div>
                 <div >
-                    <div style="width: 180px; float: right; margin-top: 28px; display: flex; justify-content: space-between;">
+                    <div style="width: 200px; float: right; margin-top: 28px; display: flex; justify-content: space-between;">
                         <div style="display: flex;">
                             <div class="dian"></div> 总计
-                            <span style="color: rgb(61, 176, 255); font-weight: bolder;">206</span>记录
+                            <span style="color: rgb(61, 176, 255); font-weight: bolder;margin:0 5px;">206</span>记录
                         </div>
                         <div style="display: flex;">
                             <div class="dian" style="background: rgb(41, 201, 154);"></div> 分
-                            <span style="font-weight: bolder; color: rgb(41, 201, 154);">82</span>页
+                            <span style="font-weight: bolder; color: rgb(41, 201, 154);margin:0 5px">82</span>页
                         </div>
                     </div>
                     <button type="button" class="el-button green el-button--success is-round" style="padding:0;">
@@ -519,23 +519,44 @@
         font-size: 12px;
         color: #bdc3c9;
         margin-left: 20px;
-        line-height: 18px;
+        line-height: 23px;
+    }
+
+    .main-content1 .message1 span {
+        width: 296px;
+        height: 46px;
+        line-height: 23px;
+        overflow: hidden;
+        /*转换为webkit内核浏览器中的盒子*/
+        display: -webkit-box;
+        /*需要几行就写几*/
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
     }
 
     .main-content1 .message2 {
         width: 360px;
         height: 42px;
-        line-height: 42px;
+        line-height: 40px;
         font-size: 12px;
         color: #bdc3c9;
         margin-left: 20px;
+    }
+
+    .main-content1 .message2 span {
+        display: inline-block;
+        width: 296px;
+        height: 40px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 
     .message1 .jianjie {
         width: 64px;
         height: 100%;
         font-size: 12px;
-        line-height: 18px;
+        line-height: 22px;
         font-weight: bold;
         color: #82898e;
         float: left;
@@ -545,11 +566,12 @@
         width: 64px;
         height: 100%;
         font-size: 12px;
-        line-height: 42px;
+        line-height: 40px;
         font-weight: bold;
         color: #82898e;
         float: left;
     }
+
 
     .main-content1 .content1-right {
         float: left;
@@ -593,6 +615,7 @@
         font-size: 14px;
         background: #eaf6ff;
         font-weight: bolder;
+        cursor: pointer;
     }
 
     .main-content2 .item {
@@ -617,6 +640,7 @@
         font-size: 16px;
         color: #82898e;
         line-height: 30px;
+        font-weight: bold;
     }
 
     .item_box .item_box2 {
