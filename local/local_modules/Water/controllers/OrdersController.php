@@ -314,6 +314,23 @@ class OrdersController extends PublicsController
     public function actionLack()
     {
 
+        $query = new Query();
+
+        $pros = $query->from("product_flat")->where(["shop_id"=>$_SESSION["shop_id"]])->all();
+
+        $sql = "select * from product_flat_qty where in(";
+
+        foreach ($pros as $v){
+            $sql = $sql.$v["_id"].",";
+        }
+
+        $sql = $sql."0)";
+
+//        echo $sql;
+//        exit();
+
+        $res = Yii::$app->db->createCommand("select * from product_flat_qty")->queryAll();
+
         return $this->render($this->action->id);
 
     }

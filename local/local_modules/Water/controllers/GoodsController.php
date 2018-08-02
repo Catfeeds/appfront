@@ -51,6 +51,7 @@ class GoodsController extends PublicsController
 
         // 查询条件
         $where['shop_id'] =$shop_id;
+        $where["type"] = 1;
 
         $query = new Query;
         if ($category) {
@@ -356,7 +357,7 @@ class GoodsController extends PublicsController
             "score"=>0, // 产品的评分，这个可以通过销量值填写进去
             "status"=>(int)$data['status'], // 产品的状态，1代表激活，2代表下架
             "qty"=>0,  // 产品的库存，这个字段已经无效，库存在mysql中
-            "min_sales_qty"=>1,  // 产品的最小销售个数
+            "min_sales_qty"=>1,  // 产品的最小销售个数,
             "kucun"=>$kucun,
             "is_in_stock"=>(int)$data['kucun'],  // 产品 的库存状态，1代表有库存，2代表无库存
             "category"=>[  // 产品的分类id。可以多个
@@ -446,7 +447,8 @@ class GoodsController extends PublicsController
             "review_count_lang"=>[// 产品在各个语言的评论数
                 "review_count_lang_zh"=>0,
                 "review_count_lang_en"=>0
-            ]
+            ],
+            "type"=>2,//产品的类型 1是商品，2是服务
 
 
         ];
@@ -655,7 +657,8 @@ class GoodsController extends PublicsController
             "review_count_lang"=>[// 产品在各个语言的评论数
                 "review_count_lang_zh"=>0,
                 "review_count_lang_en"=>0
-            ]
+            ],
+            "type"=>1,  //商品类型 1商品 2服务
 
 
         ];
