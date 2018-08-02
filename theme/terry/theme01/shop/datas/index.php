@@ -165,14 +165,18 @@
         <div  class="bottom">
          <div  class="contents active">
           <ul  style="display: flex; justify-content: space-between;">
-           <li >
-            <div  class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange" style="width: 380px;">
-             <i class="el-input__icon el-range__icon el-icon-time"></i>
-             <input placeholder="开始日期" name="" class="el-range-input" />
-             <span class="el-range-separator">至</span>
-             <input placeholder="结束日期" name="" class="el-range-input" />
-             <i class="el-input__icon el-range__close-icon"></i>
-            </div></li>
+              <li >时间段选择
+                  <input id="test2" style="width: 300px">
+              </li>
+              <script>
+                  laydate.render({
+                      elem: '#test2'
+                      , type: 'datetime'
+                      , range: true
+                      , theme: "#3CACFE"
+                  });
+              </script>
+
            <li  style="margin-top: 5px;"><button  type="button" class="el-button blue1 el-button--primary is-round">
              <!---->
              <!----><span> 确定 </span></button></li>
@@ -260,23 +264,39 @@
 
          <script>
              $(function () {
+                 $('#test2').on('blur',function(){
+                     $('.laydate-btns-confirm').on('click',function () {
+                         getinfo(2,-1);
+                     })
+                 })
+
                  $('.btn1').on('click',function(){
                      $('.btn1').removeClass('active').filter(this).addClass('active');
+                     let  test2=$('#test2');
                      let date=$(this).attr('date');
+                     getinfo(1,date);
+                 })
+                 function getinfo(flag,date) {
                      var t1="",t2="";
-                     if(date==7){
-                         t1 = timeForMat(7)["t2"];
-                         t2 = timeForMat(7)["t1"];
-                     }else if(date == 30){
-                         t1 = timeForMat(30)["t2"];
-                         t2 = timeForMat(30)["t1"];
-                     }else if(date==90){
-                         t1 = timeForMat(120)["t2"];
-                         t2 = timeForMat(120)["t1"];
-                     }else if(date==365){
-                         t1 = timeForMat(365)["t2"];
-                         t2 = timeForMat(365)["t1"];
+                     if(flag==1){
+                         if(date==7){
+                             t1 = timeForMat(7)["t2"];
+                             t2 = timeForMat(7)["t1"];
+                         }else if(date == 30){
+                             t1 = timeForMat(30)["t2"];
+                             t2 = timeForMat(30)["t1"];
+                         }else if(date==90){
+                             t1 = timeForMat(120)["t2"];
+                             t2 = timeForMat(120)["t1"];
+                         }else if(date==365){
+                             t1 = timeForMat(365)["t2"];
+                             t2 = timeForMat(365)["t1"];
+                         }
+                     }else if(flag==2){
+                         date = test2.value.split(" - ");
+                         t1=date[0];t2=date[1];
                      }
+
                      var favorable,reviewable,nagetivable;
                      $.ajax({
                          url:"/shop/datas/countdate?t1="+t1+"&t2="+t2,
@@ -336,7 +356,8 @@
                          arr=arr.filter(ele=>{return ele.review_date<t2});
                          return arr;
                      }
-                 })
+                 }
+
                  $('.btn1').triggerHandler('click');
              })
          </script>
