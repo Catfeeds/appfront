@@ -230,14 +230,14 @@
       </div>
           <?php if(count($data)>0){ ?>
       <div style="position: relative;">
-       <div style="width: 180px; position: absolute; top: 20px; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
+       <div style="width: 200px; position: absolute; top: 20px; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
         <div style="display: flex;">
          <div class="dian"></div> 总计
-         <span style="color: rgb(61, 176, 255); font-weight: bolder;"><?=$tot ?></span>记录
+         <span style="color: rgb(61, 176, 255); font-weight: bolder;margin:0 5px;"><?=$tot ?></span>记录
         </div>
         <div style="display: flex;">
          <div class="dian" style="background: rgb(41, 201, 154);"></div> 分
-         <span style="font-weight: bolder; color: rgb(41, 201, 154);"><?=$pages ?></span>页
+         <span style="font-weight: bolder; color: rgb(41, 201, 154);margin:0 5px;"><?=$pages ?></span>页
         </div>
        </div>
       </div>
