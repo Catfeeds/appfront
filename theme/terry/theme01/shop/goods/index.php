@@ -420,9 +420,7 @@ use yii\helpers\Url;
                                                     </td>
                                                     <td class="el-table_2_column_9">
                                                         <div class="cell el-tooltip">
-                                                            <div class="picture">
-                                                                <img src="http://img.uekuek.com/media/catalog/product/<?= $v['image']['main']['image'] ?>"
-                                                                     alt="">
+                                                            <div class="picture" style="background:url('http://img.uekuek.com/media/catalog/product/<?= $v['image']['main']['image'] ?>')no-repeat center center /100% auto">
                                                             </div>
                                                             <div class="contents">
                                                                 <div title="<?= $v["sku"] ?>" class="ddd">
@@ -499,16 +497,16 @@ use yii\helpers\Url;
                                 </div>
                                 <?php if(count($goods)>0){ ?>
                                     <div style="position: relative;">
-                                        <div style="width: 180px; position: absolute; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
+                                        <div style="width: 200px; position: absolute; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
                                             <div style="display: flex;">
                                                 <div class="dian"></div>
                                                 总计
-                                                <span style="color: rgb(61, 176, 255); font-weight: bolder;"><?= $tot ?></span>记录
+                                                <span style="color: rgb(61, 176, 255); font-weight: bolder;margin:0 5px;"><?= $tot ?></span>记录
                                             </div>
                                             <div style="display: flex;">
                                                 <div class="dian" style="background: rgb(41, 201, 154);"></div>
                                                 分
-                                                <span style="font-weight: bolder; color: rgb(41, 201, 154);"><?= $pages ?></span>页
+                                                <span style="font-weight: bolder; color: rgb(41, 201, 154);margin:0 5px;"><?= $pages ?></span>页
                                             </div>
                                         </div>
                                         <div style="margin-top: 40px;">

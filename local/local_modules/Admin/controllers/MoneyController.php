@@ -11,10 +11,10 @@ namespace appfront\local\local_modules\admin\controllers;
 
 use fecshop\app\appfront\modules\AppfrontController;
 use Yii;
+use yii\db\Query;
 use yii\web\Response;
 use yii\data\Pagination;
 use yii\web\UploadedFile;
-
 /**
  * @author Terry Zhao <2358269014@qq.com>
  * @since 1.0
@@ -33,15 +33,121 @@ class MoneyController extends PublicsController
 //=========================财务管理===============================
     //平台财务
     public function actionIndex(){
-        return $this->render($this->action->id);
+    	$beginThismonth=mktime(0,0,0,date('m'),1,date('Y'));
+    	$endThismonth=mktime(23,59,59,date('m'),date('t'),date('Y'));
+    	$sql="SELECT A.shop_name, sum(B.items_count) as items, sum(B.grand_total) as grand
+    			FROM shop as A
+    		    LEFT JOIN sales_flat_order as B on A.shop_id=B.shop_id
+    		   WHERE order_status in(1,3,4,5) AND B.updated_at>{$beginThismonth} AND B.updated_at<{$endThismonth} 
+    		   GROUP BY B.shop_id ";
+    	//AND B.updated_at>{$beginThismonth} AND B.updated_at<{$endThismonth}
+    		$sql.=" ORDER BY items LIMIT 0,10";
+    	//     	return $sql;
+    	$data['list'] = Yii::$app->db->createCommand($sql)->queryAll();
+        return $this->render($this->action->id,$data);
     }
-    //商家财务
+    //商家财务2
     public function actionShop(){
-        return $this->render($this->action->id);
+    	// 查询数据总条数
+    	$res = Yii::$app->db->createCommand("SELECT * FROM shop WHERE shop_state in (0,1,2) AND shop_type=2")->queryAll();
+    	$query = new Query;
+    	$tot = 0;
+    	foreach ($res as $k=>$v){
+    		$tot++;
+    	}
+    	// 实例化分页对象
+    	$pagination = new Pagination([
+    			'defaultPageSize' =>10,
+    			'totalCount' => $tot,
+    			]);
+    	$where;
+    	$data['shop_name']=$_GET['shop_name'];
+    	$data['shop_state']=$_GET['shop_state'];
+    	if($data['shop_state']>0){
+    		$shop_state=$_GET['shop_state'];
+    		if($data['shop_state']==3){
+    			$shop_state=0;
+    		}
+    		$where.=" AND A.shop_state=$shop_state";
+    	}
+    	
+    	if($data['shop_name']){
+    		$where .=" AND A.shop_name like '%{$data['shop_name']}%'";
+    	}
+    	$beginThismonth=mktime(0,0,0,date('m'),1,date('Y'));
+    	$endThismonth=mktime(23,59,59,date('m'),date('t'),date('Y'));
+    	
+    	$sql="SELECT A.shop_name,C.total,B.total_B,A.shop_id ,A.shop_state,D.district_name 
+				 FROM shop as A
+				 LEFT JOIN (SELECT SUM(grand_total) as total_B,shop_id FROM sales_flat_order 
+							WHERE shop_id in(SELECT shop_id FROM shop WHERE shop_type=2 AND shop_state in(0,1,2)) AND updated_at>$beginThismonth AND updated_at<$endThismonth  
+							GROUP BY shop_id) as B ON A.shop_id=B.shop_id
+				 LEFT JOIN (SELECT SUM(grand_total) as total,shop_id FROM sales_flat_order 
+							 WHERE shop_id in(SELECT shop_id FROM shop WHERE shop_type=2 AND shop_state in(0,1,2)) 
+							 GROUP BY shop_id) as C ON A.shop_id=C.shop_id
+				 LEFT JOIN sys_district as D ON A.district_id=D.district_id 
+				WHERE A.shop_type=2 AND A.shop_state in(0,1,2) $where
+    			LIMIT $pagination->offset,$pagination->limit ";
+    	$data["pagination"] = $pagination;
+    	$data['list'] = Yii::$app->db->createCommand($sql)->queryAll();
+        return $this->render($this->action->id,$data);
     }
     //水司财务
     public function actionWater(){
-        return $this->render($this->action->id);
+    	// 查询数据总条数
+    	$res = Yii::$app->db->createCommand("SELECT * FROM shop WHERE shop_state in (0,1,2) AND shop_type=1")->queryAll();
+    	$query = new Query;
+    	$tot = 0;
+    	foreach ($res as $k=>$v){
+    		$tot++;
+    	}
+    	// 实例化分页对象
+    	$pagination = new Pagination([
+    			'defaultPageSize' =>10,
+    			'totalCount' => $tot,
+    			]);
+    	
+    	$where;
+    	$data['shop_name']=$_GET['shop_name'];
+    	$data['shop_state']=$_GET['shop_state'];
+    	if($data['shop_state']>0){
+    		$shop_state=$_GET['shop_state'];
+    		if($data['shop_state']==3){
+    			$shop_state=0;
+    		}
+    		$where.=" AND A.shop_state=$shop_state";
+    	}
+    	if($data['shop_name']){
+    		$where .=" AND A.shop_name like '%{$data['shop_name']}%'";
+    	}
+    	$beginThismonth=mktime(0,0,0,date('m'),1,date('Y'));
+    	$endThismonth=mktime(23,59,59,date('m'),date('t'),date('Y'));
+    	$sql="SELECT A.shop_name,C.total,B.total_B,A.shop_id ,A.shop_state,D.district_name 
+				FROM shop as A
+				LEFT JOIN (SELECT SUM(grand_total) as total_B,shop_id FROM sales_flat_order 
+						   WHERE shop_id in(SELECT shop_id FROM shop WHERE shop_type=1 AND shop_state in(0,1,2)) AND updated_at>$beginThismonth AND updated_at<$endThismonth  
+						   GROUP BY shop_id) as B ON A.shop_id=B.shop_id
+				LEFT JOIN (SELECT SUM(grand_total) as total,shop_id FROM sales_flat_order 
+						   WHERE shop_id in(SELECT shop_id FROM shop WHERE shop_type=1 AND shop_state in(0,1,2)) 
+						   GROUP BY shop_id) as C ON A.shop_id=C.shop_id
+				LEFT JOIN sys_district as D ON A.district_id=D.district_id 
+			   WHERE A.shop_type=1 AND A.shop_state in(0,1,2) $where
+    		   LIMIT $pagination->offset,$pagination->limit ";
+    	$data["pagination"] = $pagination;
+    	$data['list'] = Yii::$app->db->createCommand($sql)->queryAll();
+        return $this->render($this->action->id,$data);
+    }
+    public function actionFrozen(){
+    	$id=$_GET['id'];
+    	$sql="UPDATE shop SET shop_state=2 WHERE shop_id=".$id;
+    	$arr = Yii::$app->db->createCommand($sql)->execute();
+    	return $arr;
+    }
+    public function actionOpen(){
+    	$id=$_GET['id'];
+    	$sql="UPDATE shop SET shop_state=1 WHERE shop_id=".$id;
+    	$arr = Yii::$app->db->createCommand($sql)->execute();
+    	return $arr;
     }
     /*
      * 返回最近小时的时间和成交额
@@ -184,14 +290,17 @@ class MoneyController extends PublicsController
     	//     	    	print_r($date);
     	return json_encode($date);
     }
-    //
+    //当月销售排行前十
     public function actionRank(){
+    	$beginThismonth=mktime(0,0,0,date('m'),1,date('Y'));
+    	$endThismonth=mktime(23,59,59,date('m'),date('t'),date('Y'));
     	$type=$_GET['type'];
     	$sql="SELECT A.shop_name, sum(B.items_count) as items, sum(B.grand_total) as grand 
     			FROM shop as A
     		    LEFT JOIN sales_flat_order as B on A.shop_id=B.shop_id
-    		   WHERE order_status in(1,3,4,5) 
+    		   WHERE order_status in(1,3,4,5) AND B.updated_at>{$beginThismonth} AND B.updated_at<{$endThismonth} 
     		   GROUP BY B.shop_id ";
+    	//AND B.updated_at>{$beginThismonth} AND B.updated_at<{$endThismonth}
     	if($type==1){
     		$sql.=" ORDER BY items LIMIT 0,10";
     	}else if($type==2){
@@ -202,6 +311,51 @@ class MoneyController extends PublicsController
     	return json_encode($arr);
      }
     
+    /* 导出当月排行 */
+    public function actionExport(){
+    	header('Content-Type: text/xls');
+    	header ( "Content-type:application/vnd.ms-excel;charset=utf-8" );
+    	header('Content-Disposition: attachment;filename=" 数据导出.xls"');
+    	header('Cache-Control:must-revalidate,post-check=0,pre-check=0');
+    	header('Expires:0');
+    	header('Pragma:public');
+    	//利用表格导出到excel文件
+    	$table = '<table border="1"><tr>
+        <th colspan="5">本月营业排行TOP10</th>
+        </tr><tr>';
+    	$th = array(
+    			'排行','店铺名称','销售量（件）','销售额（元）','均价（元）'
+    	);
+    	$beginThismonth=mktime(0,0,0,date('m'),1,date('Y'));
+    	$endThismonth=mktime(23,59,59,date('m'),date('t'),date('Y'));
+    	$sql="SELECT A.shop_name, sum(B.items_count) as items, sum(B.grand_total) as grand 
+    			FROM shop as A
+    		    LEFT JOIN sales_flat_order as B on A.shop_id=B.shop_id
+    		   WHERE order_status in(1,3,4,5) AND B.updated_at>{$beginThismonth} AND B.updated_at<{$endThismonth} 
+    		   GROUP BY B.shop_id ";
+    	//AND B.updated_at>{$beginThismonth} AND B.updated_at<{$endThismonth}
+    		$sql.=" ORDER BY items LIMIT 0,10";
+    	$data = Yii::$app->db->createCommand($sql)->queryAll();
+    	//循环表头数组到excel里
+    	foreach($th as $i){
+    		$table.="<th>".$i."</th>";
+    	}
+    	$table.='</tr>';
+    	//将数据以表格形式循环到excel，这里根据实际数组不同表格可以自行拼接调整
+    	foreach ($data as $k=>$v){
+    		$table .= '<tr>';
+    		$table .= '<td>' . ($k+1). '</td>';
+    		$table .= '<td>' . $v['shop_name']. '</td>';
+    		$table .= '<td>' . $v['items']. '</td>';
+    		$table .= '<td>' . $v['grand']. '</td>';
+    		$table .= '<td>' . ($v['grand']/$v['items']). '</td>';
+    		$table .= '</tr>';
+    	}
+    	$table .='</table>';
+    	echo $table;
+    	
+    	 
+    }
     
 }
 

@@ -403,16 +403,16 @@ use yii\helpers\Url;
                                         </div>
                                             <?php if(count($orders)>0){ ?>
                                             <div style="position: relative;">
-                                                <div style="width: 180px; position: absolute; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
+                                                <div style="width: 200px; position: absolute; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
                                                     <div style="display: flex;">
                                                         <div class="dian"></div>
                                                         总计
-                                                        <span style="color: rgb(61, 176, 255); font-weight: bolder;"><?= $count ?></span>记录
+                                                        <span style="color: rgb(61, 176, 255); font-weight: bolder;margin:0 5px;"><?= $count ?></span>记录
                                                     </div>
                                                     <div style="display: flex;">
                                                         <div class="dian" style="background: rgb(41, 201, 154);"></div>
                                                         分
-                                                        <span style="font-weight: bolder; color: rgb(41, 201, 154);"><?= ceil($count/$pagination->limit) ?></span>页
+                                                        <span style="font-weight: bolder; color: rgb(41, 201, 154);margin:0 5px;"><?= ceil($count/$pagination->limit) ?></span>页
                                                     </div>
                                                 </div>
                                             </div>

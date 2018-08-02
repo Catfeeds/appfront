@@ -250,7 +250,7 @@ use yii\helpers\Url;
     }
 
     .freeze {
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
@@ -317,7 +317,7 @@ use yii\helpers\Url;
 
 </style>
 <div class="box">
-    <div class="freeze" style="display: none;">
+    <div class="freeze" style="display:none;">
         <div class="freeze-content">
             <div style="width: 438px; height: 30px; border-bottom: 1px solid rgb(48, 163, 254); color: rgb(48, 163, 254); font-size: 20px; font-weight: bolder;">
                 通知
@@ -754,12 +754,12 @@ use yii\helpers\Url;
                             <div style="display: flex;">
                                 <div class="dian"></div>
                                 总计
-                                <span style="color: rgb(61, 176, 255); font-weight: bolder;"><?= $count ?></span>记录
+                                <span style="color: rgb(61, 176, 255); font-weight: bolder;margin:0 5px;"><?= $count ?></span>记录
                             </div>
                             <div style="display: flex;">
                                 <div class="dian" style="background: rgb(41, 201, 154);"></div>
                                 分
-                                <span style="font-weight: bolder; color: rgb(41, 201, 154);"><?= ceil($count / $pagination->limit) ?></span>页
+                                <span style="font-weight: bolder; color: rgb(41, 201, 154);margin:0 5px;"><?= ceil($count / $pagination->limit) ?></span>页
                             </div>
                         </div>
                         <button type="button" class="el-button green el-button--success is-round" style="padding:0;">

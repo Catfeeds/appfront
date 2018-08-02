@@ -397,6 +397,10 @@
 
 <script>
     function shopload(url) {
+<<<<<<< HEAD
+        $("#el-form").attr("action", url);
+        $("#el-form").submit();
+=======
         // $("#el-form").attr("action", url);
         $("#el-form").submit(function (e) {
             e.preventDefault();
@@ -410,6 +414,7 @@
                 }
             })
         });
+>>>>>>> 05ac79974e7abb7992f1f03577b9bdcc91df7f98
     }
 
     /* $(".el-button").onclick()

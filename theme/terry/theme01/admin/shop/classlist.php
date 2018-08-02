@@ -72,11 +72,13 @@ use yii\helpers\Url;
         <span>·&nbsp;分类管理</span>
     </div>
     <div class="adminmannager-search">
-        <span>分类名称</span>
-        <input type="text">
-        <div class="indexsearch ">
-            <input type="submit" class="search-img" value="">
-        </div>
+        <form action="<?= Yii::$service->url->getUrl('admin/shop/classlist') ?>" method="get">
+            <span>分类名称</span>
+            <input type="text" name="name">
+            <div class="indexsearch ">
+                <input type="submit" class="search-img" value="">
+            </div>
+        </form>
         <a class="addadmin" href="/admin/shop/classadd">添加顶级分类</a>
     </div>
     <!--管理员列表-->
@@ -155,9 +157,42 @@ use yii\helpers\Url;
             </tbody>
         </table >
     </div>
+    <div class="el-table__column-resize-proxy" style="display: none;"></div>
 
 </div>
 </div>
+    <?php if(count($count)>0) { ?>
+                    <div>
+                        <div style="width: 180px; float: right; margin-top: 28px; display: flex; justify-content: space-between;">
+                            <div style="display: flex;">
+                                <div class="dian"></div>
+                                总计
+                                <span style="color: rgb(61, 176, 255); font-weight: bolder;"><?= $count ?></span>记录
+                            </div>
+                            <div style="display: flex;">
+                                <div class="dian" style="background: rgb(41, 201, 154);"></div>
+                                分
+                                <span style="font-weight: bolder; color: rgb(41, 201, 154);"><?= ceil($count / $pagination->limit) ?></span>页
+                            </div>
+                        </div>
+                        <button type="button" class="el-button green el-button--success is-round" style="padding:0;">
+                            <span>导出表格</span></button>
+                    </div>
+                    <div>
+                        <div style="width: 400px; font-size: 12px; float: right; display: flex; justify-content: space-between;">
+                            <?php
+                            echo LinkPager::widget([
+                                'pagination' => $pagination,
+                                'firstPageLabel' => '首页',
+                                'lastPageLabel' => '尾页',
+
+                                'nextPageLabel' => '>',
+                                'prevPageLabel' => '<',
+                            ]);
+                            ?>
+                        </div>
+                    </div>
+                <?php } ?>
 <script>
     function sort(obj,id){
 

@@ -141,10 +141,12 @@
                             reader.onloadend = function (e) {
 
                                 $(".avatar-uploader").append($("<input type='file' name='file[]' onchange='uploads(this)' class='img el-upload__input'>"));
-                                $("<img>").css({
+                                $("<div>").css({
+                                    "display":"inline-block",
                                     "width": "82px",
-                                    "height": "82px"
-                                }).attr("src", e.target.result).appendTo($("#abc"));
+                                    "height": "82px",
+                                    "background":"url("+e.target.result+")no-repeat center center /100% auto"
+                                }).appendTo($("#abc"));
                             };
                         }
                     }
@@ -194,10 +196,12 @@
                                 reader.onloadend = function (e) {
 
                                     $(".qweasd1").append($("<input type='file' name='asd[]' onchange='uploads1(this)' class='img el-upload__input'>"));
-                                    $("<img>").css({
-                                        // "width": "218px",
-                                        "height": "312px"
-                                    }).attr("src", e.target.result).appendTo($(".qweasd1"));
+                                    $("<div>").css({
+                                        "display":"inline-block",
+                                        "width": "218px",
+                                        "height": "312px",
+                                        "background":"url("+e.target.result+")no-repeat center center /100% auto"
+                                    }).appendTo($(".qweasd1"));
                                 };
                             }
                         }

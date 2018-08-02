@@ -133,19 +133,19 @@ use yii\helpers\Url;
                         </div>
                         <div class="el-table__header-wrapper">
                             <table cellspacing="0" cellpadding="0" border="0" class="el-table__header"
-                                   style="width: 1064px;">
+                                   style="width: 1012px;">
                                 <colgroup>
-                                    <col name="el-table_18_column_144" width="40">
-                                    <col name="el-table_18_column_145" width="110">
-                                    <col name="el-table_18_column_146" width="88">
-                                    <col name="el-table_18_column_147" width="84">
-                                    <col name="el-table_18_column_148" width="130">
-                                    <col name="el-table_18_column_149" width="130">
-                                    <col name="el-table_18_column_150" width="130">
-                                    <col name="el-table_18_column_151" width="84">
-                                    <col name="el-table_18_column_152" width="84">
-                                    <col name="el-table_18_column_153" width="84">
-                                    <col name="el-table_18_column_154" width="100">
+                                    <col name="el-table_18_column_144" width="45">
+                                    <col name="el-table_18_column_145" width="80">
+                                    <col name="el-table_18_column_146" width="90">
+                                    <col name="el-table_18_column_147" width="80">
+                                    <col name="el-table_18_column_148" width="129">
+                                    <col name="el-table_18_column_149" width="129">
+                                    <col name="el-table_18_column_150" width="129">
+                                    <col name="el-table_18_column_151" width="80">
+                                    <col name="el-table_18_column_152" width="80">
+                                    <col name="el-table_18_column_153" width="80">
+                                    <col name="el-table_18_column_154" width="90">
                                     <col name="gutter" width="0">
                                 </colgroup>
                                 <thead class="has-gutter">
@@ -198,25 +198,25 @@ use yii\helpers\Url;
                         <?php if(count($res)>0){ ?>
                             <div class="el-table__body-wrapper is-scrolling-none">
                             <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
-                                   style="width: 1064px;">
+                                   style="width: 1012px;">
                                 <colgroup>
-                                    <col name="el-table_18_column_144" width="40">
-                                    <col name="el-table_18_column_145" width="110">
-                                    <col name="el-table_18_column_146" width="88">
-                                    <col name="el-table_18_column_147" width="84">
-                                    <col name="el-table_18_column_148" width="130">
-                                    <col name="el-table_18_column_149" width="130">
-                                    <col name="el-table_18_column_150" width="130">
-                                    <col name="el-table_18_column_151" width="84">
-                                    <col name="el-table_18_column_152" width="84">
-                                    <col name="el-table_18_column_153" width="84">
-                                    <col name="el-table_18_column_154" width="100">
+                                    <col name="el-table_18_column_144" width="45">
+                                    <col name="el-table_18_column_145" width="80">
+                                    <col name="el-table_18_column_146" width="90">
+                                    <col name="el-table_18_column_147" width="80">
+                                    <col name="el-table_18_column_148" width="129">
+                                    <col name="el-table_18_column_149" width="129">
+                                    <col name="el-table_18_column_150" width="129">
+                                    <col name="el-table_18_column_151" width="80">
+                                    <col name="el-table_18_column_152" width="80">
+                                    <col name="el-table_18_column_153" width="80">
+                                    <col name="el-table_18_column_154" width="90">
                                 </colgroup>
                                 <tbody style="font-size: 12px;color:#82898e">
                                 <?php foreach ($res as $key => $v) { ?>
                                     <tr class="el-table__row">
                                         <td class="el-table_18_column_144  el-table-column--selection">
-                                            <div class="cell"><label role="checkbox" class="el-checkbox"><span
+                                            <div class="cell el-tooltip"><label role="checkbox" class="el-checkbox"><span
                                                             aria-checked="mixed" class="el-checkbox__input"><span
                                                                 class="el-checkbox__inner"></span><input type="checkbox"
                                                                                                          aria-hidden="true"
@@ -224,33 +224,33 @@ use yii\helpers\Url;
                                                                                                          value=""></span>
                                                     <!----></label></div>
                                         </td>
-                                        <td class="el-table_18_column_145  ">
-                                            <div class="cell"><?= $key + 1 + $pagination->limit * $pagination->offset ?></div>
+                                        <td class="el-table_18_column_145">
+                                            <div class="cell el-tooltip"><?= $key + 1 + $pagination->limit * $pagination->offset ?></div>
                                         </td>
-                                        <td class="el-table_18_column_146  ">
-                                            <div class="cell"
+                                        <td class="el-table_18_column_146">
+                                            <div class="cell el-tooltip"
                                                  title="<?= $v["increment_id"] ?>"><?= $v["increment_id"] ?></div>
                                         </td>
                                         <td class="el-table_18_column_147  ">
-                                            <div class="cell el-tooltip" style="width: 83px;"
+                                            <div class="cell el-tooltip"
                                                  title="<?= $v["customer_firstname"] ?>"><?= $v["customer_firstname"] ?></div>
                                         </td>
                                         <td class="el-table_18_column_148  ">
-                                            <div class="cell" title="<?= $v["created_at"] ?>"><?php
+                                            <div class="cell el-tooltip" title="<?= $v["created_at"] ?>"><?php
                                                 if ($v["created_at"]) {
                                                     echo date("Y:m:d H:i:s", $v["created_at"]);
                                                 } ?>
                                             </div>
                                         </td>
                                         <td class="el-table_18_column_149  ">
-                                            <div class="cell" title="<?= $v["paypal_order_datetime"] ?>"><?php
+                                            <div class="cell el-tooltip" title="<?= $v["paypal_order_datetime"] ?>"><?php
                                                 if ($v["paypal_order_datetime"]) {
                                                     echo date("Y:m:d H:i:s", $v["paypal_order_datetime"]);
                                                 } ?>
                                             </div>
                                         </td>
                                         <td class="el-table_18_column_150  ">
-                                            <div class="cell" title="<?= $v["refund_at"] ?>">
+                                            <div class="cell el-tooltip" title="<?= $v["refund_at"] ?>">
                                                 <?php
                                                 if ($v["refund_at"]) {
                                                     echo date("Y:m:d H:i:s", $v["refund_at"]);
@@ -259,14 +259,13 @@ use yii\helpers\Url;
                                             </div>
                                         </td>
                                         <td class="el-table_18_column_151  ">
-                                            <div class="cell el-tooltip" style="width: 83px;">退款</div>
+                                            <div class="cell el-tooltip">退款</div>
                                         </td>
                                         <td class="el-table_18_column_152  ">
-                                            <div class="cell el-tooltip"
-                                                 style="width: 83px;"><?= $v["operator"] ?></div>
+                                            <div class="cell el-tooltip"><?= $v["operator"] ?></div>
                                         </td>
                                         <td class="el-table_18_column_153  ">
-                                            <div class="cell el-tooltip" style="width: 83px;">
+                                            <div class="cell el-tooltip">
                                                 <?php
                                                 if ($v["order_status"] == 5) {
                                                     echo "未处理";
@@ -277,7 +276,7 @@ use yii\helpers\Url;
                                             </div>
                                         </td>
                                         <td class="el-table_18_column_154  ">
-                                            <div class="cell el-tooltip" style="width: 99px;"><a data-v-7a00a356=""
+                                            <div class="cell el-tooltip"><a data-v-7a00a356=""
                                                                                                  href="#/OrderDetails"
                                                                                                  class="">
                                                     <a href="<?= Yii::$service->url->geturl("/shop/orders/seedispute?order_id=" . $v[order_id]) ?>">
@@ -307,16 +306,16 @@ use yii\helpers\Url;
                         <?php if(count($res)>0){ ?>
                     <div data-v-7a00a356="" style="position: relative;">
                         <div data-v-7a00a356=""
-                             style="width: 180px; position: absolute; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
+                             style="width: 200px; position: absolute; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
                             <div data-v-7a00a356="" style="display: flex;">
                                 <div data-v-7a00a356="" class="dian"></div>
                                 总计<span data-v-7a00a356=""
-                                        style="color: rgb(61, 176, 255); font-weight: bolder;"><?= $count ?></span>记录
+                                        style="color: rgb(61, 176, 255); font-weight: bolder;margin:0 5px;"><?= $count ?></span>记录
                             </div>
                             <div data-v-7a00a356="" style="display: flex;">
                                 <div data-v-7a00a356="" class="dian" style="background: rgb(41, 201, 154);"></div>
                                 分<span data-v-7a00a356=""
-                                       style="font-weight: bolder; color: rgb(41, 201, 154);"><?= ceil($count / $pagination->limit) ?></span>页
+                                       style="font-weight: bolder; color: rgb(41, 201, 154);margin:0 5px;"><?= ceil($count / $pagination->limit) ?></span>页
                             </div>
                         </div>
                         <div data-v-7a00a356="" style="margin-top: 40px;">

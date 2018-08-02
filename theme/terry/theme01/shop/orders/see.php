@@ -275,44 +275,47 @@
                                 <tbody style="font-size: 12px;color:#82898e">
                                 <tr class="el-table__row">
                                     <td class="el-table_2_column_11  ">
-                                        <div class="cell el-tooltip"><?= $res["increment_id"] ?></div>
+                                        <div class="cell el-tooltip" title="<?= $res["increment_id"] ?>"><?= $res["increment_id"] ?></div>
                                     </td>
                                     <td class="el-table_2_column_12  ">
-                                        <div class="cell el-tooltip"><?= $res["order_remark"] ?></div>
+                                        <div class="cell el-tooltip" title="<?= $res["order_remark"] ?>"><?= $res["order_remark"] ?></div>
                                     </td>
                                     <td class="el-table_2_column_13  ">
-                                        <div class="cell el-tooltip"><?= $res["payment_method"] ?></div>
+                                        <div class="cell el-tooltip" title="<?= $res["payment_method"] ?>"><?= $res["payment_method"] ?></div>
                                     </td>
-                                    <td class="el-table_2_column_15  ">
-                                        <div class="cell" title="<?= date("Y-m-d H:i:s", $res[created_at]) ?>">
+                                    <td class="el-table_2_column_14  ">
+                                        <div class="cell el-tooltip" title="<?= date("Y-m-d H:i:s", $res[created_at]) ?>">
                                             <?php if ($res[created_at]) { ?>
                                                 <?= date("Y-m-d H:i:s", $res[created_at]) ?>
                                             <?php } ?>
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_15  ">
-                                        <div class="cell" title="<?= date("Y-m-d H:i:s", $res[created_at]) ?>">
+                                        <div class="cell el-tooltip" title="<?= date("Y-m-d H:i:s", $res[created_at]) ?>">
                                             <?php if ($res[paypal_order_datetime]) { ?>
                                                 <?= date("Y-m-d H:i:s", $res[paypal_order_datetime]) ?>
                                             <?php } ?>
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_16  ">
-                                        <div class="cell el-tooltip"><?php
+                                        <div class="cell el-tooltip" title="<?php
+                                        $arr = ["待支付", "待接单", "待确认", "待评价", "已完成", "已退单"];
+                                        echo $arr[$res["order_status"]];
+                                        ?>"><?php
                                             $arr = ["待支付", "待接单", "待确认", "待评价", "已完成", "已退单"];
                                             echo $arr[$res["order_status"]];
                                             ?>
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_17  ">
-                                        <div class="cell" title="<?= date("Y-m-d H:i:s", $res[receipt_at]) ?>">
+                                        <div class="cell el-tooltip" title="<?= date("Y-m-d H:i:s", $res[receipt_at]) ?>">
                                             <?php if ($res[receipt_at]) { ?>
                                                 <?= date("Y-m-d H:i:s", $res[receipt_at]) ?>
                                             <?php } ?>
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_18  ">
-                                        <div class="cell" title="<?= date("Y-m-d H:i:s", $res[evaluate_at]) ?>">
+                                        <div class="cell el-tooltip" title="<?= date("Y-m-d H:i:s", $res[evaluate_at]) ?>">
                                             <?php if ($res[evaluate_at]) { ?>
                                                 <?= date("Y-m-d H:i:s", $res[evaluate_at]) ?>
                                             <?php } ?>
@@ -399,13 +402,13 @@
                                 <tbody style="font-size: 12px;color:#82898e">
                                 <tr class="el-table__row">
                                     <td class="el-table_3_column_19  ">
-                                        <div class="cell el-tooltip"><?= $res["customer_firstname"] ?></div>
+                                        <div class="cell el-tooltip" title="<?= $res["customer_firstname"] ?>"><?= $res["customer_firstname"] ?></div>
                                     </td>
                                     <td class="el-table_3_column_20  ">
-                                        <div class="cell el-tooltip"><?= $res["customer_telephone"] ?></div>
+                                        <div class="cell el-tooltip" title="<?= $res["customer_telephone"] ?>"><?= $res["customer_telephone"] ?></div>
                                     </td>
                                     <td class="el-table_3_column_21  ">
-                                        <div class="cell el-tooltip"><?= $res["customer_address_country"] . $res["customer_address_state"] . $res["customer_address_city"] . $res["customer_address_street1"] ?></div>
+                                        <div class="cell el-tooltip" title="<?= $res["customer_address_country"] . $res["customer_address_state"] . $res["customer_address_city"] . $res["customer_address_street1"] ?>"><?= $res["customer_address_country"] . $res["customer_address_state"] . $res["customer_address_city"] . $res["customer_address_street1"] ?></div>
                                     </td>
                                     <td class="el-table_3_column_22  ">
                                         <div class="cell  el-tooltip"
@@ -416,10 +419,10 @@
                                         </div>
                                     </td>
                                     <td class="el-table_3_column_23  ">
-                                        <div class="cell el-tooltip"><?= $res["customer_address_zip"] ?></div>
+                                        <div class="cell el-tooltip" title="<?= $res["customer_address_zip"] ?>"><?= $res["customer_address_zip"] ?></div>
                                     </td>
                                     <td class="el-table_3_column_24  ">
-                                        <div class="cell el-tooltip"><?= $res["customer_email"] ?></div>
+                                        <div class="cell el-tooltip" title="<?= $res["customer_email"] ?>"><?= $res["customer_email"] ?></div>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -510,19 +513,19 @@
                                             </div>
                                         </td>
                                         <td class="el-table_5_column_32  ">
-                                            <div class="cell el-tooltip"><?= $v["sku"] ?></div>
+                                            <div class="cell el-tooltip" title="<?= $v["sku"] ?>"><?= $v["sku"] ?></div>
                                         </td>
                                         <td class="el-table_5_column_33  ">
-                                            <div class="cell el-tooltip"><?= $v["price"] ?></div>
+                                            <div class="cell el-tooltip" title="<?= $v["price"] ?>"><?= $v["price"] ?></div>
                                         </td>
                                         <td class="el-table_5_column_34  ">
-                                            <div class="cell el-tooltip"><?= $v["qty"] ?></div>
+                                            <div class="cell el-tooltip" title="<?= $v["qty"] ?>"><?= $v["qty"] ?></div>
                                         </td>
                                         <td class="el-table_5_column_35  ">
-                                            <div class="cell el-tooltip"><?= $v["kc"] ?></div>
+                                            <div class="cell el-tooltip" title="<?= $v["kc"] ?>"><?= $v["kc"] ?></div>
                                         </td>
                                         <td class="el-table_5_column_36  ">
-                                            <div class="cell el-tooltip"><?= $v["row_total"] ?></div>
+                                            <div class="cell el-tooltip" title="<?= $v["row_total"] ?>"><?= $v["row_total"] ?></div>
                                         </td>
                                     </tr>
                                 <?php } ?>
@@ -610,26 +613,26 @@
                                 <tbody style="font-size: 12px;color:#82898e">
                                 <tr class="el-table__row">
                                     <td class="el-table_6_column_39  ">
-                                        <div class="cell"><?= $res["subtotal"] ?></div>
+                                        <div class="cell el-tooltip" title="<?= $res["subtotal"] ?>"><?= $res["subtotal"] ?></div>
                                     </td>
                                     <td class="el-table_6_column_40  ">
-                                        <div class="cell"><?= $res["discount_amount"] ?></div>
+                                        <div class="cell el-tooltip" title="<?= $res["discount_amount"] ?>"><?= $res["discount_amount"] ?></div>
                                     </td>
                                     <td class="el-table_6_column_41  ">
-                                        <div class="cell"><?= $res["coin_num"] ?>个</div>
+                                        <div class="cell el-tooltip" title="<?= $res["coin_num"] ?>"><?= $res["coin_num"] ?>个</div>
                                     </td>
                                     <td class="el-table_6_column_42  ">
-                                        <div class="cell"><?php
+                                        <div class="cell el-tooltip"><?php
                                                 if(isset($res["discount"])){
                                                     echo "-" . $res["discount"];
                                                 }
                                             ?></div>
                                     </td>
                                     <td class="el-table_6_column_43  ">
-                                        <div class="cell"><?= $res["grand_total"] ?></div>
+                                        <div class="cell el-tooltip"><?= $res["grand_total"] ?></div>
                                     </td>
                                     <td class="el-table_6_column_44  ">
-                                        <div class="cell"><?= $res["grand_total"] - $res["subtotal_with_discount"] ?></div>
+                                        <div class="cell el-tooltip"><?= $res["grand_total"] - $res["subtotal_with_discount"] ?></div>
                                     </td>
                                 </tr><!----></tbody>
                             </table><!----><!----></div><!----><!----><!----><!---->
