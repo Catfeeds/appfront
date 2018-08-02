@@ -71,7 +71,7 @@
         </div>
 
         <form class="el-form" method="post" enctype="multipart/form-data"
-              action="<?= Yii::$service->url->geturl('admin/system/addruler') ?>">
+              action="<?= Yii::$service->url->geturl('admin/system/addruleraction') ?>">
             <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>"/>
             <div class="el-row" style="width: 500px;">
                 <div class="el-form-item">
@@ -83,9 +83,17 @@
                     </div>
                 </div>
                 <div class="el-form-item">
+                    <label class="el-form-item__label" style="width: 120px;">排序:</label>
+                    <div class="el-form-item__content" style="margin-left: 120px;">
+                        <div class="el-input">
+                            <input type="text" value="" name="sort" placeholder="" class="el-input__inner">
+                        </div>
+                    </div>
+                </div>
+                <div class="el-form-item">
                     <label class="el-form-item__label" style="width: 120px;">特权介绍:</label>
                     <div class="el-form-item__content" style="margin-left: 120px;">
-                        <textarea id="" name="short_description" placeholder="" class="details"></textarea>
+                        <textarea id="" name="info" placeholder="" class="details"></textarea>
                     </div>
                 </div>
                 <div class="el-form-item">
@@ -95,7 +103,7 @@
                     </div>
                     <div class="el-form-item__content" id="abc" style="margin-left: 120px;">
                         <div class="close" onclick="del(this)">&times;</div>
-                        <input type="file" onchange="uploads(this)" name="file[]" style="display:none" class="img">
+                        <input accept="jpg;" type="file" onchange="uploads(this)" name="file[]" style="display:none" class="img">
                     </div>
                     <div style="line-height: 28px;font-size:14px;color: #A2D5FD;margin-top:10px;margin-left:130px;">
                         图标尺寸为（宽*高）：200*200px
