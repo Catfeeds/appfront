@@ -421,11 +421,11 @@ class SystemController extends PublicsController
         $res = Yii::$app->request;
         $data = $res->get(); 
         foreach ($data as $key => $value) {
-            $pid = json_encode($value['pid']);
-            $value = json_encode($value['value']);
-            $sql = "update member_rule set recharge = '$value[money]',pid = '$pid','value'=>'$value' where id = $key";
+            $rule = json_encode($value);
+            $sql = "update member_rule set recharge = '$value[money]',rule = '$rule' where id = $key";
             $res = Yii::$app->db->createCommand($sql)->execute();
         }
+        return $this->redirect("/admin/system/vipruler");
     }
 
 //=========================充值设置管理===============================
