@@ -23,10 +23,12 @@ use yii\helpers\Url;
 
     .content .shuaixuan {
         height: 46px;
-        width: 100%;
+        width: 800px;
         display: flex;
         justify-content: space-between;
         line-height: 46px;
+        color: #a4adb5;
+        font-size: 12px;
     }
 
     .content .shuaixuan .xiala {
@@ -86,42 +88,26 @@ use yii\helpers\Url;
                 </div>
                 <ul data-v-7a00a356="" class="shuaixuan">
                     <li data-v-7a00a356="" style="display: flex;align-items: center">
-                        <form>
-                            <select name="class" id="" class="el-select xiala chuli" style="margin-left:10px;">
-                                <option value="" style="display: none;">请选择处理状态</option>
-                                <option value="5">未处理</option>
-                                <option value="6">已处理</option>
-                            </select>
-                        </form>
-                    </li>
-                    <li data-v-7a00a356="">
-                        <select name="class" id="" class="el-select xiala">
-                            <option value="" style="display: none;">请选择纠纷类型</option>
-                            <option value="">1</option>
-                            <option value="">1</option>
-                            <option value="">1</option>
+                        处理状态&nbsp;&nbsp;<select name="class" id="" class="el-select xiala chuli" style="margin-left:10px;">
+                            <option value="" style="display: none;">请选择处理状态</option>
+                            <option value="5">未处理</option>
+                            <option value="6">已处理</option>
                         </select>
                     </li>
                     <li data-v-7a00a356="">
-                        <div data-v-7a00a356="" class="el-input" style="width: 160px;">
-                            <input type="text"
-                                   autocomplete="off"
-                                   placeholder="请输入发货单流水号"
-                                   class="el-input__inner">
-                        </div>
-                    </li>
-                    <li data-v-7a00a356="">
-                        <div data-v-7a00a356="" class="el-input" style="width: 150px;"><!----><input type="text"
+                        订单号&nbsp;&nbsp;<div data-v-7a00a356="" class="el-input" style="width: 150px;"><!----><input type="text"
                                                                                                      autocomplete="off"
                                                                                                      placeholder="请输入订单号"
-                                                                                                     class="el-input__inner increment_id" name="increment_id">
+                                                                                                     class="el-input__inner increment_id"
+                                                                                                     name="increment_id">
                             <!----><!----><!----></div>
                     </li>
                     <li data-v-7a00a356="">
-                        <div data-v-7a00a356="" class="el-input" style="width: 200px;"><!----><input type="text"
+                        姓名&nbsp;&nbsp;<div data-v-7a00a356="" class="el-input" style="width: 200px;"><!----><input type="text"
                                                                                                      autocomplete="off"
                                                                                                      placeholder="请输入收货人姓名"
-                                                                                                     class="el-input__inner customer_firstname" name="customer_firstname">
+                                                                                                     class="el-input__inner customer_firstname"
+                                                                                                     name="customer_firstname">
                             <!----><!----><!----></div>
                     </li>
                     <li data-v-7a00a356="">
@@ -209,7 +195,8 @@ use yii\helpers\Url;
                                 </thead>
                             </table>
                         </div>
-                        <div class="el-table__body-wrapper is-scrolling-none">
+                        <?php if(count($res)>0){ ?>
+                            <div class="el-table__body-wrapper is-scrolling-none">
                             <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
                                    style="width: 1064px;">
                                 <colgroup>
@@ -293,8 +280,9 @@ use yii\helpers\Url;
                                             <div class="cell el-tooltip" style="width: 99px;"><a data-v-7a00a356=""
                                                                                                  href="#/OrderDetails"
                                                                                                  class="">
-                                                    <a href="<?= Yii::$service->url->geturl("/shop/orders/seedispute?order_id=".$v[order_id]) ?>">
-                                                        <button data-v-7a00a356="" type="button" class="el-button el-button--text el-button--small">
+                                                    <a href="<?= Yii::$service->url->geturl("/shop/orders/seedispute?order_id=" . $v[order_id]) ?>">
+                                                        <button data-v-7a00a356="" type="button"
+                                                                class="el-button el-button--text el-button--small">
                                                             <span>查看</span>
                                                         </button>
                                                     </a>
@@ -311,8 +299,12 @@ use yii\helpers\Url;
                                 </tbody>
                             </table>
                         </div>
+                        <?php }else{ ?>
+                            <div style="width: 300px;height: 100px;background: url('/public/empty.jpg') center center/100% auto no-repeat;margin: 0 auto">
+                        <?php } ?>
                         <div class="el-table__column-resize-proxy" style="display: none;"></div>
                     </div>
+                        <?php if(count($res)>0){ ?>
                     <div data-v-7a00a356="" style="position: relative;">
                         <div data-v-7a00a356=""
                              style="width: 180px; position: absolute; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
@@ -350,22 +342,23 @@ use yii\helpers\Url;
                             ?>
                         </div>
                     </div>
+                        <?php } ?>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script>
-    $(function(){
+    $(function () {
         console.log($(".chuli"));
         let orderStatus = "";
-        $(".chuli").on("change",function () {
+        $(".chuli").on("change", function () {
             orderStatus = $('form').serializeArray()[0]['value'];
         })
-        $(".sousuo").on("click",function () {
+        $(".sousuo").on("click", function () {
             let customer_firstname = $("input.customer_firstname").val();
             let increment_id = $("input.increment_id").val();
-            location.href="<?= Yii::$service->url->geturl("/shop/orders/dispute?") ?>"+`customer_firstname=${customer_firstname}&increment_id=${increment_id}&orderStatus=${orderStatus}`;
+            location.href = "<?= Yii::$service->url->geturl("/shop/orders/dispute?") ?>" + `customer_firstname=${customer_firstname}&increment_id=${increment_id}&orderStatus=${orderStatus}`;
         })
 
     })

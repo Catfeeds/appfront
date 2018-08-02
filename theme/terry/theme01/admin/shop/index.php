@@ -21,11 +21,13 @@ use yii\helpers\Url;
                 </div>
                 <div class="search">
                     <span>商家名称</span>
-                    <input type="text" name="shop_name" value="<?= $shop_name ?>">
+                    <input type="text" name="shop_name" value="<?= $shop_name ?>" placeholder="请输入商家名称">
                 </div>
+                <style>
+
+                </style>
                 <div class="ShopMannagersearch-img">
-                    <button type="submit">
-                        <img src="/public/adminimg/search.png" alt="">
+                    <button type="submit" class="shop_btn">
                     </button>
                 </div>
             </form>
@@ -150,59 +152,6 @@ use yii\helpers\Url;
                                     'prevPageLabel' => '<',
                                 ]);
                             ?>
-                            <style>
-                                .pagination {
-                                    white-space: nowrap;
-                                    padding: 2px 5px;
-                                    color: #303133;
-                                    font-weight: 700;
-                                }
-
-                                .pagination li {
-                                    padding: 0 4px;
-                                    background: #fff;
-                                    font-size: 13px;
-                                    min-width: 35.5px;
-                                    height: 28px;
-                                    line-height: 28px;
-                                    box-sizing: border-box;
-                                    display: inline-block;
-                                }
-
-                                .pagination li.first {
-                                    width: 54px;
-                                    height: 20px;
-                                    background: #edf8ff;
-                                    border: 2px solid #e8f6ff;
-                                    border-radius: 10px;
-                                    color: #41b2fc;
-                                    line-height: 18px;
-                                    text-align: center;
-                                    margin-top: 8px;
-                                }
-
-                                .pagination li.last {
-                                    width: 54px;
-                                    height: 20px;
-                                    background: #51b7fc;
-                                    border: 2px solid #51b7fc;
-                                    border-radius: 10px;
-                                    color: #fff;
-                                    line-height: 18px;
-                                    text-align: center;
-                                    margin-top: 8px;
-                                }
-
-                                .pagination li a {
-                                    color: #000;
-                                    font-weight: bold;
-                                }
-
-                                .pagination li.active a {
-                                    color: #409EFF;
-                                    cursor: default;
-                                }
-                            </style>
                     </div>
                 </div>
             </div>

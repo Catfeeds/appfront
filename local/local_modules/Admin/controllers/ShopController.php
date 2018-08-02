@@ -763,7 +763,7 @@ class ShopController extends PublicsController
         $shop_id=$request->get('id');
 
         // 查询条件
-        $where['shop_id']=$shop_id;
+//        $where['shop_id']=$shop_id;
         if ($class) {
             $where['category'][1]=$class;
         }

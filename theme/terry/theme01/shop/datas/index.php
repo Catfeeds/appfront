@@ -11,7 +11,7 @@
       </div>
       <ul  class="shuaixuan">
        <li>
-           <select name="sel" id="sel" class="el-select xiala">
+           <select name="sel" id="sel" class="el-select xiala" onchange="sel(1)">
                <option value="" style="display: none;"></option>
                <option value="1" selected>最近一周</option>
                <option value="2">最近一月</option>
@@ -19,7 +19,7 @@
            </select>
         </li>
        <li >时间段选择
-            <input id="test1">
+            <input id="test1" style="width: 300px">
        </li>
        <li ><button  type="button" class="el-button blue el-button--primary is-round">
          <!---->
@@ -31,8 +31,8 @@
          <div  class="item_box1">
           点击量统计
          </div>
-         <div  class="item_box2">
-          10,915
+         <div  class="item_box2 dj">
+          0
          </div>
         </div></li>
        <li >
@@ -40,8 +40,8 @@
          <div  class="item_box1">
           下单量统计
          </div>
-         <div  class="item_box2">
-          462
+         <div  class="item_box2 xd">
+
          </div>
         </div></li>
        <li >
@@ -49,8 +49,8 @@
          <div  class="item_box1">
           成交量统计
          </div>
-         <div  class="item_box2">
-          10,915
+         <div  class="item_box2 cj">
+
          </div>
         </div></li>
        <li >
@@ -58,8 +58,8 @@
          <div  class="item_box1">
           退货量统计
          </div>
-         <div  class="item_box2">
-          98
+         <div  class="item_box2 th">
+
          </div>
         </div></li>
        <li >
@@ -67,8 +67,7 @@
          <div  class="item_box1">
           好评率
          </div>
-         <div  class="item_box2">
-          98%
+         <div  class="item_box2 hp">
          </div>
         </div></li>
        <li >
@@ -81,6 +80,63 @@
          </div>
         </div></li>
       </ul>
+         <script>
+
+             document.querySelector("#test1").addEventListener("blur",function () {
+                 document.querySelector(".laydate-btns-confirm").onclick=function () {
+                     sel(2);
+                 }
+             });
+             var el_select = document.querySelector("#sel");
+             var test1 = document.querySelector("#test1");
+             sel(1);
+             function sel(flag){
+                 var t1 = "",t2="";
+                 if(flag==1){
+                    if(el_select.value==1){
+                        console.log(timeForMat(7));
+                        t1 = timeForMat(7)["t2"];
+                        t2 = timeForMat(7)["t1"];
+                    }else if(el_select.value==2){
+                        t1 = timeForMat(30)["t2"];
+                        t2 = timeForMat(30)["t1"];
+                    }else if(el_select.value==3){
+                        t1 = timeForMat(365)["t2"];
+                        t2 = timeForMat(365)["t1"];
+                    }
+                     document.querySelector("#test1").value="";
+                 }else if(flag==2){
+                     el_select.value="";
+                    var arr = test1.value.split(" - ");
+                    t1=arr[0];t2=arr[1];
+                 }
+
+                 $.ajax({
+                     url:"/shop/datas/count?t1="+t1+"&t2="+t2,
+                     dataType:"json",
+                     success:function (data) {
+                        document.querySelector(".xd").innerHTML=data[0].nums;
+                         document.querySelector(".cj").innerHTML=data[1].nums;
+                         document.querySelector(".th").innerHTML=data[2].nums;
+
+                         var n=0;
+                         data[3].forEach(function (val) {
+                             if(val.rate_star>3){
+                                 n++;
+                             }
+                         });
+                         if(data[3].length){
+                             document.querySelector(".hp").innerHTML = ((n/(data[3].length)).toFixed(2)*100)+"%";
+
+                         }else {
+                             document.querySelector(".hp").innerHTML="无";
+                         }
+
+                     }
+                 });
+             }
+
+         </script>
       <div  class="item1">
        <div  class="box1">
         <div  class="title">

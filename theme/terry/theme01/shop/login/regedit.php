@@ -164,7 +164,7 @@
                         <img src="/public/account.png" alt="">
                         <span>验&nbsp;&nbsp;证&nbsp;码</span>
                         <input type="text" name="code" style="" id="code">
-                        <button style="position: absolute;height: 100%;width: 80px;background: #36de76;border: none;border-radius: 20px;font-size: 12px;color: #fff;top: 0;right: 0;cursor: pointer" onclick="getcode()">获取验证码</button>
+                        <button style="position: absolute;height: 100%;width: 80px;background: #36de76;border: none;border-radius: 20px;font-size: 12px;color: #fff;top: 0;right: 0;cursor: pointer;outline:none" onclick="getcode()">获取验证码</button>
                     </li>
 
                     <li>

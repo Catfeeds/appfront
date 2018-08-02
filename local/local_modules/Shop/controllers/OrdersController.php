@@ -51,10 +51,9 @@ class OrdersController extends PublicsController
         //查询订单表数量
         $countArr = Yii::$app->db->createCommand($sql)->queryOne();
 
-
         // 实例化分页对象
         $pagination = new Pagination([
-            'defaultPageSize' => 1,
+            'defaultPageSize' => 10,
             'totalCount' => $countArr['tot'],
         ]);
         //查询订单产品表
@@ -118,6 +117,7 @@ class OrdersController extends PublicsController
         $datas["orders"] = $arr;
         $datas["pagination"] = $pagination;
         $datas["all"] = $all;
+        $datas["count"] = $countArr['tot'];
         $datas["flag"] = $get["flag"]?$get["flag"]:0;
         return $this->render($this->action->id, $datas);
     }

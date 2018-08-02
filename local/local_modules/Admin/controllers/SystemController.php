@@ -280,22 +280,28 @@ class SystemController extends PublicsController
     {
         $ruler = Yii::$app->db->createCommand("select * from privilege")->queryAll();
         $data['ruler'] = $ruler;
+        $member = Yii::$app->db->createCommand("select * from member_rule")->queryAll();
+        foreach ($member as $key => $value) {
+            $member[$key]['rule'] = json_decode($value['rule'],true);
+        }
+        $data['member'] = $member;
         return $this->render($this->action->id, $data);
     }
 
-//VIP规则添加页面
+    //VIP规则添加页面
     public function actionAddruler()
+    {
+        return $this->render($this->action->id);
+    }
+    //VIP规则添加方法
+    public function actionAddruleraction()
     {
         $res = Yii::$app->request;
         $data = $res->post();
-
-
         //文件上传存放的目录
-
         $folder ='../../appimage/common/images/';
 
         $file=$_FILES['file'];
-
         // 获取用户上传的数量
 
         $size=count($file['name']);
@@ -328,18 +334,16 @@ class SystemController extends PublicsController
 
                         $img = $newName;
 
-                        $sql ="insert into privilege (name,info,img) values ('{$data['name']}','{$data['short_description']}','{$img}')";
-                        $res = Yii::$app->db->createCommand($sql)->execute();
-
                     }
                 }
             }
         }
-
-        return $this->render($this->action->id);
-
+        $sql ="insert into privilege (name,info,img) values ('{$data['name']}','{$data['info']}','{$img}')";
+        $res = Yii::$app->db->createCommand($sql)->execute();
+        if($res){
+            return $this->redirect("/admin/system/vipruler");
+        }
     }
-
     //VIP规则修改编辑页面
     public function actionEditruler(){
         //获取数据
@@ -348,23 +352,81 @@ class SystemController extends PublicsController
         //获取规则数据
         $data=[];
         $data['ruler']=Yii::$app->db->createCommand("select * from privilege where id={$id}")->queryOne();
-
-//        $sql = "update privilege set name='{$data[name]}',img='{$data[img]}',info='{$data[info]}' where id={$data['id']}";
-
-//        $res = Yii::$app->db->createCommand($sql)->execute();
-
         return $this->render($this->action->id,$data);
     }
     function actionSave(){
         $req = Yii::$app->request;
         $data = $req->post();
+        //文件上传存放的目录
+        $folder ='../../appimage/common/images/';
 
-//        $sql = "update privilege set name='{$data[name]}',img='{$data[img]}',info='{$data[short_description]}' where id={$data['id']}";
-//        $res = Yii::$app->db->createCommand($sql)->execute();
+        $file=$_FILES['file'];
+        // 获取用户上传的数量
+
+        $size=count($file['name']);
+
+        $img=[];
+        // 文件处理
+
+        for ($i=0; $i < $size; $i++) {
+
+            // 接收文件名
+            $name=$file['name'][$i];
+
+            // 接收临时目录
+            $tmp_name=$file['tmp_name'][$i];
+
+            // 错误编码
+
+            $error=$file['error'][$i];
+
+            if ($error==0) {
+
+                // 检测文件是否来自于表单
+                if (is_uploaded_file($tmp_name)) {
+                    # code...
+                    // 新的文件名
+                    $newName = $name;
+                    // 进行上传
+
+                    if (move_uploaded_file($tmp_name,$folder.$newName)) {
+
+                        $img = $newName;
+
+                    }
+                }
+            }
+        }
+        $sql ="update privilege set name = '{$data['name']}',info = '{$data['info']}',img = '{$img}',sort = '{$data['sort']}' where id = {$data['id']}";
+        $res = Yii::$app->db->createCommand($sql)->execute();
+        if($res){
+            return $this->redirect("/admin/system/vipruler");
+        }
+    }
+    //VIP规则删除方法
+    public function actionDelruler()
+    {
+        $res = Yii::$app->request;
+        $id = $res->get('id');
+        
+        $sql ="delete from privilege where id = $id";
+        $res = Yii::$app->db->createCommand($sql)->execute();
+        if($res){
+            echo 1;
+        }else{
+            echo 2;
+        }
+    }
+    public function actionAddmember(){
+        $res = Yii::$app->request;
+        $data = $res->get(); 
+        foreach ($data as $key => $value) {
+            $rule = json_encode($value);
+            $sql = "update member_rule set recharge = '$value[money]',rule = '$rule' where id = $key";
+            $res = Yii::$app->db->createCommand($sql)->execute();
+        }
         return $this->redirect("/admin/system/vipruler");
     }
-
-
 
 //=========================充值设置管理===============================
 
