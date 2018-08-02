@@ -631,19 +631,8 @@
 </div>
 <script>
     function shopload(url) {
-        // $("#el-form").attr("action", url);
-        $("#el-form").submit(function(e){
-            e.preventDefault();
-            let formdata=$('form').serializeArray();
-            $.ajax({
-                url:url,
-                type:'post',
-                data:formdata,
-                success:function (msg) {
-                    location.href=url;
-                }
-            })
-        });
+        $("#el-form").attr("action", url);
+        $("#el-form").submit();
     }
 
     $(".index-change").click(function () {

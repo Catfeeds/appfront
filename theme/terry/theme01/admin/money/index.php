@@ -329,9 +329,9 @@ margin-top:4px;"
                     <div class="money-box money-box1">
                     </div>
                     <span style="font-size: 14px;color:#82898e;margin-left:14px;float: left;cursor:pointer;" onclick='port(2)'>按销售额排行</span>
-                    <button
+                    <a href="<?= Yii::$service->url->getUrl('admin/money/export') ?>"><button
                         style="width:89px;height:32px;background: #36de77;
-                                        float: left;border:0;margin-top:13px;line-height: 32px;">导出表格</button>
+                                        float: left;border:0;margin-top:13px;line-height: 32px;">导出表格</button></a>
                 </div>
             </div>
             <script>
@@ -356,6 +356,8 @@ margin-top:4px;"
 						}
 					})
 				}
+				
+				
             </script>
             <div class="paihang">
                 <table border="0" class="ShopMannager-tablelist money-list" id="paih">
@@ -366,6 +368,15 @@ margin-top:4px;"
                         <th>销售额（元）</th>
                         <th>均价（元）</th>
                     </tr>
+                    <?php foreach ($list as $k=>$v){?>
+                    <tr class='xtr'>
+                    	<td><?php echo $k+1;?></td>
+                        <td><?php echo $v['shop_name']?></td>
+                        <td><?php echo $v['items']?></td>
+                        <td><?php echo $v['grand']?></td>
+                        <td><?php echo ($v['grand']/$v['items'])?></td>
+                    </tr>
+                    <?php }?>
                 </table>
             </div>
         </div>
