@@ -5,7 +5,317 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 ?>
+<style>
+    .close {
+        position: absolute;
+        top: 17px;
+        right: 18px;
+        width: 14px;
+        height: 14px;
+        background: url("/public/img/close.png") no-repeat center center/100% auto;
+    }
 
+    .main-content1 {
+        width: 100%;
+        height: 135px;
+        margin-bottom: 27px;
+    }
+
+    .main-content .col-box {
+        width: 11px;
+        height: 5px;
+        border-radius: 3px;
+        margin-left: 1px;
+        margin-top: 9px;
+        margin-right: 7px;
+        background-color: #37e06f;
+        box-shadow: 0 0 2px #37e06f;
+    }
+
+
+    .main-content1 .dianpu {
+        float: left;
+        width: 129px;
+        height: 129px;
+        border: 3px solid #eee;
+    }
+
+    .main-content1 .content1-center {
+        float: left;
+        width: 430px;
+        height: 135px;
+        border-right: 1px solid #30a2fe;
+        padding-left: 25px;
+        padding-right: 26px;
+        box-sizing: border-box;
+    }
+
+    .main-content1 .name {
+        height: 24px;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 24px;
+        margin-left: 7px;
+        line-height: 24px;
+    }
+
+    .main-content1 .message1 {
+        width: 360px;
+        height: 46px;
+        font-size: 12px;
+        color: #bdc3c9;
+        margin-left: 20px;
+        line-height: 23px;
+    }
+
+    .main-content1 .message1 span {
+        width: 296px;
+        height: 46px;
+        line-height: 23px;
+        overflow: hidden;
+        /*转换为webkit内核浏览器中的盒子*/
+        display: -webkit-box;
+        /*需要几行就写几*/
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .main-content1 .message2 {
+        width: 360px;
+        height: 42px;
+        line-height: 40px;
+        font-size: 12px;
+        color: #bdc3c9;
+        margin-left: 20px;
+    }
+
+    .main-content1 .message2 span {
+        display: inline-block;
+        width: 296px;
+        height: 40px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .message1 .jianjie {
+        width: 64px;
+        height: 100%;
+        font-size: 12px;
+        line-height: 22px;
+        font-weight: bold;
+        color: #82898e;
+        float: left;
+    }
+
+    .message2 .gonggao {
+        width: 64px;
+        height: 100%;
+        font-size: 12px;
+        line-height: 40px;
+        font-weight: bold;
+        color: #82898e;
+        float: left;
+    }
+
+    .main-content1 .content1-right {
+        float: left;
+        width: 420px;
+        height: 135px;
+        padding-left: 26px;
+        box-sizing: border-box;
+    }
+
+    .content1-right .message3 {
+        font-size: 12px;
+        height: 75px;
+        color: #bdc3c9;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .message3 li {
+        width: 100%;
+        height: 18px;
+        line-height: 18px;
+    }
+
+    .message3 .gonggao {
+        height: 100%;
+        font-size: 12px;
+        line-height: 18px;
+        font-weight: bold;
+        color: #82898e;
+        float: left;
+    }
+
+    .message3 span {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .main-content2 {
+        width: 100%;
+    }
+
+    .main-content2 .biaoti {
+        display: flex;
+        justify-content: space-around;
+        line-height: 48px;
+        font-size: 14px;
+        background: #eaf6ff;
+        font-weight: bolder;
+    }
+
+    .main-content2 .biaoti li {
+        cursor: pointer;
+    }
+
+    .main-content2 .item {
+        margin-top: 28px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .item .item_box {
+        width: 190px;
+        height: 114px;
+        border-radius: 5px;
+        box-shadow: 0 0 15px 2px #eee;
+        padding-left: 17px;
+        padding-top: 10px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+    }
+
+    .item_box .item_box1 {
+        height: 30px;
+        font-size: 16px;
+        color: #82898e;
+        line-height: 30px;
+    }
+
+    .item_box .item_box2 {
+        height: 38px;
+        font-size: 22px;
+        color: #30a2fe;
+        line-height: 38px;
+        font-weight: bolder;
+    }
+
+    .item_box .item_box3 {
+        font-size: 10px;
+        line-height: 36px;
+        color: #bdc4c9;
+    }
+
+    .item_box .jiantou1 {
+        margin-left: 10px;
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        background: url("/public/img/jiantou1.png") no-repeat center center/100% auto;
+    }
+
+    .item_box .jiantou2 {
+        margin-left: 10px;
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        background: url("/public/img/jiantou2.png") no-repeat center center/100% auto;
+    }
+
+    .item_box .jiantou3 {
+        margin-left: 10px;
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        background: url("/public/img/jiantou3.png") no-repeat center center/100% auto;
+    }
+
+    .main-content3 {
+        width: 100%;
+    }
+
+    .main-content3 .dian {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: #3db0ff;
+        box-shadow: 0 0 2px #3db0ff;
+        margin-top: 10px;
+        margin-right: 5px;
+    }
+
+    .freeze {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 999;
+    }
+
+    .freeze .freeze-content {
+        width: 500px;
+        height: 456px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        border-radius: 5px;
+        padding-top: 23px;
+        padding-left: 29px;
+    }
+
+    .freeze .freeze-content1 {
+        width: 438px;
+        height: 135px;
+        border-bottom: 1px solid #e5e5e5;
+        margin-bottom: 5px;
+    }
+
+    .freeze-content1 .text {
+        font-size: 10px;
+        line-height: 20px;
+    }
+
+    .freeze-content3 .button1 {
+        width: 82px;
+        height: 30px;
+        background: url("/public/img/button1.png") no-repeat center center/100% auto;
+    }
+
+    .freeze .button2 {
+        width: 90px;
+        height: 30px;
+        background: url("/public/img/button2.png") no-repeat center center/100% auto;
+    }
+
+    .zhexian {
+        /*width: 1012px;*/
+        /*height: 370px;*/
+        /*background: url("/public/img/zhexiantu.png") no-repeat center center/100% auto;*/
+
+    }
+
+    .green {
+        margin-top: 41px;
+        width: 88px;
+        height: 26px;
+        background: #37DF73;
+        border: none;
+        box-shadow: 0 0 5px #37DF73;
+        padding-top: 8px;
+        padding-left: 18px;
+    }
+
+
+</style>
 <div class="box">
     <div class="freeze" style="display: none;">
         <div class="freeze-content">
@@ -599,315 +909,3 @@ use yii\helpers\Url;
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
 </script>
-<style>
-
-    .close {
-        position: absolute;
-        top: 17px;
-        right: 18px;
-        width: 14px;
-        height: 14px;
-        background: url("/public/img/close.png") no-repeat center center/100% auto;
-    }
-
-    .main-content1 {
-        width: 100%;
-        height: 135px;
-        margin-bottom: 27px;
-    }
-
-    .main-content .col-box {
-        width: 11px;
-        height: 5px;
-        border-radius: 3px;
-        margin-left: 1px;
-        margin-top: 9px;
-        margin-right: 7px;
-        background-color: #37e06f;
-        box-shadow: 0 0 2px #37e06f;
-    }
-
-    .main-content1 .dianpu {
-        float: left;
-        width: 129px;
-        height: 129px;
-        border: 3px solid #eee;
-
-    }
-
-    .main-content1 .content1-center {
-        float: left;
-        width: 430px;
-        height: 135px;
-        border-right: 1px solid #30a2fe;
-        padding-left: 25px;
-        padding-right: 26px;
-        box-sizing: border-box;
-    }
-
-    .main-content1 .name {
-        height: 24px;
-        font-size: 24px;
-        font-weight: bold;
-        margin-bottom: 24px;
-        margin-left: 7px;
-        line-height: 24px;
-    }
-
-    .main-content1 .message1 {
-        width: 360px;
-        height: 46px;
-        font-size: 12px;
-        color: #bdc3c9;
-        margin-left: 20px;
-        line-height: 23px;
-    }
-
-    .main-content1 .message1 span {
-        width: 296px;
-        height: 46px;
-        line-height: 23px;
-        overflow: hidden;
-        /*转换为webkit内核浏览器中的盒子*/
-        display: -webkit-box;
-        /*需要几行就写几*/
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-    }
-
-    .main-content1 .message2 {
-        width: 360px;
-        height: 42px;
-        line-height: 40px;
-        font-size: 12px;
-        color: #bdc3c9;
-        margin-left: 20px;
-    }
-
-    .main-content1 .message2 span {
-        display: inline-block;
-        width: 296px;
-        height: 40px;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
-
-    .message1 .jianjie {
-        width: 64px;
-        height: 100%;
-        font-size: 12px;
-        line-height: 22px;
-        font-weight: bold;
-        color: #82898e;
-        float: left;
-    }
-
-    .message2 .gonggao {
-        width: 64px;
-        height: 100%;
-        font-size: 12px;
-        line-height: 40px;
-        font-weight: bold;
-        color: #82898e;
-        float: left;
-    }
-
-    .main-content1 .content1-right {
-        float: left;
-        width: 420px;
-        height: 135px;
-        padding-left: 26px;
-        box-sizing: border-box;
-    }
-
-    .content1-right .message3 {
-        font-size: 12px;
-        height: 75px;
-        color: #bdc3c9;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    .message3 li {
-        width: 100%;
-        height: 18px;
-        line-height: 18px;
-    }
-
-    .message3 .gonggao {
-        height: 100%;
-        font-size: 12px;
-        line-height: 18px;
-        font-weight: bold;
-        color: #82898e;
-        float: left;
-    }
-
-    .message3 span {
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
-
-    .main-content2 {
-        width: 100%;
-    }
-
-    .main-content2 .biaoti {
-        display: flex;
-        justify-content: space-around;
-        line-height: 48px;
-        font-size: 14px;
-        background: #eaf6ff;
-        font-weight: bolder;
-    }
-
-    .main-content2 .biaoti li {
-        cursor: pointer;
-    }
-
-    .main-content2 .item {
-        margin-top: 28px;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .item .item_box {
-        width: 190px;
-        height: 114px;
-        border-radius: 5px;
-        box-shadow: 0 0 15px 2px #eee;
-        padding-left: 17px;
-        padding-top: 10px;
-        box-sizing: border-box;
-        margin-bottom: 10px;
-    }
-
-    .item_box .item_box1 {
-        height: 30px;
-        font-size: 16px;
-        color: #82898e;
-        line-height: 30px;
-    }
-
-    .item_box .item_box2 {
-        height: 38px;
-        font-size: 22px;
-        color: #30a2fe;
-        line-height: 38px;
-        font-weight: bolder;
-    }
-
-    .item_box .item_box3 {
-        font-size: 10px;
-        line-height: 36px;
-        color: #bdc4c9;
-    }
-
-    .item_box .jiantou1 {
-        margin-left: 10px;
-        display: inline-block;
-        width: 14px;
-        height: 14px;
-        background: url("/public/img/jiantou1.png") no-repeat center center/100% auto;
-    }
-
-    .item_box .jiantou2 {
-        margin-left: 10px;
-        display: inline-block;
-        width: 14px;
-        height: 14px;
-        background: url("/public/img/jiantou2.png") no-repeat center center/100% auto;
-    }
-
-    .item_box .jiantou3 {
-        margin-left: 10px;
-        display: inline-block;
-        width: 14px;
-        height: 14px;
-        background: url("/public/img/jiantou3.png") no-repeat center center/100% auto;
-    }
-
-    .main-content3 {
-        width: 100%;
-    }
-
-    .main-content3 .dian {
-        width: 4px;
-        height: 4px;
-        border-radius: 50%;
-        background: #3db0ff;
-        box-shadow: 0 0 2px #3db0ff;
-        margin-top: 10px;
-        margin-right: 5px;
-    }
-
-    .freeze {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.3);
-        z-index: 999;
-    }
-
-    .freeze .freeze-content {
-        width: 500px;
-        height: 456px;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        background: white;
-        border-radius: 5px;
-        padding-top: 23px;
-        padding-left: 29px;
-    }
-
-    .freeze .freeze-content1 {
-        width: 438px;
-        height: 135px;
-        border-bottom: 1px solid #e5e5e5;
-        margin-bottom: 5px;
-    }
-
-    .freeze-content1 .text {
-        font-size: 10px;
-        line-height: 20px;
-    }
-
-    .freeze-content3 .button1 {
-        width: 82px;
-        height: 30px;
-        background: url("/public/img/button1.png") no-repeat center center/100% auto;
-    }
-
-    .freeze .button2 {
-        width: 90px;
-        height: 30px;
-        background: url("/public/img/button2.png") no-repeat center center/100% auto;
-    }
-
-    .zhexian {
-        /*width: 1012px;*/
-        /*height: 370px;*/
-        /*background: url("/public/img/zhexiantu.png") no-repeat center center/100% auto;*/
-
-    }
-
-    .green {
-        margin-top: 41px;
-        width: 88px;
-        height: 26px;
-        background: #37DF73;
-        border: none;
-        box-shadow: 0 0 5px #37DF73;
-        padding-top: 8px;
-        padding-left: 18px;
-    }
-
-
-</style>

@@ -29,14 +29,14 @@ use yii\helpers\Url;
         justify-content: space-between;
         line-height: 46px;
         color: #a4adb5;
-        font-size: 12px;
+        font-size: 14px;
     }
     .content .shuaixuan li{
         margin:0px 20px;
     }
     .content .shuaixuan .xiala {
         padding-left: 10px;
-        width: 98px;
+        width: 140px;
         outline: none;
         height: 30px;
         border-radius: 15px;
@@ -212,7 +212,7 @@ use yii\helpers\Url;
                 <form action="<?php echo  Yii::$app->request->getHostInfo().Yii::$app->request->url;?>" method="get">
                 <ul class="shuaixuan">
                     <li>分类
-                        <select name="class" id="" class="el-select xiala xialas" style="margin-left:10px;">
+                        <select name="class" id="" class="el-select xiala" style="margin-left:10px;">
                                 <option value="0">全部分类</option>
                                 <?php
                                 foreach ($class as $key => $value) {
@@ -387,6 +387,7 @@ use yii\helpers\Url;
                                             </thead>
                                         </table>
                                     </div>
+                                    <?php if(count($goods)>0){ ?>
                                     <div class="el-table__body-wrapper is-scrolling-none">
                                         <table cellspacing="0" cellpadding="0" border="0" class="el-table__body" style="width: 1012px;">
                                             <colgroup>
@@ -399,7 +400,7 @@ use yii\helpers\Url;
                                                 <col name="el-table_2_column_13" width="150"/>
                                                 <col name="el-table_2_column_14" width="107"/>
                                             </colgroup>
-                                            <tbody style="font-size: 12px;color:#82898e">
+                                                <tbody style="font-size: 12px;color:#82898e">
                                             <?php foreach ($goods as $v) { ?>
                                                 <tr class="el-table__row">
                                                     <td class="el-table_2_column_7  el-table-column--selection">
@@ -488,108 +489,112 @@ use yii\helpers\Url;
                                                     </td>
                                                 </tr>
                                             <?php } ?>
-
-                                            </tbody>
+                                                </tbody>
                                         </table>
                                     </div>
+                                    <?php }else{ ?>
+                                    <div style="width: 300px;height: 100px;background: url('/public/empty.jpg') center center/100% auto no-repeat;margin: 0 auto">
+                                        <?php } ?>
                                     <div class="el-table__column-resize-proxy" style="display: none;"></div>
                                 </div>
-                                <div style="position: relative;">
-                                    <div style="width: 180px; position: absolute; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
-                                        <div style="display: flex;">
-                                            <div class="dian"></div>
-                                            总计
-                                            <span style="color: rgb(61, 176, 255); font-weight: bolder;"><?= $tot ?></span>记录
+                                <?php if(count($goods)>0){ ?>
+                                    <div style="position: relative;">
+                                        <div style="width: 180px; position: absolute; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
+                                            <div style="display: flex;">
+                                                <div class="dian"></div>
+                                                总计
+                                                <span style="color: rgb(61, 176, 255); font-weight: bolder;"><?= $tot ?></span>记录
+                                            </div>
+                                            <div style="display: flex;">
+                                                <div class="dian" style="background: rgb(41, 201, 154);"></div>
+                                                分
+                                                <span style="font-weight: bolder; color: rgb(41, 201, 154);"><?= $pages ?></span>页
+                                            </div>
                                         </div>
-                                        <div style="display: flex;">
-                                            <div class="dian" style="background: rgb(41, 201, 154);"></div>
-                                            分
-                                            <span style="font-weight: bolder; color: rgb(41, 201, 154);"><?= $pages ?></span>页
+                                        <div style="margin-top: 40px;">
+                                            <button type="button" class="el-button el-button--default">
+                                                <span>全选</span></button>
+                                            <button type="button" class="el-button red el-button--danger is-round">
+
+                                                <span>批量删除</span></button>
+                                            <button type="button" class="el-button green el-button--success is-round">
+
+                                                <span>导出表格</span></button>
+                                            <button type="button" class="el-button blue el-button--primary is-round">
+
+                                                <span>导出图片</span></button>
                                         </div>
                                     </div>
-                                    <div style="margin-top: 40px;">
-                                        <button type="button" class="el-button el-button--default">
-                                            <span>全选</span></button>
-                                        <button type="button" class="el-button red el-button--danger is-round">
+                                    <div style="width: 100%; position: relative;">
+                                        <div style="font-size: 12px; position: absolute; bottom: 0; right: 0; display: flex; justify-content: space-between;">
+                                            <?php
+                                            echo LinkPager::widget([
+                                                'pagination' => $pagination,
+                                                'firstPageLabel' => '首页',
+                                                'lastPageLabel' => '尾页',
 
-                                            <span>批量删除</span></button>
-                                        <button type="button" class="el-button green el-button--success is-round">
+                                                'nextPageLabel' => '>',
+                                                'prevPageLabel' => '<',
+                                            ]);
 
-                                            <span>导出表格</span></button>
-                                        <button type="button" class="el-button blue el-button--primary is-round">
 
-                                            <span>导出图片</span></button>
+                                            ?>
+                                            <style>
+                                                .pagination {
+                                                    white-space: nowrap;
+                                                    padding: 2px 5px;
+                                                    color: #303133;
+                                                    font-weight: 700;
+                                                }
+
+                                                .pagination li {
+                                                    padding: 0 4px;
+                                                    background: #fff;
+                                                    font-size: 13px;
+                                                    min-width: 35.5px;
+                                                    height: 28px;
+                                                    line-height: 28px;
+                                                    box-sizing: border-box;
+                                                    display: inline-block;
+                                                }
+
+                                                .pagination li.first {
+                                                    width: 54px;
+                                                    height: 20px;
+                                                    background: #edf8ff;
+                                                    border: 2px solid #e8f6ff;
+                                                    border-radius: 10px;
+                                                    color: #41b2fc;
+                                                    line-height: 18px;
+                                                    text-align: center;
+                                                    margin-top: 8px;
+                                                }
+
+                                                .pagination li.last {
+                                                    width: 54px;
+                                                    height: 20px;
+                                                    background: #51b7fc;
+                                                    border: 2px solid #51b7fc;
+                                                    border-radius: 10px;
+                                                    color: #fff;
+                                                    line-height: 18px;
+                                                    text-align: center;
+                                                    margin-top: 8px;
+                                                }
+
+                                                .pagination li a {
+                                                    color: #000;
+                                                    font-weight: bold;
+                                                }
+
+                                                .pagination li.active a {
+                                                    color: #409EFF;
+                                                    cursor: default;
+                                                }
+                                            </style>
+                                        </div>
                                     </div>
-                                </div>
-                                <div style="width: 100%; position: relative;">
-                                    <div style="font-size: 12px; position: absolute; bottom: 0; right: 0; display: flex; justify-content: space-between;">
-                                        <?php
-                                        echo LinkPager::widget([
-                                            'pagination' => $pagination,
-                                            'firstPageLabel' => '首页',
-                                            'lastPageLabel' => '尾页',
-
-                                            'nextPageLabel' => '>',
-                                            'prevPageLabel' => '<',
-                                        ]);
-
-
-                                        ?>
-                                        <style>
-                                            .pagination {
-                                                white-space: nowrap;
-                                                padding: 2px 5px;
-                                                color: #303133;
-                                                font-weight: 700;
-                                            }
-
-                                            .pagination li {
-                                                padding: 0 4px;
-                                                background: #fff;
-                                                font-size: 13px;
-                                                min-width: 35.5px;
-                                                height: 28px;
-                                                line-height: 28px;
-                                                box-sizing: border-box;
-                                                display: inline-block;
-                                            }
-
-                                            .pagination li.first {
-                                                width: 54px;
-                                                height: 20px;
-                                                background: #edf8ff;
-                                                border: 2px solid #e8f6ff;
-                                                border-radius: 10px;
-                                                color: #41b2fc;
-                                                line-height: 18px;
-                                                text-align: center;
-                                                margin-top: 8px;
-                                            }
-
-                                            .pagination li.last {
-                                                width: 54px;
-                                                height: 20px;
-                                                background: #51b7fc;
-                                                border: 2px solid #51b7fc;
-                                                border-radius: 10px;
-                                                color: #fff;
-                                                line-height: 18px;
-                                                text-align: center;
-                                                margin-top: 8px;
-                                            }
-
-                                            .pagination li a {
-                                                color: #000;
-                                                font-weight: bold;
-                                            }
-
-                                            .pagination li.active a {
-                                                color: #409EFF;
-                                                cursor: default;
-                                            }
-                                        </style>
-                                    </div>
-                                </div>
+                                <?php } ?>
                             </div>
                             <div role="tabpanel" aria-hidden="true" id="pane-second" aria-labelledby="tab-second"
                                  class="el-tab-pane" style="display: none;">
