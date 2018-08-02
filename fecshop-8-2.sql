@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
--- https://www.phpmyadmin.net/
+-- version 4.5.2
+-- http://www.phpmyadmin.net
 --
--- Host: mysql
--- Generation Time: 2018-07-28 04:25:30
--- 服务器版本： 5.7.22
--- PHP Version: 7.1.13
+-- Host: 127.0.0.1
+-- Generation Time: 2018-08-02 02:15:12
+-- 服务器版本： 5.7.9
+-- PHP Version: 7.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -21,7 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `fecshop`
 --
-CREATE DATABASE IF NOT EXISTS `fecshop` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS `fecshop` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `fecshop`;
 
 -- --------------------------------------------------------
@@ -31,16 +29,18 @@ USE `fecshop`;
 --
 
 DROP TABLE IF EXISTS `admin_config`;
-CREATE TABLE `admin_config` (
-  `id` int(20) NOT NULL,
+CREATE TABLE IF NOT EXISTS `admin_config` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
   `label` varchar(150) DEFAULT NULL,
   `key` varchar(255) DEFAULT NULL,
   `value` varchar(2555) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `created_person` varchar(150) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `created_person` varchar(150) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `key` (`key`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `admin_config`
@@ -57,8 +57,8 @@ INSERT INTO `admin_config` (`id`, `label`, `key`, `value`, `description`, `creat
 --
 
 DROP TABLE IF EXISTS `admin_menu`;
-CREATE TABLE `admin_menu` (
-  `id` int(15) NOT NULL,
+CREATE TABLE IF NOT EXISTS `admin_menu` (
+  `id` int(15) NOT NULL AUTO_INCREMENT,
   `name` varchar(150) DEFAULT NULL,
   `level` int(5) DEFAULT NULL,
   `parent_id` int(15) DEFAULT NULL,
@@ -67,8 +67,10 @@ CREATE TABLE `admin_menu` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `sort_order` int(10) NOT NULL DEFAULT '0',
-  `can_delete` int(5) DEFAULT '2' COMMENT '是否可以被删除，1代表不可以删除，2代表可以删除'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `can_delete` int(5) DEFAULT '2' COMMENT '是否可以被删除，1代表不可以删除，2代表可以删除',
+  PRIMARY KEY (`id`),
+  KEY `url_key` (`url_key`)
+) ENGINE=InnoDB AUTO_INCREMENT=202 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `admin_menu`
@@ -113,11 +115,12 @@ INSERT INTO `admin_menu` (`id`, `name`, `level`, `parent_id`, `url_key`, `role_k
 --
 
 DROP TABLE IF EXISTS `admin_role`;
-CREATE TABLE `admin_role` (
-  `role_id` int(15) NOT NULL,
+CREATE TABLE IF NOT EXISTS `admin_role` (
+  `role_id` int(15) NOT NULL AUTO_INCREMENT,
   `role_name` varchar(100) DEFAULT NULL COMMENT '权限名字',
-  `role_description` varchar(255) DEFAULT NULL COMMENT '权限描述'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `role_description` varchar(255) DEFAULT NULL COMMENT '权限描述',
+  PRIMARY KEY (`role_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `admin_role`
@@ -135,13 +138,15 @@ INSERT INTO `admin_role` (`role_id`, `role_name`, `role_description`) VALUES
 --
 
 DROP TABLE IF EXISTS `admin_role_menu`;
-CREATE TABLE `admin_role_menu` (
-  `id` int(15) NOT NULL,
+CREATE TABLE IF NOT EXISTS `admin_role_menu` (
+  `id` int(15) NOT NULL AUTO_INCREMENT,
   `menu_id` int(15) NOT NULL,
   `role_id` int(15) NOT NULL,
   `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `role_id` (`role_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=126 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `admin_role_menu`
@@ -211,8 +216,8 @@ INSERT INTO `admin_role_menu` (`id`, `menu_id`, `role_id`, `created_at`, `update
 --
 
 DROP TABLE IF EXISTS `admin_user`;
-CREATE TABLE `admin_user` (
-  `id` int(20) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `admin_user` (
+  `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `username` varchar(50) DEFAULT NULL COMMENT '用户名',
   `password_hash` varchar(80) DEFAULT NULL COMMENT '密码',
   `password_reset_token` varchar(60) DEFAULT NULL COMMENT '密码token',
@@ -230,16 +235,20 @@ CREATE TABLE `admin_user` (
   `allowance_updated_at` int(20) DEFAULT NULL,
   `created_at_datetime` datetime DEFAULT NULL,
   `updated_at_datetime` datetime DEFAULT NULL,
-  `birth_date` datetime DEFAULT NULL COMMENT '出生日期'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `birth_date` datetime DEFAULT NULL COMMENT '出生日期',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `access_token` (`access_token`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `admin_user`
 --
 
 INSERT INTO `admin_user` (`id`, `username`, `password_hash`, `password_reset_token`, `email`, `person`, `code`, `auth_key`, `status`, `created_at`, `updated_at`, `password`, `access_token`, `access_token_created_at`, `allowance`, `allowance_updated_at`, `created_at_datetime`, `updated_at_datetime`, `birth_date`) VALUES
-(1, 'terry', '$2y$13$EyK1HyJtv4A/19Jb8gB5y.4SQm5y93eMeHjUf35ryLyd2dWPJlh8y', NULL, 'zqy234@126.com', '', '3333', 'HH-ZlZXirlG-egyz8OTtl9EVj9fvKW00', 1, 1441763620, 1475825406, '', 'yrYWR7kY-A9bUAP6UUZgCR3yi3ALtUh-', NULL, 599, 1452491877, '2016-01-12 09:41:44', '2016-10-07 15:30:06', NULL),
-(2, 'admin', '$2y$13$T5ZFrLpJdTEkAoAdnC6A/u8lh/pG.6M0qAZBo1lKE.6x6o3V6yvVG', NULL, '3727@qq.com', '超级管理员', '111', '_PYjb4PdIIY332LquBRC5tClZUXV0zm_', 1, NULL, 1468917063, '', '1Gk6ZNn-QaBaKFI4uE2bSw0w3N7ej72q', NULL, NULL, NULL, '2016-01-11 09:41:52', '2016-06-26 01:40:55', NULL);
+(1, 'terry', '$2y$13$EyK1HyJtv4A/19Jb8gB5y.4SQm5y93eMeHjUf35ryLyd2dWPJlh8y', NULL, 'zqy234@126.com', '', '3333', 'HH-ZlZXirlG-egyz8OTtl9EVj9fvKW00', 0, 1441763620, 1475825406, '', 'yrYWR7kY-A9bUAP6UUZgCR3yi3ALtUh-', NULL, 599, 1452491877, '2016-01-12 09:41:44', '2016-10-07 15:30:06', NULL),
+(2, 'admin', '$2y$13$T5ZFrLpJdTEkAoAdnC6A/u8lh/pG.6M0qAZBo1lKE.6x6o3V6yvVG', NULL, '3727@qq.com', '超级管理员', '111', '_PYjb4PdIIY332LquBRC5tClZUXV0zm_', 1, NULL, 1468917063, '', '1Gk6ZNn-QaBaKFI4uE2bSw0w3N7ej72q', NULL, NULL, NULL, '2016-01-11 09:41:52', '2016-06-26 01:40:55', NULL),
+(3, 'pjb0426', '$2y$10$3GEzTF4grnwqf7gV8qsqQuhq1yslQBfvnQ51GEC3.U3.Iy0arcdhm', NULL, '2939355301@qq.com', '潘将兵', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -248,11 +257,13 @@ INSERT INTO `admin_user` (`id`, `username`, `password_hash`, `password_reset_tok
 --
 
 DROP TABLE IF EXISTS `admin_user_role`;
-CREATE TABLE `admin_user_role` (
-  `id` int(20) NOT NULL,
+CREATE TABLE IF NOT EXISTS `admin_user_role` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
   `user_id` int(30) NOT NULL,
-  `role_id` int(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `role_id` int(30) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `admin_user_role`
@@ -270,15 +281,16 @@ INSERT INTO `admin_user_role` (`id`, `user_id`, `role_id`) VALUES
 --
 
 DROP TABLE IF EXISTS `admin_visit_log`;
-CREATE TABLE `admin_visit_log` (
-  `id` int(15) NOT NULL,
+CREATE TABLE IF NOT EXISTS `admin_visit_log` (
+  `id` int(15) NOT NULL AUTO_INCREMENT,
   `account` varchar(25) DEFAULT NULL COMMENT '操作账号',
   `person` varchar(25) DEFAULT NULL COMMENT '操作人姓名',
   `created_at` datetime DEFAULT NULL COMMENT '操作时间',
   `menu` varchar(100) DEFAULT NULL COMMENT '菜单',
   `url` text COMMENT 'URL',
-  `url_key` varchar(150) DEFAULT NULL COMMENT '参数'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `url_key` varchar(150) DEFAULT NULL COMMENT '参数',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=267 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `admin_visit_log`
@@ -559,8 +571,8 @@ INSERT INTO `admin_visit_log` (`id`, `account`, `person`, `created_at`, `menu`, 
 --
 
 DROP TABLE IF EXISTS `article`;
-CREATE TABLE `article` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `article` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `url_key` varchar(255) DEFAULT NULL COMMENT 'url的path部分，属于自定义url',
   `title` text COMMENT '标题',
   `meta_keywords` text COMMENT '关键字',
@@ -569,20 +581,22 @@ CREATE TABLE `article` (
   `status` int(5) DEFAULT '1' COMMENT '1代表激活，2代表关闭',
   `created_at` int(10) DEFAULT NULL,
   `updated_at` int(10) DEFAULT NULL,
-  `created_user_id` int(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `created_user_id` int(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `url_key` (`url_key`)
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `article`
 --
 
 INSERT INTO `article` (`id`, `url_key`, `title`, `meta_keywords`, `meta_description`, `content`, `status`, `created_at`, `updated_at`, `created_user_id`) VALUES
-(25, '/fdsafsd', 'a:7:{s:8:\"title_en\";s:5:\"22222\";s:8:\"title_fr\";s:0:\"\";s:8:\"title_de\";s:0:\"\";s:8:\"title_es\";s:0:\"\";s:8:\"title_ru\";s:0:\"\";s:8:\"title_pt\";s:0:\"\";s:8:\"title_zh\";s:0:\"\";}', 'a:7:{s:16:\"meta_keywords_en\";s:2:\"33\";s:16:\"meta_keywords_fr\";s:0:\"\";s:16:\"meta_keywords_de\";s:0:\"\";s:16:\"meta_keywords_es\";s:0:\"\";s:16:\"meta_keywords_ru\";s:4:\"4444\";s:16:\"meta_keywords_pt\";s:0:\"\";s:16:\"meta_keywords_zh\";s:0:\"\";}', 'a:7:{s:19:\"meta_description_en\";s:17:\"<h3>32323233</h3>\";s:19:\"meta_description_fr\";s:5:\"44444\";s:19:\"meta_description_de\";s:0:\"\";s:19:\"meta_description_es\";s:0:\"\";s:19:\"meta_description_ru\";s:0:\"\";s:19:\"meta_description_pt\";s:0:\"\";s:19:\"meta_description_zh\";s:0:\"\";}', 'a:7:{s:10:\"content_en\";s:0:\"\";s:10:\"content_fr\";s:0:\"\";s:10:\"content_de\";s:0:\"\";s:10:\"content_es\";s:0:\"\";s:10:\"content_ru\";s:0:\"\";s:10:\"content_pt\";s:0:\"\";s:10:\"content_zh\";s:0:\"\";}', 2, 1469161277, 1469173934, 2),
-(26, '/55555555555', 'a:7:{s:8:\"title_en\";s:15:\"222444444444444\";s:8:\"title_fr\";s:0:\"\";s:8:\"title_de\";s:0:\"\";s:8:\"title_es\";s:0:\"\";s:8:\"title_ru\";s:0:\"\";s:8:\"title_pt\";s:0:\"\";s:8:\"title_zh\";s:0:\"\";}', 'a:7:{s:16:\"meta_keywords_en\";s:3:\"222\";s:16:\"meta_keywords_fr\";s:4:\"3333\";s:16:\"meta_keywords_de\";s:0:\"\";s:16:\"meta_keywords_es\";s:0:\"\";s:16:\"meta_keywords_ru\";s:0:\"\";s:16:\"meta_keywords_pt\";s:0:\"\";s:16:\"meta_keywords_zh\";s:0:\"\";}', 'a:7:{s:19:\"meta_description_en\";s:3:\"222\";s:19:\"meta_description_fr\";s:0:\"\";s:19:\"meta_description_de\";s:0:\"\";s:19:\"meta_description_es\";s:0:\"\";s:19:\"meta_description_ru\";s:0:\"\";s:19:\"meta_description_pt\";s:0:\"\";s:19:\"meta_description_zh\";s:0:\"\";}', 'a:7:{s:10:\"content_en\";s:1712:\"<p>六.Yii2实战方面的文章:<a href=\"http://www.fancyecommerce.com/category/yii2-%e5%ae%9e%e6%88%98/\">Yii2 实战</a></p><table><tbody><tr><td><a href=\"http://www.fancyecommerce.com/2016/05/28/yii2-%E9%A1%B5%E9%9D%A2%E5%8A%9F%E8%83%BD%E5%9D%97%EF%BC%88%E5%89%8D%E7%AB%AF%E5%90%8E%E7%AB%AF%E6%8F%90%E4%BE%9B%E6%95%B0%E6%8D%AE%E7%B1%BB%EF%BC%89%EF%BC%8C%E4%BB%A5%E5%8F%8A%E6%B7%B1%E5%BA%A6/\">yii2 页面功能块配置实现原理（前端+后端提供数据类），以及Views深度嵌套</a></td><td><a href=\"http://www.fancyecommerce.com/2016/06/26/yii2-%e5%9c%a8%e5%9f%9f%e5%90%8d%e5%90%8e%e9%9d%a2%e5%8a%a0%e4%b8%80%e4%b8%aa%e8%b7%af%e5%be%84%e4%bd%9c%e4%b8%ba%e9%a6%96%e9%a1%b5/\">yii2 在域名后面加一个路径作为首页</a></td></tr><tr><td><a href=\"http://www.fancyecommerce.com/2016/07/06/yii2-%e5%a4%9a%e6%a8%a1%e6%9d%bf%e8%b7%af%e5%be%84%e4%bc%98%e5%85%88%e7%ba%a7%e5%8a%a0%e8%bd%bdview%e6%96%b9%e5%bc%8f%e4%b8%8b-js%e5%92%8ccss-%e7%9a%84%e8%a7%a3%e5%86%b3/\">yii2 多模板路径优先级加载view方式下- js和css 的解决</a></td><td><a href=\"http://www.fancyecommerce.com/2016/06/30/yii2-fecshop-%e5%a4%9a%e6%a8%a1%e6%9d%bf%e7%9a%84%e4%bb%8b%e7%bb%8d/\">yii2 fecshop 多模板的介绍</a></td></tr></tbody></table><p>七.Nosql方面的知识: <a href=\"http://www.fancyecommerce.com/category/19-nosql-mongodbredis/\">Nosql – Mongodb,Redis</a></p><table><tbody><tr><td><a href=\"http://www.fancyecommerce.com/2016/06/21/%e9%85%8d%e7%bd%aemongodb-%e5%a4%8d%e5%88%b6%e9%9b%863-2/\">配置mongodb 复制集3.2</a></td><td><a href=\"http://www.fancyecommerce.com/2016/06/25/redis-%E5%88%86%E5%8C%BA%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/\">Redis 分区实现原理</a></td></tr></tbody></table>\";s:10:\"content_fr\";s:0:\"\";s:10:\"content_de\";s:0:\"\";s:10:\"content_es\";s:0:\"\";s:10:\"content_ru\";s:0:\"\";s:10:\"content_pt\";s:0:\"\";s:10:\"content_zh\";s:0:\"\";}', 1, 1469161289, 1469502714, 2),
-(27, '/98145363', 'a:7:{s:8:\"title_en\";s:21:\"发大水发发呆时\";s:8:\"title_fr\";s:6:\"frfrfr\";s:8:\"title_de\";s:0:\"\";s:8:\"title_es\";s:0:\"\";s:8:\"title_ru\";s:0:\"\";s:8:\"title_pt\";s:0:\"\";s:8:\"title_zh\";s:0:\"\";}', 'a:7:{s:16:\"meta_keywords_en\";s:21:\"发大水发发呆时\";s:16:\"meta_keywords_fr\";s:6:\"fr  fr\";s:16:\"meta_keywords_de\";s:0:\"\";s:16:\"meta_keywords_es\";s:0:\"\";s:16:\"meta_keywords_ru\";s:0:\"\";s:16:\"meta_keywords_pt\";s:0:\"\";s:16:\"meta_keywords_zh\";s:0:\"\";}', 'a:7:{s:19:\"meta_description_en\";s:21:\"发大水发发呆时\";s:19:\"meta_description_fr\";s:4:\"frfr\";s:19:\"meta_description_de\";s:0:\"\";s:19:\"meta_description_es\";s:0:\"\";s:19:\"meta_description_ru\";s:0:\"\";s:19:\"meta_description_pt\";s:0:\"\";s:19:\"meta_description_zh\";s:0:\"\";}', 'a:7:{s:10:\"content_en\";s:391:\"<p>发大水发发呆时发大水发发呆时发大水发发呆时发大水发发呆时发大水发发呆时发大水发发呆时发大水发发呆时发大水发发呆时</p><p>发大水发发呆时发大水发发呆时发大水发发呆时发大水发发呆时</p><p>发大水发发呆时发大水发发呆时发大水发发呆时</p><p>发大水发发呆时发大水发发呆时<br /></p>\";s:10:\"content_fr\";s:29:\"frfr&nbsp; fadashuifrfr<br />\";s:10:\"content_de\";s:0:\"\";s:10:\"content_es\";s:0:\"\";s:10:\"content_ru\";s:0:\"\";s:10:\"content_pt\";s:0:\"\";s:10:\"content_zh\";s:0:\"\";}', 1, 1469280804, 1469772774, 2),
-(28, '/97282553', 'a:7:{s:8:\"title_en\";s:26:\"fashion hand bag for women\";s:8:\"title_fr\";s:0:\"\";s:8:\"title_de\";s:0:\"\";s:8:\"title_es\";s:0:\"\";s:8:\"title_ru\";s:0:\"\";s:8:\"title_pt\";s:0:\"\";s:8:\"title_zh\";s:12:\"时尚衣服\";}', 'a:7:{s:16:\"meta_keywords_en\";s:26:\"fashion hand bag for women\";s:16:\"meta_keywords_fr\";s:0:\"\";s:16:\"meta_keywords_de\";s:0:\"\";s:16:\"meta_keywords_es\";s:0:\"\";s:16:\"meta_keywords_ru\";s:0:\"\";s:16:\"meta_keywords_pt\";s:0:\"\";s:16:\"meta_keywords_zh\";s:12:\"时尚衣服\";}', 'a:7:{s:19:\"meta_description_en\";s:26:\"fashion hand bag for women\";s:19:\"meta_description_fr\";s:0:\"\";s:19:\"meta_description_de\";s:0:\"\";s:19:\"meta_description_es\";s:0:\"\";s:19:\"meta_description_ru\";s:0:\"\";s:19:\"meta_description_pt\";s:0:\"\";s:19:\"meta_description_zh\";s:12:\"时尚衣服\";}', 'a:7:{s:10:\"content_en\";s:118:\"<img src=\"http://img.fancyecommerce.com/media/upload/e/n_/en_a147177412985490.jpg\" alt=\"\" />fashion hand bag for women\";s:10:\"content_fr\";s:0:\"\";s:10:\"content_de\";s:0:\"\";s:10:\"content_es\";s:0:\"\";s:10:\"content_ru\";s:0:\"\";s:10:\"content_pt\";s:0:\"\";s:10:\"content_zh\";s:12:\"时尚衣服\";}', 1, 1470123712, 1471774138, 2),
-(29, '/faq', 'a:7:{s:8:\"title_en\";s:26:\"fashion hand bag for women\";s:8:\"title_fr\";s:0:\"\";s:8:\"title_de\";s:0:\"\";s:8:\"title_es\";s:0:\"\";s:8:\"title_ru\";s:0:\"\";s:8:\"title_pt\";s:0:\"\";s:8:\"title_zh\";s:12:\"时尚衣服\";}', 'a:7:{s:16:\"meta_keywords_en\";s:26:\"fashion hand bag for women\";s:16:\"meta_keywords_fr\";s:0:\"\";s:16:\"meta_keywords_de\";s:0:\"\";s:16:\"meta_keywords_es\";s:0:\"\";s:16:\"meta_keywords_ru\";s:0:\"\";s:16:\"meta_keywords_pt\";s:0:\"\";s:16:\"meta_keywords_zh\";s:12:\"时尚衣服\";}', 'a:7:{s:19:\"meta_description_en\";s:26:\"fashion hand bag for women\";s:19:\"meta_description_fr\";s:0:\"\";s:19:\"meta_description_de\";s:0:\"\";s:19:\"meta_description_es\";s:0:\"\";s:19:\"meta_description_ru\";s:0:\"\";s:19:\"meta_description_pt\";s:0:\"\";s:19:\"meta_description_zh\";s:12:\"时尚衣服\";}', 'a:7:{s:10:\"content_en\";s:26:\"fashion hand bag for women\";s:10:\"content_fr\";s:0:\"\";s:10:\"content_de\";s:0:\"\";s:10:\"content_es\";s:0:\"\";s:10:\"content_ru\";s:0:\"\";s:10:\"content_pt\";s:0:\"\";s:10:\"content_zh\";s:12:\"时尚衣服\";}', 1, 1470123841, 1483609161, 2),
-(30, '/fashion-hand-bag-for-women22', 'a:7:{s:8:\"title_en\";s:28:\"fashion hand bag for women22\";s:8:\"title_fr\";s:0:\"\";s:8:\"title_de\";s:0:\"\";s:8:\"title_es\";s:10:\"eseseseses\";s:8:\"title_ru\";s:0:\"\";s:8:\"title_pt\";s:0:\"\";s:8:\"title_zh\";s:3:\"发\";}', 'a:7:{s:16:\"meta_keywords_en\";s:28:\"fashion hand bag for women22\";s:16:\"meta_keywords_fr\";s:0:\"\";s:16:\"meta_keywords_de\";s:0:\"\";s:16:\"meta_keywords_es\";s:0:\"\";s:16:\"meta_keywords_ru\";s:0:\"\";s:16:\"meta_keywords_pt\";s:0:\"\";s:16:\"meta_keywords_zh\";s:15:\"发的发生的\";}', 'a:7:{s:19:\"meta_description_en\";s:28:\"fashion hand bag for women22\";s:19:\"meta_description_fr\";s:4:\"frfr\";s:19:\"meta_description_de\";s:0:\"\";s:19:\"meta_description_es\";s:10:\"eseseseses\";s:19:\"meta_description_ru\";s:0:\"\";s:19:\"meta_description_pt\";s:0:\"\";s:19:\"meta_description_zh\";s:18:\"爱的色放打算\";}', 'a:7:{s:10:\"content_en\";s:6:\"发生\";s:10:\"content_fr\";s:60:\"芙蓉&nbsp;&nbsp; fr&nbsp;&nbsp; fashion hand bag for women\";s:10:\"content_de\";s:0:\"\";s:10:\"content_es\";s:10:\"eseseseses\";s:10:\"content_ru\";s:0:\"\";s:10:\"content_pt\";s:0:\"\";s:10:\"content_zh\";s:1132:\"<br />LuLu CMS系统优势<br /><br />&nbsp;&nbsp;&nbsp; 容易整合<br />&nbsp;&nbsp;&nbsp; 2016-01-01 18:56:48<br />&nbsp;&nbsp;&nbsp; LuLu CMS让整合第三方厂商解决方案变得更加容易，透过LuLu CMS建立客制化网站可以节省您很多的时间与资源。<br />&nbsp;&nbsp;&nbsp; 新颖的功能<br />&nbsp;&nbsp;&nbsp; 2016-01-01 18:57:07<br />&nbsp;&nbsp;&nbsp; 像是产品标签、多送货地址或产品比较系统等功能，您不需要支付额外的费用来取得，在现成的LuLu CMS系统中，您可以发现更多。<br />&nbsp;&nbsp;&nbsp; 专业与社群支援<br />&nbsp;&nbsp;&nbsp; 2016-01-01 18:57:29<br />&nbsp;&nbsp;&nbsp; 不像是其他的开放原始码解决方案，LuLu CMS提供专业、可信赖的支援，您也可以从热情的社群中取得协助,国内也有LuLu CMS的爱好者创建中文社区。<br />&nbsp;&nbsp;&nbsp; 完整的扩充性<br />&nbsp;&nbsp;&nbsp; 2016-01-01 18:57:48<br />&nbsp;&nbsp;&nbsp; 无论网站经过了一夜或是一年的成长，您不需要担心选择的方案无法应付，LuLu CMS提供了完整的扩充性。<br /><br /><br />\";}', 1, 1470123879, 1470209419, 2),
+(25, '/fdsafsd', 'a:7:{s:8:"title_en";s:5:"22222";s:8:"title_fr";s:0:"";s:8:"title_de";s:0:"";s:8:"title_es";s:0:"";s:8:"title_ru";s:0:"";s:8:"title_pt";s:0:"";s:8:"title_zh";s:0:"";}', 'a:7:{s:16:"meta_keywords_en";s:2:"33";s:16:"meta_keywords_fr";s:0:"";s:16:"meta_keywords_de";s:0:"";s:16:"meta_keywords_es";s:0:"";s:16:"meta_keywords_ru";s:4:"4444";s:16:"meta_keywords_pt";s:0:"";s:16:"meta_keywords_zh";s:0:"";}', 'a:7:{s:19:"meta_description_en";s:17:"<h3>32323233</h3>";s:19:"meta_description_fr";s:5:"44444";s:19:"meta_description_de";s:0:"";s:19:"meta_description_es";s:0:"";s:19:"meta_description_ru";s:0:"";s:19:"meta_description_pt";s:0:"";s:19:"meta_description_zh";s:0:"";}', 'a:7:{s:10:"content_en";s:0:"";s:10:"content_fr";s:0:"";s:10:"content_de";s:0:"";s:10:"content_es";s:0:"";s:10:"content_ru";s:0:"";s:10:"content_pt";s:0:"";s:10:"content_zh";s:0:"";}', 2, 1469161277, 1469173934, 2),
+(26, '/55555555555', 'a:7:{s:8:"title_en";s:15:"222444444444444";s:8:"title_fr";s:0:"";s:8:"title_de";s:0:"";s:8:"title_es";s:0:"";s:8:"title_ru";s:0:"";s:8:"title_pt";s:0:"";s:8:"title_zh";s:0:"";}', 'a:7:{s:16:"meta_keywords_en";s:3:"222";s:16:"meta_keywords_fr";s:4:"3333";s:16:"meta_keywords_de";s:0:"";s:16:"meta_keywords_es";s:0:"";s:16:"meta_keywords_ru";s:0:"";s:16:"meta_keywords_pt";s:0:"";s:16:"meta_keywords_zh";s:0:"";}', 'a:7:{s:19:"meta_description_en";s:3:"222";s:19:"meta_description_fr";s:0:"";s:19:"meta_description_de";s:0:"";s:19:"meta_description_es";s:0:"";s:19:"meta_description_ru";s:0:"";s:19:"meta_description_pt";s:0:"";s:19:"meta_description_zh";s:0:"";}', 'a:7:{s:10:"content_en";s:1712:"<p>六.Yii2实战方面的文章:<a href="http://www.fancyecommerce.com/category/yii2-%e5%ae%9e%e6%88%98/">Yii2 实战</a></p><table><tbody><tr><td><a href="http://www.fancyecommerce.com/2016/05/28/yii2-%E9%A1%B5%E9%9D%A2%E5%8A%9F%E8%83%BD%E5%9D%97%EF%BC%88%E5%89%8D%E7%AB%AF%E5%90%8E%E7%AB%AF%E6%8F%90%E4%BE%9B%E6%95%B0%E6%8D%AE%E7%B1%BB%EF%BC%89%EF%BC%8C%E4%BB%A5%E5%8F%8A%E6%B7%B1%E5%BA%A6/">yii2 页面功能块配置实现原理（前端+后端提供数据类），以及Views深度嵌套</a></td><td><a href="http://www.fancyecommerce.com/2016/06/26/yii2-%e5%9c%a8%e5%9f%9f%e5%90%8d%e5%90%8e%e9%9d%a2%e5%8a%a0%e4%b8%80%e4%b8%aa%e8%b7%af%e5%be%84%e4%bd%9c%e4%b8%ba%e9%a6%96%e9%a1%b5/">yii2 在域名后面加一个路径作为首页</a></td></tr><tr><td><a href="http://www.fancyecommerce.com/2016/07/06/yii2-%e5%a4%9a%e6%a8%a1%e6%9d%bf%e8%b7%af%e5%be%84%e4%bc%98%e5%85%88%e7%ba%a7%e5%8a%a0%e8%bd%bdview%e6%96%b9%e5%bc%8f%e4%b8%8b-js%e5%92%8ccss-%e7%9a%84%e8%a7%a3%e5%86%b3/">yii2 多模板路径优先级加载view方式下- js和css 的解决</a></td><td><a href="http://www.fancyecommerce.com/2016/06/30/yii2-fecshop-%e5%a4%9a%e6%a8%a1%e6%9d%bf%e7%9a%84%e4%bb%8b%e7%bb%8d/">yii2 fecshop 多模板的介绍</a></td></tr></tbody></table><p>七.Nosql方面的知识: <a href="http://www.fancyecommerce.com/category/19-nosql-mongodbredis/">Nosql – Mongodb,Redis</a></p><table><tbody><tr><td><a href="http://www.fancyecommerce.com/2016/06/21/%e9%85%8d%e7%bd%aemongodb-%e5%a4%8d%e5%88%b6%e9%9b%863-2/">配置mongodb 复制集3.2</a></td><td><a href="http://www.fancyecommerce.com/2016/06/25/redis-%E5%88%86%E5%8C%BA%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/">Redis 分区实现原理</a></td></tr></tbody></table>";s:10:"content_fr";s:0:"";s:10:"content_de";s:0:"";s:10:"content_es";s:0:"";s:10:"content_ru";s:0:"";s:10:"content_pt";s:0:"";s:10:"content_zh";s:0:"";}', 1, 1469161289, 1469502714, 2),
+(27, '/98145363', 'a:7:{s:8:"title_en";s:21:"发大水发发呆时";s:8:"title_fr";s:6:"frfrfr";s:8:"title_de";s:0:"";s:8:"title_es";s:0:"";s:8:"title_ru";s:0:"";s:8:"title_pt";s:0:"";s:8:"title_zh";s:0:"";}', 'a:7:{s:16:"meta_keywords_en";s:21:"发大水发发呆时";s:16:"meta_keywords_fr";s:6:"fr  fr";s:16:"meta_keywords_de";s:0:"";s:16:"meta_keywords_es";s:0:"";s:16:"meta_keywords_ru";s:0:"";s:16:"meta_keywords_pt";s:0:"";s:16:"meta_keywords_zh";s:0:"";}', 'a:7:{s:19:"meta_description_en";s:21:"发大水发发呆时";s:19:"meta_description_fr";s:4:"frfr";s:19:"meta_description_de";s:0:"";s:19:"meta_description_es";s:0:"";s:19:"meta_description_ru";s:0:"";s:19:"meta_description_pt";s:0:"";s:19:"meta_description_zh";s:0:"";}', 'a:7:{s:10:"content_en";s:391:"<p>发大水发发呆时发大水发发呆时发大水发发呆时发大水发发呆时发大水发发呆时发大水发发呆时发大水发发呆时发大水发发呆时</p><p>发大水发发呆时发大水发发呆时发大水发发呆时发大水发发呆时</p><p>发大水发发呆时发大水发发呆时发大水发发呆时</p><p>发大水发发呆时发大水发发呆时<br /></p>";s:10:"content_fr";s:29:"frfr&nbsp; fadashuifrfr<br />";s:10:"content_de";s:0:"";s:10:"content_es";s:0:"";s:10:"content_ru";s:0:"";s:10:"content_pt";s:0:"";s:10:"content_zh";s:0:"";}', 1, 1469280804, 1469772774, 2),
+(28, '/97282553', 'a:7:{s:8:"title_en";s:26:"fashion hand bag for women";s:8:"title_fr";s:0:"";s:8:"title_de";s:0:"";s:8:"title_es";s:0:"";s:8:"title_ru";s:0:"";s:8:"title_pt";s:0:"";s:8:"title_zh";s:12:"时尚衣服";}', 'a:7:{s:16:"meta_keywords_en";s:26:"fashion hand bag for women";s:16:"meta_keywords_fr";s:0:"";s:16:"meta_keywords_de";s:0:"";s:16:"meta_keywords_es";s:0:"";s:16:"meta_keywords_ru";s:0:"";s:16:"meta_keywords_pt";s:0:"";s:16:"meta_keywords_zh";s:12:"时尚衣服";}', 'a:7:{s:19:"meta_description_en";s:26:"fashion hand bag for women";s:19:"meta_description_fr";s:0:"";s:19:"meta_description_de";s:0:"";s:19:"meta_description_es";s:0:"";s:19:"meta_description_ru";s:0:"";s:19:"meta_description_pt";s:0:"";s:19:"meta_description_zh";s:12:"时尚衣服";}', 'a:7:{s:10:"content_en";s:118:"<img src="http://img.fancyecommerce.com/media/upload/e/n_/en_a147177412985490.jpg" alt="" />fashion hand bag for women";s:10:"content_fr";s:0:"";s:10:"content_de";s:0:"";s:10:"content_es";s:0:"";s:10:"content_ru";s:0:"";s:10:"content_pt";s:0:"";s:10:"content_zh";s:12:"时尚衣服";}', 1, 1470123712, 1471774138, 2),
+(29, '/faq', 'a:7:{s:8:"title_en";s:26:"fashion hand bag for women";s:8:"title_fr";s:0:"";s:8:"title_de";s:0:"";s:8:"title_es";s:0:"";s:8:"title_ru";s:0:"";s:8:"title_pt";s:0:"";s:8:"title_zh";s:12:"时尚衣服";}', 'a:7:{s:16:"meta_keywords_en";s:26:"fashion hand bag for women";s:16:"meta_keywords_fr";s:0:"";s:16:"meta_keywords_de";s:0:"";s:16:"meta_keywords_es";s:0:"";s:16:"meta_keywords_ru";s:0:"";s:16:"meta_keywords_pt";s:0:"";s:16:"meta_keywords_zh";s:12:"时尚衣服";}', 'a:7:{s:19:"meta_description_en";s:26:"fashion hand bag for women";s:19:"meta_description_fr";s:0:"";s:19:"meta_description_de";s:0:"";s:19:"meta_description_es";s:0:"";s:19:"meta_description_ru";s:0:"";s:19:"meta_description_pt";s:0:"";s:19:"meta_description_zh";s:12:"时尚衣服";}', 'a:7:{s:10:"content_en";s:26:"fashion hand bag for women";s:10:"content_fr";s:0:"";s:10:"content_de";s:0:"";s:10:"content_es";s:0:"";s:10:"content_ru";s:0:"";s:10:"content_pt";s:0:"";s:10:"content_zh";s:12:"时尚衣服";}', 1, 1470123841, 1483609161, 2),
+(30, '/fashion-hand-bag-for-women22', 'a:7:{s:8:"title_en";s:28:"fashion hand bag for women22";s:8:"title_fr";s:0:"";s:8:"title_de";s:0:"";s:8:"title_es";s:10:"eseseseses";s:8:"title_ru";s:0:"";s:8:"title_pt";s:0:"";s:8:"title_zh";s:3:"发";}', 'a:7:{s:16:"meta_keywords_en";s:28:"fashion hand bag for women22";s:16:"meta_keywords_fr";s:0:"";s:16:"meta_keywords_de";s:0:"";s:16:"meta_keywords_es";s:0:"";s:16:"meta_keywords_ru";s:0:"";s:16:"meta_keywords_pt";s:0:"";s:16:"meta_keywords_zh";s:15:"发的发生的";}', 'a:7:{s:19:"meta_description_en";s:28:"fashion hand bag for women22";s:19:"meta_description_fr";s:4:"frfr";s:19:"meta_description_de";s:0:"";s:19:"meta_description_es";s:10:"eseseseses";s:19:"meta_description_ru";s:0:"";s:19:"meta_description_pt";s:0:"";s:19:"meta_description_zh";s:18:"爱的色放打算";}', 'a:7:{s:10:"content_en";s:6:"发生";s:10:"content_fr";s:60:"芙蓉&nbsp;&nbsp; fr&nbsp;&nbsp; fashion hand bag for women";s:10:"content_de";s:0:"";s:10:"content_es";s:10:"eseseseses";s:10:"content_ru";s:0:"";s:10:"content_pt";s:0:"";s:10:"content_zh";s:1132:"<br />LuLu CMS系统优势<br /><br />&nbsp;&nbsp;&nbsp; 容易整合<br />&nbsp;&nbsp;&nbsp; 2016-01-01 18:56:48<br />&nbsp;&nbsp;&nbsp; LuLu CMS让整合第三方厂商解决方案变得更加容易，透过LuLu CMS建立客制化网站可以节省您很多的时间与资源。<br />&nbsp;&nbsp;&nbsp; 新颖的功能<br />&nbsp;&nbsp;&nbsp; 2016-01-01 18:57:07<br />&nbsp;&nbsp;&nbsp; 像是产品标签、多送货地址或产品比较系统等功能，您不需要支付额外的费用来取得，在现成的LuLu CMS系统中，您可以发现更多。<br />&nbsp;&nbsp;&nbsp; 专业与社群支援<br />&nbsp;&nbsp;&nbsp; 2016-01-01 18:57:29<br />&nbsp;&nbsp;&nbsp; 不像是其他的开放原始码解决方案，LuLu CMS提供专业、可信赖的支援，您也可以从热情的社群中取得协助,国内也有LuLu CMS的爱好者创建中文社区。<br />&nbsp;&nbsp;&nbsp; 完整的扩充性<br />&nbsp;&nbsp;&nbsp; 2016-01-01 18:57:48<br />&nbsp;&nbsp;&nbsp; 无论网站经过了一夜或是一年的成长，您不需要担心选择的方案无法应付，LuLu CMS提供了完整的扩充性。<br /><br /><br />";}', 1, 1470123879, 1470209419, 2),
 (31, '/61493194', NULL, NULL, NULL, NULL, 1, 1477539885, 1477539885, 2);
 
 -- --------------------------------------------------------
@@ -592,8 +606,8 @@ INSERT INTO `article` (`id`, `url_key`, `title`, `meta_keywords`, `meta_descript
 --
 
 DROP TABLE IF EXISTS `banner`;
-CREATE TABLE `banner` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `banner` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `title` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `url` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `img` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '图片',
@@ -601,8 +615,9 @@ CREATE TABLE `banner` (
   `type` int(11) DEFAULT NULL COMMENT '轮播图位置',
   `create_time` int(11) DEFAULT NULL COMMENT '操作时间',
   `num` int(11) DEFAULT NULL COMMENT '点击次数',
-  `update_time` int(11) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `update_time` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- 转存表中的数据 `banner`
@@ -619,12 +634,13 @@ INSERT INTO `banner` (`id`, `title`, `url`, `img`, `sort`, `type`, `create_time`
 --
 
 DROP TABLE IF EXISTS `coin_record`;
-CREATE TABLE `coin_record` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `coin_record` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `uid` int(10) DEFAULT NULL,
   `time` int(11) DEFAULT NULL COMMENT '操作时间',
   `type` tinyint(1) DEFAULT NULL COMMENT '1 新增 2 消费',
-  `coinNum` float DEFAULT NULL COMMENT '金币的数量'
+  `coinNum` float DEFAULT NULL COMMENT '金币的数量',
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -634,14 +650,15 @@ CREATE TABLE `coin_record` (
 --
 
 DROP TABLE IF EXISTS `coin_set`;
-CREATE TABLE `coin_set` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `coin_set` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `sort` int(11) DEFAULT NULL COMMENT '金币抵扣规则排序',
   `condition` float(11,0) DEFAULT NULL COMMENT '金币的使用条件',
   `coin_num` int(11) DEFAULT NULL COMMENT '金币的使用数量',
   `create_id` int(11) DEFAULT NULL COMMENT '创建者的ID',
   `create_time` int(11) DEFAULT NULL,
-  `update_time` int(11) DEFAULT NULL
+  `update_time` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -651,8 +668,8 @@ CREATE TABLE `coin_set` (
 --
 
 DROP TABLE IF EXISTS `customer`;
-CREATE TABLE `customer` (
-  `id` int(20) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `customer` (
+  `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `password_hash` varchar(80) DEFAULT NULL COMMENT '密码',
   `password_reset_token` varchar(60) DEFAULT NULL COMMENT '密码token',
   `email` varchar(60) DEFAULT NULL COMMENT '邮箱',
@@ -675,8 +692,11 @@ CREATE TABLE `customer` (
   `headImg` varchar(100) DEFAULT NULL COMMENT '头像',
   `coin` int(10) DEFAULT NULL COMMENT '金币总额',
   `money` float(10,0) DEFAULT NULL COMMENT '余额',
-  `level` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `level` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `access_token` (`access_token`),
+  KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `customer`
@@ -684,7 +704,10 @@ CREATE TABLE `customer` (
 
 INSERT INTO `customer` (`id`, `password_hash`, `password_reset_token`, `email`, `firstname`, `lastname`, `is_subscribed`, `auth_key`, `status`, `created_at`, `updated_at`, `password`, `access_token`, `birth_date`, `favorite_product_count`, `type`, `access_token_created_at`, `allowance`, `allowance_updated_at`, `tel`, `headImg`, `coin`, `money`, `level`) VALUES
 (1, '$2y$10$0dv6DxihPbPfdBgiqWtTEeq0tqX7D6sZfcxAmymX6md8apSo6yK9G', NULL, NULL, 'fecshop', NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'default', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, '$2y$13$X06rj6PNnUg/etTeafqIluqmNukByxGV4188zI32iam2R1nhGkPr6', NULL, 'admin@qq.com', 'my', 'yanlong', 2, 'i-aRLa3ZVh34tW4yaFf-rgDJbdPkoBA9', 1, 1532750137, 1532750137, '', '80zPLycd9hhtZiJg9J42CAOXK-75sjM6', NULL, 0, 'default', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(2, '$2y$13$X06rj6PNnUg/etTeafqIluqmNukByxGV4188zI32iam2R1nhGkPr6', NULL, 'admin@qq.com', 'my', 'yanlong', 2, 'i-aRLa3ZVh34tW4yaFf-rgDJbdPkoBA9', 1, 1532750137, 1532750137, '', '80zPLycd9hhtZiJg9J42CAOXK-75sjM6', NULL, 0, 'default', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, '$2y$10$DsIJtMG6H2fyUo4VZsQESefq3qKqkSrz9FVizc1RsYouQaskFT9di', NULL, NULL, 'water', NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'default', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, '$2y$10$m8KFGZms0bX9a4Sb5M7QCe9vSDW9YIT2GV.JdZcjL2wNV.txfEaji', NULL, NULL, 'test', NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'default', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, '$2y$10$M68Mdzl8ZwU1bE9shfmELO6DYTn/YKkCXGA1adpryi/IGqPlmEGjG', NULL, NULL, '13220289350', NULL, 2, NULL, NULL, 1533116825, NULL, NULL, NULL, NULL, 0, 'default', NULL, NULL, NULL, '13220289350', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -693,8 +716,8 @@ INSERT INTO `customer` (`id`, `password_hash`, `password_reset_token`, `email`, 
 --
 
 DROP TABLE IF EXISTS `customer_address`;
-CREATE TABLE `customer_address` (
-  `address_id` int(15) NOT NULL,
+CREATE TABLE IF NOT EXISTS `customer_address` (
+  `address_id` int(15) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(150) DEFAULT NULL,
   `email` varchar(155) DEFAULT NULL,
   `last_name` varchar(150) DEFAULT NULL,
@@ -710,8 +733,10 @@ CREATE TABLE `customer_address` (
   `customer_id` int(20) DEFAULT NULL,
   `created_at` int(20) DEFAULT NULL,
   `updated_at` int(20) DEFAULT NULL,
-  `is_default` int(11) NOT NULL DEFAULT '2' COMMENT '1代表是默认地址，2代表不是'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `is_default` int(11) NOT NULL DEFAULT '2' COMMENT '1代表是默认地址，2代表不是',
+  PRIMARY KEY (`address_id`),
+  KEY `customer_id` (`customer_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `customer_address`
@@ -727,13 +752,14 @@ INSERT INTO `customer_address` (`address_id`, `first_name`, `email`, `last_name`
 --
 
 DROP TABLE IF EXISTS `grade`;
-CREATE TABLE `grade` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `grade` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '等级名称',
   `privileges` varchar(255) DEFAULT NULL COMMENT '特权列表，结合特权表，使用|分割',
   `sort` varchar(255) DEFAULT NULL,
   `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
-  `condition` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '会员的达成条件'
+  `condition` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '会员的达成条件',
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='会员等级';
 
 -- --------------------------------------------------------
@@ -743,12 +769,37 @@ CREATE TABLE `grade` (
 --
 
 DROP TABLE IF EXISTS `ipn_message`;
-CREATE TABLE `ipn_message` (
-  `ipn_id` int(15) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `ipn_message` (
+  `ipn_id` int(15) UNSIGNED NOT NULL AUTO_INCREMENT,
   `txn_id` varchar(20) DEFAULT NULL COMMENT 'transaction id',
   `payment_status` varchar(20) DEFAULT NULL COMMENT '支付状态',
-  `updated_at` int(15) DEFAULT NULL COMMENT '更新时间'
+  `updated_at` int(15) DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`ipn_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `member_rule`
+--
+
+DROP TABLE IF EXISTS `member_rule`;
+CREATE TABLE IF NOT EXISTS `member_rule` (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '会员规则表',
+  `name` varchar(50) NOT NULL DEFAULT '' COMMENT '会员名称',
+  `recharge` decimal(50,2) NOT NULL DEFAULT '0.00' COMMENT '充值要求',
+  `rule` text COMMENT '所选特权配置信息',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `member_rule`
+--
+
+INSERT INTO `member_rule` (`id`, `name`, `recharge`, `rule`) VALUES
+(1, '白银', '500.00', '{"money":"500.00","pid":{"1":"1"}}'),
+(2, '黄金', '1000.00', '{"money":"1000.00","pid":{"1":"1"}}'),
+(3, '钻石', '5000.00', '{"money":"5000.00"}');
 
 -- --------------------------------------------------------
 
@@ -757,9 +808,10 @@ CREATE TABLE `ipn_message` (
 --
 
 DROP TABLE IF EXISTS `migration`;
-CREATE TABLE `migration` (
+CREATE TABLE IF NOT EXISTS `migration` (
   `version` varchar(180) NOT NULL,
-  `apply_time` int(11) DEFAULT NULL
+  `apply_time` int(11) DEFAULT NULL,
+  PRIMARY KEY (`version`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -790,12 +842,13 @@ INSERT INTO `migration` (`version`, `apply_time`) VALUES
 --
 
 DROP TABLE IF EXISTS `money_record`;
-CREATE TABLE `money_record` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `money_record` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `uid` int(11) DEFAULT NULL,
   `time` int(11) DEFAULT NULL,
   `type` tinyint(1) DEFAULT NULL,
-  `moneyNum` float DEFAULT NULL
+  `moneyNum` float DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -805,13 +858,22 @@ CREATE TABLE `money_record` (
 --
 
 DROP TABLE IF EXISTS `privilege`;
-CREATE TABLE `privilege` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `privilege` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '特权名称',
   `img` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '特权图片',
   `info` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '特权的简介',
-  `sort` int(11) DEFAULT NULL COMMENT '排序'
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `sort` int(11) DEFAULT NULL COMMENT '排序',
+  `type` tinyint(1) DEFAULT '1' COMMENT '特权类型 1 不需要有值  2需要值',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- 转存表中的数据 `privilege`
+--
+
+INSERT INTO `privilege` (`id`, `name`, `img`, `info`, `sort`, `type`) VALUES
+(1, '1', '11.jpg', 'ooo', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -820,11 +882,13 @@ CREATE TABLE `privilege` (
 --
 
 DROP TABLE IF EXISTS `product_custom_option_qty`;
-CREATE TABLE `product_custom_option_qty` (
-  `id` int(20) NOT NULL,
+CREATE TABLE IF NOT EXISTS `product_custom_option_qty` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
   `product_id` varchar(50) NOT NULL COMMENT '产品id',
   `custom_option_sku` varchar(50) NOT NULL COMMENT '产品自定义属性sku',
-  `qty` int(20) NOT NULL COMMENT '产品个数。'
+  `qty` int(20) NOT NULL COMMENT '产品个数。',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `product_id` (`product_id`,`custom_option_sku`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -834,11 +898,13 @@ CREATE TABLE `product_custom_option_qty` (
 --
 
 DROP TABLE IF EXISTS `product_flat_qty`;
-CREATE TABLE `product_flat_qty` (
-  `id` int(20) NOT NULL,
+CREATE TABLE IF NOT EXISTS `product_flat_qty` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
   `product_id` varchar(50) NOT NULL COMMENT '产品表的id',
-  `qty` int(20) NOT NULL COMMENT '产品表的个数'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `qty` int(20) NOT NULL COMMENT '产品表的个数',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `product_id` (`product_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `product_flat_qty`
@@ -847,7 +913,8 @@ CREATE TABLE `product_flat_qty` (
 INSERT INTO `product_flat_qty` (`id`, `product_id`, `qty`) VALUES
 (1, '5b5be6eaa73322001c407d44', 2000000000),
 (2, '1', 10),
-(3, '2', 10);
+(3, '2', 10),
+(4, '5b617db51e503427d0001d69', 10);
 
 -- --------------------------------------------------------
 
@@ -856,15 +923,16 @@ INSERT INTO `product_flat_qty` (`id`, `product_id`, `qty`) VALUES
 --
 
 DROP TABLE IF EXISTS `recharge`;
-CREATE TABLE `recharge` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `recharge` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `sort` int(10) DEFAULT NULL COMMENT '充值排序',
   `price` float DEFAULT NULL COMMENT '标价',
   `actual_payment` float DEFAULT NULL COMMENT '实际支付价格',
   `create_id` int(11) DEFAULT NULL COMMENT '创建者ID',
   `update_time` int(11) DEFAULT NULL COMMENT '更新时间',
   `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
-  `discount` float DEFAULT NULL COMMENT '优惠的金额'
+  `discount` float DEFAULT NULL COMMENT '优惠的金额',
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -874,8 +942,8 @@ CREATE TABLE `recharge` (
 --
 
 DROP TABLE IF EXISTS `sales_coupon`;
-CREATE TABLE `sales_coupon` (
-  `coupon_id` int(15) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `sales_coupon` (
+  `coupon_id` int(15) UNSIGNED NOT NULL AUTO_INCREMENT,
   `uid` int(15) DEFAULT NULL COMMENT '创建人的ID',
   `shop_id` int(15) DEFAULT NULL COMMENT '商家的ID',
   `start_date` int(15) NOT NULL COMMENT '创建人的id',
@@ -888,8 +956,10 @@ CREATE TABLE `sales_coupon` (
   `conditions` int(15) DEFAULT NULL COMMENT '优惠劵使用的条件，如果类型为1，则没有条件，如果类型是2，则购物车中产品总额满足多少的时候进行打折。这里填写的是美元金额',
   `discount` int(15) DEFAULT NULL COMMENT '优惠劵的折扣，如果类型为1，这里填写的是百分比，如果类型是2，这里代表的是在总额上减少的金额，货币为美金',
   `goods` varchar(200) DEFAULT NULL COMMENT '0 表示 所有商品 商品用|分割',
-  `status` tinyint(4) DEFAULT NULL COMMENT '优惠券的状态 0 未审核 1审核通过 2 审核失败'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `status` tinyint(4) DEFAULT NULL COMMENT '优惠券的状态 0 未审核 1审核通过 2 审核失败',
+  PRIMARY KEY (`coupon_id`),
+  KEY `coupon_code` (`coupon_code`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `sales_coupon`
@@ -906,12 +976,15 @@ INSERT INTO `sales_coupon` (`coupon_id`, `uid`, `shop_id`, `start_date`, `coupon
 --
 
 DROP TABLE IF EXISTS `sales_coupon_usage`;
-CREATE TABLE `sales_coupon_usage` (
-  `id` int(15) NOT NULL,
+CREATE TABLE IF NOT EXISTS `sales_coupon_usage` (
+  `id` int(15) NOT NULL AUTO_INCREMENT,
   `coupon_id` int(25) DEFAULT '0' COMMENT '客户id',
   `customer_id` int(25) DEFAULT '0' COMMENT '客户id',
   `times_used` int(15) DEFAULT '0' COMMENT '使用次数',
-  `status` tinyint(4) DEFAULT NULL COMMENT '0 未使用 1已使用 2已过期'
+  `status` tinyint(4) DEFAULT NULL COMMENT '0 未使用 1已使用 2已过期',
+  PRIMARY KEY (`id`),
+  KEY `coupon_id` (`coupon_id`),
+  KEY `customer_id` (`customer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -921,8 +994,8 @@ CREATE TABLE `sales_coupon_usage` (
 --
 
 DROP TABLE IF EXISTS `sales_flat_cart`;
-CREATE TABLE `sales_flat_cart` (
-  `cart_id` int(15) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `sales_flat_cart` (
+  `cart_id` int(15) UNSIGNED NOT NULL AUTO_INCREMENT,
   `created_at` int(15) DEFAULT NULL COMMENT '创建时间',
   `updated_at` int(15) DEFAULT NULL COMMENT '更新时间',
   `items_count` int(10) DEFAULT '0' COMMENT '购物车中产品的总个数，默认为0个',
@@ -943,7 +1016,10 @@ CREATE TABLE `sales_flat_cart` (
   `customer_address_zip` varchar(20) DEFAULT NULL COMMENT '客户zip',
   `customer_address_street1` text COMMENT '客户街道地址1',
   `customer_address_street2` text COMMENT '客户街道地址2',
-  `app_name` varchar(20) DEFAULT NULL COMMENT '属于哪个app'
+  `app_name` varchar(20) DEFAULT NULL COMMENT '属于哪个app',
+  PRIMARY KEY (`cart_id`),
+  KEY `customer_id` (`customer_id`),
+  KEY `customer_email` (`customer_email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -953,8 +1029,8 @@ CREATE TABLE `sales_flat_cart` (
 --
 
 DROP TABLE IF EXISTS `sales_flat_cart_item`;
-CREATE TABLE `sales_flat_cart_item` (
-  `item_id` int(15) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `sales_flat_cart_item` (
+  `item_id` int(15) UNSIGNED NOT NULL AUTO_INCREMENT,
   `shop_id` int(10) DEFAULT NULL COMMENT '商家ID',
   `cart_id` int(15) DEFAULT NULL,
   `created_at` int(15) DEFAULT NULL COMMENT '创建时间',
@@ -962,7 +1038,9 @@ CREATE TABLE `sales_flat_cart_item` (
   `product_id` varchar(100) DEFAULT NULL COMMENT '产品id',
   `qty` int(10) DEFAULT NULL COMMENT '个数',
   `custom_option_sku` varchar(50) DEFAULT NULL COMMENT '产品的自定义属性',
-  `active` int(5) NOT NULL DEFAULT '1' COMMENT '1代表勾选状态，2代表不勾选状态'
+  `active` int(5) NOT NULL DEFAULT '1' COMMENT '1代表勾选状态，2代表不勾选状态',
+  PRIMARY KEY (`item_id`),
+  KEY `quote_id` (`cart_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -972,8 +1050,8 @@ CREATE TABLE `sales_flat_cart_item` (
 --
 
 DROP TABLE IF EXISTS `sales_flat_order`;
-CREATE TABLE `sales_flat_order` (
-  `order_id` int(15) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `sales_flat_order` (
+  `order_id` int(15) UNSIGNED NOT NULL AUTO_INCREMENT,
   `increment_id` varchar(25) DEFAULT NULL COMMENT '递增个数',
   `order_status` varchar(80) DEFAULT NULL COMMENT '订单状态 0待支付 1待接单 2待确认 3 待评价 4完成  5 退单',
   `shop_id` int(10) DEFAULT NULL COMMENT '店铺的ID',
@@ -1037,16 +1115,26 @@ CREATE TABLE `sales_flat_order` (
   `version` int(5) NOT NULL DEFAULT '0' COMMENT '订单支付成功后，需要更改订单状态和扣除库存，为了防止多次执行扣除库存，进而使用版本号，默认为0，执行一次更改订单状态为processing，则累加1，执行完查询version是否为1，如果不为1，则说明执行过了，事务则回滚。',
   `discount_rate` float(10,0) DEFAULT NULL COMMENT '折扣率',
   `discount_amount` float(10,0) DEFAULT NULL COMMENT '折扣金额',
-  `refund_at` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `refund_at` int(11) DEFAULT NULL COMMENT '退款时间',
+  `operator` varchar(255) DEFAULT NULL COMMENT '操作人',
+  `return_picture` text COMMENT '退货上传的图片信息，用||隔开',
+  `operating_notes` text COMMENT '操作备注',
+  `refund_notes` text COMMENT '款退留言',
+  `goods_type` tinyint(1) DEFAULT '1' COMMENT '1:商家，2:服务',
+  PRIMARY KEY (`order_id`),
+  KEY `customer_id` (`customer_id`),
+  KEY `increment_id` (`increment_id`),
+  KEY `oupload_at_order_status` (`updated_at`,`order_status`,`if_is_return_stock`),
+  KEY `payment_token` (`payment_token`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `sales_flat_order`
 --
 
-INSERT INTO `sales_flat_order` (`order_id`, `increment_id`, `order_status`, `shop_id`, `created_at`, `updated_at`, `receipt_at`, `confirm_at`, `evaluate_at`, `items_count`, `total_weight`, `order_currency_code`, `order_to_base_rate`, `grand_total`, `base_grand_total`, `subtotal`, `base_subtotal`, `subtotal_with_discount`, `base_subtotal_with_discount`, `is_changed`, `checkout_method`, `customer_id`, `customer_group`, `customer_email`, `customer_firstname`, `customer_lastname`, `customer_is_guest`, `remote_ip`, `coin_num`, `coupon_code`, `payment_method`, `shipping_method`, `shipping_total`, `base_shipping_total`, `customer_telephone`, `customer_address_country`, `customer_address_state`, `customer_address_city`, `customer_address_zip`, `customer_address_street1`, `customer_address_street2`, `order_remark`, `txn_type`, `txn_id`, `payer_id`, `ipn_track_id`, `receiver_id`, `verify_sign`, `charset`, `payment_fee`, `payment_type`, `correlation_id`, `base_payment_fee`, `protection_eligibility`, `protection_eligibility_type`, `secure_merchant_account_id`, `build`, `paypal_order_datetime`, `theme_type`, `if_is_return_stock`, `payment_token`, `version`, `discount_rate`, `discount_amount`, `refund_at`) VALUES
-(1, '20180728', '0', 3, 1532750533, NULL, NULL, NULL, NULL, 0, '0.00', NULL, NULL, '80.00', NULL, '500.00', NULL, NULL, NULL, 1, NULL, NULL, NULL, 'fecshop@123.com', '潘将兵', NULL, NULL, NULL, 0, 2, NULL, NULL, NULL, NULL, '13220289300', '山西', '太原市', '小店区', '030500', '学府街', NULL, 'ddd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, 0, 1, 450, NULL),
-(2, '20180728', '0', 3, 1532750921, NULL, NULL, NULL, NULL, 0, '0.00', NULL, NULL, '80.00', NULL, '500.00', NULL, NULL, NULL, 1, NULL, NULL, NULL, 'fecshop@123.com', '潘将兵', NULL, NULL, NULL, 0, 2, NULL, NULL, NULL, NULL, '13220289300', '山西', '太原市', '小店区', '030500', '学府街', NULL, 'ddd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, 0, 1, 450, NULL);
+INSERT INTO `sales_flat_order` (`order_id`, `increment_id`, `order_status`, `shop_id`, `created_at`, `updated_at`, `receipt_at`, `confirm_at`, `evaluate_at`, `items_count`, `total_weight`, `order_currency_code`, `order_to_base_rate`, `grand_total`, `base_grand_total`, `subtotal`, `base_subtotal`, `subtotal_with_discount`, `base_subtotal_with_discount`, `is_changed`, `checkout_method`, `customer_id`, `customer_group`, `customer_email`, `customer_firstname`, `customer_lastname`, `customer_is_guest`, `remote_ip`, `coin_num`, `coupon_code`, `payment_method`, `shipping_method`, `shipping_total`, `base_shipping_total`, `customer_telephone`, `customer_address_country`, `customer_address_state`, `customer_address_city`, `customer_address_zip`, `customer_address_street1`, `customer_address_street2`, `order_remark`, `txn_type`, `txn_id`, `payer_id`, `ipn_track_id`, `receiver_id`, `verify_sign`, `charset`, `payment_fee`, `payment_type`, `correlation_id`, `base_payment_fee`, `protection_eligibility`, `protection_eligibility_type`, `secure_merchant_account_id`, `build`, `paypal_order_datetime`, `theme_type`, `if_is_return_stock`, `payment_token`, `version`, `discount_rate`, `discount_amount`, `refund_at`, `operator`, `return_picture`, `operating_notes`, `refund_notes`, `goods_type`) VALUES
+(1, '20180728', '0', 3, 1532922368, NULL, NULL, NULL, NULL, 0, '0.00', NULL, NULL, '80.00', NULL, '500.00', NULL, NULL, NULL, 1, NULL, NULL, NULL, 'fecshop@123.com', '潘将兵1', NULL, NULL, NULL, 0, 2, NULL, NULL, NULL, NULL, '13220289300', '山东省', '枣庄市', '滕州市', '030500', '学府街', NULL, 'ddd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, 0, 1, 30, NULL, NULL, NULL, NULL, NULL, 1),
+(2, '20180728', '2', 3, 1532922368, NULL, 1532922368, NULL, NULL, 0, '0.00', NULL, NULL, '80.00', NULL, '500.00', NULL, '0.00', NULL, 1, NULL, NULL, NULL, 'fecshop@123.com', '潘将兵', NULL, NULL, NULL, 0, 2, NULL, NULL, NULL, NULL, '13220289300', '山西', '太原市', '小店区', '030500', '学府街', NULL, 'ddd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-01 19:32:18', NULL, 2, NULL, 0, 1, 30, NULL, NULL, NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -1055,8 +1143,8 @@ INSERT INTO `sales_flat_order` (`order_id`, `increment_id`, `order_status`, `sho
 --
 
 DROP TABLE IF EXISTS `sales_flat_order_item`;
-CREATE TABLE `sales_flat_order_item` (
-  `item_id` int(15) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `sales_flat_order_item` (
+  `item_id` int(15) UNSIGNED NOT NULL AUTO_INCREMENT,
   `store` varchar(100) DEFAULT NULL COMMENT 'store name',
   `order_id` int(15) DEFAULT NULL COMMENT '产品对应的订单表id',
   `customer_id` int(30) DEFAULT NULL COMMENT '用户的id',
@@ -1074,16 +1162,23 @@ CREATE TABLE `sales_flat_order_item` (
   `base_price` decimal(12,2) DEFAULT NULL COMMENT '默认货币价格',
   `row_total` decimal(12,2) DEFAULT NULL COMMENT '一个产品价格*个数',
   `base_row_total` decimal(12,2) DEFAULT NULL COMMENT '一个产品默认货币价格*个数',
-  `redirect_url` varchar(200) DEFAULT NULL COMMENT '产品url'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `redirect_url` varchar(200) DEFAULT NULL COMMENT '产品url',
+  `good_type` tinyint(1) DEFAULT '1' COMMENT '1:商品，2:服务',
+  PRIMARY KEY (`item_id`),
+  KEY `order_id` (`order_id`),
+  KEY `customer_id` (`customer_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `sales_flat_order_item`
 --
 
-INSERT INTO `sales_flat_order_item` (`item_id`, `store`, `order_id`, `customer_id`, `created_at`, `updated_at`, `product_id`, `sku`, `name`, `custom_option_sku`, `image`, `weight`, `qty`, `row_weight`, `price`, `base_price`, `row_total`, `base_row_total`, `redirect_url`) VALUES
-(1, NULL, 1, NULL, NULL, NULL, '1', '123456789', '衣服', NULL, NULL, NULL, 1, NULL, '500.00', NULL, '500.00', NULL, NULL),
-(2, NULL, 2, NULL, NULL, NULL, '2', '123456789', '衣服', NULL, NULL, NULL, 1, NULL, '500.00', NULL, '500.00', NULL, NULL);
+INSERT INTO `sales_flat_order_item` (`item_id`, `store`, `order_id`, `customer_id`, `created_at`, `updated_at`, `product_id`, `sku`, `name`, `custom_option_sku`, `image`, `weight`, `qty`, `row_weight`, `price`, `base_price`, `row_total`, `base_row_total`, `redirect_url`, `good_type`) VALUES
+(1, NULL, 1, NULL, 1533008768, NULL, '1', '123456789', '衣服', NULL, NULL, NULL, 1, NULL, '10000.00', NULL, '500.00', NULL, NULL, 1),
+(2, '', 2, NULL, 1533008768, NULL, '2', '1234567890', '衣服', '', '', NULL, 1, NULL, '500.00', NULL, '500.00', NULL, '', 1),
+(3, '', 2, NULL, 1533008768, NULL, '2', '1234567891', '衣服', '', '', NULL, 1, NULL, '5000000.00', NULL, '500.00', NULL, '', 1),
+(4, '', 2, NULL, 1533008768, NULL, '2', '123456789', '衣服', '', '', NULL, 1, NULL, '500.00', NULL, '500.00', NULL, '', 1),
+(5, '', 2, NULL, 1533008768, NULL, '2', '1234567890', '衣服', '', '', NULL, 1, NULL, '500.00', NULL, '500.00', NULL, '', 1);
 
 -- --------------------------------------------------------
 
@@ -1092,13 +1187,15 @@ INSERT INTO `sales_flat_order_item` (`item_id`, `store`, `order_id`, `customer_i
 --
 
 DROP TABLE IF EXISTS `session_storage`;
-CREATE TABLE `session_storage` (
-  `id` int(20) NOT NULL,
+CREATE TABLE IF NOT EXISTS `session_storage` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
   `uuid` varchar(200) DEFAULT NULL COMMENT '用户唯一标示',
   `key` varchar(200) DEFAULT NULL COMMENT 'session key',
   `value` text COMMENT 'session value',
   `timeout` int(20) DEFAULT NULL COMMENT '超时时间，秒',
-  `updated_at` int(20) DEFAULT NULL COMMENT '创建时间'
+  `updated_at` int(20) DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`),
+  KEY `uuid` (`uuid`,`key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1108,8 +1205,8 @@ CREATE TABLE `session_storage` (
 --
 
 DROP TABLE IF EXISTS `shop`;
-CREATE TABLE `shop` (
-  `shop_id` int(11) UNSIGNED NOT NULL COMMENT '店铺索引id',
+CREATE TABLE IF NOT EXISTS `shop` (
+  `shop_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '店铺索引id',
   `shop_name` varchar(50) DEFAULT '' COMMENT '店铺名称',
   `shop_type` int(11) DEFAULT '0' COMMENT '店铺类型等级 1 代表水司 2 代表商家',
   `uid` int(11) DEFAULT '0' COMMENT '店铺管理员id',
@@ -1177,15 +1274,19 @@ CREATE TABLE `shop` (
   `freezing_time` int(11) DEFAULT NULL,
   `freezing_cause` text,
   `reason` text COMMENT '审核不通过原因',
-  `notice` tinyint(4) DEFAULT NULL COMMENT '通知审核结果:1邮件  2短信 3人工'
-) ENGINE=InnoDB AVG_ROW_LENGTH=16384 DEFAULT CHARSET=utf8 COMMENT='店铺数据表';
+  `notice` tinyint(4) DEFAULT NULL COMMENT '通知审核结果:1邮件  2短信 3人工',
+  `created_at` int(11) DEFAULT NULL,
+  PRIMARY KEY (`shop_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=64 AVG_ROW_LENGTH=16384 DEFAULT CHARSET=utf8 COMMENT='店铺数据表';
 
 --
 -- 转存表中的数据 `shop`
 --
 
-INSERT INTO `shop` (`shop_id`, `shop_name`, `shop_type`, `uid`, `shop_company_name`, `province_id`, `district_id`, `city_id`, `shop_address`, `shop_zip`, `shop_state`, `shop_close_info`, `shop_logo`, `shop_banner`, `shop_avatar`, `shop_keywords`, `shop_description`, `shop_phone`, `shop_recommend`, `shop_credit`, `shop_desccredit`, `shop_servicecredit`, `shop_deliverycredit`, `shop_collect`, `shop_sales`, `shop_account`, `shop_cash`, `live_store_name`, `live_store_address`, `live_store_tel`, `shop_region`, `shop_qrcode`, `shop_create_time`, `shop_end_time`, `shop_platform_commission_rate`, `company_employee_count`, `company_registered_capital`, `contacts_name`, `contacts_phone`, `contacts_email`, `contacts_card_no`, `contacts_card_electronic_1`, `contacts_card_electronic_2`, `contacts_card_electronic_3`, `business_licence_number`, `business_sphere`, `business_licence_number_electronic`, `organization_code`, `organization_code_electronic`, `general_taxpayer`, `bank_account_name`, `bank_account_number`, `bank_name`, `bank_code`, `bank_address`, `bank_licence_electronic`, `is_settlement_account`, `settlement_bank_account_name`, `settlement_bank_account_number`, `settlement_bank_name`, `settlement_bank_code`, `settlement_bank_address`, `tax_registration_certificate`, `tax_registration_certificate_electronic`, `taxpayer_id`, `freezing_time`, `freezing_cause`, `reason`, `notice`) VALUES
-(3, '大同第一旗舰店', 2, 1, '山西大同第一水司', 4, 232, 16, '', '', 1, '', 'http://img.uekuek.com/images/1532748465439.jpg', '', '', '', '', '', 0, 0, 0, 0, 0, 0, '0.00', '0.00', '0.00', '', '', '', '', '', 0, 0, '0.00', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '', '', '', '', '', '', '', '', NULL, NULL, '', 2);
+INSERT INTO `shop` (`shop_id`, `shop_name`, `shop_type`, `uid`, `shop_company_name`, `province_id`, `district_id`, `city_id`, `shop_address`, `shop_zip`, `shop_state`, `shop_close_info`, `shop_logo`, `shop_banner`, `shop_avatar`, `shop_keywords`, `shop_description`, `shop_phone`, `shop_recommend`, `shop_credit`, `shop_desccredit`, `shop_servicecredit`, `shop_deliverycredit`, `shop_collect`, `shop_sales`, `shop_account`, `shop_cash`, `live_store_name`, `live_store_address`, `live_store_tel`, `shop_region`, `shop_qrcode`, `shop_create_time`, `shop_end_time`, `shop_platform_commission_rate`, `company_employee_count`, `company_registered_capital`, `contacts_name`, `contacts_phone`, `contacts_email`, `contacts_card_no`, `contacts_card_electronic_1`, `contacts_card_electronic_2`, `contacts_card_electronic_3`, `business_licence_number`, `business_sphere`, `business_licence_number_electronic`, `organization_code`, `organization_code_electronic`, `general_taxpayer`, `bank_account_name`, `bank_account_number`, `bank_name`, `bank_code`, `bank_address`, `bank_licence_electronic`, `is_settlement_account`, `settlement_bank_account_name`, `settlement_bank_account_number`, `settlement_bank_name`, `settlement_bank_code`, `settlement_bank_address`, `tax_registration_certificate`, `tax_registration_certificate_electronic`, `taxpayer_id`, `freezing_time`, `freezing_cause`, `reason`, `notice`, `created_at`) VALUES
+(3, '大同第一旗舰店', 2, 1, '山西大同第一水司', 4, 233, 16, '111', '', 1, '', '1533108492284.jpg', '11\r\n', '', '', 'aaaa\r\n', '132', 0, 0, 0, 0, 0, 0, '0.00', '0.00', '0.00', '', '', '', '', '', 0, 0, '0.00', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '', '', '', '', '', '', '', '', NULL, NULL, '', 2, NULL),
+(4, 'b', 1, 3, 'a', 4, 232, 16, '', '', 1, '', '1532913955152317072.jpg', '', '', '', '', '', 0, 0, 0, 0, 0, 0, '0.00', '0.00', '0.00', '', '', '', '', '', 0, 0, '0.00', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '', '', '', '', '', '', '', '', NULL, NULL, '', 1, NULL),
+(62, '1', 1, 6, '1', 16, 1377, 153, '1', '1', 3, '1', '15331732502336210067.jpg', '1533173250144809609.jpg', '15331732512702226031.jpg', '1', '1', '1', 0, 0, 0, 0, 0, 0, '0.00', '0.00', '0.00', '', '', '', '1', '1', 0, 0, '0.00', 1, 1, '1', '1', '1', '1', NULL, NULL, NULL, '1', '1', NULL, '1', NULL, NULL, '1', '1', '1', '1', '1', NULL, 1, '1', '1', '1', '1', '1', '1', NULL, '1', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1194,15 +1295,17 @@ INSERT INTO `shop` (`shop_id`, `shop_name`, `shop_type`, `uid`, `shop_company_na
 --
 
 DROP TABLE IF EXISTS `static_block`;
-CREATE TABLE `static_block` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `static_block` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `identify` varchar(100) DEFAULT NULL,
   `title` text,
   `status` int(5) DEFAULT NULL,
   `content` text,
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
-  `created_user_id` int(20) DEFAULT NULL
+  `created_user_id` int(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `identify` (`identify`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1212,14 +1315,16 @@ CREATE TABLE `static_block` (
 --
 
 DROP TABLE IF EXISTS `sys_city`;
-CREATE TABLE `sys_city` (
-  `city_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `sys_city` (
+  `city_id` int(11) NOT NULL AUTO_INCREMENT,
   `province_id` int(11) NOT NULL DEFAULT '0',
   `city_name` varchar(255) NOT NULL DEFAULT '',
   `zipcode` varchar(6) NOT NULL DEFAULT '',
   `sort` int(10) NOT NULL DEFAULT '0',
-  `sindex` varchar(255) NOT NULL
-) ENGINE=InnoDB AVG_ROW_LENGTH=135 DEFAULT CHARSET=utf8;
+  `sindex` varchar(255) NOT NULL,
+  PRIMARY KEY (`city_id`),
+  KEY `IDX_g_city_CityName` (`city_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=346 AVG_ROW_LENGTH=135 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `sys_city`
@@ -1579,12 +1684,14 @@ INSERT INTO `sys_city` (`city_id`, `province_id`, `city_name`, `zipcode`, `sort`
 --
 
 DROP TABLE IF EXISTS `sys_district`;
-CREATE TABLE `sys_district` (
-  `district_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `sys_district` (
+  `district_id` int(11) NOT NULL AUTO_INCREMENT,
   `city_id` int(11) DEFAULT '0',
   `district_name` varchar(255) NOT NULL DEFAULT '',
-  `sort` int(10) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AVG_ROW_LENGTH=50 DEFAULT CHARSET=utf8;
+  `sort` int(10) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`district_id`),
+  KEY `IDX_g_district_DistrictName` (`district_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=2870 AVG_ROW_LENGTH=50 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `sys_district`
@@ -4464,12 +4571,14 @@ INSERT INTO `sys_district` (`district_id`, `city_id`, `district_name`, `sort`) V
 --
 
 DROP TABLE IF EXISTS `sys_province`;
-CREATE TABLE `sys_province` (
-  `province_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `sys_province` (
+  `province_id` int(11) NOT NULL AUTO_INCREMENT,
   `area_id` tinyint(4) NOT NULL DEFAULT '0',
   `province_name` varchar(255) NOT NULL DEFAULT '',
-  `sort` int(10) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AVG_ROW_LENGTH=481 DEFAULT CHARSET=utf8;
+  `sort` int(10) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`province_id`),
+  KEY `IDX_g_province_ProvinceName` (`province_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=35 AVG_ROW_LENGTH=481 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `sys_province`
@@ -4518,13 +4627,14 @@ INSERT INTO `sys_province` (`province_id`, `area_id`, `province_name`, `sort`) V
 --
 
 DROP TABLE IF EXISTS `thaw_info`;
-CREATE TABLE `thaw_info` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `thaw_info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `desc` text CHARACTER SET utf8,
   `voucher` varchar(255) DEFAULT NULL,
   `create_date` int(11) DEFAULT NULL,
   `uid` int(11) NOT NULL,
-  `status` tinyint(1) DEFAULT NULL COMMENT '0 未审核 1审核通过 2未通过'
+  `status` tinyint(1) DEFAULT NULL COMMENT '0 未审核 1审核通过 2未通过',
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -4534,12 +4644,14 @@ CREATE TABLE `thaw_info` (
 --
 
 DROP TABLE IF EXISTS `url_rewrite`;
-CREATE TABLE `url_rewrite` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `url_rewrite` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(50) DEFAULT NULL COMMENT '类型',
   `custom_url_key` varchar(255) DEFAULT NULL COMMENT '自定义url key',
-  `origin_url` varchar(255) DEFAULT NULL COMMENT '原来的url '
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `origin_url` varchar(255) DEFAULT NULL COMMENT '原来的url ',
+  PRIMARY KEY (`id`),
+  KEY `custom_url_key` (`custom_url_key`)
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `url_rewrite`
@@ -4570,459 +4682,6 @@ INSERT INTO `url_rewrite` (`id`, `type`, `custom_url_key`, `origin_url`) VALUES
 (22, 'system', '/2222222', '/catalog/category/index?_id=57aacc35f656f22e0be25ca5'),
 (23, 'system', '/1111', '/catalog/category/index?_id=57aacdf0f656f2b00ee25ca3'),
 (45, 'system', '/1111111111111111', '/catalog/product/index?_id=57b5936af656f2ff293bf56e');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `admin_config`
---
-ALTER TABLE `admin_config`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `key` (`key`);
-
---
--- Indexes for table `admin_menu`
---
-ALTER TABLE `admin_menu`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `url_key` (`url_key`);
-
---
--- Indexes for table `admin_role`
---
-ALTER TABLE `admin_role`
-  ADD PRIMARY KEY (`role_id`);
-
---
--- Indexes for table `admin_role_menu`
---
-ALTER TABLE `admin_role_menu`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `role_id` (`role_id`);
-
---
--- Indexes for table `admin_user`
---
-ALTER TABLE `admin_user`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`),
-  ADD UNIQUE KEY `access_token` (`access_token`);
-
---
--- Indexes for table `admin_user_role`
---
-ALTER TABLE `admin_user_role`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`);
-
---
--- Indexes for table `admin_visit_log`
---
-ALTER TABLE `admin_visit_log`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `article`
---
-ALTER TABLE `article`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `url_key` (`url_key`);
-
---
--- Indexes for table `banner`
---
-ALTER TABLE `banner`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `coin_record`
---
-ALTER TABLE `coin_record`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `coin_set`
---
-ALTER TABLE `coin_set`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `customer`
---
-ALTER TABLE `customer`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `access_token` (`access_token`),
-  ADD KEY `email` (`email`);
-
---
--- Indexes for table `customer_address`
---
-ALTER TABLE `customer_address`
-  ADD PRIMARY KEY (`address_id`),
-  ADD KEY `customer_id` (`customer_id`);
-
---
--- Indexes for table `grade`
---
-ALTER TABLE `grade`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `ipn_message`
---
-ALTER TABLE `ipn_message`
-  ADD PRIMARY KEY (`ipn_id`);
-
---
--- Indexes for table `migration`
---
-ALTER TABLE `migration`
-  ADD PRIMARY KEY (`version`);
-
---
--- Indexes for table `money_record`
---
-ALTER TABLE `money_record`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `privilege`
---
-ALTER TABLE `privilege`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `product_custom_option_qty`
---
-ALTER TABLE `product_custom_option_qty`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `product_id` (`product_id`,`custom_option_sku`);
-
---
--- Indexes for table `product_flat_qty`
---
-ALTER TABLE `product_flat_qty`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `product_id` (`product_id`);
-
---
--- Indexes for table `recharge`
---
-ALTER TABLE `recharge`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `sales_coupon`
---
-ALTER TABLE `sales_coupon`
-  ADD PRIMARY KEY (`coupon_id`),
-  ADD KEY `coupon_code` (`coupon_code`);
-
---
--- Indexes for table `sales_coupon_usage`
---
-ALTER TABLE `sales_coupon_usage`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `coupon_id` (`coupon_id`),
-  ADD KEY `customer_id` (`customer_id`);
-
---
--- Indexes for table `sales_flat_cart`
---
-ALTER TABLE `sales_flat_cart`
-  ADD PRIMARY KEY (`cart_id`),
-  ADD KEY `customer_id` (`customer_id`),
-  ADD KEY `customer_email` (`customer_email`);
-
---
--- Indexes for table `sales_flat_cart_item`
---
-ALTER TABLE `sales_flat_cart_item`
-  ADD PRIMARY KEY (`item_id`),
-  ADD KEY `quote_id` (`cart_id`);
-
---
--- Indexes for table `sales_flat_order`
---
-ALTER TABLE `sales_flat_order`
-  ADD PRIMARY KEY (`order_id`),
-  ADD KEY `customer_id` (`customer_id`),
-  ADD KEY `increment_id` (`increment_id`),
-  ADD KEY `oupload_at_order_status` (`updated_at`,`order_status`,`if_is_return_stock`),
-  ADD KEY `payment_token` (`payment_token`);
-
---
--- Indexes for table `sales_flat_order_item`
---
-ALTER TABLE `sales_flat_order_item`
-  ADD PRIMARY KEY (`item_id`),
-  ADD KEY `order_id` (`order_id`),
-  ADD KEY `customer_id` (`customer_id`);
-
---
--- Indexes for table `session_storage`
---
-ALTER TABLE `session_storage`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `uuid` (`uuid`,`key`);
-
---
--- Indexes for table `shop`
---
-ALTER TABLE `shop`
-  ADD PRIMARY KEY (`shop_id`);
-
---
--- Indexes for table `static_block`
---
-ALTER TABLE `static_block`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `identify` (`identify`);
-
---
--- Indexes for table `sys_city`
---
-ALTER TABLE `sys_city`
-  ADD PRIMARY KEY (`city_id`),
-  ADD KEY `IDX_g_city_CityName` (`city_name`);
-
---
--- Indexes for table `sys_district`
---
-ALTER TABLE `sys_district`
-  ADD PRIMARY KEY (`district_id`),
-  ADD KEY `IDX_g_district_DistrictName` (`district_name`);
-
---
--- Indexes for table `sys_province`
---
-ALTER TABLE `sys_province`
-  ADD PRIMARY KEY (`province_id`),
-  ADD KEY `IDX_g_province_ProvinceName` (`province_name`);
-
---
--- Indexes for table `thaw_info`
---
-ALTER TABLE `thaw_info`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `url_rewrite`
---
-ALTER TABLE `url_rewrite`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `custom_url_key` (`custom_url_key`);
-
---
--- 在导出的表使用AUTO_INCREMENT
---
-
---
--- 使用表AUTO_INCREMENT `admin_config`
---
-ALTER TABLE `admin_config`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- 使用表AUTO_INCREMENT `admin_menu`
---
-ALTER TABLE `admin_menu`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202;
-
---
--- 使用表AUTO_INCREMENT `admin_role`
---
-ALTER TABLE `admin_role`
-  MODIFY `role_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- 使用表AUTO_INCREMENT `admin_role_menu`
---
-ALTER TABLE `admin_role_menu`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
-
---
--- 使用表AUTO_INCREMENT `admin_user`
---
-ALTER TABLE `admin_user`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- 使用表AUTO_INCREMENT `admin_user_role`
---
-ALTER TABLE `admin_user_role`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- 使用表AUTO_INCREMENT `admin_visit_log`
---
-ALTER TABLE `admin_visit_log`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=267;
-
---
--- 使用表AUTO_INCREMENT `article`
---
-ALTER TABLE `article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
-
---
--- 使用表AUTO_INCREMENT `banner`
---
-ALTER TABLE `banner`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- 使用表AUTO_INCREMENT `coin_record`
---
-ALTER TABLE `coin_record`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- 使用表AUTO_INCREMENT `coin_set`
---
-ALTER TABLE `coin_set`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- 使用表AUTO_INCREMENT `customer`
---
-ALTER TABLE `customer`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- 使用表AUTO_INCREMENT `customer_address`
---
-ALTER TABLE `customer_address`
-  MODIFY `address_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- 使用表AUTO_INCREMENT `grade`
---
-ALTER TABLE `grade`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- 使用表AUTO_INCREMENT `ipn_message`
---
-ALTER TABLE `ipn_message`
-  MODIFY `ipn_id` int(15) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- 使用表AUTO_INCREMENT `money_record`
---
-ALTER TABLE `money_record`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- 使用表AUTO_INCREMENT `privilege`
---
-ALTER TABLE `privilege`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- 使用表AUTO_INCREMENT `product_custom_option_qty`
---
-ALTER TABLE `product_custom_option_qty`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
-
---
--- 使用表AUTO_INCREMENT `product_flat_qty`
---
-ALTER TABLE `product_flat_qty`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- 使用表AUTO_INCREMENT `recharge`
---
-ALTER TABLE `recharge`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- 使用表AUTO_INCREMENT `sales_coupon`
---
-ALTER TABLE `sales_coupon`
-  MODIFY `coupon_id` int(15) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- 使用表AUTO_INCREMENT `sales_coupon_usage`
---
-ALTER TABLE `sales_coupon_usage`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT;
-
---
--- 使用表AUTO_INCREMENT `sales_flat_cart`
---
-ALTER TABLE `sales_flat_cart`
-  MODIFY `cart_id` int(15) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- 使用表AUTO_INCREMENT `sales_flat_cart_item`
---
-ALTER TABLE `sales_flat_cart_item`
-  MODIFY `item_id` int(15) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- 使用表AUTO_INCREMENT `sales_flat_order`
---
-ALTER TABLE `sales_flat_order`
-  MODIFY `order_id` int(15) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- 使用表AUTO_INCREMENT `sales_flat_order_item`
---
-ALTER TABLE `sales_flat_order_item`
-  MODIFY `item_id` int(15) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- 使用表AUTO_INCREMENT `session_storage`
---
-ALTER TABLE `session_storage`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
-
---
--- 使用表AUTO_INCREMENT `shop`
---
-ALTER TABLE `shop`
-  MODIFY `shop_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '店铺索引id', AUTO_INCREMENT=4;
-
---
--- 使用表AUTO_INCREMENT `static_block`
---
-ALTER TABLE `static_block`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- 使用表AUTO_INCREMENT `sys_city`
---
-ALTER TABLE `sys_city`
-  MODIFY `city_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=346;
-
---
--- 使用表AUTO_INCREMENT `sys_district`
---
-ALTER TABLE `sys_district`
-  MODIFY `district_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2870;
-
---
--- 使用表AUTO_INCREMENT `sys_province`
---
-ALTER TABLE `sys_province`
-  MODIFY `province_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
-
---
--- 使用表AUTO_INCREMENT `thaw_info`
---
-ALTER TABLE `thaw_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- 使用表AUTO_INCREMENT `url_rewrite`
---
-ALTER TABLE `url_rewrite`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

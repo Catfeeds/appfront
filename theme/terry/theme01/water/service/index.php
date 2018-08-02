@@ -15,11 +15,34 @@
 
     .content .shuaixuan {
         height: 46px;
-        width: 100%;
+        width:100%;
         display: flex;
         justify-content: space-between;
         line-height: 46px;
         color: #a4adb5;
+        font-size: 12px;
+    }
+    .content .shuaixuan li{
+        margin:0px 10px;
+    }
+    .content .shuaixuan .xiala {
+        padding-left: 10px;
+        width: 150px;
+        outline: none;
+        height: 30px;
+        border-radius: 15px;
+        background: #f3faff;
+        border: 2px solid #e5eff8;
+        color:#9eabb5;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    .shuaixuan .el-select:hover {
+        border-color: #c0c4cc;
+    }
+    .shuaixuan .el-select:focus {
+        border-color: #3CACFE;
     }
 
     .content .shuaixuan .input1 {
@@ -94,7 +117,7 @@
 </style>
 
 <div data-v-39fe08f0="" class="main-content">
-    <div data-v-39fe08f0="" style="width: 1064px; margin: 0px auto;">
+    <div data-v-39fe08f0="" style="width: 1012px; margin: 0px auto;">
         <div data-v-91dd4202="" data-v-39fe08f0="">
             <div data-v-91dd4202="" class="content">
                 <div data-v-91dd4202="" class="biaoti">
@@ -109,61 +132,21 @@
                                     role="presentation" class="el-breadcrumb__separator">·</span></span></div>
                 </div>
                 <ul data-v-91dd4202="" class="shuaixuan">
-                    <li data-v-91dd4202="">维修服务名称
-                        <div data-v-91dd4202="" class="el-select xiala"><!---->
-                            <div class="el-input el-input--suffix"><!----><input type="text" autocomplete="off"
-                                                                                 placeholder="请选择" readonly="readonly"
-                                                                                 class="el-input__inner"><!----><span
-                                        class="el-input__suffix"><span class="el-input__suffix-inner"><i
-                                                class="el-select__caret el-input__icon el-icon-arrow-up"></i>
-                                        <!----></span><!----></span><!----></div>
-                            <div class="el-select-dropdown el-popper" style="display: none; min-width: 208.333px;">
-                                <div class="el-scrollbar" style="">
-                                    <div class="el-select-dropdown__wrap el-scrollbar__wrap"
-                                         style="margin-bottom: -17px; margin-right: -17px;">
-                                        <ul class="el-scrollbar__view el-select-dropdown__list"><!---->
-                                            <li data-v-91dd4202="" class="el-select-dropdown__item selected">
-                                                <span>全部分类</span></li>
-                                            <li data-v-91dd4202="" class="el-select-dropdown__item"><span>2</span></li>
-                                            <li data-v-91dd4202="" class="el-select-dropdown__item"><span>3</span></li>
-                                        </ul>
-                                    </div>
-                                    <div class="el-scrollbar__bar is-horizontal">
-                                        <div class="el-scrollbar__thumb" style="transform: translateX(0%);"></div>
-                                    </div>
-                                    <div class="el-scrollbar__bar is-vertical">
-                                        <div class="el-scrollbar__thumb" style="transform: translateY(0%);"></div>
-                                    </div>
-                                </div><!----></div>
-                        </div>
+                    <li>维修服务名称
+                        <select name="" id="" class="el-select xiala">
+                            <option value="" style="display: none">请选择</option>
+                            <option value="">1</option>
+                            <option value="">2</option>
+                            <option value="">3</option>
+                        </select>
                     </li>
-                    <li data-v-91dd4202="">审核状态
-                        <div data-v-91dd4202="" class="el-select xiala2"><!---->
-                            <div class="el-input el-input--suffix"><!----><input type="text" autocomplete="off"
-                                                                                 placeholder="请选择" readonly="readonly"
-                                                                                 class="el-input__inner"><!----><span
-                                        class="el-input__suffix"><span class="el-input__suffix-inner"><i
-                                                class="el-select__caret el-input__icon el-icon-arrow-up"></i>
-                                        <!----></span><!----></span><!----></div>
-                            <div class="el-select-dropdown el-popper" style="display: none; min-width: 208.333px;">
-                                <div class="el-scrollbar" style="">
-                                    <div class="el-select-dropdown__wrap el-scrollbar__wrap"
-                                         style="margin-bottom: -17px; margin-right: -17px;">
-                                        <ul class="el-scrollbar__view el-select-dropdown__list"><!---->
-                                            <li data-v-91dd4202="" class="el-select-dropdown__item selected">
-                                                <span>全部</span></li>
-                                            <li data-v-91dd4202="" class="el-select-dropdown__item"><span>5</span></li>
-                                            <li data-v-91dd4202="" class="el-select-dropdown__item"><span>6</span></li>
-                                        </ul>
-                                    </div>
-                                    <div class="el-scrollbar__bar is-horizontal">
-                                        <div class="el-scrollbar__thumb" style="transform: translateX(0%);"></div>
-                                    </div>
-                                    <div class="el-scrollbar__bar is-vertical">
-                                        <div class="el-scrollbar__thumb" style="transform: translateY(0%);"></div>
-                                    </div>
-                                </div><!----></div>
-                        </div>
+                    <li>审核状态
+                        <select name="" id="" class="el-select xiala">
+                            <option value="" style="display: none">请选择</option>
+                            <option value="">1</option>
+                            <option value="">2</option>
+                            <option value="">3</option>
+                        </select>
                     </li>
                     <li data-v-91dd4202="">
                         维修编号
@@ -197,19 +180,19 @@
                         </div>
                         <div class="el-table__header-wrapper">
                             <table cellspacing="0" cellpadding="0" border="0" class="el-table__header"
-                                   style="width: 1064px;">
+                                   style="width: 1012px;">
                                 <colgroup>
                                     <col name="el-table_36_column_328" width="55">
-                                    <col name="el-table_36_column_329" width="120">
+                                    <col name="el-table_36_column_329" width="100">
                                     <col name="el-table_36_column_330" width="300">
-                                    <col name="el-table_36_column_331" width="163">
-                                    <col name="el-table_36_column_332" width="163">
-                                    <col name="el-table_36_column_333" width="163">
-                                    <col name="el-table_36_column_334" width="100">
+                                    <col name="el-table_36_column_331" width="120">
+                                    <col name="el-table_36_column_332" width="120">
+                                    <col name="el-table_36_column_333" width="150">
+                                    <col name="el-table_36_column_334" width="167">
                                     <col name="gutter" width="0">
                                 </colgroup>
                                 <thead class="has-gutter">
-                                <tr class="">
+                                <tr style="font-size: 14px;color: #B1DBFE;">
                                     <th colspan="1" rowspan="1"
                                         class="el-table_36_column_328   el-table-column--selection  is-leaf">
                                         <div class="cell"><label role="checkbox" class="el-checkbox"><span
@@ -245,17 +228,17 @@
                         </div>
                         <div class="el-table__body-wrapper is-scrolling-none">
                             <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
-                                   style="width: 1064px;">
+                                   style="width: 1012px;">
                                 <colgroup>
                                     <col name="el-table_36_column_328" width="55">
-                                    <col name="el-table_36_column_329" width="120">
+                                    <col name="el-table_36_column_329" width="100">
                                     <col name="el-table_36_column_330" width="300">
-                                    <col name="el-table_36_column_331" width="163">
-                                    <col name="el-table_36_column_332" width="163">
-                                    <col name="el-table_36_column_333" width="163">
-                                    <col name="el-table_36_column_334" width="100">
+                                    <col name="el-table_36_column_331" width="120">
+                                    <col name="el-table_36_column_332" width="120">
+                                    <col name="el-table_36_column_333" width="150">
+                                    <col name="el-table_36_column_334" width="167">
                                 </colgroup>
-                                <tbody>
+                                <tbody style="font-size: 12px;color:#82898e">
                                 <tr class="el-table__row">
                                     <td class="el-table_36_column_328  el-table-column--selection">
                                         <div class="cell"><label role="checkbox" class="el-checkbox"><span
@@ -267,10 +250,10 @@
                                                 <!----></label></div>
                                     </td>
                                     <td class="el-table_36_column_329  ">
-                                        <div class="cell">HD001</div>
+                                        <div class="cell el-tooltip">HD001</div>
                                     </td>
                                     <td class="el-table_36_column_330  ">
-                                        <div class="cell el-tooltip" style="width: 299px;">水管维修/水龙头维修/水池维修</div>
+                                        <div class="cell el-tooltip" style="width: 299px;">水管维修/水龙头维修/水池维修水管维修/水龙头维修/水池维修</div>
                                     </td>
                                     <td class="el-table_36_column_331  ">
                                         <div class="cell el-tooltip" style="width: 162px;">30.00</div>
@@ -461,16 +444,16 @@
                     </div>
                     <div data-v-91dd4202="" style="position: relative;">
                         <div data-v-91dd4202=""
-                             style="width: 180px; position: absolute; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
+                             style="width:200px; position: absolute; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
                             <div data-v-91dd4202="" style="display: flex;">
                                 <div data-v-91dd4202="" class="dian"></div>
                                 总计<span data-v-91dd4202=""
-                                        style="color: rgb(61, 176, 255); font-weight: bolder;">206</span>记录
+                                        style="color: rgb(61, 176, 255); font-weight: bolder;margin:0 5px;">206</span>记录
                             </div>
                             <div data-v-91dd4202="" style="display: flex;">
                                 <div data-v-91dd4202="" class="dian" style="background: rgb(41, 201, 154);"></div>
                                 分<span data-v-91dd4202=""
-                                       style="font-weight: bolder; color: rgb(41, 201, 154);">82</span>页
+                                       style="font-weight: bolder; color: rgb(41, 201, 154);margin:0 5px;">82</span>页
                             </div>
                         </div>
                         <div data-v-91dd4202="" style="margin-top: 40px;">

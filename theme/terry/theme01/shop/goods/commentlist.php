@@ -3,6 +3,17 @@
     use yii\helpers\Html;
     use yii\helpers\Url;
 ?>
+<style>
+    .content .shuaixuan {
+        height: 46px;
+        width: 770px;
+        display: flex;
+        justify-content: space-between;
+        line-height: 46px;
+        color: #a4adb5;
+        font-size: 12px;
+    }
+</style>
 <div class="main-content">
    <div style="width: 1012px; margin: 0px auto;">
     <div >
@@ -15,9 +26,9 @@
       </div>
       <div class="shuaixuan">
         <form action="<?php echo  Yii::$app->request->getHostInfo().Yii::$app->request->url;?>" method="get">
-       <ul style="width: 400px; display: flex; justify-content: space-between;">
+       <ul style="width: 500px; display: flex; justify-content: space-between;" class="shuaixuan">
         <li>
-            <select name="class" id="" class="el-select xiala" style="">
+            分类&nbsp;&nbsp;&nbsp;<select name="class" id="" class="el-select xiala" style="">
                <option value="0" >全部分类</option>
                 <?php
                     foreach ($class as $key => $value) {
@@ -33,13 +44,13 @@
                 ?>
             </select>
         <li>
+            关键字&nbsp;&nbsp;
           <div class="el-input" style="width: 200px;">
             <input type="text" name="name" value="<?=$_GET['name']?>" placeholder="请输入关键词搜索" class="el-input__inner" />
           </div>
         </li>
         <li>
-          <!-- <div class="sousuo"></div> -->
-          <button class="sousuo" style="border:0px;"></button>
+          <button class="sousuo" style="border:0px;cursor: pointer"></button>
         </li>
       </ul>
       </form>
@@ -116,7 +127,8 @@
           </thead>
          </table>
         </div>
-        <div class="el-table__body-wrapper is-scrolling-none">
+           <?php if(count($data)){ ?>
+                <div class="el-table__body-wrapper is-scrolling-none">
          <table cellspacing="0" cellpadding="0" border="0" class="el-table__body" style="width: 1012px;">
           <colgroup>
            <col name="el-table_3_column_15" width="52"/>
@@ -205,24 +217,27 @@
                 <span>查看</span></button>
              </div></td> -->
            </tr>
-
            <?php } ?>
 
           </tbody>
          </table>
         </div>
-        <div class="el-table__column-resize-proxy" style="display: none;"></div>
+                <div class="el-table__column-resize-proxy" style="display: none;"></div>
+           <?php }else{ ?>
+           <div style="width: 300px;height: 100px;background: url('/public/empty.jpg') center center/100% auto no-repeat;margin: 0 auto">
+           <?php } ?>
        </div>
       </div>
+          <?php if(count($data)>0){ ?>
       <div style="position: relative;">
-       <div style="width: 180px; position: absolute; top: 20px; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
+       <div style="width: 200px; position: absolute; top: 20px; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
         <div style="display: flex;">
          <div class="dian"></div> 总计
-         <span style="color: rgb(61, 176, 255); font-weight: bolder;"><?=$tot ?></span>记录
+         <span style="color: rgb(61, 176, 255); font-weight: bolder;margin:0 5px;"><?=$tot ?></span>记录
         </div>
         <div style="display: flex;">
          <div class="dian" style="background: rgb(41, 201, 154);"></div> 分
-         <span style="font-weight: bolder; color: rgb(41, 201, 154);"><?=$pages ?></span>页
+         <span style="font-weight: bolder; color: rgb(41, 201, 154);margin:0 5px;"><?=$pages ?></span>页
         </div>
        </div>
       </div>
@@ -295,6 +310,7 @@
                                         </style>
        </div>
       </div>
+          <?php } ?>
      </div>
     </div>
    </div>
@@ -342,10 +358,14 @@
         background: #f3faff;
         border: 2px solid #e5eff8;
         font-size: 14px;
-        color:#9eabb5
+        color:#9eabb5;
+        cursor: pointer;
     }
     .shuaixuan .el-select:hover {
         border-color: #c0c4cc;
+    }
+    .shuaixuan .el-select:focus {
+        border-color: #3CACFE;
     }
     .sousuo {
         margin-top: 5px;
