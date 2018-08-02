@@ -227,8 +227,7 @@
                             <div class="el-form-item__content" style="margin-left: 120px;">
                                 <div onclick="setZhu(this,'<?=$goods['image']['main']['image']?>',0)" class="zhu">
                                     <div class="close">&times;</div>
-                                    <div  class="shangpin1" >
-                                        <img src="http://img.uekuek.com/media/catalog/product/<?=$goods['image']['main']['image']?>" alt="">
+                                    <div  class="shangpin1" style="background: url('http://img.uekuek.com/media/catalog/product/<?=$goods['image']['main']['image']?>')no-repeat center center /100% auto">
                                     </div>
                                     <!-- <div style="display: flex; font-size: 12px; line-height: 30px;">
                                     	<span>图片一</span>
@@ -244,8 +243,7 @@
                                 ?>
                                         <div onclick="setZhu(this,'<?=$value['image']?>',1)" class="zhu">
                                             <div class="close">&times;</div>
-                                            <div  class="shangpin1">
-                                                <img src="http://img.uekuek.com/media/catalog/product/<?=$value['image']?>" alt="">
+                                            <div  class="shangpin1" style="background: url('http://img.uekuek.com/media/catalog/product/<?=$value['image']?>')no-repeat center center /100% auto">
                                             </div>
                                             <!-- <div style="display: flex; font-size: 12px; line-height: 30px;">
                                                 <span>图片<?php echo $key+1;?></span>
@@ -312,10 +310,11 @@
 
                 $(".adsadas").append($("<input type='file' name='file[]' onchange='uploads(this)' style='display:none' class='img'>"));
 
-                $("<img>").css({
+                $("<div>").css({
                     "width": "96px",
-                    "height": "96px"
-                }).attr("class",'zhu').attr("src", e.target.result).insertBefore($(".adsadas"));
+                    "height": "96px",
+                    "background":"url("+e.target.result+")no-repeat center center /100% auto"
+                }).attr("class",'zhu').insertBefore($(".adsadas"));
             };
 
 
@@ -376,37 +375,7 @@
 </script>
 
 <style>
-    .box{
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        padding-top: 50px;
-        background: white;
-        font-family:Microsoft YaHei;
-    }
-    .aside {
-        width: 12%;
-        min-height: 800px;
-        background: #1f262c;
-        float: left;
-        position: fixed;
-        top: 0;
-        left: 0;
-    }
 
-    .aside .logo {
-        width: 100%;
-        height: 125px;
-        background: url("/public/img/logo.png") no-repeat center center/100% auto;
-    }
-
-    .aside-list li {
-        width: 100%;
-        height: 72px;
-        line-height: 72px;
-    }
     .content {
         position: absolute;
         top:80px;

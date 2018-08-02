@@ -1,4 +1,78 @@
+<style>
 
+    .content {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        padding-top: 8px;
+    }
+
+    .content .biaoti {
+        height: 52px;
+        font-size: 12px;
+        line-height: 52px;
+        font-weight: bolder;
+    }
+
+    .content .shuaixuan {
+        height: 46px;
+        width: 900px;
+        display: flex;
+        justify-content: space-between;
+        line-height: 46px;
+        font-size: 12px;
+        color: #a4adb5;
+    }
+    .content .shuaixuan .xiala {
+        padding-left: 5px;
+        width: 120px;
+        outline: none;
+        height: 30px;
+        border-radius: 15px;
+        background: #f3faff;
+        border: 2px solid #e5eff8;
+        color: #9eabb5;
+        font-size: 14px;
+    }
+    .shuaixuan .el-select:hover {
+        border-color: #c0c4cc;
+    }
+    .shuaixuan .el-select:focus {
+        border-color: #3CACFE;
+    }
+
+    .sousuo {
+        margin-top: 5px;
+        width: 40px;
+        height: 40px;
+        background: url("/public/img/sousuo.png") no-repeat center center/100% auto;
+    }
+
+    .content .item {
+        width: 100%;
+        margin-top: 10px;
+    }
+    .content .green {
+        width: 112px;
+        height: 33px;
+        background: #37DF73;
+        border: none;
+        box-shadow: 0 0 8px #37DF73;
+        padding-top: 10px;
+    }
+
+    .content .blue {
+        width: 112px;
+        height: 33px;
+        background: #30B5FE;
+        border: none;
+        box-shadow: 0 0 8px #30B5FE;
+        padding-top: 10px;
+    }
+
+
+
+</style>
   <div  class="main-content">
    <div  style="width: 1012px; margin: 0px auto;">
     <div  >
@@ -162,7 +236,7 @@
              </div></td>
             <td class="el-table_2_column_16  ">
              <div class="cell">
-              <a  href="#/AccountMoney1" class="">资金明细</a>
+              <a  href="#/AccountMoney1" style="color:rgb(255, 143, 113)">资金明细</a>
              </div></td>
            </tr>
            <tr class="el-table__row">
@@ -193,7 +267,7 @@
              </div></td>
             <td class="el-table_2_column_16  ">
              <div class="cell">
-              <a  href="#/AccountMoney1" class="">资金明细</a>
+              <a  href="#/AccountMoney1" style="color:rgb(255, 143, 113)">资金明细</a>
              </div></td>
            </tr>
            <tr class="el-table__row">
@@ -224,7 +298,7 @@
              </div></td>
             <td class="el-table_2_column_16  ">
              <div class="cell">
-              <a  href="#/AccountMoney1" class="">资金明细</a>
+              <a  href="#/AccountMoney1" style="color:rgb(255, 143, 113)">资金明细</a>
              </div></td>
            </tr>
           </tbody>
@@ -277,78 +351,3 @@
     </div>
    </div>
   </div>
-<style>
-
-    .content {
-        width: 100%;
-        height: 100%;
-        box-sizing: border-box;
-        padding-top: 8px;
-    }
-
-    .content .biaoti {
-        height: 52px;
-        font-size: 12px;
-        line-height: 52px;
-        font-weight: bolder;
-    }
-
-    .content .shuaixuan {
-        height: 46px;
-        width: 900px;
-        display: flex;
-        justify-content: space-between;
-        line-height: 46px;
-        font-size: 12px;
-        color: #a4adb5;
-    }
-    .content .shuaixuan .xiala {
-        padding-left: 5px;
-        width: 120px;
-        outline: none;
-        height: 30px;
-        border-radius: 15px;
-        background: #f3faff;
-        border: 2px solid #e5eff8;
-        color: #9eabb5;
-        font-size: 14px;
-    }
-    .shuaixuan .el-select:hover {
-        border-color: #c0c4cc;
-    }
-    .shuaixuan .el-select:focus {
-        border-color: #3CACFE;
-    }
-
-    .sousuo {
-        margin-top: 5px;
-        width: 40px;
-        height: 40px;
-        background: url("/public/img/sousuo.png") no-repeat center center/100% auto;
-    }
-
-    .content .item {
-        width: 100%;
-        margin-top: 10px;
-    }
-    .content .green {
-        width: 112px;
-        height: 33px;
-        background: #37DF73;
-        border: none;
-        box-shadow: 0 0 8px #37DF73;
-        padding-top: 10px;
-    }
-
-    .content .blue {
-        width: 112px;
-        height: 33px;
-        background: #30B5FE;
-        border: none;
-        box-shadow: 0 0 8px #30B5FE;
-        padding-top: 10px;
-    }
-
-
-
-</style>

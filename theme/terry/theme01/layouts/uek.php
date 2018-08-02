@@ -258,6 +258,7 @@ $cssOptions = [
             border-radius: 15px;
             background: #f3faff;
             border: 2px solid #e5eff8;
+            cursor: pointer;
         }
 
         input.el-input__inner {
@@ -266,7 +267,15 @@ $cssOptions = [
             background: #f3faff;
             border: 2px solid #e5eff8;
         }
-
+        .main-content textarea:hover{
+            border-color: #c0c4cc;
+        }
+        .main-content textarea:focus{
+            border-color: #3CACFE;
+        }
+        .shuaixuan .el-select {
+            cursor: pointer;
+        }
         .box {
             position: absolute;
             left: 0;
