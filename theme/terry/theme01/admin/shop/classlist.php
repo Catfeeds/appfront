@@ -72,11 +72,13 @@ use yii\helpers\Url;
         <span>·&nbsp;分类管理</span>
     </div>
     <div class="adminmannager-search">
-        <span>分类名称</span>
-        <input type="text">
-        <div class="indexsearch ">
-            <input type="submit" class="search-img" value="">
-        </div>
+        <form action="<?= Yii::$service->url->getUrl('admin/shop/classlist') ?>" method="get">
+            <span>分类名称</span>
+            <input type="text" name="name">
+            <div class="indexsearch ">
+                <input type="submit" class="search-img" value="">
+            </div>
+        </form>
         <a class="addadmin" href="/admin/shop/classadd">添加顶级分类</a>
     </div>
     <!--管理员列表-->
@@ -156,7 +158,7 @@ use yii\helpers\Url;
         </table >
     </div>
     <div class="el-table__column-resize-proxy" style="display: none;"></div>
-    
+
 </div>
 </div>
     <?php if(count($count)>0) { ?>
