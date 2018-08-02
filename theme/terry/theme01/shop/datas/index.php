@@ -300,8 +300,8 @@
                                  itemHeight: 20,
                                  orient: 'vertical',
                                  // top: 'middle',
-                                 bottom: 10,
-                                 left: 'right',
+                                 bottom: 20,
+                                 right:24,
                                  data: ['好评', '中评','差评']
                              },
                              tooltip : {
