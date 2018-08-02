@@ -318,16 +318,24 @@ class OrdersController extends PublicsController
 
         $pros = $query->from("product_flat")->where(["shop_id"=>$_SESSION["shop_id"]])->all();
 
-        $sql = "select * from product_flat_qty where in(";
+        $sql = "select * from product_flat_qty where product_id in(";
 
         foreach ($pros as $v){
-            $sql = $sql.$v["_id"].",";
+            $sql = $sql."'".$v["_id"]."',";
         }
 
         $sql = $sql."0)";
 
-//        echo $sql;
-//        exit();
+        $res1 = Yii::$app->db->createCommand($sql)->queryAll();
+
+        $goods = [];
+        foreach ($res1 as $v){
+            $res2 = $query->from("product_flat")->where(["_id"=>$v[product_id]])->one();
+            array_push($goods,$res2);
+        }
+
+        var_dump($goods);
+        exit();
 
         $res = Yii::$app->db->createCommand("select * from product_flat_qty")->queryAll();
 
