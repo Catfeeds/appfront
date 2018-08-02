@@ -83,7 +83,7 @@ class MoneyController extends PublicsController
 							WHERE shop_id in(SELECT shop_id FROM shop WHERE shop_type=2 AND shop_state in(0,1,2)) AND updated_at>$beginThismonth AND updated_at<$endThismonth  
 							GROUP BY shop_id) as B ON A.shop_id=B.shop_id
 				 LEFT JOIN (SELECT SUM(grand_total) as total,shop_id FROM sales_flat_order 
-							 WHERE shop_id in(select shop_id from shop WHERE shop_type=2 AND shop_state in(0,1,2)) 
+							 WHERE shop_id in(SELECT shop_id FROM shop WHERE shop_type=2 AND shop_state in(0,1,2)) 
 							 GROUP BY shop_id) as C ON A.shop_id=C.shop_id
 				 LEFT JOIN sys_district as D ON A.district_id=D.district_id 
 				WHERE A.shop_type=2 AND A.shop_state in(0,1,2) $where
@@ -128,7 +128,7 @@ class MoneyController extends PublicsController
 						   WHERE shop_id in(SELECT shop_id FROM shop WHERE shop_type=1 AND shop_state in(0,1,2)) AND updated_at>$beginThismonth AND updated_at<$endThismonth  
 						   GROUP BY shop_id) as B ON A.shop_id=B.shop_id
 				LEFT JOIN (SELECT SUM(grand_total) as total,shop_id FROM sales_flat_order 
-						   WHERE shop_id in(select shop_id from shop WHERE shop_type=1 AND shop_state in(0,1,2)) 
+						   WHERE shop_id in(SELECT shop_id FROM shop WHERE shop_type=1 AND shop_state in(0,1,2)) 
 						   GROUP BY shop_id) as C ON A.shop_id=C.shop_id
 				LEFT JOIN sys_district as D ON A.district_id=D.district_id 
 			   WHERE A.shop_type=1 AND A.shop_state in(0,1,2) $where
