@@ -815,7 +815,6 @@ class ShopController extends PublicsController
             }
         };
         $all = Yii::$app->db->createCommand("select o.order_status from sales_flat_order o where shop_id=$shop_id and order_status<5" )->queryAll();
-
             
             
         //查询所有的
