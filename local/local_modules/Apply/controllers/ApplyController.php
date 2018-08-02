@@ -99,33 +99,37 @@ class ApplyController extends AppfrontController
     // 店铺信息认证
     public function actionShopinfo(){
     	//公司信息页点击下一步时将公司信息和图片暂时存在session中
-    	$_SESSION['companyinfo']['post']=$_POST;
-    	$arr=self::actionUpload($_FILES);
-    	$_SESSION['companyinfo']['img']=$arr;
-    	if($_POST['img0']!=""){
-    		$_SESSION['companyinfo']['imgc']['img0']=$_POST['img0'];
-    	}
-    	if($_POST['img1']){
-    		$_SESSION['companyinfo']['imgc']['img1']=$_POST['img1'];
-    	}
-    	if($_POST['img2']){
-    		$_SESSION['companyinfo']['imgc']['img2']=$_POST['img2'];
-    	}
-    	if($_POST['img3']!=""){
-    		$_SESSION['companyinfo']['imgc']['img3']=$_POST['img3'];
-    	}
-    	if($_POST['img4']){
-    		$_SESSION['companyinfo']['imgc']['img4']=$_POST['img4'];
-    	}
-    	if($_POST['img5']){
-    		$_SESSION['companyinfo']['imgc']['img5']=$_POST['img5'];
-    	}
-    	if($_POST['img6']!=""){
-    		$_SESSION['companyinfo']['imgc']['img6']=$_POST['img6'];
-    	}
-    	if($_POST['img7']!=""){
-    		$_SESSION['companyinfo']['imgc']['img7']=$_POST['img7'];
-    	}
+        if(!($_SERVER[REQUEST_METHOD] == "GET")) {
+
+            $_SESSION['companyinfo']['post'] = $_POST;
+            $arr = self::actionUpload($_FILES);
+            $_SESSION['companyinfo']['img'] = $arr;
+            if ($_POST['img0'] != "") {
+                $_SESSION['companyinfo']['imgc']['img0'] = $_POST['img0'];
+            }
+            if ($_POST['img1']) {
+                $_SESSION['companyinfo']['imgc']['img1'] = $_POST['img1'];
+            }
+            if ($_POST['img2']) {
+                $_SESSION['companyinfo']['imgc']['img2'] = $_POST['img2'];
+            }
+            if ($_POST['img3'] != "") {
+                $_SESSION['companyinfo']['imgc']['img3'] = $_POST['img3'];
+            }
+            if ($_POST['img4']) {
+                $_SESSION['companyinfo']['imgc']['img4'] = $_POST['img4'];
+            }
+            if ($_POST['img5']) {
+                $_SESSION['companyinfo']['imgc']['img5'] = $_POST['img5'];
+            }
+            if ($_POST['img6'] != "") {
+                $_SESSION['companyinfo']['imgc']['img6'] = $_POST['img6'];
+            }
+            if ($_POST['img7'] != "") {
+                $_SESSION['companyinfo']['imgc']['img7'] = $_POST['img7'];
+            }
+            exit();
+        }
     	
     	$sql="SELECT * FROM sys_province";
     	$data['province'] = Yii::$app->db->createCommand($sql)->queryAll();
@@ -135,41 +139,44 @@ class ApplyController extends AppfrontController
      }
      // 等待审核
      public function actionWaitaudit1(){
-     	$arr1=$_SESSION['companyinfo']['post'];
-     	$arr2=$_POST;
-     	$arr3=array_merge($arr1,$arr2);
-     	$companyfile=$_SESSION['companyinfo']['img'];
-     	$shopfile=$_FILES;
-     	//将第一次提交的图片赋给$arr
-     	$arr3['business_licence_number_electronic']=$companyfile[0];
-     	$arr3['contacts_card_electronic_1']=$companyfile[1];
-     	$arr3['contacts_card_electronic_2']=$companyfile[2];
-     	$arr3['contacts_card_electronic_3']=$companyfile[3];
-     	$arr3['general_taxpayer']=$companyfile[4];
-     	$arr3['organization_code_electronic']=$companyfile[5];
-     	$arr3['bank_licence_electronic']=$companyfile[6];
-     	$arr3['tax_registration_certificate_electronic']=$companyfile[7];
-     	
-     	$arr5=self::actionUpload($shopfile);
-     	$arr3['shop_logo']=$arr5[0];
-     	$arr3['shop_banner']=$arr5[1];
-     	$arr3['shop_avatar']=$arr5[2];
-     	$arr3['shop_state']=3;//店铺状态，0关闭，1开启，2冻结，3 待审核  4未通过
-     	//用户登录之后才能进行商家入驻，uid为用户id
-     	$arr3['uid']=$_SESSION['uid'];
-     	unset($arr3['_csrf']);
-     	unset($arr3['img0']);
-     	unset($arr3['img1']);
-     	unset($arr3['img2']);
-     	unset($arr3['img3']);
-     	unset($arr3['img4']);
-     	unset($arr3['img5']);
-     	unset($arr3['img6']);
-     	unset($arr3['img7']);
-     	Yii::$app->db->createCommand()->insert('shop',$arr3)->execute();
 
-     	$_SESSION['shop_id']=Yii::$app->db->getLastInsertID();
-     	$_SESSION['shop_type']=$arr3['shop_type'];
+         if(!($_SERVER[REQUEST_METHOD] == "GET")) {
+             $arr1 = $_SESSION['companyinfo']['post'];
+             $arr2 = $_POST;
+             $arr3 = array_merge($arr1, $arr2);
+             $companyfile = $_SESSION['companyinfo']['img'];
+             $shopfile = $_FILES;
+             //将第一次提交的图片赋给$arr
+             $arr3['business_licence_number_electronic'] = $companyfile[0];
+             $arr3['contacts_card_electronic_1'] = $companyfile[1];
+             $arr3['contacts_card_electronic_2'] = $companyfile[2];
+             $arr3['contacts_card_electronic_3'] = $companyfile[3];
+             $arr3['general_taxpayer'] = $companyfile[4];
+             $arr3['organization_code_electronic'] = $companyfile[5];
+             $arr3['bank_licence_electronic'] = $companyfile[6];
+             $arr3['tax_registration_certificate_electronic'] = $companyfile[7];
+
+             $arr5 = self::actionUpload($shopfile);
+             $arr3['shop_logo'] = $arr5[0];
+             $arr3['shop_banner'] = $arr5[1];
+             $arr3['shop_avatar'] = $arr5[2];
+             $arr3['shop_state'] = 3;//店铺状态，0关闭，1开启，2冻结，3 待审核  4未通过
+             //用户登录之后才能进行商家入驻，uid为用户id
+             $arr3['uid'] = $_SESSION['uid'];
+             unset($arr3['_csrf']);
+             unset($arr3['img0']);
+             unset($arr3['img1']);
+             unset($arr3['img2']);
+             unset($arr3['img3']);
+             unset($arr3['img4']);
+             unset($arr3['img5']);
+             unset($arr3['img6']);
+             unset($arr3['img7']);
+             Yii::$app->db->createCommand()->insert('shop', $arr3)->execute();
+             $_SESSION['shop_id']=Yii::$app->db->getLastInsertID();
+             $_SESSION['shop_type']=$arr3['shop_type'];
+             exit();
+         }
         return $this->redirect("/apply/apply/waitaudit");
 
      }
@@ -177,7 +184,6 @@ class ApplyController extends AppfrontController
      // 等待页面
      public function actionWaitaudit(){
         return $this->render($this->action->id);
-
      }
     /*
      *根据省份id获取城市 

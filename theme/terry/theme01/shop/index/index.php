@@ -538,8 +538,7 @@ use yii\helpers\Url;
         }
 
     })
-    console.log(detailedDatas1);
-    console.log(detailedDatas2);
+
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.querySelector('.zhexian'));
 
