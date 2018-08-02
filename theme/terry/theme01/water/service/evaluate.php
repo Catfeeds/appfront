@@ -18,7 +18,25 @@
         height: 46px;
         line-height: 46px;
     }
+    .content .shuaixuan .xiala {
+        padding-left: 10px;
+        width: 150px;
+        outline: none;
+        height: 30px;
+        border-radius: 15px;
+        background: #f3faff;
+        border: 2px solid #e5eff8;
+        color:#9eabb5;
+        font-size: 14px;
+        cursor: pointer;
+    }
 
+    .shuaixuan .el-select:hover {
+        border-color: #c0c4cc;
+    }
+    .shuaixuan .el-select:focus {
+        border-color: #3CACFE;
+    }
     .sousuo {
         margin-top: 5px;
         width: 40px;
@@ -64,7 +82,7 @@
     }
 </style>
 <div data-v-39fe08f0="" class="main-content">
-    <div data-v-39fe08f0="" style="width: 1064px; margin: 0px auto;">
+    <div data-v-39fe08f0="" style="width: 1012px; margin: 0px auto;">
         <div data-v-02a258fa="" data-v-39fe08f0="">
             <div data-v-02a258fa="" class="content">
                 <div data-v-02a258fa="" class="biaoti">
@@ -81,42 +99,19 @@
                 </div>
                 <div data-v-02a258fa="" class="shuaixuan">
                     <ul data-v-02a258fa="" style="width: 45%; display: flex; justify-content: space-between;">
-                        <li data-v-02a258fa="">
-                            <div data-v-02a258fa="" class="el-select"><!---->
-                                <div class="el-input el-input--suffix"><!----><input type="text" autocomplete="off"
-                                                                                     placeholder="好评"
-                                                                                     readonly="readonly"
-                                                                                     class="el-input__inner">
-                                    <!----><span class="el-input__suffix"><span class="el-input__suffix-inner"><i
-                                                    class="el-select__caret el-input__icon el-icon-arrow-up"></i><!----></span>
-                                        <!----></span><!----></div>
-                                <div class="el-select-dropdown el-popper" style="display: none; min-width: 208.333px;">
-                                    <div class="el-scrollbar" style="">
-                                        <div class="el-select-dropdown__wrap el-scrollbar__wrap"
-                                             style="margin-bottom: -17px; margin-right: -17px;">
-                                            <ul class="el-scrollbar__view el-select-dropdown__list"><!---->
-                                                <li data-v-02a258fa="" class="el-select-dropdown__item"><span>好评</span>
-                                                </li>
-                                                <li data-v-02a258fa="" class="el-select-dropdown__item"><span>差评</span>
-                                                </li>
-                                                <li data-v-02a258fa="" class="el-select-dropdown__item"><span>3</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="el-scrollbar__bar is-horizontal">
-                                            <div class="el-scrollbar__thumb" style="transform: translateX(0%);"></div>
-                                        </div>
-                                        <div class="el-scrollbar__bar is-vertical">
-                                            <div class="el-scrollbar__thumb" style="transform: translateY(0%);"></div>
-                                        </div>
-                                    </div><!----></div>
-                            </div>
+                        <li>
+                            <select name="" id="" class="el-select xiala">
+                                <option value="" style="display: none;">好评</option>
+                                <option value="">好评</option>
+                                <option value="">中评</option>
+                                <option value="">差评</option>
+                            </select>
                         </li>
                         <li data-v-02a258fa="">
                             <div data-v-02a258fa="" class="el-input"><!----><input type="text" autocomplete="off"
                                                                                    placeholder="请输入关键词搜索"
                                                                                    class="el-input__inner"><!---->
-                                <!----><!----></div>
+                                </div>
                         </li>
                         <li data-v-02a258fa="">
                             <div data-v-02a258fa="" class="sousuo"></div>
@@ -141,22 +136,22 @@
                         </div>
                         <div class="el-table__header-wrapper">
                             <table cellspacing="0" cellpadding="0" border="0" class="el-table__header"
-                                   style="width: 1064px;">
+                                   style="width: 1012px;">
                                 <colgroup>
                                     <col name="el-table_37_column_335" width="55">
-                                    <col name="el-table_37_column_336" width="102">
-                                    <col name="el-table_37_column_337" width="101">
-                                    <col name="el-table_37_column_338" width="101">
-                                    <col name="el-table_37_column_339" width="101">
+                                    <col name="el-table_37_column_336" width="80">
+                                    <col name="el-table_37_column_337" width="100">
+                                    <col name="el-table_37_column_338" width="100">
+                                    <col name="el-table_37_column_339" width="80">
                                     <col name="el-table_37_column_340" width="200">
-                                    <col name="el-table_37_column_341" width="101">
-                                    <col name="el-table_37_column_342" width="101">
-                                    <col name="el-table_37_column_343" width="101">
-                                    <col name="el-table_37_column_344" width="101">
+                                    <col name="el-table_37_column_341" width="100">
+                                    <col name="el-table_37_column_342" width="120">
+                                    <col name="el-table_37_column_343" width="90">
+                                    <col name="el-table_37_column_344" width="87">
                                     <col name="gutter" width="0">
                                 </colgroup>
                                 <thead class="has-gutter">
-                                <tr class="">
+                                <tr style="font-size: 14px;color: #B1DBFE;">
                                     <th colspan="1" rowspan="1"
                                         class="el-table_37_column_335   el-table-column--selection  is-leaf">
                                         <div class="cell"><label role="checkbox" class="el-checkbox"><span
@@ -201,23 +196,24 @@
                         </div>
                         <div class="el-table__body-wrapper is-scrolling-none">
                             <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
-                                   style="width: 1064px;">
+                                   style="width: 1012px;">
                                 <colgroup>
                                     <col name="el-table_37_column_335" width="55">
-                                    <col name="el-table_37_column_336" width="102">
-                                    <col name="el-table_37_column_337" width="101">
-                                    <col name="el-table_37_column_338" width="101">
-                                    <col name="el-table_37_column_339" width="101">
+                                    <col name="el-table_37_column_336" width="80">
+                                    <col name="el-table_37_column_337" width="100">
+                                    <col name="el-table_37_column_338" width="100">
+                                    <col name="el-table_37_column_339" width="80">
                                     <col name="el-table_37_column_340" width="200">
-                                    <col name="el-table_37_column_341" width="101">
-                                    <col name="el-table_37_column_342" width="101">
-                                    <col name="el-table_37_column_343" width="101">
-                                    <col name="el-table_37_column_344" width="101">
+                                    <col name="el-table_37_column_341" width="100">
+                                    <col name="el-table_37_column_342" width="120">
+                                    <col name="el-table_37_column_343" width="90">
+                                    <col name="el-table_37_column_344" width="87">
                                 </colgroup>
-                                <tbody>
+                                <tbody style="font-size: 12px;color:#82898e">
                                 <tr class="el-table__row">
                                     <td class="el-table_37_column_335  el-table-column--selection">
-                                        <div class="cell"><label role="checkbox" class="el-checkbox"><span
+                                        <div class="cell el-tooltip">
+                                            <label role="checkbox" class="el-checkbox"><span
                                                         aria-checked="mixed" class="el-checkbox__input"><span
                                                             class="el-checkbox__inner"></span><input type="checkbox"
                                                                                                      aria-hidden="true"
@@ -226,7 +222,7 @@
                                                 <!----></label></div>
                                     </td>
                                     <td class="el-table_37_column_336  ">
-                                        <div class="cell">001</div>
+                                        <div class="cell el-tooltip">001</div>
                                     </td>
                                     <td class="el-table_37_column_337  ">
                                         <div class="cell el-tooltip" style="width: 100px;">R-123</div>
@@ -259,7 +255,7 @@
                                 </tr>
                                 <tr class="el-table__row">
                                     <td class="el-table_37_column_335  el-table-column--selection">
-                                        <div class="cell"><label role="checkbox" class="el-checkbox"><span
+                                        <div class="cell el-tooltip"><label role="checkbox" class="el-checkbox"><span
                                                         aria-checked="mixed" class="el-checkbox__input"><span
                                                             class="el-checkbox__inner"></span><input type="checkbox"
                                                                                                      aria-hidden="true"
@@ -268,7 +264,7 @@
                                                 <!----></label></div>
                                     </td>
                                     <td class="el-table_37_column_336  ">
-                                        <div class="cell">002</div>
+                                        <div class="cell el-tooltip">002</div>
                                     </td>
                                     <td class="el-table_37_column_337  ">
                                         <div class="cell el-tooltip" style="width: 100px;">R-123</div>
@@ -301,7 +297,7 @@
                                 </tr>
                                 <tr class="el-table__row">
                                     <td class="el-table_37_column_335  el-table-column--selection">
-                                        <div class="cell"><label role="checkbox" class="el-checkbox"><span
+                                        <div class="cell el-tooltip"><label role="checkbox" class="el-checkbox"><span
                                                         aria-checked="mixed" class="el-checkbox__input"><span
                                                             class="el-checkbox__inner"></span><input type="checkbox"
                                                                                                      aria-hidden="true"
@@ -310,7 +306,7 @@
                                                 <!----></label></div>
                                     </td>
                                     <td class="el-table_37_column_336  ">
-                                        <div class="cell">001</div>
+                                        <div class="cell el-tooltip">001</div>
                                     </td>
                                     <td class="el-table_37_column_337  ">
                                         <div class="cell el-tooltip" style="width: 100px;">R-123</div>
@@ -343,7 +339,7 @@
                                 </tr>
                                 <tr class="el-table__row">
                                     <td class="el-table_37_column_335  el-table-column--selection">
-                                        <div class="cell"><label role="checkbox" class="el-checkbox"><span
+                                        <div class="cell el-tooltip"><label role="checkbox" class="el-checkbox"><span
                                                         aria-checked="mixed" class="el-checkbox__input"><span
                                                             class="el-checkbox__inner"></span><input type="checkbox"
                                                                                                      aria-hidden="true"
@@ -352,7 +348,7 @@
                                                 <!----></label></div>
                                     </td>
                                     <td class="el-table_37_column_336  ">
-                                        <div class="cell">001</div>
+                                        <div class="cell el-tooltip">001</div>
                                     </td>
                                     <td class="el-table_37_column_337  ">
                                         <div class="cell el-tooltip" style="width: 100px;">R-123</div>
@@ -389,14 +385,14 @@
                 </div>
                 <div data-v-02a258fa="" style="position: relative;">
                     <div data-v-02a258fa=""
-                         style="width: 180px; position: absolute; top: 20px; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
+                         style="width: 200px; position: absolute; top: 20px; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
                         <div data-v-02a258fa="" style="display: flex;">
                             <div data-v-02a258fa="" class="dian"></div>
-                            总计<span data-v-02a258fa="" style="color: rgb(61, 176, 255); font-weight: bolder;">206</span>记录
+                            总计<span data-v-02a258fa="" style="color: rgb(61, 176, 255); font-weight: bolder;margin:0 5px">206</span>记录
                         </div>
                         <div data-v-02a258fa="" style="display: flex;">
                             <div data-v-02a258fa="" class="dian" style="background: rgb(41, 201, 154);"></div>
-                            分<span data-v-02a258fa="" style="font-weight: bolder; color: rgb(41, 201, 154);">82</span>页
+                            分<span data-v-02a258fa="" style="font-weight: bolder; color: rgb(41, 201, 154);margin:0 5px;">82</span>页
                         </div>
                     </div>
                 </div>

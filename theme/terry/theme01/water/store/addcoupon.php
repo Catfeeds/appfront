@@ -83,6 +83,10 @@
     .el-form-item__content {
         line-height: normal;
     }
+    .el-form-item__label{
+        width: 150px;
+        color: #A4ADB5;
+    }
 </style>
 
 <div data-v-63f72479="" class="main-content">
@@ -105,8 +109,7 @@
                 <form data-v-63f72479="" method="post" action="<?= Yii::$service->url->geturl("/water/store/addcou") ?>" class="el-form" enctype="application/x-www-form-urlencoded">
                     <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>"/>
                     <div data-v-63f72479="" class="el-row" style="width: 850px;">
-                        <div data-v-63f72479="" class="el-form-item"><label class="el-form-item__label"
-                                                                            style="width: 150px;">*优惠券名称</label>
+                        <div data-v-63f72479="" class="el-form-item"><label class="el-form-item__label">*优惠券名称</label>
                             <div class="el-form-item__content" style="margin-left: 150px;">
                                 <div data-v-63f72479="" class="el-input" style="width: 500px;"><!----><input type="text" name="coupon_name"
                                                                                                              autocomplete="off"
@@ -120,8 +123,7 @@
                                 <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test10">
                             </div>
                         </div>
-                        <div data-v-63f72479="" class="el-form-item"><label class="el-form-item__label"
-                                                                            style="width: 150px;">*优惠金额</label>
+                        <div data-v-63f72479="" class="el-form-item"><label class="el-form-item__label">*优惠金额</label>
                             <div class="el-form-item__content" style="margin-left: 150px;">
                                 <div data-v-63f72479="" class="el-input" style="width: 300px;"><input type="text" name="discount"
                                                                                                              autocomplete="off"
@@ -132,8 +134,7 @@
                                       style="color: rgb(155, 210, 253); font-weight: bolder; margin-left: 15px;">单位：元</span>
                                 </div>
                         </div>
-                        <div data-v-63f72479="" class="el-form-item"><label class="el-form-item__label"
-                                                                            style="width: 150px;">*消费金额</label>
+                        <div data-v-63f72479="" class="el-form-item"><label class="el-form-item__label">*消费金额</label>
                             <div class="el-form-item__content" style="margin-left: 150px;">
                                 <div data-v-63f72479="" class="el-input" style="width: 300px;"><input type="text" name="conditions"
                                                                                                              autocomplete="off"
@@ -144,9 +145,8 @@
                                       style="color: rgb(155, 210, 253); font-weight: bolder; margin-left: 15px;">单位：元（无门槛请设为0）</span>
                                 <!----></div>
                         </div>
-                        <div data-v-63f72479="" class="el-form-item"><label class="el-form-item__label"
-                                                                            style="width: 150px;">*使用范围</label>
-                            <div class="el-form-item__content" style="margin-left: 150px;"><label data-v-63f72479=""
+                        <div data-v-63f72479="" class="el-form-item"><label class="el-form-item__label">*使用范围</label>
+                            <div class="el-form-item__content" style="margin-left: 150px;margin-top:3px;"><label data-v-63f72479=""
                                                                                                   role="radio"
                                                                                                   aria-checked="true"
                                                                                                   tabindex="0"

@@ -29,14 +29,14 @@ use yii\helpers\Url;
         justify-content: space-between;
         line-height: 46px;
         color: #a4adb5;
-        font-size: 12px;
+        font-size: 14px;
     }
     .content .shuaixuan li{
         margin:0px 20px;
     }
     .content .shuaixuan .xiala {
         padding-left: 10px;
-        width: 98px;
+        width: 140px;
         outline: none;
         height: 30px;
         border-radius: 15px;
@@ -212,7 +212,7 @@ use yii\helpers\Url;
                 <form action="<?php echo  Yii::$app->request->getHostInfo().Yii::$app->request->url;?>" method="get">
                 <ul class="shuaixuan">
                     <li>分类
-                        <select name="class" id="" class="el-select xiala xialas" style="margin-left:10px;">
+                        <select name="class" id="" class="el-select xiala" style="margin-left:10px;">
                                 <option value="0">全部分类</option>
                                 <?php
                                 foreach ($class as $key => $value) {
@@ -495,16 +495,16 @@ use yii\helpers\Url;
                                     <div class="el-table__column-resize-proxy" style="display: none;"></div>
                                 </div>
                                 <div style="position: relative;">
-                                    <div style="width: 180px; position: absolute; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
+                                    <div style="width: 200px; position: absolute; right: 0px; bottom: 50px; display: flex; justify-content: space-between;">
                                         <div style="display: flex;">
                                             <div class="dian"></div>
                                             总计
-                                            <span style="color: rgb(61, 176, 255); font-weight: bolder;"><?= $tot ?></span>记录
+                                            <span style="color: rgb(61, 176, 255); font-weight: bolder;margin:0 5px;"><?= $tot ?></span>记录
                                         </div>
                                         <div style="display: flex;">
                                             <div class="dian" style="background: rgb(41, 201, 154);"></div>
                                             分
-                                            <span style="font-weight: bolder; color: rgb(41, 201, 154);"><?= $pages ?></span>页
+                                            <span style="font-weight: bolder; color: rgb(41, 201, 154);margin:0 5px;"><?= $pages ?></span>页
                                         </div>
                                     </div>
                                     <div style="margin-top: 40px;">

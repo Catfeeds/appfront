@@ -113,7 +113,7 @@ use yii\helpers\Url;
                         <div class="gonggao">
                             商家公告:
                         </div>
-                        <span title="<?= $shop['shop_banner'] ?>"><?= $shop['shop_banner'] ?></span>
+                        <span title="<?=$shop['shop_banner']?>"><?=$shop['shop_banner']?></span>
                     </div>
                 </div>
                 <div class="content1-right">
@@ -434,16 +434,16 @@ use yii\helpers\Url;
                     </div>
                 </div>
                 <div>
-                    <div style="width: 180px; float: right; margin-top: 28px; display: flex; justify-content: space-between;">
+                    <div style="width: 200px; float: right; margin-top: 28px; display: flex; justify-content: space-between;">
                         <div style="display: flex;">
                             <div class="dian"></div>
                             总计
-                            <span style="color: rgb(61, 176, 255); font-weight: bolder;"><?= $count ?></span>记录
+                            <span style="color: rgb(61, 176, 255); font-weight: bolder;margin:0 5px;"><?= $count ?></span>记录
                         </div>
                         <div style="display: flex;">
                             <div class="dian" style="background: rgb(41, 201, 154);"></div>
                             分
-                            <span style="font-weight: bolder; color: rgb(41, 201, 154);"><?= ceil($count / $pagination->limit) ?></span>页
+                            <span style="font-weight: bolder; color: rgb(41, 201, 154);margin:0 5px;"><?= ceil($count / $pagination->limit) ?></span>页
                         </div>
                     </div>
                     <button type="button" class="el-button green el-button--success is-round" style="padding:0;">

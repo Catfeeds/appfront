@@ -93,23 +93,22 @@ $cssOptions = [
             top: 0;
             right: 0;
             z-index: 99;
-            display: flex;
             background: #eaf6ff;
-            justify-content: space-around;
+
         }
 
         .header ul {
-            width: 704px;
+            width: 674px;
             height: 100%;
             display: flex;
-            padding-left: 167px;
+            justify-content: space-around;
         }
 
         .header ul li {
             height: 100%;
             width: 110px;
             text-align: center;
-            line-height: 50px;
+            line-height: 54px;
             font-size: 14px;
             margin-right: 10px;
         }
@@ -136,6 +135,9 @@ $cssOptions = [
 
         .header .header-right {
             height: 100%;
+            width: 339px;
+            display: flex;
+            justify-content: space-around;
         }
 
         .header .header-right .adminname {
@@ -144,6 +146,9 @@ $cssOptions = [
             /*background: forestgreen;*/
             float: left;
             margin-left: 10px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
         }
 
         .admin-img {
@@ -152,11 +157,7 @@ $cssOptions = [
             border-radius: 50%;
             margin-top: 8px;
             float: left;
-            background: #fff;
-        }
-        .admin-img img{
-            width:100%;
-            height:100%;
+            overflow: hidden;
         }
 
         .adminname span {
@@ -388,6 +389,7 @@ $cssOptions = [
             color: #409EFF;
             cursor: default;
         }
+
     </style>
 <?php $this->beginPage() ?>
     <!doctype html>
@@ -404,42 +406,46 @@ $cssOptions = [
     <div class="">
         <div class="aside"></div>
         <div class="header">
-            <ul>
-                <li id="index"><a href="<?= Yii::$service->url->getUrl('water/index/index') ?>"
-                                  class="router-link-exact-active router-link-active">
-                        首页
-                    </a></li>
-                <li id="service"><a href="<?= Yii::$service->url->getUrl('water/service/index') ?>" class="">
-                        维修服务
-                    </a></li>
-                <li id="goods"><a href="<?= Yii::$service->url->getUrl('water/goods/index') ?>" class="">
-                        商品管理
-                    </a></li>
-                <li id="orders"><a href="<?= Yii::$service->url->getUrl('water/orders/index') ?>" class="">
-                        订单管理
-                    </a></li>
-                <li id="store"><a href="<?= Yii::$service->url->getUrl('water/store/index') ?>" class="">
-                        店铺管理
-                    </a></li>
-                <li id="account"><a href="<?= Yii::$service->url->getUrl('water/account/index') ?>" class="">
-                        账户管理
-                    </a></li>
-                <li id="datas"><a href="<?= Yii::$service->url->getUrl('water/datas/index') ?>" class="">
-                        数据统计
-                    </a></li>
-            </ul>
-            <div class="header-right">
-                <div class="adminname">
-                    <div class="admin-img"><img src="<?=$_SESSION[shop_logo]?>" alt=""></div>
-                    <span class="name1"><?=$_SESSION['shop_name']?></span></div>
-                <div class="adminname">
-                    <div class="clearimg"></div>
-                    <span class="name2">清除缓存</span></div>
-                <div class="adminname">
-                    <a href="<?= Yii::$service->url->getUrl("/water/login/out") ?>">
-                        <div class="out"></div>
-                        <span class="name3 tuichu">退出</span></div>
-                </a>
+            <div style="margin-left:167px;">
+                <div style="width: 1012px;margin:0 auto;display: flex">
+                    <ul>
+                        <li id="index"><a href="<?= Yii::$service->url->getUrl('water/index/index') ?>"
+                                          class="router-link-exact-active router-link-active">
+                                首页
+                            </a></li>
+                        <li id="service"><a href="<?= Yii::$service->url->getUrl('water/service/index') ?>" class="">
+                                维修服务
+                            </a></li>
+                        <li id="goods"><a href="<?= Yii::$service->url->getUrl('water/goods/index') ?>" class="">
+                                商品管理
+                            </a></li>
+                        <li id="orders"><a href="<?= Yii::$service->url->getUrl('water/orders/index') ?>" class="">
+                                订单管理
+                            </a></li>
+                        <li id="store"><a href="<?= Yii::$service->url->getUrl('water/store/index') ?>" class="">
+                                店铺管理
+                            </a></li>
+                        <li id="account"><a href="<?= Yii::$service->url->getUrl('water/account/index') ?>" class="">
+                                账户管理
+                            </a></li>
+                        <li id="datas"><a href="<?= Yii::$service->url->getUrl('water/datas/index') ?>" class="">
+                                数据统计
+                            </a></li>
+                    </ul>
+                    <div class="header-right">
+                        <div class="adminname">
+                            <div class="admin-img" style="background: url('<?= Yii::$app->params[img]."/images/".$_SESSION[shop_logo]?>')no-repeat center center /cover"></div>
+                            <span class="name1"><?=$_SESSION['shop_name']?></span></div>
+                        <div class="adminname" style="width: 110px;cursor:pointer;">
+                            <div class="clearimg" ></div>
+                            <span class="name2">清除缓存</span></div>
+                        <div class="adminname" style="width: 80px;cursor:pointer;">
+                            <a href="<?= Yii::$service->url->getUrl("/water/login/out") ?>">
+                                <div class="out"></div>
+                                <span class="name3 tuichu">退出</span></div>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
         <?php $this->endBody() ?>

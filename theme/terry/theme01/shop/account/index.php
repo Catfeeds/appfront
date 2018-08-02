@@ -331,6 +331,8 @@ use yii\helpers\Url;
         display: flex;
         justify-content: space-between;
         line-height: 46px;
+        color: #a4adb5;
+        font-size: 12px;
     }
 
     .content .shuaixuan .xiala {

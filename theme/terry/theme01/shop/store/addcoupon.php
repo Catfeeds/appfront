@@ -88,10 +88,14 @@
     .el-form-item {
         /*line-height: 40px;*/
     }
-
+    .el-form-item__label{
+        width: 150px;
+        color: #A4ADB5;
+    }
     .el-form-item__content {
         line-height: normal;
     }
+
 </style>
 
 <div data-v-63f72479="" class="main-content">
@@ -114,8 +118,8 @@
                 <form data-v-63f72479="" method="post" action="<?= Yii::$service->url->geturl("/shop/store/addcou") ?>" class="el-form" enctype="application/x-www-form-urlencoded">
                     <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>"/>
                     <div data-v-63f72479="" class="el-row" style="width: 850px;">
-                        <div data-v-63f72479="" class="el-form-item"><label class="el-form-item__label"
-                                                                            style="width: 150px;">*优惠券名称</label>
+                        <div data-v-63f72479="" class="el-form-item">
+                            <label class="el-form-item__label">*优惠券名称</label>
                             <div class="el-form-item__content" style="margin-left: 150px;">
                                 <div data-v-63f72479="" class="el-input" style="width: 500px;"><!----><input type="text" name="coupon_name"
                                                                                                              autocomplete="off"
@@ -124,14 +128,14 @@
                                     </div>
                             </div>
                         </div>
-                        <div data-v-63f72479="" class="el-form-item"><label class="el-form-item__label"
-                                                                            style="width: 150px;">*有效时间段</label>
+                        <div data-v-63f72479="" class="el-form-item">
+                            <label class="el-form-item__label">*有效时间段</label>
                             <div class="el-form-item__content" style="margin-left: 150px;">
                                 <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test10">
                             </div>
                         </div>
-                        <div data-v-63f72479="" class="el-form-item"><label class="el-form-item__label"
-                                                                            style="width: 150px;">*优惠金额</label>
+                        <div data-v-63f72479="" class="el-form-item">
+                            <label class="el-form-item__label">*优惠金额</label>
                             <div class="el-form-item__content" style="margin-left: 150px;">
                                 <div data-v-63f72479="" class="el-input" style="width: 300px;"><input type="text" name="discount"
                                                                                                              autocomplete="off"
@@ -142,8 +146,7 @@
                                       style="color: rgb(155, 210, 253); font-weight: bolder; margin-left: 15px;">单位：元</span>
                                 </div>
                         </div>
-                        <div data-v-63f72479="" class="el-form-item"><label class="el-form-item__label"
-                                                                            style="width: 150px;">*消费金额</label>
+                        <div data-v-63f72479="" class="el-form-item"><label class="el-form-item__label">*消费金额</label>
                             <div class="el-form-item__content" style="margin-left: 150px;">
                                 <div data-v-63f72479="" class="el-input" style="width: 300px;"><input type="text" name="conditions"
                                                                                                              autocomplete="off"
@@ -155,7 +158,7 @@
                                 <!----></div>
                         </div>
                         <div data-v-63f72479="" class="el-form-item">
-                            <label class="el-form-item__label" style="width: 150px;">*使用范围</label>
+                            <label class="el-form-item__label">*使用范围</label>
                             <div class="el-form-item__content" style="margin-left: 150px;margin-top: 3px;">
                                 <label data-v-63f72479="" role="radio" aria-checked="true" tabindex="0" class="el-radio danxuan xuanze is-checked">
                                     <span class="el-radio__input is-checked">
@@ -163,15 +166,11 @@
                                         <input name="flag" type="radio" aria-hidden="true" tabindex="-1" class="el-radio__original" value="1" checked></span>
                                             <span class="el-radio__label">全部商品<!----></span>
                                 </label>
-                                <label data-v-63f72479=""
-                                                                                                      role="radio"
-                                                                                                      tabindex="1"
-                                                                                                      class="el-radio danxuan xuanze"><span
-                                            class="el-radio__input"><span class="el-radio__inner"></span><input
-                                                type="radio" name="flag" aria-hidden="true" tabindex="-1"
-                                                class="el-radio__original"
-                                                value="2"></span><span class="el-radio__label">指定商品
-                                        <!----></span></label>
+                                <label data-v-63f72479="" role="radio" tabindex="1" class="el-radio danxuan xuanze">
+                                    <span class="el-radio__input"><span class="el-radio__inner"></span>
+                                        <input type="radio" name="flag" aria-hidden="true" tabindex="-1" class="el-radio__original" value="2"></span>
+                                    <span class="el-radio__label">指定商品
+                                    </span></label>
                                 <div data-v-63f72479="" style="display: none;" class="xuanze-view">
                                     <div data-v-63f72479="" class="shuaixuan">
                                         <div data-v-63f72479="" class="left_box">
