@@ -22,7 +22,7 @@ use yii\helpers\Url;
                 </div>
                 <ul class="shuaixuan">
                     <li>
-                        <select name="" id="" class="el-select xiala">
+                        账单&nbsp;&nbsp;<select name="" id="" class="el-select xiala">
                             <option value="" style="display: none;">今日账单</option>
                             <option value="">1</option>
                             <option value="">2</option>
@@ -31,7 +31,7 @@ use yii\helpers\Url;
                     <li style="
                         display: flex;
                         align-items: center;
-                    ">时间段选择
+                    ">时间段选择&nbsp;
                         <div class="el-form-item__content" style="margin-left: 10px;">
                             <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test10">
                         </div>
@@ -344,6 +344,8 @@ use yii\helpers\Url;
             display: flex;
             justify-content: space-between;
             line-height: 46px;
+            color: #a4adb5;
+            font-size: 12px;
         }
 
         .content .shuaixuan .xiala {
