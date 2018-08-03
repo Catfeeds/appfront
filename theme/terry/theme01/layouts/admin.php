@@ -2470,17 +2470,18 @@ $cssOptions = [
     }
     .awreview{
         width: 400px;
-        height: 100%;
-        background: #fff;
+        height: 30px;
         border: 1px solid #797979;
         text-align:center;
-        border-radius: 19px;
+        border-radius: 15px;
+        background: #f3faff;
+        border: 2px solid #e5eff8;
         cursor:pointer;
     }
-    .awreview:hover{
+    /*.awreview:hover{
         border: 1px solid #41b2fc;
         background: rgba(65,178,252,0.2);
-    }
+    }*/
     .shop_btn{
         border:none;
         width: 40px;

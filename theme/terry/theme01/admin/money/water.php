@@ -14,7 +14,7 @@ use yii\helpers\Url;
             
             <form method="get" action="<?= Yii::$service->url->getUrl('admin/money/water') ?>">
             <span style="margin-left:10px;">水司名称</span>
-            <input type="text" style="width: 150px" name="shop_name" value="<?php echo  $shop_name?>">
+            <input type="text" style="width: 150px" name="shop_name" value="<?php echo  $shop_name?>" placeholder="请输入水司名称">
             <div class="xiala" style="margin-left:20px;">
                 <span class="search-ID">状态</span>
                 <select name="shop_state" id="shop_state">
