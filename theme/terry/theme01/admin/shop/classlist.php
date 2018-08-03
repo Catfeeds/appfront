@@ -191,7 +191,7 @@ use yii\widgets\LinkPager;
             <button type="button" class="is-round class-btn">
                 导出表格
             </button>
-                <?php if (count($count) > 0) { ?>
+                <?php if (count($count) > 4) { ?>
                     <div class="admincountall">
                         <span style="color: #3db0ff">·</span>&nbsp;<span>总计</span><span><?= $count ?></span><span>记录</span>
                     </div>

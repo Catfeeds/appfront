@@ -458,7 +458,7 @@ $cssOptions = [
         border-top: 1px solid #eee;
         box-sizing: border-box;
         min-height: 120px;
-        margin-top:15px;
+        /*margin-top:15px;*/
     }
 
     .pagination {
@@ -2460,23 +2460,35 @@ $cssOptions = [
         font-size: 14px;
     }
     .admin-table table tr:hover{
-        background: rgba(238,238,238,0.2);
+        background: rgba(0, 0, 0, 0.02);
     }
     .system-content table tr:hover{
-        background: rgba(238,238,238,0.2);
+        background: rgba(0, 0, 0, 0.02);
     }
+    .ShopMannager-table table tr:hover{
+        background: rgba(0, 0, 0, 0.02);
+    }
+    .wait-list table tr:hover{
+        background: rgba(0, 0, 0, 0.02);
+    }
+
+    .table-list1{
+        margin-top:40px;
+    }
+    .table-list1 tr th{font-size: 14px;}
     .admin-tablelist1{
         padding:0;
     }
     .awreview{
         width: 400px;
         height: 30px;
-        border: 1px solid #797979;
-        text-align:center;
+        /*border: 1px solid #797979;*/
+        /*text-align:center;*/
         border-radius: 15px;
         background: #f3faff;
         border: 2px solid #e5eff8;
         cursor:pointer;
+        padding:0 10px;
     }
     /*.awreview:hover{
         border: 1px solid #41b2fc;

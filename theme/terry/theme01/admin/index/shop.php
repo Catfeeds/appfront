@@ -210,6 +210,7 @@ use yii\helpers\Url;
             </div>
 
         <div class="admincount" style="justify-content: flex-end;margin-bottom: 0px;margin-top:30px;font-size: 14px;">
+            <?php if($tot>10){?>
             <div class="admincountall">
                 <span style="color: #3db0ff">·</span>&nbsp;<span>总计</span><span><?=$tot?></span><span>记录</span>
             </div>
@@ -224,6 +225,7 @@ use yii\helpers\Url;
                             box-sizing: border-box;text-align: center;color:#29c99a;line-height: 20px; "
                        value="10" disabled>
             </div>
+            <?php }?>
         </div>
         <div style="width: 100%; position: relative;height: 50px;">
             <div style="font-size: 12px; position: absolute; bottom: 0; right: 0; display: flex; justify-content: space-between;">

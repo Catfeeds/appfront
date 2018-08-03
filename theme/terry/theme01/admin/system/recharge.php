@@ -8,6 +8,9 @@
         margin-left: 15px;
         cursor: pointer;
     }
+    .recharge1 table tr:hover{
+        background: #fff;
+    }
 </style>
 <div class="main-content">
     <div class="adminmannager">
