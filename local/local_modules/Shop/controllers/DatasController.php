@@ -119,6 +119,7 @@ where order_status>=5 and refund_at=$created_at1 and refund_at")->queryAll();
     // 销售统计
     public function actionSale()
     {
+
         return $this->render($this->action->id);
     }
     /*
@@ -266,8 +267,6 @@ where order_status>=5 and refund_at=$created_at1 and refund_at")->queryAll();
             $date['numall'][$k]=$numall['num'];
             $date['num'][$k]=$num['num'];
         }
-//     	echo "<pre>";
-//     	print_r($date);
         return json_encode($date);
     }
     /*
@@ -278,18 +277,19 @@ where order_status>=5 and refund_at=$created_at1 and refund_at")->queryAll();
         $startime=$_GET['sta'];
         $endtime=$_GET['end'];
         $type=$_GET['type'];
-        $name="customer";
+        $name="sales_flat_order";
         $where=" ";
-        if($type==1){
-            $name="shop";
-            $where=" AND shop_type=1 AND shop_state in(0,1,2)";
-        }else if($type==2){
-            $name="shop";
-            $where=" AND shop_type=2 AND shop_state in(0,1,2)";
-        }else if($type==3){
-            $name="customer";
-            $where=" ";
-        }
+        $shop_id = $_SESSION['shop_id'];
+//        if($type==1){
+//            $name="shop";
+//            $where=" AND shop_type=1 AND shop_state in(0,1,2)";
+//        }else if($type==2){
+//            $name="shop";
+//            $where=" AND shop_type=2 AND shop_state in(0,1,2)";
+//        }else if($type==3){
+//            $name="customer";
+//            $where=" ";
+//        }
         $day=60*60*24;
         //开始时间
         $start=strtotime($startime);
@@ -309,11 +309,11 @@ where order_status>=5 and refund_at=$created_at1 and refund_at")->queryAll();
         foreach ($date['dat'] as $k=>$v){
             $min=strtotime($v);
             $max=$min+$day;
-            $num = Yii::$app->db->createCommand("SELECT count(1) as num FROM {$name} WHERE created_at>{$min} AND created_at<{$max} {$where}")->queryOne();
+            $numall = Yii::$app->db->createCommand("SELECT count(1) as num FROM {$name} WHERE shop_id = $shop_id and created_at>{$min} AND created_at<{$max} {$where}")->queryOne();
+            $num = Yii::$app->db->createCommand("SELECT count(1) as num FROM {$name} WHERE shop_id = $shop_id and created_at>{$min} AND created_at<{$max}  and order_status>0 and order_status<5 {$where}")->queryOne();
+            $date['numall'][$k]=$numall['num'];
             $date['num'][$k]=$num['num'];
         }
-//     	    	echo "<pre>";
-//     	    	print_r($date);
         return json_encode($date);
     }
 

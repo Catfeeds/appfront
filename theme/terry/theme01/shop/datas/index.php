@@ -230,11 +230,15 @@
           <ul  style="display: flex; justify-content: space-between;">
            <li >
             <div  class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange" style="width: 380px;">
-             <i class="el-input__icon el-range__icon el-icon-time"></i>
-             <input placeholder="开始日期" name="" class="el-range-input" />
-             <span class="el-range-separator">至</span>
-             <input placeholder="结束日期" name="" class="el-range-input" />
-             <i class="el-input__icon el-range__close-icon"></i>
+                <input id="test4" style="width: 300px">
+              <script>
+                  laydate.render({
+                      elem: '#test4'
+                      , type: 'datetime'
+                      , range: true
+                      , theme: "#3CACFE"
+                  });
+              </script>
             </div></li>
            <li  style="margin-top: 5px;"><button  type="button" class="el-button blue1 el-button--primary is-round">
                    <span>确定</span></button></li>
@@ -384,11 +388,15 @@
         <ul  style="display: flex;">
          <li >
           <div  class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange" style="width: 380px;">
-           <i class="el-input__icon el-range__icon el-icon-time"></i>
-           <input placeholder="开始日期" name="" class="el-range-input" />
-           <span class="el-range-separator">至</span>
-           <input placeholder="结束日期" name="" class="el-range-input" />
-           <i class="el-input__icon el-range__close-icon"></i>
+              <input id="test3" style="width: 300px">
+              <script>
+                  laydate.render({
+                      elem: '#test3'
+                      , type: 'datetime'
+                      , range: true
+                      , theme: "#3CACFE"
+                  });
+              </script>
           </div></li>
          <li ><button  type="button" class="el-button blue1 el-button--primary is-round">
            <!---->
@@ -425,8 +433,68 @@
       });
       $(function () {
           var myCharts = echarts.init(document.querySelector('.tu3'));
+          $('#test3').on('blur',function(){
+              $('.laydate-btns-confirm').on('click',function () {
+                  let  test3=$('#test3');
+                  let date = test3.val().split(" - ");
+                  console.log(date);
+                  var sta=date[0];var end=date[1];
+                  var url="<?= Yii::$service->url->getUrl('shop/datas/searchdate') ?>?type=1&sta="+sta+"&end="+end;
+                  $.get(url).done(function (data) {
+                      var row =JSON.parse(data);
+                      console.log(data);
+                      // 填入数据
+                      myCharts.setOption({
+                          title: {
+                              text: ''
+                          },
+                          tooltip: {},
+                          legend: {
+                              data:['下单','成交']
+                          },
+                          xAxis: {
+                              data:row.dat    /* row.dat */
+                          },
+                          yAxis: {},
+                          series: [{
+                              name: '下单',
+                              type: 'line',
+                              data:row.numall    /* row.num */
+                          },
+                              {
+                                  name: '成交',
+                                  type: 'line',
+                                  data:row.num    /* row.num */
+                              },
+                          ],
+                          toolbox: {
+
+                              show: true,
+
+                              feature: {
+
+                                  saveAsImage: {
+
+                                      show:true,
+
+                                      excludeComponents :['toolbox'],
+
+                                      pixelRatio: 2
+
+                                  }
+
+                              }
+
+                          }
+                      });
+                  });
+              })
+          })
+
+          var url = "<?= Yii::$service->url->getUrl("shop/datas/week") ?>?type="+3;
           $('.btnorder').on("click",function () {
-              console.log($(this).attr("uri"));
+              $('.btnorder').removeClass('active').filter(this).addClass('active');
+
               if($(this).attr("uri")==1){
                   url="<?= Yii::$service->url->getUrl("shop/datas/week") ?>?type="+3;
               }else if($(this).attr("uri")==2){
@@ -438,8 +506,6 @@
               }
               $.get(url).done(function (data) {
                   var row =JSON.parse(data);
-                  console.log(row);
-                  console.log(myCharts);
                   // 填入数据
                   myCharts.setOption({
                       title: {
@@ -488,6 +554,55 @@
 
               });
           })
+          $.get(url).done(function (data) {
+              var row =JSON.parse(data);
+              // 填入数据
+              myCharts.setOption({
+                  title: {
+                      text: ''
+                  },
+                  tooltip: {},
+                  legend: {
+                      data:['下单','成交']
+                  },
+                  xAxis: {
+                      data:row.dat    /* row.dat */
+                  },
+                  yAxis: {},
+                  series: [{
+                      name: '下单',
+                      type: 'line',
+                      data:row.numall    /* row.num */
+                  },
+                      {
+                          name: '成交',
+                          type: 'line',
+                          data:row.num    /* row.num */
+                      },
+                  ],
+                  toolbox: {
+
+                      show: true,
+
+                      feature: {
+
+                          saveAsImage: {
+
+                              show:true,
+
+                              excludeComponents :['toolbox'],
+
+                              pixelRatio: 2
+
+                          }
+
+                      }
+
+                  }
+              });
+
+
+          });
       })
   </script>
 <style>
