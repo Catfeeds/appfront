@@ -338,14 +338,27 @@ class OrdersController extends PublicsController
 
         $res = Yii::$app->db->createCommand("select * from product_flat_qty where qty<=10")->queryAll();
 
+        $count = Yii::$app->db->createCommand("select count(*) as counts from product_flat_qty where qty<=10")->queryAll();
+
+        $tot=$count[0]['counts'];
+
+        // 实例化分页对象
+        $pagination = new Pagination([
+            'defaultPageSize' => 5,
+            'totalCount' => $tot,
+        ]);
+
         $datas=[];
 
         $datas['res']=$res;
 
         $datas['goods']=$goods;
-//
-//        var_dump($datas);
-//        exit();
+
+        $datas["pagination"] = $pagination;
+
+        $datas['tot']=$tot;
+
+        $datas['page']= ceil($tot/5);
 
         return $this->render($this->action->id,$datas);
 
