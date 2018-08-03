@@ -18,12 +18,49 @@
                <option value="3">最近一年</option>
            </select>
         </li>
-       <li >时间段选择
-            <input id="test1" style="width: 300px">
-       </li>
-       <li ><button  type="button" class="el-button blue el-button--primary is-round">
-         <!---->
-         <!----><span>查询</span></button></li>
+          <li style="
+                        display: flex;
+                        align-items: center;
+                    ">时间段选择
+              <div class="el-form-item__content" style="margin-left: 10px;">
+                  <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test1">
+              </div>
+          </li>
+          <style>
+              .demo-input {
+                  padding-left: 10px;
+                  height: 30px;
+                  min-width: 300px;
+                  line-height: 38px;
+                  border: 1px solid #e6e6e6;
+                  background-color: #f3faff;
+                  border-radius: 30px;
+                  outline: none;
+              }
+
+              .demo-input:hover {
+                  border-color: #c0c4cc;
+              }
+
+              .demo-input:focus {
+                  border-color: #3CACFE;
+              }
+              .el-form-item__content {
+                  line-height: normal;
+              }
+
+              .el-form-item__content {
+                  line-height: 40px;
+                  position: relative;
+                  font-size: 14px;
+              }
+              .layui-laydate .layui-this{
+                  background: #30B5FE !important;
+              }
+          </style>
+<!--       <li ><button  type="button" class="el-button blue el-button--primary is-round">-->
+<!--
+<!--        <span>查询</span></button></li>-->
       </ul>
       <ul  class="item">
        <li >
@@ -165,9 +202,46 @@
         <div  class="bottom">
          <div  class="contents active">
           <ul  style="display: flex; justify-content: space-between;">
-              <li >时间段选择
-                  <input id="test2" style="width: 300px">
+              <li style="
+                        display: flex;
+                        align-items: center;
+                    ">时间段选择
+                  <div class="el-form-item__content" style="margin-left: 10px;">
+                      <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test2">
+                  </div>
               </li>
+              <style>
+                  .demo-input {
+                      padding-left: 10px;
+                      height: 30px;
+                      min-width: 300px;
+                      line-height: 38px;
+                      border: 1px solid #e6e6e6;
+                      background-color: #f3faff;
+                      border-radius: 30px;
+                      outline: none;
+                  }
+
+                  .demo-input:hover {
+                      border-color: #c0c4cc;
+                  }
+
+                  .demo-input:focus {
+                      border-color: #3CACFE;
+                  }
+                  .el-form-item__content {
+                      line-height: normal;
+                  }
+
+                  .el-form-item__content {
+                      line-height: 40px;
+                      position: relative;
+                      font-size: 14px;
+                  }
+                  .layui-laydate .layui-this{
+                      background: #30B5FE !important;
+                  }
+              </style>
               <script>
                   laydate.render({
                       elem: '#test2'
@@ -176,10 +250,10 @@
                       , theme: "#3CACFE"
                   });
               </script>
-
-           <li  style="margin-top: 5px;"><button  type="button" class="el-button blue1 el-button--primary is-round">
-             <!---->
-             <!----><span> 确定 </span></button></li>
+<!---->
+<!--           <li><button  type="button" class="el-button blue1 el-button--primary is-round">-->
+<!--          -->
+<!--           <span> 确定 </span></button></li>-->
           </ul>
           <div  class="tu1">
           </div>
@@ -283,16 +357,15 @@
                  })
              </script>
 
-          <div style="display: flex;justify-content: center">
-           <button  type="button" class="el-button blue el-button--primary is-round">
-               <span>导出图片</span></button>
-           <button  type="button" class="el-button green el-button--success is-round">
-            <!---->
-            <!----><span>导出表格</span></button>
-           <button  type="button" class="el-button yellow el-button--warning is-round">
-            <!---->
-            <!----><span>导出报告</span></button>
-          </div>
+<!--图1导出-->
+<!--          <div style="display: flex;justify-content: center">-->
+<!--           <button  type="button" class="el-button blue el-button--primary is-round">-->
+<!--               <span>导出图片</span></button>-->
+<!--           <button  type="button" class="el-button green el-button--success is-round">-->
+<!--            <span>导出表格</span></button>-->
+<!--           <button  type="button" class="el-button yellow el-button--warning is-round">-->
+<!--            <span>导出报告</span></button>-->
+<!--          </div>-->
          </div>
          <div  class="contents">
           一个月
@@ -328,8 +401,46 @@
         <div  class="bottom">
          <div  class="contents active">
           <ul  style="display: flex; justify-content: space-between;">
-           <li >
-                <input id="test4" style="width: 300px">
+              <li style="
+                        display: flex;
+                        align-items: center;
+                    ">时间段选择
+                  <div class="el-form-item__content" style="margin-left: 10px;">
+                      <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test4">
+                  </div>
+              </li>
+              <style>
+                  .demo-input {
+                      padding-left: 10px;
+                      height: 30px;
+                      min-width: 300px;
+                      line-height: 38px;
+                      border: 1px solid #e6e6e6;
+                      background-color: #f3faff;
+                      border-radius: 30px;
+                      outline: none;
+                  }
+
+                  .demo-input:hover {
+                      border-color: #c0c4cc;
+                  }
+
+                  .demo-input:focus {
+                      border-color: #3CACFE;
+                  }
+                  .el-form-item__content {
+                      line-height: normal;
+                  }
+
+                  .el-form-item__content {
+                      line-height: 40px;
+                      position: relative;
+                      font-size: 14px;
+                  }
+                  .layui-laydate .layui-this{
+                      background: #30B5FE !important;
+                  }
+              </style>
               <script>
                   laydate.render({
                       elem: '#test4'
@@ -338,19 +449,18 @@
                       , theme: "#3CACFE"
                   });
               </script>
-            </li>
-           <li  style="margin-top: 5px;"><button  type="button" class="el-button blue1 el-button--primary is-round">
-                   <span>确定</span></button></li>
+
           </ul>
           <div  class="tu2"></div>
-          <div style="display: flex;justify-content: center">
-           <button  type="button" class="el-button blue el-button--primary is-round">
-            <span>导出图片</span></button>
-           <button  type="button" class="el-button green el-button--success is-round">
-               <span>导出表格</span></button>
-           <button  type="button" class="el-button yellow el-button--warning is-round">
-               <span>导出报告</span></button>
-          </div>
+<!--图2导出-->
+<!--          <div style="display: flex;justify-content: center">-->
+<!--           <button  type="button" class="el-button blue el-button--primary is-round">-->
+<!--            <span>导出图片</span></button>-->
+<!--           <button  type="button" class="el-button green el-button--success is-round">-->
+<!--               <span>导出表格</span></button>-->
+<!--           <button  type="button" class="el-button yellow el-button--warning is-round">-->
+<!--               <span>导出报告</span></button>-->
+<!--          </div>-->
          </div>
          <div  class="contents">
           一个月
@@ -387,8 +497,8 @@
          </div>
         </div>
         <ul  style="display: flex;">
-         <li >
-          <input id="test3" style="width: 300px">
+         <li >时间段选择
+          <input id="test3" class="demo-input" style="width: 300px" placeholder="日期时间范围">
           <script>
               laydate.render({
                   elem: '#test3'
@@ -398,9 +508,7 @@
               });
           </script>
           </li>
-         <li ><button  type="button" class="el-button blue1 el-button--primary is-round">
-           <!---->
-           <!----><span> 确定 </span></button></li>
+
         </ul>
        </div>
        <div  class="bottom">
@@ -442,7 +550,6 @@
                   var url="<?= Yii::$service->url->getUrl('shop/datas/searchdate') ?>?type=1&sta="+sta+"&end="+end;
                   $.get(url).done(function (data) {
                       var row =JSON.parse(data);
-                      console.log(data);
                       // 填入数据
                       myCharts.setOption({
                           title: {

@@ -93,7 +93,7 @@
           <li style="
                 display: flex;
                 align-items: center;
-                    ">时间段选择
+                    ">
               <div class="el-form-item__content" style="margin-left: 10px;">
                   <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test10">
               </div>
@@ -325,9 +325,9 @@
         <button  type="button" class="el-button green el-button--success is-round">
          
          <span>导出</span></button> 
-        <button  type="button" class="el-button blue el-button--primary is-round">
-         
-         <span>打印</span></button>
+<!--        <button  type="button" class="el-button blue el-button--primary is-round">-->
+<!--         -->
+<!--         <span>打印</span></button>-->
        </div> 
        <div  style="float: right; margin-top: 50px;">
         <div  class="el-pagination is-background">
