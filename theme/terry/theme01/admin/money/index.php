@@ -1,10 +1,18 @@
+<style>
+    #test10{
+        width:100%;height:100%;border:none;text-align: center;
+    }
+    .btnactive{
+        border-bottom:4px solid rgb(48, 162, 254);
+    }
+</style>
 <div class="main-content">
     <div id="platdata">
         <div class="adminmannager-title">
             <span>财务管理</span>&nbsp;
             <span>·&nbsp;平台财务</span>
         </div>
-        <div class="ShopMannager-search">
+        <!--<div class="ShopMannager-search">
             <div class="xiala">
                 <select name="member-level" id="member-level"
                         style="width: 180px;background: #f3faff;margin-left:0;">
@@ -12,7 +20,7 @@
                 </select>
                 <div class="xialaimg1"></div>
             </div>
-            <!--时间戳-->
+
             <div class="block" style="float: left;line-height: 48px; margin-left: 20px;position: relative;">
                 <span class="demonstration">时间段选择</span>
                 <div class="timer">
@@ -26,7 +34,7 @@
                 </div>
             </div>
             <button>查询</button>
-        </div>
+        </div>-->
         <div class="tongji">
             <ul>
                 <li>
@@ -85,29 +93,22 @@
                 <div class="platdata-headername">成交额趋势</div>
                 <div class="platdata-headerright">
                     <ul style="cursor:pointer;">
-                        <li class="week but1" onclick='cut(3,this)' uri='1'>七天</li>
+                        <li class="week but1 btnactive" onclick='cut(3,this)' uri='1'>七天</li>
                         <li class="month but1" onclick='cut(3,this)' uri='2'>一个月</li>
                         <li class="quarter but1" onclick='cut(3,this)' uri='3'>一个季度</li>
                         <li class="year but1" onclick='cut(3,this)' uri='4'>一年</li>
                     </ul>
                     <!--时间戳-->
                     <div class="block" style="float: left;line-height: 48px; position: relative;
-margin-top:4px;"
+margin-top:16px;"
                     >
                         <div class="timer">
                             <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
-                            <div class="el-form-item__content" style="width:100%;height:100%;">
-                                <input type="text" style="width:100%;height:100%;" name="data" class="demo-input" placeholder="日期时间范围" id="test10">
-                            </div>
-                                <!-- <i class="el-input__icon el-range__icon el-icon-time"></i>
-                                <input placeholder="开始日期" name="" class="el-range-input el-range-input1" />
-                                <span class="el-range-separator">至</span>
-                                <input placeholder="结束日期" name="" class="el-range-input el-range-input2"/>
-                                <i class="el-input__icon el-range__icon el-icon-time"></i> -->
+                                <input type="text"  name="data" class="demo-input" placeholder="请选择日期时间范围" id="test10">
                             </div>
                         </div>
                     </div>
-                    <button style="float: left;border:0;margin-top:13px;" onclick='atime()'>确定</button>
+                    <button style="float: left;border:0;margin-top:20px;" onclick='atime()'>确定</button>
                 </div>
             </div>
             <div id="mychart">
@@ -175,8 +176,8 @@ margin-top:4px;"
            var url="<?= Yii::$service->url->getUrl('admin/money/hours?hours=24') ?>";
            function cut(type,that){
         	   $('#test10').val("");
-               $(".but1").css({"background":"#fff","color":"#99cafe"});
-               $(that).css({"background":"#F3FAFF","color":"red"});
+               $(".but1").css({"border":"none"});
+               $(that).css({"border-bottom":"4px solid rgb(48, 162, 254)"});
                if($(that).attr("uri")==1){
             	   url="<?= Yii::$service->url->getUrl("admin/money/week") ?>";
                }else if($(that).attr("uri")==2){

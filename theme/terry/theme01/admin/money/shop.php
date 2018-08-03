@@ -14,7 +14,7 @@ use yii\helpers\Url;
         <div class="adminmannager-search">
             <form method="get" action="<?= Yii::$service->url->getUrl('admin/money/shop') ?>">
             <span style="margin-left:10px;">商家名称</span>
-            <input type="text" style="width: 150px" name="shop_name" value="<?php echo  $shop_name?>">
+            <input type="text" style="width: 150px" name="shop_name" value="<?php echo  $shop_name?>" placeholder="请输入商家名称">
             <div class="xiala" style="margin-left:20px;">
                 <span class="search-ID">状态</span>
                 <select name="shop_state" id="shop_state">
@@ -82,7 +82,7 @@ use yii\helpers\Url;
 						async:false,
 						success:function(msg){
 							if(msg){
-								location.href="<?= Yii::$service->url->getUrl('admin/money/water') ?>";
+								location.href="<?= Yii::$service->url->getUrl('admin/money/shop') ?>";
 							}
 						}
 					})
@@ -97,7 +97,7 @@ use yii\helpers\Url;
 						async:false,
 						success:function(msg){
 							if(msg){
-								location.href="<?= Yii::$service->url->getUrl('admin/money/water') ?>";
+								location.href="<?= Yii::$service->url->getUrl('admin/money/shop') ?>";
 							}
 						}
 					})

@@ -72,8 +72,7 @@
                         <li class="year but1" onclick='cut(3,this)' uri='4'>一年</li>
                     </ul>
                     <!--时间戳-->
-                    <div class="block shijianchuo" 
-                    >
+                    <div class="block shijianchuo">
                         <div class="timer">
                             <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
                                 <input type="text" style="width:100%;height:100%;text-align: center;border:none;" name="data" class="demo-input"
