@@ -12,7 +12,7 @@
         store: [
             {"name":"店铺信息","url":"/water/store/index"},
             {"name":"店铺图片设置","url":"/water/store/setimg"},
-            {"name":"优惠卷管理","url":"/water/store/couponindex"},
+            {"name":"优惠券管理","url":"/water/store/couponindex"},
         ],
         account: [
             {"name":"实名认证","url":"/water/account/realname"},
