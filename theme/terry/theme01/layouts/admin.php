@@ -60,7 +60,6 @@ $cssOptions = [
         width: 636px;
         height: 100%;
         display: flex;
-        padding-left: 44px;
         float: left;
     }
 
@@ -84,8 +83,15 @@ $cssOptions = [
     .header .header-right {
         height: 100%;
         display: flex;
+      /*  position: absolute;
+        top:0;
+        right:0;*/
     }
+    .shijianchuo{
+        float: left;line-height: 48px; position: relative;
+        margin-top:16px;
 
+    }
     .header .header-right .adminname {
         width: 120px;
         height: 100%;
@@ -857,9 +863,9 @@ $cssOptions = [
     }
 
     .platdata-headerright ul {
-        /* width: 318px;*/
         height: 100%;
         float: left;
+        cursor: pointer;
     }
 
     .platdata-headerright ul li {
@@ -873,9 +879,9 @@ $cssOptions = [
         cursor: pointer;
     }
 
-    .platdata-headerright ul li:hover {
+    /*.platdata-headerright ul li:hover {
         border-bottom: 4px solid #30a2fe;
-    }
+    }*/
 
     #mychart {
         width: 700px;
@@ -1091,9 +1097,9 @@ $cssOptions = [
         line-height: 38px;
         margin-right:38px;
     }
-    .system-header ul li:hover{
+    /*.system-header ul li:hover{
         border-bottom: 2px solid #30a2fe;
-    }
+    }*/
     .system-header ul li a{
         color:#30a2fe;
         display: block;
@@ -2387,6 +2393,7 @@ $cssOptions = [
     .header ul li a{
         width: 100%;
         height: 100%;
+        display: block;
     }
     .header ul li.active a {
         color: #fff;

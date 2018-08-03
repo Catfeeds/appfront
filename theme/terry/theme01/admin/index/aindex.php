@@ -17,9 +17,15 @@ use yii\helpers\Url;
     <div class="adminmannager-search">
         <form action="<?= Yii::$service->url->getUrl('/admin/index/aindex') ?>" method="get">
             <span>管理员名称</span>
-            <input type="text" name="person">
+            <input type="text" name="person"
+            <?php if($person){?>
+                value="<?= $person?>"
+            <?php }else{?>
+                placeholder="请输入管理员名称"
+            <?php }?>
+            >
             <span class="search-ID">ID</span>
-            <input type="text" name="ID">
+            <input type="text" name="ID" placeholder="请输入ID号">
             <div class="indexsearch">
                 <input class="search-img" type="submit" value="">
             </div>
@@ -102,7 +108,7 @@ use yii\helpers\Url;
                             <div class="cell el-tooltip">
                                 <?php if ($v["status"]==1){
                                     echo "正常";
-                                }else if($v["status"]==2){echo "黑名单";} else if($v["status"]==3){echo "冻结";}?>
+                                }else if($v["status"]==0){echo "黑名单";} else if($v["status"]==2){echo "冻结";}?>
                             </div>
                         </td>
                         <td class="el-table_2_column_14">
@@ -116,7 +122,9 @@ use yii\helpers\Url;
                                     <button data-v-6045fa9c="" type="button"
                                             class="el-button el-button--text el-button--small">
                                         <a href="<?= Yii::$service->url->getUrl('admin/index/blacklist',array('id'=>$v['id'])) ?>"
-                                           style="color: #FC4C00;">移入黑名单</a></button>
+                                           style="color:<?php if($v["status"]!=0){echo "#ff5932";}else{echo "#00FE0B";}?>;">
+                                            <?php if($v["status"]!=0){echo "移入黑名单";}else{echo "移出黑名单";}?>
+                                        </a></button>
                                 </a>
                                 <span data-v-6045fa9c=""
                                       style="color: rgb(234, 235, 236);">
@@ -126,7 +134,11 @@ use yii\helpers\Url;
                                     <button data-v-6045fa9c="" type="button"
                                             class="el-button el-button--text el-button--small">
                                         <a href="<?= Yii::$service->url->getUrl('admin/index/freeze',array('id'=>$v['id'])) ?>"
-                                           style="color: #41b2fc;">冻结账号</a></button>
+                                           style="color: <?php if($v["status"]!=2){echo "#41b2fc";}else{echo "#00FE0B";}?>;">
+                                            <?php if($v["status"]!=2){echo "冻结账号";}else{echo "解冻账号";}?>
+
+                                        </a>
+                                    </button>
                                 </a>
                                 <span data-v-6045fa9c=""
                                            style="color: rgb(234, 235, 236);">
@@ -152,14 +164,14 @@ use yii\helpers\Url;
         </div>
         <div class="admintotalpage">
             <span style="color: #29c99a">·</span>&nbsp;<span>分</span><span
-                    style="color: #29c99a"><?= ceil($tot/2)?></span><span>页</span>
+                    style="color: #29c99a"><?= ceil($tot/10)?></span><span>页</span>
         </div>
         <div class="admintotalpage">
             <span style="color: #29c99a">·</span>&nbsp;<span>每页</span>
             <input type="text" style="display: inline-block;width: 40px;height: 20px;border-radius: 10px;
                             border: 1px solid #ebf6ff;background: #f3faff;outline: none;padding:0 5px;
                             box-sizing: border-box;text-align: center;color:#29c99a;line-height: 20px; "
-                   value="2">
+                   value="10" disabled>
         </div>
     </div>
 

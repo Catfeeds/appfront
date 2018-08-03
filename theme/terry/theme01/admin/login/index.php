@@ -131,10 +131,11 @@
         height: 100%;
         border:0;
         float: left;
-        width: 200px;
+        width: 236px;
         outline: none;
         padding-left:6px;
         background: #f3faff;
+        margin-left:32px;
     }
     #loginin{
         width: 100%;
@@ -161,13 +162,13 @@
                 <ul>
                     <li>
                         <img src="/public/account.png" alt="">
-                        <span>账户</span>
-                        <input type="text" name="username" placeholder="">
+                        <!--<span>账户</span>-->
+                        <input type="text" name="username" placeholder="账户">
                     </li>
                     <li>
                         <img src="/public/pwd.png" alt="">
-                        <span>密码</span>
-                        <input type="password" name="password" placeholder="">
+                        <!--<span>密码</span>-->
+                        <input type="password" name="password" placeholder="密码">
                     </li>
                 </ul>
 

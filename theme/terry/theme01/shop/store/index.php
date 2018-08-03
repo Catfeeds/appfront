@@ -26,6 +26,7 @@
     .address select:hover {
         border-color: #c0c4cc;
     }
+
     .address select:focus {
         border-color: #3CACFE;
     }
@@ -104,7 +105,7 @@
         border-radius: 5px;
         background: #f3faff;
         border: 2px solid #e5eff8;
-        padding:10px;
+        padding: 10px;
     }
 
     .content .red {
@@ -121,7 +122,8 @@
         box-shadow: 0 0 8px #37DF73;
         padding-top: 10px;
     }
-    .el-form-item__label{
+
+    .el-form-item__label {
         width: 100px;
         color: #A5AEB6;
     }
@@ -138,7 +140,8 @@
                             <span role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
                         <span data-v-3bfc0387="" class="el-breadcrumb__item" aria-current="page">
                             <span role="link" class="el-breadcrumb__inner">
-                                <span data-v-3bfc0387="" style="color: rgb(48, 211, 102); font-weight: bolder;">店铺信息</span></span><span
+                                <span data-v-3bfc0387=""
+                                      style="color: rgb(48, 211, 102); font-weight: bolder;">店铺信息</span></span><span
                                     role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
                     </div>
                 </div>
@@ -304,7 +307,7 @@
                     <!--                    </div>-->
                     <div data-v-3bfc0387="" style="float: right;margin: 20px 0">
                         <button data-v-3bfc0387="" type="submit" class="el-button green el-button--success is-round">
-                           <span>提交</span></button>
+                            <span>提交</span></button>
                         <button data-v-3bfc0387="" type="button" class="el-button red el-button--danger is-round">
                             <span>取消</span></button>
                     </div>

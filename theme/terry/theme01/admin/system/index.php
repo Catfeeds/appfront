@@ -44,18 +44,29 @@
         </div>
         <!--选项卡头部-->
         <div class="system-header">
-            <ul>
+            <ul class="system-ul">
                 <li>
-                    <a href="">Banner管理</a>
+                    <a href="javascript:0" class="chose-acive" onclick="fn(this)">Banner管理</a>
                 </li>
                 <li>
-                    <a href="">客户自动回复</a>
+                    <a href="javascript:0" onclick="fn(this)">客户自动回复</a>
                 </li>
                 <li>
-                    <a href="">咨询列表</a>
+                    <a href="javascript:0" onclick="fn(this)">咨询列表</a>
                 </li>
             </ul>
         </div>
+        <style>
+            .chose-acive{
+                border-bottom:2px solid #30a2fe;
+            }
+        </style>
+        <script>
+            function fn(that){
+                $(".system-ul li a").removeClass("chose-acive");
+                $(that).addClass("chose-acive");
+            }
+        </script>
         <!--选项卡内容-->
         <div class="system-content">
             <a href="/admin/system/banneradd" title="添加banner图" class="system-add" style="display:block;text-align:center;">添加</a>
