@@ -48,12 +48,21 @@ class ShujuController extends PublicsController
     }
     //商家数据
     public function actionShop(){
+        $res = Yii::$app->db->createCommand('select * from shop')->queryAll();
         $pagination = new Pagination([
             'defaultPageSize' => 2,
             'totalCount' => 2,
         ]);
+        $data['res'] = $res;
         $data['pagination'] = $pagination;
         return $this->render($this->action->id,$data);
+    }
+    //查看商家数据
+    public function actionWshop(){
+        $req = Yii::$app->request;
+        $id = $req->get(id);
+//        $data["id"] = $id;
+        return $this->render($this->action->id);
     }
     //水司数据
     public function actionWater(){

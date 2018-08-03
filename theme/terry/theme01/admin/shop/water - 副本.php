@@ -43,7 +43,7 @@
                     <colgroup>
                         <col name="el-table_2_column_6" width="80">
                         <col name="el-table_2_column_7" width="120">
-                        <col name="el-table_2_column_8" width="120">
+                        <col name="el-table_2_column_8" width="200">
                         <col name="el-table_2_column_9" width="120">
                         <col name="el-table_2_column_11" width="500">
                     </colgroup>
@@ -80,7 +80,7 @@
                     <colgroup>
                         <col name="el-table_2_column_6" width="80">
                         <col name="el-table_2_column_7" width="120">
-                        <col name="el-table_2_column_8" width="120">
+                        <col name="el-table_2_column_8" width="200">
                         <col name="el-table_2_column_9" width="120">
                         <col name="el-table_2_column_11" width="500">
                     </colgroup>
