@@ -60,9 +60,9 @@
                   , theme: "#3CACFE"
               });
           </script>
-       <li ><button  type="button" class="el-button el-button--primary is-round">
-         <!---->
-         <!----><span>查询</span></button></li>
+       <li ><!--<button  type="button" class="el-button el-button--primary is-round">
+
+         <span>查询</span></button>--></li>
       </ul> 
       <ul  class="item">
        <li >
@@ -184,17 +184,17 @@
         <div  class="title">
          <div  class="title_left">
           评价汇总
-         </div> 
+         </div>
          <div  class="title_right">
           <div  class="btn active btn1">
            7天
-          </div> 
+          </div>
           <div  class="btn btn1">
            一个月
-          </div> 
+          </div>
           <div  class="btn btn1">
            一个季度
-          </div> 
+          </div>
           <div  class="btn bnt1">
            一年
           </div>
@@ -204,6 +204,7 @@
          <div  class="contents active">
           <ul  style="display: flex; justify-content: space-between;">
               <li >
+                  时间段选择
                   <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test2">
               </li>
               <style>
@@ -246,9 +247,9 @@
                       , theme: "#3CACFE"
                   });
               </script>
-           <li><button  type="button" class="el-button el-button--primary is-round" style="width: 50px; height: 30px; line-height: 5px; font-size: 12px; padding-left: 12px;">
-             <!---->
-             <!----><span> 确定 </span></button></li>
+               <li><!--<button  type="button" class="el-button el-button--primary is-round" style="width: 50px; height: 30px; line-height: 5px; font-size: 12px; padding-left: 12px;">
+
+                 <span> 确定 </span></button>--></li>
           </ul> 
           <div  class="tu1"></div>
             <script>
@@ -287,7 +288,7 @@
 
                          var favorable,reviewable,nagetivable;
                          $.ajax({
-                             url:"/shop/datas/countdate?t1="+t1+"&t2="+t2,
+                             url:"/water/datas/countdate?t1="+t1+"&t2="+t2,
                              dataType:'json',
                              success:function (msg) {
                                  for(let i=0;i<msg.length;i++){
@@ -349,18 +350,15 @@
                      $('.btn1').triggerHandler('click');
                  })
              </script>
-
-          <div >
+<!--zjz-->
+          <!--<div >
            <button  type="button" class="el-button el-button--primary is-round">
-            <!---->
-            <!----><span>导出图片</span></button> 
+            <span>导出图片</span></button>
            <button  type="button" class="el-button el-button--success is-round">
-            <!---->
-            <!----><span>导出表格</span></button> 
+           <span>导出表格</span></button>
            <button  type="button" class="el-button el-button--warning is-round">
-            <!---->
-            <!----><span>导出报告</span></button>
-          </div>
+            <span>导出报告</span></button>
+          </div>-->
          </div>
 
          <div  class="contents">
@@ -378,17 +376,17 @@
         <div  class="title">
          <div  class="title_left">
           投诉汇总
-         </div> 
+         </div>
          <div  class="title_right">
           <div  class="btn active">
            7天
-          </div> 
+          </div>
           <div  class="btn">
            一个月
-          </div> 
+          </div>
           <div  class="btn">
            一个季度
-          </div> 
+          </div>
           <div  class="btn">
            一年
           </div>
@@ -398,7 +396,8 @@
          <div  class="contents active">
           <ul  style="display: flex; justify-content: space-between;">
               <li >
-                  <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test2">
+                  时间段选择
+                  <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test4">
               </li>
               <style>
                   .demo-input {
@@ -434,28 +433,25 @@
               </style>
               <script>
                   laydate.render({
-                      elem: '#test2'
+                      elem: '#test4'
                       , type: 'datetime'
                       , range: true
                       , theme: "#3CACFE"
                   });
               </script>
-           <li><button  type="button" class="el-button el-button--primary is-round" style="width: 50px; height: 30px; line-height: 5px; font-size: 12px; padding-left: 12px;">
-             <!---->
-             <!----><span> 确定 </span></button></li>
+           <li><!--<button  type="button" class="el-button el-button--primary is-round" style="width: 50px; height: 30px; line-height: 5px; font-size: 12px; padding-left: 12px;">
+             <span> 确定 </span></button>--></li>
           </ul> 
-          <div  class="tu2"></div> 
-          <div >
+          <div  class="tu2"></div>
+             <!--zjz-->
+          <!--<div >
            <button  type="button" class="el-button el-button--primary is-round">
-            <!---->
-            <!----><span>导出图片</span></button> 
+            <span>导出图片</span></button>
            <button  type="button" class="el-button el-button--success is-round">
-            <!---->
-            <!----><span>导出表格</span></button> 
+            <span>导出表格</span></button>
            <button  type="button" class="el-button el-button--warning is-round">
-            <!---->
-            <!----><span>导出报告</span></button>
-          </div>
+            <span>导出报告</span></button>
+          </div>-->
          </div> 
          <div  class="contents">
           一个月
@@ -473,33 +469,212 @@
        <div  class="title2">
         <div  class="title_left">
          订单数量走势
-        </div> 
-        <div  class="title_right">
-         <div  class="btn active">
-          7天
-         </div> 
-         <div  class="btn">
-          一个月
-         </div> 
-         <div  class="btn">
-          一个季度
-         </div> 
-         <div  class="btn">
-          一年
-         </div>
-        </div> 
-        <ul  style="display: flex;">
+        </div>
+           <div  class="title_right">
+               <div  class="btn btnorder active"  uri='1'>
+                   7天
+               </div>
+               <div  class="btn btnorder"  uri='2'>
+                   一个月
+               </div>
+               <div  class="btn btnorder"  uri='3'>
+                   一个季度
+               </div>
+               <div  class="btn btnorder"  uri='4'>
+                   一年
+               </div>
+           </div>
+           <ul  style="display: flex;">
          <li >
-          <div  class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange" style="width: 380px;">
-           <i class="el-input__icon el-range__icon el-icon-time"></i>
-           <input placeholder="开始日期" name="" class="el-range-input" />
-           <span class="el-range-separator">至</span>
-           <input placeholder="结束日期" name="" class="el-range-input" />
-           <i class="el-input__icon el-range__close-icon"></i>
-          </div></li> 
-         <li ><button  type="button" class="el-button el-button--primary is-round" style="width: 50px; height: 30px; line-height: 5px; font-size: 12px; padding-left: 12px;">
-           <!---->
-           <!----><span> 确定 </span></button></li>
+             时间段选择
+             <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test3">
+         </li>
+            <script>
+                laydate.render({
+                    elem: '#test3'
+                    , type: 'datetime'
+                    , range: true
+                    , theme: "#3CACFE"
+                });
+                $(function () {
+                    var myCharts = echarts.init(document.querySelector('.tu3'));
+                    $('#test3').on('blur',function(){
+                        $('.laydate-btns-confirm').on('click',function () {
+                            let  test3=$('#test3');
+                            let date = test3.val().split(" - ");
+                            console.log(date);
+                            var sta=date[0];var end=date[1];
+                            var url="<?= Yii::$service->url->getUrl('water/datas/searchdate') ?>?type=1&sta="+sta+"&end="+end;
+                            $.get(url).done(function (data) {
+                                var row =JSON.parse(data);
+                                console.log(data);
+                                // 填入数据
+                                myCharts.setOption({
+                                    title: {
+                                        text: ''
+                                    },
+                                    tooltip: {},
+                                    legend: {
+                                        data:['下单','成交']
+                                    },
+                                    xAxis: {
+                                        data:row.dat    /* row.dat */
+                                    },
+                                    yAxis: {},
+                                    series: [{
+                                        name: '下单',
+                                        type: 'line',
+                                        data:row.numall    /* row.num */
+                                    },
+                                        {
+                                            name: '成交',
+                                            type: 'line',
+                                            data:row.num    /* row.num */
+                                        },
+                                    ],
+                                    toolbox: {
+
+                                        show: true,
+
+                                        feature: {
+
+                                            saveAsImage: {
+
+                                                show:true,
+
+                                                excludeComponents :['toolbox'],
+
+                                                pixelRatio: 2
+
+                                            }
+
+                                        }
+
+                                    },
+                                    // color: ['rgb(48,163,254)','rgb(55,223,116)','rgb(253,203,82)']
+                                });
+                            });
+                        })
+                    })
+
+                    var url = "<?= Yii::$service->url->getUrl("water/datas/week") ?>?type="+3;
+                    $('.btnorder').on("click",function () {
+                        $('.btnorder').removeClass('active').filter(this).addClass('active');
+
+                        if($(this).attr("uri")==1){
+                            url="<?= Yii::$service->url->getUrl("water/datas/week") ?>?type="+3;
+                        }else if($(this).attr("uri")==2){
+                            url="<?= Yii::$service->url->getUrl("water/datas/month") ?>?type="+3;
+                        }else if($(this).attr("uri")==3){
+                            url="<?= Yii::$service->url->getUrl("water/datas/quarter") ?>?type="+3;
+                        }else if($(this).attr("uri")==4){
+                            url="<?= Yii::$service->url->getUrl("water/datas/year") ?>?type="+3;
+                        }
+                        $.get(url).done(function (data) {
+                            var row =JSON.parse(data);
+                            // 填入数据
+                            myCharts.setOption({
+                                title: {
+                                    text: ''
+                                },
+                                tooltip: {},
+                                legend: {
+                                    data:['下单','成交']
+                                },
+                                xAxis: {
+                                    data:row.dat    /* row.dat */
+                                },
+                                yAxis: {},
+                                series: [{
+                                    name: '下单',
+                                    type: 'line',
+                                    data:row.numall    /* row.num */
+                                },
+                                    {
+                                        name: '成交',
+                                        type: 'line',
+                                        data:row.num    /* row.num */
+                                    },
+                                ],
+                                toolbox: {
+
+                                    show: true,
+
+                                    feature: {
+
+                                        saveAsImage: {
+
+                                            show:true,
+
+                                            excludeComponents :['toolbox'],
+
+                                            pixelRatio: 2
+
+                                        }
+
+                                    }
+
+                                },
+                                // color: ['rgb(48,163,254)','rgb(55,223,116)','rgb(253,203,82)']
+                            });
+
+
+                        });
+                    })
+                    $.get(url).done(function (data) {
+                        var row =JSON.parse(data);
+                        // 填入数据
+                        myCharts.setOption({
+                            title: {
+                                text: ''
+                            },
+                            tooltip: {},
+                            legend: {
+                                data:['下单','成交']
+                            },
+                            xAxis: {
+                                data:row.dat    /* row.dat */
+                            },
+                            yAxis: {},
+                            series: [{
+                                name: '下单',
+                                type: 'line',
+                                data:row.numall    /* row.num */
+                            },
+                                {
+                                    name: '成交',
+                                    type: 'line',
+                                    data:row.num    /* row.num */
+                                },
+                            ],
+                            toolbox: {
+
+                                show: true,
+
+                                feature: {
+
+                                    saveAsImage: {
+
+                                        show:true,
+
+                                        excludeComponents :['toolbox'],
+
+                                        pixelRatio: 2
+
+                                    }
+
+                                }
+
+                            },
+                            // color: ['rgb(48,163,254)','rgb(55,223,116)','rgb(253,203,82)']
+                        });
+
+
+                    });
+                })
+            </script>
+         <li ><!--<button  type="button" class="el-button el-button--primary is-round" style="width: 50px; height: 30px; line-height: 5px; font-size: 12px; padding-left: 12px;">
+           <span> 确定 </span></button>--></li>
         </ul>
        </div> 
        <div  class="bottom">
@@ -685,6 +860,6 @@
     .item2 .bottom .contents .tu3{
         width: 100%;
         height: 500px;
-        background: url("/public/img/zhexiantu.png") no-repeat center center /100% auto;
+        /*background: url("/public/img/zhexiantu.png") no-repeat center center /100% auto;*/
     }
 </style>
