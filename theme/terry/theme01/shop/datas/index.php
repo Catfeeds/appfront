@@ -229,7 +229,6 @@
          <div  class="contents active">
           <ul  style="display: flex; justify-content: space-between;">
            <li >
-            <div  class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange" style="width: 380px;">
                 <input id="test4" style="width: 300px">
               <script>
                   laydate.render({
@@ -239,7 +238,7 @@
                       , theme: "#3CACFE"
                   });
               </script>
-            </div></li>
+            </li>
            <li  style="margin-top: 5px;"><button  type="button" class="el-button blue1 el-button--primary is-round">
                    <span>确定</span></button></li>
           </ul>
@@ -387,17 +386,16 @@
         </div>
         <ul  style="display: flex;">
          <li >
-          <div  class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange" style="width: 380px;">
-              <input id="test3" style="width: 300px">
-              <script>
-                  laydate.render({
-                      elem: '#test3'
-                      , type: 'datetime'
-                      , range: true
-                      , theme: "#3CACFE"
-                  });
-              </script>
-          </div></li>
+          <input id="test3" style="width: 300px">
+          <script>
+              laydate.render({
+                  elem: '#test3'
+                  , type: 'datetime'
+                  , range: true
+                  , theme: "#3CACFE"
+              });
+          </script>
+          </li>
          <li ><button  type="button" class="el-button blue1 el-button--primary is-round">
            <!---->
            <!----><span> 确定 </span></button></li>
@@ -485,7 +483,8 @@
 
                               }
 
-                          }
+                          },
+                          // color: ['rgb(48,163,254)','rgb(55,223,116)','rgb(253,203,82)']
                       });
                   });
               })
@@ -548,7 +547,8 @@
 
                           }
 
-                      }
+                      },
+                      // color: ['rgb(48,163,254)','rgb(55,223,116)','rgb(253,203,82)']
                   });
 
 
@@ -598,7 +598,8 @@
 
                       }
 
-                  }
+                  },
+                  // color: ['rgb(48,163,254)','rgb(55,223,116)','rgb(253,203,82)']
               });
 
 

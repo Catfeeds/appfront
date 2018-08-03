@@ -42,14 +42,17 @@
           <!---->
          </div>
         </div></li> 
-       <li >时间段选择 
-        <div  class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
-         <i class="el-input__icon el-range__icon el-icon-time"></i>
-         <input placeholder="开始日期" name="" class="el-range-input" />
-         <span class="el-range-separator">至</span>
-         <input placeholder="结束日期" name="" class="el-range-input" />
-         <i class="el-input__icon el-range__close-icon"></i>
-        </div></li> 
+       <li >时间段选择
+           <input id="test2" style="width: 300px">
+           <script>
+               laydate.render({
+                   elem: '#test2'
+                   , type: 'datetime'
+                   , range: true
+                   , theme: "#3CACFE"
+               });
+           </script>
+       </li>
        <li ><button  type="button" class="el-button el-button--primary is-round">
          <!---->
          <!----><span>查询</span></button></li>
@@ -98,13 +101,16 @@
         </div> 
         <ul  style="display: flex;">
          <li >
-          <div  class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
-           <i class="el-input__icon el-range__icon el-icon-time"></i>
-           <input placeholder="开始日期" name="" class="el-range-input" />
-           <span class="el-range-separator">至</span>
-           <input placeholder="结束日期" name="" class="el-range-input" />
-           <i class="el-input__icon el-range__close-icon"></i>
-          </div></li> 
+             <input id="test3" style="width: 300px">
+             <script>
+                 laydate.render({
+                     elem: '#test3'
+                     , type: 'datetime'
+                     , range: true
+                     , theme: "#3CACFE"
+                 });
+             </script>
+         </li>
          <li ><button  type="button" class="el-button el-button--primary is-round" style="width: 50px; height: 30px; line-height: 5px; font-size: 12px; padding-left: 12px;">
            <!---->
            <!----><span> 确定 </span></button></li>
