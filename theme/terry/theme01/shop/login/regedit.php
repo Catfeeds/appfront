@@ -157,25 +157,29 @@
                 <ul>
                     <li>
                         <img src="/public/account.png" alt="">
-                        <span>手&nbsp;&nbsp;机&nbsp;号</span>
-                        <input type="text" name="firstname" id="mobile">
+<!--                        <span>手&nbsp;&nbsp;机&nbsp;号</span>-->
+                        <input type="text" name="firstname" id="mobile" placeholder="手 机 号" style="width: 100%;padding-left: 40px;
+box-sizing: border-box;border-radius: 16px;">
                     </li>
                     <li>
                         <img src="/public/account.png" alt="">
-                        <span>验&nbsp;&nbsp;证&nbsp;码</span>
-                        <input type="text" name="code" style="" id="code">
+<!--                        <span>验&nbsp;&nbsp;证&nbsp;码</span>-->
+                        <input type="text" name="code" id="code" placeholder="验 证 码" style="width: 100%;padding-left: 40px;
+box-sizing: border-box;border-radius: 16px;">
                         <button style="position: absolute;height: 100%;width: 80px;background: #36de76;border: none;border-radius: 20px;font-size: 12px;color: #fff;top: 0;right: 0;cursor: pointer;outline:none" onclick="getcode()">获取验证码</button>
                     </li>
 
                     <li>
                         <img src="/public/pwd.png" alt="">
-                        <span>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</span>
-                        <input type="password" name="password_hash" id="password_hash">
+<!--                        <span>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</span>-->
+                        <input type="password" name="password_hash" id="password_hash" placeholder="密      码" style="width: 100%;padding-left: 40px;
+box-sizing: border-box;border-radius: 16px;">
                     </li>
                     <li>
                         <img src="/public/pwd.png" alt="">
-                        <span>确认密码</span>
-                        <input type="password" name="repassword" id="repassword">
+<!--                        <span>确认密码</span>-->
+                        <input type="password" name="repassword" id="repassword" placeholder="确认密码" style="width: 100%;padding-left: 40px;
+box-sizing: border-box;border-radius: 16px;">
                     </li>
                 </ul>
                 <div class="forget">
@@ -202,7 +206,7 @@
             return false;
         }else{
             $.get("<?= Yii::$service->url->getUrl('shop/login/fasong') ?>",{'mobile':phone},function(data){
-                var data = JSON.parse(data)
+                var data = JSON.parse(data);
                 if(data.err!=1){
                     alert(data.info)
                 }else{
