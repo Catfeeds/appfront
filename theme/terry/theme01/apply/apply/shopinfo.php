@@ -121,6 +121,7 @@
                             <div class="el-form-item__content" style="margin-left: 80px;">
                                 <div class="el-input">
                                     <input type="text" name="shop_name" autocomplete="off" class="el-input__inner"
+                                           placeholder="请输入店铺名称"
                                            value="<?php echo $shopinfo['post']['shop_name'] ?>" required  />
                                 </div>
                             </div>
@@ -223,6 +224,7 @@
                             <div class="el-form-item__content" style="margin-left: 80px;">
                                 <div class="el-input">
                                     <input type="text" name="shop_region" autocomplete="off" class="el-input__inner"
+                                           placeholder="请输入店铺默认配送区域"
                                            value="<?php echo $shopinfo['post']['shop_region'] ?>" required />
                                 </div>
                             </div>
@@ -232,6 +234,7 @@
                             <div class="el-form-item__content" style="margin-left: 80px;">
                                 <div class="el-input">
                                     <input type="text" name="shop_qrcode" autocomplete="off" class="el-input__inner"
+                                           placeholder="请输入店铺公众号"
                                            value="<?php echo $shopinfo['post']['shop_qrcode'] ?>"  required />
                                 </div>
                             </div>
@@ -241,6 +244,7 @@
                             <div class="el-form-item__content" style="margin-left: 80px;">
                                 <div class="el-input">
                                     <input type="text" name="shop_address" autocomplete="off" class="el-input__inner"
+                                           placeholder="请输入详细地址"
                                            value="<?php echo $shopinfo['post']['shop_address'] ?>" required />
                                 </div>
                             </div>
@@ -250,6 +254,7 @@
                             <div class="el-form-item__content" style="margin-left: 80px;">
                                 <div class="el-input">
                                     <input type="text" name="shop_zip" autocomplete="off" class="el-input__inner"
+                                           placeholder="请输入邮政编码"
                                            value="<?php echo $shopinfo['post']['shop_zip'] ?>" required />
                                 </div>
                             </div>
@@ -259,6 +264,7 @@
                             <div class="el-form-item__content" style="margin-left: 80px;">
                                 <div class="el-input">
                                     <input type="text" name="shop_close_info" autocomplete="off" class="el-input__inner"
+                                           placeholder="请输入店铺关闭原因"
                                            value="<?php echo $shopinfo['post']['shop_close_info'] ?>"  required />
                                 </div>
                             </div>
@@ -268,6 +274,7 @@
                             <div class="el-form-item__content" style="margin-left: 80px;">
                                 <div class="el-input">
                                     <input type="text" name="shop_keywords" autocomplete="off" class="el-input__inner"
+                                           placeholder="请输入店铺seo关键字"
                                            value="<?php echo $shopinfo['post']['shop_keywords'] ?>"  required/>
                                 </div>
                             </div>
@@ -277,6 +284,7 @@
                             <div class="el-form-item__content" style="margin-left: 80px;">
                                 <div class="el-input">
                                     <input type="text" name="shop_description" autocomplete="off"
+                                           placeholder="请输入店铺seo描述"
                                            class="el-input__inner"
                                            value="<?php echo $shopinfo['post']['shop_description'] ?>" required />
                                 </div>
@@ -287,6 +295,7 @@
                             <div class="el-form-item__content" style="margin-left: 80px;">
                                 <div class="el-input">
                                     <input type="text" name="shop_phone" autocomplete="off" class="el-input__inner"
+                                           placeholder="请输入商家电话"
                                            value="<?php echo $shopinfo['post']['shop_phone'] ?>" required />
                                 </div>
                             </div>
@@ -397,11 +406,6 @@
 
 <script>
     function shopload(url) {
-<<<<<<< HEAD
-        $("#el-form").attr("action", url);
-        $("#el-form").submit();
-=======
-        // $("#el-form").attr("action", url);
         $("#el-form").submit(function (e) {
             e.preventDefault();
             let formdata = $('form').serializeArray();
@@ -414,7 +418,6 @@
                 }
             })
         });
->>>>>>> 05ac79974e7abb7992f1f03577b9bdcc91df7f98
     }
 
     /* $(".el-button").onclick()

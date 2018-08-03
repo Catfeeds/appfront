@@ -79,7 +79,7 @@ use yii\widgets\LinkPager;
         <div class="adminmannager-search">
             <form action="<?= Yii::$service->url->getUrl('admin/shop/classlist') ?>" method="get">
                 <span>分类名称</span>
-                <input type="text" name="name">
+                <input type="text" name="name" placeholder="请输入分类名称">
                 <div class="indexsearch ">
                     <input type="submit" class="search-img" value="">
                 </div>
