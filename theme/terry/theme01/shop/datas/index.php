@@ -368,16 +368,16 @@
          订单数量走势
         </div>
         <div  class="title_right">
-         <div  class="btn active">
+         <div  class="btn btnorder active"  uri='1'>
           7天
          </div>
-         <div  class="btn">
+         <div  class="btn btnorder"  uri='2'>
           一个月
          </div>
-         <div  class="btn">
+         <div  class="btn btnorder"  uri='3'>
           一个季度
          </div>
-         <div  class="btn">
+         <div  class="btn btnorder"  uri='4'>
           一年
          </div>
         </div>
@@ -397,7 +397,8 @@
        </div>
        <div  class="bottom">
         <div  class="contents active">
-         <div  class="tu3"></div>
+         <div  class="tu3" >
+         </div>
         </div>
         <div  class="contents">
          一个月
@@ -422,7 +423,72 @@
           , range: true
           , theme: "#3CACFE"
       });
+      $(function () {
+          var myCharts = echarts.init(document.querySelector('.tu3'));
+          $('.btnorder').on("click",function () {
+              console.log($(this).attr("uri"));
+              if($(this).attr("uri")==1){
+                  url="<?= Yii::$service->url->getUrl("shop/datas/week") ?>?type="+3;
+              }else if($(this).attr("uri")==2){
+                  url="<?= Yii::$service->url->getUrl("shop/datas/month") ?>?type="+3;
+              }else if($(this).attr("uri")==3){
+                  url="<?= Yii::$service->url->getUrl("shop/datas/quarter") ?>?type="+3;
+              }else if($(this).attr("uri")==4){
+                  url="<?= Yii::$service->url->getUrl("shop/datas/year") ?>?type="+3;
+              }
+              $.get(url).done(function (data) {
+                  var row =JSON.parse(data);
+                  console.log(row);
+                  console.log(myCharts);
+                  // 填入数据
+                  myCharts.setOption({
+                      title: {
+                          text: ''
+                      },
+                      tooltip: {},
+                      legend: {
+                          data:['下单','成交']
+                      },
+                      xAxis: {
+                          data:row.dat    /* row.dat */
+                      },
+                      yAxis: {},
+                      series: [{
+                          name: '下单',
+                          type: 'line',
+                          data:row.numall    /* row.num */
+                      },
+                      {
+                          name: '成交',
+                          type: 'line',
+                          data:row.num    /* row.num */
+                      },
+                      ],
+                      toolbox: {
 
+                          show: true,
+
+                          feature: {
+
+                              saveAsImage: {
+
+                                  show:true,
+
+                                  excludeComponents :['toolbox'],
+
+                                  pixelRatio: 2
+
+                              }
+
+                          }
+
+                      }
+                  });
+
+
+              });
+          })
+      })
   </script>
 <style>
     .content {
@@ -589,7 +655,7 @@
     .item2 .bottom .contents .tu3{
         width: 100%;
         height: 500px;
-        background: url("/public/img/zhexiantu.png") no-repeat center center /100% auto;
+        /*background: url("/public/img/zhexiantu.png") no-repeat center center /100% auto;*/
     }
   /*  .content .blue {
         width: 112px;
