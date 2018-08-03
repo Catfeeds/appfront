@@ -159,13 +159,15 @@
                 <ul>
                     <li>
                         <img src="/public/account.png" alt="">
-                        <span>账户</span>
-                        <input type="text" name="firstname">
+<!--                        <span>账户</span>-->
+                        <input type="text" name="firstname" placeholder="账户" style="width: 100%;padding-left: 40px;
+box-sizing: border-box;border-radius: 16px;">
                     </li>
                     <li>
                         <img src="/public/pwd.png" alt="">
-                        <span>密码</span>
-                        <input type="password" name="password_hash">
+<!--                        <span>密码</span>-->
+                        <input type="password" name="password_hash" placeholder="密码" style="width: 100%;padding-left: 40px;
+box-sizing: border-box;border-radius: 16px;">
                     </li>
                 </ul>
 
