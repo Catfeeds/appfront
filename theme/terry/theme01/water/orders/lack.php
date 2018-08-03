@@ -141,7 +141,7 @@ use yii\helpers\Url;
                                                 <col name="gutter" width="0">
                                             </colgroup>
                                             <thead class="has-gutter">
-                                            <tr class="">
+                                            <tr class="" style="font-size: 14px;color: #B1DBFE;">
                                                 <th colspan="1" rowspan="1"
                                                     class="el-table_34_column_271   el-table-column--selection  is-leaf">
                                                     <div class="cell"><label role="checkbox" class="el-checkbox"><span
@@ -199,7 +199,7 @@ use yii\helpers\Url;
 
                                             <?php for ($i=0;$i<count($res);$i++) { ?>
 
-                                            <tbody>
+                                            <tbody style="font-size: 12px;color:#82898e">
                                                 <tr class="el-table__row">
                                                 <td class="el-table_34_column_271  el-table-column--selection">
                                                     <div class="cell"><label role="checkbox" class="el-checkbox"><span
