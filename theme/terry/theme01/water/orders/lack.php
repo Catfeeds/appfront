@@ -74,13 +74,15 @@
                                         style="color: rgb(48, 211, 102); font-weight: bolder;">缺货登记</span></span><span
                                     role="presentation" class="el-breadcrumb__separator">·</span></span></div>
                 </div>
+
                 <ul data-v-0457afb0="" class="shuaixuan">
                     <li data-v-0457afb0="">
                         商品编号&nbsp;&nbsp;<div data-v-0457afb0="" class="el-input" style="width: 180px;"><!----><input
                                     type="text"
                                     autocomplete="off"
                                     placeholder="请输入商品编号"
-                                    class="el-input__inner">
+                                    class="el-input__inner"
+                            >
                             <!----><!----><!----></div>
                     </li>
                     <li data-v-0457afb0="">
@@ -184,6 +186,10 @@
                                                 <col name="el-table_34_column_278" width="107">
                                                 <col name="el-table_34_column_279" width="107">
                                             </colgroup>
+
+
+                                            <?php for ($i=0;$i<count($res);$i++) { ?>
+
                                             <tbody>
                                                 <tr class="el-table__row">
                                                 <td class="el-table_34_column_271  el-table-column--selection">
@@ -196,7 +202,7 @@
                                                             <!----></label></div>
                                                 </td>
                                                 <td class="el-table_34_column_272  ">
-                                                    <div class="cell el-tooltip" style="width: 79px;">DSV0002</div>
+                                                    <div class="cell el-tooltip" style="width: 79px;"><?=  $res[$i]["product_id"] ?></div>
                                                 </td>
                                                 <td class="el-table_34_column_273  ">
                                                     <div class="cell el-tooltip" style="width: 107px;">张三</div>
@@ -208,13 +214,14 @@
                                                     <div class="cell el-tooltip" style="width: 249px;">
                                                         <div data-v-0457afb0="" class="picture"></div>
                                                         <div data-v-0457afb0="" class="contents">
-                                                            <div data-v-0457afb0="">货号：DSV0002</div>
-                                                            <div data-v-0457afb0="">羽绒服清洗</div>
+                                                            <div data-v-0457afb0="">货号：<?=  $res[$i]["product_id"] ?></div>
+
+                                                            <div data-v-0457afb0=""><?=  $goods[$i]['name'] ?></div>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td class="el-table_34_column_276  ">
-                                                    <div class="cell el-tooltip" style="width: 106px;">0</div>
+                                                    <div class="cell el-tooltip" style="width: 106px;"><?= $res[$i]["qty"] ?></div>
                                                 </td>
                                                 <td class="el-table_34_column_277  ">
                                                     <div class="cell el-tooltip" style="width: 149px;">2018-06-01
@@ -235,6 +242,8 @@
                                                 </td>
                                             </tr>
                                             </tbody>
+
+                                            <?php } ?>
                                         </table><!----><!----></div><!----><!----><!----><!---->
                                     <div class="el-table__column-resize-proxy" style="display: none;"></div>
                                 </div>

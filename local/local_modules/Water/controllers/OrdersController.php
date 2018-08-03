@@ -305,6 +305,7 @@ class OrdersController extends PublicsController
         $datas["pagination"] = $pagination;
         $datas["all"] = $all;
         $datas["flag"] = $get["flag"] ? $get["flag"] : 0;
+
         return $this->render($this->action->id, $datas);
 
     }
@@ -329,17 +330,24 @@ class OrdersController extends PublicsController
         $res1 = Yii::$app->db->createCommand($sql)->queryAll();
 
         $goods = [];
+
         foreach ($res1 as $v){
             $res2 = $query->from("product_flat")->where(["_id"=>$v[product_id]])->one();
             array_push($goods,$res2);
         }
 
-        var_dump($goods);
-        exit();
+        $res = Yii::$app->db->createCommand("select * from product_flat_qty where qty<=10")->queryAll();
 
-        $res = Yii::$app->db->createCommand("select * from product_flat_qty")->queryAll();
+        $datas=[];
 
-        return $this->render($this->action->id);
+        $datas['res']=$res;
+
+        $datas['goods']=$goods;
+//
+//        var_dump($datas);
+//        exit();
+
+        return $this->render($this->action->id,$datas);
 
     }
 }
