@@ -101,18 +101,18 @@ background: #32d699;border-radius: 18px;text-align: center;line-height: 32px;col
                                 <tr class="el-table__row" style="height:36px;font-size: 14px;">
                                     <td class="el-table_2_column_11  ">
                                         <div class="cell el-tooltip" title="<?= $v["increment_id"] ?>">
-                                            1
+                                            <?= $v['shop_id'] ?>
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_12">
                                         <div class="cell el-tooltip">
-                                            爱康洁洗衣纺迎泽区分点021
+                                            <?= $v['shop_name'] ?>
                                         </div>
                                     </td>
 
                                     <td class="el-table_2_column_14">
                                         <div class="cell el-tooltip" title="<?= $v["payment_method"] ?>">
-                                            万荣县
+                                           <?= $v['shop_address'] ?>
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_14">
@@ -126,7 +126,7 @@ background: #32d699;border-radius: 18px;text-align: center;line-height: 32px;col
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_18">
-                                        <a href="<?php Yii::$service->url->getUrl('/admin/shuju/wshop',array("id"=>$v["shop_id"]))?>" style="color: #41b2fc;left:200px;">查看</a>
+                                        <a href="<?= Yii::$service->url->getUrl('admin/shuju/wshop', array('id' => $v['shop_id'])) ?>" style="color: #41b2fc;left:200px;">查看</a>
                                     </td>
                                 </tr>
                         <?php }?>
