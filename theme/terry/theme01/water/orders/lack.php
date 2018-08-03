@@ -1,3 +1,12 @@
+<?php
+
+use yii\widgets\LinkPager;
+use yii\helpers\Html;
+use yii\helpers\Url;
+
+
+?>
+
 <style>
     .content {
         width: 100%;
@@ -253,13 +262,13 @@
                                         <div data-v-0457afb0="" style="display: flex;">
                                             <div data-v-0457afb0="" class="dian"></div>
                                             总计<span data-v-0457afb0=""
-                                                    style="color: rgb(61, 176, 255); font-weight: bolder;">206</span>记录
+                                                    style="color: rgb(61, 176, 255); font-weight: bolder;"><?= $tot ?></span>记录
                                         </div>
                                         <div data-v-0457afb0="" style="display: flex;">
                                             <div data-v-0457afb0="" class="dian"
                                                  style="background: rgb(41, 201, 154);"></div>
                                             分<span data-v-0457afb0=""
-                                                   style="font-weight: bolder; color: rgb(41, 201, 154);">82</span>页
+                                                   style="font-weight: bolder; color: rgb(41, 201, 154);"><?= $page ?></span>页
                                         </div>
                                     </div>
                                     <div data-v-0457afb0="" style="margin-top: 40px;">
@@ -273,21 +282,88 @@
                                 <div data-v-0457afb0="" style="width: 100%; position: relative;">
                                     <div data-v-0457afb0=""
                                          style="font-size: 12px; position: absolute; bottom: 0px; right: 0px; display: flex; justify-content: space-between;">
-                                        <div data-v-0457afb0="" class="button_left">首页</div>
-                                        <div data-v-0457afb0="" class="el-pagination">
-                                            <button type="button" disabled="disabled" class="btn-prev"><i
-                                                        class="el-icon el-icon-arrow-left"></i></button>
-                                            <ul class="el-pager">
-                                                <li class="number active">1</li><!---->
-                                                <li class="number">2</li>
-                                                <li class="number">3</li>
-                                                <li class="number">4</li><!---->
-                                                <li class="number">5</li>
-                                            </ul>
-                                            <button type="button" class="btn-next"><i
-                                                        class="el-icon el-icon-arrow-right"></i></button>
-                                        </div>
-                                        <div data-v-0457afb0="" class="button_right">末页</div>
+<!--                                        <div data-v-0457afb0="" class="button_left">首页</div>-->
+<!--                                        <div data-v-0457afb0="" class="el-pagination">-->
+<!--                                            <button type="button" disabled="disabled" class="btn-prev"><i-->
+<!--                                                        class="el-icon el-icon-arrow-left"></i></button>-->
+<!--                                            <ul class="el-pager">-->
+<!--                                                <li class="number active">1</li><!---->
+<!--                                                <li class="number">2</li>-->
+<!--                                                <li class="number">3</li>-->
+<!--                                                <li class="number">4</li><!---->
+<!--                                                <li class="number">5</li>-->
+<!--                                            </ul>-->
+<!--                                            <button type="button" class="btn-next"><i-->
+<!--                                                        class="el-icon el-icon-arrow-right"></i></button>-->
+<!--                                        </div>-->
+<!--                                        <div data-v-0457afb0="" class="button_right">末页</div>-->
+
+
+                                        <?php
+                                        echo LinkPager::widget([
+                                            'pagination' => $pagination,
+                                            'firstPageLabel' => '首页',
+                                            'lastPageLabel' => '尾页',
+
+                                            'nextPageLabel' => '>',
+                                            'prevPageLabel' => '<',
+                                        ]);
+
+
+                                        ?>
+                                        <style>
+                                            .pagination {
+                                                white-space: nowrap;
+                                                padding: 2px 5px;
+                                                color: #303133;
+                                                font-weight: 700;
+                                            }
+
+                                            .pagination li {
+                                                padding: 0 4px;
+                                                background: #fff;
+                                                font-size: 13px;
+                                                min-width: 35.5px;
+                                                height: 28px;
+                                                line-height: 28px;
+                                                box-sizing: border-box;
+                                                display: inline-block;
+                                            }
+
+                                            .pagination li.first {
+                                                width: 54px;
+                                                height: 20px;
+                                                background: #edf8ff;
+                                                border: 2px solid #e8f6ff;
+                                                border-radius: 10px;
+                                                color: #41b2fc;
+                                                line-height: 18px;
+                                                text-align: center;
+                                                margin-top: 8px;
+                                            }
+
+                                            .pagination li.last {
+                                                width: 54px;
+                                                height: 20px;
+                                                background: #51b7fc;
+                                                border: 2px solid #51b7fc;
+                                                border-radius: 10px;
+                                                color: #fff;
+                                                line-height: 18px;
+                                                text-align: center;
+                                                margin-top: 8px;
+                                            }
+
+                                            .pagination li a {
+                                                color: #000;
+                                                font-weight: bold;
+                                            }
+
+                                            .pagination li.active a {
+                                                color: #409EFF;
+                                                cursor: default;
+                                            }
+                                        </style>
                                     </div>
                                 </div>
                             </div>
