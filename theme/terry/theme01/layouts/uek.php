@@ -211,7 +211,7 @@ $cssOptions = [
         .aside .logo {
             width: 100%;
             height: 125px;
-            background: url("/public/img/logo.png") no-repeat center center/100% auto;
+            background: url("/public/img/logoshop.png") no-repeat center center/100% auto;
         }
 
         .aside-list li {
