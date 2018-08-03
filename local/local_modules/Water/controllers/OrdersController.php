@@ -305,6 +305,7 @@ class OrdersController extends PublicsController
         $datas["pagination"] = $pagination;
         $datas["all"] = $all;
         $datas["flag"] = $get["flag"] ? $get["flag"] : 0;
+
         return $this->render($this->action->id, $datas);
 
     }
@@ -329,17 +330,37 @@ class OrdersController extends PublicsController
         $res1 = Yii::$app->db->createCommand($sql)->queryAll();
 
         $goods = [];
+
         foreach ($res1 as $v){
             $res2 = $query->from("product_flat")->where(["_id"=>$v[product_id]])->one();
             array_push($goods,$res2);
         }
 
-        var_dump($goods);
-        exit();
+        $res = Yii::$app->db->createCommand("select * from product_flat_qty where qty<=10")->queryAll();
 
-        $res = Yii::$app->db->createCommand("select * from product_flat_qty")->queryAll();
+        $count = Yii::$app->db->createCommand("select count(*) as counts from product_flat_qty where qty<=10")->queryAll();
 
-        return $this->render($this->action->id);
+        $tot=$count[0]['counts'];
+
+        // 实例化分页对象
+        $pagination = new Pagination([
+            'defaultPageSize' => 5,
+            'totalCount' => $tot,
+        ]);
+
+        $datas=[];
+
+        $datas['res']=$res;
+
+        $datas['goods']=$goods;
+
+        $datas["pagination"] = $pagination;
+
+        $datas['tot']=$tot;
+
+        $datas['page']= ceil($tot/5);
+
+        return $this->render($this->action->id,$datas);
 
     }
 }

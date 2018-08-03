@@ -162,6 +162,7 @@
                 <ul>
                     <li>
                         <img src="/public/account.png" alt="">
+
                         <!--<span>账户</span>-->
                         <input type="text" name="username" placeholder="账户">
                     </li>
@@ -169,6 +170,7 @@
                         <img src="/public/pwd.png" alt="">
                         <!--<span>密码</span>-->
                         <input type="password" name="password" placeholder="密码">
+
                     </li>
                 </ul>
 

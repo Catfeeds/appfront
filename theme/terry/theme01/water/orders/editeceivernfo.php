@@ -15,7 +15,7 @@ use yii\helpers\Url;
             </div>
         </div>
         <div class="item">
-            <form class="el-form" action="<?= Yii::$service->url->getUrl('shop/orders/editinfo') ?>" method="post">
+            <form class="el-form" action="<?= Yii::$service->url->getUrl('water/orders/editinfo') ?>" method="post">
                 <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>"/>
                 <input type="hidden" name="order_id" value="<?= $res["order_id"] ?>"/>
                 <div class="el-form-item">
