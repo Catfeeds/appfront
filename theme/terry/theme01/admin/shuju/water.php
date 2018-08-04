@@ -5,8 +5,9 @@ use yii\helpers\Url;
 ?>
 <div class="main-content">
     <div class="ShopMannager">
-        <div class="ShopMannager-title">
-            <span>水司数据</span>
+        <div class="adminmannager-title">
+            <span>数据中心</span>&nbsp;
+            <span>·&nbsp;水司数据</span>
         </div>
         <div class="ShopMannager-search adminmannager-search">
             <form action="<?= Yii::$service->url->getUrl('/admin/shuju/water') ?>" method="get">

@@ -11,8 +11,10 @@ use yii\helpers\Url;
 </style>
 <div class="main-content">
     <div class="ShopMannager">
-        <div class="ShopMannager-title">
-            <span>商家数据</span>
+     
+        <div class="adminmannager-title">
+            <span>数据中心</span>&nbsp;
+            <span>·&nbsp;商家数据</span>
         </div>
         <div class="ShopMannager-search adminmannager-search">
             <form action="<?= Yii::$service->url->getUrl('/admin/shuju/shop') ?>" method="get">

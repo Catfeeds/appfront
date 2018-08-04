@@ -75,14 +75,14 @@
                     <label class="el-form-item__label" style="width: 120px;">标题:</label>
                     <div class="el-form-item__content" style="margin-left: 120px;">
                         <div class="el-input">
-                            <input type="text" value="" name="title" placeholder="" class="el-input__inner">
+                            <input type="text" value="" placeholder="请输入文章标题" name="title" placeholder="" class="el-input__inner">
                         </div>
                     </div>
                 </div>
                 <div class="el-form-item">
                     <label class="el-form-item__label" style="width: 120px;">正文:</label>
                     <div class="el-form-item__content" style="margin-left: 120px;">
-                       <textarea id="editor_id" name="content" style="width:700px;height:300px;">
+                       <textarea id="editor_id" name="content"  style="width:700px;height:300px;">
                         </textarea>
                     </div>
                 </div>
