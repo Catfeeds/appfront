@@ -1846,7 +1846,7 @@ $cssOptions = [
     .settle-content{
         width: 100%;
         height: 540px;
-        background: url("/public/adminimg/settle.png") no-repeat center center/100% 100%;
+        background:#EAEFF5 url("/public/adminimg/settle.png") no-repeat center center/auto 100% ;
         position:relative;
     }
     .content2{
