@@ -1,6 +1,32 @@
+<style>
+    .demo-input {
+        padding-left: 10px;
+        height: 30px;
+        min-width: 300px;
+        line-height: 38px;
+        border: 1px solid #e6e6e6;
+        background-color: #f3faff;
+        border-radius: 30px;
+        outline: none;
+        margin-top: 14px;
+        margin-left:20px;
+    }
+
+    .demo-input:hover {
+        border-color: #c0c4cc;
+    }
+
+    .demo-input:focus {
+        border-color: #3CACFE;
+    }
+    .layui-laydate .layui-this{
+        background: #30B5FE !important;
+    }
+</style>
 <div class="main-content">
     <div>
         <div style="width: 100%;height: 637px;">
+
             <!--主内容-->
             <div id="platdata">
                 <div class="adminmannager-title">
@@ -130,7 +156,7 @@ margin-top:4px;display:flex">
 
 
 
-                            <button style="float: left;border:0;margin-top:15px;">确定</button>
+                            <!--<button style="float: left;border:0;margin-top:15px;">确定</button>-->
                         </div>
                     </div>
                     <div id="mychart">
@@ -161,8 +187,8 @@ margin-top:4px;display:flex">
                                         t1 = timeForMat(30)["t2"];
                                         t2 = timeForMat(30)["t1"];
                                     }else if(date==90){
-                                        t1 = timeForMat(120)["t2"];
-                                        t2 = timeForMat(120)["t1"];
+                                        t1 = timeForMat(90)["t2"];
+                                        t2 = timeForMat(90)["t1"];
                                     }else if(date==365){
                                         t1 = timeForMat(365)["t2"];
                                         t2 = timeForMat(365)["t1"];
@@ -268,19 +294,158 @@ margin-top:4px;display:flex">
                     <div class="platdata-header">
                         <div class="platdata-headername">投诉汇总</div>
                         <div class="platdata-headerright">
-                            <ul>
-                                <li>七天</li>
-                                <li>一个月</li>
-                                <li>一个季度</li>
-                                <li>一年</li>
+                            <ul class="wshop-active">
+                                <li class="btn1 btn btn2" date="7"">七天</li>
+                                <li class="btn1 btn btn2" date="30">一个月</li>
+                                <li class="btn1 btn btn2" date="90">一个季度</li>
+                                <li class="btn1 btn btn2" date="365">一年</li>
                             </ul>
+                            <style>
+                                .chose-acive{
+                                    border-bottom:3px solid #30a2fe;
+                                }
+                            </style>
+                            <script>
+                                function fn(that){
+                                    $(".wshop-active li").removeClass("chose-acive");
+                                    $(that).addClass("chose-acive");
+                                }
+                            </script>
                             <!--时间戳-->
+                            <div class="block" style="float: left;line-height: 48px; position: relative;
+margin-top:4px;display:flex">
+                                <input type="text" name="data" class="demo-input" placeholder="请选择日期和时间范围" id="test4" style="text-align: center;">
+                                <script>
+                                    laydate.render({
+                                        elem: '#test4'
+                                        , type: 'datetime'
+                                        , range: true
+                                        , theme: "#3CACFE"
+                                    });
+                                </script>
 
-                            <button style="float: left;border:0;margin-top:13px;">确定</button>
+                            </div>
                         </div>
                     </div>
-                    <div id="mychart2">
-                    </div>
+                    <div  class="tu2"></div>
+                    <script>
+                        $(function () {
+                            $('#test4').on('blur',function(){
+                                $('.laydate-btns-confirm').on('click',function () {
+                                    getinfo(2,-1);
+                                })
+                            })
+                            $('.btn2').on('click',function(){
+                                $('.btn2').removeClass('chose-acive').filter(this).addClass('chose-acive');
+                                let  test4=$('#test4');
+                                let date=$(this).attr('date');
+                                console.log($('.btn2'));
+                                getinfo(1,date);
+                            })
+                            function getinfo(flag,date) {
+                                var t1="",t2="";
+                                if(flag==1){
+                                    if(date==7){
+                                        t1 = timeForMat(7)["t2"];
+                                        t2 = timeForMat(7)["t1"];
+                                    }else if(date == 30){
+                                        t1 = timeForMat(30)["t2"];
+                                        t2 = timeForMat(30)["t1"];
+                                    }else if(date==90){
+                                        t1 = timeForMat(90)["t2"];
+                                        t2 = timeForMat(90)["t1"];
+                                    }else if(date==365){
+                                        t1 = timeForMat(365)["t2"];
+                                        t2 = timeForMat(365)["t1"];
+                                    }
+                                }else if(flag==2){
+                                    date = test4.value.split(" - ");
+                                    t1=date[0];t2=date[1];
+                                }
+                                var type1,type2,type3,type4,type5,type6,type7
+                                $.ajax({
+                                    url:"/water/datas/complaint?t1="+t1+"&t2="+t2,
+                                    dataType:'json',
+                                    success:function (msg) {
+                                        console.log(msg);
+                                        for(let i=0;i<msg.length;i++){
+                                            type1=msg.filter(element=>{return element.ctype==1})
+                                            type2=msg.filter(element=>{return element.ctype==2})
+                                            type3=msg.filter(element=>{return element.ctype==3})
+                                            type4=msg.filter(element=>{return element.ctype==4})
+                                            type5=msg.filter(element=>{return element.ctype==5})
+                                            type6=msg.filter(element=>{return element.ctype==6})
+                                            type7=msg.filter(element=>{return element.ctype==7})
+                                        }
+                                        var  complaintArr=[type1.length,type2.length,type3.length,type4.length,type5.length,type6.length,type7.length];
+
+                                        getChart(complaintArr);
+
+                                    }
+                                });
+
+                                function getChart(arr) {
+                                    var myChart = echarts.init(document.querySelector('.tu2'));
+                                    var option={
+
+                                        legend: {
+                                            itemWidth: 20,
+                                            itemHeight: 20,
+                                            orient: 'vertical',
+                                            // top: 'middle',
+                                            bottom: 20,
+                                            right:4,
+                                            data: ['商家爽约', '服务不好','态度不好','连带推销','恶意跳单','乱收费','其他']
+                                        },
+                                        tooltip : {
+                                            trigger: 'item',
+                                            formatter: "{a} <br/>{b} : {c} ({d}%)"
+                                        },
+                                        series : [
+                                            {
+                                                type: 'pie',
+                                                radius : '80%',
+                                                center: ['40%', '50%'],
+                                                selectedMode: 'single',
+                                                label: {
+                                                    normal: {
+                                                        show: false
+                                                    },
+                                                    emphasis: {
+                                                        show: true
+                                                    }
+                                                },
+                                                labelLine: {
+                                                    normal: {
+                                                        show: false
+                                                    }
+                                                },
+                                                data:[
+                                                    {value:arr[0], name: '商家爽约'},
+                                                    {value:arr[1], name: '服务不好'},
+                                                    {value:arr[2], name: '态度不好'},
+                                                    {value:arr[3], name: '连带推销'},
+                                                    {value:arr[4], name: '恶意跳单'},
+                                                    {value:arr[5], name: '乱收费'},
+                                                    {value:arr[6], name: '其他'},
+                                                ],
+                                                itemStyle: {
+                                                    normal: {
+                                                        borderWidth: 10,
+                                                        borderColor: '#ffffff',
+                                                    },
+
+                                                }
+                                            }
+                                        ],
+                                        color: ['rgb(55,223,116)','rgb(253,203,82)','rgb(249,140,44)','rgb(248,72,96)','rgb(128,152,255)','rgb(18,206,218)','rgb(59,172,254)']
+                                    };
+                                    myChart.setOption(option);
+                                }
+                            }
+                            $('.btn2').triggerHandler('click');
+                        })
+                    </script>
                     <div class="chart-b">
                         <button style=" width: 90px;
         height: 27px;

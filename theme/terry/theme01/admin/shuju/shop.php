@@ -191,9 +191,10 @@ use yii\helpers\Url;
                                             <?= $arr[$k]?>
                                         </div>
                                     </td>
+<!--                                    投诉率是投诉人数/总评论人数-->
                                     <td class="el-table_2_column_14">
                                         <div class="cell el-tooltip" title="<?= $v["payment_method"] ?>">
-                                            2%
+
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_18">
