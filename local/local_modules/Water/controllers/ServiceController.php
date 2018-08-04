@@ -110,6 +110,8 @@ class ServiceController extends PublicsController
         $data['class']=$class;
         $data['pages']=ceil($tot/10);
 
+        $_SESSION['pagess']='evaluate';
+
         return $this->render($this->action->id,$data);
 
     }
@@ -129,6 +131,8 @@ class ServiceController extends PublicsController
             ->where(['level'=>1,"parent_id"=>"0",'type'=>"2"])
             ->all();
         // 加载页面
+        $_SESSION['pagess']='index';
+            
         return $this->render($this->action->id,$data);
     }
 
@@ -153,7 +157,8 @@ class ServiceController extends PublicsController
         $customer = Yii::$app->mongodb->getCollection('category')->findOne(['_id'=>$two]);
         $data['two']=$customer['name']['name_zh'];
         $data['twoId']=$two;
-
+        $_SESSION['pagess']='index';
+        
         return $this->render($this->action->id,$data);
 
     }
@@ -260,7 +265,8 @@ class ServiceController extends PublicsController
         $data['tot1']=$tot1;
         $data['pages']=ceil($tot/10);
         $data['class']=$class;
-
+        $_SESSION['pagess']='index';
+        
         return $this->render($this->action->id,$data);
 
     }
@@ -349,7 +355,8 @@ class ServiceController extends PublicsController
         $data['goods']=Yii::$app->mongodb->getCollection('product_flat')->findOne(['_id'=>$id]);
 
         $data['category']=$this->actionGetclass();
-
+        $_SESSION['pagess']='index';
+        
         // 加载页面
         return $this->render($this->action->id,$data);
 
