@@ -44,7 +44,9 @@
                         <span style="margin-left:18px"><?= $v['id']?></span>
                     </span>
                     </td>
-                    <td><img src="http://img.uekuek.com/images/<?= $v[img] ?>"/></td>
+                    <td>
+                        <div style="width:96px;height:96px;background: url('http://img.uekuek.com/images/<?= $v[img] ?>')no-repeat center center /100% auto"></div>
+                    </td>
                     <td><?= $v['name']?></td>
                     <td><span><?= $v["info"]?></span></td>
                     <td>
