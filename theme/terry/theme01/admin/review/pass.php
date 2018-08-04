@@ -6,8 +6,9 @@ use yii\helpers\Url;
 
 <div class="main-content">
     <div class="ShopMannager">
-        <div class="ShopMannager-title">
-            <span>已通过列表</span>
+        <div class="adminmannager-title">
+            <span>审核管理</span>&nbsp;
+            <span>·&nbsp;已通过列表</span>
         </div>
         <div class="ShopMannager-search">
         <form id="el-form" class="el-form" method="post"  action="<?= Yii::$service->url->getUrl('admin/review/pass') ?>">
