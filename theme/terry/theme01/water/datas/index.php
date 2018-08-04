@@ -378,16 +378,16 @@
           投诉汇总
          </div>
          <div  class="title_right">
-          <div  class="btn active">
+          <div  class="btn btn2 active">
            7天
           </div>
-          <div  class="btn">
+          <div  class="btn btn2">
            一个月
           </div>
-          <div  class="btn">
+          <div  class="btn btn2">
            一个季度
           </div>
-          <div  class="btn">
+          <div  class="btn btn2">
            一年
           </div>
          </div>
@@ -443,6 +443,146 @@
              <span> 确定 </span></button>--></li>
           </ul> 
           <div  class="tu2"></div>
+             <script>
+                 $(function () {
+                     $('#test4').on('blur',function(){
+                         $('.laydate-btns-confirm').on('click',function () {
+                             // getinfo(2,-1);
+                             getChart(3,5,3);
+                         })
+                     })
+                     function getChart(a,b,c) {
+                         var myChart = echarts.init(document.querySelector('.tu2'));
+                         var option={
+
+                             legend: {
+                                 itemWidth: 20,
+                                 itemHeight: 20,
+                                 orient: 'vertical',
+                                 // top: 'middle',
+                                 bottom: 20,
+                                 right:-4,
+                                 data: ['商家爽约', '服务不好','态度不好','连带推销','恶意跳单','乱收费','其他']
+                             },
+                             tooltip : {
+                                 trigger: 'item',
+                                 formatter: "{a} <br/>{b} : {c} ({d}%)"
+                             },
+                             series : [
+                                 {
+                                     type: 'pie',
+                                     radius : '80%',
+                                     center: ['50%', '50%'],
+                                     selectedMode: 'single',
+                                     data:[
+                                         {value:a, name: '商家爽约'},
+                                         {value:b, name: '服务不好'},
+                                         {value:c, name: '态度不好'},
+                                         {value:c, name: '连带推销'},
+                                         {value:c, name: '恶意跳单'},
+                                         {value:c, name: '乱收费'},
+                                         {value:c, name: '其他'}
+                                     ],
+                                     itemStyle: {
+                                         normal: {
+                                             borderWidth: 10,
+                                             borderColor: '#ffffff',
+                                         },
+
+                                     }
+                                 }
+                             ],
+                             color: ['rgb(48,163,254)','rgb(55,223,116)','rgb(253,203,82)']
+                         };
+                         myChart.setOption(option);
+                     }
+                     $('.btn2').on('click',function(){
+                         $('.btn2').removeClass('active').filter(this).addClass('active');
+                         let  test4=$('#test4');
+                         let date=$(this).attr('date');
+                         getinfo(1,date);
+                     })
+                     function getinfo(flag,date) {
+                         var t1="",t2="";
+                         if(flag==1){
+                             if(date==7){
+                                 t1 = timeForMat(7)["t2"];
+                                 t2 = timeForMat(7)["t1"];
+                             }else if(date == 30){
+                                 t1 = timeForMat(30)["t2"];
+                                 t2 = timeForMat(30)["t1"];
+                             }else if(date==90){
+                                 t1 = timeForMat(120)["t2"];
+                                 t2 = timeForMat(120)["t1"];
+                             }else if(date==365){
+                                 t1 = timeForMat(365)["t2"];
+                                 t2 = timeForMat(365)["t1"];
+                             }
+                         }else if(flag==2){
+                             date = test2.value.split(" - ");
+                             t1=date[0];t2=date[1];
+                         }
+
+                         var favorable,reviewable,nagetivable;
+                         $.ajax({
+                             url:"/water/datas/complaint?t1="+t1+"&t2="+t2,
+                             dataType:'json',
+                             success:function (msg) {
+                                 console.log(msg);
+                                 // getChart(3,5,3);
+                             }
+                         });
+
+                         function getChart(a,b,c) {
+                             var myChart = echarts.init(document.querySelector('.tu2'));
+                             var option={
+
+                                 legend: {
+                                     itemWidth: 20,
+                                     itemHeight: 20,
+                                     orient: 'vertical',
+                                     // top: 'middle',
+                                     bottom: 20,
+                                     right:24,
+                                     data: ['商家爽约', '服务不好','态度不好']
+                                 },
+                                 tooltip : {
+                                     trigger: 'item',
+                                     formatter: "{a} <br/>{b} : {c} ({d}%)"
+                                 },
+                                 series : [
+                                     {
+                                         type: 'pie',
+                                         radius : '80%',
+                                         center: ['50%', '50%'],
+                                         selectedMode: 'single',
+                                         data:[
+                                             {value:a, name: '商家爽约'},
+                                             {value:b, name: '服务不好'},
+                                             {value:c, name: '态度不好'},
+                                         ],
+                                         itemStyle: {
+                                             normal: {
+                                                 borderWidth: 10,
+                                                 borderColor: '#ffffff',
+                                             },
+
+                                         }
+                                     }
+                                 ],
+                                 color: ['rgb(48,163,254)','rgb(55,223,116)','rgb(253,203,82)']
+                             };
+                             myChart.setOption(option);
+                         }
+                         function filtert2(arr,t2) {
+                             arr=arr.filter(ele=>{return ele.review_date<t2});
+                             return arr;
+                         }
+                     }
+
+                     // $('.btn2').triggerHandler('click');
+                 })
+             </script>
              <!--zjz-->
           <!--<div >
            <button  type="button" class="el-button el-button--primary is-round">
@@ -822,7 +962,7 @@
     .item1 .box1 .bottom .contents .tu2 {
         width: 100%;
         height: 330px;
-        background: url("/public/img/tu2.png") no-repeat center center /100% auto;
+        /*background: url("/public/img/tu2.png") no-repeat center center /100% auto;*/
     }
     .content .item1 .box1 .bottom .active {
         display: block;
