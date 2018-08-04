@@ -34,6 +34,8 @@ class ReviewController extends PublicsController
 //=========================审核管理===============================
     //待审核
     public function actionIndex(){
+        $_SESSION['pagess']="index";
+
     	$req = Yii::$app->request;
     	$shop_name=$req->post('shop_name');
     	$shop_type=$req->post('shop_type');
@@ -87,6 +89,8 @@ class ReviewController extends PublicsController
 
     //已通过
     public function actionPass(){
+        $_SESSION['pagess']="pass";
+
         $req = Yii::$app->request;
     	$shop_name=$req->post('shop_name');
     	$shop_type=$req->post('shop_type');
@@ -139,6 +143,8 @@ class ReviewController extends PublicsController
 
     //未通过
     public function actionNopass(){
+        $_SESSION['pagess']="nopass";
+
         $req = Yii::$app->request;
     	$shop_name=$req->post('shop_name');
     	$shop_type=$req->post('shop_type');

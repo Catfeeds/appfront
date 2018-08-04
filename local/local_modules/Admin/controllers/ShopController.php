@@ -34,6 +34,8 @@ class ShopController extends PublicsController
 //=========================店铺管理===============================
     //商家
     public function actionIndex(){
+        $_SESSION['pagess']="index";
+
         // 获取数据
         $request = Yii::$app->request;
         $get = $request->get();
@@ -72,6 +74,8 @@ class ShopController extends PublicsController
 
     //水司
     public function actionWater(){
+        $_SESSION['pagess']="water";
+
         // 获取数据
         $request = Yii::$app->request;
         $get = $request->get();
@@ -309,6 +313,9 @@ class ShopController extends PublicsController
     // 分类管理
 
     public function actionClasslist(){
+
+        $_SESSION['pagess']="classlist";
+
         // 查看所有分类数据
         $query = new Query;
 
