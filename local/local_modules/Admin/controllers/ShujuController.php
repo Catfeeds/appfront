@@ -56,6 +56,7 @@ class ShujuController extends PublicsController
         $city = Yii::$app->db->createCommand('select * from sys_city')->queryAll();
         $district = Yii::$app->db->createCommand('select * from sys_district')->queryAll();
 
+
         $province_id = $req->get(province_id);
         $city_id = $req->get(city_id);
         $district_id = $req->get(district_id);
@@ -102,6 +103,13 @@ class ShujuController extends PublicsController
             $count = 0;
         }
         $_SESSION["arr"] = $arr;
+//投诉率
+        foreach ($res as $v){
+            $shop_id = $v['shop_id'];
+            $tousu = Yii::$app->db->createCommand("SELECT * FROM sales_flat_order WHERE shop_id = $shop_id")->queryOne();
+            var_dump($tousu);
+        }
+        exit;
 
 
         $data['res'] = $res;
