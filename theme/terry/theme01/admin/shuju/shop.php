@@ -18,7 +18,7 @@ use yii\helpers\Url;
             </div>
             <div class="search">
                 <span>名称</span>
-                <input type="text">
+                <input type="text" placeholder="请输入名称">
             </div>
             <div class="search">
                 <span>ID</span>

@@ -29,7 +29,7 @@
             <div class="content1">
                 <div class="content2">
                     <div class="circle1 circle"></div>
-                    <div class="circle2 circle"></div>
+                    <!-- <div class="circle2 circle"></div> -->
                 </div>
                 <div class="content3">
                     <div class="name1">
@@ -41,12 +41,11 @@
                                         class="router-link-exact-active router-link-active"
                                         style="color: rgb(51, 164, 254);">&quot;我要入驻&quot;</a>进行入驻资料填写</span></p>
                     </div>
-                    <div class="cp1">
-                        <p><span style="color: rgb(124, 132, 139);">若您的店铺还未开通，请通过 <a href="#/index"
-                                                                                     class="router-link-exact-active router-link-active"
-                                                                                     style="color: rgb(51, 164, 254);">&quot;查看入驻进度&quot;</a> 了解店铺开通的最新消息</span>
+                    <!-- <div class="cp1">
+                        <p><span style="color: rgb(124, 132, 139);">
+                            若您的店铺还未开通，请通过 <a href="#/index"  class="router-link-exact-active router-link-active" style="color: rgb(51, 164, 254);">&quot;查看入驻进度&quot;</a> 了解店铺开通的最新消息</span>
                         </p>
-                    </div>
+                    </div> -->
                     <button type="button" class="el-button el-button--primary el-button--small is-round">
 
                     <span><a href="<?= Yii::$service->url->getUrl('apply/apply/notes') ?>" class=""

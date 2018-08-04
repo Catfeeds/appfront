@@ -14,12 +14,12 @@ use yii\helpers\Url;
      	    <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>" />
             <div class="search" style="margin-left:0;">
                 <span>名称</span>
-                <input type="text" name="shop_name" value="<?php echo $shop_name;?>">
+                <input type="text" name="shop_name" value="<?php echo $shop_name;?>" placeholder="请输入名称">
             </div>
             <div class="xiala" style="margin-left:20px;">
                 <span class="search-ID">类型</span>
                 <select name="shop_type" id="shop_type">
-                    <option value="0">请选择类型</option>
+                    <option value="">请选择类型</option>
                     <option value="1">水司</option>
                     <option value="2">商家</option>
                 </select>

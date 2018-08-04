@@ -191,7 +191,7 @@
                                         reader.onloadend = function (e) {
                                             $(obj).parent("div").css({
 
-                                                "background": "url(" + e.target.result + ") no-repeat center center/100% 100%",
+                                                "background": "url(" + e.target.result + ") no-repeat center center/ auto 100%",
                                             });
                                             $(obj).next().hide();
                                             // $(obj).prev($('input[type=hidden]')).val(e.target.result);

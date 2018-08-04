@@ -38,36 +38,39 @@ class IndexController extends PublicsController
     public function actionAindex()
     {
         $req = Yii::$app->request;
-        $person = $req->get(person);
+        $username = $req->get(username);
         $ID = $req->get(ID);
 
         $query = new Query;
         // 查询数据总条数
         $tot = 0;
 
-        // 实例化分页对象
-        $pagination = new Pagination([
-            'defaultPageSize' => 10,
-            'totalCount' => $tot,
-        ]);
+
 
         //判断是否搜索
         $where = "where 1=1";
-        if ($person != null) {
-           $where .= " and person like '%$person%'";
-           $data['person'] = $person;
+        if ($username != null) {
+           $where .= " and username like '%$username%'";
+           $data['username'] = $username;
         } else if ($ID != null) {
             $where .= " and ID = $ID";
-        } else if ($person != null && $ID != null) {
-            $where .= " and person like '%$person%' and ID = $ID";
-            $data['person'] = $person;
+        } else if ($username != null && $ID != null) {
+            $where .= " and username like '%$username%' and ID = $ID";
+            $data['username'] = $username;
         } else{
             $where = "";
         }
-        $rows = Yii::$app->db->createCommand("SELECT * FROM admin_user $where LIMIT $pagination->offset,$pagination->limit")->queryAll();
-        foreach ($rows as $k => $v) {
+        $pages =  Yii::$app->db->createCommand("SELECT * FROM admin_user $where")->queryAll();
+        foreach ($pages as $k => $v) {
             $tot++;
         }
+        // 实例化分页对象
+        $pagination = new Pagination([
+            'defaultPageSize' => 2,
+            'totalCount' => $tot,
+        ]);
+        $rows = Yii::$app->db->createCommand("SELECT * FROM admin_user $where LIMIT $pagination->offset,$pagination->limit")->queryAll();
+
 
         // 进行数据查询
 

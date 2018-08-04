@@ -83,6 +83,14 @@
     .el-form-item__content {
         line-height: normal;
     }
+    .el-input__inner{
+        height: 30px;
+        width:400px;
+        border-radius: 15px;
+        background: #f3faff;
+        border: 2px solid #e5eff8;
+        line-height:30px;
+    }
 </style>
 
 <div class="main-content">
@@ -188,12 +196,13 @@
                 </div>
             </div>
         </div>
-        <div style="float: right;">
+        <div style="float: right;margin-bottom: 50px;">
             <button type="submit" class="el-button green el-button--success is-round">
                 <span>修改</span></button>
             <a href="#/ShopCouponEdit" class="">
                 <button type="reset" class="el-button red el-button--danger is-round">
-                <span>重置</span></button>
+                <span>重置</span>
+                </button>
             </a></div>
         </form>
     </div>

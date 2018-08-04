@@ -1,77 +1,6 @@
 <div class="main-content">
     <div>
-        <!--头部-->
-        <div class="header">
-            <ul>
-                <li>
-                    <router-link to="/">
-                        用户管理
-                    </router-link>
-                </li>
-                <li>
-                    <router-link to="/shuju">
-                        数据中心
-                    </router-link>
-                </li>
-                <li>
-                    <router-link to="/shop">
-                        店铺管理
-                    </router-link>
-                </li>
-                <li>
-                    <router-link to="/check">
-                        审核管理
-                    </router-link>
-                </li>
-                <li>
-                    <router-link to="/system">
-                        系统管理
-                    </router-link>
-                </li>
-                <li>
-                    <router-link to="/money">
-                        财务管理
-                    </router-link>
-                </li>
-            </ul>
-            <div class="header-right">
-                <div class="adminname">
-
-                    <div class="admin-img"></div>
-                    <span class="name1">管理员名称</span>
-                </div>
-                <div class="adminname">
-                    <div class="clearimg"></div>
-                    <span class="name2">清除缓存</span>
-                </div>
-                <div class="adminname">
-                    <div class="out"></div>
-                    <span class="name3">退出</span>
-                </div>
-            </div>
-        </div>
         <div style="width: 100%;height: 637px;">
-            <!--侧边栏-->
-            <div class="aside">
-                <div class="logo"></div>
-                <ul class="aside-list">
-                    <li>
-
-                        <router-link to="/shuju">
-                            <span>平台数据</span>
-                        </router-link>
-                        <div :class="['col-box']"></div>
-                    </li>
-                    <li>
-                        <div :class="['col-box']"></div>
-                        <router-link to="/shuju/ProductorData"><span>商家数据</span></router-link>
-                    </li>
-                    <li>
-                        <div :class="['col-box']"></div>
-                        <router-link to="/shuju/shuisi"><span>水司数据</span></router-link>
-                    </li>
-                </ul>
-            </div>
             <!--主内容-->
             <div id="platdata">
                 <div class="adminmannager-title">
@@ -124,34 +53,6 @@
                                 , theme: "#3CACFE"
                             });
                         </script>
-                        <!--                        <div class="timer">-->
-<!--                            <el-date-picker-->
-<!--                                v-model="value1"-->
-<!--                               type="date"-->
-<!--                            >-->
-<!--                            </el-date-picker>-->
-<!--                            <div style="width: 26px;height: 26px;border-radius: 50%;-->
-<!--                background: #30a3fe; position: absolute;top:0;bottom:0;margin:auto 0;-->
-<!--                left:248px;pointer-events: none">-->
-<!--                                <img src="/public/imgs/date.png" style="width: 12px;height: 12px;display:block;-->
-<!--margin:0 auto;margin-top:7px;">-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <span style="margin:0 6px">~</span>-->
-<!--                        <div class="timer">-->
-<!--                            <el-date-picker-->
-<!--                                v-model="value2"-->
-<!--                                type="date"-->
-<!--                            >-->
-<!--                            </el-date-picker>-->
-<!--                            <div style="width: 26px;height: 26px;border-radius: 50%;-->
-<!--                background: #30a3fe; position: absolute;top:0;bottom:0;margin:auto 0;-->
-<!--                right:5px;pointer-events: none">-->
-<!--                                <img src="/public/imgs/date.png" style="width: 12px;height: 12px;display:block;-->
-<!--margin:0 auto;margin-top:7px;">-->
-<!--                            </div>-->
-<!--                        </div>-->
-
                     </div>
                     <button>查询</button>
 
