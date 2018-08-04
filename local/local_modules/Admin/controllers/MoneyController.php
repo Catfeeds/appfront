@@ -46,6 +46,25 @@ class MoneyController extends PublicsController
     	$data['list'] = Yii::$app->db->createCommand($sql)->queryAll();
         return $this->render($this->action->id,$data);
     }
+    //查看商家数据
+    public function actionWwater(){
+        $req = Yii::$app->request;
+        $id = $req->get(id);
+        $res = Yii::$app->db->createCommand("SELECT * FROM shop WHERE shop_id=$id")->queryOne();
+        $data["res"] = $res;
+//        var_dump($res);
+//        exit();
+        return $this->render($this->action->id,$data);
+    }
+    //查看商家数据
+    public function actionWshop(){
+        $req = Yii::$app->request;
+        $id = $req->get(id);
+        $res = Yii::$app->db->createCommand("SELECT * FROM shop WHERE shop_id=$id")->queryOne();
+        $data["res"] = $res;
+
+        return $this->render($this->action->id,$data);
+    }
     //商家财务2
     public function actionShop(){
     	// 查询数据总条数
@@ -60,7 +79,7 @@ class MoneyController extends PublicsController
     			'defaultPageSize' =>10,
     			'totalCount' => $tot,
     			]);
-    	$where;
+    	$where="";
     	$data['shop_name']=$_GET['shop_name'];
     	$data['shop_state']=$_GET['shop_state'];
     	if($data['shop_state']>0){
