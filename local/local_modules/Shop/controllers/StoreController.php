@@ -41,6 +41,8 @@ class StoreController extends PublicsController
         $datas["province"] = $addressInfo["province"];
         $datas["city"] = $addressInfo["city"];
         $datas["district"] = $addressInfo["district"];
+        $_SESSION['pagess']='index';
+
         return $this->render($this->action->id,$datas);
     }
 
@@ -113,6 +115,7 @@ class StoreController extends PublicsController
         $datas["res"] = $res;
         $datas["imgUrl"] = Yii::$app->params["img"];
 
+        $_SESSION['pagess']='setimg';
 
         return $this->render($this->action->id,$datas);
 
@@ -221,6 +224,7 @@ class StoreController extends PublicsController
         $datas["pagination"] = $pagination;
         $datas["num"] = $count[0]['num'];
         $datas["page"] = $pagination->limit;
+        $_SESSION['pagess']='couponindex';
         return $this->render($this->action->id,$datas);
     }
 
@@ -235,6 +239,8 @@ class StoreController extends PublicsController
             ->where(['level'=>1,"parent_id"=>"0","type"=>"1"])
             ->all();
         $datas["class"] = $class;
+        $_SESSION['pagess']='couponindex';
+
         return $this->render($this->action->id,$datas);
     }
 
@@ -323,6 +329,8 @@ class StoreController extends PublicsController
         $res = Yii::$app->db->createCommand("select * from sales_coupon where coupon_id=$coupon_id")->queryOne();
 
         $datas["res"] = $res;
+        $_SESSION['pagess']='couponindex';
+        
         return $this->render($this->action->id,$datas);
     }
 }

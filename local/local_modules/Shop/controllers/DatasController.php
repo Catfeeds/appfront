@@ -35,6 +35,8 @@ class DatasController extends PublicsController
     {
 
         $datas = [];
+        $_SESSION['pagess']='index';
+
         return $this->render($this->action->id, $datas);
 
     }
@@ -312,6 +314,7 @@ where order_status>=5 and refund_at=$created_at1 and refund_at")->queryAll();
     // 销售统计
     public function actionSale()
     {
+        $_SESSION['pagess']='sale';
 
         return $this->render($this->action->id);
     }
