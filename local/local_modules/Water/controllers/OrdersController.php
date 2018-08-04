@@ -118,14 +118,17 @@ class OrdersController extends PublicsController
         $datas["pagination"] = $pagination;
         $datas["all"] = $all;
         $datas["flag"] = $get["flag"] ? $get["flag"] : 0;
+        $_SESSION['pagess']='index';
+
         return $this->render($this->action->id, $datas);
     }
 
 
 
     //查看订单详情
-    function actionSee()
+    public function actionSee()
     {
+        $_SESSION['pagess']='see';
 
         // 获取数据
         $request = Yii::$app->request;
@@ -173,6 +176,7 @@ class OrdersController extends PublicsController
     //返回纠纷列表页面
     public function actionDispute()
     {
+        $_SESSION['pagess']='dispute';
 
         $data = [];
         // 获取数据
@@ -219,6 +223,8 @@ class OrdersController extends PublicsController
     //返回商品订单页面
     public function actionShop()
     {
+        $_SESSION['pagess']='shop';
+
         // 获取数据
         $request = Yii::$app->request;
         $get = $request->get();
@@ -314,6 +320,8 @@ class OrdersController extends PublicsController
     //返回缺货列表页面
     public function actionLack()
     {
+
+        $_SESSION['pagess']='lack';
 
         $query = new Query();
 
