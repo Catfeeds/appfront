@@ -354,7 +354,7 @@ class SystemController extends PublicsController
         $data['ruler']=Yii::$app->db->createCommand("select * from privilege where id={$id}")->queryOne();
         return $this->render($this->action->id,$data);
     }
-    function actionSave(){
+    public function actionSave(){
         $req = Yii::$app->request;
         $data = $req->post();
         //文件上传存放的目录
@@ -408,7 +408,7 @@ class SystemController extends PublicsController
     {
         $res = Yii::$app->request;
         $id = $res->get('id');
-        
+
         $sql ="delete from privilege where id = $id";
         $res = Yii::$app->db->createCommand($sql)->execute();
         if($res){
@@ -419,7 +419,7 @@ class SystemController extends PublicsController
     }
     public function actionAddmember(){
         $res = Yii::$app->request;
-        $data = $res->get(); 
+        $data = $res->get();
         foreach ($data as $key => $value) {
             $rule = json_encode($value);
             $sql = "update member_rule set recharge = '$value[money]',rule = '$rule' where id = $key";
@@ -439,21 +439,12 @@ class SystemController extends PublicsController
         $datas["coin"] = $coin;
         $datas['recharge'] = $coin1;
 
-
         return $this->render($this->action->id, $datas);
 
-
-
-
-
-
-
-
-         
     }
 
 //插入金币规则
-    function actionSavecoin()
+    public function actionSavecoin()
     {
         $arr = [
             "create_id" => $_SESSION["message_uid"],
@@ -467,7 +458,7 @@ class SystemController extends PublicsController
         exit;
     }
 
-    function actionSavecoin1()
+    public function actionSavecoin1()
     {
 
         $req = Yii::$app->request;
@@ -483,7 +474,7 @@ class SystemController extends PublicsController
         }
     }
 
-    function actionSavecoin2()
+    public function actionSavecoin2()
     {
 
         $req = Yii::$app->request;
@@ -499,7 +490,7 @@ class SystemController extends PublicsController
     }
 
     //充值设置
-    function actionMoney()
+    public function actionMoney()
     {
         $arr = [
             "create_id" => $_SESSION["message_uid"],
@@ -513,7 +504,7 @@ class SystemController extends PublicsController
         exit;
     }
 
-    function actionSaverecharge1()
+    public function actionSaverecharge1()
     {
         $req = Yii::$app->request;
         $get = $req->get();
@@ -521,14 +512,14 @@ class SystemController extends PublicsController
 
     }
 
-    function actionSaverecharge2()
+    public function actionSaverecharge2()
     {
         $req = Yii::$app->request;
         $get = $req->get();
         $res = Yii::$app->db->createCommand("update recharge set price={$get["price"]} where id={$get["id"]}")->execute();
     }
 
-    function actionDelcoin()
+    public function actionDelcoin()
     {
         $req = Yii::$app->request;
         $get = $req->get();
@@ -536,12 +527,83 @@ class SystemController extends PublicsController
         echo 1;
     }
 
-    function actionDelrecharge()
+    public function actionDelrecharge()
     {
         $req = Yii::$app->request;
         $get = $req->get();
         $res = Yii::$app->db->createCommand("delete from recharge where id={$get["id"]}")->execute();
         echo 1;
     }
+    //帮助功能
+    public function actionHelper(){
 
+        $help=Yii::$app->db->createCommand("select * from article order by sort desc")->queryAll();
+        $data['help']=$help;
+
+        return $this->render($this->action->id,$data);
+    }
+    //编辑帮助功能
+    public function actionEdithelper(){
+        //获取数据
+        $request = Yii::$app->request;
+        $id = $request->get("id");
+        //获取规则数据
+        $data=[];
+        $data['help']=Yii::$app->db->createCommand("select * from article where id={$id}")->queryOne();
+        return $this->render($this->action->id,$data);
+
+    }
+    //添加帮助功能
+    public function actionAddhelper(){
+
+        return $this->render($this->action->id);
+    }
+    //添加帮助页面的提交
+public function actionAddhelp(){
+    $res = Yii::$app->request;
+    $data = $res->post();
+    $time = time();
+
+    $sql ="insert into article (title,content,created_at) values ('{$data['title']}','{$data['content']}','{$time}')";
+    $res = Yii::$app->db->createCommand($sql)->execute();
+    if($res){
+        return $this->redirect("/admin/system/helper");
+    }
+}
+//编辑帮助页面
+    public function  actionEdithelp(){
+        $req = Yii::$app->request;
+        $data = $req->post();
+
+        $sql ="update article set title = '{$data['title']}',content = '{$data['content']}' where id = {$data['id']}";
+        $res = Yii::$app->db->createCommand($sql)->execute();
+
+            return $this->redirect("/admin/system/helper");
+
+    }
+    //帮助页面的排序
+    public function actionActiclesort()
+    {
+        // 获取数据
+        $request = Yii::$app->request;
+        $data = $request->get();
+
+
+       echo  $res= Yii::$app->db->createCommand("update article set sort=$data[sort] where id=$data[id]")->execute();
+
+    }
+    //删除帮助
+    public function actionDelhelper()
+    {
+        $res = Yii::$app->request;
+        $id = $res->get('id');
+
+        $sql ="delete from article where id = $id";
+        $res = Yii::$app->db->createCommand($sql)->execute();
+        if($res){
+            echo 1;
+        }else{
+            echo 2;
+        }
+    }
 }

@@ -7,7 +7,8 @@ $jsOptions = [ # js的配置部分
             'js/jquery-3.3.1.min.js',
             'js/layout-admin.js',
             'js/echarts.min.js',
-            'js/laydate.js'
+            'js/laydate.js',
+
         ],
     ]
 

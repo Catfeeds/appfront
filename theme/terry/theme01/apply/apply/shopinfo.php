@@ -395,7 +395,7 @@
             //监听文件读取结束后事件
             reader.onloadend = function (e) {
                 $(obj).parent("div").css({
-                    "background": "url(" + e.target.result + ") no-repeat center center/100% 100%",
+                    "background": "url(" + e.target.result + ") no-repeat center center /  auto 100%",
                 });
                 $(obj).next().hide();
             };

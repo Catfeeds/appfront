@@ -7,8 +7,9 @@ use yii\helpers\Url;
 ?>
 <div class="main-content">
     <div class="ShopMannager">
-        <div class="ShopMannager-title">
-            <span>商家列表</span>
+        <div class="adminmannager-title">
+            <span>商家管理</span>&nbsp;
+            <span>·&nbsp;商家列表</span>
         </div>
         <div class="ShopMannager-search">
             <form action="<?= Yii::$service->url->getUrl('admin/shop/index') ?>" method="get">
