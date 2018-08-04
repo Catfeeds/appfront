@@ -34,6 +34,7 @@ class StoreController extends PublicsController
 
     //返回店铺信息页面
     public function actionIndex(){
+        $_SESSION['pagess']='index';
 
         //return $this->render($this->action->id, $data);
         $uid = $_SESSION["uid"];
@@ -108,6 +109,7 @@ class StoreController extends PublicsController
 
     //返回设置店铺图片页面
     public function actionSetimg(){
+        $_SESSION['pagess']='setimg';
 
         $uid = $_SESSION["uid"];
         $res = Yii::$app->db->createCommand("select shop.shop_logo,shop.shop_avatar from shop where uid=$uid")->queryOne();
@@ -184,6 +186,7 @@ class StoreController extends PublicsController
 
     //返回优惠卷管理首页
     public function actionCouponindex(){
+        $_SESSION['pagess']='couponindex';
 
         //添加搜索条件
         $request = Yii::$app->request;

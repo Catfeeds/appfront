@@ -38,15 +38,30 @@ class IndexController extends PublicsController
     public function actionAindex()
     {
         $req = Yii::$app->request;
-        $person = $req->get(person);
+        $username = $req->get(username);
         $ID = $req->get(ID);
 
-
-        $res = Yii::$app->db->createCommand("select * from admin_user")->queryAll();
         $query = new Query;
         // 查询数据总条数
         $tot = 0;
-        foreach ($res as $k => $v) {
+
+
+
+        //判断是否搜索
+        $where = "where 1=1";
+        if ($username != null) {
+           $where .= " and username like '%$username%'";
+           $data['username'] = $username;
+        } else if ($ID != null) {
+            $where .= " and ID = $ID";
+        } else if ($username != null && $ID != null) {
+            $where .= " and username like '%$username%' and ID = $ID";
+            $data['username'] = $username;
+        } else{
+            $where = "";
+        }
+        $pages =  Yii::$app->db->createCommand("SELECT * FROM admin_user $where")->queryAll();
+        foreach ($pages as $k => $v) {
             $tot++;
         }
         // 实例化分页对象
@@ -54,36 +69,8 @@ class IndexController extends PublicsController
             'defaultPageSize' => 2,
             'totalCount' => $tot,
         ]);
+        $rows = Yii::$app->db->createCommand("SELECT * FROM admin_user $where LIMIT $pagination->offset,$pagination->limit")->queryAll();
 
-        //判断是否搜索
-        if ($person != null) {
-            $rows = $query->select('*')
-                ->from('admin_user')
-                ->where([
-                    'person' => $person
-                ])->offset($pagination->offset)
-                ->limit($pagination->limit)->all();
-        } else if ($ID != null) {
-            $rows = $query->select('*')
-                ->from('admin_user')
-                ->where([
-                    'id' => $ID
-                ])->offset($pagination->offset)
-                ->limit($pagination->limit)->all();
-        } else if ($person != null && $ID != null) {
-            $rows = $query->select('*')
-                ->from('admin_user')
-                ->where([
-                    'person' => $person,
-                    'id' => $ID
-                ])->offset($pagination->offset)
-                ->limit($pagination->limit)->all();
-        }
-        else{
-            $rows = $query->from('admin_user')
-                ->offset($pagination->offset)
-                ->limit($pagination->limit)->all();
-        }
 
         // 进行数据查询
 
@@ -126,12 +113,21 @@ class IndexController extends PublicsController
 
     }
 
-    //移入黑名单status改为0
+    //移入黑名单，判断status并进行修改切换
     public function actionBlacklist()
     {
         $req = Yii::$app->request;
         $id = $req->get(id);
-        $sql = "update admin_user set status=0 where id='$id'";
+        $status = Yii::$app->db->createCommand("select status from admin_user where id = '$id'")->queryOne();
+        foreach ($status as $v){
+            $s = $v;
+        }
+//        echo $s;
+        if ($s == 0){
+            $sql = "update admin_user set status=1 where id='$id'";
+        }else if ($s !=0){
+            $sql = "update admin_user set status=0 where id='$id'";
+        }
         $res = Yii::$app->db->createCommand($sql)->execute();
         return $this->redirect(["/admin/index/aindex"]);
     }
@@ -141,7 +137,15 @@ class IndexController extends PublicsController
     {
         $req = Yii::$app->request;
         $id = $req->get(id);
-        $sql = "update admin_user set status=2 where id='$id'";
+        $status = Yii::$app->db->createCommand("select status from admin_user where id = '$id'")->queryOne();
+        foreach ($status as $v){
+            $s = $v;
+        }
+        if ($s == 2){
+            $sql = "update admin_user set status=1 where id='$id'";
+        }else if ($s !=2){
+            $sql = "update admin_user set status=2 where id='$id'";
+        }
         $res = Yii::$app->db->createCommand($sql)->execute();
         return $this->redirect(["/admin/index/aindex"]);
     }
@@ -164,82 +168,40 @@ class IndexController extends PublicsController
 
         $firstname = $req->get(firstname);
         $id = $req->get(id);
-
-        $res = Yii::$app->db->createCommand("select * from customer")->queryAll();
         $query = new Query;
         // 查询数据总条数
         $tot = 0;
-        foreach ($res as $v) {
-            $tot++;
-        }
+
         // 实例化分页对象
         $pagination = new Pagination([
-            'defaultPageSize' => 2,
+            'defaultPageSize' => 10,
             'totalCount' => $tot,
         ]);
         // 进行数据查询
 
         //判定搜索
+        $where = "WHERE 1=1";
         if ($firstname != null && $id == null && $level==null) {
-            $rows = $query->select('*')
-                ->from('customer')
-                ->where([
-                    'firstname' => $firstname
-                ])->offset($pagination->offset)
-                ->limit($pagination->limit)->all();
+            $where .= " AND firstname like '%$firstname%'";
         } else if ($id != null && $firstname == null && $level==null) {
-            $rows = $query->select('*')
-                ->from('customer')
-                ->where([
-                    'id' => $id
-                ])->offset($pagination->offset)
-                ->limit($pagination->limit)->all();
+            $where .= " AND id = $id";
         } else if ($level != null && $firstname == null && $id==null) {
-            $rows = $query->select('*')
-                ->from('customer')
-                ->where([
-                    'level' => $level
-                ])->offset($pagination->offset)
-                ->limit($pagination->limit)->all();
+            $where .=" AND level = $level";
         } else if ($firstname != null && $id != null && $level==null) {
-            $rows = $query->select('*')
-                ->from('customer')
-                ->where([
-                    'firstname' => $firstname,
-                    'id' => $id
-                ])->offset($pagination->offset)
-                ->limit($pagination->limit)->all();
+            $where .= " AND firstname like '%$firstname%' AND id = $id";
         } else if ($firstname != null && $level != null && $id==null) {
-            $rows = $query->select('*')
-                ->from('customer')
-                ->where([
-                    'firstname' => $firstname,
-                    'level' => $level
-                ])->offset($pagination->offset)
-                ->limit($pagination->limit)->all();
+            $where .= " AND firstname like '%$firstname%' AND level = $level";
         } else if ($id != null && $level != null && $firstname==null) {
-            $rows = $query->select('*')
-                ->from('customer')
-                ->where([
-                    'id' => $id,
-                    'level' => $level
-                ])->offset($pagination->offset)
-                ->limit($pagination->limit)->all();
+            $where .= " AND id = $id AND level = $level";
         } else if ($firstname != null && $level != null && $id != null) {
-            $rows = $query->select('*')
-                ->from('customer')
-                ->where([
-                    'firstname' => $firstname,
-                    'level' => $level,
-                    'id' => $id
-                ])->offset($pagination->offset)
-                ->limit($pagination->limit)->all();
+            $where .= " AND id = $id AND level = $level AND firstname like '%$firstname%'";
         } else {
-            $rows = $query->from('customer')
-                ->offset($pagination->offset)
-                ->limit($pagination->limit)->all();
+           $where = "";
         }
-
+        $rows = Yii::$app->db->createCommand("SELECT * FROM customer $where LIMIT $pagination->offset,$pagination->limit")->queryAll();
+        foreach ($rows as $v) {
+            $tot++;
+        }
         $data["pagination"] = $pagination;
         $data["rows"] = $rows;
         $data["firstname"] = $firstname;
@@ -288,10 +250,17 @@ class IndexController extends PublicsController
     {
         $req = Yii::$app->request;
         $id = $req->get(id);
-        $sql = "update customer set status=0 where id='$id'";
+        $status = Yii::$app->db->createCommand("select status from customer where id = '$id'")->queryOne();
+        foreach ($status as $v){
+            $s = $v;
+        }
+        if ($s == 0){
+            $sql = "update customer set status=1 where id='$id'";
+        }else if ($s !=0){
+            $sql = "update customer set status=0 where id='$id'";
+        }
         $res = Yii::$app->db->createCommand($sql)->execute();
         return $this->redirect(["/admin/index/member"]);
-
     }
 
     //冻结账号status改为2
@@ -353,18 +322,15 @@ class IndexController extends PublicsController
         $province_id = $req->get(province_id);
         $city_id = $req->get(city_id);
         $district_id = $req->get(district_id);
-        $res = Yii::$app->db->createCommand('select * from shop')->queryAll();
         $shop_name = $req->get(shop_name);
 
         $query = new Query;
         // 查询数据总条数
         $tot = 0;
-        foreach ($res as $k => $v) {
-            $tot++;
-        }
+
         // 实例化分页对象
         $pagination = new Pagination([
-            'defaultPageSize' => 3,
+            'defaultPageSize' => 10,
             'totalCount' => $tot,
         ]);
         // 进行数据查询
@@ -384,12 +350,15 @@ class IndexController extends PublicsController
         }
         $sql="SELECT * FROM shop $where  LIMIT $pagination->offset,$pagination->limit";
         $rows=Yii::$app->db->createCommand($sql)->queryAll();
+        foreach ($rows as $k => $v) {
+            $tot++;
+        }
         //获取数据
         $data['province'] = $province;
         $data['pagination'] = $pagination;
-        $data['res'] = $res;
         $data['rows'] = $rows;
         $data['tot'] = $tot;
+        $data['shop_name'] = $shop_name;
         return $this->render($this->action->id, $data);
     }
 
@@ -416,7 +385,15 @@ class IndexController extends PublicsController
     {
         $req = Yii::$app->request;
         $id = $req->get(id);
-        $sql = "update shop set shop_state=0 where shop_id='$id'";
+        $status = Yii::$app->db->createCommand("select shop_state from shop where shop_id = '$id'")->queryOne();
+        foreach ($status as $v){
+            $s = $v;
+        }
+        if ($s == 0){
+            $sql = "update shop set shop_state=1 where shop_id='$id'";
+        }else if ($s !=0){
+            $sql = "update shop set shop_state=0 where shop_id='$id'";
+        }
         $res = Yii::$app->db->createCommand($sql)->execute();
         return $this->redirect(["/admin/index/shop"]);
 
@@ -427,7 +404,15 @@ class IndexController extends PublicsController
     {
         $req = Yii::$app->request;
         $id = $req->get(id);
-        $sql = "update shop set shop_state=2 where shop_id='$id'";
+        $status = Yii::$app->db->createCommand("select shop_state from shop where shop_id = '$id'")->queryOne();
+        foreach ($status as $v){
+            $s = $v;
+        }
+        if ($s == 2){
+            $sql = "update shop set shop_state=1 where shop_id='$id'";
+        }else if ($s !=2){
+            $sql = "update shop set shop_state=2 where shop_id='$id'";
+        }
         $res = Yii::$app->db->createCommand($sql)->execute();
         return $this->redirect(["/admin/index/shop"]);
     }

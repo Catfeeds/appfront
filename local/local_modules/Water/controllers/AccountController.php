@@ -34,6 +34,7 @@ class AccountController extends PublicsController
 //=================================账单列表=================================
     // 账单列表
     public function actionIndex(){
+        $_SESSION['pagess']='index';
 
         //添加搜索条件
         $request = Yii::$app->request;
@@ -82,6 +83,8 @@ class AccountController extends PublicsController
     // 实名认证
 
     public function actionRealname(){
+        $_SESSION['pagess']='realname';
+
         return $this->render($this->action->id);
     }
 
@@ -89,6 +92,8 @@ class AccountController extends PublicsController
     // 资金列表
 
     public function actionMoney(){
+        $_SESSION['pagess']='money';
+
         return $this->render($this->action->id);
     }
 
@@ -98,6 +103,8 @@ class AccountController extends PublicsController
     // 账户解冻
 
     public function actionThawing(){
+        $_SESSION['pagess']='thawing';
+
         return $this->render($this->action->id);
     }
     

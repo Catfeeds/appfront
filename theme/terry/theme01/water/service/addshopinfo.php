@@ -3,18 +3,18 @@
         <div class="biaoti">
             <div aria-label="Breadcrumb" role="navigation" class="el-breadcrumb">
                 <span class="el-breadcrumb__item">
-                    <span class="el-breadcrumb__inner is-link">商品管理</span>
+                    <span class="el-breadcrumb__inner is-link">维修服务</span>
                     <span class="el-breadcrumb__separator">&middot;</span>
                 </span>
                 <span class="el-breadcrumb__item">
                     <span role="link" class="el-breadcrumb__inner">
-                        <a href="#/goods"  class="">商品列表</a>
+                        <a href="#/goods"  class="">服务列表</a>
                     </span>
                     <span class="el-breadcrumb__separator">&middot;</span>
                 </span>
                 <span class="el-breadcrumb__item" aria-current="page">
                     <span role="link" class="el-breadcrumb__inner">
-                        <span style="color: rgb(48, 211, 102); font-weight: bolder;">添加商品</span>
+                        <span style="color: rgb(48, 211, 102); font-weight: bolder;">添加服务</span>
                     </span>
                     <span class="el-breadcrumb__separator">&middot;</span>
                 </span>
@@ -22,8 +22,8 @@
         </div>
         <div class="item">
             <ul class="top">
-                <li class="btn1"><span class="btn">选择商品分类</span></li>
-                <li class="btn2"><span class="btn">填写商品信息</span></li>
+                <li class="btn1"><span class="btn">选择服务分类</span></li>
+                <li class="btn2"><span class="btn">填写服务信息</span></li>
 <!--                <li class="btn3"><span class="btn">选择商品关联</span></li>-->
             </ul>
             <div class="bottom">
@@ -32,7 +32,7 @@
                     基本信息
                 </div>
                 <div class="title">
-                    <span style="font-size: 16px;">商品分类：</span>
+                    <span style="font-size: 16px;">服务分类：</span>
                     <div aria-label="Breadcrumb" role="navigation" class="el-breadcrumb" style="display: inline-block;">
                         <span class="el-breadcrumb__item">
                             <span  class="el-breadcrumb__inner"><?= $one ?></span>
@@ -45,44 +45,52 @@
                     </div>
                     <div class="neirong">
                         <form class="el-form" method="post" enctype="multipart/form-data"
-                              action="<?= Yii::$service->url->getUrl('water/goods/addgoods1') ?>">
+                              action="<?= Yii::$service->url->getUrl('water/service/addgoods1') ?>">
                             <div class="el-form-item">
-                                <label class="el-form-item__label" style="width: 80px;">商品货号</label>
+                                <label class="el-form-item__label" style="width: 80px;">服务货号</label>
                                 <div class="el-form-item__content" style="margin-left: 80px;">
                                     <div class="inputbox el-input">
-                                        <input type="text" name="sku" placeholder="请输入商品货号" class="el-input__inner"/>
+                                        <input maxlength="20" required type="text" pattern="\w+" name="sku" placeholder="请输入商品货号" class="el-input__inner"/>
                                     </div>
                                     <div class="tishi">
-                                        商家货号是指商家管理商品的编号，买家不可见，最多可输入20个字符，支持输入英文、字母和_
+                                        服务货号是指商家管理服务的编号，买家不可见，最多可输入20个字符，支持输入英文、数字和_
                                     </div>
                                 </div>
                             </div>
                             <div class="el-form-item">
-                                <label class="el-form-item__label" style="width: 80px;">商品名称</label>
+                                <label class="el-form-item__label" style="width: 80px;">服务名称</label>
                                 <div class="el-form-item__content" style="margin-left: 80px;">
                                     <div class="inputbox el-input">
-                                        <input type="text" placeholder="请输入商品名称" name="name" class="el-input__inner"/>
+                                        <input required type="text" minlength="1" maxlength="150" placeholder="请输入商品名称" name="name" class="el-input__inner"/>
                                     </div>
                                     <div class="tishi">
-                                        商品标题名称长度至少1个字符，最长150个汉字
+                                        服务标题名称长度至少1个字符，最长150个汉字
                                     </div>
                                 </div>
                             </div>
                             <div class="el-form-item">
-                                <label class="el-form-item__label" style="width: 80px;">商品描述</label>
+                                <label class="el-form-item__label" style="width: 80px;">服务描述</label>
                                 <div class="el-form-item__content" style="margin-left: 80px;">
-                                    <textarea id="" cols="30" rows="10" name="description_zh"
-                                              class="details" placeholder="请输入商品描述"></textarea>
+                                    <textarea required id="" cols="30" rows="10" name="description_zh"
+                                              class="details" placeholder="请输入服务描述"></textarea>
+                                </div>
+                            </div>
+                            <div class="el-form-item">
+                                <label class="el-form-item__label" style="width: 80px;">定金</label>
+                                <div class="el-form-item__content" style="margin-left: 80px;">
+                                    <div class="inputbox el-input">
+                                        <input required type="number" min="0" max="99999999" placeholder="请输入定金的价格" name="deposit" class="el-input__inner"/>
+                                    </div>
                                 </div>
                             </div>
                             <div class="el-form-item">
                                 <label class="el-form-item__label" style="width: 80px;">价格</label>
                                 <div class="el-form-item__content" style="margin-left: 80px;">
                                     <div class="inputbox el-input">
-                                        <input type="text"  placeholder="请输入商品的价格" name="price" class="el-input__inner"/>
+                                        <input min="0" max="99999999" type="text"  placeholder="请输入服务价格" name="price" class="el-input__inner"/>
                                     </div>
                                     <div class="tishi">
-                                        价格必须是在0.01-99999999之间的数字，且不能高于市场价，此价格为商品实际销售价格，如果商品存在规格，该价格显示最低价格
+                                        价格必须是在0.01-99999999之间的数字，且不能高于市场价
                                     </div>
 
                                 </div>
@@ -91,7 +99,7 @@
                                 <label class="el-form-item__label" style="width: 80px;">折扣价</label>
                                 <div class="el-form-item__content" style="margin-left: 80px;">
                                     <div class="inputbox el-input">
-                                        <input type="text" placeholder="请输入商品的折扣价格" name="special_price"class="el-input__inner"/>
+                                        <input required min="0" type="text" placeholder="请输入服务的折扣价格" name="special_price"class="el-input__inner"/>
                                     </div>
                                 </div>
                             </div>
@@ -115,7 +123,7 @@
                                     <div class="avatar-uploader" style="float:left">
 
                                         <i class=" avatar-uploader-icon sadad">+</i>
-                                        <input type="file" name="file[]" onchange="uploads(this)"
+                                        <input required type="file" name="file[]" onchange="uploads(this)"
                                                class="el-upload__input img"/>
                                     </div>
 
@@ -205,7 +213,7 @@
                     <div class="el-form-item" style="margin-top: 10px">
                         <label class="el-form-item__label" style="width: 80px;">文字描述</label>
                         <div class="el-form-item__content" style="margin-left: 80px;">
-                            <textarea name="" id="" class="details" placeholder="请输入商品文字描述" cols="30" rows="10" name="description_zh1"></textarea>
+                            <textarea required id="" class="details" placeholder="请输入服务文字描述" cols="30" rows="10" name="description_zh1"></textarea>
                         </div>
 
                     </div>
@@ -234,33 +242,25 @@
                         <label class="el-form-item__label" style="width: 80px;">关键词</label>
                         <div class="el-form-item__content" style="margin-left: 80px;">
                             <div class="inputbox el-input">
-                                <input type="text" autocomplete="off" name="keywords" class="el-input__inner"/>
+                                <input type="text" placeholder="请输入关键字" autocomplete="off" name="keywords" class="el-input__inner"/>
                                 <input type="hidden" name="one" value="<?= $oneId ?>">
                                 <input type="hidden" name="tow" value="<?= $twoId ?>">
                                 <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>"/>
                             </div>
                             <div class="tishi">
-                                商品关键词请用空格分隔
-                            </div>
-                        </div>
-                    </div>
-                    <div class="el-form-item">
-                        <label class="el-form-item__label" style="width: 80px;">商品库存</label>
-                        <div class="el-form-item__content" style="margin-left: 80px;">
-                            <div class="inputbox el-input">
-                                <input type="text" autocomplete="off" name="kucun" class="el-input__inner"/>
+                                服务关键词请用空格分隔
                             </div>
                         </div>
                     </div>
                 </div>
-                <a href="<?= Yii::$service->url->getUrl('water/goods/addclass') ?>" class="">
+                <a href="<?= Yii::$service->url->getUrl('water/service/addclass') ?>" class="">
                     <button type="button" class="el-button blue el-button--primary is-round"
                             style="margin-right: 20px;">
-                        <span>上一步，选择商品分类 </span></button>
+                        <span>上一步，选择服务分类 </span></button>
                 </a>
                 <button type="submit" class="el-button blue el-button--primary is-round">
 <!--                    <span>下一步，选择商品关联</span>-->
-                    <span>完成，发布商品</span>
+                    <span>完成，发布服务</span>
                 </button>
             </div>
             </form>

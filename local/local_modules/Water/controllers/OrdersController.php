@@ -118,14 +118,17 @@ class OrdersController extends PublicsController
         $datas["pagination"] = $pagination;
         $datas["all"] = $all;
         $datas["flag"] = $get["flag"] ? $get["flag"] : 0;
+        $_SESSION['pagess']='index';
+
         return $this->render($this->action->id, $datas);
     }
 
 
 
     //查看订单详情
-    function actionSee()
+    public function actionSee()
     {
+        $_SESSION['pagess']='see';
 
         // 获取数据
         $request = Yii::$app->request;
@@ -173,6 +176,7 @@ class OrdersController extends PublicsController
     //返回纠纷列表页面
     public function actionDispute()
     {
+        $_SESSION['pagess']='dispute';
 
         $data = [];
         // 获取数据
@@ -219,6 +223,8 @@ class OrdersController extends PublicsController
     //返回商品订单页面
     public function actionShop()
     {
+        $_SESSION['pagess']='shop';
+
         // 获取数据
         $request = Yii::$app->request;
         $get = $request->get();
@@ -305,6 +311,7 @@ class OrdersController extends PublicsController
         $datas["pagination"] = $pagination;
         $datas["all"] = $all;
         $datas["flag"] = $get["flag"] ? $get["flag"] : 0;
+
         return $this->render($this->action->id, $datas);
 
     }
@@ -314,7 +321,54 @@ class OrdersController extends PublicsController
     public function actionLack()
     {
 
-        return $this->render($this->action->id);
+        $_SESSION['pagess']='lack';
+
+        $query = new Query();
+
+        $pros = $query->from("product_flat")->where(["shop_id"=>$_SESSION["shop_id"]])->all();
+
+        $sql = "select * from product_flat_qty where product_id in(";
+
+        foreach ($pros as $v){
+            $sql = $sql."'".$v["_id"]."',";
+        }
+
+        $sql = $sql."0)";
+
+        $res1 = Yii::$app->db->createCommand($sql)->queryAll();
+
+        $goods = [];
+
+        foreach ($res1 as $v){
+            $res2 = $query->from("product_flat")->where(["_id"=>$v[product_id]])->one();
+            array_push($goods,$res2);
+        }
+
+        $res = Yii::$app->db->createCommand("select * from product_flat_qty where qty<=10")->queryAll();
+
+        $count = Yii::$app->db->createCommand("select count(*) as counts from product_flat_qty where qty<=10")->queryAll();
+
+        $tot=$count[0]['counts'];
+
+        // 实例化分页对象
+        $pagination = new Pagination([
+            'defaultPageSize' => 5,
+            'totalCount' => $tot,
+        ]);
+
+        $datas=[];
+
+        $datas['res']=$res;
+
+        $datas['goods']=$goods;
+
+        $datas["pagination"] = $pagination;
+
+        $datas['tot']=$tot;
+
+        $datas['page']= ceil($tot/5);
+
+        return $this->render($this->action->id,$datas);
 
     }
 }

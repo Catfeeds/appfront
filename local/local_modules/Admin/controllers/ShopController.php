@@ -72,9 +72,238 @@ class ShopController extends PublicsController
 
     //水司
     public function actionWater(){
-        return $this->render($this->action->id);
-    }
+        // 获取数据
+        $request = Yii::$app->request;
+        $get = $request->get();
+        $shop_name = $get['shop_name'];
+        $sql = " select count(*) tot from shop where shop_type = 1";
+        if(!empty($shop_name)){
+            $sql .=" and shop_name like '%$shop_name%'";
+        }
+        //查询订单表数量
+        $countArr = Yii::$app->db->createCommand($sql)->queryOne();
 
+
+        // 实例化分页对象
+        $pagination = new Pagination([
+            'defaultPageSize' => 10,
+            'totalCount' => $countArr['tot'],
+        ]);
+        $sql = " select s.shop_id,s.shop_name,p.province_name,d.district_name,c.city_name from shop s ,sys_city c,sys_district d,sys_province p where s.province_id = p.province_id and s.city_id = c.city_id and s.district_id= d.district_id and shop_type = 1";
+        if(!empty($shop_name)){
+            $sql .=" and s.shop_name like '%$shop_name%'";
+        }
+        $sql .=" limit $pagination->offset , $pagination->limit";
+        $arr = Yii::$app->db->createCommand($sql)->queryAll();
+
+ 
+        //查询所有的
+        $datas["count"] = $countArr['tot'];
+        $datas["shop"] = $arr;
+        $datas["shop_name"] = $shop_name;
+        $datas["pagination"] = $pagination;
+        return $this->render($this->action->id, $datas);
+    }
+    //水司订单管理
+    public function actionWaterorder(){
+        // 获取数据
+        $request = Yii::$app->request;
+        $shop_id = $request->get('id');
+
+        //按shop_id查询店家详情
+        $shop_name = Yii::$app->db->createCommand("select shop_name from shop where shop_id=$shop_id")->queryOne();
+        $datas['shop_name'] = $shop_name['shop_name'];
+        //按shop_id查询店家订单信息
+        
+        $get = $request->get();
+
+        $increment_id = $get['increment_id'];
+        $customer_firstname = $get['customer_firstname'];
+        if($get["flag"]){
+            $flag = $get['flag']-1;
+            $sql = " select count(*) tot from sales_flat_order where shop_id=$shop_id and goods_type=1 and order_status={$flag}";
+        }else{
+            $sql = " select count(*) tot from sales_flat_order where shop_id=$shop_id and goods_type=1 and order_status<5";
+        }
+        if(!empty($increment_id)){
+            $sql .= " and increment_id like '%$increment_id%'";
+        }
+        if(!empty($customer_firstname)){
+            $sql .= " and customer_firstname like '%$customer_firstname%' ";
+        }
+        //查询订单表数量
+        $countArr = Yii::$app->db->createCommand($sql)->queryOne();
+
+
+        // 实例化分页对象
+        $pagination = new Pagination([
+            'defaultPageSize' => 5,
+            'totalCount' => $countArr['tot'],
+        ]);
+        //查询订单产品表
+        if($get["flag"]){
+            $flag = $get['flag']-1;
+            $sql = " select sales_flat_order.* from sales_flat_order where sales_flat_order.shop_id=$shop_id and goods_type=1  and sales_flat_order.order_status={$flag}";
+        }else {
+            $sql = " select sales_flat_order.* from sales_flat_order where sales_flat_order.shop_id=$shop_id and goods_type=1  and order_status<5";
+        }
+        if(!empty($increment_id)){
+            $sql .= " and increment_id like '%$increment_id%' ";
+        }
+        if(!empty($customer_firstname)){
+            $sql .= " and customer_firstname like '%$customer_firstname%' ";
+        }
+        $sql .= " limit $pagination->offset , $pagination->limit";
+        $arr = Yii::$app->db->createCommand($sql)->queryAll();
+
+        $sql = "select * from sales_coupon where coupon_id in(";
+
+        foreach ($arr as $v){
+
+            if($v[coupon_code]){
+                $sql = $sql.$v[coupon_code].",";
+            }
+        }
+        $sql = $sql."0)";
+
+        $cou = Yii::$app->db->createCommand($sql)->queryAll();
+
+        foreach ($arr as &$v){
+            foreach ($cou as $v1){
+                if($v1['coupon_id'] == $v['coupon_code']){
+                    $v = array_merge($v,$v1);
+                }
+            }
+        }
+        $sql = "select * from sales_flat_order_item where order_id in (";
+        foreach ($arr as $v) {
+            $sql = $sql . $v["order_id"] . ",";
+        };
+        // $sql = substr($sql, 0, -1);
+        $sql .= "0)";
+
+        $arr1 = Yii::$app->db->createCommand($sql)->queryAll();
+        foreach ($arr as $k => &$v) {
+            $v["goodDatas"] = [];
+            foreach ($arr1 as $k1 => &$v1) {
+                if ($v1["order_id"] == $v["order_id"]) {
+                    array_push($v["goodDatas"], $v1);
+                }
+            }
+        };
+        $all = Yii::$app->db->createCommand("select o.order_status from sales_flat_order o where shop_id=$shop_id and order_status<5" )->queryAll();
+            
+            
+        //查询所有的
+        $datas['increment_id'] = $increment_id;
+        $datas['customer_firstname'] = $customer_firstname;
+        $datas["orders"] = $arr;
+        $datas["shop_id"] = $shop_id;
+        $datas["pagination"] = $pagination;
+        $datas["all"] = $all;
+        $datas["flag"] = $get["flag"]?$get["flag"]:0;       
+        return $this->render($this->action->id,$datas);
+    }
+    //水司服务订单管理
+    public function actionWaterfuwuorder(){
+        // 获取数据
+        $request = Yii::$app->request;
+        $shop_id = $request->get('id');
+
+        //按shop_id查询店家详情
+        $shop_name = Yii::$app->db->createCommand("select shop_name from shop where shop_id=$shop_id")->queryOne();
+        $datas['shop_name'] = $shop_name['shop_name'];
+        //按shop_id查询店家订单信息
+        
+        $get = $request->get();
+
+        $increment_id = $get['increment_id'];
+        $customer_firstname = $get['customer_firstname'];
+        if($get["flag"]){
+            $flag = $get['flag']-1;
+            $sql = " select count(*) tot from sales_flat_order where shop_id=$shop_id and goods_type=2 and order_status={$flag}";
+        }else{
+            $sql = " select count(*) tot from sales_flat_order where shop_id=$shop_id and goods_type=2 and order_status<5";
+        }
+        if(!empty($increment_id)){
+            $sql .= " and increment_id like '%$increment_id%'";
+        }
+        if(!empty($customer_firstname)){
+            $sql .= " and customer_firstname like '%$customer_firstname%' ";
+        }
+        //查询订单表数量
+        $countArr = Yii::$app->db->createCommand($sql)->queryOne();
+
+
+        // 实例化分页对象
+        $pagination = new Pagination([
+            'defaultPageSize' => 5,
+            'totalCount' => $countArr['tot'],
+        ]);
+        //查询订单产品表
+        if($get["flag"]){
+            $flag = $get['flag']-1;
+            $sql = " select sales_flat_order.* from sales_flat_order where sales_flat_order.shop_id=$shop_id and goods_type=2  and sales_flat_order.order_status={$flag}";
+        }else {
+            $sql = " select sales_flat_order.* from sales_flat_order where sales_flat_order.shop_id=$shop_id and goods_type=2  and order_status<5";
+        }
+        if(!empty($increment_id)){
+            $sql .= " and increment_id like '%$increment_id%' ";
+        }
+        if(!empty($customer_firstname)){
+            $sql .= " and customer_firstname like '%$customer_firstname%' ";
+        }
+        $sql .= " limit $pagination->offset , $pagination->limit";
+        $arr = Yii::$app->db->createCommand($sql)->queryAll();
+
+        $sql = "select * from sales_coupon where coupon_id in(";
+
+        foreach ($arr as $v){
+
+            if($v[coupon_code]){
+                $sql = $sql.$v[coupon_code].",";
+            }
+        }
+        $sql = $sql."0)";
+
+        $cou = Yii::$app->db->createCommand($sql)->queryAll();
+
+        foreach ($arr as &$v){
+            foreach ($cou as $v1){
+                if($v1['coupon_id'] == $v['coupon_code']){
+                    $v = array_merge($v,$v1);
+                }
+            }
+        }
+        $sql = "select * from sales_flat_order_item where order_id in (";
+        foreach ($arr as $v) {
+            $sql = $sql . $v["order_id"] . ",";
+        };
+        // $sql = substr($sql, 0, -1);
+        $sql .= "0)";
+
+        $arr1 = Yii::$app->db->createCommand($sql)->queryAll();
+        foreach ($arr as $k => &$v) {
+            $v["goodDatas"] = [];
+            foreach ($arr1 as $k1 => &$v1) {
+                if ($v1["order_id"] == $v["order_id"]) {
+                    array_push($v["goodDatas"], $v1);
+                }
+            }
+        };
+        $all = Yii::$app->db->createCommand("select o.order_status from sales_flat_order o where shop_id=$shop_id and order_status<5" )->queryAll();
+            
+            
+        //查询所有的
+        $datas['increment_id'] = $increment_id;
+        $datas['customer_firstname'] = $customer_firstname;
+        $datas["orders"] = $arr;
+        $datas["shop_id"] = $shop_id;
+        $datas["pagination"] = $pagination;
+        $datas["all"] = $all;
+        $datas["flag"] = $get["flag"]?$get["flag"]:0;       
+        return $this->render($this->action->id,$datas);
+    }
 //=========================分类管理===============================
 
     // 分类管理
@@ -586,7 +815,6 @@ class ShopController extends PublicsController
             }
         };
         $all = Yii::$app->db->createCommand("select o.order_status from sales_flat_order o where shop_id=$shop_id and order_status<5" )->queryAll();
-
             
             
         //查询所有的

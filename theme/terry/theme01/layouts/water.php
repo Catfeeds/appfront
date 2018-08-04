@@ -6,7 +6,9 @@ $jsOptions = [ # js的配置部分
         'js' => [
             'js/layout-water.js',
             'js/jquery-3.3.1.min.js',
-            'js/laydate.js'
+            'js/laydate.js',
+            'js/echarts.min.js',
+            'js/getTime.js'
         ],
     ]
 
@@ -209,7 +211,7 @@ $cssOptions = [
         .aside .logo {
             width: 100%;
             height: 125px;
-            background: url("/public/img/logo.png") no-repeat center center/100% auto;
+            background: url("/public/img/logowater.png") no-repeat center center/100% auto;
         }
 
         .aside-list li {
@@ -395,7 +397,7 @@ $cssOptions = [
     <!doctype html>
     <html lang="en">
     <head>
-        <title>晋彤商家管理系统</title>
+        <title>晋彤水司管理系统</title>
         <?= Yii::$service->page->widget->render('head', $this); ?>
         <?= Yii::$service->page->widget->render('beforeContent', $this); ?>
         <?php $this->beginBody() ?>
@@ -463,14 +465,13 @@ $cssOptions = [
         // 筛选左侧菜单
         let asd=document.querySelectorAll(".aside li");
 
-        let str1=url[5];
-        let arr1=str1.split("?");
+        let arr1="<?php echo $_SESSION['pagess'];?>";
 
 
         for (let i=0; i <asd.length ;i++) {
             let url12=asd[i].getAttribute('href1');
 
-            let n = url12.search('/'+arr1[0]);
+            let n = url12.search('/'+arr1);
 
             if (n>=1) {
                 asd[i].className='active';

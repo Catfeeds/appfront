@@ -42,8 +42,7 @@ class IndexController extends PublicsController
 
         // 获取商品信息
 
-        $sql = "select * from
- shop where shop_id = $shop_id";
+        $sql = "select * from shop where shop_id = $shop_id";
 
         $shop = Yii::$app->db->createCommand($sql)->queryOne();
 

@@ -76,13 +76,19 @@
         margin-right: 20px;
     }
 
-    .el-form-item {
-        /*line-height: 40px;*/
+    .el-input__inner{
+        height: 30px;
+        width:400px;
+        border-radius: 15px;
+        background: #f3faff;
+        border: 2px solid #e5eff8;
+        line-height:30px;
     }
 
     .el-form-item__content {
         line-height: normal;
     }
+    .addImg{background: #f3faff;}
 </style>
 
 <div class="main-content">
@@ -213,7 +219,7 @@
                 </div>
             </div>
         </div>
-        <div style="float: right;">
+        <div style="float: right;margin-bottom: 50px;">
             <button type="submit" class="el-button green el-button--success is-round">
                 <span>添加分类</span></button>
             <a href="#/ShopCouponEdit" class="">

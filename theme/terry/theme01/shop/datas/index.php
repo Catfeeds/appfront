@@ -18,12 +18,49 @@
                <option value="3">最近一年</option>
            </select>
         </li>
-       <li >时间段选择
-            <input id="test1" style="width: 300px">
-       </li>
-       <li ><button  type="button" class="el-button blue el-button--primary is-round">
-         <!---->
-         <!----><span>查询</span></button></li>
+          <li style="
+                        display: flex;
+                        align-items: center;
+                    ">时间段选择
+              <div class="el-form-item__content" style="margin-left: 10px;">
+                  <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test1">
+              </div>
+          </li>
+          <style>
+              .demo-input {
+                  padding-left: 10px;
+                  height: 30px;
+                  min-width: 300px;
+                  line-height: 38px;
+                  border: 1px solid #e6e6e6;
+                  background-color: #f3faff;
+                  border-radius: 30px;
+                  outline: none;
+              }
+
+              .demo-input:hover {
+                  border-color: #c0c4cc;
+              }
+
+              .demo-input:focus {
+                  border-color: #3CACFE;
+              }
+              .el-form-item__content {
+                  line-height: normal;
+              }
+
+              .el-form-item__content {
+                  line-height: 40px;
+                  position: relative;
+                  font-size: 14px;
+              }
+              .layui-laydate .layui-this{
+                  background: #30B5FE !important;
+              }
+          </style>
+<!--       <li ><button  type="button" class="el-button blue el-button--primary is-round">-->
+<!--
+<!--        <span>查询</span></button></li>-->
       </ul>
       <ul  class="item">
        <li >
@@ -165,30 +202,170 @@
         <div  class="bottom">
          <div  class="contents active">
           <ul  style="display: flex; justify-content: space-between;">
-           <li >
-            <div  class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange" style="width: 380px;">
-             <i class="el-input__icon el-range__icon el-icon-time"></i>
-             <input placeholder="开始日期" name="" class="el-range-input" />
-             <span class="el-range-separator">至</span>
-             <input placeholder="结束日期" name="" class="el-range-input" />
-             <i class="el-input__icon el-range__close-icon"></i>
-            </div></li>
-           <li  style="margin-top: 5px;"><button  type="button" class="el-button blue1 el-button--primary is-round">
-             <!---->
-             <!----><span> 确定 </span></button></li>
+              <li style="
+                        display: flex;
+                        align-items: center;
+                    ">时间段选择
+                  <div class="el-form-item__content" style="margin-left: 10px;">
+                      <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test2">
+                  </div>
+              </li>
+              <style>
+                  .demo-input {
+                      padding-left: 10px;
+                      height: 30px;
+                      min-width: 300px;
+                      line-height: 38px;
+                      border: 1px solid #e6e6e6;
+                      background-color: #f3faff;
+                      border-radius: 30px;
+                      outline: none;
+                  }
+
+                  .demo-input:hover {
+                      border-color: #c0c4cc;
+                  }
+
+                  .demo-input:focus {
+                      border-color: #3CACFE;
+                  }
+                  .el-form-item__content {
+                      line-height: normal;
+                  }
+
+                  .el-form-item__content {
+                      line-height: 40px;
+                      position: relative;
+                      font-size: 14px;
+                  }
+                  .layui-laydate .layui-this{
+                      background: #30B5FE !important;
+                  }
+              </style>
+              <script>
+                  laydate.render({
+                      elem: '#test2'
+                      , type: 'datetime'
+                      , range: true
+                      , theme: "#3CACFE"
+                  });
+              </script>
+<!---->
+<!--           <li><button  type="button" class="el-button blue1 el-button--primary is-round">-->
+<!--          -->
+<!--           <span> 确定 </span></button></li>-->
           </ul>
           <div  class="tu1">
           </div>
-          <div style="display: flex;justify-content: center">
-           <button  type="button" class="el-button blue el-button--primary is-round">
-               <span>导出图片</span></button>
-           <button  type="button" class="el-button green el-button--success is-round">
-            <!---->
-            <!----><span>导出表格</span></button>
-           <button  type="button" class="el-button yellow el-button--warning is-round">
-            <!---->
-            <!----><span>导出报告</span></button>
-          </div>
+ <script>
+                 $(function () {
+                     $('#test2').on('blur',function(){
+                         $('.laydate-btns-confirm').on('click',function () {
+                             getinfo(2,-1);
+                         })
+                     })
+
+                     $('.btn1').on('click',function(){
+                         $('.btn1').removeClass('active').filter(this).addClass('active');
+                         let  test2=$('#test2');
+                         let date=$(this).attr('date');
+                         getinfo(1,date);
+                     })
+                     function getinfo(flag,date) {
+                         var t1="",t2="";
+                         if(flag==1){
+                             if(date==7){
+                                 t1 = timeForMat(7)["t2"];
+                                 t2 = timeForMat(7)["t1"];
+                             }else if(date == 30){
+                                 t1 = timeForMat(30)["t2"];
+                                 t2 = timeForMat(30)["t1"];
+                             }else if(date==90){
+                                 t1 = timeForMat(120)["t2"];
+                                 t2 = timeForMat(120)["t1"];
+                             }else if(date==365){
+                                 t1 = timeForMat(365)["t2"];
+                                 t2 = timeForMat(365)["t1"];
+                             }
+                         }else if(flag==2){
+                             date = test2.value.split(" - ");
+                             t1=date[0];t2=date[1];
+                         }
+
+                         var favorable,reviewable,nagetivable;
+                         $.ajax({
+                             url:"/shop/datas/countdate?t1="+t1+"&t2="+t2,
+                             dataType:'json',
+                             success:function (msg) {
+                                 for(let i=0;i<msg.length;i++){
+                                     msg[i]=filtert2(msg[i],t2);
+                                 }
+                                 favorable=msg[0].length;
+                                 reviewable=msg[1].length;
+                                 nagetivable=msg[2].length;
+                                 getChart(favorable,reviewable,nagetivable);
+                             }
+                         });
+                         function getChart(a,b,c) {
+                             var myChart = echarts.init(document.querySelector('.tu1'));
+                             var option={
+
+                                 legend: {
+                                     itemWidth: 20,
+                                     itemHeight: 20,
+                                     orient: 'vertical',
+                                     // top: 'middle',
+                                     bottom: 20,
+                                     right:24,
+                                     data: ['好评', '中评','差评']
+                                 },
+                                 tooltip : {
+                                     trigger: 'item',
+                                     formatter: "{a} <br/>{b} : {c} ({d}%)"
+                                 },
+                                 series : [
+                                     {
+                                         type: 'pie',
+                                         radius : '80%',
+                                         center: ['50%', '50%'],
+                                         selectedMode: 'single',
+                                         data:[
+                                             {value:a, name: '好评'},
+                                             {value:b, name: '中评'},
+                                             {value:c, name: '差评'},
+                                         ],
+                                         itemStyle: {
+                                             normal: {
+                                                 borderWidth: 10,
+                                                 borderColor: '#ffffff',
+                                             },
+
+                                         }
+                                     }
+                                 ],
+                                 color: ['rgb(48,163,254)','rgb(55,223,116)','rgb(253,203,82)']
+                             };
+                             myChart.setOption(option);
+                         }
+                         function filtert2(arr,t2) {
+                             arr=arr.filter(ele=>{return ele.review_date<t2});
+                             return arr;
+                         }
+                     }
+
+                     $('.btn1').triggerHandler('click');
+                 })
+             </script>
+
+<!--图1导出-->
+<!--          <div style="display: flex;justify-content: center">-->
+<!--           <button  type="button" class="el-button blue el-button--primary is-round">-->
+<!--               <span>导出图片</span></button>-->
+<!--           <button  type="button" class="el-button green el-button--success is-round">-->
+<!--            <span>导出表格</span></button>-->
+<!--           <button  type="button" class="el-button yellow el-button--warning is-round">-->
+<!--            <span>导出报告</span></button>-->
+<!--          </div>-->
          </div>
          <div  class="contents">
           一个月
@@ -224,26 +401,66 @@
         <div  class="bottom">
          <div  class="contents active">
           <ul  style="display: flex; justify-content: space-between;">
-           <li >
-            <div  class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange" style="width: 380px;">
-             <i class="el-input__icon el-range__icon el-icon-time"></i>
-             <input placeholder="开始日期" name="" class="el-range-input" />
-             <span class="el-range-separator">至</span>
-             <input placeholder="结束日期" name="" class="el-range-input" />
-             <i class="el-input__icon el-range__close-icon"></i>
-            </div></li>
-           <li  style="margin-top: 5px;"><button  type="button" class="el-button blue1 el-button--primary is-round">
-                   <span>确定</span></button></li>
+              <li style="
+                        display: flex;
+                        align-items: center;
+                    ">时间段选择
+                  <div class="el-form-item__content" style="margin-left: 10px;">
+                      <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test4">
+                  </div>
+              </li>
+              <style>
+                  .demo-input {
+                      padding-left: 10px;
+                      height: 30px;
+                      min-width: 300px;
+                      line-height: 38px;
+                      border: 1px solid #e6e6e6;
+                      background-color: #f3faff;
+                      border-radius: 30px;
+                      outline: none;
+                  }
+
+                  .demo-input:hover {
+                      border-color: #c0c4cc;
+                  }
+
+                  .demo-input:focus {
+                      border-color: #3CACFE;
+                  }
+                  .el-form-item__content {
+                      line-height: normal;
+                  }
+
+                  .el-form-item__content {
+                      line-height: 40px;
+                      position: relative;
+                      font-size: 14px;
+                  }
+                  .layui-laydate .layui-this{
+                      background: #30B5FE !important;
+                  }
+              </style>
+              <script>
+                  laydate.render({
+                      elem: '#test4'
+                      , type: 'datetime'
+                      , range: true
+                      , theme: "#3CACFE"
+                  });
+              </script>
+
           </ul>
           <div  class="tu2"></div>
-          <div style="display: flex;justify-content: center">
-           <button  type="button" class="el-button blue el-button--primary is-round">
-            <span>导出图片</span></button>
-           <button  type="button" class="el-button green el-button--success is-round">
-               <span>导出表格</span></button>
-           <button  type="button" class="el-button yellow el-button--warning is-round">
-               <span>导出报告</span></button>
-          </div>
+<!--图2导出-->
+<!--          <div style="display: flex;justify-content: center">-->
+<!--           <button  type="button" class="el-button blue el-button--primary is-round">-->
+<!--            <span>导出图片</span></button>-->
+<!--           <button  type="button" class="el-button green el-button--success is-round">-->
+<!--               <span>导出表格</span></button>-->
+<!--           <button  type="button" class="el-button yellow el-button--warning is-round">-->
+<!--               <span>导出报告</span></button>-->
+<!--          </div>-->
          </div>
          <div  class="contents">
           一个月
@@ -258,88 +475,7 @@
        </div>
       </div>
 
-         <script>
-             $(function () {
-                 $('.btn1').on('click',function(){
-                     $('.btn1').removeClass('active').filter(this).addClass('active');
-                     let date=$(this).attr('date');
-                     var t1="",t2="";
-                     if(date==7){
-                         t1 = timeForMat(7)["t2"];
-                         t2 = timeForMat(7)["t1"];
-                     }else if(date == 30){
-                         t1 = timeForMat(30)["t2"];
-                         t2 = timeForMat(30)["t1"];
-                     }else if(date==90){
-                         t1 = timeForMat(120)["t2"];
-                         t2 = timeForMat(120)["t1"];
-                     }else if(date==365){
-                         t1 = timeForMat(365)["t2"];
-                         t2 = timeForMat(365)["t1"];
-                     }
-                     var favorable,reviewable,nagetivable;
-                     $.ajax({
-                         url:"/shop/datas/countdate?t1="+t1+"&t2="+t2,
-                         dataType:'json',
-                         success:function (msg) {
-                             for(let i=0;i<msg.length;i++){
-                                 msg[i]=filtert2(msg[i],t2);
-                             }
-                             favorable=msg[0].length;
-                             reviewable=msg[1].length;
-                             nagetivable=msg[2].length;
-                             getChart(favorable,reviewable,nagetivable);
-                         }
-                     });
-                     function getChart(a,b,c) {
-                         var myChart = echarts.init(document.querySelector('.tu1'));
-                         var option={
 
-                             legend: {
-                                 itemWidth: 20,
-                                 itemHeight: 20,
-                                 orient: 'vertical',
-                                 // top: 'middle',
-                                 bottom: 20,
-                                 right:24,
-                                 data: ['好评', '中评','差评']
-                             },
-                             tooltip : {
-                                 trigger: 'item',
-                                 formatter: "{a} <br/>{b} : {c} ({d}%)"
-                             },
-                             series : [
-                                 {
-                                     type: 'pie',
-                                     radius : '80%',
-                                     center: ['50%', '50%'],
-                                     selectedMode: 'single',
-                                     data:[
-                                         {value:a, name: '好评'},
-                                         {value:b, name: '中评'},
-                                         {value:c, name: '差评'},
-                                     ],
-                                     itemStyle: {
-                                         normal: {
-                                             borderWidth: 10,
-                                             borderColor: '#ffffff',
-                                         },
-
-                                     }
-                                 }
-                             ],
-                             color: ['rgb(48,163,254)','rgb(55,223,116)','rgb(253,203,82)']
-                         };
-                         myChart.setOption(option);
-                     }
-                     function filtert2(arr,t2) {
-                         arr=arr.filter(ele=>{return ele.review_date<t2});
-                         return arr;
-                     }
-                 })
-                 $('.btn1').triggerHandler('click');
-             })
-         </script>
 
       <div  class="item2">
        <div  class="title2">
@@ -347,36 +483,38 @@
          订单数量走势
         </div>
         <div  class="title_right">
-         <div  class="btn active">
+         <div  class="btn btnorder active"  uri='1'>
           7天
          </div>
-         <div  class="btn">
+         <div  class="btn btnorder"  uri='2'>
           一个月
          </div>
-         <div  class="btn">
+         <div  class="btn btnorder"  uri='3'>
           一个季度
          </div>
-         <div  class="btn">
+         <div  class="btn btnorder"  uri='4'>
           一年
          </div>
         </div>
         <ul  style="display: flex;">
-         <li >
-          <div  class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange" style="width: 380px;">
-           <i class="el-input__icon el-range__icon el-icon-time"></i>
-           <input placeholder="开始日期" name="" class="el-range-input" />
-           <span class="el-range-separator">至</span>
-           <input placeholder="结束日期" name="" class="el-range-input" />
-           <i class="el-input__icon el-range__close-icon"></i>
-          </div></li>
-         <li ><button  type="button" class="el-button blue1 el-button--primary is-round">
-           <!---->
-           <!----><span> 确定 </span></button></li>
+         <li >时间段选择
+          <input id="test3" class="demo-input" style="width: 300px" placeholder="日期时间范围">
+          <script>
+              laydate.render({
+                  elem: '#test3'
+                  , type: 'datetime'
+                  , range: true
+                  , theme: "#3CACFE"
+              });
+          </script>
+          </li>
+
         </ul>
        </div>
        <div  class="bottom">
         <div  class="contents active">
-         <div  class="tu3"></div>
+         <div  class="tu3" >
+         </div>
         </div>
         <div  class="contents">
          一个月
@@ -401,7 +539,181 @@
           , range: true
           , theme: "#3CACFE"
       });
+      $(function () {
+          var myCharts = echarts.init(document.querySelector('.tu3'));
+          $('#test3').on('blur',function(){
+              $('.laydate-btns-confirm').on('click',function () {
+                  let  test3=$('#test3');
+                  let date = test3.val().split(" - ");
+                  console.log(date);
+                  var sta=date[0];var end=date[1];
+                  var url="<?= Yii::$service->url->getUrl('shop/datas/searchdate') ?>?type=1&sta="+sta+"&end="+end;
+                  $.get(url).done(function (data) {
+                      var row =JSON.parse(data);
+                      // 填入数据
+                      myCharts.setOption({
+                          title: {
+                              text: ''
+                          },
+                          tooltip: {},
+                          legend: {
+                              data:['下单','成交']
+                          },
+                          xAxis: {
+                              data:row.dat    /* row.dat */
+                          },
+                          yAxis: {},
+                          series: [{
+                              name: '下单',
+                              type: 'line',
+                              data:row.numall    /* row.num */
+                          },
+                              {
+                                  name: '成交',
+                                  type: 'line',
+                                  data:row.num    /* row.num */
+                              },
+                          ],
+                          toolbox: {
 
+                              show: true,
+
+                              feature: {
+
+                                  saveAsImage: {
+
+                                      show:true,
+
+                                      excludeComponents :['toolbox'],
+
+                                      pixelRatio: 2
+
+                                  }
+
+                              }
+
+                          },
+                          // color: ['rgb(48,163,254)','rgb(55,223,116)','rgb(253,203,82)']
+                      });
+                  });
+              })
+          })
+
+          var url = "<?= Yii::$service->url->getUrl("shop/datas/week") ?>?type="+3;
+          $('.btnorder').on("click",function () {
+              $('.btnorder').removeClass('active').filter(this).addClass('active');
+
+              if($(this).attr("uri")==1){
+                  url="<?= Yii::$service->url->getUrl("shop/datas/week") ?>?type="+3;
+              }else if($(this).attr("uri")==2){
+                  url="<?= Yii::$service->url->getUrl("shop/datas/month") ?>?type="+3;
+              }else if($(this).attr("uri")==3){
+                  url="<?= Yii::$service->url->getUrl("shop/datas/quarter") ?>?type="+3;
+              }else if($(this).attr("uri")==4){
+                  url="<?= Yii::$service->url->getUrl("shop/datas/year") ?>?type="+3;
+              }
+              $.get(url).done(function (data) {
+                  var row =JSON.parse(data);
+                  // 填入数据
+                  myCharts.setOption({
+                      title: {
+                          text: ''
+                      },
+                      tooltip: {},
+                      legend: {
+                          data:['下单','成交']
+                      },
+                      xAxis: {
+                          data:row.dat    /* row.dat */
+                      },
+                      yAxis: {},
+                      series: [{
+                          name: '下单',
+                          type: 'line',
+                          data:row.numall    /* row.num */
+                      },
+                      {
+                          name: '成交',
+                          type: 'line',
+                          data:row.num    /* row.num */
+                      },
+                      ],
+                      toolbox: {
+
+                          show: true,
+
+                          feature: {
+
+                              saveAsImage: {
+
+                                  show:true,
+
+                                  excludeComponents :['toolbox'],
+
+                                  pixelRatio: 2
+
+                              }
+
+                          }
+
+                      },
+                      // color: ['rgb(48,163,254)','rgb(55,223,116)','rgb(253,203,82)']
+                  });
+
+
+              });
+          })
+          $.get(url).done(function (data) {
+              var row =JSON.parse(data);
+              // 填入数据
+              myCharts.setOption({
+                  title: {
+                      text: ''
+                  },
+                  tooltip: {},
+                  legend: {
+                      data:['下单','成交']
+                  },
+                  xAxis: {
+                      data:row.dat    /* row.dat */
+                  },
+                  yAxis: {},
+                  series: [{
+                      name: '下单',
+                      type: 'line',
+                      data:row.numall    /* row.num */
+                  },
+                      {
+                          name: '成交',
+                          type: 'line',
+                          data:row.num    /* row.num */
+                      },
+                  ],
+                  toolbox: {
+
+                      show: true,
+
+                      feature: {
+
+                          saveAsImage: {
+
+                              show:true,
+
+                              excludeComponents :['toolbox'],
+
+                              pixelRatio: 2
+
+                          }
+
+                      }
+
+                  },
+                  // color: ['rgb(48,163,254)','rgb(55,223,116)','rgb(253,203,82)']
+              });
+
+
+          });
+      })
   </script>
 <style>
     .content {
@@ -568,7 +880,7 @@
     .item2 .bottom .contents .tu3{
         width: 100%;
         height: 500px;
-        background: url("/public/img/zhexiantu.png") no-repeat center center /100% auto;
+        /*background: url("/public/img/zhexiantu.png") no-repeat center center /100% auto;*/
     }
   /*  .content .blue {
         width: 112px;

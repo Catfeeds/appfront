@@ -17,9 +17,15 @@ use yii\helpers\Url;
             <form action="<?= Yii::$service->url->getUrl('/admin/index/member') ?>" method="get">
 
                 <span>会员名称</span>
-                <input type="text" name="firstname" value="<?php if ($firstname!=null){echo $firstname;}?>">
+                <input type="text" name="firstname"
+                    <?php if($firstname){?>
+                        value="<?= $firstname?>"
+                    <?php }else{?>
+                        placeholder="请输入会员名称"
+                    <?php }?>
+                >
                 <span class="search-ID">ID</span>
-                <input type="text" name="id" value="<?php if ($id!=null){echo $id;}?>">
+                <input type="text" name="id" placeholder="请输入ID号">
 
                 <div class="xiala">
                     <span class="search-ID">等级</span>
@@ -119,7 +125,7 @@ use yii\helpers\Url;
                                 <div class="cell el-tooltip">
                                     <?php if ($v["status"]==1){
                                         echo "正常";
-                                    }else if($v["status"]==2){echo "黑名单";} else if($v["status"]==3){echo "冻结";}?>
+                                    }else if($v["status"]==0){echo "黑名单";} else if($v["status"]==2){echo "冻结";}?>
                                 </div>
                             </td>
                             <td class="el-table_2_column_14">
@@ -132,9 +138,13 @@ use yii\helpers\Url;
                                 &nbsp;<label>|</label>&nbsp;
                                 <a style="color: #41b2fc" href="<?= Yii::$service->url->getUrl('admin/index/delmember',array('id'=>$v['id']))?>">删除</a>
                                 &nbsp;<label>|</label>&nbsp;
-                                <a style="color: #ff5932" href="<?= Yii::$service->url->getUrl('admin/index/mblacklist',array('id'=>$v['id']))?>">移入黑名单</a>
+                                <a style="color:<?php if($v["status"]!=0){echo "#ff5932";}else{echo "#00FE0B";}?>" href="<?= Yii::$service->url->getUrl('admin/index/mblacklist',array('id'=>$v['id']))?>">
+                                    <?php if($v["status"]!=0){echo "移入黑名单";}else{echo "移出黑名单";}?>
+                                </a>
                                 &nbsp;<label>|</label>&nbsp;
-                                <a style="color: #41b2fc" href="<?= Yii::$service->url->getUrl('admin/index/mfreeze',array('id'=>$v['id']))?>">冻结账号</a>
+                                <a style="color: <?php if($v["status"]!=2){echo "#41b2fc";}else{echo "#00FE0B";}?>" href="<?= Yii::$service->url->getUrl('admin/index/mfreeze',array('id'=>$v['id']))?>">
+                                    <?php if($v["status"]!=2){echo "冻结账号";}else{echo "解除冻结";}?>
+                                </a>
                             </td>
                         </tr>
                     <?php } ?>
@@ -146,20 +156,22 @@ use yii\helpers\Url;
 
 
         <div class="admincount" style="justify-content: flex-end;margin-bottom: 0px;margin-top:30px;font-size: 14px;">
+            <?php if($tot>10){?>
             <div class="admincountall">
                 <span style="color: #3db0ff">·</span>&nbsp;<span>总计</span><span><?=$tot?></span><span>记录</span>
             </div>
             <div class="admintotalpage">
                 <span style="color: #29c99a">·</span>&nbsp;<span>分</span><span
-                        style="color: #29c99a"><?= ceil($tot/2)?></span><span>页</span>
+                        style="color: #29c99a"><?= ceil($tot/10)?></span><span>页</span>
             </div>
             <div class="admintotalpage">
                 <span style="color: #29c99a">·</span>&nbsp;<span>每页</span>
                 <input type="text" style="display: inline-block;width: 40px;height: 20px;border-radius: 10px;
                             border: 1px solid #ebf6ff;background: #f3faff;outline: none;padding:0 5px;
                             box-sizing: border-box;text-align: center;color:#29c99a;line-height: 20px; "
-                       value="2">
+                       value="10" disabled>
             </div>
+            <?php }?>
         </div>
 
 

@@ -40,8 +40,8 @@ use yii\helpers\Url;
                     <colgroup>
                         <col name="el-table_2_column_6" width="80">
                         <col name="el-table_2_column_7" width="120">
-                        <col name="el-table_2_column_8" width="120">
-                        <col name="el-table_2_column_9" width="120">
+                        <col name="el-table_2_column_8" width="200">
+                        <col name="el-table_2_column_9" width="150">
                         <col name="el-table_2_column_11" width="500">
                     </colgroup>
                     <thead class="has-gutter">
@@ -72,8 +72,8 @@ use yii\helpers\Url;
                     <colgroup>
                         <col name="el-table_2_column_6" width="80">
                         <col name="el-table_2_column_7" width="120">
-                        <col name="el-table_2_column_8" width="120">
-                        <col name="el-table_2_column_9" width="120">
+                        <col name="el-table_2_column_8" width="200">
+                        <col name="el-table_2_column_9" width="150">
                         <col name="el-table_2_column_11" width="500">
                     </colgroup>
                     <?php if($count>0){ ?>
@@ -127,7 +127,7 @@ use yii\helpers\Url;
                 </table>
             </div>
         </div>
-        <?php if($count>0){ ?>
+        <?php if($count>5){ ?>
         <div class="adminpagination">
             <div class="pagination">
                 <div class="block">
@@ -138,13 +138,6 @@ use yii\helpers\Url;
                         <div class="admintotalpage">
                             <span style="color: #29c99a">·</span>&nbsp;<span>分</span><span style="color: #29c99a"><?= ceil($count / $pagination->limit) ?></span><span>页</span>
                         </div>
-                        <!-- <div class="admintotalpage">
-                            <span style="color: #29c99a">·</span>&nbsp;<span>每页</span>
-                            <input type="text" style="display: inline-block;width: 40px;height: 20px;border-radius: 10px;
-                            border: 1px solid #ebf6ff;background: #f3faff;outline: none;padding:0 5px;
-                            box-sizing: border-box;text-align: center;color:#29c99a;line-height: 20px; "
-                                   value="10" >
-                        </div> -->
                     </div>
                     <div style="width: 100%; position: relative;margin-top: 40px;">
                         <div style="font-size: 12px; position: absolute; bottom: 0; right: 0; display: flex; justify-content: space-between;">

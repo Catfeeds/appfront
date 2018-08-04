@@ -211,7 +211,7 @@ $cssOptions = [
         .aside .logo {
             width: 100%;
             height: 125px;
-            background: url("/public/img/logo.png") no-repeat center center/100% auto;
+            background: url("/public/img/logoshop.png") no-repeat center center/100% auto;
         }
 
         .aside-list li {
@@ -475,14 +475,13 @@ $cssOptions = [
         // 筛选左侧菜单
         let asd=document.querySelectorAll(".aside li");
 
-        let str1=url[5];
-        let arr1=str1.split("?");
+        let arr1="<?php echo $_SESSION['pagess'];?>";
 
 
         for (let i=0; i <asd.length ;i++) {
            let url12=asd[i].getAttribute('href1');
 
-           let n = url12.search('/'+arr1[0]);
+           let n = url12.search('/'+arr1);
 
            if (n>=1) {
                 asd[i].className='active';
