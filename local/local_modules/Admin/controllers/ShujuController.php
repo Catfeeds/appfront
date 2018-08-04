@@ -47,18 +47,152 @@ class ShujuController extends PublicsController
 //     	print_r($data);;die;
         return $this->render($this->action->id,$data);
     }
+//=========================商家数据==================================
     //商家数据
     public function actionShop(){
-        $res = Yii::$app->db->createCommand('select * from shop')->queryAll();
+        $req = Yii::$app->request;
+        $tot = 0;
+        $province = Yii::$app->db->createCommand('select * from sys_province')->queryAll();
+        $city = Yii::$app->db->createCommand('select * from sys_city')->queryAll();
+        $district = Yii::$app->db->createCommand('select * from sys_district')->queryAll();
+
+        $province_id = $req->get(province_id);
+        $city_id = $req->get(city_id);
+        $district_id = $req->get(district_id);
+        $shop_name = $req->get(shop_name);
+        $where = "WHERE shop_type = 2";
+        if($shop_name!=null && $shop_name!=""){
+            $where .=" AND shop_name like '%$shop_name%'";
+        }
+        if($province_id!=0 && $province_id!=0){
+            $where .=" AND province_id=$province_id";
+        }
+        if($city_id!=0 && $city_id!=0){
+            $where .=" AND city_id=$city_id";
+        }
+        if($district_id!=0 && $district_id!=0){
+            $where .=" AND district_id=$district_id";
+        }
+        $pages =  Yii::$app->db->createCommand("SELECT * FROM shop $where")->queryAll();
+        foreach ($pages as $k => $v) {
+            $tot++;
+        }
         $pagination = new Pagination([
-            'defaultPageSize' => 2,
-            'totalCount' => 2,
+            'defaultPageSize' => 10,
+            'totalCount' => $tot,
         ]);
+        $sql = "SELECT * FROM shop $where  LIMIT $pagination->offset,$pagination->limit";
+        $res = Yii::$app->db->createCommand($sql)->queryAll();
+        $_SESSION['shopdata'] = $res;
+        $query = new Query;
+// 好评率
+        $arr = array();
+//加上where条件就可以了
+        foreach ($res as $key=>$value){
+            $condition['shop_id'] =$value["shop_id"];
+            $review = $query->from("review")->all();
+            $num = 0;
+            $count = 0;
+            foreach ($review as $k=>$v){
+                $num++;
+                $count += $v['rate_star'];
+            }
+            $arr[$key] = floor($count/$num/5*100).'%';
+            $num = 0;
+            $count = 0;
+        }
+        $_SESSION["arr"] = $arr;
+
+
         $data['res'] = $res;
         $data['pagination'] = $pagination;
-
+        $data['tot'] = $tot;
+        $data['province'] = $province;
+        $data['city'] = $city;
+        $data['district'] =$district ;
+        $data['shop_name'] = $shop_name;
+        $data['arr'] = $arr;
         return $this->render($this->action->id,$data);
     }
+    //加载市区
+    public function actionGetcity()
+    {
+        $province_id = $_GET['province_id'];
+        $sql = 'select * from sys_city WHERE province_id=' . $province_id;
+        $city = Yii::$app->db->createCommand($sql)->queryAll();
+        return json_encode($city);
+    }
+
+    //加载县
+    public function actionGetdistrict()
+    {
+        $city_id = $_GET['city_id'];
+        $sql = 'select * from sys_district where city_id =' . $city_id;
+        $district = Yii::$app->db->createCommand($sql)->queryAll();
+        return json_encode($district);
+    }
+    //导出表格
+    public function actionExport(){
+        $data = $_SESSION['shopdata'];
+        if ($data == null){
+            exit("no datas!");
+        }
+        $shop_type = Yii::$app->request->get(shop_type);
+        if ($shop_type == 2){
+            $shop = "商家";
+        }else if ($shop_type == 1){
+            $shop = "水司";
+        }
+        $province = Yii::$app->db->createCommand('select * from sys_province')->queryAll();
+        $city = Yii::$app->db->createCommand('select * from sys_city')->queryAll();
+        $district = Yii::$app->db->createCommand('select * from sys_district')->queryAll();
+        header('Content-Type: text/xls');
+        header ( "Content-type:application/vnd.ms-excel;charset=utf-8" );
+        header('Content-Disposition: attachment;filename=" 数据导出.xls"');
+        header('Cache-Control:must-revalidate,post-check=0,pre-check=0');
+        header('Expires:0');
+        header('Pragma:public');
+
+        //利用表格导出到excel文件
+        $table = '<table border="1"><tr>
+        <th colspan="4">
+            商家数据
+        </th>
+        </tr><tr>';
+        $arr = $_SESSION['arr'];
+        $th = array(
+            'ID','商家名称','地区','好评率'
+        );
+
+
+        $beginThismonth=mktime(0,0,0,date('m'),1,date('Y'));
+        $endThismonth=mktime(23,59,59,date('m'),date('t'),date('Y'));
+        /*$sql="SELECT *
+    			FROM shop as A
+    			WHERE A.shop_type = 2
+    		  ";*/
+        //AND B.updated_at>{$beginThismonth} AND B.updated_at<{$endThismonth}
+
+        //循环表头数组到excel里
+        foreach($th as $i){
+            $table.="<th>".$i."</th>";
+        }
+        $table.='</tr>';
+        //将数据以表格形式循环到excel，这里根据实际数组不同表格可以自行拼接调整
+        foreach ($data as $k=>$v){
+            $table .= '<tr>';
+            $table .= '<td>' . $v['shop_id']. '</td>';
+            $table .= '<td>' . $v['shop_name']. '</td>';
+            $table .= '<td>' . $province[$v['province_id']]["province_name"] .$city[$v['city_id']]["city_name"].$district[$v['district_id']]["district_name"]. '</td>';
+            $table .= '<td>' . $arr[$k]. '</td>';
+            $table .= '</tr>';
+        }
+        $table .='</table>';
+        echo $table;
+
+
+    }
+
     //查看商家数据
     public function actionWshop(){
         $req = Yii::$app->request;
@@ -145,13 +279,53 @@ where order_status>=5 and refund_at=$created_at1 and refund_at")->queryAll();
 
     //水司数据
     public function actionWater(){
+        $req = Yii::$app->request;
+        $tot = 0;
+        $province = Yii::$app->db->createCommand('select * from sys_province')->queryAll();
+        $province_id = $req->get(province_id);
+        $city_id = $req->get(city_id);
+        $district_id = $req->get(district_id);
+        $shop_name = $req->get(shop_name);
+        $where = "WHERE shop_type = 2";
+        if($shop_name!=null && $shop_name!=""){
+            $where .=" AND shop_name like '%$shop_name%'";
+        }
+        if($province_id!=0 && $province_id!=0){
+            $where .=" AND province_id=$province_id";
+        }
+        if($city_id!=0 && $city_id!=0){
+            $where .=" AND city_id=$city_id";
+        }
+        if($district_id!=0 && $district_id!=0){
+            $where .=" AND district_id=$district_id";
+        }
+        $pages =  Yii::$app->db->createCommand("SELECT * FROM shop $where")->queryAll();
+        foreach ($pages as $k => $v) {
+            $tot++;
+        }
         $pagination = new Pagination([
-            'defaultPageSize' => 2,
-            'totalCount' => 2,
+            'defaultPageSize' => 10,
+            'totalCount' => $tot,
         ]);
+        $sql = "SELECT * FROM shop $where  LIMIT $pagination->offset,$pagination->limit";
+        $res = Yii::$app->db->createCommand($sql)->queryAll();
+
+        $data['res'] = $res;
         $data['pagination'] = $pagination;
+        $data['tot'] = $tot;
+        $data['province'] = $province;
+        $data['shop_name'] = $shop_name;
         return $this->render($this->action->id,$data);
     }
+    //查看水司
+    public function actionWwater(){
+        $req = Yii::$app->request;
+        $id = $req->get(id);
+        $res = Yii::$app->db->createCommand('SELECT * FROM shop WHERE id = $id');
+        $data['res'] = $res;
+        return $this->render($this->action->id,$data);
+    }
+
     /*
      * 返回最近小时的时间和新增量
      * 参数1：hours int 最近的前几个小时

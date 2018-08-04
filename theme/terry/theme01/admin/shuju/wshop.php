@@ -7,118 +7,9 @@
                     <span>数据中心</span>&nbsp;
                     <span>·&nbsp;商家数据</span>
                 </div>
-                <div class="ShopMannager-search">
-                    <div class="xiala">
-                        <select name="member-level" id="member-level sel"
-                                style="width: 180px;background: #f3faff;margin-left:0;" onchange="sel(1)">
-                            <option value="1">最近一周</option>
-                            <option value="2">最近一月</option>
-                            <option value="3">最近一年</option>
-                        </select>
-                        <div class="xialaimg1"></div>
-                    </div>
-                    <!--时间戳-->
-                    <div class="block" style="float: left;line-height: 48px; margin-left: 20px;position: relative;display: flex">
-                        <span class="demonstration" style="width:100px">时间段选择</span>
-                        <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test1">
-                        <style>
-                            .demo-input {
-                                padding-left: 10px;
-                                height: 30px;
-                                min-width: 300px;
-                                line-height: 38px;
-                                border: 1px solid #e6e6e6;
-                                background-color: #f3faff;
-                                border-radius: 30px;
-                                outline: none;
-                                margin:auto 0;
-                            }
+               <!-- <div class="ShopMannager-search">
 
-                            .demo-input:hover {
-                                border-color: #c0c4cc;
-                            }
-
-                            .demo-input:focus {
-                                border-color: #3CACFE;
-                            }
-                            .layui-laydate .layui-this{
-                                background: #30B5FE !important;
-                            }
-                        </style>
-                        <script>
-                            laydate.render({
-                                elem: '#test1'
-                                , type: 'datetime'
-                                , range: true
-                                , theme: "#3CACFE"
-                            });
-                        </script>
-                    </div>
-                    <button>查询</button>
-
-                    <script>
-                        document.querySelector("#test1").addEventListener("blur",function () {
-                            document.querySelector(".laydate-btns-confirm").onclick=function () {
-                                sel(2);
-                            }
-                        });
-                        var el_select = document.querySelector("#sel");
-                        var test1 =$('#test1').get(0);
-                        console.log(test1);
-                        sel(1);
-                        function sel(flag){
-                            var t1 = "",t2="";
-                            if(flag==1){
-                                if(el_select.value==1){
-                                    t1 = timeForMat(7)["t2"];
-                                    t2 = timeForMat(7)["t1"];
-                                }else if(el_select.value==2){
-                                    t1 = timeForMat(30)["t2"];
-                                    t2 = timeForMat(30)["t1"];
-                                }else if(el_select.value==3){
-                                    t1 = timeForMat(365)["t2"];
-                                    t2 = timeForMat(365)["t1"];
-                                }
-                                test1.value="";
-                            }else if(flag==2){
-                                el_select.value="";
-                                var arr = test1.value.split(" - ");
-                                t1=arr[0];t2=arr[1];
-                            }
-
-
-                            $.ajax({
-                                url:"/shop/datas/count?t1="+t1+"&t2="+t2,
-                                dataType:"json",
-                                success:function (data) {
-                                    document.querySelector(".xd").innerHTML=data[0].nums;
-                                    document.querySelector(".cj").innerHTML=data[1].nums;
-                                    document.querySelector(".th").innerHTML=data[2].nums;
-
-                                    var n=0;
-                                    data[3].forEach(function (val) {
-                                        if(val.rate_star>3){
-                                            n++;
-                                        }
-                                    });
-                                    if(data[3].length){
-                                        document.querySelector(".hp").innerHTML = ((n/(data[3].length)).toFixed(2)*100)+"%";
-
-                                    }else {
-                                        document.querySelector(".hp").innerHTML="无";
-                                    }
-
-                                }
-
-                            });
-
-
-                        }
-                        
-                        
-                    </script>
-                    
-                </div>
+                </div>-->
                 <div class="tongji ptongji">
                     <ul>
                         <li style="background: #fff;">
@@ -180,16 +71,27 @@
                     <div class="platdata-header">
                         <div class="platdata-headername">评价汇总</div>
                         <div class="platdata-headerright">
-                            <ul>
-                                <li class="btn1">七天</li>
-                                <li class="btn1">一个月</li>
-                                <li class="btn1">一个季度</li>
-                                <li class="btn1">一年</li>
+                            <ul class="wshop-active">
+                                <li class="btn1 chose-acive" onclick="fn(this)">七天</li>
+                                <li class="btn1" onclick="fn(this)">一个月</li>
+                                <li class="btn1" onclick="fn(this)">一个季度</li>
+                                <li class="btn1" onclick="fn(this)">一年</li>
                             </ul>
+                            <style>
+                                .chose-acive{
+                                    border-bottom:3px solid #30a2fe;
+                                }
+                            </style>
+                            <script>
+                                function fn(that){
+                                    $(".wshop-active li").removeClass("chose-acive");
+                                    $(that).addClass("chose-acive");
+                                }
+                            </script>
                             <!--时间戳-->
                             <div class="block" style="float: left;line-height: 48px; position: relative;
 margin-top:4px;display:flex">
-                                <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test2">
+                                <input type="text" name="data" class="demo-input" placeholder="请选择日期和时间范围" id="test2" style="text-align: center;">
                                 <style>
                                     .demo-input {
                                         padding-left: 10px;
@@ -225,34 +127,7 @@ margin-top:4px;display:flex">
                                 </script>
 
                             </div>
-<!--                                <div class="timer">-->
-<!--                                    <el-date-picker-->
-<!--                                        v-model="value1"-->
-<!--                                        type="date"-->
-<!--                                        placeholder="请选择开始时间"-->
-<!--                                    >-->
-<!--                                    </el-date-picker>-->
-<!--                                    <div style="width: 26px;height: 26px;border-radius: 50%;-->
-<!--                background: #30a3fe; position: absolute;top:0;bottom:0;margin:auto 0;-->
-<!--                right:215px;pointer-events: none">-->
-<!--                                        <img src="/public/imgs/date.png" style="width: 12px;height: 12px;display:block;-->
-<!--margin:0 auto;margin-top:7px;">-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div class="timer">-->
-<!--                                    <el-date-picker-->
-<!--                                        v-model="value2"-->
-<!--                                        type="date"-->
-<!--                                        placeholder="请选择结束时间"-->
-<!--                                    >-->
-<!--                                    </el-date-picker>-->
-<!--                                    <div style="width: 26px;height: 26px;border-radius: 50%;-->
-<!--                background: #30a3fe; position: absolute;top:0;bottom:0;margin:auto 0;-->
-<!--                right:5px;pointer-events: none">-->
-<!--                                        <img src="/public/imgs/date.png" style="width: 12px;height: 12px;display:block;-->
-<!--margin:0 auto;margin-top:7px;">-->
-<!--                                    </div>-->
-<!--                                </div>-->
+
 
 
                             <button style="float: left;border:0;margin-top:15px;">确定</button>
@@ -400,39 +275,7 @@ margin-top:4px;display:flex">
                                 <li>一年</li>
                             </ul>
                             <!--时间戳-->
-                            <div class="block" style="float: left;line-height: 48px; position: relative;
-margin-top:4px;"
-                            >
-                                <div class="timer">
-                                    <el-date-picker
-                                        v-model="value1"
-                                        type="date"
-                                        placeholder="请选择开始时间"
-                                    >
-                                    </el-date-picker>
-                                    <div style="width: 26px;height: 26px;border-radius: 50%;
-                background: #30a3fe; position: absolute;top:0;bottom:0;margin:auto 0;
-                right:210px;pointer-events: none">
-                                        <img src="/public/imgs/date.png" style="width: 12px;height: 12px;display:block;
-margin:0 auto;margin-top:7px;">
-                                    </div>
-                                </div>
-                                <div class="timer">
-                                    <el-date-picker
-                                        v-model="value2"
-                                        type="date"
-                                        placeholder="请选择结束时间"
-                                    >
-                                    </el-date-picker>
-                                    <div style="width: 26px;height: 26px;border-radius: 50%;
-                background: #30a3fe; position: absolute;top:0;bottom:0;margin:auto 0;
-                right:5px;pointer-events: none">
-                                        <img src="/public/imgs/date.png" style="width: 12px;height: 12px;display:block;
-margin:0 auto;margin-top:7px;">
-                                    </div>
-                                </div>
 
-                            </div>
                             <button style="float: left;border:0;margin-top:13px;">确定</button>
                         </div>
                     </div>

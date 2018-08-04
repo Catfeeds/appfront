@@ -230,6 +230,7 @@ $cssOptions = [
         margin:0 auto;
         padding: 27px 0 0 0;
         box-sizing: border-box;
+        margin-bottom: 50px;
     }
 
     .adminmannager-title span {
@@ -263,7 +264,7 @@ $cssOptions = [
     }
 
     .adminmannager-search .search-ID {
-        margin-left: 50px;
+        margin-left: 10px;
     }
 
     /*搜索框*/
@@ -326,7 +327,7 @@ $cssOptions = [
     .adminmannager-search .indexsearch{
         width:  40px;
         height: 40px;
-        margin-left: 40px;
+        margin-left: 30px;
         margin-top: 5px;
         border-radius: 50%;
         float: left;
@@ -2218,7 +2219,7 @@ $cssOptions = [
         display: none;
     }
     #platdata .ptongji li{
-        box-shadow: 2px 2px 5px #333333;
+        box-shadow: 2px 2px 5px rgba(51,51,51,0.3);
     }
     .ptongji .tongji-number div:first-child span{
         color:#30a3fe;
@@ -2614,6 +2615,7 @@ $cssOptions = [
     .apagination{font-size: 12px; position: absolute; bottom: 0; right: 0; display: flex; justify-content: space-between;}
     .paginationbox{width: 100%; position: relative;height: 50px;}
     button{outline: none!important;}
+    .jianju{margin:0 5px;}
 </style>
 <?php $this->beginPage() ?>
     <!doctype html>
