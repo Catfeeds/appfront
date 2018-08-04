@@ -30,12 +30,13 @@ $cssOptions = [
     <!doctype html>
     <html lang="en">
     <head>
+        <title>晋彤商家入驻系统</title>
+
         <?= Yii::$service->page->widget->render('head',$this); ?>
         <?= Yii::$service->page->widget->render('beforeContent',$this); ?>
         <?php $this->beginBody() ?>
         <?php $this->endBody() ?>
         <meta charset="UTF-8">
-        <title>Document</title>
     </head>
     <body>
         <?= $content ?>
