@@ -9,5 +9,7 @@
 return [
     'shop' => [
         'class' => '\appfront\local\local_modules\Shop\Module',
+        'defaultRoute' => 'index',
+        // 'defaultController' => 'index's
     ],
 ];
