@@ -42,8 +42,21 @@
           <!---->
          </div>
         </div></li> 
+      <style>
+        .demo-input {
+            padding-left: 10px;
+            height: 30px;
+            min-width: 300px;
+            line-height: 38px;
+            border: 1px solid #e6e6e6;
+            background-color: #f3faff;
+            border-radius: 30px;
+            outline: none;
+        }
+      </style>
        <li >时间段选择
-           <input id="test2" style="width: 300px">
+
+           <input id="test2" class="demo-input" placeholder="日期时间范围" style="width: 300px">
            <script>
                laydate.render({
                    elem: '#test2'
@@ -101,7 +114,7 @@
         </div> 
         <ul  style="display: flex;">
          <li >
-             <input id="test3" style="width: 300px">
+             <input id="test3" class="demo-input" placeholder="日期时间范围" style="width: 300px">
              <script>
                  laydate.render({
                      elem: '#test3'

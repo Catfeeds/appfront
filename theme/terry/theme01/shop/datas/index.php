@@ -18,10 +18,7 @@
                <option value="3">最近一年</option>
            </select>
         </li>
-          <li style="
-                        display: flex;
-                        align-items: center;
-                    ">时间段选择
+          <li style="display: flex; align-items: center;">时间段选择
               <div class="el-form-item__content" style="margin-left: 10px;">
                   <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test1">
               </div>
