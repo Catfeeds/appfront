@@ -1,7 +1,19 @@
 <div class="main-content">
     <?php if ($shop_state != 2) { ?>
+        <div class="biaoti" style="width: 1012px; margin: 0 auto;">
+            <div aria-label="Breadcrumb" role="navigation" class="el-breadcrumb">
+                        <span class="el-breadcrumb__item"><span role="link"
+                                                                class="el-breadcrumb__inner is-link">账户管理</span><span
+                                    role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
+                <span class="el-breadcrumb__item" aria-current="page"><span role="link"
+                                                                            class="el-breadcrumb__inner"><span
+                                style="color: rgb(48, 211, 102);">账单列表</span></span><span role="presentation"
+                                                                                          class="el-breadcrumb__separator">&middot;</span></span>
+            </div>
+        </div>
         <div style="width: 400px;height:20px;position: absolute;top: 100px;left: 0;right: 0;margin: auto;font-size: 20px;text-align: center">
-            店铺未被冻结，该功能暂时无法使用。
+            <!--店铺未被冻结，该功能暂时无法使用。-->
+            <img src="/public/imgs/dongjie.jpg" alt="">
         </div>
     <?php } else { ?>
         <div style="width: 1012px; margin: 0px auto;">
