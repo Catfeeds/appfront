@@ -80,7 +80,7 @@
                     </div>
                 </div>
                 <input type="hidden" name="id" value="<?= $ruler['id']?>">
-                <div style="margin-left:80px;">
+                <div style="margin-left:80px;margin-bottom: 50px;">
                     <button  type="submit" class="el-button red el-button--danger is-round">
                         <span>确定</span>
                     </button>

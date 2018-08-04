@@ -259,16 +259,16 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="el-form-item">
+                        <!--<div class="el-form-item">
                             <label class="el-form-item__label" style="width: 80px;">店铺关闭原因</label>
                             <div class="el-form-item__content" style="margin-left: 80px;">
                                 <div class="el-input">
                                     <input type="text" name="shop_close_info" autocomplete="off" class="el-input__inner"
                                            placeholder="请输入店铺关闭原因"
-                                           value="<?php echo $shopinfo['post']['shop_close_info'] ?>"  required />
+                                           value="<?php /*echo $shopinfo['post']['shop_close_info'] */?>"  required />
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                         <div class="el-form-item">
                             <label class="el-form-item__label" style="width: 80px;">店铺seo关键字</label>
                             <div class="el-form-item__content" style="margin-left: 80px;">
