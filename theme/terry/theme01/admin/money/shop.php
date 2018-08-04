@@ -58,7 +58,7 @@ use yii\helpers\Url;
                 	 <td>冻结</td>
                 	<?php }?>
                 	<td>
-                        <a style="color: #41b2fc" href="javascript:0">查看</a>
+                        <a style="color: #41b2fc" href="<?= Yii::$service->url->getUrl('admin/money/wshop', array('id' => $v['shop_id'])) ?>">查看</a>
                         &nbsp;<label>|</label>&nbsp;
                         <?php if($v['shop_state']==0){?>
 	                	<a style="color: #ff5932" href="javascript:open(<?php echo $v['shop_id']?>)">开启</a>
