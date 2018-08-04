@@ -155,22 +155,24 @@ use yii\helpers\Url;
         </div>
     </div>
     <div class="admincount" style="justify-content: flex-end;margin-bottom: 0px;margin-top:30px;font-size: 14px;">
-
+        <?php if($tot>10){?>
         <div class="admincountall">
-            <span style="color: #3db0ff">·</span>&nbsp;<span>总计</span><span><?=$tot?></span><span>记录</span>
+            <span style="color: #3db0ff">·</span>&nbsp;<span>总计</span>
+            <span class="jianju"><?=$tot?></span>
+            <span>记录</span>
         </div>
         <div class="admintotalpage">
-            <span style="color: #29c99a">·</span>&nbsp;<span>分</span><span
-                    style="color: #29c99a"><?= ceil($tot/2)?></span><span>页</span>
+            <span style="color: #29c99a">·</span>&nbsp;<span>分</span>
+            <span style="color: #29c99a" class="jianju"><?= ceil($tot/10)?></span><span>页</span>
         </div>
         <div class="admintotalpage">
             <span style="color: #29c99a">·</span>&nbsp;<span>每页</span>
             <input type="text" style="display: inline-block;width: 40px;height: 20px;border-radius: 10px;
                             border: 1px solid #ebf6ff;background: #f3faff;outline: none;padding:0 5px;
                             box-sizing: border-box;text-align: center;color:#29c99a;line-height: 20px; "
-                   value="2" disabled>
+                   value="10" disabled>
         </div>
-
+        <?php }?>
     </div>
 
 

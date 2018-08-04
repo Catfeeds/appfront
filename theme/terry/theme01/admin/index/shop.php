@@ -156,6 +156,7 @@ use yii\helpers\Url;
                             <col name="el-table_2_column_5" width="300">
                         </colgroup>
                         <tbody style="font-size: 12px;color:#82898e">
+                        <?php /*var_dump($rows)*/?>
                         <?php foreach ($rows as $v){?>
                             <tr class="el-table__row" style="height:36px;font-size: 14px;">
                                 <td class="el-table_2_column_11  ">

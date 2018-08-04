@@ -288,15 +288,13 @@
                         <li class="year but1" onclick='cut2(1,this)' uri='4'>一年</li>
                     </ul>
                     <!--时间戳-->
-                    <div class="block shijianchuo" 
-                    >
+                    <div class="block shijianchuo">
                         <div class="timer">
                             <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
                                 <input type="text" style="width:100%;height:100%;text-align: center;border:none;" name="data" class="demo-input"
                                        placeholder="请选择要查询的时间段" id="test11">
                             </div>
                         </div>
-
                     </div>
                     <button style="float: left;border:0;margin-top:20px;" onclick='btime()'>确定</button>
                 </div>
@@ -306,7 +304,7 @@
             </div>
             <div id="mychart2" style="width:700px;height:400px;float:left;">
             </div>
-            <script type="text/javascript">           
+            <script type="text/javascript">
             //日期时间范围
             laydate.render({
                 elem: '#test11'
