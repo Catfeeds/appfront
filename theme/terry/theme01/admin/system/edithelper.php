@@ -76,7 +76,7 @@
                     <label class="el-form-item__label" style="width: 120px;">标题:</label>
                     <div class="el-form-item__content" style="margin-left: 120px;">
                         <div class="el-input">
-                            <input type="text" value="" name="title" placeholder="<?=$help['title']?>" class="el-input__inner">
+                            <input type="text" value="<?=$help['title']?>" name="title" placeholder="<?=$help['title']?>" class="el-input__inner">
                         </div>
                     </div>
                 </div>

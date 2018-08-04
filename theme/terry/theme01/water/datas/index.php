@@ -321,7 +321,7 @@
                                      {
                                          type: 'pie',
                                          radius : '80%',
-                                         center: ['50%', '50%'],
+                                         center: ['40%', '50%'],
                                          selectedMode: 'single',
                                          data:[
                                              {value:a, name: '好评'},
@@ -378,16 +378,16 @@
           投诉汇总
          </div>
          <div  class="title_right">
-          <div  class="btn btn2 active">
+          <div  class="btn btn2 active" date="7">
            7天
           </div>
-          <div  class="btn btn2">
+          <div  class="btn btn2" date="30">
            一个月
           </div>
-          <div  class="btn btn2">
+          <div  class="btn btn2" date="90">
            一个季度
           </div>
-          <div  class="btn btn2">
+          <div  class="btn btn2" date="365">
            一年
           </div>
          </div>
@@ -447,59 +447,15 @@
                  $(function () {
                      $('#test4').on('blur',function(){
                          $('.laydate-btns-confirm').on('click',function () {
-                             // getinfo(2,-1);
-                             getChart(3,5,3);
+                             getinfo(2,-1);
+                             // getChart(3,5,3);
                          })
                      })
-                     function getChart(a,b,c) {
-                         var myChart = echarts.init(document.querySelector('.tu2'));
-                         var option={
-
-                             legend: {
-                                 itemWidth: 20,
-                                 itemHeight: 20,
-                                 orient: 'vertical',
-                                 // top: 'middle',
-                                 bottom: 20,
-                                 right:-4,
-                                 data: ['商家爽约', '服务不好','态度不好','连带推销','恶意跳单','乱收费','其他']
-                             },
-                             tooltip : {
-                                 trigger: 'item',
-                                 formatter: "{a} <br/>{b} : {c} ({d}%)"
-                             },
-                             series : [
-                                 {
-                                     type: 'pie',
-                                     radius : '80%',
-                                     center: ['50%', '50%'],
-                                     selectedMode: 'single',
-                                     data:[
-                                         {value:a, name: '商家爽约'},
-                                         {value:b, name: '服务不好'},
-                                         {value:c, name: '态度不好'},
-                                         {value:c, name: '连带推销'},
-                                         {value:c, name: '恶意跳单'},
-                                         {value:c, name: '乱收费'},
-                                         {value:c, name: '其他'}
-                                     ],
-                                     itemStyle: {
-                                         normal: {
-                                             borderWidth: 10,
-                                             borderColor: '#ffffff',
-                                         },
-
-                                     }
-                                 }
-                             ],
-                             color: ['rgb(48,163,254)','rgb(55,223,116)','rgb(253,203,82)']
-                         };
-                         myChart.setOption(option);
-                     }
                      $('.btn2').on('click',function(){
                          $('.btn2').removeClass('active').filter(this).addClass('active');
                          let  test4=$('#test4');
                          let date=$(this).attr('date');
+                         console.log($('.btn2'));
                          getinfo(1,date);
                      })
                      function getinfo(flag,date) {
@@ -519,21 +475,32 @@
                                  t2 = timeForMat(365)["t1"];
                              }
                          }else if(flag==2){
-                             date = test2.value.split(" - ");
+                             date = test4.value.split(" - ");
                              t1=date[0];t2=date[1];
                          }
-
-                         var favorable,reviewable,nagetivable;
+                          var type1,type2,type3,type4,type5,type6,type7
                          $.ajax({
                              url:"/water/datas/complaint?t1="+t1+"&t2="+t2,
                              dataType:'json',
                              success:function (msg) {
                                  console.log(msg);
-                                 // getChart(3,5,3);
+                                 for(let i=0;i<msg.length;i++){
+                                     type1=msg.filter(element=>{return element.ctype==1})
+                                     type2=msg.filter(element=>{return element.ctype==2})
+                                     type3=msg.filter(element=>{return element.ctype==3})
+                                     type4=msg.filter(element=>{return element.ctype==4})
+                                     type5=msg.filter(element=>{return element.ctype==5})
+                                     type6=msg.filter(element=>{return element.ctype==6})
+                                     type7=msg.filter(element=>{return element.ctype==7})
+                                 }
+                                 var  complaintArr=[type1.length,type2.length,type3.length,type4.length,type5.length,type6.length,type7.length];
+
+                                 getChart(complaintArr);
+
                              }
                          });
 
-                         function getChart(a,b,c) {
+                         function getChart(arr) {
                              var myChart = echarts.init(document.querySelector('.tu2'));
                              var option={
 
@@ -543,8 +510,8 @@
                                      orient: 'vertical',
                                      // top: 'middle',
                                      bottom: 20,
-                                     right:24,
-                                     data: ['商家爽约', '服务不好','态度不好']
+                                     right:4,
+                                     data: ['商家爽约', '服务不好','态度不好','连带推销','恶意跳单','乱收费','其他']
                                  },
                                  tooltip : {
                                      trigger: 'item',
@@ -554,12 +521,29 @@
                                      {
                                          type: 'pie',
                                          radius : '80%',
-                                         center: ['50%', '50%'],
+                                         center: ['40%', '50%'],
                                          selectedMode: 'single',
+                                         label: {
+                                             normal: {
+                                                 show: false
+                                             },
+                                             emphasis: {
+                                                 show: true
+                                             }
+                                         },
+                                         labelLine: {
+                                             normal: {
+                                                 show: false
+                                             }
+                                         },
                                          data:[
-                                             {value:a, name: '商家爽约'},
-                                             {value:b, name: '服务不好'},
-                                             {value:c, name: '态度不好'},
+                                             {value:arr[0], name: '商家爽约'},
+                                             {value:arr[1], name: '服务不好'},
+                                             {value:arr[2], name: '态度不好'},
+                                             {value:arr[3], name: '连带推销'},
+                                             {value:arr[4], name: '恶意跳单'},
+                                             {value:arr[5], name: '乱收费'},
+                                             {value:arr[6], name: '其他'},
                                          ],
                                          itemStyle: {
                                              normal: {
@@ -570,17 +554,12 @@
                                          }
                                      }
                                  ],
-                                 color: ['rgb(48,163,254)','rgb(55,223,116)','rgb(253,203,82)']
+                                 color: ['rgb(55,223,116)','rgb(253,203,82)','rgb(249,140,44)','rgb(248,72,96)','rgb(128,152,255)','rgb(18,206,218)','rgb(59,172,254)']
                              };
                              myChart.setOption(option);
                          }
-                         function filtert2(arr,t2) {
-                             arr=arr.filter(ele=>{return ele.review_date<t2});
-                             return arr;
-                         }
                      }
-
-                     // $('.btn2').triggerHandler('click');
+                     $('.btn2').triggerHandler('click');
                  })
              </script>
              <!--zjz-->

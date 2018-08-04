@@ -577,9 +577,9 @@ public function actionAddhelp(){
 
         $sql ="update article set title = '{$data['title']}',content = '{$data['content']}' where id = {$data['id']}";
         $res = Yii::$app->db->createCommand($sql)->execute();
-        if($res){
+
             return $this->redirect("/admin/system/helper");
-        }
+
     }
     //帮助页面的排序
     public function actionActiclesort()
