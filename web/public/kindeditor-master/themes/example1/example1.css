@@ -1,0 +1,12 @@
+.ke-toolbar {
+    border-bottom: 1px solid #CCC;
+    background-color:#f3faff;
+    padding: 2px 5px;
+    text-align: left;
+    overflow: hidden;
+    zoom: 1;
+}
+.ke-content img{
+    width: 150px;
+    height:auto;
+}

@@ -34,6 +34,7 @@
         width: 96px;
         height: 96px;
         display: inline-block;
+        margin-left:7px;
         background: url("/public/img/sptp2.png") no-repeat center center /100% auto;
     }
 
@@ -105,7 +106,7 @@
                         <div class="close" onclick="del(this)">&times;</div>
                         <input accept="jpg;" type="file" onchange="uploads(this)" name="file[]" style="display:none" class="img">
                     </div>
-                    <div style="line-height: 28px;font-size:14px;color: #A2D5FD;margin-top:10px;margin-left:130px;">
+                    <div style="line-height: 28px;font-size:14px;color: #A2D5FD;margin-top:10px;margin-left:170px;">
                         图标尺寸为（宽*高）：200*200px
                     </div>
                 </div>
