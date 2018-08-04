@@ -119,6 +119,8 @@ class OrdersController extends PublicsController
         $datas["all"] = $all;
         $datas["count"] = $countArr['tot'];
         $datas["flag"] = $get["flag"]?$get["flag"]:0;
+        $_SESSION['pagess']='index';
+
         return $this->render($this->action->id, $datas);
     }
 
@@ -143,6 +145,8 @@ class OrdersController extends PublicsController
         $res1 = Yii::$app->db->createCommand($sql)->queryAll();
         $res["goodDatas"] = $res1;
         $datas["res"] = $res;
+        $_SESSION['pagess']='index';
+        
         return $this->render($this->action->id, $datas);
     }
 
@@ -165,7 +169,8 @@ class OrdersController extends PublicsController
         $datas["province"] = $province;
         $datas["city"] = $city;
         $datas["county"] = $county;
-
+        $_SESSION['pagess']='index';
+        
         return $this->render($this->action->id, $datas);
     }
 
@@ -244,7 +249,7 @@ class OrdersController extends PublicsController
         $data["pagination"] = $pagination;
         $data["count"] = $count[0]['tot'];
 
-
+        $_SESSION['pagess']='dispute';
         return $this->render($this->action->id,$data);
 
     }
@@ -324,7 +329,8 @@ class OrdersController extends PublicsController
         $res["goods"] = $goods;
 
         $data["res"] = $res;
-
+        $_SESSION['pagess']='dispute';
+        
         return $this->render($this->action->id,$data);
 
     }

@@ -73,6 +73,8 @@ class AccountController extends PublicsController
         $data["tot"] = $count[0]["tot"];
         $data["res"] = $res;
         $data["pagination"] = $pagination;
+        $_SESSION['pagess']='index';
+
         return $this->render($this->action->id,$data);
 
     }
@@ -86,6 +88,8 @@ class AccountController extends PublicsController
         $res = Yii::$app->db->createCommand("select * from shop where uid='{$_SESSION[uid]}'")->queryOne();
 
         $datas["res"] = $res;
+        $_SESSION['pagess']='realname';
+
         return $this->render($this->action->id,$datas);
 
 
@@ -97,6 +101,7 @@ class AccountController extends PublicsController
     public function actionMoney(){
 
         $data = [];
+        $_SESSION['pagess']='money';
 
         return $this->render($this->action->id,$data);
 
@@ -128,6 +133,8 @@ class AccountController extends PublicsController
 
         }
         $datas["shop_state"] = $shop_state;
+        $_SESSION['pagess']='thawing';
+
 
         return $this->render($this->action->id,$datas);
     }
