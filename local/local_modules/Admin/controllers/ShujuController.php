@@ -101,28 +101,34 @@ class ShujuController extends PublicsController
                 $num++;
                 $count += $v['rate_star'];
             }
-            $arr[$key] = floor($count/$num/5*100).'%';
+            $arr[$key] = ceil($count/$num/5*100).'%';
             $num = 0;
             $count = 0;
         }
         $_SESSION["arr"] = $arr;
 //投诉率
+
+        $completenum = array();//每个商店的所有完成订单的情况
         $tousunum = array();
         foreach ($res as $k=>$v){
-            $tousunum[$k] = 0;
+            $completenum[$k] = 0; //每个订单已完成的个数
             $shop_id = $v['shop_id'];
+            //所有完成订单个数
             $tousu = Yii::$app->db->createCommand("SELECT * FROM sales_flat_order WHERE shop_id = $shop_id and order_status='4'")->queryAll();
             foreach ($tousu as $tk=>$tv){
-                $tousunum[$k] ++;
+                $completenum[$k] ++;
             }
-            var_dump($shop_id);
+            //评价投诉的个数$badreview
             $condition['shop_id'] = $v["shop_id"];
-            $tousulv = $query->from("review")->where($condition)->all();
-            var_dump($tousulv);
+            $condition['status'] = 0;//评论状态为0时，则是投诉
+            $badreview = $query->from("review")->where($condition)->all();
+            //求出投诉率
+            if ($badreview==null){
+                $tousunum[$k] = 0;
+            }else{
+                $tousunum[$k] = $badreview[$k]/$completenum[$k];
+            }
         }
-//        var_dump($tousunum);
-
-        exit;
 
 
         $data['res'] = $res;
@@ -133,6 +139,7 @@ class ShujuController extends PublicsController
         $data['district'] =$district ;
         $data['shop_name'] = $shop_name;
         $data['arr'] = $arr;
+        $data['tousunum'] = $tousunum;
         return $this->render($this->action->id,$data);
     }
     //加载市区
@@ -217,12 +224,39 @@ class ShujuController extends PublicsController
     //查看商家数据
     public function actionWshop(){
         $req = Yii::$app->request;
-//        $id = $req->get(id);
-//        $data["id"] = $id;
+        $id = $req->get(id);
+        $query = new Query();
+        //商品销售
+//        var_dump($id);
+        $condition['created_user_id'] = (int)$id;//created_user_id和shop_id相对应
+        $tot = $query->from("product_flat")->where($condition)->count();
+        // 实例化分页对象
+        $pagination = new Pagination([
+            'defaultPageSize' => 10,
+            'totalCount' => $tot,
+        ]);
+        $sales = $query->from("product_flat")->where($condition)->offset($pagination->offset)->limit($pagination->limit)->all();
+        //根据总销售额排序由高到低
+        $arr = array();
+        for($i=0;$i<count($sales);$i++)
+        {
+            for($j=count($sales)-1;$j>$i;$j--){
+                $salescount1 = $sales[$j]['price']*$sales[$j]['score'];
+                $salescount2 = $sales[$j-1]['price']*$sales[$j-1]['score'];
+                if($salescount1<$salescount2){
+                    $temp = $sales[$j];
+                    $sales[$j] = $sales[$j-1];
+                    $sales[$j-1] = $temp;
+                }
+            }
+        }
 
-        return $this->render($this->action->id);
+        $data['sales'] = $sales;
+        $data['tot'] = $tot;
+        $data['pagination'] = $pagination;
+        return $this->render($this->action->id,$data);
     }
-
+//获取统计数量
     public function actionCount(){
         $req = Yii::$app->request;
         $get = $req->get();

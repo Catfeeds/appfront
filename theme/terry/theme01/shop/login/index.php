@@ -153,7 +153,7 @@
         <div class="login-box">
             <div class="login-logo">
                 <img src="/public/login.png" alt="">
-                <span>晋彤商家管理系统</span>
+                <span id="tttt">晋彤管理系统</span>
             </div>
             <div class="login-l">
                 <ul>

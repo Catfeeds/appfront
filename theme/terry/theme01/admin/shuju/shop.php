@@ -11,8 +11,10 @@ use yii\helpers\Url;
 </style>
 <div class="main-content">
     <div class="ShopMannager">
-        <div class="ShopMannager-title">
-            <span>商家数据</span>
+     
+        <div class="adminmannager-title">
+            <span>数据中心</span>&nbsp;
+            <span>·&nbsp;商家数据</span>
         </div>
         <div class="ShopMannager-search adminmannager-search">
             <form action="<?= Yii::$service->url->getUrl('/admin/shuju/shop') ?>" method="get">
@@ -194,7 +196,7 @@ use yii\helpers\Url;
 <!--                                    投诉率是投诉人数/总评论人数-->
                                     <td class="el-table_2_column_14">
                                         <div class="cell el-tooltip" title="<?= $v["payment_method"] ?>">
-
+                                            <?= ceil($tousunum[$k]*100).'%'?>
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_18">

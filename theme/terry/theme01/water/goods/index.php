@@ -514,9 +514,9 @@ use yii\helpers\Url;
                                         <button type="button" class="el-button green el-button--success is-round">
 
                                             <span>导出表格</span></button>
-                                        <button type="button" class="el-button blue el-button--primary is-round">
+                                        <!-- <button type="button" class="el-button blue el-button--primary is-round">
 
-                                            <span>导出图片</span></button>
+                                            <span>导出图片</span></button> -->
                                     </div>
                                 </div>
                                 <div style="width: 100%; position: relative;">

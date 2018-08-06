@@ -8,7 +8,7 @@ $jsOptions = [ # js的配置部分
             'js/layout-admin.js',
             'js/echarts.min.js',
             'js/laydate.js',
-
+            'js/getTime.js'
         ],
     ]
 
@@ -52,9 +52,9 @@ $cssOptions = [
         top: 0;
         left:167px;
         z-index: 999;
-        display: flex;
+        /*display: flex;*/
         background: #eaf6ff;
-        justify-content: space-between;
+        /*justify-content: space-between;*/
     }
 
     .header ul {
@@ -1239,7 +1239,7 @@ $cssOptions = [
         position: relative;
     }
     .money-box1{
-        background: url("/public/adminimg/dui.png") no-repeat center center;
+          background: url("/public/adminimg/dui.png") no-repeat center center;
     }
     .paihang{
         width: 100%;
@@ -1247,7 +1247,7 @@ $cssOptions = [
     }
     .paihang table{
         width: 100%;
-        height: 100%;
+        /*height: 100%;*/
     }
     .paihang table tr th{
         height: 50px;
@@ -2633,6 +2633,7 @@ $cssOptions = [
     <div class="">
         <div class="aside"></div>
         <div class="header">
+            <div style="width:1012px;margin:0 auto;    display: flex;">
             <ul>
                 <li id="index">
                     <a href="/admin/index/aindex">
@@ -2680,6 +2681,7 @@ $cssOptions = [
                         <span class="name3">退出</span>
                     </a>
                 </div>
+            </div>
             </div>
         </div>
         <?php $this->endBody() ?>
