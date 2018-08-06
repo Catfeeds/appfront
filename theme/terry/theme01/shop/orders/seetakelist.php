@@ -66,7 +66,7 @@
         border-radius: 5px;
         background: #f3faff;
         border: 2px solid #e5eff8;
-
+        padding: 10px;
     }
 </style>
 <div data-v-54667010="" class="main-content">
@@ -76,7 +76,7 @@
                         data-v-54667010="" class="el-breadcrumb__item"><span role="link"
                                                                              class="el-breadcrumb__inner is-link">订单管理</span><span
                             role="presentation" class="el-breadcrumb__separator">·</span></span> <span
-                        data-v-54667010="" class="el-breadcrumb__item"><span role="link" class="el-breadcrumb__inner">纠纷订单</span><span
+                        data-v-54667010="" class="el-breadcrumb__item"><span role="link" class="el-breadcrumb__inner">取件单列表</span><span
                             role="presentation" class="el-breadcrumb__separator">·</span></span> <span
                         data-v-54667010="" class="el-breadcrumb__item" aria-current="page"><span role="link"
                                                                                                  class="el-breadcrumb__inner"><span
@@ -104,22 +104,30 @@
                         </div>
                         <div class="el-table__header-wrapper">
                             <table cellspacing="0" cellpadding="0" border="0" class="el-table__header"
-                                   style="width: 1012px;">
+                                   style="width: 1064px;">
                                 <colgroup>
-                                    <col name="el-table_1_column_2" width="266">
-                                    <col name="el-table_1_column_3" width="266">
-                                    <col name="el-table_1_column_4" width="266">
+                                    <col name="el-table_1_column_1" width="260">
+                                    <col name="el-table_1_column_2" width="200">
+                                    <col name="el-table_1_column_3" width="200">
+                                    <col name="el-table_1_column_4" width="200">
+                                    <col name="el-table_1_column_5" width="256">
                                 </colgroup>
                                 <thead class="has-gutter">
-                                <tr class="">
+                                <tr style="font-size: 14px;color: #B1DBFE;">
+                                    <th colspan="1" rowspan="1" class="el-table_1_column_1     is-leaf">
+                                        <div class="cell">流水号</div>
+                                    </th>
                                     <th colspan="1" rowspan="1" class="el-table_1_column_2     is-leaf">
                                         <div class="cell">下单时间</div>
                                     </th>
                                     <th colspan="1" rowspan="1" class="el-table_1_column_3     is-leaf">
-                                        <div class="cell">付款时间</div>
+                                        <div class="cell">取件时间</div>
                                     </th>
                                     <th colspan="1" rowspan="1" class="el-table_1_column_4     is-leaf">
-                                        <div class="cell">确认时间</div>
+                                        <div class="cell">附件时间</div>
+                                    </th>
+                                    <th colspan="1" rowspan="1" class="el-table_1_column_5     is-leaf">
+                                        <div class="cell">支付方式</div>
                                     </th>
                                     <th class="gutter" style="width: 0px; display: none;"></th>
                                 </tr>
@@ -130,33 +138,27 @@
                             <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
                                    style="width: 1012px;">
                                 <colgroup>
-                                    <col name="el-table_1_column_2" width="266">
-                                    <col name="el-table_1_column_3" width="266">
-                                    <col name="el-table_1_column_4" width="266">
+                                    <col name="el-table_1_column_1" width="260">
+                                    <col name="el-table_1_column_2" width="200">
+                                    <col name="el-table_1_column_3" width="200">
+                                    <col name="el-table_1_column_4" width="200">
+                                    <col name="el-table_1_column_5" width="256">
                                 </colgroup>
-                                <tbody>
+                                <tbody style="font-size: 12px;color:#82898e">
                                 <tr class="el-table__row">
                                     <td class="el-table_1_column_2  ">
-                                        <div class="cell" title="<?= date("Y-m-d H:i:s", $res["created_at"]) ?>">
-                                            <?php if ($res["created_at"]) { ?>
-                                                <?= date("Y-m-d H:i:s", $res["created_at"]) ?>
-                                            <?php } ?>
+                                        <div class="cell el-tooltip" title="">
+                                            111
                                         </div>
                                     </td>
                                     <td class="el-table_1_column_3  ">
-                                        <div class="cell"
-                                             title="                                                <?= date("Y-m-d H:i:s", $res["paypal_order_datetime"]) ?>">
-                                            <?php if ($res["paypal_order_datetime"]) { ?>
-                                                <?= date("Y-m-d H:i:s", $res["paypal_order_datetime"]) ?>
-                                            <?php } ?>
+                                        <div class="cell el-tooltip" title="">
+                                            222
                                         </div>
                                     </td>
                                     <td class="el-table_1_column_4  ">
-                                        <div class="cell"
-                                             title="                                                <?= date("Y-m-d H:i:s", $res["confirm_at"]) ?>">
-                                            <?php if ($res["confirm_at"]) { ?>
-                                                <?= date("Y-m-d H:i:s", $res["confirm_at"]) ?>
-                                            <?php } ?>
+                                        <div class="cell el-tooltip" title="">
+                                            333
                                         </div>
                                     </td>
                                 </tr>
@@ -180,9 +182,10 @@
                                     <col name="el-table_2_column_5" width="266">
                                     <col name="el-table_2_column_6" width="266">
                                     <col name="el-table_2_column_7" width="266">
+                                    <col name="el-table_2_column_8" width="266">
                                 </colgroup>
                                 <thead class="has-gutter">
-                                <tr class="">
+                                <tr style="font-size: 14px;color: #B1DBFE;">
                                     <th colspan="1" rowspan="1" class="el-table_2_column_5     is-leaf">
                                         <div class="cell">订单号</div>
                                     </th>
@@ -191,6 +194,9 @@
                                     </th>
                                     <th colspan="1" rowspan="1" class="el-table_2_column_7     is-leaf">
                                         <div class="cell">订单状态</div>
+                                    </th>
+                                    <th colspan="1" rowspan="1" class="el-table_2_column_8     is-leaf">
+                                        <div class="cell">送件时间</div>
                                     </th>
                                 </tr>
                                 </thead>
@@ -203,27 +209,26 @@
                                     <col name="el-table_2_column_5" width="266">
                                     <col name="el-table_2_column_6" width="266">
                                     <col name="el-table_2_column_7" width="266">
+                                    <col name="el-table_2_column_8" width="266">
                                 </colgroup>
-                                <tbody>
+                                <tbody style="font-size: 12px;color:#82898e">
                                 <tr class="el-table__row">
                                     <td class="el-table_2_column_5  ">
-                                        <div class="cell"
-                                             title="<?= $res["increment_id"] ?>"><?= $res["increment_id"] ?></div>
+                                        <div class="cell el-tooltip" title="">111</div>
                                     </td>
                                     <td class="el-table_2_column_6">
-                                        <div class="cell" title="<?= $res["customer_firstname"] ?>">
-                                            <?= $res["customer_firstname"] ?>
+                                        <div class="cell el-tooltip" title="">
+                                            222
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_7  ">
-                                        <div class="cell">
-                                            <?php
-                                            if ($res["order_status"] == 5) {
-                                                echo "待处理";
-                                            } else {
-                                                echo "已处理";
-                                            }
-                                            ?>
+                                        <div class="cell el-tooltip">
+                                            333
+                                        </div>
+                                    </td>
+                                    <td class="el-table_2_column_8  ">
+                                        <div class="cell el-tooltip">
+                                            时间
                                         </div>
                                     </td>
                                 </tr>
@@ -266,7 +271,7 @@
                                     <col name="gutter" width="0">
                                 </colgroup>
                                 <thead class="has-gutter">
-                                <tr class="">
+                                <tr class="" style="font-size: 14px;color: #B1DBFE;">
                                     <th colspan="1" rowspan="1" class="el-table_3_column_9     is-leaf">
                                         <div class="cell">收货人</div>
                                     </th>
@@ -277,7 +282,7 @@
                                         <div class="cell">收货地址</div>
                                     </th>
                                     <th colspan="1" rowspan="1" class="el-table_3_column_12     is-leaf">
-                                        <div class="cell">确认时间</div>
+                                        <div class="cell">送货时间</div>
                                     </th>
                                     <th colspan="1" rowspan="1" class="el-table_3_column_13     is-leaf">
                                         <div class="cell">邮政编码</div>
@@ -301,34 +306,33 @@
                                     <col name="el-table_3_column_13" width="178">
                                     <col name="el-table_3_column_14" width="180">
                                 </colgroup>
-                                <tbody>
+                                <tbody style="font-size: 12px;color:#82898e">
                                 <tr class="el-table__row">
                                     <td class="el-table_3_column_19  ">
-                                        <div class="cell el-tooltip"><?= $res["customer_firstname"] ?></div>
+                                        <div class="cell el-tooltip">789</div>
                                     </td>
                                     <td class="el-table_3_column_20  ">
-                                        <div class="cell el-tooltip"><?= $res["customer_telephone"] ?></div>
+                                        <div class="cell el-tooltip">795</div>
                                     </td>
                                     <td class="el-table_3_column_21  ">
-                                        <div class="cell el-tooltip"><?= $res["customer_address_country"] . $res["customer_address_state"] . $res["customer_address_city"] . $res["customer_address_street1"] ?></div>
+                                        <div class="cell el-tooltip">752</div>
                                     </td>
                                     <td class="el-table_3_column_22  ">
                                         <div class="cell  el-tooltip"
-                                             title="<?= date("Y-m-d H:i:s", $res[confirm_at]) ?>">
-                                            <?php if ($res[confirm_at]) { ?>
-                                                <?= date("Y-m-d H:i:s", $res[confirm_at]) ?>
-                                            <?php } ?>
+                                             title="">
+                                            5632
                                         </div>
                                     </td>
                                     <td class="el-table_3_column_23  ">
-                                        <div class="cell el-tooltip"><?= $res["customer_address_zip"] ?></div>
+                                        <div class="cell el-tooltip">6255</div>
                                     </td>
                                     <td class="el-table_3_column_24  ">
-                                        <div class="cell el-tooltip"><?= $res["customer_email"] ?></div>
+                                        <div class="cell el-tooltip">5556</div>
                                     </td>
                                 </tr>
                                 </tbody>
-                            </table></div>
+                            </table>
+                        </div>
                         <div class="el-table__column-resize-proxy" style="display: none;"></div>
                     </div>
                 </div>
@@ -361,9 +365,10 @@
                                     <col name="el-table_4_column_17" width="250">
                                     <col name="el-table_4_column_18" width="151">
                                     <col name="el-table_4_column_20" width="180">
+                                    <col name="el-table_4_column_21" width="180">
                                 </colgroup>
                                 <thead class="has-gutter">
-                                <tr class="">
+                                <tr class="" style="font-size: 14px;color: #B1DBFE;">
                                     <th colspan="1" rowspan="1" class="el-table_4_column_15     is-leaf">
                                         <div class="cell">商品名称</div>
                                     </th>
@@ -377,6 +382,9 @@
                                         <div class="cell">数量</div>
                                     </th>
                                     <th colspan="1" rowspan="1" class="el-table_4_column_20     is-leaf">
+                                        <div class="cell">参与活动</div>
+                                    </th>
+                                    <th colspan="1" rowspan="1" class="el-table_4_column_21     is-leaf">
                                         <div class="cell">实付金额</div>
                                     </th>
                                 </tr>
@@ -392,33 +400,36 @@
                                     <col name="el-table_4_column_17" width="250">
                                     <col name="el-table_4_column_18" width="151">
                                     <col name="el-table_4_column_20" width="180">
+                                    <col name="el-table_4_column_21" width="180">
                                 </colgroup>
-                                <tbody>
-                                <?php foreach ($res["goods"] as $v) { ?>
-                                    <tr class="el-table__row">
-                                        <td class="el-table_4_column_15  ">
-                                            <div class="cell">
-                                                <div data-v-54667010="" style="display: flex;">
-                                                    <div data-v-54667010="" class="shangpinbg"></div>
-                                                    <span data-v-54667010=""
-                                                          style="margin-left: 10px; line-height: 50px;"><?= $v["name"] ?></span>
+                                <tbody style="font-size: 12px;color:#82898e">
+                                <tr class="el-table__row">
+                                    <td class="el-table_4_column_15  ">
+                                        <div class="cell el-tooltip">
+                                            <div data-v-2b6e6d92="" style="display: flex;align-items: center">
+                                                <div data-v-2b6e6d92="" class="shangpinbg">
+                                                    <img src="">
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td class="el-table_4_column_16  ">
-                                            <div class="cell"><?= $v["sku"] ?></div>
-                                        </td>
-                                        <td class="el-table_4_column_17  ">
-                                            <div class="cell"><?= $v["price"] ?></div>
-                                        </td>
-                                        <td class="el-table_4_column_18  ">
-                                            <div class="cell"><?= $v["qty"] ?></div>
-                                        </td>
-                                        <td class="el-table_4_column_20  ">
-                                            <div class="cell"><?= number_format($v["price"] * $v["qty"], 2) ?></div>
-                                        </td>
-                                    </tr>
-                                <?php } ?>
+                                                <span data-v-2b6e6d92=""
+                                                      style="margin-left: 10px;">name</span></div>
+                                        </div>
+                                    </td>
+                                    <td class="el-table_4_column_16  ">
+                                        <div class="cell el-tooltip">ku</div>
+                                    </td>
+                                    <td class="el-table_4_column_17  ">
+                                        <div class="cell el-tooltip">price</div>
+                                    </td>
+                                    <td class="el-table_4_column_18  ">
+                                        <div class="cell el-tooltip">qty</div>
+                                    </td>
+                                    <td class="el-table_4_column_20  ">
+                                        <div class="cell el-tooltip">456</div>
+                                    </td>
+                                    <td class="el-table_4_column_21  ">
+                                        <div class="cell el-tooltip">456</div>
+                                    </td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -431,151 +442,106 @@
                      style="width: 328px; height: 42px; line-height: 42px; font-size: 18px; font-weight: bolder;">
                     <div data-v-54667010="" class="col-box"
                          style="width: 12px; height: 7px; border-radius: 5px; margin-top: 17px; margin-left: 10px; margin-right: 7px; background-color: rgb(55, 224, 111);"></div>
-                    <span data-v-54667010="" style="color: rgb(48, 163, 254);">退款、退货</span>审核信息
+                    <span data-v-54667010="" style="color: rgb(48, 163, 254);">取件</span>操作
                 </div>
                 <div data-v-54667010="" class="title">
                     <form data-v-54667010="" class="el-form">
                         <div data-v-54667010="" class="el-row" style="width: 500px;">
-                            <div data-v-54667010="" class="el-form-item"><label class="el-form-item__label"
-                                                                                style="width: 120px;">申请人用户名:</label>
+                            <div data-v-54667010="" class="el-form-item">
+                                <label class="el-form-item__label"
+                                       style="width: 120px;">操作者:</label>
                                 <div class="el-form-item__content" style="margin-left: 120px;">
-                                    <div data-v-54667010=""><?= $res["customer_firstname"] ?></div>
-                                </div>
-                            </div>
-                            <div data-v-54667010="" class="el-form-item"><label class="el-form-item__label"
-                                                                                style="width: 120px;">申请类型:</label>
-                                <div class="el-form-item__content" style="margin-left: 120px;">
-                                    <div data-v-54667010="">退货退款</div><!----></div>
-                            </div>
-                            <div data-v-54667010="" class="el-form-item"><label class="el-form-item__label"
-                                                                                style="width: 120px;">退款金额:</label>
-                                <div class="el-form-item__content" style="margin-left: 120px;">
-                                    <div data-v-54667010=""><?= number_format($res["subtotal"] - $res["subtotal_with_discount"], 2) ?></div>
-                                </div>
-                            </div>
-                            <div data-v-54667010="" class="el-form-item"><label class="el-form-item__label"
-                                                                                style="width: 120px;">退款信息:</label>
-                                <div class="el-form-item__content" style="margin-left: 120px;">
-                                    <div data-v-54667010="">订单号/<?= $res["increment_id"] ?>
-                                        ；商品名称/<?php foreach ($res["goods"] as $v) { ?><?= $v["name"] ?>&nbsp;&nbsp;<?php } ?></div>
-                                </div>
-                            </div>
-                            <div data-v-54667010="" class="el-form-item"><label class="el-form-item__label"
-                                                                                style="width: 120px;">退货、退款原因:</label>
-                                <div class="el-form-item__content" style="margin-left: 120px;">
-                                    <div data-v-54667010=""><?= $res["refund_notes"] ?></div><!----></div>
-                            </div>
-                            <div data-v-54667010="" class="el-form-item"><label class="el-form-item__label"
-                                                                                style="width: 120px;">上传商品图片:</label>
-                                <div class="el-form-item__content" style="margin-left: 120px;">
-                                    <div data-v-54667010=""
-                                         style="width: 350px; display: flex; justify-content: space-between;">
-                                        <?php foreach (explode("||", $res["return_picture"]) as $v) { ?>
-                                            <?php if ($v) { ?>
-                                                <img src="<?= Yii::$app->params["img"] . "/images" . $v ?>"/>
-                                            <?php } ?>
-                                        <?php } ?>
-                                    </div>
+                                    <div data-v-54667010="">张三</div>
                                 </div>
                             </div>
                             <div data-v-54667010="" class="el-form-item"><label class="el-form-item__label"
                                                                                 style="width: 120px;">操作备注:</label>
-                                <div class="el-form-item__content" style="margin-left: 120px;"><textarea
+                                <div class="el-form-item__content" style="margin-left: 120px;">
+                                    <textarea
                                             data-v-54667010="" id="" cols="30" rows="10" class="details"></textarea>
-                                    <!----></div>
+                                </div>
                             </div>
-                            <?php if($res["order_status"]!=6){ ?>
-                                <div data-v-54667010="" class="el-form-item">
+                            <div data-v-54667010="" class="el-form-item">
                                 <label class="el-form-item__label" style="width: 120px;">当前可执行操作:</label>
                                 <div class="el-form-item__content" style="margin-left: 120px;">
-                                    <a href="<?= Yii::$service->url->geturl("/shop/orders/changejf?order_id={$res["order_id"]}&order_status=6") ?>">
+                                    <a href="">
                                         <button data-v-54667010="" type="button"
                                                 class="el-button blue el-button--primary is-round">
-                                            <span>审核通过</span>
-                                        </button>
-                                    </a>
-                                    <!--                                    <button data-v-54667010="" type="button"-->
-                                    <!--                                            class="el-button green el-button--success is-round">-->
-                                    <!--                                        <span>客服介入</span></button>-->
-                                    <a href="<?= Yii::$service->url->geturl( "/shop/orders/changejf?order_id={$res["order_id"]}&order_status=7")?>">
-                                        <button data-v-54667010="" type="button" class="el-button red el-button--danger is-round">
-                                            <span>不予处理</span>
+                                            <span>取消取件</span>
                                         </button>
                                     </a>
                                 </div>
                             </div>
-                            <?php } ?>
                         </div>
                     </form>
-                    <?php if ($res["order_status"] == 6) { ?>
-                        <div data-v-54667010=""
-                             class="el-table el-table--fit el-table--enable-row-hover el-table--enable-row-transition"
-                             style="width: 100%;">
-                            <div class="hidden-columns">
-                                <div data-v-54667010=""></div>
-                                <div data-v-54667010=""></div>
-                                <div data-v-54667010=""></div>
-                                <div data-v-54667010=""></div>
-                            </div>
-                            <div class="el-table__header-wrapper">
-                                <table cellspacing="0" cellpadding="0" border="0" class="el-table__header"
-                                       style="width: 1012px;">
-                                    <colgroup>
-                                        <col name="el-table_5_column_21" width="266">
-                                        <col name="el-table_5_column_22" width="266">
-                                        <col name="el-table_5_column_23" width="266">
-                                        <col name="el-table_5_column_24" width="266">
-                                        <col name="gutter" width="0">
-                                    </colgroup>
-                                    <thead class="has-gutter">
-                                    <tr class="">
-                                        <th colspan="1" rowspan="1" class="el-table_5_column_21     is-leaf">
-                                            <div class="cell">操作者</div>
-                                        </th>
-                                        <th colspan="1" rowspan="1" class="el-table_5_column_22     is-leaf">
-                                            <div class="cell">操作时间</div>
-                                        </th>
-                                        <th colspan="1" rowspan="1" class="el-table_5_column_23     is-leaf">
-                                            <div class="cell">审核状态</div>
-                                        </th>
-                                        <th colspan="1" rowspan="1" class="el-table_5_column_24     is-leaf">
-                                            <div class="cell">操作备注</div>
-                                        </th>
-                                        <th class="gutter" style="width: 0px; display: none;"></th>
-                                    </tr>
-                                    </thead>
-                                </table>
-                            </div>
-                            <div class="el-table__body-wrapper is-scrolling-none">
-                                <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
-                                       style="width: 1012px;">
-                                    <colgroup>
-                                        <col name="el-table_5_column_21" width="266">
-                                        <col name="el-table_5_column_22" width="266">
-                                        <col name="el-table_5_column_23" width="266">
-                                        <col name="el-table_5_column_24" width="266">
-                                    </colgroup>
-                                    <tbody>
-                                    <tr class="el-table__row">
-                                        <td class="el-table_5_column_21  ">
-                                            <div class="cell"><?= $res["operator"] ?></div>
-                                        </td>
-                                        <td class="el-table_5_column_22  ">
-                                            <div class="cell"><?= $res["operator"] ?></div>
-                                        </td>
-                                        <td class="el-table_5_column_23  ">
-                                            <div class="cell">审核通过</div>
-                                        </td>
-                                        <td class="el-table_5_column_24  ">
-                                            <div class="cell">已付款</div>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="el-table__column-resize-proxy" style="display: none;"></div>
+
+                    <div data-v-54667010=""
+                         class="el-table el-table--fit el-table--enable-row-hover el-table--enable-row-transition"
+                         style="width: 100%;">
+                        <div class="hidden-columns">
+                            <div data-v-54667010=""></div>
+                            <div data-v-54667010=""></div>
+                            <div data-v-54667010=""></div>
+                            <div data-v-54667010=""></div>
                         </div>
-                    <?php } ?>
+                        <div class="el-table__header-wrapper">
+                            <table cellspacing="0" cellpadding="0" border="0" class="el-table__header"
+                                   style="width: 1012px;">
+                                <colgroup>
+                                    <col name="el-table_5_column_21" width="266">
+                                    <col name="el-table_5_column_22" width="266">
+                                    <col name="el-table_5_column_23" width="266">
+                                    <col name="el-table_5_column_24" width="266">
+                                    <col name="gutter" width="0">
+                                </colgroup>
+                                <thead class="has-gutter">
+                                <tr class="" style="font-size: 14px;color: #B1DBFE;">
+                                    <th colspan="1" rowspan="1" class="el-table_5_column_21     is-leaf">
+                                        <div class="cell">操作者</div>
+                                    </th>
+                                    <th colspan="1" rowspan="1" class="el-table_5_column_22     is-leaf">
+                                        <div class="cell">操作时间</div>
+                                    </th>
+                                    <th colspan="1" rowspan="1" class="el-table_5_column_23     is-leaf">
+                                        <div class="cell">审核状态</div>
+                                    </th>
+                                    <th colspan="1" rowspan="1" class="el-table_5_column_24     is-leaf">
+                                        <div class="cell">操作备注</div>
+                                    </th>
+                                    <th class="gutter" style="width: 0px; display: none;"></th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="el-table__body-wrapper is-scrolling-none">
+                            <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
+                                   style="width: 1064px;">
+                                <colgroup>
+                                    <col name="el-table_5_column_21" width="266">
+                                    <col name="el-table_5_column_22" width="266">
+                                    <col name="el-table_5_column_23" width="266">
+                                    <col name="el-table_5_column_24" width="266">
+                                </colgroup>
+                                <tbody style="font-size: 12px;color:#82898e">
+                                <tr class="el-table__row">
+                                    <td class="el-table_5_column_21  ">
+                                        <div class="cell">admin</div>
+                                    </td>
+                                    <td class="el-table_5_column_22  ">
+                                        <div class="cell">2018.08.06</div>
+                                    </td>
+                                    <td class="el-table_5_column_23  ">
+                                        <div class="cell">审核通过</div>
+                                    </td>
+                                    <td class="el-table_5_column_24  ">
+                                        <div class="cell">已付款</div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="el-table__column-resize-proxy" style="display: none;"></div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -36,10 +36,10 @@ class OrdersController extends PublicsController
         $request = Yii::$app->request;
         $get = $request->get();
 
-        if($get["flag"]){
-            $flag = $get['flag']-1;
+        if ($get["flag"]) {
+            $flag = $get['flag'] - 1;
             $sql = " select count(*) tot from sales_flat_order where shop_id={$_SESSION["shop_id"]} and order_status={$flag}";
-        }else{
+        } else {
             $sql = " select count(*) tot from sales_flat_order where shop_id={$_SESSION["shop_id"]} and order_status<5";
         }
         if ($get["customer_firstname"]) {
@@ -77,20 +77,20 @@ class OrdersController extends PublicsController
 
         $sql = "select * from sales_coupon where coupon_id in(";
 
-        foreach ($arr as $v){
+        foreach ($arr as $v) {
 
-            if($v[coupon_code]){
-                $sql = $sql.$v[coupon_code].",";
+            if ($v[coupon_code]) {
+                $sql = $sql . $v[coupon_code] . ",";
             }
         }
-        $sql = $sql."0)";
+        $sql = $sql . "0)";
 
         $cou = Yii::$app->db->createCommand($sql)->queryAll();
 
-        foreach ($arr as &$v){
-            foreach ($cou as $v1){
-                if($v1['coupon_id'] == $v['coupon_code']){
-                    $v = array_merge($v,$v1);
+        foreach ($arr as &$v) {
+            foreach ($cou as $v1) {
+                if ($v1['coupon_id'] == $v['coupon_code']) {
+                    $v = array_merge($v, $v1);
                 }
             }
         }
@@ -109,17 +109,16 @@ class OrdersController extends PublicsController
                 }
             }
         };
-        $all = Yii::$app->db->createCommand("select o.order_status from sales_flat_order o where shop_id='{$_SESSION["shop_id"]}' and order_status<5" )->queryAll();
+        $all = Yii::$app->db->createCommand("select o.order_status from sales_flat_order o where shop_id='{$_SESSION["shop_id"]}' and order_status<5")->queryAll();
 
-               
-            
+
         //查询所有的
         $datas["orders"] = $arr;
         $datas["pagination"] = $pagination;
         $datas["all"] = $all;
         $datas["count"] = $countArr['tot'];
-        $datas["flag"] = $get["flag"]?$get["flag"]:0;
-        $_SESSION['pagess']='index';
+        $datas["flag"] = $get["flag"] ? $get["flag"] : 0;
+        $_SESSION['pagess'] = 'index';
 
         return $this->render($this->action->id, $datas);
     }
@@ -133,20 +132,20 @@ class OrdersController extends PublicsController
         $order_id = $request->get('order_id');
         //按order_id查询订单详情
         $res = Yii::$app->db->createCommand("select sales_flat_order.* from sales_flat_order where order_id=$order_id")->queryOne();
-        if($res["coupon_code"]){
+        if ($res["coupon_code"]) {
             $cou = Yii::$app->db->createCommand("select * from sales_coupon where coupon_id={$res["coupon_code"]}")->queryOne();
 
-            if($cou){
-                $res = array_merge($res,$cou);
-                }
+            if ($cou) {
+                $res = array_merge($res, $cou);
+            }
         }
         //按order_id查询订单产品详情
         $sql = "select sales_flat_order_item.*,product_flat_qty.qty as kc from sales_flat_order_item,product_flat_qty where sales_flat_order_item.order_id=$order_id and sales_flat_order_item.product_id=product_flat_qty.product_id";
         $res1 = Yii::$app->db->createCommand($sql)->queryAll();
         $res["goodDatas"] = $res1;
         $datas["res"] = $res;
-        $_SESSION['pagess']='index';
-        
+        $_SESSION['pagess'] = 'index';
+
         return $this->render($this->action->id, $datas);
     }
 
@@ -169,8 +168,8 @@ class OrdersController extends PublicsController
         $datas["province"] = $province;
         $datas["city"] = $city;
         $datas["county"] = $county;
-        $_SESSION['pagess']='index';
-        
+        $_SESSION['pagess'] = 'index';
+
         return $this->render($this->action->id, $datas);
     }
 
@@ -193,24 +192,26 @@ class OrdersController extends PublicsController
         $sql = "update sales_flat_order set customer_firstname='$customer_firstname',customer_telephone='$customer_telephone',customer_address_country='$customer_address_country',customer_address_state='$customer_address_state',customer_address_city='$customer_address_city',customer_address_zip='$customer_address_zip',customer_email='$customer_email',customer_address_street1='$customer_address_street1' where order_id=$order_id";
         $res = Yii::$app->db->createCommand($sql)->execute();
 
-        return $this->redirect(['orders/see?order_id='.$order_id]);
+        return $this->redirect(['orders/see?order_id=' . $order_id]);
     }
 
     //接单
-    public function actionReceipt(){
+    public function actionReceipt()
+    {
 
         $res = Yii::$app->request;
         $order_id = $res->get("order_id");
 
 
-        $res = Yii::$app->db->createCommand("update sales_flat_order set order_status=2,receipt_at=".time()." where order_id={$order_id}")->execute();
+        $res = Yii::$app->db->createCommand("update sales_flat_order set order_status=2,receipt_at=" . time() . " where order_id={$order_id}")->execute();
 
         return $this->redirect("/shop/orders/index");
 
     }
 
     //纠纷列表
-    public function actionDispute(){
+    public function actionDispute()
+    {
 
         $data = [];
         // 获取数据
@@ -249,14 +250,15 @@ class OrdersController extends PublicsController
         $data["pagination"] = $pagination;
         $data["count"] = $count[0]['tot'];
 
-        $_SESSION['pagess']='dispute';
-        return $this->render($this->action->id,$data);
+        $_SESSION['pagess'] = 'dispute';
+        return $this->render($this->action->id, $data);
 
     }
 
     //添加订单
 
-    public function actionAddorder(){
+    public function actionAddorder()
+    {
 
         $req = Yii::$app->request;
 
@@ -264,59 +266,58 @@ class OrdersController extends PublicsController
 
         $order = [
 
-            "increment_id"=>$get["increment_id"],//订单编号
-            "order_remark"=>$get["order_remark"],//备注
+            "increment_id" => $get["increment_id"],//订单编号
+            "order_remark" => $get["order_remark"],//备注
 //            "payment_method"=>$get["payment_method"],//支付方式
-            "created_at"=>time(),//提交时间
+            "created_at" => time(),//提交时间
 //            "paypal_order_datetime"=>$get["paypal_order_datetime"],
-            "order_status"=>$get["order_status"],//订单状态
-            "customer_firstname"=>$get["customer_firstname"],//客户姓名
-            "customer_telephone"=>$get["customer_telephone"],//客户电话
-            "customer_address_country"=>$get["customer_address_country"],//客户省
-            "customer_address_state"=>$get["customer_address_state"],//市
-            "customer_address_city"=>$get["customer_address_city"],//区
-            "customer_address_street1"=>$get["customer_address_street1"],//详细地址
-            "customer_address_zip"=>$get["customer_address_zip"],//邮编
-            "customer_email"=>$get["customer_email"],//邮箱
-            "subtotal"=>$get["subtotal"],//总额
-            "discount_amount"=>$get["discount_amount"],//折扣金额
-            "discount_rate"=>$get["discount_rate"],//折扣率
-            "coin_num"=>$get["coin_num"],//金币数量
-            "grand_total"=>$get["grand_total"],
-            "subtotal_with_discount"=>$get["subtotal_with_discount"],//订单减少金额
-            "coupon_code"=>$get["coupon_code"],
-            "shop_id"=>$get["shop_id"]
+            "order_status" => $get["order_status"],//订单状态
+            "customer_firstname" => $get["customer_firstname"],//客户姓名
+            "customer_telephone" => $get["customer_telephone"],//客户电话
+            "customer_address_country" => $get["customer_address_country"],//客户省
+            "customer_address_state" => $get["customer_address_state"],//市
+            "customer_address_city" => $get["customer_address_city"],//区
+            "customer_address_street1" => $get["customer_address_street1"],//详细地址
+            "customer_address_zip" => $get["customer_address_zip"],//邮编
+            "customer_email" => $get["customer_email"],//邮箱
+            "subtotal" => $get["subtotal"],//总额
+            "discount_amount" => $get["discount_amount"],//折扣金额
+            "discount_rate" => $get["discount_rate"],//折扣率
+            "coin_num" => $get["coin_num"],//金币数量
+            "grand_total" => $get["grand_total"],
+            "subtotal_with_discount" => $get["subtotal_with_discount"],//订单减少金额
+            "coupon_code" => $get["coupon_code"],
+            "shop_id" => $get["shop_id"]
         ];
         $goods = [
-            "name"=>$get["name"],
-            "sku"=>$get["sku"],
-            "price"=>$get["price"],
-            "qty"=>$get["qty"],
-            "row_total"=>$get["row_total"]
+            "name" => $get["name"],
+            "sku" => $get["sku"],
+            "price" => $get["price"],
+            "qty" => $get["qty"],
+            "row_total" => $get["row_total"]
         ];
 
 
-
-        $res = Yii::$app->db->createCommand()->insert(sales_flat_order,$order)->execute();
+        $res = Yii::$app->db->createCommand()->insert(sales_flat_order, $order)->execute();
         $goods["order_id"] = Yii::$app->db->getLastInsertID();
 
 
         $qty = [
-            "product_id"=>Yii::$app->db->getLastInsertID(),
-            "qty"=>10
+            "product_id" => Yii::$app->db->getLastInsertID(),
+            "qty" => 10
         ];
         $goods["product_id"] = Yii::$app->db->getLastInsertID();
 
-        Yii::$app->db->createCommand()->insert(product_flat_qty,$qty)->execute();
+        Yii::$app->db->createCommand()->insert(product_flat_qty, $qty)->execute();
 
-        $res = Yii::$app->db->createCommand()->insert(sales_flat_order_item,$goods)->execute();
-
+        $res = Yii::$app->db->createCommand()->insert(sales_flat_order_item, $goods)->execute();
 
 
     }
 
     //查看纠纷订单详情
-    public function actionSeedispute(){
+    public function actionSeedispute()
+    {
 
         $req = Yii::$app->request;
 
@@ -329,14 +330,15 @@ class OrdersController extends PublicsController
         $res["goods"] = $goods;
 
         $data["res"] = $res;
-        $_SESSION['pagess']='dispute';
-        
-        return $this->render($this->action->id,$data);
+        $_SESSION['pagess'] = 'dispute';
+
+        return $this->render($this->action->id, $data);
 
     }
 
     //处理纠纷订单
-    public function actionChangejf(){
+    public function actionChangejf()
+    {
 
         $req = Yii::$app->request;
 
@@ -344,32 +346,32 @@ class OrdersController extends PublicsController
 
         $order_id = $req->get("order_id");
 
-        if($order_status==7){
+        if ($order_status == 7) {
 
             $one = Yii::$app->db->createCommand("select * from sales_flat_order where order_id=$order_id")->queryOne();
 
-            if($one[created_at]){
+            if ($one[created_at]) {
 
                 $order_status = 0;
 
             }
-            if($one[paypal_order_datetime]){
+            if ($one[paypal_order_datetime]) {
 
                 $order_status = 1;
 
             }
-            if($one[receipt_at]){
+            if ($one[receipt_at]) {
 
                 $order_status = 2;
 
             }
-            if($one[confirm_at]){
+            if ($one[confirm_at]) {
 
                 $order_status = 3;
 
             }
 
-            if($one[evaluate_at]){
+            if ($one[evaluate_at]) {
 
                 $order_status = 4;
 
@@ -385,6 +387,20 @@ class OrdersController extends PublicsController
         return $this->redirect("/shop/orders/dispute");
     }
 
+    //取件单列表
+    public function actionTakelist()
+    {
+
+        $_SESSION['pagess'] = 'takelist';
+
+        return $this->render($this->action->id);
+    }
+
+    //查看取件单
+    public function actionSeetakelist()
+    {
+        return $this->render($this->action->id);
+    }
 
 
 }

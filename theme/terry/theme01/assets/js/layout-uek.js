@@ -6,12 +6,11 @@
         orders: [
             {"name":"订单列表","url":"/shop/orders/index"},
             {"name":"纠纷列表","url":"/shop/orders/dispute"},
-            // {"name":"取件单列表","url":""}
+            {"name":"取件单列表","url":"/shop/orders/takelist"}
         ],
         store: [
             {"name":"店铺信息","url":"/shop/store/index"},
             {"name":"店铺图片设置","url":"/shop/store/setimg"},
-
             {"name":"优惠券管理","url":"/shop/store/couponindex"},
 
         ],

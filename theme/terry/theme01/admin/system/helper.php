@@ -23,6 +23,7 @@
         border-radius: 15px;
         background: #f3faff;
         border: 2px solid #e5eff8;
+        text-align: center;
     }
 </style>
 <div class="main-content">
