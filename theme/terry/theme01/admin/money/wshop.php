@@ -1,60 +1,60 @@
 <div class="main-content">
     <div id="platdata">
         <div class="adminmannager-title">
-            <span>数据中心</span>&nbsp;
-            <span>·&nbsp;平台数据</span>
+            <span>商家财务</span>&nbsp;
+            <span>·&nbsp;<?=$res['shop_name'] ?></span>
         </div>
         <div class="tongji">
             <ul>
                 <li>
                     <div class="tongji-circle">
-                        <img src="/public/adminimg/huiyuan.png">
+                        <img src="/public/adminimg/jrchengjiaoe.jpg">
                     </div>
                     <div class="tongji-number">
                         <div>
-                            <span><?php echo $huiyuannew['num']?></span><span>个</span>
+                            <span>652.36</span>
                         </div>
                         <div>
-                            <span>新增会员</span>
+                            <span>成交金额(元)</span>
                         </div>
                     </div>
                 </li>
                 <li>
                     <div class="tongji-circle">
-                        <img src="/public/adminimg/shuisi.png">
+                        <img src="/public/adminimg/xfxd.jpg">
                     </div>
                     <div class="tongji-number">
                         <div>
-                            <span><?php echo $shuisiall['num']?></span><span>家</span>
+                            <span>999</span>
                         </div>
                         <div>
-                            <span>入驻水司</span>
+                            <span>下单量</span>
                         </div>
                     </div>
                 </li>
                 <li>
                     <div class="tongji-circle">
-                        <img src="/public/adminimg/shangjia.png">
+                        <img src="/public/adminimg/xdcg.jpg">
                     </div>
                     <div class="tongji-number">
                         <div>
-                            <span><?php echo $shangjiaall['num']?></span><span>家</span>
+                            <span>199</span>
                         </div>
                         <div>
-                            <span>入驻商家</span>
+                            <span>成交量</span>
                         </div>
                     </div>
                 </li>
-                <li>
+                <li style="background: #fd9e52;">
                     <div class="tongji-circle">
-                        <img src="/public/adminimg/fangke.png">
+                        <img src="/public/adminimg/tuihuo.jpg">
                     </div>
                     <div class="tongji-number">
                         <div>
-                            <span>2222</span>
+                            <span>199</span>
                         </div>
                         <div>
-                            <span>总访问量</span>
+                            <span>退货量</span>
                         </div>
                     </div>
                 </li>
@@ -63,7 +63,7 @@
         <!--会员增长趋势-->
         <div class="addofplatdata" style="float: left;">
             <div class="platdata-header">
-                <div class="platdata-headername">会员新增趋势</div>
+                <div class="platdata-headername">成交额趋势</div>
                 <div class="platdata-headerright">
                     <ul>
                         <li class="week but1 btnactive" onclick='cut(3,this)' uri='1'>七天</li>
@@ -85,7 +85,7 @@
                 </div>
             </div>
             <div>
-                <span>今日新增：<?php echo $huiyuannew['num'];?>&nbsp;&nbsp;&nbsp;&nbsp;会员总数：<?php echo $huiyuanall['num'];?></span>
+                <!--<span>今日新增：<?php /*echo $huiyuannew['num'];*/?>&nbsp;&nbsp;&nbsp;&nbsp;会员总数：<?php /*echo $huiyuanall['num'];*/?></span>-->
             </div>
             <div id="mychart" >
             
@@ -279,7 +279,7 @@
         <!--水司增长趋势-->
         <div class="addofplatdata" style="float: left;">
        		 <div class="platdata-header">
-                <div class="platdata-headername">水司新增趋势</div>
+                <div class="platdata-headername">返款情况</div>
                 <div class="platdata-headerright">
                     <ul>
                         <li class="week but1 btnactive" onclick='cut2(1,this)' uri='1'>七天</li>
@@ -288,13 +288,15 @@
                         <li class="year but1" onclick='cut2(1,this)' uri='4'>一年</li>
                     </ul>
                     <!--时间戳-->
-                    <div class="block shijianchuo">
+                    <div class="block shijianchuo" 
+                    >
                         <div class="timer">
                             <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
                                 <input type="text" style="width:100%;height:100%;text-align: center;border:none;" name="data" class="demo-input"
                                        placeholder="请选择要查询的时间段" id="test11">
                             </div>
                         </div>
+
                     </div>
                     <button style="float: left;border:0;margin-top:20px;" onclick='btime()'>确定</button>
                 </div>
@@ -304,7 +306,7 @@
             </div>
             <div id="mychart2" style="width:700px;height:400px;float:left;">
             </div>
-            <script type="text/javascript">
+            <script type="text/javascript">           
             //日期时间范围
             laydate.render({
                 elem: '#test11'
@@ -493,7 +495,7 @@
         <!--商家增长趋势-->
         <div class="addofplatdata" style="float: left;">
             <div class="platdata-header">
-                <div class="platdata-headername">商家新增趋势</div>
+                <div class="platdata-headername">订单数量走势</div>
                 <div class="platdata-headerright">
                     <ul>
                         <li class="week but1 btnactive" onclick='cut3(2,this)' uri='1'>七天</li>
@@ -706,176 +708,7 @@
                 </div>
             </div>
         </div>
-        <!--商品服务数据-->
-        <div class="addofplatdata" style="float: left;">
-            <div class="platdata-header">
-                <div class="platdata-headername">商品服务数据</div>
-                <div class="platdata-headerright">
-                    <ul>
-                        <li class="week but1 btnactive" onclick='cut4(4,this)' uri='1'>七天</li>
-                        <li class="month but1" onclick='cut4(4,this)' uri='2'>一个月</li>
-                        <li class="quarter but1" onclick='cut4(4,this)' uri='3'>一个季度</li>
-                        <li class="year but1" onclick='cut4(4,this)' uri='4'>一年</li>
-                    </ul>
-                    <!--时间戳-->
-                    <div class="block shijianchuo" >
-                        <div class="timer">
-                            <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
-                                <i class="el-input__icon el-range__icon el-icon-time"></i>
-                                <input placeholder="开始日期" name="" class="el-range-input1 el-range-input" />
-                                <span class="el-range-separator">至</span>
-                                <input placeholder="结束日期" name="" class="el-range-input2 el-range-input"/>
-                                <i class="el-input__icon el-range__icon el-icon-time"></i>
-                            </div>
-                        </div>
 
-                    </div>
-                    <button style="float: left;border:0;margin-top:20px;">确定</button>
-                </div>
-            </div>
-            <div id="mychart4" style="width:700px;height:400px;float:left;">
-            </div>
-            <div class="chart-b">
-                <button style=" width: 90px;
-        height: 27px;
-        color: #fff;
-        line-height: 27px;
-        text-align: center;
-        border-radius: 12px;background: #30b7fe;margin-left: 0;">导出图片</button>
-                <button
-                        style=" width: 90px;
-        height: 27px;
-        color: #fff;
-        line-height: 27px;
-        text-align: center;
-        border-radius: 12px;background: #33d892;margin-left: 0;">导出表格</button>
-                <button
-                        style=" width: 90px;
-        height: 27px;
-        color: #fff;
-        line-height: 27px;
-        text-align: center;
-        border-radius: 12px;background: #f9c131;margin-left: 0;">导出报告</button>
-                <div class="line-img">
-                    <img src="/public/adminimg/line.png" alt="">
-                    <span style="color:#a4adb5">销售额</span>
-                </div>
-            </div>
-        </div>
-        <!--支付方式汇总-->
-        <div class="addofplatdata" style="float: left;">
-            <div class="platdata-header">
-                <div class="platdata-headername">支付方式汇总</div>
-                <div class="platdata-headerright">
-                    <ul>
-                        <li class="btnactive">七天</li>
-                        <li>一个月</li>
-                        <li>一个季度</li>
-                        <li>一年</li>
-                    </ul>
-                    <!--时间戳-->
-                    <div class="block shijianchuo" 
-                    >
-                        <div class="timer">
-                            <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
-                                <i class="el-input__icon el-range__icon el-icon-time"></i>
-                                <input placeholder="开始日期" name="" class="el-range-input1 el-range-input" />
-                                <span class="el-range-separator">至</span>
-                                <input placeholder="结束日期" name="" class="el-range-input2 el-range-input"/>
-                                <i class="el-input__icon el-range__icon el-icon-time"></i>
-                            </div>
-                        </div>
-
-                    </div>
-                    <button style="float: left;border:0;margin-top:20px;">确定</button>
-                </div>
-            </div>
-            <div id="mychart5">
-            </div>
-            <div class="chart-b">
-                <button style=" width: 90px;
-        height: 27px;
-        color: #fff;
-        line-height: 27px;
-        text-align: center;
-        border-radius: 12px;background: #30b7fe;margin-left: 0;">导出图片</button>
-                <button
-                        style=" width: 90px;
-        height: 27px;
-        color: #fff;
-        line-height: 27px;
-        text-align: center;
-        border-radius: 12px;background: #33d892;margin-left: 0;">导出表格</button>
-                <button
-                        style=" width: 90px;
-        height: 27px;
-        color: #fff;
-        line-height: 27px;
-        text-align: center;
-        border-radius: 12px;background: #f9c131;margin-left: 0;">导出报告</button>
-                <div class="line-img">
-                    <img src="/public/adminimg/line.png" alt="">
-                    <span style="color:#a4adb5">销售额</span>
-                </div>
-            </div>
-        </div>
-        <!--访问数据-->
-        <div class="addofplatdata" style="float: left;">
-            <div class="platdata-header">
-                <div class="platdata-headername">访问数据</div>
-                <div class="platdata-headerright">
-                    <ul>
-                        <li class="btnactive">七天</li>
-                        <li>一个月</li>
-                        <li>一个季度</li>
-                        <li>一年</li>
-                    </ul>
-                    <!--时间戳-->
-                    <div class="block shijianchuo" 
-                    >
-                        <div class="timer">
-                            <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
-                                <i class="el-input__icon el-range__icon el-icon-time"></i>
-                                <input placeholder="开始日期" name="" class="el-range-input1 el-range-input" />
-                                <span class="el-range-separator">至</span>
-                                <input placeholder="结束日期" name="" class="el-range-input2 el-range-input"/>
-                                <i class="el-input__icon el-range__icon el-icon-time"></i>
-                            </div>
-                        </div>
-
-                    </div>
-                    <button style="float: left;border:0;margin-top:20px;">确定</button>
-                </div>
-            </div>
-            <div id="mychart6">
-            </div>
-            <div class="chart-b">
-                <button style=" width: 90px;
-        height: 27px;
-        color: #fff;
-        line-height: 27px;
-        text-align: center;
-        border-radius: 12px;background: #30b7fe;margin-left: 0;">导出图片</button>
-                <button
-                        style=" width: 90px;
-        height: 27px;
-        color: #fff;
-        line-height: 27px;
-        text-align: center;
-        border-radius: 12px;background: #33d892;margin-left: 0;">导出表格</button>
-                <button
-                        style=" width: 90px;
-        height: 27px;
-        color: #fff;
-        line-height: 27px;
-        text-align: center;
-        border-radius: 12px;background: #f9c131;margin-left: 0;">导出报告</button>
-                <div class="line-img">
-                    <img src="/public/adminimg/line.png" alt="">
-                    <span style="color:#a4adb5">销售额</span>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 

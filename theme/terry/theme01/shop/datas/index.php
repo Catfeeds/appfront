@@ -18,10 +18,7 @@
                <option value="3">最近一年</option>
            </select>
         </li>
-          <li style="
-                        display: flex;
-                        align-items: center;
-                    ">时间段选择
+          <li style="display: flex; align-items: center;">时间段选择
               <div class="el-form-item__content" style="margin-left: 10px;">
                   <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test1">
               </div>
@@ -321,13 +318,13 @@
                                  },
                                  tooltip : {
                                      trigger: 'item',
-                                     formatter: "{a} <br/>{b} : {c} ({d}%)"
+                                     formatter: "{b} : {c} ({d}%)"
                                  },
                                  series : [
                                      {
                                          type: 'pie',
                                          radius : '80%',
-                                         center: ['50%', '50%'],
+                                         center: ['40%', '50%'],
                                          selectedMode: 'single',
                                          data:[
                                              {value:a, name: '好评'},
@@ -384,16 +381,16 @@
           投诉汇总
          </div>
          <div  class="title_right">
-          <div  class="btn active">
+          <div  class="btn active btn2" date="7">
            7天
           </div>
-          <div  class="btn">
+          <div  class="btn btn2" date="30">
            一个月
           </div>
-          <div  class="btn">
+          <div  class="btn btn2" date="90">
            一个季度
           </div>
-          <div  class="btn">
+          <div  class="btn btn2" date="365">
            一年
           </div>
          </div>
@@ -452,6 +449,128 @@
 
           </ul>
           <div  class="tu2"></div>
+
+             <script>
+                 $(function () {
+                     $('#test4').on('blur',function(){
+                         $('.laydate-btns-confirm').on('click',function () {
+                             getinfo(2,-1);
+                             // getChart(3,5,3);
+                         })
+                     })
+                     $('.btn2').on('click',function(){
+                         $('.btn2').removeClass('active').filter(this).addClass('active');
+                         let  test4=$('#test4');
+                         let date=$(this).attr('date');
+                         console.log($('.btn2'));
+                         getinfo(1,date);
+                     })
+                     function getinfo(flag,date) {
+                         var t1="",t2="";
+                         if(flag==1){
+                             if(date==7){
+                                 t1 = timeForMat(7)["t2"];
+                                 t2 = timeForMat(7)["t1"];
+                             }else if(date == 30){
+                                 t1 = timeForMat(30)["t2"];
+                                 t2 = timeForMat(30)["t1"];
+                             }else if(date==90){
+                                 t1 = timeForMat(90)["t2"];
+                                 t2 = timeForMat(90)["t1"];
+                             }else if(date==365){
+                                 t1 = timeForMat(365)["t2"];
+                                 t2 = timeForMat(365)["t1"];
+                             }
+                         }else if(flag==2){
+                             date = test4.value.split(" - ");
+                             t1=date[0];t2=date[1];
+                         }
+                         var type1,type2,type3,type4,type5,type6,type7
+                         $.ajax({
+                             url:"/shop/datas/complaint?t1="+t1+"&t2="+t2,
+                             dataType:'json',
+                             success:function (msg) {
+                                 console.log(msg);
+                                 for(let i=0;i<msg.length;i++){
+                                     type1=msg.filter(element=>{return element.ctype==1})
+                                     type2=msg.filter(element=>{return element.ctype==2})
+                                     type3=msg.filter(element=>{return element.ctype==3})
+                                     type4=msg.filter(element=>{return element.ctype==4})
+                                     type5=msg.filter(element=>{return element.ctype==5})
+                                     type6=msg.filter(element=>{return element.ctype==6})
+                                     type7=msg.filter(element=>{return element.ctype==7})
+                                 }
+                                 var  complaintArr=[type1.length,type2.length,type3.length,type4.length,type5.length,type6.length,type7.length];
+
+                                 getChart(complaintArr);
+
+                             }
+                         });
+
+                         function getChart(arr) {
+                             var myChart = echarts.init(document.querySelector('.tu2'));
+                             var option={
+
+                                 legend: {
+                                     itemWidth: 20,
+                                     itemHeight: 20,
+                                     orient: 'vertical',
+                                     // top: 'middle',
+                                     bottom: 20,
+                                     right:4,
+                                     data: ['商家爽约', '服务不好','态度不好','连带推销','恶意跳单','乱收费','其他']
+                                 },
+                                 tooltip : {
+                                     trigger: 'item',
+                                     formatter: "{b} : {c} ({d}%)"
+                                 },
+                                 series : [
+                                     {
+                                         type: 'pie',
+                                         radius : '80%',
+                                         center: ['43%', '50%'],
+                                         selectedMode: 'single',
+                                         label: {
+                                             normal: {
+                                                 show: false
+                                             },
+                                             emphasis: {
+                                                 show: true
+                                             }
+                                         },
+                                         labelLine: {
+                                             normal: {
+                                                 show: false
+                                             }
+                                         },
+                                         data:[
+                                             {value:arr[0], name: '商家爽约'},
+                                             {value:arr[1], name: '服务不好'},
+                                             {value:arr[2], name: '态度不好'},
+                                             {value:arr[3], name: '连带推销'},
+                                             {value:arr[4], name: '恶意跳单'},
+                                             {value:arr[5], name: '乱收费'},
+                                             {value:arr[6], name: '其他'},
+                                         ],
+                                         itemStyle: {
+                                             normal: {
+                                                 borderWidth: 10,
+                                                 borderColor: '#ffffff',
+                                             },
+
+                                         }
+                                     }
+                                 ],
+                                 color: ['rgb(55,223,116)','rgb(253,203,82)','rgb(249,140,44)','rgb(248,72,96)','rgb(128,152,255)','rgb(18,206,218)','rgb(59,172,254)']
+                             };
+                             myChart.setOption(option);
+                         }
+                     }
+                     $('.btn2').triggerHandler('click');
+                 })
+             </script>
+
+
 <!--图2导出-->
 <!--          <div style="display: flex;justify-content: center">-->
 <!--           <button  type="button" class="el-button blue el-button--primary is-round">-->
@@ -842,7 +961,7 @@
     .item1 .box1 .bottom .contents .tu2 {
         width: 100%;
         height: 330px;
-        background: url("/public/img/tu2.png") no-repeat center center /100% auto;
+        /*background: url("/public/img/tu2.png") no-repeat center center /100% auto;*/
     }
     .content .item1 .box1 .bottom .active {
         display: block;

@@ -37,6 +37,7 @@ class IndexController extends PublicsController
     //管理员管理
     public function actionAindex()
     {
+        $_SESSION['pagess']="aindex";
         $req = Yii::$app->request;
         $username = $req->get(username);
         $ID = $req->get(ID);
@@ -66,7 +67,7 @@ class IndexController extends PublicsController
         }
         // 实例化分页对象
         $pagination = new Pagination([
-            'defaultPageSize' => 2,
+            'defaultPageSize' => 10,
             'totalCount' => $tot,
         ]);
         $rows = Yii::$app->db->createCommand("SELECT * FROM admin_user $where LIMIT $pagination->offset,$pagination->limit")->queryAll();
@@ -163,6 +164,8 @@ class IndexController extends PublicsController
     //会员首页
     public function actionMember()
     {
+        $_SESSION['pagess']="member";
+
         $req = Yii::$app->request;
         $level = $req->get(level);
 
@@ -172,11 +175,7 @@ class IndexController extends PublicsController
         // 查询数据总条数
         $tot = 0;
 
-        // 实例化分页对象
-        $pagination = new Pagination([
-            'defaultPageSize' => 10,
-            'totalCount' => $tot,
-        ]);
+
         // 进行数据查询
 
         //判定搜索
@@ -198,10 +197,17 @@ class IndexController extends PublicsController
         } else {
            $where = "";
         }
-        $rows = Yii::$app->db->createCommand("SELECT * FROM customer $where LIMIT $pagination->offset,$pagination->limit")->queryAll();
-        foreach ($rows as $v) {
+        $pages =  Yii::$app->db->createCommand("SELECT * FROM customer $where")->queryAll();
+        foreach ($pages as $k => $v) {
             $tot++;
         }
+        // 实例化分页对象
+        $pagination = new Pagination([
+            'defaultPageSize' => 10,
+            'totalCount' => $tot,
+        ]);
+        $rows = Yii::$app->db->createCommand("SELECT * FROM customer $where LIMIT $pagination->offset,$pagination->limit")->queryAll();
+
         $data["pagination"] = $pagination;
         $data["rows"] = $rows;
         $data["firstname"] = $firstname;
@@ -317,6 +323,7 @@ class IndexController extends PublicsController
     //商家
     public function actionShop()
     {
+        $_SESSION['pagess']="shop";
         $req = Yii::$app->request;
         $province = Yii::$app->db->createCommand('select * from sys_province')->queryAll();
         $province_id = $req->get(province_id);
@@ -328,14 +335,10 @@ class IndexController extends PublicsController
         // 查询数据总条数
         $tot = 0;
 
-        // 实例化分页对象
-        $pagination = new Pagination([
-            'defaultPageSize' => 10,
-            'totalCount' => $tot,
-        ]);
+
         // 进行数据查询
         // 进行数据查询
-        $where=" WHERE shop_type=2";
+        $where=" WHERE 1=1";
         if($shop_name!=null && $shop_name!=""){
             $where .=" AND shop_name like '%$shop_name%'";
         }
@@ -348,11 +351,18 @@ class IndexController extends PublicsController
         if($district_id!=0 && $district_id!=0){
             $where .=" AND district_id=$district_id";
         }
-        $sql="SELECT * FROM shop $where  LIMIT $pagination->offset,$pagination->limit";
-        $rows=Yii::$app->db->createCommand($sql)->queryAll();
-        foreach ($rows as $k => $v) {
+
+        $pages =  Yii::$app->db->createCommand("SELECT * FROM shop $where")->queryAll();
+        foreach ($pages as $k => $v) {
             $tot++;
         }
+        // 实例化分页对象
+        $pagination = new Pagination([
+            'defaultPageSize' => 10,
+            'totalCount' => $tot,
+        ]);
+        $sql="SELECT * FROM shop $where  LIMIT $pagination->offset,$pagination->limit";
+        $rows=Yii::$app->db->createCommand($sql)->queryAll();
         //获取数据
         $data['province'] = $province;
         $data['pagination'] = $pagination;

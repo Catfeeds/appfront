@@ -1,124 +1,41 @@
+<style>
+    .demo-input {
+        padding-left: 10px;
+        height: 30px;
+        min-width: 300px;
+        line-height: 38px;
+        border: 1px solid #e6e6e6;
+        background-color: #f3faff;
+        border-radius: 30px;
+        outline: none;
+        margin-top: 14px;
+        margin-left:20px;
+    }
+
+    .demo-input:hover {
+        border-color: #c0c4cc;
+    }
+
+    .demo-input:focus {
+        border-color: #3CACFE;
+    }
+    .layui-laydate .layui-this{
+        background: #30B5FE !important;
+    }
+</style>
 <div class="main-content">
     <div>
         <div style="width: 100%;height: 637px;">
+
             <!--主内容-->
             <div id="platdata">
                 <div class="adminmannager-title">
                     <span>数据中心</span>&nbsp;
                     <span>·&nbsp;商家数据</span>
                 </div>
-                <div class="ShopMannager-search">
-                    <div class="xiala">
-                        <select name="member-level" id="member-level sel"
-                                style="width: 180px;background: #f3faff;margin-left:0;" onchange="sel(1)">
-                            <option value="1">最近一周</option>
-                            <option value="2">最近一月</option>
-                            <option value="3">最近一年</option>
-                        </select>
-                        <div class="xialaimg1"></div>
-                    </div>
-                    <!--时间戳-->
-                    <div class="block" style="float: left;line-height: 48px; margin-left: 20px;position: relative;display: flex">
-                        <span class="demonstration" style="width:100px">时间段选择</span>
-                        <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test1">
-                        <style>
-                            .demo-input {
-                                padding-left: 10px;
-                                height: 30px;
-                                min-width: 300px;
-                                line-height: 38px;
-                                border: 1px solid #e6e6e6;
-                                background-color: #f3faff;
-                                border-radius: 30px;
-                                outline: none;
-                                margin:auto 0;
-                            }
+               <!-- <div class="ShopMannager-search">
 
-                            .demo-input:hover {
-                                border-color: #c0c4cc;
-                            }
-
-                            .demo-input:focus {
-                                border-color: #3CACFE;
-                            }
-                            .layui-laydate .layui-this{
-                                background: #30B5FE !important;
-                            }
-                        </style>
-                        <script>
-                            laydate.render({
-                                elem: '#test1'
-                                , type: 'datetime'
-                                , range: true
-                                , theme: "#3CACFE"
-                            });
-                        </script>
-                    </div>
-                    <button>查询</button>
-
-                    <script>
-                        document.querySelector("#test1").addEventListener("blur",function () {
-                            document.querySelector(".laydate-btns-confirm").onclick=function () {
-                                sel(2);
-                            }
-                        });
-                        var el_select = document.querySelector("#sel");
-                        var test1 =$('#test1').get(0);
-                        console.log(test1);
-                        sel(1);
-                        function sel(flag){
-                            var t1 = "",t2="";
-                            if(flag==1){
-                                if(el_select.value==1){
-                                    t1 = timeForMat(7)["t2"];
-                                    t2 = timeForMat(7)["t1"];
-                                }else if(el_select.value==2){
-                                    t1 = timeForMat(30)["t2"];
-                                    t2 = timeForMat(30)["t1"];
-                                }else if(el_select.value==3){
-                                    t1 = timeForMat(365)["t2"];
-                                    t2 = timeForMat(365)["t1"];
-                                }
-                                test1.value="";
-                            }else if(flag==2){
-                                el_select.value="";
-                                var arr = test1.value.split(" - ");
-                                t1=arr[0];t2=arr[1];
-                            }
-
-
-                            $.ajax({
-                                url:"/shop/datas/count?t1="+t1+"&t2="+t2,
-                                dataType:"json",
-                                success:function (data) {
-                                    document.querySelector(".xd").innerHTML=data[0].nums;
-                                    document.querySelector(".cj").innerHTML=data[1].nums;
-                                    document.querySelector(".th").innerHTML=data[2].nums;
-
-                                    var n=0;
-                                    data[3].forEach(function (val) {
-                                        if(val.rate_star>3){
-                                            n++;
-                                        }
-                                    });
-                                    if(data[3].length){
-                                        document.querySelector(".hp").innerHTML = ((n/(data[3].length)).toFixed(2)*100)+"%";
-
-                                    }else {
-                                        document.querySelector(".hp").innerHTML="无";
-                                    }
-
-                                }
-
-                            });
-
-
-                        }
-                        
-                        
-                    </script>
-                    
-                </div>
+                </div>-->
                 <div class="tongji ptongji">
                     <ul>
                         <li style="background: #fff;">
@@ -180,16 +97,27 @@
                     <div class="platdata-header">
                         <div class="platdata-headername">评价汇总</div>
                         <div class="platdata-headerright">
-                            <ul>
-                                <li class="btn1">七天</li>
-                                <li class="btn1">一个月</li>
-                                <li class="btn1">一个季度</li>
-                                <li class="btn1">一年</li>
+                            <ul class="wshop-active">
+                                <li class="btn1 chose-acive" onclick="fn(this)">七天</li>
+                                <li class="btn1" onclick="fn(this)">一个月</li>
+                                <li class="btn1" onclick="fn(this)">一个季度</li>
+                                <li class="btn1" onclick="fn(this)">一年</li>
                             </ul>
+                            <style>
+                                .chose-acive{
+                                    border-bottom:3px solid #30a2fe;
+                                }
+                            </style>
+                            <script>
+                                function fn(that){
+                                    $(".wshop-active li").removeClass("chose-acive");
+                                    $(that).addClass("chose-acive");
+                                }
+                            </script>
                             <!--时间戳-->
                             <div class="block" style="float: left;line-height: 48px; position: relative;
 margin-top:4px;display:flex">
-                                <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test2">
+                                <input type="text" name="data" class="demo-input" placeholder="请选择日期和时间范围" id="test2" style="text-align: center;">
                                 <style>
                                     .demo-input {
                                         padding-left: 10px;
@@ -225,37 +153,10 @@ margin-top:4px;display:flex">
                                 </script>
 
                             </div>
-<!--                                <div class="timer">-->
-<!--                                    <el-date-picker-->
-<!--                                        v-model="value1"-->
-<!--                                        type="date"-->
-<!--                                        placeholder="请选择开始时间"-->
-<!--                                    >-->
-<!--                                    </el-date-picker>-->
-<!--                                    <div style="width: 26px;height: 26px;border-radius: 50%;-->
-<!--                background: #30a3fe; position: absolute;top:0;bottom:0;margin:auto 0;-->
-<!--                right:215px;pointer-events: none">-->
-<!--                                        <img src="/public/imgs/date.png" style="width: 12px;height: 12px;display:block;-->
-<!--margin:0 auto;margin-top:7px;">-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div class="timer">-->
-<!--                                    <el-date-picker-->
-<!--                                        v-model="value2"-->
-<!--                                        type="date"-->
-<!--                                        placeholder="请选择结束时间"-->
-<!--                                    >-->
-<!--                                    </el-date-picker>-->
-<!--                                    <div style="width: 26px;height: 26px;border-radius: 50%;-->
-<!--                background: #30a3fe; position: absolute;top:0;bottom:0;margin:auto 0;-->
-<!--                right:5px;pointer-events: none">-->
-<!--                                        <img src="/public/imgs/date.png" style="width: 12px;height: 12px;display:block;-->
-<!--margin:0 auto;margin-top:7px;">-->
-<!--                                    </div>-->
-<!--                                </div>-->
 
 
-                            <button style="float: left;border:0;margin-top:15px;">确定</button>
+
+                            <!--<button style="float: left;border:0;margin-top:15px;">确定</button>-->
                         </div>
                     </div>
                     <div id="mychart">
@@ -286,8 +187,8 @@ margin-top:4px;display:flex">
                                         t1 = timeForMat(30)["t2"];
                                         t2 = timeForMat(30)["t1"];
                                     }else if(date==90){
-                                        t1 = timeForMat(120)["t2"];
-                                        t2 = timeForMat(120)["t1"];
+                                        t1 = timeForMat(90)["t2"];
+                                        t2 = timeForMat(90)["t1"];
                                     }else if(date==365){
                                         t1 = timeForMat(365)["t2"];
                                         t2 = timeForMat(365)["t1"];
@@ -393,51 +294,158 @@ margin-top:4px;display:flex">
                     <div class="platdata-header">
                         <div class="platdata-headername">投诉汇总</div>
                         <div class="platdata-headerright">
-                            <ul>
-                                <li>七天</li>
-                                <li>一个月</li>
-                                <li>一个季度</li>
-                                <li>一年</li>
+                            <ul class="wshop-active">
+                                <li class="btn1 btn btn2" date="7"">七天</li>
+                                <li class="btn1 btn btn2" date="30">一个月</li>
+                                <li class="btn1 btn btn2" date="90">一个季度</li>
+                                <li class="btn1 btn btn2" date="365">一年</li>
                             </ul>
+                            <style>
+                                .chose-acive{
+                                    border-bottom:3px solid #30a2fe;
+                                }
+                            </style>
+                            <script>
+                                function fn(that){
+                                    $(".wshop-active li").removeClass("chose-acive");
+                                    $(that).addClass("chose-acive");
+                                }
+                            </script>
                             <!--时间戳-->
                             <div class="block" style="float: left;line-height: 48px; position: relative;
-margin-top:4px;"
-                            >
-                                <div class="timer">
-                                    <el-date-picker
-                                        v-model="value1"
-                                        type="date"
-                                        placeholder="请选择开始时间"
-                                    >
-                                    </el-date-picker>
-                                    <div style="width: 26px;height: 26px;border-radius: 50%;
-                background: #30a3fe; position: absolute;top:0;bottom:0;margin:auto 0;
-                right:210px;pointer-events: none">
-                                        <img src="/public/imgs/date.png" style="width: 12px;height: 12px;display:block;
-margin:0 auto;margin-top:7px;">
-                                    </div>
-                                </div>
-                                <div class="timer">
-                                    <el-date-picker
-                                        v-model="value2"
-                                        type="date"
-                                        placeholder="请选择结束时间"
-                                    >
-                                    </el-date-picker>
-                                    <div style="width: 26px;height: 26px;border-radius: 50%;
-                background: #30a3fe; position: absolute;top:0;bottom:0;margin:auto 0;
-                right:5px;pointer-events: none">
-                                        <img src="/public/imgs/date.png" style="width: 12px;height: 12px;display:block;
-margin:0 auto;margin-top:7px;">
-                                    </div>
-                                </div>
+margin-top:4px;display:flex">
+                                <input type="text" name="data" class="demo-input" placeholder="请选择日期和时间范围" id="test4" style="text-align: center;">
+                                <script>
+                                    laydate.render({
+                                        elem: '#test4'
+                                        , type: 'datetime'
+                                        , range: true
+                                        , theme: "#3CACFE"
+                                    });
+                                </script>
 
                             </div>
-                            <button style="float: left;border:0;margin-top:13px;">确定</button>
                         </div>
                     </div>
-                    <div id="mychart2">
-                    </div>
+                    <div  class="tu2"></div>
+                    <script>
+                        $(function () {
+                            $('#test4').on('blur',function(){
+                                $('.laydate-btns-confirm').on('click',function () {
+                                    getinfo(2,-1);
+                                })
+                            })
+                            $('.btn2').on('click',function(){
+                                $('.btn2').removeClass('chose-acive').filter(this).addClass('chose-acive');
+                                let  test4=$('#test4');
+                                let date=$(this).attr('date');
+                                console.log($('.btn2'));
+                                getinfo(1,date);
+                            })
+                            function getinfo(flag,date) {
+                                var t1="",t2="";
+                                if(flag==1){
+                                    if(date==7){
+                                        t1 = timeForMat(7)["t2"];
+                                        t2 = timeForMat(7)["t1"];
+                                    }else if(date == 30){
+                                        t1 = timeForMat(30)["t2"];
+                                        t2 = timeForMat(30)["t1"];
+                                    }else if(date==90){
+                                        t1 = timeForMat(90)["t2"];
+                                        t2 = timeForMat(90)["t1"];
+                                    }else if(date==365){
+                                        t1 = timeForMat(365)["t2"];
+                                        t2 = timeForMat(365)["t1"];
+                                    }
+                                }else if(flag==2){
+                                    date = test4.value.split(" - ");
+                                    t1=date[0];t2=date[1];
+                                }
+                                var type1,type2,type3,type4,type5,type6,type7
+                                $.ajax({
+                                    url:"/water/datas/complaint?t1="+t1+"&t2="+t2,
+                                    dataType:'json',
+                                    success:function (msg) {
+                                        console.log(msg);
+                                        for(let i=0;i<msg.length;i++){
+                                            type1=msg.filter(element=>{return element.ctype==1})
+                                            type2=msg.filter(element=>{return element.ctype==2})
+                                            type3=msg.filter(element=>{return element.ctype==3})
+                                            type4=msg.filter(element=>{return element.ctype==4})
+                                            type5=msg.filter(element=>{return element.ctype==5})
+                                            type6=msg.filter(element=>{return element.ctype==6})
+                                            type7=msg.filter(element=>{return element.ctype==7})
+                                        }
+                                        var  complaintArr=[type1.length,type2.length,type3.length,type4.length,type5.length,type6.length,type7.length];
+
+                                        getChart(complaintArr);
+
+                                    }
+                                });
+
+                                function getChart(arr) {
+                                    var myChart = echarts.init(document.querySelector('.tu2'));
+                                    var option={
+
+                                        legend: {
+                                            itemWidth: 20,
+                                            itemHeight: 20,
+                                            orient: 'vertical',
+                                            // top: 'middle',
+                                            bottom: 20,
+                                            right:4,
+                                            data: ['商家爽约', '服务不好','态度不好','连带推销','恶意跳单','乱收费','其他']
+                                        },
+                                        tooltip : {
+                                            trigger: 'item',
+                                            formatter: "{a} <br/>{b} : {c} ({d}%)"
+                                        },
+                                        series : [
+                                            {
+                                                type: 'pie',
+                                                radius : '80%',
+                                                center: ['40%', '50%'],
+                                                selectedMode: 'single',
+                                                label: {
+                                                    normal: {
+                                                        show: false
+                                                    },
+                                                    emphasis: {
+                                                        show: true
+                                                    }
+                                                },
+                                                labelLine: {
+                                                    normal: {
+                                                        show: false
+                                                    }
+                                                },
+                                                data:[
+                                                    {value:arr[0], name: '商家爽约'},
+                                                    {value:arr[1], name: '服务不好'},
+                                                    {value:arr[2], name: '态度不好'},
+                                                    {value:arr[3], name: '连带推销'},
+                                                    {value:arr[4], name: '恶意跳单'},
+                                                    {value:arr[5], name: '乱收费'},
+                                                    {value:arr[6], name: '其他'},
+                                                ],
+                                                itemStyle: {
+                                                    normal: {
+                                                        borderWidth: 10,
+                                                        borderColor: '#ffffff',
+                                                    },
+
+                                                }
+                                            }
+                                        ],
+                                        color: ['rgb(55,223,116)','rgb(253,203,82)','rgb(249,140,44)','rgb(248,72,96)','rgb(128,152,255)','rgb(18,206,218)','rgb(59,172,254)']
+                                    };
+                                    myChart.setOption(option);
+                                }
+                            }
+                            $('.btn2').triggerHandler('click');
+                        })
+                    </script>
                     <div class="chart-b">
                         <button style=" width: 90px;
         height: 27px;

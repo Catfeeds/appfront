@@ -9,9 +9,8 @@ use yii\helpers\Url;
     <div class="adminmannager">
         <!--用户管理-管理员管理-->
         <div class="adminmannager-title">
-            <span style="color:#333;">店铺管理</span>&nbsp;
-            <!--跳转水司-->
-           <!-- <span>·&nbsp;<a href="/admin/index/water" style="color: #30d366;">商家</a></span>-->
+            <span>店铺管理</span>&nbsp;
+            <span>·&nbsp;店铺管理</span>
         </div>
         <div class="adminmannager-search">
             <form action="<?= Yii::$service->url->getUrl('/admin/index/shop') ?>" method="get">
@@ -42,14 +41,14 @@ use yii\helpers\Url;
                     </select>
                     <div class="xialaimg1"></div>
                 </div>
-                <span style="margin-left:10px;">管理员名称</span>
-                <input type="text" name="shop_name"
+                <!-- <span style="margin-left:10px;">管理员名称</span> -->
+            <!--     <input type="text" name="shop_name"
                        <?php if($shop_name){?>
                            value="<?= $shop_name?>"
                         <?php } else{?>
                            placeholder="请输入管理员名称"
                         <?php }?>
-                      >
+                      > -->
                 <div class="indexsearch">
                     <input class="search-img" type="submit" value="">
                 </div>
@@ -106,7 +105,7 @@ use yii\helpers\Url;
         <div class="admin-table">
             <div class="admin-tablename">
                     <div class="admin-tablenamebox"></div>
-                    <span class="admin-tablename1"><a href="/vip">会员</a></span><span class="admin-tablename2">列表</span>
+                    <span class="admin-tablename1"><a href="/vip">店铺</a></span> <span class="admin-tablename2"> 列表</span>
              </div>
                 <div class="el-table__body-wrapper is-scrolling-left">
                     <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
@@ -156,6 +155,7 @@ use yii\helpers\Url;
                             <col name="el-table_2_column_5" width="300">
                         </colgroup>
                         <tbody style="font-size: 12px;color:#82898e">
+                        <?php /*var_dump($rows)*/?>
                         <?php foreach ($rows as $v){?>
                             <tr class="el-table__row" style="height:36px;font-size: 14px;">
                                 <td class="el-table_2_column_11  ">

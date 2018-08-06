@@ -468,8 +468,8 @@
                                  t1 = timeForMat(30)["t2"];
                                  t2 = timeForMat(30)["t1"];
                              }else if(date==90){
-                                 t1 = timeForMat(120)["t2"];
-                                 t2 = timeForMat(120)["t1"];
+                                 t1 = timeForMat(90)["t2"];
+                                 t2 = timeForMat(90)["t1"];
                              }else if(date==365){
                                  t1 = timeForMat(365)["t2"];
                                  t2 = timeForMat(365)["t1"];

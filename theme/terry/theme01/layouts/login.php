@@ -28,7 +28,7 @@ $cssOptions = [
   <!doctype html>
   <html lang="en">
   <head>
-    <title>晋彤后台管理系统-登录页面</title>
+    <title>晋彤管理系统-登录页面</title>
       <?php $this->beginBody() ?>
       <?php $this->endBody() ?>
     <meta charset="UTF-8">
@@ -38,4 +38,5 @@ $cssOptions = [
     <?= $content ?>
   </body>
   </html>
+
 <?php $this->endPage() ?>
