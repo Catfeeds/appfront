@@ -37,6 +37,7 @@ class IndexController extends PublicsController
     //管理员管理
     public function actionAindex()
     {
+        $_SESSION['pagess']="aindex";
         $req = Yii::$app->request;
         $username = $req->get(username);
         $ID = $req->get(ID);
@@ -163,6 +164,8 @@ class IndexController extends PublicsController
     //会员首页
     public function actionMember()
     {
+        $_SESSION['pagess']="member";
+
         $req = Yii::$app->request;
         $level = $req->get(level);
 
@@ -320,6 +323,7 @@ class IndexController extends PublicsController
     //商家
     public function actionShop()
     {
+        $_SESSION['pagess']="shop";
         $req = Yii::$app->request;
         $province = Yii::$app->db->createCommand('select * from sys_province')->queryAll();
         $province_id = $req->get(province_id);

@@ -34,6 +34,8 @@ class ShujuController extends PublicsController
 //=========================数据中心===============================
     //平台数据
     public function actionIndex(){
+        $_SESSION['pagess']="index";
+
     	$now=date("Y-m-d",time());
     	$sta=strtotime($now);
     	$end=$sta+60*60*24;
@@ -50,6 +52,7 @@ class ShujuController extends PublicsController
 //=========================商家数据==================================
     //商家数据
     public function actionShop(){
+        $_SESSION['pagess']="shop";
         $req = Yii::$app->request;
         $tot = 0;
         $province = Yii::$app->db->createCommand('select * from sys_province')->queryAll();
@@ -104,11 +107,21 @@ class ShujuController extends PublicsController
         }
         $_SESSION["arr"] = $arr;
 //投诉率
-        foreach ($res as $v){
+        $tousunum = array();
+        foreach ($res as $k=>$v){
+            $tousunum[$k] = 0;
             $shop_id = $v['shop_id'];
-            $tousu = Yii::$app->db->createCommand("SELECT * FROM sales_flat_order WHERE shop_id = $shop_id")->queryOne();
-            var_dump($tousu);
+            $tousu = Yii::$app->db->createCommand("SELECT * FROM sales_flat_order WHERE shop_id = $shop_id and order_status='4'")->queryAll();
+            foreach ($tousu as $tk=>$tv){
+                $tousunum[$k] ++;
+            }
+            var_dump($shop_id);
+            $condition['shop_id'] = $v["shop_id"];
+            $tousulv = $query->from("review")->where($condition)->all();
+            var_dump($tousulv);
         }
+//        var_dump($tousunum);
+
         exit;
 
 
@@ -287,6 +300,8 @@ where order_status>=5 and refund_at=$created_at1 and refund_at")->queryAll();
 
     //水司数据
     public function actionWater(){
+        $_SESSION['pagess']="water";
+
         $req = Yii::$app->request;
         $tot = 0;
         $province = Yii::$app->db->createCommand('select * from sys_province')->queryAll();

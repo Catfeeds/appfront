@@ -33,6 +33,7 @@ class SystemController extends PublicsController
     //平台信息
     public function actionIndex()
     {
+        $_SESSION['pagess']="index";
 
         // 获取数据的总条数 
         $totArr = Yii::$app->db->createCommand("select count(*) tot from banner")->queryOne();
@@ -278,6 +279,8 @@ class SystemController extends PublicsController
     //VIP规则
     public function actionVipruler()
     {
+        $_SESSION['pagess']="vipruler";
+
         $ruler = Yii::$app->db->createCommand("select * from privilege")->queryAll();
         $data['ruler'] = $ruler;
         $member = Yii::$app->db->createCommand("select * from member_rule")->queryAll();
@@ -433,6 +436,8 @@ class SystemController extends PublicsController
     //充值设置
     public function actionRecharge()
     {
+        $_SESSION['pagess']="recharge";
+
         $coin = Yii::$app->db->createCommand("select * from coin_set")->queryAll();
         $coin1 = Yii::$app->db->createCommand("select * from recharge")->queryAll();
 
@@ -536,6 +541,7 @@ class SystemController extends PublicsController
     }
     //帮助功能
     public function actionHelper(){
+        $_SESSION['pagess']="helper";
 
         $help=Yii::$app->db->createCommand("select * from article order by sort desc")->queryAll();
         $data['help']=$help;

@@ -33,6 +33,8 @@ class MoneyController extends PublicsController
 //=========================财务管理===============================
     //平台财务
     public function actionIndex(){
+        $_SESSION['pagess']="index";
+
     	$beginThismonth=mktime(0,0,0,date('m'),1,date('Y'));
     	$endThismonth=mktime(23,59,59,date('m'),date('t'),date('Y'));
     	$sql="SELECT A.shop_name, sum(B.items_count) as items, sum(B.grand_total) as grand
@@ -48,6 +50,7 @@ class MoneyController extends PublicsController
     }
     //查看商家数据
     public function actionWwater(){
+        
         $req = Yii::$app->request;
         $id = $req->get(id);
         $res = Yii::$app->db->createCommand("SELECT * FROM shop WHERE shop_id=$id")->queryOne();
@@ -67,6 +70,8 @@ class MoneyController extends PublicsController
     }
     //商家财务2
     public function actionShop(){
+        $_SESSION['pagess']="shop";
+
     	// 查询数据总条数
     	$res = Yii::$app->db->createCommand("SELECT * FROM shop WHERE shop_state in (0,1,2) AND shop_type=2")->queryAll();
     	$query = new Query;
@@ -113,6 +118,8 @@ class MoneyController extends PublicsController
     }
     //水司财务
     public function actionWater(){
+        $_SESSION['pagess']="water";
+
     	// 查询数据总条数
     	$res = Yii::$app->db->createCommand("SELECT * FROM shop WHERE shop_state in (0,1,2) AND shop_type=1")->queryAll();
     	$query = new Query;

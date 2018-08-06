@@ -2701,14 +2701,17 @@ $cssOptions = [
 
             let asd=document.querySelectorAll(".aside-list li");
 
-            let str1=url[5];
-            let arr1=str1.split("?");
+            // let str1=url[5];
+            // let arr1=str1.split("?");
+
+            let arr1="<?php echo $_SESSION['pagess'];?>";
 
 
             for (let i=0; i <asd.length ;i++) {
                 let url12=asd[i].getAttribute('href1');
 
-                let n = url12.search('/'+arr1[0]);
+                // let n = url12.search('/'+arr1[0]);
+                let n = url12.search('/'+arr1);
 
                 if (n>=1) {
                     asd[i].className='active';
