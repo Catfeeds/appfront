@@ -87,26 +87,26 @@
             <div>
                 <span>今日新增：<?php echo $huiyuannew['num'];?>&nbsp;&nbsp;&nbsp;&nbsp;会员总数：<?php echo $huiyuanall['num'];?></span>
             </div>
-            <div id="mychart" >
-            
+            <div id="mychart" style="width:800px;height:400px;float:left;">
+
             </div>
-            <script type="text/javascript"> 
+            <script type="text/javascript">
             //日期时间范围
             laydate.render({
                 elem: '#test10'
                 , type: 'datetime'
                 , range: true
                 , theme: "#3CACFE"
-            });  
+            });
            function atime(){
                var aval=$('#test10').val();
-               if(aval){ 
+               if(aval){
             	   $(".but1").css({"background":"#fff","color":"#99cafe"});
-            	   var sta = aval.substring(0, 10); 
+            	   var sta = aval.substring(0, 10);
             	   var end = aval.substring(22,32);
             	   url="<?= Yii::$service->url->getUrl('admin/shuju/searchdate') ?>?type=3&sta="+sta+"&end="+end;
             	   $.get(url).done(function (data) {
-                    	var row =JSON.parse(data); 
+                    	var row =JSON.parse(data);
                         // 填入数据
         	             myChart.setOption({
         	          	   title: {
@@ -165,7 +165,7 @@
             	   url="<?= Yii::$service->url->getUrl('admin/shuju/year') ?>?type="+type;
                }
                $.get(url).done(function (data) {
-                  	var row =JSON.parse(data); 
+                  	var row =JSON.parse(data);
                       // 填入数据
       	             myChart.setOption({
       	          	   title: {
@@ -207,7 +207,7 @@
                   });
            }
             $.get(url).done(function (data) {
-            	var row =JSON.parse(data); 
+            	var row =JSON.parse(data);
                 // 填入数据
 	             myChart.setOption({
 	          	   title: {
@@ -249,7 +249,7 @@
 //             // 使用刚指定的配置项和数据显示图表。
 //             myChart.setOption(option);
             </script>
-            <div class="chart-b">
+            <!--<div class="chart-b">
                 <button style=" width: 90px;
         height: 27px;
         color: #fff;
@@ -274,7 +274,7 @@
                     <img src="/public/adminimg/line.png" alt="">
                     <span style="color:#a4adb5">销售额</span>
                 </div>
-            </div>
+            </div>-->
         </div>
         <!--水司增长趋势-->
         <div class="addofplatdata" style="float: left;">
@@ -302,7 +302,7 @@
             <div>
                 <span>今日新增：<?php echo $shuisinew['num'];?>&nbsp;&nbsp;&nbsp;&nbsp;会员总数：<?php echo $shuisiall['num'];?></span>
             </div>
-            <div id="mychart2" style="width:700px;height:400px;float:left;">
+            <div id="mychart2" style="width:800px;height:400px;float:left;">
             </div>
             <script type="text/javascript">
             //日期时间范围
@@ -311,16 +311,16 @@
                 , type: 'datetime'
                 , range: true
                 , theme: "#3CACFE"
-            });  
+            });
            function btime(){
                var aval=$('#test11').val();
-               if(aval){ 
+               if(aval){
             	   $(".but1").css({"background":"#fff","color":"#99cafe"});
-            	   var sta = aval.substring(0, 10); 
+            	   var sta = aval.substring(0, 10);
             	   var end = aval.substring(22,32);
             	   url="<?= Yii::$service->url->getUrl('admin/shuju/searchdate') ?>?type=1&sta="+sta+"&end="+end;
             	   $.get(url).done(function (data) {
-                    	var row =JSON.parse(data); 
+                    	var row =JSON.parse(data);
                         // 填入数据
                     	mychart2.setOption({
         	          	   title: {
@@ -361,8 +361,8 @@
         	           });
                     });
                }
-           }        
-            
+           }
+
            var mychart2 = echarts.init(document.getElementById('mychart2'));
             // 异步加载数据
            var url="<?= Yii::$service->url->getUrl('admin/shuju/hours?hours=24&type=1') ?>";
@@ -380,7 +380,7 @@
             	   url="<?= Yii::$service->url->getUrl('admin/shuju/year') ?>?type="+type;
                }
                $.get(url).done(function (data) {
-                  	var row =JSON.parse(data); 
+                  	var row =JSON.parse(data);
                       // 填入数据
                   	mychart2.setOption({
       	          	   title: {
@@ -422,7 +422,7 @@
                   });
            }
             $.get(url).done(function (data) {
-            	var row =JSON.parse(data); 
+            	var row =JSON.parse(data);
                 // 填入数据
             	mychart2.setOption({
 	          	   title: {
@@ -463,7 +463,7 @@
 	           });
             });
             </script>
-            <div class="chart-b">
+            <!--<div class="chart-b">
                 <button style=" width: 90px;
         height: 27px;
         color: #fff;
@@ -488,7 +488,7 @@
                     <img src="/public/adminimg/line.png" alt="">
                     <span style="color:#a4adb5">销售额</span>
                 </div>
-            </div>
+            </div>-->
         </div>
         <!--商家增长趋势-->
         <div class="addofplatdata" style="float: left;">
@@ -502,7 +502,7 @@
                         <li class="year but1" onclick='cut3(2,this)' uri='4'>一年</li>
                     </ul>
                     <!--时间戳-->
-                    <div class="block shijianchuo" 
+                    <div class="block shijianchuo"
                     >
                         <div class="timer">
                             <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
@@ -519,25 +519,25 @@
             <div>
                 <span>今日新增：<?php echo $shuisinew['num'];?>&nbsp;&nbsp;&nbsp;&nbsp;会员总数：<?php echo $shuisiall['num'];?></span>
             </div>
-            <div id="mychart3" style="width:700px;height:400px;float:left;">
+            <div id="mychart3" style="width:800px;height:400px;float:left;">
             </div>
-             <script type="text/javascript">   
+             <script type="text/javascript">
              //日期时间范围
              laydate.render({
                  elem: '#test12'
                  , type: 'datetime'
                  , range: true
                  , theme: "#3CACFE"
-             });  
+             });
             function ctime(){
                 var aval=$('#test12').val();
-                if(aval){ 
+                if(aval){
              	   $(".but1").css({"background":"#fff","color":"#99cafe"});
-             	   var sta = aval.substring(0, 10); 
+             	   var sta = aval.substring(0, 10);
              	   var end = aval.substring(22,32);
              	   url="<?= Yii::$service->url->getUrl('admin/shuju/searchdate') ?>?type=2&sta="+sta+"&end="+end;
              	   $.get(url).done(function (data) {
-                     	var row =JSON.parse(data); 
+                     	var row =JSON.parse(data);
                          // 填入数据
                      	mychart3.setOption({
          	          	   title: {
@@ -578,7 +578,7 @@
          	           });
                      });
                 }
-            }                
+            }
            var mychart3 = echarts.init(document.getElementById('mychart3'));
             // 异步加载数据
            var url="<?= Yii::$service->url->getUrl('admin/shuju/hours?hours=24&type=2') ?>";
@@ -596,7 +596,7 @@
             	   url="<?= Yii::$service->url->getUrl('admin/shuju/year') ?>?type="+type;
                }
                $.get(url).done(function (data) {
-                  	var row =JSON.parse(data); 
+                  	var row =JSON.parse(data);
                       // 填入数据
                   	mychart3.setOption({
       	          	   title: {
@@ -638,7 +638,7 @@
                   });
            }
             $.get(url).done(function (data) {
-            	var row =JSON.parse(data); 
+            	var row =JSON.parse(data);
                 // 填入数据
             	mychart3.setOption({
 	          	   title: {
@@ -679,7 +679,7 @@
 	           });
             });
             </script>
-            <div class="chart-b">
+            <!--<div class="chart-b">
                 <button style=" width: 90px;
         height: 27px;
         color: #fff;
@@ -704,7 +704,7 @@
                     <img src="/public/adminimg/line.png" alt="">
                     <span style="color:#a4adb5">销售额</span>
                 </div>
-            </div>
+            </div>-->
         </div>
         <!--商品服务数据-->
         <div class="addofplatdata" style="float: left;">
@@ -733,9 +733,9 @@
                     <button style="float: left;border:0;margin-top:20px;">确定</button>
                 </div>
             </div>
-            <div id="mychart4" style="width:700px;height:400px;float:left;">
+            <div id="mychart4" style="width:800px;height:400px;float:left;">
             </div>
-            <div class="chart-b">
+            <!--<div class="chart-b">
                 <button style=" width: 90px;
         height: 27px;
         color: #fff;
@@ -760,7 +760,7 @@
                     <img src="/public/adminimg/line.png" alt="">
                     <span style="color:#a4adb5">销售额</span>
                 </div>
-            </div>
+            </div>-->
         </div>
         <!--支付方式汇总-->
         <div class="addofplatdata" style="float: left;">
@@ -792,7 +792,7 @@
             </div>
             <div id="mychart5">
             </div>
-            <div class="chart-b">
+            <!--<div class="chart-b">
                 <button style=" width: 90px;
         height: 27px;
         color: #fff;
@@ -817,7 +817,7 @@
                     <img src="/public/adminimg/line.png" alt="">
                     <span style="color:#a4adb5">销售额</span>
                 </div>
-            </div>
+            </div>-->
         </div>
         <!--访问数据-->
         <div class="addofplatdata" style="float: left;">
@@ -849,7 +849,7 @@
             </div>
             <div id="mychart6">
             </div>
-            <div class="chart-b">
+            <!--<div class="chart-b">
                 <button style=" width: 90px;
         height: 27px;
         color: #fff;
@@ -874,7 +874,7 @@
                     <img src="/public/adminimg/line.png" alt="">
                     <span style="color:#a4adb5">销售额</span>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
 </div>

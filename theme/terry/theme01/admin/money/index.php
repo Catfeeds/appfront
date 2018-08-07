@@ -272,7 +272,7 @@ margin-top:16px;"
 //             // 使用刚指定的配置项和数据显示图表。
 //             myChart.setOption(option);
             </script>
-            <div class="chart-b">
+            <!--<div class="chart-b">
                 <button style=" width: 90px;
         height: 27px;
         color: #fff;
@@ -297,7 +297,7 @@ margin-top:16px;"
                     <img src="/public/adminimg/line.png" alt="">
                     <span style="color:#a4adb5">销售额</span>
                 </div>
-            </div>
+            </div>-->
 
         </div>
         <!--本月营业排行TOP10-->

@@ -80,6 +80,8 @@ class ShujuController extends PublicsController
         if($district_id!=0 && $district_id!=null){
             $where .=" AND district_id=$district_id";
         }
+       /* var_dump($where);
+        exit;*/
         $pages =  Yii::$app->db->createCommand("SELECT * FROM shop $where")->queryAll();
         /*var_dump($pages);
         exit;*/
@@ -216,7 +218,7 @@ class ShujuController extends PublicsController
             $table .= '<tr>';
             $table .= '<td>' . $v['shop_id']. '</td>';
             $table .= '<td>' . $v['shop_name']. '</td>';
-            $table .= '<td>' . $province[$v['province_id']]["province_name"] .$city[$v['city_id']]["city_name"].$district[$v['district_id']]["district_name"]. '</td>';
+            $table .= '<td>' . $province[$v['province_id']-1]["province_name"] .$city[$v['city_id']-1]["city_name"].$district[$v['district_id']-1]["district_name"]. '</td>';
             $table .= '<td>' . $arr[$k]. '</td>';
             $table .= '</tr>';
         }
@@ -541,7 +543,7 @@ class ShujuController extends PublicsController
             $table .= '<tr>';
             $table .= '<td>' . $v['shop_id']. '</td>';
             $table .= '<td>' . $v['shop_name']. '</td>';
-            $table .= '<td>' . $province[$v['province_id']]["province_name"] .$city[$v['city_id']]["city_name"].$district[$v['district_id']]["district_name"]. '</td>';
+            $table .= '<td>' . $province[$v['province_id']-1]["province_name"] .$city[$v['city_id']-1]["city_name"].$district[$v['district_id']-1]["district_name"]. '</td>';
             $table .= '<td>' . $arr[$k]. '</td>';
             $table .= '</tr>';
         }
