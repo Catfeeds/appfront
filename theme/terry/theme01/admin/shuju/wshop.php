@@ -599,10 +599,13 @@ use yii\helpers\Url;
                                 按销售额排行
                             </span>
                         </a>
-
-                            <button style="width:89px;height:32px;background: #36de77;
+                            <a href="<?= Yii::$service->url->getUrl('admin/shuju/exportp',array('shop_type'=>2)) ?>">
+                                <button style="width:89px;height:32px;background: #36de77;
                                         float: left;border:0;margin-top:13px;line-height:
-32px;">导出表格</button>
+32px;">
+                                    导出表格
+                                </button>
+                            </a>
                         </div>
                     </div>
                     <div class="paihang ppaihang">

@@ -190,7 +190,7 @@ use yii\helpers\Url;
                                     </td>
                                     <td class="el-table_2_column_14">
                                         <div class="cell el-tooltip" title="<?= $v["payment_method"] ?>">
-                                            <?= $arr[$k]?>
+                                            <?= ceil((1-$tousunum[$k])*100).'%'?>
                                         </div>
                                     </td>
 <!--                                    投诉率是投诉人数/总评论人数-->
