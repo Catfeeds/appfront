@@ -1,10 +1,7 @@
 <?php
-
 use yii\widgets\LinkPager;
 use yii\helpers\Html;
 use yii\helpers\Url;
-
-
 ?>
 
 <div class="main-content">

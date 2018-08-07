@@ -3,6 +3,12 @@ use yii\widgets\LinkPager;
 use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
+<style>
+    .shop-btn{
+        margin-right:16px;width: 100px;height: 32px;border:0;float: right;margin-top:8px;
+        background: #32d699;border-radius: 18px;text-align: center;line-height: 32px;color: #fff;
+    }
+</style>
 <div class="main-content">
     <div class="ShopMannager">
         <div class="adminmannager-title">
@@ -97,10 +103,11 @@ use yii\helpers\Url;
                     }
                 })
             </script>
-            <button style="margin-right:16px;width: 100px;height: 32px;border:0;float: right;margin-top:8px;
-background: #32d699;border-radius: 18px;text-align: center;line-height: 32px;color: #fff;">
-                导出表格
-            </button>
+            <a href="<?= Yii::$service->url->getUrl('admin/shuju/exportw',array('shop_type'=>1)) ?>">
+                <button class="shop-btn">
+                    导出表格
+                </button>
+            </a>
         </div>
         <!--管理员列表-->
         <div class="ProductorData">
@@ -175,17 +182,19 @@ background: #32d699;border-radius: 18px;text-align: center;line-height: 32px;col
 
                                 <td class="el-table_2_column_14">
                                     <div class="cell el-tooltip" title="<?= $v["payment_method"] ?>">
-                                        <?= $v['shop_address'] ?>
+                                        <?= $province[$v['province_id']-1]["province_name"]?>
+                                        <?= $city[$v['city_id']-1]["city_name"]?>
+                                        <?= $district[$v['district_id']-1]["district_name"]?>
                                     </div>
                                 </td>
                                 <td class="el-table_2_column_14">
                                     <div class="cell el-tooltip" title="<?= $v["payment_method"] ?>">
-                                        98%
+                                        <?= ceil((1-$tousunum[$k])*100).'%'?>
                                     </div>
                                 </td>
                                 <td class="el-table_2_column_14">
                                     <div class="cell el-tooltip" title="<?= $v["payment_method"] ?>">
-                                        2%
+                                        <?= ceil($tousunum[$k]*100).'%'?>
                                     </div>
                                 </td>
                                 <td class="el-table_2_column_18">

@@ -183,20 +183,20 @@ use yii\helpers\Url;
 
                                     <td class="el-table_2_column_14">
                                         <div class="cell el-tooltip" title="<?= $v["payment_method"] ?>">
-                                            <?= $province[$v['province_id']]["province_name"]?>
-                                            <?= $city[$v['city_id']]["city_name"]?>
-                                            <?= $district[$v['district_id']]["district_name"]?>
+                                            <?= $province[$v['province_id']-1]["province_name"]?>
+                                            <?= $city[$v['city_id']-1]["city_name"]?>
+                                            <?= $district[$v['district_id']-1]["district_name"]?>
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_14">
                                         <div class="cell el-tooltip" title="<?= $v["payment_method"] ?>">
-                                            <?= $arr[$k]?>
+                                            <?= ceil((1-$tousunum[$k])*100).'%'?>
                                         </div>
                                     </td>
 <!--                                    投诉率是投诉人数/总评论人数-->
                                     <td class="el-table_2_column_14">
                                         <div class="cell el-tooltip" title="<?= $v["payment_method"] ?>">
-
+                                            <?= ceil($tousunum[$k]*100).'%'?>
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_18">

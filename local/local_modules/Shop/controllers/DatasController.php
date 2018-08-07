@@ -74,11 +74,6 @@ class DatasController extends PublicsController
         $shop_id = $_SESSION['shop_id'];
         $complaint = Yii::$app->db->createCommand("SELECT *  FROM customer_complaint WHERE shop_id = $shop_id and times>$create_t1 AND times<$create_t2")->queryAll();
 
-
-        //        $arr=[]
-//        $arr[0]=$arr1;
-//        $arr[1]=$arr2;
-//        $arr[2]=$arr3;
         echo json_encode($complaint);
         exit();
     }

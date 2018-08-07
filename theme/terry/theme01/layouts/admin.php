@@ -8,7 +8,7 @@ $jsOptions = [ # js的配置部分
             'js/layout-admin.js',
             'js/echarts.min.js',
             'js/laydate.js',
-
+            'js/getTime.js'
         ],
     ]
 
@@ -1239,7 +1239,7 @@ $cssOptions = [
         position: relative;
     }
     .money-box1{
-        background: url("/public/adminimg/dui.png") no-repeat center center;
+          background: url("/public/adminimg/dui.png") no-repeat center center;
     }
     .paihang{
         width: 100%;
@@ -1247,7 +1247,7 @@ $cssOptions = [
     }
     .paihang table{
         width: 100%;
-        height: 100%;
+        /*height: 100%;*/
     }
     .paihang table tr th{
         height: 50px;
