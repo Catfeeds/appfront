@@ -77,8 +77,9 @@
         margin-right: 20px;
     }
 
-    .el-form-item {
-        /*line-height: 40px;*/
+    .el-form-item__label {
+        width: 150px;
+        color: #A4ADB5;
     }
 
     .el-form-item__content {

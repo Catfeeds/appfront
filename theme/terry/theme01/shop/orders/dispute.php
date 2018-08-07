@@ -95,20 +95,16 @@ use yii\helpers\Url;
                         </select>
                     </li>
                     <li data-v-7a00a356="">
-                        订单号&nbsp;&nbsp;<div data-v-7a00a356="" class="el-input" style="width: 150px;"><!----><input type="text"
-                                                                                                     autocomplete="off"
-                                                                                                     placeholder="请输入订单号"
-                                                                                                     class="el-input__inner increment_id"
-                                                                                                     name="increment_id">
-                            <!----><!----><!----></div>
+                        订单号&nbsp;&nbsp;<div data-v-7a00a356="" class="el-input" style="width: 150px;">
+                            <input type="text" autocomplete="off" placeholder="请输入订单号" class="el-input__inner increment_id"
+                                   name="increment_id">
+                            </div>
                     </li>
                     <li data-v-7a00a356="">
-                        姓名&nbsp;&nbsp;<div data-v-7a00a356="" class="el-input" style="width: 200px;"><!----><input type="text"
-                                                                                                     autocomplete="off"
-                                                                                                     placeholder="请输入收货人姓名"
-                                                                                                     class="el-input__inner customer_firstname"
-                                                                                                     name="customer_firstname">
-                            <!----><!----><!----></div>
+                        姓名&nbsp;&nbsp;<div data-v-7a00a356="" class="el-input" style="width: 200px;">
+                            <input type="text" autocomplete="off" placeholder="请输入收货人姓名"
+                                   class="el-input__inner customer_firstname" name="customer_firstname">
+                            </div>
                     </li>
                     <li data-v-7a00a356="">
                         <div data-v-7a00a356="" class="sousuo"></div>
@@ -216,13 +212,12 @@ use yii\helpers\Url;
                                 <?php foreach ($res as $key => $v) { ?>
                                     <tr class="el-table__row">
                                         <td class="el-table_18_column_144  el-table-column--selection">
-                                            <div class="cell el-tooltip"><label role="checkbox" class="el-checkbox"><span
-                                                            aria-checked="mixed" class="el-checkbox__input"><span
-                                                                class="el-checkbox__inner"></span><input type="checkbox"
-                                                                                                         aria-hidden="true"
-                                                                                                         class="el-checkbox__original"
-                                                                                                         value=""></span>
-                                                    <!----></label></div>
+                                            <div class="cell el-tooltip">
+                                                <label role="checkbox" class="el-checkbox">
+                                                    <span aria-checked="mixed" class="el-checkbox__input">
+                                                        <span class="el-checkbox__inner"></span>
+                                                        <input type="checkbox" aria-hidden="true" class="el-checkbox__original" value=""></span>
+                                                </label></div>
                                         </td>
                                         <td class="el-table_18_column_145">
                                             <div class="cell el-tooltip"><?= $key + 1 + $pagination->limit * $pagination->offset ?></div>
@@ -236,21 +231,23 @@ use yii\helpers\Url;
                                                  title="<?= $v["customer_firstname"] ?>"><?= $v["customer_firstname"] ?></div>
                                         </td>
                                         <td class="el-table_18_column_148  ">
-                                            <div class="cell el-tooltip" title="<?= $v["created_at"] ?>"><?php
+                                            <div class="cell el-tooltip" title="<?=date("Y:m:d H:i:s", $v["created_at"]) ?>">
+                                                <?php
                                                 if ($v["created_at"]) {
                                                     echo date("Y:m:d H:i:s", $v["created_at"]);
                                                 } ?>
                                             </div>
                                         </td>
                                         <td class="el-table_18_column_149  ">
-                                            <div class="cell el-tooltip" title="<?= $v["paypal_order_datetime"] ?>"><?php
+                                            <div class="cell el-tooltip" title="<?= date("Y:m:d H:i:s", $v["paypal_order_datetime"]) ?>">
+                                                <?php
                                                 if ($v["paypal_order_datetime"]) {
                                                     echo date("Y:m:d H:i:s", $v["paypal_order_datetime"]);
                                                 } ?>
                                             </div>
                                         </td>
                                         <td class="el-table_18_column_150  ">
-                                            <div class="cell el-tooltip" title="<?= $v["refund_at"] ?>">
+                                            <div class="cell el-tooltip" title="<?= date("Y:m:d H:i:s", $v["refund_at"]) ?>">
                                                 <?php
                                                 if ($v["refund_at"]) {
                                                     echo date("Y:m:d H:i:s", $v["refund_at"]);

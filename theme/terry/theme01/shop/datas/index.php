@@ -1,4 +1,208 @@
+<style>
+    .content {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        padding-top: 8px;
+    }
+    .content .biaoti {
+        height: 52px;
+        font-size: 12px;
+        line-height: 52px;
+        font-weight: bolder;
+    }
+    .content .shuaixuan {
+        height: 46px;
+        width: 550px;
+        display: flex;
+        justify-content: space-between;
+        line-height: 46px;
+        color: #a4adb5;
+        font-size: 12px;
+    }
+    .content .shuaixuan .xiala {
+        padding-left: 5px;
+        width: 120px;
+        outline: none;
+        height: 30px;
+        border-radius: 15px;
+        background: #f3faff;
+        border: 2px solid #e5eff8;
+        color: #9eabb5;
+        font-size: 14px;
+    }
+    .shuaixuan .el-select:hover {
+        border-color: #c0c4cc;
+    }
+    .shuaixuan .el-select:focus {
+        border-color: #3CACFE;
+    }
+    .content .item {
+        width: 1000px;
+        margin-top: 28px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .item .item_box {
+        width: 140px;
+        height: 80px;
+        border-radius: 5px;
+        box-shadow: 0 0 15px 2px #eee;
+        padding-left: 20px;
+        padding-top: 10px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+    }
+    .item_box .item_box1 {
+        height: 30px;
+        line-height: 30px;
+        font-size: 16px;
+        color: #82898e;
+    }
+    .item_box .item_box2 {
+        height: 35px;
+        font-size: 22px;
+        color: #30a2fe;
+        line-height: 35px;
+        font-weight: bolder;
+    }
+    .content .item1 {
+        width: 1014px;
+        margin-top: 28px;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #eee;
+    }
+    .content .item1 .box1 {
+        width: 485px;
+    }
+    .content .item1 .box1 .title {
+        width: 100%;
+        height: 52px;
+        line-height: 52px;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #30A6FE;
+        font-size: 14px;
+    }
+    .item1 .box1 .title_left {
+        width: 88px;
+        text-align: center;
+        color: #30A6FE;
+        font-weight: bolder;
+    }
+    .item1 .box1 .title_right {
+        width: 200px;
+        color: #30A6FE;
+        display: flex;
+        justify-content: space-between;
+    }
+    .item2 .title_right {
+        width: 200px;
+        color: #30A6FE;
+        display: flex;
+        justify-content: space-between;
+    }
+    .title_right .btn {
+        float: left;
+        line-height: 52px;
+    }
+    .title_right .active {
+        border-bottom: 2px solid #30A6FE;
+    }
+    .content .item1 .box1 .bottom {
+        width: 100%;
+        padding-top: 10px;
+        padding-bottom: 20px;
+        box-sizing: border-box;
+    }
+    .content .item1 .box1 .bottom .contents {
+        width: 100%;
+        display: none;
+    }
+    .item1 .box1 .bottom .contents .tu1 {
+        width: 100%;
+        height: 330px;
+        /*background: url("/public/img/tu1.png") no-repeat center center /100% auto;*/
+    }
+    .item1 .box1 .bottom .contents .tu2 {
+        width: 100%;
+        height: 330px;
+        /*background: url("/public/img/tu2.png") no-repeat center center /100% auto;*/
+    }
+    .content .item1 .box1 .bottom .active {
+        display: block;
+    }
+    .content .item2 {
+        width: 1014px;
+        margin-top: 28px;
+    }
+    .content .item2 .title2{
+        width: 100%;
+        border-bottom: 1px solid  #30A6FE;
+        display: flex;
+        justify-content: space-between;
+        line-height: 52px;
+        color: #30A6FE;
+        font-size: 14px;
 
+    }
+    .content .item2 .btn {
+        float: left;
+        line-height: 52px;
+    }
+    .content .item2 .bottom {
+        width: 100%;
+        padding-top: 10px;
+        padding-bottom: 20px;
+        box-sizing: border-box;
+    }
+    .content .item2 .bottom .contents {
+        width: 100%;
+        display: none;
+    }
+    .content .item2 .bottom .active {
+        display: block;
+    }
+    .item2 .bottom .contents .tu3{
+        width: 100%;
+        height: 500px;
+        /*background: url("/public/img/zhexiantu.png") no-repeat center center /100% auto;*/
+    }
+
+    .content .blue {
+        height: 33px;
+        background: #30B5FE;
+        border: none;
+        box-shadow: 0 0 8px #30B5FE;
+        padding-top: 10px;
+    }
+    .content .blue1{
+        width: 50px;
+        height: 30px;
+        line-height: 5px;
+        font-size: 12px;
+        padding-left: 12px;
+        border: none;
+        background:#30B5FE ;
+        box-shadow: 0 0 8px #30B5FE;
+    }
+    .content .yellow {
+        height: 33px;
+        background: #FAC83A;
+        border: none;
+        box-shadow: 0 0 8px #FAC83A;
+        padding-top: 10px;
+    }
+
+    .content .green {
+        height: 33px;
+        background: #37DF73;
+        border: none;
+        box-shadow: 0 0 8px #37DF73;
+        padding-top: 10px;
+    }
+</style>
   <div  class="main-content">
    <div  style="width: 1012px; margin: 0px auto;">
     <div  >
@@ -6,7 +210,7 @@
       <div  class="biaoti">
        <div  aria-label="Breadcrumb" role="navigation" class="el-breadcrumb">
         <span  class="el-breadcrumb__item"><span role="link" class="el-breadcrumb__inner is-link">数据统计</span><span role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
-        <span  class="el-breadcrumb__item" aria-current="page"><span role="link" class="el-breadcrumb__inner"><span  style="color: rgb(48, 211, 102);">订单统计</span></span><span role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
+        <span  class="el-breadcrumb__item" aria-current="page"><span role="link" class="el-breadcrumb__inner"><span  style="color: rgb(48, 211, 102);font-weight: bold">订单统计</span></span><span role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
        </div>
       </div>
       <ul  class="shuaixuan">
@@ -20,28 +224,15 @@
         </li>
           <li style="display: flex; align-items: center;">时间段选择
               <div class="el-form-item__content" style="margin-left: 10px;">
-                  <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test1">
+                  <input type="text" name="data" class="demo-input el-input__inner" placeholder="日期时间范围" id="test1">
               </div>
           </li>
           <style>
               .demo-input {
-                  padding-left: 10px;
-                  height: 30px;
-                  min-width: 300px;
+                  min-width: 330px;
                   line-height: 38px;
-                  border: 1px solid #e6e6e6;
-                  background-color: #f3faff;
-                  border-radius: 30px;
-                  outline: none;
               }
 
-              .demo-input:hover {
-                  border-color: #c0c4cc;
-              }
-
-              .demo-input:focus {
-                  border-color: #3CACFE;
-              }
               .el-form-item__content {
                   line-height: normal;
               }
@@ -198,47 +389,12 @@
         </div>
         <div  class="bottom">
          <div  class="contents active">
-          <ul  style="display: flex; justify-content: space-between;">
-              <li style="
-                        display: flex;
-                        align-items: center;
-                    ">时间段选择
+          <ul  style="display: flex; justify-content: space-between; color: #a4adb5;font-size: 12px;">
+              <li style="display: flex;align-items: center;">时间段选择
                   <div class="el-form-item__content" style="margin-left: 10px;">
-                      <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test2">
+                      <input type="text" name="data" class="demo-input el-input__inner" placeholder="日期时间范围" id="test2">
                   </div>
               </li>
-              <style>
-                  .demo-input {
-                      padding-left: 10px;
-                      height: 30px;
-                      min-width: 300px;
-                      line-height: 38px;
-                      border: 1px solid #e6e6e6;
-                      background-color: #f3faff;
-                      border-radius: 30px;
-                      outline: none;
-                  }
-
-                  .demo-input:hover {
-                      border-color: #c0c4cc;
-                  }
-
-                  .demo-input:focus {
-                      border-color: #3CACFE;
-                  }
-                  .el-form-item__content {
-                      line-height: normal;
-                  }
-
-                  .el-form-item__content {
-                      line-height: 40px;
-                      position: relative;
-                      font-size: 14px;
-                  }
-                  .layui-laydate .layui-this{
-                      background: #30B5FE !important;
-                  }
-              </style>
               <script>
                   laydate.render({
                       elem: '#test2'
@@ -252,8 +408,6 @@
 <!--          -->
 <!--           <span> 确定 </span></button></li>-->
           </ul>
-          <div  class="tu1">
-          </div>
  <script>
                  $(function () {
                      $('#test2').on('blur',function(){
@@ -397,47 +551,15 @@
         </div>
         <div  class="bottom">
          <div  class="contents active">
-          <ul  style="display: flex; justify-content: space-between;">
+          <ul  style="display: flex; justify-content: space-between; color: #a4adb5;font-size: 12px;">
               <li style="
                         display: flex;
                         align-items: center;
                     ">时间段选择
                   <div class="el-form-item__content" style="margin-left: 10px;">
-                      <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test4">
+                      <input type="text" name="data" class="demo-input el-input__inner" placeholder="日期时间范围" id="test4">
                   </div>
               </li>
-              <style>
-                  .demo-input {
-                      padding-left: 10px;
-                      height: 30px;
-                      min-width: 300px;
-                      line-height: 38px;
-                      border: 1px solid #e6e6e6;
-                      background-color: #f3faff;
-                      border-radius: 30px;
-                      outline: none;
-                  }
-
-                  .demo-input:hover {
-                      border-color: #c0c4cc;
-                  }
-
-                  .demo-input:focus {
-                      border-color: #3CACFE;
-                  }
-                  .el-form-item__content {
-                      line-height: normal;
-                  }
-
-                  .el-form-item__content {
-                      line-height: 40px;
-                      position: relative;
-                      font-size: 14px;
-                  }
-                  .layui-laydate .layui-this{
-                      background: #30B5FE !important;
-                  }
-              </style>
               <script>
                   laydate.render({
                       elem: '#test4'
@@ -617,7 +739,7 @@
         </div>
         <ul  style="display: flex;">
          <li >时间段选择
-          <input id="test3" class="demo-input" style="width: 300px" placeholder="日期时间范围">
+          <input id="test3" class="demo-input el-input__inner" style="width: 300px" placeholder="日期时间范围">
           <script>
               laydate.render({
                   elem: '#test3'
@@ -834,213 +956,5 @@
           });
       })
   </script>
-<style>
-    .content {
-        width: 100%;
-        height: 100%;
-        box-sizing: border-box;
-        padding-top: 8px;
-    }
-    .content .biaoti {
-        height: 52px;
-        font-size: 12px;
-        line-height: 52px;
-        font-weight: bolder;
-    }
-    .content .shuaixuan {
-        height: 46px;
-        width: 850px;
-        display: flex;
-        justify-content: space-between;
-        line-height: 46px;
-    }
-    .content .shuaixuan .xiala {
-        padding-left: 5px;
-        width: 120px;
-        outline: none;
-        height: 30px;
-        border-radius: 15px;
-        background: #f3faff;
-        border: 2px solid #e5eff8;
-        color: #9eabb5;
-        font-size: 14px;
-    }
-    .shuaixuan .el-select:hover {
-        border-color: #c0c4cc;
-    }
-    .shuaixuan .el-select:focus {
-        border-color: #3CACFE;
-    }
-    .content .item {
-        width: 1000px;
-        margin-top: 28px;
-        display: flex;
-        justify-content: space-between;
-    }
-    .item .item_box {
-        width: 140px;
-        height: 80px;
-        border-radius: 5px;
-        box-shadow: 0 0 15px 2px #eee;
-        padding-left: 20px;
-        padding-top: 10px;
-        box-sizing: border-box;
-        margin-bottom: 10px;
-    }
-    .item_box .item_box1 {
-        height: 30px;
-        font-size: 18px;
-        line-height: 30px;
-        color: #858B90;
-    }
-    .item_box .item_box2 {
-        height: 35px;
-        font-size: 22px;
-        color: #30a2fe;
-        line-height: 35px;
-        font-weight: bolder;
-    }
-    .content .item1 {
-        width: 1014px;
-        margin-top: 28px;
-        display: flex;
-        justify-content: space-between;
-        border-bottom: 1px solid #eee;
-    }
-    .content .item1 .box1 {
-        width: 485px;
-    }
-    .content .item1 .box1 .title {
-        width: 100%;
-        height: 52px;
-        line-height: 52px;
-        display: flex;
-        justify-content: space-between;
-        border-bottom: 1px solid #30A6FE;
-    }
-    .item1 .box1 .title_left {
-        width: 88px;
-        text-align: center;
-        color: #30A6FE;
-        font-weight: bolder;
-    }
-    .item1 .box1 .title_right {
-        width: 250px;
-        color: #30A6FE;
-        display: flex;
-        justify-content: space-between;
-    }
-    .item2 .title_right {
-        width: 250px;
-        color: #30A6FE;
-        display: flex;
-        justify-content: space-between;
-    }
-    .title_right .btn {
-        float: left;
-        line-height: 52px;
-    }
-    .title_right .active {
-        border-bottom: 2px solid #30A6FE;
-    }
-    .content .item1 .box1 .bottom {
-         width: 100%;
-         padding-top: 10px;
-         padding-bottom: 20px;
-         box-sizing: border-box;
-     }
-    .content .item1 .box1 .bottom .contents {
-        width: 100%;
-        display: none;
-    }
-    .item1 .box1 .bottom .contents .tu1 {
-        width: 100%;
-        height: 330px;
-        /*background: url("/public/img/tu1.png") no-repeat center center /100% auto;*/
-    }
-    .item1 .box1 .bottom .contents .tu2 {
-        width: 100%;
-        height: 330px;
-        /*background: url("/public/img/tu2.png") no-repeat center center /100% auto;*/
-    }
-    .content .item1 .box1 .bottom .active {
-        display: block;
-    }
-    .content .item2 {
-        width: 1014px;
-        margin-top: 28px;
-    }
-    .content .item2 .title2{
-        width: 100%;
-        border-bottom: 1px solid  #30A6FE;
-        display: flex;
-        justify-content: space-between;
-        line-height: 52px;
-        color: #30A6FE;
 
-    }
-    .content .item2 .btn {
-        float: left;
-        line-height: 52px;
-    }
-    .content .item2 .bottom {
-        width: 100%;
-        padding-top: 10px;
-        padding-bottom: 20px;
-        box-sizing: border-box;
-    }
-    .content .item2 .bottom .contents {
-        width: 100%;
-        display: none;
-    }
-    .content .item2 .bottom .active {
-        display: block;
-    }
-    .item2 .bottom .contents .tu3{
-        width: 100%;
-        height: 500px;
-        /*background: url("/public/img/zhexiantu.png") no-repeat center center /100% auto;*/
-    }
-  /*  .content .blue {
-        width: 112px;
-        height: 33px;
-        background: #30B5FE;
-        border: none;
-        box-shadow: 0 0 8px #30B5FE;
-        padding-top: 10px;
-    }*/
-
-    .content .blue {
-        height: 33px;
-        background: #30B5FE;
-        border: none;
-        box-shadow: 0 0 8px #30B5FE;
-        padding-top: 10px;
-    }
-    .content .blue1{
-        width: 50px;
-        height: 30px;
-        line-height: 5px;
-        font-size: 12px;
-        padding-left: 12px;
-        border: none;
-        background:#30B5FE ;
-        box-shadow: 0 0 8px #30B5FE;
-    }
-    .content .yellow {
-        height: 33px;
-        background: #FAC83A;
-        border: none;
-        box-shadow: 0 0 8px #FAC83A;
-        padding-top: 10px;
-    }
-
-    .content .green {
-        height: 33px;
-        background: #37DF73;
-        border: none;
-        box-shadow: 0 0 8px #37DF73;
-        padding-top: 10px;
-    }
-</style>
 

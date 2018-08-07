@@ -392,14 +392,52 @@ class OrdersController extends PublicsController
     {
 
         $_SESSION['pagess'] = 'takelist';
+        $sql="select c.*,s.* from cargos as c,sales_flat_order as s where c.shop_id={$_SESSION["shop_id"]} and c.order_id=s.order_id";
+        $cargos=Yii::$app->db->createCommand("$sql")->queryAll();
+        $data['cargos']=$cargos;
 
-        return $this->render($this->action->id);
+        $sql="select * from sales_flat_order_item where order_id in(";
+
+        foreach ($cargos as &$v) {
+            $sql = $sql.$v["order_id"].",";
+            $v['goods'] = [];
+        }
+        $sql  = $sql."0)";
+
+        $res = Yii::$app->db->createCommand($sql)->queryAll();
+
+        foreach ($res as &$v){
+            foreach ($cargos as &$v1){
+                if($v["order_id"] == $v1["order_id"]){
+                    array_push($v1["goods"],$v);
+                }
+            }
+        }
+
+//        var_dump($cargos[0]["goods"]);
+//        exit();
+        return $this->render($this->action->id,$data);
     }
 
     //查看取件单
     public function actionSeetakelist()
     {
-        return $this->render($this->action->id);
+        $req = Yii::$app->request;
+
+        $order_id = $req->get("order_id");
+        $res1=Yii::$app->db->createCommand("select * from cargos where order_id=$order_id")->queryOne();
+
+        $res2 = Yii::$app->db->createCommand("select * from sales_flat_order where order_id=$order_id")->queryOne();
+        $goods = Yii::$app->db->createCommand("select * from sales_flat_order_item where order_id=$order_id")->queryAll();
+        $res1['goods']=$goods;
+       $res=array_merge($res1,$res2);
+       $data['res']=$res;
+        $_SESSION['pagess'] = 'takelist';
+
+//        var_dump($_SESSION);
+//        exit();
+        return $this->render($this->action->id, $data);
+
     }
 
 

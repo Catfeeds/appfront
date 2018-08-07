@@ -96,7 +96,7 @@ use yii\helpers\Url;
                     </li>
                     <li data-v-7a00a356="">
                         发货单号&nbsp;&nbsp;<div data-v-7a00a356="" class="el-input" style="width: 180px;">
-                            <input type="text" autocomplete="off" placeholder="请输入发货单流水号" class="el-input__inner increment_id" name="increment_id">
+                            <input type="text" autocomplete="off" placeholder="请输入发货单流水号" class="el-input__inner fahuo_id" name="fahuo_id">
                             </div>
                     </li>
                     <li data-v-7a00a356="">
@@ -201,49 +201,74 @@ use yii\helpers\Url;
                                         <col name="el-table_18_column_152" width="112">
                                     </colgroup>
                                     <tbody style="font-size: 12px;color:#82898e">
+                                    <?php foreach ($cargos as  $key =>$v) {?>
                                         <tr class="el-table__row">
                                             <td class="el-table_18_column_144  el-table-column--selection">
-                                                <div class="cell el-tooltip"><label role="checkbox" class="el-checkbox"><span
-                                                            aria-checked="mixed" class="el-checkbox__input"><span
-                                                                class="el-checkbox__inner"></span><input type="checkbox"
-                                                                                                         aria-hidden="true"
-                                                                                                         class="el-checkbox__original"
-                                                                                                         value=""></span>
-                                                        </label></div>
+                                                <div class="cell el-tooltip">
+                                                    <label role="checkbox" class="el-checkbox">
+                                                        <span aria-checked="mixed" class="el-checkbox__input">
+                                                            <span class="el-checkbox__inner"></span>
+                                                            <input type="checkbox" aria-hidden="true" class="el-checkbox__original" value="">
+                                                        </span>
+                                                    </label>
+                                                </div>
                                             </td>
                                             <td class="el-table_18_column_145">
-                                                <div class="cell el-tooltip">111</div>
+                                                <div class="cell el-tooltip" title="<?=$v['fahuo_id']?>">
+                                                    <?=$v['fahuo_id']?>
+                                                </div>
                                             </td>
                                             <td class="el-table_18_column_146">
-                                                <div class="cell el-tooltip"
-                                                     title="">222</div>
+                                                <div class="cell el-tooltip" title="<?= $v['increment_id']?>">
+                                                    <?= $v['increment_id']?>
+                                                </div>
                                             </td>
-                                            <td class="el-table_18_column_147  ">
-                                                <div class="cell el-tooltip"
-                                                     title="">333</div>
+                                            <td class="el-table_18_column_147">
+                                                <div class="cell el-tooltip" title="<?=$v['customer_firstname']?>">
+                                                    <?=$v['customer_firstname']?>
+                                                </div>
                                             </td>
                                             <td class="el-table_18_column_148  ">
-                                                <div class="cell el-tooltip" title="">
-                                                   444
+                                                <div class="cell el-tooltip" title="<?= date("Y:m:d H:i:s", $v[created_at]) ?>">
+                                                    <?php
+                                                    if ($v["created_at"]) {
+                                                        echo date("Y:m:d H:i:s", $v["created_at"]);
+                                                    } ?>
                                                 </div>
                                             </td>
                                             <td class="el-table_18_column_149  ">
-                                                <div class="cell el-tooltip" title="">
-                                                    555
+                                                <div class="cell el-tooltip" title="<?=$v['fahuo_time']?>">
+                                                    <?=$v['fahuo_time']?>
                                                 </div>
                                             </td>
                                             <td class="el-table_18_column_150  ">
                                                 <div class="cell el-tooltip" title="">
-                                                   666
+                                                    <?php
+                                                    if ($v["status"] == 0) {
+                                                        echo "待发货";
+                                                    } else if ($v["status"] == 1) {
+                                                        echo "已发货";
+                                                    }else if ($v["status"] == 2) {
+                                                        echo "在途中";
+                                                    }else if ($v["status"] == 3) {
+                                                        echo "待取件";
+                                                    }else if ($v["status"] == 4) {
+                                                        echo "已签收";
+                                                    }else if ($v["status"] == 5) {
+                                                        echo "已完成";
+                                                    }
+                                                    ?>
                                                 </div>
                                             </td>
                                             <td class="el-table_18_column_151  ">
-                                                <div class="cell el-tooltip">777</div>
+                                                <div class="cell el-tooltip" title="<?= $v["operator"] ?>">
+                                                    <?= $v["operator"] ?>
+                                                </div>
                                             </td>
                                             <td class="el-table_18_column_152  ">
                                                 <div class="cell el-tooltip">
                                                     <a data-v-7a00a356="" href="#/OrderDetails" class="">
-                                                        <a href="<?= Yii::$service->url->geturl("/shop/orders/seetakelist")?>">
+                                                        <a href="<?= Yii::$service->url->geturl("/shop/orders/seetakelist?order_id=" . $v[order_id]) ?>">
                                                             <button data-v-7a00a356="" type="button"
                                                                     class="el-button el-button--text el-button--small">
                                                                 <span>查看</span>
@@ -258,6 +283,7 @@ use yii\helpers\Url;
                                                 </div>
                                             </td>
                                         </tr>
+                                    <?php }?>
                                     </tbody>
                                 </table>
                             </div>
@@ -292,5 +318,18 @@ use yii\helpers\Url;
         </div>
     </div>
     <script>
+        $(function () {
+            console.log($(".chuli"));
+            let orderStatus = "";
+            $(".chuli").on("change", function () {
+                orderStatus = $('form').serializeArray()[0]['value'];
+            })
+            $(".sousuo").on("click", function () {
+                let customer_firstname = $("input.customer_firstname").val();
+                let increment_id = $("input.increment_id").val();
+                let fahuo_id = $("input.fahuo_id").val();
+                location.href = "<?= Yii::$service->url->geturl("/shop/orders/takelist?") ?>" + `customer_firstname=${customer_firstname}&increment_id=${increment_id}&fahuo_id=${fahuo_id}&orderStatus=${orderStatus}`;
+            })
 
+        })
     </script>

@@ -16,7 +16,7 @@ use yii\helpers\Url;
                                     role="presentation" class="el-breadcrumb__separator">&middot;</span></span>
                         <span class="el-breadcrumb__item" aria-current="page"><span role="link"
                                                                                     class="el-breadcrumb__inner"><span
-                                        style="color: rgb(48, 211, 102);">账单列表</span></span><span role="presentation"
+                                        style="color: rgb(48, 211, 102);font-weight: bold">账单列表</span></span><span role="presentation"
                                                                                                   class="el-breadcrumb__separator">&middot;</span></span>
                     </div>
                 </div>
@@ -27,35 +27,20 @@ use yii\helpers\Url;
                             <option value="">1</option>
                             <option value="">2</option>
                         </select>
-
+                    </li>
                     <li style="
                         display: flex;
                         align-items: center;
-                    ">&nbsp;
+                    ">时间段选择&nbsp;
                         <div class="el-form-item__content" style="margin-left: 10px;">
-                            <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test10">
+                            <input type="text" name="data" class="demo-input el-input__inner" placeholder="日期时间范围" id="test10">
                         </div>
                     </li>
                     <style>
                         .demo-input {
-                            padding-left: 10px;
-                            height: 30px;
-                            min-width: 300px;
+                            min-width: 330px;
                             line-height: 38px;
-                            border: 1px solid #e6e6e6;
-                            background-color: #f3faff;
-                            border-radius: 30px;
-                            outline: none;
                         }
-
-                        .demo-input:hover {
-                            border-color: #c0c4cc;
-                        }
-
-                        .demo-input:focus {
-                            border-color: #3CACFE;
-                        }
-
                         .el-form-item__content {
                             line-height: normal;
                         }

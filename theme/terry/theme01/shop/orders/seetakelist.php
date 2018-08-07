@@ -68,6 +68,11 @@
         border: 2px solid #e5eff8;
         padding: 10px;
     }
+    .el-form-item__label{
+        width: 120px;
+        color:#A4ADB5;
+        font-size:14px;
+    }
 </style>
 <div data-v-54667010="" class="main-content">
     <div data-v-54667010="" style="width: 1012px; margin: 0px auto;">
@@ -146,19 +151,35 @@
                                 </colgroup>
                                 <tbody style="font-size: 12px;color:#82898e">
                                 <tr class="el-table__row">
-                                    <td class="el-table_1_column_2  ">
+                                    <td class="el-table_1_column_1">
                                         <div class="cell el-tooltip" title="">
-                                            111
+                                            <?= $res["fahuo_id"] ?>
+                                        </div>
+                                    </td>
+                                    <td class="el-table_1_column_2  ">
+                                        <div class="cell el-tooltip" title="<?= date("Y-m-d H:i:s", $res["created_at"]) ?>">
+                                            <?php if ($res["created_at"]) { ?>
+                                                <?= date("Y-m-d H:i:s", $res["created_at"]) ?>
+                                            <?php } ?>
+                                        </div>
+                                    </td>
+                                    <td class="el-table_1_column_3  ">
+                                        <div class="cell el-tooltip" title="<?= date("Y-m-d H:i:s", $res["qianshou_time"]) ?>">
+                                            <?php if ($res["qianshou_time"]) { ?>
+                                                <?= date("Y-m-d H:i:s", $res["qianshou_time"]) ?>
+                                            <?php } ?>
+                                        </div>
+                                    </td>
+                                    <td class="el-table_1_column_3  ">
+                                        <div class="cell el-tooltip" title="<?= date("Y-m-d H:i:s", $res["fujian_time"]) ?>">
+                                            <?php if ($res["fujian_time"]) { ?>
+                                                <?= date("Y-m-d H:i:s", $res["fujian_time"]) ?>
+                                            <?php } ?>
                                         </div>
                                     </td>
                                     <td class="el-table_1_column_3  ">
                                         <div class="cell el-tooltip" title="">
-                                            222
-                                        </div>
-                                    </td>
-                                    <td class="el-table_1_column_4  ">
-                                        <div class="cell el-tooltip" title="">
-                                            333
+                                            <?= $res['payment_method']?>
                                         </div>
                                     </td>
                                 </tr>
@@ -214,21 +235,39 @@
                                 <tbody style="font-size: 12px;color:#82898e">
                                 <tr class="el-table__row">
                                     <td class="el-table_2_column_5  ">
-                                        <div class="cell el-tooltip" title="">111</div>
+                                        <div class="cell el-tooltip" title="<?= $res["increment_id"] ?>">
+                                            <?= $res["increment_id"] ?>
+                                        </div>
                                     </td>
                                     <td class="el-table_2_column_6">
-                                        <div class="cell el-tooltip" title="">
-                                            222
+                                        <div class="cell el-tooltip" title="  <?= $res["customer_firstname"] ?>">
+                                            <?= $res["customer_firstname"] ?>
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_7  ">
                                         <div class="cell el-tooltip">
-                                            333
+                                            <?php
+                                            if ($res["status"] == 0) {
+                                                echo "待发货";
+                                            } else if ($res["status"] == 1) {
+                                                echo "已发货";
+                                            }else if ($res["status"] == 2) {
+                                                echo "在途中";
+                                            }else if ($res["status"] == 3) {
+                                                echo "待取件";
+                                            }else if ($res["status"] == 4) {
+                                                echo "已签收";
+                                            }else if ($res["status"] == 5) {
+                                                echo "已完成";
+                                            }
+                                            ?>
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_8  ">
-                                        <div class="cell el-tooltip">
-                                            时间
+                                        <div class="cell el-tooltip" title="<?= date("Y-m-d H:i:s", $res["songhuo_time"]) ?>">
+                                            <?php if ($res["songhuo_time"]) { ?>
+                                                <?= date("Y-m-d H:i:s", $res["songhuo_time"]) ?>
+                                            <?php } ?>
                                         </div>
                                     </td>
                                 </tr>
@@ -263,11 +302,11 @@
                                    style="width: 1012px;">
                                 <colgroup>
                                     <col name="el-table_3_column_9" width="100">
-                                    <col name="el-table_3_column_10" width="178">
-                                    <col name="el-table_3_column_11" width="250">
-                                    <col name="el-table_3_column_12" width="178">
-                                    <col name="el-table_3_column_13" width="178">
-                                    <col name="el-table_3_column_14" width="180">
+                                    <col name="el-table_3_column_10" width="150">
+                                    <col name="el-table_3_column_11" width="262">
+                                    <col name="el-table_3_column_12" width="150">
+                                    <col name="el-table_3_column_13" width="150">
+                                    <col name="el-table_3_column_14" width="200">
                                     <col name="gutter" width="0">
                                 </colgroup>
                                 <thead class="has-gutter">
@@ -300,34 +339,35 @@
                                    style="width: 1012px;">
                                 <colgroup>
                                     <col name="el-table_3_column_9" width="100">
-                                    <col name="el-table_3_column_10" width="178">
-                                    <col name="el-table_3_column_11" width="250">
-                                    <col name="el-table_3_column_12" width="178">
-                                    <col name="el-table_3_column_13" width="178">
-                                    <col name="el-table_3_column_14" width="180">
+                                    <col name="el-table_3_column_10" width="150">
+                                    <col name="el-table_3_column_11" width="262">
+                                    <col name="el-table_3_column_12" width="150">
+                                    <col name="el-table_3_column_13" width="150">
+                                    <col name="el-table_3_column_14" width="200">
                                 </colgroup>
                                 <tbody style="font-size: 12px;color:#82898e">
                                 <tr class="el-table__row">
                                     <td class="el-table_3_column_19  ">
-                                        <div class="cell el-tooltip">789</div>
+                                        <div class="cell el-tooltip"><?= $res["customer_firstname"] ?></div>
                                     </td>
                                     <td class="el-table_3_column_20  ">
-                                        <div class="cell el-tooltip">795</div>
+                                        <div class="cell el-tooltip"><?= $res["customer_telephone"] ?></div>
                                     </td>
-                                    <td class="el-table_3_column_21  ">
-                                        <div class="cell el-tooltip">752</div>
+                                    <td class="el-table_3_column_21" title="<?= $res["customer_address_country"] . $res["customer_address_state"] . $res["customer_address_city"] . $res["customer_address_street1"] ?>">
+                                        <div class="cell el-tooltip"><?= $res["customer_address_country"] . $res["customer_address_state"] . $res["customer_address_city"] . $res["customer_address_street1"] ?></div>
                                     </td>
                                     <td class="el-table_3_column_22  ">
-                                        <div class="cell  el-tooltip"
-                                             title="">
-                                            5632
+                                        <div class="cell  el-tooltip" title="<?= date("Y-m-d H:i:s", $res["songhuo_time"]) ?>">
+                                            <?php if ($res["songhuo_time"]) { ?>
+                                                <?= date("Y-m-d H:i:s", $res["songhuo_time"]) ?>
+                                            <?php } ?>
                                         </div>
                                     </td>
-                                    <td class="el-table_3_column_23  ">
-                                        <div class="cell el-tooltip">6255</div>
+                                    <td class="el-table_3_column_23 ">
+                                        <div class="cell el-tooltip"><?= $res["customer_address_zip"] ?></div>
                                     </td>
                                     <td class="el-table_3_column_24  ">
-                                        <div class="cell el-tooltip">5556</div>
+                                        <div class="cell el-tooltip"><?= $res["customer_email"] ?></div>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -360,12 +400,11 @@
                             <table cellspacing="0" cellpadding="0" border="0" class="el-table__header"
                                    style="width: 1012px;">
                                 <colgroup>
-                                    <col name="el-table_4_column_15" width="180">
-                                    <col name="el-table_4_column_16" width="152">
-                                    <col name="el-table_4_column_17" width="250">
-                                    <col name="el-table_4_column_18" width="151">
-                                    <col name="el-table_4_column_20" width="180">
-                                    <col name="el-table_4_column_21" width="180">
+                                    <col name="el-table_4_column_15" width="204">
+                                    <col name="el-table_4_column_16" width="200">
+                                    <col name="el-table_4_column_17" width="200">
+                                    <col name="el-table_4_column_18" width="200">
+                                    <col name="el-table_4_column_19" width="200">
                                 </colgroup>
                                 <thead class="has-gutter">
                                 <tr class="" style="font-size: 14px;color: #B1DBFE;">
@@ -381,10 +420,7 @@
                                     <th colspan="1" rowspan="1" class="el-table_4_column_18     is-leaf">
                                         <div class="cell">数量</div>
                                     </th>
-                                    <th colspan="1" rowspan="1" class="el-table_4_column_20     is-leaf">
-                                        <div class="cell">参与活动</div>
-                                    </th>
-                                    <th colspan="1" rowspan="1" class="el-table_4_column_21     is-leaf">
+                                    <th colspan="1" rowspan="1" class="el-table_4_column_19     is-leaf">
                                         <div class="cell">实付金额</div>
                                     </th>
                                 </tr>
@@ -395,14 +431,14 @@
                             <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
                                    style="width: 1012px;">
                                 <colgroup>
-                                    <col name="el-table_4_column_15" width="180">
-                                    <col name="el-table_4_column_16" width="152">
-                                    <col name="el-table_4_column_17" width="250">
-                                    <col name="el-table_4_column_18" width="151">
-                                    <col name="el-table_4_column_20" width="180">
-                                    <col name="el-table_4_column_21" width="180">
+                                    <col name="el-table_4_column_15" width="204">
+                                    <col name="el-table_4_column_16" width="200">
+                                    <col name="el-table_4_column_17" width="200">
+                                    <col name="el-table_4_column_18" width="200">
+                                    <col name="el-table_4_column_29" width="200">
                                 </colgroup>
                                 <tbody style="font-size: 12px;color:#82898e">
+                                <?php foreach ($res["goods"] as $v) { ?>
                                 <tr class="el-table__row">
                                     <td class="el-table_4_column_15  ">
                                         <div class="cell el-tooltip">
@@ -411,25 +447,23 @@
                                                     <img src="">
                                                 </div>
                                                 <span data-v-2b6e6d92=""
-                                                      style="margin-left: 10px;">name</span></div>
+                                                      style="margin-left: 10px;"><?=$v['name']?></span></div>
                                         </div>
                                     </td>
-                                    <td class="el-table_4_column_16  ">
-                                        <div class="cell el-tooltip">ku</div>
+                                    <td class="el-table_4_column_16">
+                                        <div class="cell el-tooltip"><?= $v["sku"] ?></div>
                                     </td>
-                                    <td class="el-table_4_column_17  ">
-                                        <div class="cell el-tooltip">price</div>
+                                    <td class="el-table_4_column_17">
+                                        <div class="cell el-tooltip"><?= $v["price"] ?></div>
                                     </td>
-                                    <td class="el-table_4_column_18  ">
-                                        <div class="cell el-tooltip">qty</div>
+                                    <td class="el-table_4_column_18">
+                                        <div class="cell el-tooltip"><?= $v["qty"] ?></div>
                                     </td>
-                                    <td class="el-table_4_column_20  ">
-                                        <div class="cell el-tooltip">456</div>
-                                    </td>
-                                    <td class="el-table_4_column_21  ">
-                                        <div class="cell el-tooltip">456</div>
+                                    <td class="el-table_4_column_19">
+                                        <div class="cell el-tooltip"><?= number_format($v["price"] * $v["qty"], 2) ?></div>
                                     </td>
                                 </tr>
+                                <?php }?>
                                 </tbody>
                             </table>
                         </div>
@@ -448,17 +482,16 @@
                     <form data-v-54667010="" class="el-form">
                         <div data-v-54667010="" class="el-row" style="width: 500px;">
                             <div data-v-54667010="" class="el-form-item">
-                                <label class="el-form-item__label"
-                                       style="width: 120px;">操作者:</label>
-                                <div class="el-form-item__content" style="margin-left: 120px;">
-                                    <div data-v-54667010="">张三</div>
+                                <label class="el-form-item__label">操作者:</label>
+                                <div class="el-form-item__content" style="margin-left: 120px;line-height: 28px;">
+                                    <?= $_SESSION['admin_name'] ?>
                                 </div>
                             </div>
-                            <div data-v-54667010="" class="el-form-item"><label class="el-form-item__label"
-                                                                                style="width: 120px;">操作备注:</label>
+                            <div data-v-54667010="" class="el-form-item"><label class="el-form-item__label">操作备注:</label>
                                 <div class="el-form-item__content" style="margin-left: 120px;">
-                                    <textarea
-                                            data-v-54667010="" id="" cols="30" rows="10" class="details"></textarea>
+                                    <textarea data-v-54667010="" id="" cols="30" rows="10" class="details">
+                                        <?=$res['cargos_code']?>
+                                    </textarea>
                                 </div>
                             </div>
                             <div data-v-54667010="" class="el-form-item">
@@ -503,7 +536,7 @@
                                         <div class="cell">操作时间</div>
                                     </th>
                                     <th colspan="1" rowspan="1" class="el-table_5_column_23     is-leaf">
-                                        <div class="cell">审核状态</div>
+                                        <div class="cell">物流状态</div>
                                     </th>
                                     <th colspan="1" rowspan="1" class="el-table_5_column_24     is-leaf">
                                         <div class="cell">操作备注</div>
@@ -524,17 +557,37 @@
                                 </colgroup>
                                 <tbody style="font-size: 12px;color:#82898e">
                                 <tr class="el-table__row">
-                                    <td class="el-table_5_column_21  ">
-                                        <div class="cell">admin</div>
+                                    <td class="el-table_5_column_21">
+                                        <div class="cell el-tooltip"><?= $_SESSION['admin_name'] ?></div>
                                     </td>
                                     <td class="el-table_5_column_22  ">
-                                        <div class="cell">2018.08.06</div>
+                                        <div class="cell el-tooltip">
+                                            <?php if ($_SESSION["time"]) { ?>
+                                                <?= date("Y-m-d H:i:s", $_SESSION["time"]) ?>
+                                            <?php } ?>
+                                        </div>
                                     </td>
                                     <td class="el-table_5_column_23  ">
-                                        <div class="cell">审核通过</div>
+                                        <div class="cell el-tooltip">
+                                            <?php
+                                            if ($res["status"] == 0) {
+                                                echo "待发货";
+                                            } else if ($res["status"] == 1) {
+                                                echo "已发货";
+                                            }else if ($res["status"] == 2) {
+                                                echo "在途中";
+                                            }else if ($res["status"] == 3) {
+                                                echo "待取件";
+                                            }else if ($res["status"] == 4) {
+                                                echo "已签收";
+                                            }else if ($res["status"] == 5) {
+                                                echo "已完成";
+                                            }
+                                            ?>
+                                        </div>
                                     </td>
                                     <td class="el-table_5_column_24  ">
-                                        <div class="cell">已付款</div>
+                                        <div class="cell el-tooltip"><?=$res['cargos_code']?></div>
                                     </td>
                                 </tr>
                                 </tbody>
