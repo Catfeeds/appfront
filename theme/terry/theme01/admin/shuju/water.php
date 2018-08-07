@@ -175,17 +175,19 @@ background: #32d699;border-radius: 18px;text-align: center;line-height: 32px;col
 
                                 <td class="el-table_2_column_14">
                                     <div class="cell el-tooltip" title="<?= $v["payment_method"] ?>">
-                                        <?= $v['shop_address'] ?>
+                                        <?= $province[$v['province_id']]["province_name"]?>
+                                        <?= $city[$v['city_id']]["city_name"]?>
+                                        <?= $district[$v['district_id']]["district_name"]?>
                                     </div>
                                 </td>
                                 <td class="el-table_2_column_14">
                                     <div class="cell el-tooltip" title="<?= $v["payment_method"] ?>">
-                                        98%
+                                        <?= $arr[$k]?>
                                     </div>
                                 </td>
                                 <td class="el-table_2_column_14">
                                     <div class="cell el-tooltip" title="<?= $v["payment_method"] ?>">
-                                        2%
+                                        <?= ceil($tousunum[$k]*100).'%'?>
                                     </div>
                                 </td>
                                 <td class="el-table_2_column_18">

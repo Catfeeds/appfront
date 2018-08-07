@@ -222,90 +222,95 @@ class ShujuController extends PublicsController
     }
 
     //查看商家数据
+    //查看商家数据
     public function actionWshop(){
         $req = Yii::$app->request;
         $id = $req->get(id);
+        $_SESSION['id'] = $id;
         $query = new Query();
+        $a = $_GET['a'];
         //商品销售
-//        var_dump($id);
         $condition['created_user_id'] = (int)$id;//created_user_id和shop_id相对应
         $tot = $query->from("product_flat")->where($condition)->count();
+        // 订单成交转换率
+        $order = Yii::$app->db->createCommand("SELECT * FROM sales_flat_order WHERE order_status=4 AND shop_id='$id'")->queryAll();
+        $orders = Yii::$app->db->createCommand("SELECT * FROM sales_flat_order WHERE shop_id='$id'")->queryAll();
+        $zhall = count($orders);
+        $zhdone = count($order);
+        if($zhall == 0){
+            $zh = 0;
+        }else{
+            $zh = $zhdone/$zhall;
+        }
+//        投诉率
+        $complaint = Yii::$app->db->createCommand("SELECT *  FROM customer_complaint WHERE shop_id = '$id'")->queryAll();
+        if($zhall == 0){
+            $ts = 0;
+        }else{
+            $ts = count($complaint)/$zhall;
+        }
+
         // 实例化分页对象
         $pagination = new Pagination([
             'defaultPageSize' => 10,
             'totalCount' => $tot,
         ]);
         $sales = $query->from("product_flat")->where($condition)->offset($pagination->offset)->limit($pagination->limit)->all();
-        //根据总销售额排序由高到低
+
         $arr = array();
-        for($i=0;$i<count($sales);$i++)
-        {
-            for($j=count($sales)-1;$j>$i;$j--){
-                $salescount1 = $sales[$j]['price']*$sales[$j]['score'];
-                $salescount2 = $sales[$j-1]['price']*$sales[$j-1]['score'];
-                if($salescount1<$salescount2){
-                    $temp = $sales[$j];
-                    $sales[$j] = $sales[$j-1];
-                    $sales[$j-1] = $temp;
+        if($a == 2){
+            //根据总销售额排序由高到低
+            for($i=0;$i<count($sales);$i++)
+            {
+                for($j=count($sales)-1;$j>$i;$j--){
+                    $salescount1 = $sales[$j]['price']*$sales[$j]['score'];
+                    $salescount2 = $sales[$j-1]['price']*$sales[$j-1]['score'];
+                    if($salescount1<$salescount2){
+                        $temp = $sales[$j];
+                        $sales[$j] = $sales[$j-1];
+                        $sales[$j-1] = $temp;
+                    }
+                }
+            }
+
+        }else if ($a == 1 || $a == null || $a ==""){
+//            按销售量排行
+            for($i=0;$i<count($sales);$i++)
+            {
+                for($j=count($sales)-1;$j>$i;$j--){
+                    if($sales[$j]['score']<$sales[$j-1]['score']){
+                        $temp = $sales[$j];
+                        $sales[$j] = $sales[$j-1];
+                        $sales[$j-1] = $temp;
+                    }
                 }
             }
         }
+        /* var_dump($sales);
+         exit;*/
+
 
         $data['sales'] = $sales;
         $data['tot'] = $tot;
         $data['pagination'] = $pagination;
+        $data['id'] = $id;
+        $data['zh'] = $zh;
+        $data['ts'] = $ts;
+        $data['a'] = $a;
         return $this->render($this->action->id,$data);
     }
-//获取统计数量
-    public function actionCount(){
-        $req = Yii::$app->request;
-        $get = $req->get();
 
-        //点击量统计
-        $clicks = 0;
+    //统计好评，投诉
+    public function actionComplaint()
+    {
+        $create_t1=strtotime($_GET["t1"]);
 
-        //下单量
-        $single = 0;
+        $create_t2=strtotime($_GET["t2"]);
 
-        //成交量
-        $volume = 0;
+        $shop_id = $_SESSION['shop_id'];
+        $complaint = Yii::$app->db->createCommand("SELECT *  FROM customer_complaint WHERE shop_id = $shop_id and times>$create_t1 AND times<$create_t2")->queryAll();
 
-        //退货量
-        $returns = 0;
-
-        //好评率
-        $praises = 0;
-
-        $created_at1 = strtotime($get["t1"]);
-        $created_at2 = strtotime($get["t2"]);
-
-        $t1 = date("Y-m-d H:i:s",$created_at1);
-        $t2 = date("Y-m-d H:i:s",$created_at2);
-
-        $res = Yii::$app->db->createCommand("select count(order_id) as 'nums'from sales_flat_order
-where order_status>=0 and created_at>=$created_at1 and created_at<$created_at2
-union all
-select count(order_id) as '成交量'
-from sales_flat_order
-where order_status>0 and paypal_order_datetime>='$t1' and paypal_order_datetime<'$t2'
-union all
-select count(order_id) as '退货量'
-from sales_flat_order
-where order_status>=5 and refund_at=$created_at1 and refund_at")->queryAll();
-
-        $query = new Query();
-
-        $condition['shop_id'] =$_SESSION["shop_id"];
-
-        $res1 = $query->from("review")->where($condition)->all();
-
-
-        $res[3] = $res1;
-
-        var_dump($res);
-
-        exit();
-        echo json_encode($res);
+        echo json_encode($complaint);
         exit();
     }
 

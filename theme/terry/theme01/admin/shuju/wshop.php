@@ -68,6 +68,63 @@ use yii\helpers\Url;
     .layui-laydate .layui-this {
         background: #30B5FE !important;
     }
+    .shujuwl{
+        height: 30px;
+        width: 850px;
+        line-height: 30px;
+        margin-bottom:50px;
+    }
+    .shujuwl li{
+        float: left;
+    }
+    .shujuwl li:nth-child(2){margin-left:50px;}
+    .shujuwl li select{padding-left: 5px;
+        width: 120px;
+        outline: none;
+        height: 30px;
+        border-radius: 15px;
+        background: #f3faff;
+        border: 2px solid #e5eff8;
+        color: #9eabb5;
+        font-size: 14px;}
+    .shujuwl li span{
+        float:left;
+    }
+    .shujuwl li div{
+        float:left;
+    }
+    .demo-input {
+        padding-left: 10px;
+        height: 30px;
+        min-width: 300px;
+        line-height: 38px;
+        border: 1px solid #e6e6e6;
+        background-color: #f3faff;
+        border-radius: 30px;
+        outline: none;
+    }
+
+    .demo-input:hover {
+        border-color: #c0c4cc;
+    }
+
+    .demo-input:focus {
+        border-color: #3CACFE;
+    }
+
+    .el-form-item__content {
+        line-height: normal;
+    }
+
+    .el-form-item__content {
+        line-height: 40px;
+        position: relative;
+        font-size: 14px;
+    }
+
+    .layui-laydate .layui-this {
+        background: #30B5FE !important;
+    }
 </style>
 <div class="main-content">
     <div style="width: 1012px; margin: 0px auto;">
@@ -84,6 +141,24 @@ use yii\helpers\Url;
                                                                                                   class="el-breadcrumb__separator">&middot;</span></span>
                     </div>
                 </div>
+                <!--<ul class="shujuwl">
+                    <li>
+                        <select name="sel" id="sel" class="el-select xiala" onchange="sel(1)">
+                            <option value="" style="display: none;"></option>
+                            <option value="1" selected>最近一周</option>
+                            <option value="2">最近一月</option>
+                            <option value="3">最近一年</option>
+                        </select>
+                    </li>
+                    <li>
+                        <span>时间段选择</span>
+                        <div class="el-form-item__content" style="margin-left: 10px !important;">
+                            <input type="text" name="data" class="demo-input" placeholder="日期时间范围" id="test1">
+                        </div>
+                    </li>
+
+
+                </ul>-->
                 <div class="tongji ptongji" style="margin-top:0;">
                     <ul>
                         <li style="background: #fff;">
@@ -92,7 +167,9 @@ use yii\helpers\Url;
                             </div>
                             <div class="tongji-number">
                                 <div>
-                                    <span>1024</span>
+                                    <span>
+                                        1024
+                                    </span>
                                 </div>
                                 <div>
                                     <span>点击量统计</span>
@@ -105,7 +182,9 @@ use yii\helpers\Url;
                             </div>
                             <div class="tongji-number">
                                 <div>
-                                    <span>88%</span>
+                                    <span>
+                                        <?php echo ceil($zh*100),"%"?>
+                                    </span>
                                 </div>
                                 <div>
                                     <span>成交转换率</span>
@@ -118,7 +197,9 @@ use yii\helpers\Url;
                             </div>
                             <div class="tongji-number">
                                 <div>
-                                    <span>96%</span>
+                                    <span>
+                                        <?php echo ceil((1-$ts)*100),"%"?>
+                                    </span>
                                 </div>
                                 <div>
                                     <span>好评率</span>
@@ -131,7 +212,9 @@ use yii\helpers\Url;
                             </div>
                             <div class="tongji-number">
                                 <div>
-                                    <span>2%</span>
+                                    <span>
+                                        <?php echo ceil($ts*100),"%"?>
+                                    </span>
                                 </div>
                                 <div>
                                     <span>投诉率</span>
@@ -380,7 +463,7 @@ use yii\helpers\Url;
                                             }
                                             var type1, type2, type3, type4, type5, type6, type7;
                                             $.ajax({
-                                                url: "/shop/datas/complaint?t1=" + t1 + "&t2=" + t2,
+                                                url: "/admin/shuju/complaint?t1=" + t1 + "&t2=" + t2,
                                                 dataType: 'json',
                                                 success: function (msg) {
                                                     // console.log(msg);
@@ -497,35 +580,33 @@ use yii\helpers\Url;
                         <div class="platdata-headername">本月营业排行</div>
 
                         <div class="platdata-headerright">
-                            <div class="money-box money-box1" onclick="orderfn(a=1)"
-                                 style="margin-right:14px;">
+                        <a href="<?= Yii::$service->url->getUrl('admin/shuju/wshop',array('id'=>$_SESSION['id'],'a'=>1))?>">
+                            <div class="money-box <?php
+                            if($a==1){echo "money-box1";}
+                            ?>" style="margin-right:14px;">
                             </div>
-                            <span style="font-size: 14px;color:#82898e;float: left;">按销售量排行</span>
-                            <div class="money-box money-box1" onclick="orderfn(a=2)"
-                                 style="margin-right:14px;">
+                            <span style="font-size: 14px;color:#82898e;float: left;">
+                                按销售量排行
+                            </span>
+                        </a>
+                        <a href="<?= Yii::$service->url->getUrl('admin/shuju/wshop',array('id'=>$_SESSION['id'],'a'=>2))?>">
+                            <div class="money-box <?php
+                            if($a==2){echo "money-box1";}
+                            ?>" style="margin-right:14px;">
                             </div>
-                            <span style="font-size: 14px;color:#82898e;float: left;">按销售额排行</span>
-                            <script>
-                                function orderfn(a){
-                                    if(a == 1){
-                                        $.ajax({
-                                            type:'post',
-                                            url:'<?php echo Yii::$service->url->getUrl("/admin/shuju/wmoney")?>',
-                                        })
-                                    }
-                                    else if(a == 2){
 
-                                    }
-                                }
-                            </script>
-                            <button
-                                    style="width:89px;height:32px;background: #36de77;
+                            <span style="font-size: 14px;color:#82898e;float: left;">
+                                按销售额排行
+                            </span>
+                        </a>
+
+                            <button style="width:89px;height:32px;background: #36de77;
                                         float: left;border:0;margin-top:13px;line-height:
 32px;">导出表格</button>
                         </div>
                     </div>
                     <div class="paihang ppaihang">
-                        <table border="0" class="ShopMannager-tablelist money-list">
+                        <table border="0" class="ShopMannager-tablelist money-list" id = "wshop_rank">
                             <tr>
                                 <th>排行</th>
                                 <th>货号</th>
@@ -535,7 +616,7 @@ use yii\helpers\Url;
                                 <th>均价/元</th>
                             </tr>
                             <?php foreach ($sales as $k=>$v){?>
-                            <tr>
+                            <tr class="t1">
                                 <td><?=($k+1)?></td>
                                 <td><?= $v['spu']?></td>
                                 <td><?= $v['name']['name_zh']?></td>
