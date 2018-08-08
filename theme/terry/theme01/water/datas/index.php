@@ -155,7 +155,7 @@
                          document.querySelector(".xd").innerHTML=data[0].nums;
                          document.querySelector(".cj").innerHTML=data[1].nums;
                          document.querySelector(".th").innerHTML=data[2].nums;
-
+                         document.querySelector(".dj").innerHTML=data[4].clicks;
                          var n=0;
                          data[3].forEach(function (val) {
                              if(val.rate_star>3){
@@ -621,7 +621,6 @@
                         $('.laydate-btns-confirm').on('click',function () {
                             let  test3=$('#test3');
                             let date = test3.val().split(" - ");
-                            console.log(date);
                             var sta=date[0];var end=date[1];
                             var url="<?= Yii::$service->url->getUrl('water/datas/searchdate') ?>?type=1&sta="+sta+"&end="+end;
                             $.get(url).done(function (data) {

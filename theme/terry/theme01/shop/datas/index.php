@@ -261,8 +261,9 @@
                             <div class="item_box1">
                                 点击量统计
                             </div>
+
                             <div class="item_box2 dj">
-                                0
+
                             </div>
                         </div>
                     </li>
@@ -352,6 +353,7 @@
                                 document.querySelector(".xd").innerHTML = data[0].nums;
                                 document.querySelector(".cj").innerHTML = data[1].nums;
                                 document.querySelector(".th").innerHTML = data[2].nums;
+                                document.querySelector(".dj").innerHTML = data[4].clicks;
 
                                 var n = 0;
                                 data[3].forEach(function (val) {
