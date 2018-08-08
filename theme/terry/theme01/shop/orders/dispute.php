@@ -57,6 +57,7 @@ use yii\helpers\Url;
         width: 40px;
         height: 40px;
         background: url("/public/img/sousuo.png") no-repeat center center/100% auto;
+        cursor: pointer;
     }
 
     .content .item {
