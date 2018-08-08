@@ -448,14 +448,9 @@
                         <div class="bottom">
                             <div class="contents active">
                                 <ul style="display: flex; justify-content: space-between;">
-                                    <li style="
-                        display: flex;
-                        align-items: center;color: #a4adb5;
-        font-size: 12px;
-                    ">时间段选择
+                                    <li style="display: flex;align-items: center;color: #a4adb5;font-size: 12px;">时间段选择
                                         <div class="el-form-item__content" style="margin-left: 10px;">
-                                            <input type="text" name="data" class="demo-input el-input__inner" placeholder="日期时间范围"
-                                                   id="test4">
+                                            <input type="text" name="data" class="demo-input el-input__inner" placeholder="日期时间范围" id="test4">
                                         </div>
                                     </li>
                                 </ul>
