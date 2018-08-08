@@ -104,7 +104,7 @@
             	   $(".but1").css({"background":"#fff","color":"#99cafe"});
             	   var sta = aval.substring(0, 10); 
             	   var end = aval.substring(22,32);
-            	   url="<?= Yii::$service->url->getUrl('admin/shuju/searchdate') ?>?type=3&sta="+sta+"&end="+end;
+            	   url="<?= Yii::$service->url->getUrl('admin/money/searchdate') ?>?type=3&sta="+sta+"&end="+end;
             	   $.get(url).done(function (data) {
                     	var row =JSON.parse(data); 
                         // 填入数据
@@ -150,19 +150,19 @@
 
            var myChart = echarts.init(document.getElementById('mychart'));
             // 异步加载数据
-           var url="<?= Yii::$service->url->getUrl('admin/shuju/hours?hours=24&type=3') ?>";
+           var url="<?= Yii::$service->url->getUrl('admin/money/hours?hours=24&type=3') ?>";
            function cut(type,that){
         	   $('#test10').val("");
                $(".but1").css({"border":"none"});
                $(that).css({"border-bottom":"4px solid rgb(48, 162, 254)"});
                if($(that).attr("uri")==1){
-            	   url="<?= Yii::$service->url->getUrl("admin/shuju/week") ?>?type="+type;
+            	   url="<?= Yii::$service->url->getUrl("admin/money/week") ?>?type="+type;
                }else if($(that).attr("uri")==2){
-            	   url="<?= Yii::$service->url->getUrl('admin/shuju/month') ?>?type="+type;
+            	   url="<?= Yii::$service->url->getUrl('admin/money/month') ?>?type="+type;
                }else if($(that).attr("uri")==3){
-            	   url="<?= Yii::$service->url->getUrl('admin/shuju/quarter') ?>?type="+type;
+            	   url="<?= Yii::$service->url->getUrl('admin/money/quarter') ?>?type="+type;
                }else if($(that).attr("uri")==4){
-            	   url="<?= Yii::$service->url->getUrl('admin/shuju/year') ?>?type="+type;
+            	   url="<?= Yii::$service->url->getUrl('admin/money/year') ?>?type="+type;
                }
                $.get(url).done(function (data) {
                   	var row =JSON.parse(data); 
@@ -320,7 +320,7 @@
             	   $(".but1").css({"background":"#fff","color":"#99cafe"});
             	   var sta = aval.substring(0, 10); 
             	   var end = aval.substring(22,32);
-            	   url="<?= Yii::$service->url->getUrl('admin/shuju/searchdate') ?>?type=1&sta="+sta+"&end="+end;
+            	   url="<?= Yii::$service->url->getUrl('admin/money/searchdate') ?>?type=1&sta="+sta+"&end="+end;
             	   $.get(url).done(function (data) {
                     	var row =JSON.parse(data); 
                         // 填入数据
@@ -367,19 +367,19 @@
             
            var mychart2 = echarts.init(document.getElementById('mychart2'));
             // 异步加载数据
-           var url="<?= Yii::$service->url->getUrl('admin/shuju/hours?hours=24&type=1') ?>";
+           var url="<?= Yii::$service->url->getUrl('admin/money/hours?hours=24&type=1') ?>";
            function cut2(type,that){
         	   $('#test11').val("");
                $(".but1").css({"border":"none"});
                $(that).css({"border-bottom":"4px solid rgb(48, 162, 254)"});
                if($(that).attr("uri")==1){
-            	   url="<?= Yii::$service->url->getUrl("admin/shuju/week") ?>?type="+type;
+            	   url="<?= Yii::$service->url->getUrl("admin/money/week") ?>?type="+type;
                }else if($(that).attr("uri")==2){
-            	   url="<?= Yii::$service->url->getUrl('admin/shuju/month') ?>?type="+type;
+            	   url="<?= Yii::$service->url->getUrl('admin/money/month') ?>?type="+type;
                }else if($(that).attr("uri")==3){
-            	   url="<?= Yii::$service->url->getUrl('admin/shuju/quarter') ?>?type="+type;
+            	   url="<?= Yii::$service->url->getUrl('admin/money/quarter') ?>?type="+type;
                }else if($(that).attr("uri")==4){
-            	   url="<?= Yii::$service->url->getUrl('admin/shuju/year') ?>?type="+type;
+            	   url="<?= Yii::$service->url->getUrl('admin/money/year') ?>?type="+type;
                }
                $.get(url).done(function (data) {
                   	var row =JSON.parse(data); 
@@ -537,7 +537,7 @@
              	   $(".but1").css({"background":"#fff","color":"#99cafe"});
              	   var sta = aval.substring(0, 10); 
              	   var end = aval.substring(22,32);
-             	   url="<?= Yii::$service->url->getUrl('admin/shuju/searchdate') ?>?type=2&sta="+sta+"&end="+end;
+             	   url="<?= Yii::$service->url->getUrl('admin/money/searchdate') ?>?type=2&sta="+sta+"&end="+end;
              	   $.get(url).done(function (data) {
                      	var row =JSON.parse(data); 
                          // 填入数据
@@ -583,19 +583,19 @@
             }                
            var mychart3 = echarts.init(document.getElementById('mychart3'));
             // 异步加载数据
-           var url="<?= Yii::$service->url->getUrl('admin/shuju/hours?hours=24&type=2') ?>";
+           var url="<?= Yii::$service->url->getUrl('admin/money/hours?hours=24&type=2') ?>";
            function cut3(type,that){
         	   $('#test12').val("");
                $(".but1").css({"border":"none"});
                $(that).css({"border-bottom":"4px solid rgb(48, 162, 254)"});
                if($(that).attr("uri")==1){
-            	   url="<?= Yii::$service->url->getUrl("admin/shuju/week") ?>?type="+type;
+            	   url="<?= Yii::$service->url->getUrl("admin/money/week") ?>?type="+type;
                }else if($(that).attr("uri")==2){
-            	   url="<?= Yii::$service->url->getUrl('admin/shuju/month') ?>?type="+type;
+            	   url="<?= Yii::$service->url->getUrl('admin/money/month') ?>?type="+type;
                }else if($(that).attr("uri")==3){
-            	   url="<?= Yii::$service->url->getUrl('admin/shuju/quarter') ?>?type="+type;
+            	   url="<?= Yii::$service->url->getUrl('admin/money/quarter') ?>?type="+type;
                }else if($(that).attr("uri")==4){
-            	   url="<?= Yii::$service->url->getUrl('admin/shuju/year') ?>?type="+type;
+            	   url="<?= Yii::$service->url->getUrl('admin/money/year') ?>?type="+type;
                }
                $.get(url).done(function (data) {
                   	var row =JSON.parse(data); 
