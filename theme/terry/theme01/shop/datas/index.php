@@ -317,6 +317,7 @@
                 <script>
                     document.querySelector("#test1").addEventListener("blur", function () {
                         document.querySelector(".laydate-btns-confirm").onclick = function () {
+
                             sel(2);
                         }
                     });
@@ -345,7 +346,7 @@
                             t2 = arr[1];
                         }
 
-
+                        console.log("hasfdkjhkjfhak");
                         $.ajax({
                             url: "/shop/datas/count?t1=" + t1 + "&t2=" + t2,
                             dataType: "json",
@@ -354,7 +355,6 @@
                                 document.querySelector(".cj").innerHTML = data[1].nums;
                                 document.querySelector(".th").innerHTML = data[2].nums;
                                 document.querySelector(".dj").innerHTML = data[4].clicks;
-
                                 var n = 0;
                                 data[3].forEach(function (val) {
                                     if (val.rate_star > 3) {
@@ -368,6 +368,10 @@
                                     document.querySelector(".hp").innerHTML = "无";
                                 }
 
+                            },
+                            error:function (msg) {
+                                console.log("--------------");
+                                console.log(msg);
                             }
 
                         });
@@ -751,6 +755,7 @@
                   document.querySelector(".xd").innerHTML=data[0].nums;
                   document.querySelector(".cj").innerHTML=data[1].nums;
                   document.querySelector(".th").innerHTML=data[2].nums;
+                  document.querySelector(".dj").innerHTML=data[4].clicks;
 
                   var n=0;
                   data[3].forEach(function (val) {

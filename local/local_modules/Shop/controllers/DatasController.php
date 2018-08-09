@@ -123,7 +123,7 @@ where order_status>=5 and refund_at=$created_at1 and refund_at")->queryAll();
 
         $shop_id=$_SESSION['shop_id'];
 
-        $res2=Yii::$app->db->createCommand("select count(*) as clicks from page_view where shop_id=$shop_id and time>='$t1' AND time<='$t2'")->queryAll();
+        $res2=Yii::$app->db->createCommand("select count(*) as clicks from page_view where shop_id=$shop_id and time>='$created_at1' AND time<='$created_at2'")->queryAll();
 
         $clicks=$res2[0];
 
@@ -133,7 +133,7 @@ where order_status>=5 and refund_at=$created_at1 and refund_at")->queryAll();
 
         $res1 = $query->from("review")->where($condition)->all();
 
-        $res[3] = $res1;
+        $res[3] =$res1;
 
         $res[4]=$clicks;
 

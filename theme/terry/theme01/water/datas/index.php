@@ -67,11 +67,11 @@
       <ul  class="item">
        <li >
         <div  class="item_box">
-         <div  class="item_box1">
+         <div  class="item_box1 ">
           点击量统计
          </div> 
-         <div  class="item_box2">
-          0
+         <div  class="item_box2 dj">
+
          </div>
         </div></li> 
        <li >
