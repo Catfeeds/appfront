@@ -37,14 +37,28 @@ class ShopController extends PublicsController
 
         $_SESSION['pagess']="index";
         $province = Yii::$app->db->createCommand('select * from sys_province')->queryAll();
+
         // 获取数据
         $request = Yii::$app->request;
         $get = $request->get();
         $shop_name = $get['shop_name'];
+        $province_id = (int)$request->get(province_id);
+        $city_id = (int)$request->get(city_id);
+        $district_id = (int)$request->get(district_id);
         $sql = " select count(*) tot from shop where shop_type = 2";
-        if(!empty($shop_name)){
-            $sql .=" and shop_name like '%$shop_name%'";
+        if($shop_name!=null && $shop_name!=""){
+            $sql .=" AND shop_name like '%$shop_name%'";
         }
+        if($province_id!=0 && $province_id!=null){
+            $sql .=" AND province_id=$province_id";
+        }
+        if($city_id!=0 && $city_id!=null){
+            $sql .=" AND city_id=$city_id";
+        }
+        if($district_id!=0 && $district_id!=null){
+            $sql .=" AND district_id=$district_id";
+        }
+
         //查询订单表数量
         $countArr = Yii::$app->db->createCommand($sql)->queryOne();
 
@@ -54,9 +68,18 @@ class ShopController extends PublicsController
             'defaultPageSize' => 10,
             'totalCount' => $countArr['tot'],
         ]);
-        $sql = " select s.shop_id,s.shop_name,p.province_name,d.district_name,c.city_name from shop s ,sys_city c,sys_district d,sys_province p where s.province_id = p.province_id and s.city_id = c.city_id and s.district_id= d.district_id and shop_type = 2";
-        if(!empty($shop_name)){
-            $sql .=" and s.shop_name like '%$shop_name%'";
+        $sql = " select * from shop where shop_type = 2";
+        if($shop_name!=null && $shop_name!=""){
+            $sql .=" AND shop_name like '%$shop_name%'";
+        }
+        if($province_id!=0 && $province_id!=null){
+            $sql .=" AND province_id=$province_id";
+        }
+        if($city_id!=0 && $city_id!=null){
+            $sql .=" AND city_id=$city_id";
+        }
+        if($district_id!=0 && $district_id!=null){
+            $sql .=" AND district_id=$district_id";
         }
         $sql .=" limit $pagination->offset , $pagination->limit";
         $arr = Yii::$app->db->createCommand($sql)->queryAll();

@@ -145,7 +145,6 @@ class ShujuController extends PublicsController
         $data['city'] = $city;
         $data['district'] =$district ;
         $data['shop_name'] = $shop_name;
-//        $data['arr'] = $arr;
         $data['tousunum'] = $tousunum;
         return $this->render($this->action->id,$data);
     }

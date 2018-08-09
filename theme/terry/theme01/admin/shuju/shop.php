@@ -45,6 +45,7 @@ use yii\helpers\Url;
                     </select>
                     <div class="xialaimg1"></div>
                 </div>
+
                 <span style="margin-left:10px;">管理员名称</span>
                 <input type="text" name="shop_name"
                     <?php if($shop_name){?>
