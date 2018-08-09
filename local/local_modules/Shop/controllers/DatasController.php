@@ -37,7 +37,7 @@ class DatasController extends PublicsController
         $_SESSION['pagess']='index';
         $time=strtotime(date("Y-m-d H:i:s"));
         $shop_id=$_SESSION['shop_id'];
-        Yii::$app->db->createCommand("insert into page_view (shop_id,time) values ('$shop_id','$time')")->execute();
+        Yii::$app->db->createCommand("insert into page_view (shop_id,created_at) values ('$shop_id','$time')")->execute();
         return $this->render($this->action->id, $datas);
 
     }
@@ -123,7 +123,7 @@ where order_status>=5 and refund_at=$created_at1 and refund_at")->queryAll();
 
         $shop_id=$_SESSION['shop_id'];
 
-        $res2=Yii::$app->db->createCommand("select count(*) as clicks from page_view where shop_id=$shop_id and time>='$created_at1' AND time<='$created_at2'")->queryAll();
+        $res2=Yii::$app->db->createCommand("select count(*) as clicks from page_view where shop_id=$shop_id and created_at>='$created_at1' AND created_at<='$created_at2'")->queryAll();
 
         $clicks=$res2[0];
 

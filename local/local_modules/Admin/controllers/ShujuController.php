@@ -247,6 +247,9 @@ class ShujuController extends PublicsController
         $orders = Yii::$app->db->createCommand("SELECT * FROM sales_flat_order WHERE shop_id='$id'")->queryAll();
         $zhall = count($orders);
         $zhdone = count($order);
+        //访问量
+        $page_view=Yii::$app->db->createCommand("SELECT * FROM page_view WHERE shop_id='$id'")->queryAll();
+        $views=count($page_view);
         if($zhall == 0){
             $zh = 0;
         }else{
@@ -305,6 +308,7 @@ class ShujuController extends PublicsController
         $data['zh'] = $zh;
         $data['ts'] = $ts;
         $data['a'] = $a;
+        $data['views']=$views;
         return $this->render($this->action->id,$data);
     }
 //导出商品排行
@@ -373,6 +377,7 @@ class ShujuController extends PublicsController
         $create_t2=strtotime($_GET["t2"]);
 
         $shop_id = $_SESSION['shop_id'];
+
         $complaint = Yii::$app->db->createCommand("SELECT *  FROM customer_complaint WHERE shop_id = $shop_id and times>$create_t1 AND times<$create_t2")->queryAll();
 
         echo json_encode($complaint);
@@ -570,6 +575,8 @@ class ShujuController extends PublicsController
         $orders = Yii::$app->db->createCommand("SELECT * FROM sales_flat_order WHERE shop_id='$id'")->queryAll();
         $zhall = count($orders);
         $zhdone = count($order);
+        $page_view=Yii::$app->db->createCommand("SELECT * FROM page_view WHERE shop_id='$id'")->queryAll();
+        $views=count($page_view);
         if($zhall == 0){
             $zh = 0;
         }else{
@@ -629,6 +636,7 @@ class ShujuController extends PublicsController
         $data['zh'] = $zh;
         $data['ts'] = $ts;
         $data['a'] = $a;
+        $data['views']=$views;
         return $this->render($this->action->id,$data);
     }
 
@@ -649,7 +657,16 @@ class ShujuController extends PublicsController
     	}else if($type==3){
     		$name="customer";
     		$where=" ";
-    	}
+    	}else if($type==4){
+            $name="page_view";
+            $where=" ";
+        }else if($type==5){
+            $name="sales_flat_order";
+            $where=" ";
+        }else if($type==6){
+            $name="sales_flat_order";
+            $where=" ";
+        }
     	$hours=$_GET['hours'];
     	$day=60*60;
     	for($i=$hours;$i>0;$i--){
@@ -661,9 +678,12 @@ class ShujuController extends PublicsController
     		$max=$min+$day;
     		$num = Yii::$app->db->createCommand("SELECT count(1) as num FROM {$name} WHERE created_at>{$min} AND created_at<{$max} {$where}")->queryOne();
     		$date['num'][$k]=$num['num'];
+            $methods = Yii::$app->db->createCommand("SELECT * FROM sales_flat_order WHERE created_at>{$min} AND created_at<{$max}")->queryAll();
+            $date['methods']=$methods;
     	}
 //     	echo "<pre>";
 //     	print_r($date);die;
+
     	return json_encode($date);
     }
     /* 
@@ -682,7 +702,13 @@ class ShujuController extends PublicsController
     	}else if($type==3){
     		$name="customer";
     		$where=" ";
-    	}
+    	}else if($type==4){
+            $name="page_view";
+            $where=" ";
+        }else if($type==5){
+            $name="sales_flat_order";
+            $where=" ";
+        }
     	$day=60*60*24;
     	$date['dat'][]=date("Y-m-d",strtotime("-6 day"));
     	$date['dat'][]=date("Y-m-d",strtotime("-5 day"));
@@ -696,6 +722,8 @@ class ShujuController extends PublicsController
     		$max=$min+$day;
     		$num = Yii::$app->db->createCommand("SELECT count(1) as num FROM {$name} WHERE created_at>{$min} AND created_at<{$max} {$where}")->queryOne();
     		$date['num'][$k]=$num['num'];
+            $methods = Yii::$app->db->createCommand("SELECT * FROM sales_flat_order WHERE created_at>{$min} AND created_at<{$max}")->queryAll();
+            $date['methods']=$methods;
     	}
     	return json_encode($date);
     }
@@ -715,7 +743,13 @@ class ShujuController extends PublicsController
     	}else if($type==3){
     		$name="customer";
     		$where=" ";
-    	}
+    	}else if($type==4){
+    	    $name="page_view";
+    	    $where=" ";
+        }else if($type==5){
+            $name="sales_flat_order";
+            $where=" ";
+        }
     	$day=60*60*24;
     	for($i=31;$i>0;$i--){
     		$n="-".$i." day";
@@ -727,9 +761,9 @@ class ShujuController extends PublicsController
     		$max=$min+$day;
     		$num = Yii::$app->db->createCommand("SELECT count(1) as num FROM {$name} WHERE created_at>{$min} AND created_at<{$max} {$where}")->queryOne();
     		$date['num'][$k]=$num['num'];
+            $methods = Yii::$app->db->createCommand("SELECT * FROM sales_flat_order WHERE created_at>{$min} AND created_at<{$max}")->queryAll();
+            $date['methods']=$methods;
     	}
-//     	echo "<pre>";
-//     	print_r($date);
     	return json_encode($date);
     }
     /*
@@ -748,7 +782,13 @@ class ShujuController extends PublicsController
     	}else if($type==3){
     		$name="customer";
     		$where=" ";
-    	}
+    	}else if($type==4){
+            $name="page_view";
+            $where=" ";
+        }else if($type==5){
+            $name="sales_flat_order";
+            $where=" ";
+        }
     	$day=60*60*24;
     	for($i=91;$i>0;$i--){
     		$n="-".$i." day";
@@ -760,7 +800,10 @@ class ShujuController extends PublicsController
     	    $max=$min+$day;
     		$num = Yii::$app->db->createCommand("SELECT count(1) as num FROM {$name} WHERE created_at>{$min} AND created_at<{$max} {$where}")->queryOne();
     		$date['num'][$k]=$num['num'];
+            $methods = Yii::$app->db->createCommand("SELECT * FROM sales_flat_order WHERE created_at>{$min} AND created_at<{$max}")->queryAll();
+            $date['methods']=$methods;
     	}
+
     	return json_encode($date);
     }
     /*
@@ -779,7 +822,13 @@ class ShujuController extends PublicsController
     	}else if($type==3){
     		$name="customer";
     		$where=" ";
-    	}
+    	}else if($type==4){
+            $name="page_view";
+            $where=" ";
+        }else if($type==5){
+    	    $name="sales_flat_order";
+    	    $where=" ";
+        }
     	$day=60*60*24*30;
     	$date['dat'][]=date("Y-m",strtotime("-12 month"));
     	$date['dat'][]=date("Y-m",strtotime("-11 month"));
@@ -799,9 +848,10 @@ class ShujuController extends PublicsController
     	$max=$min+$day;
     	$num = Yii::$app->db->createCommand("SELECT count(1) as num FROM {$name} WHERE created_at>{$min} AND created_at<{$max} {$where}")->queryOne();
     	$date['num'][$k]=$num['num'];
+            $methods = Yii::$app->db->createCommand("SELECT * FROM sales_flat_order WHERE created_at>{$min} AND created_at<{$max}")->queryAll();
+            $date['methods']=$methods;
     	}
-//     	echo "<pre>";
-//     	print_r($date);
+
     	return json_encode($date);
     }
     /*
@@ -823,7 +873,13 @@ class ShujuController extends PublicsController
     	}else if($type==3){
     		$name="customer";
     		$where=" ";
-    	}
+    	}else if($type==4){
+            $name="page_view";
+            $where=" ";
+        }else if($type==5){
+            $name="sales_flat_order";
+            $where=" ";
+        }
     	$day=60*60*24;
     	//开始时间
     	$start=strtotime($startime);
@@ -845,9 +901,10 @@ class ShujuController extends PublicsController
     		$max=$min+$day;
     		$num = Yii::$app->db->createCommand("SELECT count(1) as num FROM {$name} WHERE created_at>{$min} AND created_at<{$max} {$where}")->queryOne();
     		$date['num'][$k]=$num['num'];
+            $methods = Yii::$app->db->createCommand("SELECT * FROM sales_flat_order WHERE created_at>{$min} AND created_at<{$max}")->queryAll();
+            $date['methods']=$methods;
     	}
-//     	    	echo "<pre>";
-//     	    	print_r($date);
-    	return json_encode($date);
+
+        return json_encode($date);
     }
 }
