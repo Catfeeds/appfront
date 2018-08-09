@@ -33,6 +33,9 @@
                     <div class="tongji-number">
                         <div>
                             <span class="cjje">652.36</span>
+                            <script>
+                                console.log($(".cjje"));
+                            </script>
                         </div>
                         <div>
                             <span>成交金额(元)</span>
@@ -111,26 +114,33 @@
 
             </div>
             <script type="text/javascript">
-                $("#search").on("click",function () {
-                    console.log(222);
-                    var aval=$('#test1').val();
-                    if(aval){
-                        $(".but1").css({"background":"#fff","color":"#99cafe"});
-                        var sta = aval.substring(0, 10);
-                        var end = aval.substring(22,32);
-                        var url="<?= Yii::$service->url->getUrl('admin/money/searchhours') ?>?type=3&sta="+sta+"&end="+end;
+                $(function () {
+                    $("#search").on("click",function () {
+                        console.log(222);
+                        var aval=$('#test1').val();
+                        if(aval){
+                            $(".but1").css({"background":"#fff","color":"#99cafe"});
+                            var sta = aval.substring(0, 10);
+                            var end = aval.substring(22,32);
+                            var url="<?= Yii::$service->url->getUrl('admin/money/searchhours') ?>?type=3&sta="+sta+"&end="+end;
+
+                        }else{
+                            var url="<?= Yii::$service->url->getUrl('admin/money/searchhours') ?>?type=3&sta="+'2018-08-22'+"&end="+'2018-09-23';
+                        }
                         $.get(url).done(function (data) {
                             var row =JSON.parse(data);
                             // 填入数据
-                            console.log(data);
-                            $("cjje").text(data.num);
-                            $("xdl").text(data.sumnum);
-                            $("cjl").text(data.number);
-                            $("thl").text(data.backnum);
+                            console.log(row);
+                            $(".cjje").text(row.num);
+                            console.log(row['sumnum']);
+                            $(".xdl").text(row.sumnum);
+                            $(".cjl").text(row.number);
+                            $(".thl").text(row.backnum);
                         });
-                    }
-                });
-                $("#search").triggerHandler("click");
+                    });
+                    $("#search").triggerHandler("click");
+                })
+
                 //日期时间范围
                 laydate.render({
                     elem: '#test10'
