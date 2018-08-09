@@ -34,8 +34,8 @@ class ShopController extends PublicsController
 //=========================店铺管理===============================
     //商家
     public function actionIndex(){
-        $_SESSION['pagess']="index";
 
+        $_SESSION['pagess']="index";
         // 获取数据
         $request = Yii::$app->request;
         $get = $request->get();

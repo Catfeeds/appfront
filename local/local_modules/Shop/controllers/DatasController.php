@@ -33,10 +33,11 @@ class DatasController extends PublicsController
     // 数据统计首页
     public function actionIndex()
     {
-
         $datas = [];
         $_SESSION['pagess']='index';
-
+        $time=strtotime(date("Y-m-d H:i:s"));
+        $shop_id=$_SESSION['shop_id'];
+        Yii::$app->db->createCommand("insert into page_view (shop_id,time) values ('$shop_id','$time')")->execute();
         return $this->render($this->action->id, $datas);
 
     }
@@ -107,7 +108,9 @@ class DatasController extends PublicsController
         $t1 = date("Y-m-d H:i:s",$created_at1);
         $t2 = date("Y-m-d H:i:s",$created_at2);
 
-        $res = Yii::$app->db->createCommand("select count(order_id) as 'nums'from sales_flat_order
+        $res = Yii::$app->db->createCommand("
+select count(order_id) as 'nums'
+from sales_flat_order
 where order_status>=0 and created_at>=$created_at1 and created_at<$created_at2
 union all
 select count(order_id) as '成交量'
@@ -118,14 +121,21 @@ select count(order_id) as '退货量'
 from sales_flat_order
 where order_status>=5 and refund_at=$created_at1 and refund_at")->queryAll();
 
+        $shop_id=$_SESSION['shop_id'];
+
+        $res2=Yii::$app->db->createCommand("select count(*) as clicks from page_view where shop_id=$shop_id and time>='$created_at1' AND time<='$created_at2'")->queryAll();
+
+        $clicks=$res2[0];
+
         $query = new Query();
 
         $condition['shop_id'] =$_SESSION["shop_id"];
 
         $res1 = $query->from("review")->where($condition)->all();
 
+        $res[3] =$res1;
 
-        $res[3] = $res1;
+        $res[4]=$clicks;
 
         echo json_encode($res);
         exit();
