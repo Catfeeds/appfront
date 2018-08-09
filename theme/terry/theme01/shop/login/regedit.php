@@ -188,7 +188,7 @@ box-sizing: border-box;border-radius: 16px;">
                         <a href="<?= Yii::$service->url->getUrl('shop/login/index') ?>">登录</a>
                     </div>
                 </div>
-                <div style="display:flex;justify-content:center;width: 100%;height: 34px;cursor: pointer;margin-top:50px;text-align:center">
+                <div style="display:flex;justify-content:center;width: 100%;height: 34px;margin-top:30px;text-align:center">
                     <button style="cursor: pointer;margin-top: 10px;width: 230px;letter-spacing: 10px" class="submit" onclick="submit()">注册</button>
                 </div>
 

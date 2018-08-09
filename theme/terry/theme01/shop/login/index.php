@@ -170,18 +170,15 @@ box-sizing: border-box;border-radius: 16px;">
 box-sizing: border-box;border-radius: 16px;">
                     </li>
                 </ul>
-
                 <div class="forget">
                     <div class="forget1">
                         <div></div>
                         <a href="<?= Yii::$service->url->getUrl('shop/login/reg') ?>">注册</a>
                     </div>
-
                 </div>
-                <div style="width: 100%;height: 34px;cursor: pointer;margin-top:38px;">
+                <div style="width: 100%;height: 34px;margin-top:38px;display:flex;justify-content: center">
                     <button style="cursor: pointer" class="submit">登录</button>
-                </div>
-
+                </div
             </div>
         </div>
     </form>
