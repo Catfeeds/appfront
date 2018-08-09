@@ -346,12 +346,58 @@ class ShopController extends PublicsController
                      ->offset($pagination->offset)
                      ->limit($pagination->limit)
                      ->all();
+        $_SESSION['classlist'] = $class;
         $data['class']=$class;
         $data['count']=$count;
         $data["pagination"] = $pagination;
 
         return $this->render($this->action->id,$data);
     }
+
+    //导出表格
+    public function actionExportclass(){
+            $data = $_SESSION['classlist'];
+            if ($data == null){
+                exit("no datas!");
+            }
+            header('Content-Type: text/xls');
+            header ( "Content-type:application/vnd.ms-excel;charset=utf-8" );
+            header('Content-Disposition: attachment;filename=" 数据导出.xls"');
+            header('Cache-Control:must-revalidate,post-check=0,pre-check=0');
+            header('Expires:0');
+            header('Pragma:public');
+
+            //利用表格导出到excel文件
+            $table = '<table border="1"><tr>
+        <th colspan="6">
+            商家数据
+        </th>
+        </tr><tr>';
+            $arr = $_SESSION['arr'];
+            $th = array(
+                'ID','名称','排序','描述','关键字'
+            );
+
+
+            $beginThismonth=mktime(0,0,0,date('m'),1,date('Y'));
+            $endThismonth=mktime(23,59,59,date('m'),date('t'),date('Y'));
+            //循环表头数组到excel里
+            foreach($th as $i){
+                $table.="<th>".$i."</th>";
+            }
+            $table.='</tr>';
+            //将数据以表格形式循环到excel，这里根据实际数组不同表格可以自行拼接调整
+            foreach ($data as $k=>$v){
+                $table .= '<tr>';
+                $table .= '<td>' . $v['_id']. '</td>';
+                $table .= '<td>' . $v['name']['name_zh']. '</td>';
+                $table .= '<td>' . $v['description']['description_zh']. '</td>';
+                $table .= '<td>' . $v['meta_keywords']['meta_keywords_zh'] . '</td>';
+                $table .= '</tr>';
+            }
+            $table .='</table>';
+            echo $table;
+     }
 
     // 分类添加页面
 
