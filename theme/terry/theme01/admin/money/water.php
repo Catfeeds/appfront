@@ -29,7 +29,9 @@ use yii\helpers\Url;
                 <input class="search-img" type="submit" value="">
             </div>
             </form>
-            <button class="addadmin" style="width: 100px;">导出表格</button>
+            <a href="<?= Yii::$service->url->getUrl('admin/money/waterexport') ?>">
+                <button class="addadmin" style="width: 100px;">导出表格</button>
+            </a>
         </div>
         <!--管理员列表-->
         <div class="admin-table">
