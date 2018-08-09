@@ -118,6 +118,7 @@ class MoneyController extends PublicsController
     }
     //水司财务
     public function actionWater(){
+
         $_SESSION['pagess']="water";
 
     	// 查询数据总条数
@@ -197,9 +198,43 @@ class MoneyController extends PublicsController
     	return json_encode($date);
     }
     /*
+    * 返回最近小时的时间和成交额
+   * 参数1：hours int 最近的前几个小时
+   */
+    public function actionSearchhours(){
+        $shop_id = $_SESSION['shopdata'][0]['shop_id'];
+        $startime=$_GET['sta'];
+        $endtime=$_GET['end'];
+        $day=60*60*24;
+        //开始时间
+        $start=strtotime($startime);
+        $end=strtotime($endtime);
+
+        $data=[];
+        //成交量 成交金额
+        $num = Yii::$app->db->createCommand("SELECT count(*) as number,sum(grand_total) as num FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status !=0 AND order_status !=6 AND shop_id={$shop_id}")->queryOne();
+        //下单量
+        $sumnum = Yii::$app->db->createCommand("SELECT count(*) as sumnum FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND shop_id={$shop_id}")->queryOne();
+        //退货量
+        $backnum = Yii::$app->db->createCommand("SELECT count(*) as backnum FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status in (5,6)  AND shop_id={$shop_id}")->queryOne();
+        if($num['num']==null){
+            $data['num']=0;
+            $data['number']=$num['number'];
+            $data['sumnum']=$sumnum['sumnum'];
+            $data['backnum']=$backnum ['backnum'];
+        }else{
+            $data['num']=$num['num'];
+            $data['number']=$num['number'];
+            $data['sumnum']=$sumnum['sumnum'];
+            $data['backnum']=$backnum ['backnum'];
+        }
+        return json_encode($data);
+    }
+    /*
      * 返回最近七天的时间和成交额
     */
     public function actionWeek(){
+        $shop_id = $_SESSION['shopdata'][0]['shop_id'];
     	$day=60*60*24;
     	$date['dat'][]=date("Y-m-d",strtotime("-6 day"));
     	$date['dat'][]=date("Y-m-d",strtotime("-5 day"));
@@ -211,8 +246,12 @@ class MoneyController extends PublicsController
     	foreach ($date['dat'] as $k=>$v){
     		$min=strtotime($v);
     		$max=$min+$day;
-    		$num = Yii::$app->db->createCommand("SELECT sum(grand_total) as num FROM sales_flat_order WHERE updated_at>{$min} AND updated_at<{$max}  AND order_status in(1,3,4,5)")->queryOne();
-    		$date['num'][$k]=$num['num'];
+    		$num = Yii::$app->db->createCommand("SELECT sum(grand_total) as num FROM sales_flat_order WHERE updated_at>{$min} AND updated_at<{$max}  AND order_status in(1,3,4,5) AND shop_id={$shop_id}")->queryOne();
+    		if($num['num']==null){
+                $date['num'][$k]=0;
+            }else{
+                $date['num'][$k]=$num['num'];
+            }
     	}
     	return json_encode($date);
     }
@@ -220,6 +259,7 @@ class MoneyController extends PublicsController
      * 返回最近一个月的时间和成交额
     */
     public function actionMonth(){
+        $shop_id = $_SESSION['shopdata'][0]['shop_id'];
     	$day=60*60*24;
     	for($i=31;$i>0;$i--){
     		$n="-".$i." day";
@@ -229,8 +269,12 @@ class MoneyController extends PublicsController
     	foreach ($date['dat'] as $k=>$v){
     		$min=strtotime($v);
     		$max=$min+$day;
-    		$num = Yii::$app->db->createCommand("SELECT sum(grand_total) as num FROM sales_flat_order WHERE updated_at>{$min} AND updated_at<{$max} AND order_status in(1,3,4,5)")->queryOne();
-    		$date['num'][$k]=$num['num'];
+    		$num = Yii::$app->db->createCommand("SELECT sum(grand_total) as num FROM sales_flat_order WHERE updated_at>{$min} AND updated_at<{$max} AND order_status in(1,3,4,5) AND shop_id={$shop_id}")->queryOne();
+            if($num['num']==null){
+                $date['num'][$k]=0;
+            }else{
+                $date['num'][$k]=$num['num'];
+            }
     	}
     	//     	echo "<pre>";
     	//     	print_r($date);
@@ -240,6 +284,7 @@ class MoneyController extends PublicsController
      * 返回最近一个季度的时间和成交额
     */
     public function actionQuarter(){
+        $shop_id = $_SESSION['shopdata'][0]['shop_id'];
     	$day=60*60*24;
     	for($i=91;$i>0;$i--){
     		$n="-".$i." day";
@@ -249,8 +294,12 @@ class MoneyController extends PublicsController
     	foreach ($date['dat'] as $k=>$v){
     		$min=strtotime($v);
     		$max=$min+$day;
-    		$num = Yii::$app->db->createCommand("SELECT sum(grand_total) as num FROM sales_flat_order WHERE updated_at>{$min} AND updated_at<{$max} AND order_status in(1,3,4,5)")->queryOne();
-    		$date['num'][$k]=$num['num'];
+    		$num = Yii::$app->db->createCommand("SELECT sum(grand_total) as num FROM sales_flat_order WHERE updated_at>{$min} AND updated_at<{$max} AND order_status in(1,3,4,5) AND shop_id={$shop_id}")->queryOne();
+            if($num['num']==null){
+                $date['num'][$k]=0;
+            }else{
+                $date['num'][$k]=$num['num'];
+            }
     	}
     	//     	    	echo "<pre>";
     	//     	    	print_r($date);
@@ -260,6 +309,7 @@ class MoneyController extends PublicsController
      * 返回最近一年的时间和成交额
     */
     public function actionYear(){
+        $shop_id = $_SESSION['shopdata'][0]['shop_id'];
     	$day=60*60*24*30;
     	$date['dat'][]=date("Y-m",strtotime("-12 month"));
     	$date['dat'][]=date("Y-m",strtotime("-11 month"));
@@ -277,8 +327,12 @@ class MoneyController extends PublicsController
     	foreach ($date['dat'] as $k=>$v){
     		$min=strtotime($v);
     		$max=$min+$day;
-    		$num = Yii::$app->db->createCommand("SELECT sum(grand_total) as num FROM sales_flat_order WHERE updated_at>{$min} AND updated_at<{$max} AND order_status in(1,3,4,5)")->queryOne();
-    		$date['num'][$k]=$num['num'];
+    		$num = Yii::$app->db->createCommand("SELECT sum(grand_total) as num FROM sales_flat_order WHERE updated_at>{$min} AND updated_at<{$max} AND order_status in(1,3,4,5) AND shop_id={$shop_id}")->queryOne();
+            if($num['num']==null){
+                $date['num'][$k]=0;
+            }else{
+                $date['num'][$k]=$num['num'];
+            }
     	}
     	//     	echo "<pre>";
     	//     	print_r($date);
@@ -288,6 +342,7 @@ class MoneyController extends PublicsController
      * 返回随便两个日期的时间和成交额
     */
     public function actionSearchdate(){
+        $shop_id = $_SESSION['shopdata'][0]['shop_id'];
     	$startime=$_GET['sta'];
     	$endtime=$_GET['end'];
     	$day=60*60*24;
@@ -309,8 +364,12 @@ class MoneyController extends PublicsController
     	foreach ($date['dat'] as $k=>$v){
     		$min=strtotime($v);
     		$max=$min+$day;
-    		$num = Yii::$app->db->createCommand("SELECT sum(grand_total) as num FROM sales_flat_order WHERE updated_at>{$min} AND updated_at<{$max} AND order_status in(1,3,4,5)")->queryOne();
-    		$date['num'][$k]=$num['num'];
+    		$num = Yii::$app->db->createCommand("SELECT sum(grand_total) as num FROM sales_flat_order WHERE updated_at>{$min} AND updated_at<{$max} AND order_status in(1,3,4,5) AND shop_id={$shop_id}")->queryOne();
+            if($num['num']==null){
+                $date['num'][$k]=0;
+            }else{
+                $date['num'][$k]=$num['num'];
+            }
     	}
     	//     	    	echo "<pre>";
     	//     	    	print_r($date);
@@ -382,7 +441,301 @@ class MoneyController extends PublicsController
     	
     	 
     }
-    
+
+
+    /*----------------------------返款------------------------------*/
+
+    /*
+    * 返回最近七天的时间和返款额
+   */
+    public function actionBackweek(){
+        $shop_id = $_SESSION['shopdata'][0]['shop_id'];
+        $day=60*60*24;
+        $date['dat'][]=date("Y-m-d",strtotime("-6 day"));
+        $date['dat'][]=date("Y-m-d",strtotime("-5 day"));
+        $date['dat'][]=date("Y-m-d",strtotime("-4 day"));
+        $date['dat'][]=date("Y-m-d",strtotime("-3 day"));
+        $date['dat'][]=date("Y-m-d",strtotime("-2 day"));
+        $date['dat'][]=date("Y-m-d",strtotime("-1 day"));
+        $date['dat'][]=date("Y-m-d",time());
+        foreach ($date['dat'] as $k=>$v){
+            $min=strtotime($v);
+            $max=$min+$day;
+            $num = Yii::$app->db->createCommand("SELECT sum(grand_total) as num FROM sales_flat_order WHERE updated_at>{$min} AND updated_at<{$max}  AND order_status =6 AND shop_id={$shop_id}")->queryOne();
+            if($num['num']==null){
+                $date['num'][$k]=0;
+            }else{
+                $date['num'][$k]=$num['num'];
+            }
+        }
+        return json_encode($date);
+    }
+    /*
+     * 返回最近一个月的时间和返款额
+    */
+    public function actionBackmonth(){
+        $shop_id = $_SESSION['shopdata'][0]['shop_id'];
+        $day=60*60*24;
+        for($i=31;$i>0;$i--){
+            $n="-".$i." day";
+            $date['dat'][]=date("Y-m-d",strtotime($n));
+        }
+        $date['dat'][]=date("Y-m-d",time());
+        foreach ($date['dat'] as $k=>$v){
+            $min=strtotime($v);
+            $max=$min+$day;
+            $num = Yii::$app->db->createCommand("SELECT sum(grand_total) as num FROM sales_flat_order WHERE updated_at>{$min} AND updated_at<{$max} AND order_status =6 AND shop_id={$shop_id}")->queryOne();
+            if($num['num']==null){
+                $date['num'][$k]=0;
+            }else{
+                $date['num'][$k]=$num['num'];
+            }
+        }
+        //     	echo "<pre>";
+        //     	print_r($date);
+        return json_encode($date);
+    }
+    /*
+     * 返回最近一个季度的时间和返款额
+    */
+    public function actionBackquarter(){
+        $shop_id = $_SESSION['shopdata'][0]['shop_id'];
+        $day=60*60*24;
+        for($i=91;$i>0;$i--){
+            $n="-".$i." day";
+            $date['dat'][]=date("Y-m-d",strtotime($n));
+        }
+        $date['dat'][]=date("Y-m-d",time());
+        foreach ($date['dat'] as $k=>$v){
+            $min=strtotime($v);
+            $max=$min+$day;
+            $num = Yii::$app->db->createCommand("SELECT sum(grand_total) as num FROM sales_flat_order WHERE updated_at>{$min} AND updated_at<{$max} AND order_status =6 AND shop_id={$shop_id}")->queryOne();
+            if($num['num']==null){
+                $date['num'][$k]=0;
+            }else{
+                $date['num'][$k]=$num['num'];
+            }
+        }
+        //     	    	echo "<pre>";
+        //     	    	print_r($date);
+        return json_encode($date);
+    }
+    /*
+     * 返回最近一年的时间和返款额
+    */
+    public function actionBackyear(){
+        $shop_id = $_SESSION['shopdata'][0]['shop_id'];
+        $day=60*60*24*30;
+        $date['dat'][]=date("Y-m",strtotime("-12 month"));
+        $date['dat'][]=date("Y-m",strtotime("-11 month"));
+        $date['dat'][]=date("Y-m",strtotime("-10 month"));
+        $date['dat'][]=date("Y-m",strtotime("-9 month"));
+        $date['dat'][]=date("Y-m",strtotime("-8 month"));
+        $date['dat'][]=date("Y-m",strtotime("-7 month"));
+        $date['dat'][]=date("Y-m",strtotime("-6 month"));
+        $date['dat'][]=date("Y-m",strtotime("-5 month"));
+        $date['dat'][]=date("Y-m",strtotime("-4 month"));
+        $date['dat'][]=date("Y-m",strtotime("-3 month"));
+        $date['dat'][]=date("Y-m",strtotime("-2 month"));
+        $date['dat'][]=date("Y-m",strtotime("-1 month"));
+        $date['dat'][]=date("Y-m",time());
+        foreach ($date['dat'] as $k=>$v){
+            $min=strtotime($v);
+            $max=$min+$day;
+            $num = Yii::$app->db->createCommand("SELECT sum(grand_total) as num FROM sales_flat_order WHERE updated_at>{$min} AND updated_at<{$max} AND order_status =6 AND shop_id={$shop_id}")->queryOne();
+            if($num['num']==null){
+                $date['num'][$k]=0;
+            }else{
+                $date['num'][$k]=$num['num'];
+            }
+        }
+        //     	echo "<pre>";
+        //     	print_r($date);
+        return json_encode($date);
+    }
+    /*
+     * 返回随便两个日期的时间和返款额
+    */
+    public function actionBacksearchdate(){
+        $shop_id = $_SESSION['shopdata'][0]['shop_id'];
+        $startime=$_GET['sta'];
+        $endtime=$_GET['end'];
+        $day=60*60*24;
+        //开始时间
+        $start=strtotime($startime);
+        $end=strtotime($endtime);
+        $now=time();
+        //当前时间到开始时间差
+        $ca=floor(($now-$start)/(60*60*24));
+        $numday=floor(($end-$start)/(60*60*24));
+        $date['dat'][]=date("Y-m-d",$start);
+
+        for($i=1;$i<=$numday;$i++){
+            $m=$i-$ca;
+            $n="+".$m." day";
+            $date['dat'][]=date("Y-m-d",strtotime($n));
+        }
+        $date['dat'][]=date("Y-m-d",$end);
+        foreach ($date['dat'] as $k=>$v){
+            $min=strtotime($v);
+            $max=$min+$day;
+            $num = Yii::$app->db->createCommand("SELECT sum(grand_total) as num FROM sales_flat_order WHERE updated_at>{$min} AND updated_at<{$max} AND order_status =6 AND shop_id={$shop_id}")->queryOne();
+            if($num['num']==null){
+                $date['num'][$k]=0;
+            }else{
+                $date['num'][$k]=$num['num'];
+            }
+        }
+        //     	    	echo "<pre>";
+        //     	    	print_r($date);
+        return json_encode($date);
+    }
+    /*------------------------订单数量--------------------------*/
+    /*
+   * 返回最近七天的时间和订单量
+  */
+    public function actionNumweek(){
+        $shop_id = $_SESSION['shopdata'][0]['shop_id'];
+        $day=60*60*24;
+        $date['dat'][]=date("Y-m-d",strtotime("-6 day"));
+        $date['dat'][]=date("Y-m-d",strtotime("-5 day"));
+        $date['dat'][]=date("Y-m-d",strtotime("-4 day"));
+        $date['dat'][]=date("Y-m-d",strtotime("-3 day"));
+        $date['dat'][]=date("Y-m-d",strtotime("-2 day"));
+        $date['dat'][]=date("Y-m-d",strtotime("-1 day"));
+        $date['dat'][]=date("Y-m-d",time());
+        foreach ($date['dat'] as $k=>$v){
+            $min=strtotime($v);
+            $max=$min+$day;
+            $num = Yii::$app->db->createCommand("SELECT count(*) as num FROM sales_flat_order WHERE updated_at>{$min} AND updated_at<{$max} AND shop_id={$shop_id}")->queryOne();
+            if($num['num']==null){
+                $date['num'][$k]=0;
+            }else{
+                $date['num'][$k]=$num['num'];
+            }
+        }
+        return json_encode($date);
+    }
+    /*
+     * 返回最近一个月的时间和订单量
+    */
+    public function actionNummonth(){
+        $shop_id = $_SESSION['shopdata'][0]['shop_id'];
+        $day=60*60*24;
+        for($i=31;$i>0;$i--){
+            $n="-".$i." day";
+            $date['dat'][]=date("Y-m-d",strtotime($n));
+        }
+        $date['dat'][]=date("Y-m-d",time());
+        foreach ($date['dat'] as $k=>$v){
+            $min=strtotime($v);
+            $max=$min+$day;
+            $num = Yii::$app->db->createCommand("SELECT count(*) as num FROM sales_flat_order WHERE updated_at>{$min} AND updated_at<{$max} AND shop_id={$shop_id}")->queryOne();
+            if($num['num']==null){
+                $date['num'][$k]=0;
+            }else{
+                $date['num'][$k]=$num['num'];
+            }
+        }
+        //     	echo "<pre>";
+        //     	print_r($date);
+        return json_encode($date);
+    }
+    /*
+     * 返回最近一个季度的时间和订单量
+    */
+    public function actionNumquarter(){
+        $shop_id = $_SESSION['shopdata'][0]['shop_id'];
+        $day=60*60*24;
+        for($i=91;$i>0;$i--){
+            $n="-".$i." day";
+            $date['dat'][]=date("Y-m-d",strtotime($n));
+        }
+        $date['dat'][]=date("Y-m-d",time());
+        foreach ($date['dat'] as $k=>$v){
+            $min=strtotime($v);
+            $max=$min+$day;
+            $num = Yii::$app->db->createCommand("SELECT count(*) as num FROM sales_flat_order WHERE updated_at>{$min} AND updated_at<{$max} AND shop_id={$shop_id}")->queryOne();
+            if($num['num']==null){
+                $date['num'][$k]=0;
+            }else{
+                $date['num'][$k]=$num['num'];
+            }
+        }
+        //     	    	echo "<pre>";
+        //     	    	print_r($date);
+        return json_encode($date);
+    }
+    /*
+     * 返回最近一年的时间和订单量
+    */
+    public function actionNumyear(){
+        $shop_id = $_SESSION['shopdata'][0]['shop_id'];
+        $day=60*60*24*30;
+        $date['dat'][]=date("Y-m",strtotime("-12 month"));
+        $date['dat'][]=date("Y-m",strtotime("-11 month"));
+        $date['dat'][]=date("Y-m",strtotime("-10 month"));
+        $date['dat'][]=date("Y-m",strtotime("-9 month"));
+        $date['dat'][]=date("Y-m",strtotime("-8 month"));
+        $date['dat'][]=date("Y-m",strtotime("-7 month"));
+        $date['dat'][]=date("Y-m",strtotime("-6 month"));
+        $date['dat'][]=date("Y-m",strtotime("-5 month"));
+        $date['dat'][]=date("Y-m",strtotime("-4 month"));
+        $date['dat'][]=date("Y-m",strtotime("-3 month"));
+        $date['dat'][]=date("Y-m",strtotime("-2 month"));
+        $date['dat'][]=date("Y-m",strtotime("-1 month"));
+        $date['dat'][]=date("Y-m",time());
+        foreach ($date['dat'] as $k=>$v){
+            $min=strtotime($v);
+            $max=$min+$day;
+            $num = Yii::$app->db->createCommand("SELECT count(*) as num FROM sales_flat_order WHERE updated_at>{$min} AND updated_at<{$max}  AND shop_id={$shop_id}")->queryOne();
+            if($num['num']==null){
+                $date['num'][$k]=0;
+            }else{
+                $date['num'][$k]=$num['num'];
+            }
+        }
+        //     	echo "<pre>";
+        //     	print_r($date);
+        return json_encode($date);
+    }
+    /*
+     * 返回随便两个日期的时间和订单量
+    */
+    public function actionNumsearchdate(){
+        $shop_id = $_SESSION['shopdata'][0]['shop_id'];
+        $startime=$_GET['sta'];
+        $endtime=$_GET['end'];
+        $day=60*60*24;
+        //开始时间
+        $start=strtotime($startime);
+        $end=strtotime($endtime);
+        $now=time();
+        //当前时间到开始时间差
+        $ca=floor(($now-$start)/(60*60*24));
+        $numday=floor(($end-$start)/(60*60*24));
+        $date['dat'][]=date("Y-m-d",$start);
+
+        for($i=1;$i<=$numday;$i++){
+            $m=$i-$ca;
+            $n="+".$m." day";
+            $date['dat'][]=date("Y-m-d",strtotime($n));
+        }
+        $date['dat'][]=date("Y-m-d",$end);
+        foreach ($date['dat'] as $k=>$v){
+            $min=strtotime($v);
+            $max=$min+$day;
+            $num = Yii::$app->db->createCommand("SELECT count(*) as num FROM sales_flat_order WHERE updated_at>{$min} AND updated_at<{$max} AND shop_id={$shop_id}")->queryOne();
+            if($num['num']==null){
+                $date['num'][$k]=0;
+            }else{
+                $date['num'][$k]=$num['num'];
+            }
+        }
+        //     	    	echo "<pre>";
+        //     	    	print_r($date);
+        return json_encode($date);
+    }
 }
 
 

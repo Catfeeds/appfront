@@ -12,7 +12,7 @@
             <span>财务管理</span>&nbsp;
             <span>·&nbsp;平台财务</span>
         </div>
-        <!--<div class="ShopMannager-search">
+        <div class="ShopMannager-search">
             <div class="xiala">
                 <select name="member-level" id="member-level"
                         style="width: 180px;background: #f3faff;margin-left:0;">
@@ -34,7 +34,7 @@
                 </div>
             </div>
             <button>查询</button>
-        </div>-->
+        </div>
         <div class="tongji">
             <ul>
                 <li>
