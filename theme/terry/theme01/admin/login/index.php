@@ -1,4 +1,8 @@
 <style>
+    body{
+        width: 100%;
+        height: 100%;
+    }
     .forget1{
         width: 128px;
         height: 100%;
@@ -140,6 +144,9 @@
     #loginin{
         width: 100%;
         height: 100vh;
+        position:fixed;
+        left:0;
+        top:0;
     }
     *{
         margin: 0;

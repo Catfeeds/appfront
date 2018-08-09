@@ -13,10 +13,29 @@ use yii\helpers\Url;
         </div>
         <div class="ShopMannager-search">
             <form action="<?= Yii::$service->url->getUrl('admin/shop/index') ?>" method="get">
-                <div class="xiala">
-                    <span class="search-ID">地区</span>
-                    <select name="member-level" id="member-level">
-                        <option value="">全部</option>
+                <div class="xiala xialapro" style="color:#49e17a">
+                    <span class="search-ID" style="color:#8d8d8d;margin-left:0;">地区省</span>
+                    <select name="province_id" id="province_id" style="color:#a4adb5">
+                        <option value="0">请选择省</option>
+                        <?php foreach ($province as $k=>$v){?>
+                            <option value="<?php echo $v['province_id']?>"><?php echo $v['province_name']?></option>
+                        <?php }?>
+                    </select>
+                    <div class="xialaimg1"></div>
+                </div>
+                <!--                市-->
+                <div class="xiala xialapro" style="color:#3CACFE">
+                    <span class="search-ID" style="color:#8d8d8d">市</span>
+                    <select name="city_id" id="city_id" style="color:#a4adb5">
+                        <option value="0">请选择市</option>
+                    </select>
+                    <div class="xialaimg1"></div>
+                </div>
+                <!--                县-->
+                <div class="xiala xialapro" style="color:#3CACFE">
+                    <span class="search-ID" style="color:#8d8d8d">县</span>
+                    <select name="district_id" id="district_id" style="color:#a4adb5">
+                        <option value="0">请选择县</option>
                     </select>
                     <div class="xialaimg1"></div>
                 </div>
