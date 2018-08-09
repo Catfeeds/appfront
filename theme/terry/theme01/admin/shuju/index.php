@@ -51,7 +51,7 @@
                     </div>
                     <div class="tongji-number">
                         <div>
-                            <span>2222</span>
+                            <span><?= $views?></span>
                         </div>
                         <div>
                             <span>总访问量</span>
