@@ -1,10 +1,10 @@
-<?php
+﻿<?php
    return [
    'store' => [
         'class'  => 'fecshop\services\Store',
         'stores' => [
             // store key：域名去掉http部分，作为key，这个必须这样定义。
-            'appfront.uekuek.com' => [
+            'www.chengzhanghao.com:81' => [
                 'language'         => 'en_US',        // 语言简码需要在@common/config/fecshop_local_services/FecshopLang.php 中定义。
                 'languageName'     => 'English',    // 语言简码对应的文字名称，将会出现在语言切换列表中显示。
                 'localThemeDir'    => '@appfront/theme/terry/theme01', // 设置当前store对应的模板路径。关于多模板的方面的知识，您可以参看fecshop多模板的知识。
@@ -38,7 +38,7 @@
                 // sitemap的路径。
                 'sitemapDir' => '@appfront/web/sitemap.xml',
             ],
-            'appfront.uekuek.com/fr' => [
+            'www.chengzhanghao.com/fr' => [
                 'language'         => 'fr_FR',
                 'languageName'     => 'Fran?ais',
                 'localThemeDir'    => '@appfront/theme/terry/theme01',
@@ -65,7 +65,7 @@
                 ],
                 'sitemapDir' => '@appfront/web/fr/sitemap.xml',
             ],
-            'appfront.uekuek.es' => [
+            'www.chengzhanghao.es' => [
                 'language'         => 'es_ES',
                 'languageName'     => 'Espa?ol',
                 'localThemeDir'    => '@appfront/theme/terry/theme01',
@@ -92,7 +92,7 @@
                 ],
                 'sitemapDir' => '@appfront/web/sitemap_es.xml',
             ],
-            'appfront.uekuek.com/cn' => [
+            'www.chengzhanghao.com/cn' => [
                 'language'         => 'zh_CN',
                 'languageName'     => '中文',
                 'localThemeDir'    => '@appfront/theme/terry/theme01',
