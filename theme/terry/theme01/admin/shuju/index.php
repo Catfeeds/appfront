@@ -756,17 +756,24 @@
                                 },
                                 tooltip: {},
                                 legend: {
-                                    data:['新增量']
+                                    data:['商品','服务']
                                 },
                                 xAxis: {
                                     data:row.dat    /* row.dat */
                                 },
                                 yAxis: {},
-                                series: [{
-                                    name: '商家',
-                                    type: 'line',
-                                    data:row.num    /* row.num */
-                                }],
+                                series: [
+                                    {
+                                        name: '商家',
+                                        type: 'line',
+                                        data:row.num1    /* row.num */
+                                    },
+                                    {
+                                        name: '服务',
+                                        type: 'line',
+                                        data:row.num2    /* row.num */
+                                    }
+                                ],
                                 toolbox: {
 
                                     show: true,
@@ -815,7 +822,7 @@
                             },
                             tooltip: {},
                             legend: {
-                                data:['商品']
+                                data:['商品','服务']
                             },
                             xAxis: {
                                 data:row.dat    /* row.dat */
@@ -825,8 +832,13 @@
                                 {
                                     name: '商品',
                                     type: 'line',
-                                    data:row.num    /* row.num */
+                                    data:row.num1    /* row.num */
                                 },
+                                {
+                                    name: '服务',
+                                    type: 'line',
+                                    data:row.num2    /* row.num */
+                                }
                             ],
                             toolbox: {
 
@@ -857,19 +869,26 @@
                         title: {
                             text: ''
                         },
-                        tooltip: {},
+                        tooltip: {trigger: 'axis'},
                         legend: {
-                            data:['新增量']
+                            data:['商品','服务']
                         },
                         xAxis: {
                             data:row.dat    /* row.dat */
                         },
                         yAxis: {},
-                        series: [{
-                            name: '商家',
-                            type: 'line',
-                            data:row.num    /* row.num */
-                        }],
+                        series: [
+                            {
+                                name: '商品',
+                                type: 'line',
+                                data:row.num1    /* row.num */
+                            },
+                            {
+                                name: '服务',
+                                type: 'line',
+                                data:row.num2    /* row.num */
+                            }
+                        ],
                         toolbox: {
 
                             show: true,

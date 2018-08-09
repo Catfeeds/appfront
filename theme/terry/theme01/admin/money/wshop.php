@@ -22,7 +22,7 @@
                     </div>
                 </div>
             </div>
-            <button>查询</button>
+            <button id="search">查询</button>
         </div>
         <div class="tongji">
             <ul>
@@ -32,7 +32,10 @@
                     </div>
                     <div class="tongji-number">
                         <div>
-                            <span>652.36</span>
+                            <span class="cjje">652.36</span>
+                            <script>
+                                console.log($(".cjje"));
+                            </script>
                         </div>
                         <div>
                             <span>成交金额(元)</span>
@@ -45,7 +48,7 @@
                     </div>
                     <div class="tongji-number">
                         <div>
-                            <span>999</span>
+                            <span class="xdl">999</span>
                         </div>
                         <div>
                             <span>下单量</span>
@@ -58,7 +61,7 @@
                     </div>
                     <div class="tongji-number">
                         <div>
-                            <span>199</span>
+                            <span class="cjl">199</span>
                         </div>
                         <div>
                             <span>成交量</span>
@@ -71,7 +74,7 @@
                     </div>
                     <div class="tongji-number">
                         <div>
-                            <span>199</span>
+                            <span class="thl">199</span>
                         </div>
                         <div>
                             <span>退货量</span>
@@ -110,7 +113,35 @@
             <div id="mychart" >
             
             </div>
-            <script type="text/javascript"> 
+            <script type="text/javascript">
+            $(function () {
+                    $("#search").on("click",function () {
+                        console.log(222);
+                        var aval=$('#test1').val();
+                        if(aval){
+                            $(".but1").css({"background":"#fff","color":"#99cafe"});
+                            var sta = aval.substring(0, 10);
+                            var end = aval.substring(22,32);
+                            var url="<?= Yii::$service->url->getUrl('admin/money/searchhours') ?>?type=3&sta="+sta+"&end="+end;
+
+                        }else{
+                            var t1 = timeForMat(7)["t2"];
+                            var t2 = timeForMat(7)["t1"];
+                            var url="<?= Yii::$service->url->getUrl('admin/money/searchhours') ?>?type=3&sta="+t1+"&end="+t2;
+                        }
+                        $.get(url).done(function (data) {
+                            var row =JSON.parse(data);
+                            // 填入数据
+                            console.log(row);
+                            $(".cjje").text(row.num);
+                            console.log(row['sumnum']);
+                            $(".xdl").text(row.sumnum);
+                            $(".cjl").text(row.number);
+                            $(".thl").text(row.backnum);
+                        });
+                    });
+                    $("#search").triggerHandler("click");
+                })
             //日期时间范围
             laydate.render({
                 elem: '#test10'

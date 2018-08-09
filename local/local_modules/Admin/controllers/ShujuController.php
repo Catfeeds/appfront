@@ -39,9 +39,6 @@ class ShujuController extends PublicsController
     	$now=date("Y-m-d",time());
     	$sta=strtotime($now);
     	$end=$sta+60*60*24;
-    	$num=Yii::$app->db->createCommand("SELECT count(*) as num FROM page_view")->queryOne();
-    	$views=$num['num'];
-        $data['views']=$views;
     	$data['huiyuannew']=$num = Yii::$app->db->createCommand("SELECT count(1) as num FROM customer WHERE created_at>{$sta} AND created_at<{$end}")->queryOne();
     	$data['huiyuanall']=$num = Yii::$app->db->createCommand("SELECT count(1) as num FROM customer")->queryOne();
     	$data['shuisinew']=$num = Yii::$app->db->createCommand("SELECT count(1) as num FROM shop WHERE created_at>{$sta} AND created_at<{$end} AND shop_type=1 AND shop_state in(0,1,2)")->queryOne();
@@ -148,7 +145,7 @@ class ShujuController extends PublicsController
         $data['city'] = $city;
         $data['district'] =$district ;
         $data['shop_name'] = $shop_name;
-        $data['arr'] = $arr;
+//        $data['arr'] = $arr;
         $data['tousunum'] = $tousunum;
         return $this->render($this->action->id,$data);
     }
@@ -663,9 +660,6 @@ class ShujuController extends PublicsController
         }else if($type==5){
             $name="sales_flat_order";
             $where=" ";
-        }else if($type==6){
-            $name="sales_flat_order";
-            $where=" ";
         }
     	$hours=$_GET['hours'];
     	$day=60*60;
@@ -681,6 +675,18 @@ class ShujuController extends PublicsController
             $methods = Yii::$app->db->createCommand("SELECT * FROM sales_flat_order WHERE created_at>{$min} AND created_at<{$max}")->queryAll();
             $date['methods']=$methods;
     	}
+        if($type==6){
+            foreach ($date['dat'] as $k=>$v){
+                $min=strtotime($v);
+                $max=$min+$day;
+                $num1 = Yii::$app->db->createCommand("SELECT count(1) as num FROM sales_flat_order WHERE created_at>{$min} AND created_at<{$max} AND goods_type=1")->queryOne();
+                $date['num1'][$k]=$num1['num'];
+                $num2 = Yii::$app->db->createCommand("SELECT count(1) as num FROM sales_flat_order WHERE created_at>{$min} AND created_at<{$max} AND goods_type=2")->queryOne();
+                $date['num2'][$k]=$num2['num'];
+                $methods = Yii::$app->db->createCommand("SELECT * FROM sales_flat_order WHERE created_at>{$min} AND created_at<{$max}")->queryAll();
+                $date['methods']=$methods;
+            }
+        }
 //     	echo "<pre>";
 //     	print_r($date);die;
 
@@ -725,6 +731,18 @@ class ShujuController extends PublicsController
             $methods = Yii::$app->db->createCommand("SELECT * FROM sales_flat_order WHERE created_at>{$min} AND created_at<{$max}")->queryAll();
             $date['methods']=$methods;
     	}
+        if($type==6){
+            foreach ($date['dat'] as $k=>$v){
+                $min=strtotime($v);
+                $max=$min+$day;
+                $num1 = Yii::$app->db->createCommand("SELECT count(1) as num FROM sales_flat_order WHERE created_at>{$min} AND created_at<{$max} AND goods_type=1")->queryOne();
+                $date['num1'][$k]=$num1['num'];
+                $num2 = Yii::$app->db->createCommand("SELECT count(1) as num FROM sales_flat_order WHERE created_at>{$min} AND created_at<{$max} AND goods_type=2")->queryOne();
+                $date['num2'][$k]=$num2['num'];
+                $methods = Yii::$app->db->createCommand("SELECT * FROM sales_flat_order WHERE created_at>{$min} AND created_at<{$max}")->queryAll();
+                $date['methods']=$methods;
+            }
+        }
     	return json_encode($date);
     }
     /*
@@ -764,6 +782,18 @@ class ShujuController extends PublicsController
             $methods = Yii::$app->db->createCommand("SELECT * FROM sales_flat_order WHERE created_at>{$min} AND created_at<{$max}")->queryAll();
             $date['methods']=$methods;
     	}
+        if($type==6){
+            foreach ($date['dat'] as $k=>$v){
+                $min=strtotime($v);
+                $max=$min+$day;
+                $num1 = Yii::$app->db->createCommand("SELECT count(1) as num FROM sales_flat_order WHERE created_at>{$min} AND created_at<{$max} AND goods_type=1")->queryOne();
+                $date['num1'][$k]=$num1['num'];
+                $num2 = Yii::$app->db->createCommand("SELECT count(1) as num FROM sales_flat_order WHERE created_at>{$min} AND created_at<{$max} AND goods_type=2")->queryOne();
+                $date['num2'][$k]=$num2['num'];
+                $methods = Yii::$app->db->createCommand("SELECT * FROM sales_flat_order WHERE created_at>{$min} AND created_at<{$max}")->queryAll();
+                $date['methods']=$methods;
+            }
+        }
     	return json_encode($date);
     }
     /*
@@ -803,6 +833,18 @@ class ShujuController extends PublicsController
             $methods = Yii::$app->db->createCommand("SELECT * FROM sales_flat_order WHERE created_at>{$min} AND created_at<{$max}")->queryAll();
             $date['methods']=$methods;
     	}
+        if($type==6){
+            foreach ($date['dat'] as $k=>$v){
+                $min=strtotime($v);
+                $max=$min+$day;
+                $num1 = Yii::$app->db->createCommand("SELECT count(1) as num FROM sales_flat_order WHERE created_at>{$min} AND created_at<{$max} AND goods_type=1")->queryOne();
+                $date['num1'][$k]=$num1['num'];
+                $num2 = Yii::$app->db->createCommand("SELECT count(1) as num FROM sales_flat_order WHERE created_at>{$min} AND created_at<{$max} AND goods_type=2")->queryOne();
+                $date['num2'][$k]=$num2['num'];
+                $methods = Yii::$app->db->createCommand("SELECT * FROM sales_flat_order WHERE created_at>{$min} AND created_at<{$max}")->queryAll();
+                $date['methods']=$methods;
+            }
+        }
 
     	return json_encode($date);
     }
@@ -844,14 +886,25 @@ class ShujuController extends PublicsController
     	$date['dat'][]=date("Y-m",strtotime("-1 month"));
     	$date['dat'][]=date("Y-m",time());
     	foreach ($date['dat'] as $k=>$v){
-    	$min=strtotime($v);
-    	$max=$min+$day;
-    	$num = Yii::$app->db->createCommand("SELECT count(1) as num FROM {$name} WHERE created_at>{$min} AND created_at<{$max} {$where}")->queryOne();
-    	$date['num'][$k]=$num['num'];
+            $min=strtotime($v);
+            $max=$min+$day;
+            $num = Yii::$app->db->createCommand("SELECT count(1) as num FROM {$name} WHERE created_at>{$min} AND created_at<{$max} {$where}")->queryOne();
+            $date['num'][$k]=$num['num'];
             $methods = Yii::$app->db->createCommand("SELECT * FROM sales_flat_order WHERE created_at>{$min} AND created_at<{$max}")->queryAll();
             $date['methods']=$methods;
     	}
-
+        if($type==6){
+            foreach ($date['dat'] as $k=>$v){
+                $min=strtotime($v);
+                $max=$min+$day;
+                $num1 = Yii::$app->db->createCommand("SELECT count(1) as num FROM sales_flat_order WHERE created_at>{$min} AND created_at<{$max} AND goods_type=1")->queryOne();
+                $date['num1'][$k]=$num1['num'];
+                $num2 = Yii::$app->db->createCommand("SELECT count(1) as num FROM sales_flat_order WHERE created_at>{$min} AND created_at<{$max} AND goods_type=2")->queryOne();
+                $date['num2'][$k]=$num2['num'];
+                $methods = Yii::$app->db->createCommand("SELECT * FROM sales_flat_order WHERE created_at>{$min} AND created_at<{$max}")->queryAll();
+                $date['methods']=$methods;
+            }
+        }
     	return json_encode($date);
     }
     /*
@@ -904,6 +957,18 @@ class ShujuController extends PublicsController
             $methods = Yii::$app->db->createCommand("SELECT * FROM sales_flat_order WHERE created_at>{$min} AND created_at<{$max}")->queryAll();
             $date['methods']=$methods;
     	}
+    	if($type==6){
+            foreach ($date['dat'] as $k=>$v){
+                $min=strtotime($v);
+                $max=$min+$day;
+                $num1 = Yii::$app->db->createCommand("SELECT count(1) as num FROM sales_flat_order WHERE created_at>{$min} AND created_at<{$max} AND goods_type=1")->queryOne();
+                $date['num1'][$k]=$num1['num'];
+                $num2 = Yii::$app->db->createCommand("SELECT count(1) as num FROM sales_flat_order WHERE created_at>{$min} AND created_at<{$max} AND goods_type=2")->queryOne();
+                $date['num2'][$k]=$num2['num'];
+                $methods = Yii::$app->db->createCommand("SELECT * FROM sales_flat_order WHERE created_at>{$min} AND created_at<{$max}")->queryAll();
+                $date['methods']=$methods;
+            }
+        }
 
         return json_encode($date);
     }
