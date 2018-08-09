@@ -36,6 +36,7 @@ class ShopController extends PublicsController
     public function actionIndex(){
 
         $_SESSION['pagess']="index";
+        $province = Yii::$app->db->createCommand('select * from sys_province')->queryAll();
         // 获取数据
         $request = Yii::$app->request;
         $get = $request->get();
@@ -66,6 +67,7 @@ class ShopController extends PublicsController
         $datas["shop"] = $arr;
         $datas["shop_name"] = $shop_name;
         $datas["pagination"] = $pagination;
+        $datas['province'] = $province;
         return $this->render($this->action->id, $datas);
     }
 

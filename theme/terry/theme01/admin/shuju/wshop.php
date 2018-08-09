@@ -466,7 +466,8 @@ use yii\helpers\Url;
                                                 url: "/admin/shuju/complaint?t1=" + t1 + "&t2=" + t2,
                                                 dataType: 'json',
                                                 success: function (msg) {
-                                                    // console.log(msg);
+                                                    console.log(msg);
+                                                    return 0;
                                                     for (let i = 0; i < msg.length; i++) {
                                                         type1 = msg.filter(element => {
                                                             return element.ctype == 1

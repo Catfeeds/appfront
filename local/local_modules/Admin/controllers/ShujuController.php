@@ -39,9 +39,6 @@ class ShujuController extends PublicsController
     	$now=date("Y-m-d",time());
     	$sta=strtotime($now);
     	$end=$sta+60*60*24;
-    	$num=Yii::$app->db->createCommand("SELECT count(*) as num FROM page_view")->queryOne();
-    	$views=$num['num'];
-        $data['views']=$views;
     	$data['huiyuannew']=$num = Yii::$app->db->createCommand("SELECT count(1) as num FROM customer WHERE created_at>{$sta} AND created_at<{$end}")->queryOne();
     	$data['huiyuanall']=$num = Yii::$app->db->createCommand("SELECT count(1) as num FROM customer")->queryOne();
     	$data['shuisinew']=$num = Yii::$app->db->createCommand("SELECT count(1) as num FROM shop WHERE created_at>{$sta} AND created_at<{$end} AND shop_type=1 AND shop_state in(0,1,2)")->queryOne();
@@ -148,7 +145,7 @@ class ShujuController extends PublicsController
         $data['city'] = $city;
         $data['district'] =$district ;
         $data['shop_name'] = $shop_name;
-        $data['arr'] = $arr;
+//        $data['arr'] = $arr;
         $data['tousunum'] = $tousunum;
         return $this->render($this->action->id,$data);
     }
