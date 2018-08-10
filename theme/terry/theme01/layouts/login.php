@@ -5,14 +5,15 @@ $jsOptions = [ # js的配置部分
         # 在当前options下的js文件
         'js' => [
           'js/jquery-3.3.1.min.js',
+          'js/strophe.js',
+          'js/strophe.register.js'
         ],
     ]
-
 ];
 $cssOptions = [
     # css配置
     [
-        'css'	=>[
+        'css'=>[
 
         ],
     ],

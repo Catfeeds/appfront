@@ -242,7 +242,40 @@
                 alert(data.info)
             }else{
                 alert(data.info)
-                window.location.href = "<?= Yii::$service->url->getUrl('shop/login/index') ?>";               
+                // XMPP服务器BOSH地址
+                var BOSH_SERVICE = 'http://desktop-lj9fvnc:7070/http-bind/';
+
+                // XMPP连接
+                var connection = null;
+
+                connection = new Strophe.Connection(BOSH_SERVICE);
+
+                var callback = function (status) {
+                    if (status === Strophe.Status.REGISTER) {
+
+                        connection.register.fields.username = phone;
+                        connection.register.fields.password = password_hash;
+
+                        connection.register.submit();
+                    }
+                    else if (status === Strophe.Status.REGISTERED) {
+                        window.location.href = "<?= Yii::$service->url->getUrl('shop/login/index') ?>";
+                        console.log("registered!");
+                        // calling login will authenticate the registered JID.
+                        connection.register.authenticate();
+                    } else if (status === Strophe.Status.CONFLICT) {
+                        console.log("Contact already existed!");
+                    } else if (status === Strophe.Status.NOTACCEPTABLE) {
+                        console.log("Registration form not properly filled out.")
+                    } else if (status === Strophe.Status.REGIFAIL) {
+                        console.log("The Server does not support In-Band Registration")
+                    } else if (status === Strophe.Status.CONNECTED) {
+                        console.log('logged in')
+                    } else {
+                        console.log("every other status a connection.connect would receive");
+                    }
+                };
+                connection.register.connect("192.168.1.77/bosh/", callback, 60, 1);
             }
         })
     }
