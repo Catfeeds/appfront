@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 ﻿<style>
+=======
+<style>
+    body{
+        width: 100%;
+        height: 100%;
+    }
+>>>>>>> 3eb4743aa9b957816a08fa892db00c83bad46874
     .forget1{
         width: 128px;
         height: 100%;
@@ -142,6 +150,9 @@
     #loginin{
         width: 100%;
         height: 100vh;
+        position:fixed;
+        left:0;
+        top:0;
     }
     *{
         margin: 0;

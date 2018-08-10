@@ -187,10 +187,16 @@ use yii\widgets\LinkPager;
             }
         </style>
         <div class="el-table__column-resize-proxy" style="display: none;"></div>
-        <div class="admincount" style="margin-bottom: 0px;margin-top:30px;font-size: 14px;justify-content: flex-end;padding: 0;position:relative;">
-            <button type="button" class="is-round class-btn">
+        <div class="admincount" style="margin-bottom: 0px;margin-top:30px;font-size: 14px;justify-content: flex-end;padding: 0;position:relative;width: 100%;height: 30px;">
+            <a href="<?= Yii::$service->url->getUrl('admin/shop/exportclass') ?>">
+
+            <button class="is-round class-btn">
+
                 导出表格
+
             </button>
+             </a>
+
                 <?php if (count($count) > 4) { ?>
                     <div class="admincountall">
                         <span style="color: #3db0ff">·</span>&nbsp;<span>总计</span><span><?= $count ?></span><span>记录</span>
