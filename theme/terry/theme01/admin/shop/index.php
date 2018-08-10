@@ -194,7 +194,7 @@ use yii\helpers\Url;
                 </table>
             </div>
         </div>
-        <?php if($count>5){ ?>
+        <?php if($count>10){ ?>
         <div class="adminpagination">
             <div class="pagination">
                 <div class="block">
