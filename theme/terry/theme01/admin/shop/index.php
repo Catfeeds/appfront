@@ -51,6 +51,53 @@ use yii\helpers\Url;
                     </button>
                 </div>
             </form>
+            <script type="text/javascript">
+                $(function(){
+                    //省份发生改变，则发送ajax请求，请求市区的数据
+                    $("#province_id").change(function () {
+                        changePro($(this).val());
+                    })
+                    //省份请求函数
+                    function changePro(province_id){
+                        $.ajax({
+                            type:'get',
+                            url:'<?=Yii::$service->url->getUrl('admin/shuju/getcity')?>',
+                            data:{"province_id":province_id},
+                            async:false,
+                            success:function (msg) {
+                                //将json转换为字符串
+                                var rows = eval('('+msg+')');
+                                $("#city_id").find(".aa").remove();
+                                $("#district_id").find(".aa").remove();
+                                $.each(rows,function (k,v) {
+                                    // 将请求到的数据追加到市级
+                                    $("#city_id").append("<option value='"+v.city_id+"' class='aa'>"+v.city_name+"</option>");
+                                })
+                            }
+                        })
+                    }
+                    // 市区选项发生改变
+                    $("#city_id").change(function () {
+                        changeCity($(this).val());
+                    })
+                    //发送ajax请求获取县级
+                    function changeCity(city_id) {
+                        $.ajax({
+                            type:'get',
+                            url:'<?=Yii::$service->url->getUrl('admin/shuju/getdistrict')?>',
+                            data:{'city_id':city_id},
+                            async:false,
+                            success:function(msg){
+                                var rows = eval('('+msg+')');
+                                $("#district_id").find(".aa").remove();
+                                $.each(rows,function(k,v){
+                                    $("#district_id").append("<option value='"+v.district_id+"' class='aa' >"+v.district_name+"</option>")
+                                })
+                            }
+                        })
+                    }
+                })
+            </script>
         </div>
         <!--管理员列表-->
         <div class="ShopMannager-table">
@@ -112,14 +159,14 @@ use yii\helpers\Url;
                                     </td>
                                     <td class="el-table_2_column_14">
                                         <div class="cell el-tooltip" title="">
-                                            <?= $v["province_name"] ?>
-                                            <?= $v["city_name"] ?>
-                                            <?= $v["district_name"] ?>
+                                            <?= $province[$v['province_id']-1]["province_name"]?>
+                                            <?= $city[$v['city_id']-1]["city_name"]?>
+                                            <?= $district[$v['district_id']-1]["district_name"]?>
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_13">
                                         <div class="cell el-tooltip">
-                                            2018.05.29
+                                            <?= date('Y-m-d',$v['shop_end_time'])?>
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_18">
@@ -147,7 +194,7 @@ use yii\helpers\Url;
                 </table>
             </div>
         </div>
-        <?php if($count>5){ ?>
+        <?php if($count>10){ ?>
         <div class="adminpagination">
             <div class="pagination">
                 <div class="block">

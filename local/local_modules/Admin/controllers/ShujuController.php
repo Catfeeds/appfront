@@ -147,7 +147,6 @@ class ShujuController extends PublicsController
         $data['city'] = $city;
         $data['district'] =$district ;
         $data['shop_name'] = $shop_name;
-//        $data['arr'] = $arr;
         $data['tousunum'] = $tousunum;
         return $this->render($this->action->id,$data);
     }
@@ -157,7 +156,7 @@ class ShujuController extends PublicsController
         $province_id = $_GET['province_id'];
         $sql = 'select * from sys_city WHERE province_id=' . $province_id;
         $city = Yii::$app->db->createCommand($sql)->queryAll();
-        return json_encode($city);
+        return json_encode($city,JSON_UNESCAPED_UNICODE);
     }
 
     //加载县
@@ -446,9 +445,9 @@ class ShujuController extends PublicsController
         $_SESSION['waterdata'] = $res;
         $query = new Query;
 // 好评率
-        $arr = array();
+       /* $arr = array();*/
 //加上where条件就可以了
-        foreach ($res as $key=>$value){
+       /* foreach ($res as $key=>$value){
             $condition['shop_id'] =$value["shop_id"];
             $review = $query->from("review")->all();
             $num = 0;
@@ -461,7 +460,7 @@ class ShujuController extends PublicsController
             $num = 0;
             $count = 0;
         }
-        $_SESSION["arr"] = $arr;
+        $_SESSION["arr"] = $arr;*/
 //投诉率
 
         $completenum = array();//每个商店的所有完成订单的情况
@@ -494,7 +493,7 @@ class ShujuController extends PublicsController
         $data['city'] = $city;
         $data['district'] =$district ;
         $data['shop_name'] = $shop_name;
-        $data['arr'] = $arr;
+        // $data['arr'] = $arr;
         $data['tousunum'] = $tousunum;
         return $this->render($this->action->id,$data);
     }

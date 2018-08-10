@@ -91,7 +91,7 @@ use yii\helpers\Url;
 						data:{"province_id":province_id},
 						async:false,
 						success:function(msg){
-							var row =JSON.parse(msg);
+							var row = eval('('+msg+')');
 							$("#city_id").find(".aa").remove();
 							$("#district_id").find(".aa").remove();
 							$.each(row,function(k,v){
@@ -107,15 +107,14 @@ use yii\helpers\Url;
 						data:{"city_id":city_id},
 						async:false,
 						success:function(msg){
-							var row =JSON.parse(msg);
+							var row = eval('('+msg+')');
 							$("#district_id").find(".aa").remove();
 							$.each(row,function(k,v){
 								$("#district_id").append("<option value='"+v.district_id+"' class='aa' >"+v.district_name+"</option>");
 							})
 						}
 					})
-				}css({"color":"red","width":"11px"})
-				css("color","red");
+				}
         </script>
         <!--待审核列表-->
         <div class="el-table__body-wrapper is-scrolling-left" style="margin-top:20px;">

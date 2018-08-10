@@ -97,7 +97,7 @@
                     </td>
                     <td><?=$value['title']?></td>
                     <td><?=$value['url']?></td>
-                    <td><img style="width:90px;margin:5px;" src="http://img.uekuek.com/media/<?=$value[img]?>" alt=""></td>
+                    <td><img style="width:90px;margin:5px;" src="http://img.chengzhanghao.com:81/media/<?=$value[img]?>" alt=""></td>
                     <td><?php echo date("Y-m-d H:i:s",$value['create_time'])?></td>
                     <td>
                         <?php 

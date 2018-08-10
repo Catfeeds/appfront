@@ -89,7 +89,7 @@
                         <input type="file" onchange="uploads(this)" name="file[]" style="display:none" class="img">
                     </div>
                     <div class="el-form-item__content" id="abc" style="margin-left: 120px;">
-                        <div alt="" style="display:inline-block;width: 96px;height: 96px;background: url('http://img.uekuek.com/images/<?= $ruler['img']?>')no-repeat center center /100% auto"></div>
+                        <div alt="" style="display:inline-block;width: 96px;height: 96px;background: url('http://img.chengzhanghao.com:81/images/<?= $ruler['img']?>')no-repeat center center /100% auto"></div>
                         <div class="close" onclick="del(this)">&times;</div>
                         <input accept="jpg;" type="file" onchange="uploads(this)" name="file[]" style="display:none" class="img">
                     </div>

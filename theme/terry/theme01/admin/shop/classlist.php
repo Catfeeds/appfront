@@ -141,7 +141,7 @@ use yii\widgets\LinkPager;
                             ?>
                         </td>
                         <td><img style="width:70px;margin:5px;"
-                                 src="http://img.uekuek.com/media/catalog/<?= $value[img] ?>" alt=""></td>
+                                 src="http://img.chengzhanghao.com:81/media/catalog/<?= $value[img] ?>" alt=""></td>
                         <td>
                             <?php
                             if ($value['menu_show'] == 1) {
@@ -155,7 +155,7 @@ use yii\widgets\LinkPager;
                         <td style="200px">
                             <a style="color: #41b2fc"
                                href="<?= Yii::$service->url->getUrl('admin/shop/classlist', array('id' => $value['_id'], 'name' => $value[name][name_zh])) ?>">查看</a>
-
+                        
                             <a style="color: #41b2fc"
                                href="<?= Yii::$service->url->getUrl('admin/shop/classadd', array('id' => $value['_id'], 'level' => 2, 'name' => $value[name][name_zh], 'type' => $value['type'])) ?>">添加</a>
 

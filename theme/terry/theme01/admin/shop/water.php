@@ -12,11 +12,31 @@ use yii\helpers\Url;
             <span>·&nbsp;水司列表</span>
         </div>
         <div class="ShopMannager-search">
-            <form action="<?= Yii::$service->url->getUrl('admin/shop/index') ?>" method="get">
-                <div class="xiala">
-                    <span class="search-ID">地区</span>
-                    <select name="member-level" id="member-level">
-                        <option value="">全部</option>
+            <form action="<?= Yii::$service->url->getUrl('admin/shop/water') ?>" method="get">
+                <!--                省-->
+                <div class="xiala xialapro" style="color:#49e17a">
+                    <span class="search-ID" style="color:#8d8d8d;margin-left:0;">地区省</span>
+                    <select name="province_id" id="province_id" style="color:#a4adb5">
+                        <option value="0">请选择省</option>
+                        <?php foreach ($province as $k=>$v){?>
+                            <option value="<?php echo $v['province_id']?>"><?php echo $v['province_name']?></option>
+                        <?php }?>
+                    </select>
+                    <div class="xialaimg1"></div>
+                </div>
+                <!--                市-->
+                <div class="xiala xialapro" style="color:#3CACFE">
+                    <span class="search-ID" style="color:#8d8d8d">市</span>
+                    <select name="city_id" id="city_id" style="color:#a4adb5">
+                        <option value="0">请选择市</option>
+                    </select>
+                    <div class="xialaimg1"></div>
+                </div>
+                <!--                县-->
+                <div class="xiala xialapro" style="color:#3CACFE">
+                    <span class="search-ID" style="color:#8d8d8d">县</span>
+                    <select name="district_id" id="district_id" style="color:#a4adb5">
+                        <option value="0">请选择县</option>
                     </select>
                     <div class="xialaimg1"></div>
                 </div>
@@ -24,14 +44,58 @@ use yii\helpers\Url;
                     <span>商家名称</span>
                     <input type="text" name="shop_name" value="<?= $shop_name ?>" placeholder="请输入商家名称">
                 </div>
-                <style>
-
-                </style>
                 <div class="ShopMannagersearch-img">
                     <button type="submit" class="shop_btn">
                     </button>
                 </div>
             </form>
+            <script type="text/javascript">
+                $(function(){
+                    //省份发生改变，则发送ajax请求，请求市区的数据
+                    $("#province_id").change(function () {
+                        changePro($(this).val());
+                    })
+                    //省份请求函数
+                    function changePro(province_id){
+                        $.ajax({
+                            type:'get',
+                            url:'<?=Yii::$service->url->getUrl('admin/shuju/getcity')?>',
+                            data:{"province_id":province_id},
+                            async:false,
+                            success:function (msg) {
+                                //将json转换为字符串
+                                var rows = eval('('+msg+')');
+                                $("#city_id").find(".aa").remove();
+                                $("#district_id").find(".aa").remove();
+                                $.each(rows,function (k,v) {
+                                    // 将请求到的数据追加到市级
+                                    $("#city_id").append("<option value='"+v.city_id+"' class='aa'>"+v.city_name+"</option>");
+                                })
+                            }
+                        })
+                    }
+                    // 市区选项发生改变
+                    $("#city_id").change(function () {
+                        changeCity($(this).val());
+                    })
+                    //发送ajax请求获取县级
+                    function changeCity(city_id) {
+                        $.ajax({
+                            type:'get',
+                            url:'<?=Yii::$service->url->getUrl('admin/shuju/getdistrict')?>',
+                            data:{'city_id':city_id},
+                            async:false,
+                            success:function(msg){
+                                var rows = eval('('+msg+')');
+                                $("#district_id").find(".aa").remove();
+                                $.each(rows,function(k,v){
+                                    $("#district_id").append("<option value='"+v.district_id+"' class='aa' >"+v.district_name+"</option>")
+                                })
+                            }
+                        })
+                    }
+                })
+            </script>
         </div>
         <!--管理员列表-->
         <div class="ShopMannager-table">
@@ -93,14 +157,14 @@ use yii\helpers\Url;
                                     </td>
                                     <td class="el-table_2_column_14">
                                         <div class="cell el-tooltip" title="">
-                                            <?= $v["province_name"] ?>
-                                            <?= $v["city_name"] ?>
-                                            <?= $v["district_name"] ?>
+                                            <?= $province[$v['province_id']-1]["province_name"]?>
+                                            <?= $city[$v['city_id']-1]["city_name"]?>
+                                            <?= $district[$v['district_id']-1]["district_name"]?>
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_13">
                                         <div class="cell el-tooltip">
-                                            2018.05.29
+                                            <?= date('Y-m-d',$v['shop_end_time'])?>
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_18">
@@ -130,7 +194,7 @@ use yii\helpers\Url;
                 </table>
             </div>
         </div>
-        <?php if($count>4){ ?>
+        <?php if($count>10){ ?>
         <div class="adminpagination">
             <div class="pagination">
                 <div class="block">
