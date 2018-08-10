@@ -39,11 +39,11 @@ use yii\helpers\Url;
                 <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
                        style="width: 1012px;">
                     <colgroup>
-                        <col name="el-table_2_column_6" width="80">
+                        <col name="el-table_2_column_6" width="100">
                         <col name="el-table_2_column_7" width="120">
                         <col name="el-table_2_column_8" width="200">
-                        <col name="el-table_2_column_9" width="120">
-                        <col name="el-table_2_column_11" width="500">
+                        <col name="el-table_2_column_9" width="200">
+                        <col name="el-table_2_column_11" width="400">
                     </colgroup>
                     <thead class="has-gutter">
                     <tr style="font-size: 14px;color: #B1DBFE;text-align: left;height: 50px;">
@@ -71,11 +71,11 @@ use yii\helpers\Url;
                 <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
                        style="width: 1012px;">
                     <colgroup>
-                        <col name="el-table_2_column_6" width="80">
+                        <col name="el-table_2_column_6" width="100">
                         <col name="el-table_2_column_7" width="120">
                         <col name="el-table_2_column_8" width="200">
-                        <col name="el-table_2_column_9" width="120">
-                        <col name="el-table_2_column_11" width="500">
+                        <col name="el-table_2_column_9" width="200">
+                        <col name="el-table_2_column_11" width="400">
                     </colgroup>
                     <?php if($count>0){ ?>
                         <tbody style="font-size: 12px;color:#82898e">

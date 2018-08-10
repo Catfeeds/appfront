@@ -249,7 +249,7 @@
                                                  class="zhu">
                                                 <div class="close">&times;</div>
                                                 <div class="shangpin1">
-                                                    <img src="http://img.uekuek.com/media/catalog/product/<?= $goods['image']['main']['image'] ?>"
+                                                    <img src="http://img.chengzhanghao.com:81/media/catalog/product/<?= $goods['image']['main']['image'] ?>"
                                                          alt="">
                                                 </div>
                                                 <!-- <div style="display: flex; font-size: 12px; line-height: 30px;">
@@ -266,7 +266,7 @@
                                                     ?>
                                                     <div onclick="setZhu(this,'<?= $value['image'] ?>',1)" class="zhu">
                                                         <div class="close">&times;</div>
-                                                        <div class="shangpin1" style="background: url('http://img.uekuek.com/media/catalog/product/<?= '$value[image]' ?>')no-repeat center center /100% auto">
+                                                        <div class="shangpin1" style="background: url('http://img.chengzhanghao.com:81/media/catalog/product/<?= '$value[image]' ?>')no-repeat center center /100% auto">
                                                         </div>
                                                         <!-- <div style="display: flex; font-size: 12px; line-height: 30px;">
                                                 <span>图片<?php echo $key + 1; ?></span>

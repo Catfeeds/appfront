@@ -328,9 +328,7 @@ class ShopController extends PublicsController
             $where['parent_id']="0";
 
         }
-        if(!empty($_GET['name'])){
-            $where['name']['name_zh'] = $_GET['name'];
-        }
+
         $count = $query->from('category')->where($where)->count();
 
         //实例化分页对象

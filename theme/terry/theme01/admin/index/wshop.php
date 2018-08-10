@@ -50,7 +50,7 @@
                             <div style="height: 180px;">
                                 <div style="height: 162px;width: 276px;line-height: 162px;text-align: center;
                                 <?php if($row['contacts_card_electronic_1']){?>
-                                        background:url(http://img.uekuek.com/images/<?php echo $row['contacts_card_electronic_1'];?>) no-repeat center center/100% 100%;
+                                        background:url(http://img.chengzhanghao.com:81/images/<?php echo $row['contacts_card_electronic_1'];?>) no-repeat center center/100% 100%;
                                 <?php }else{?>
                                     <?php echo 'background:#f3faff;'?>
                                 <?php }?>
@@ -67,7 +67,7 @@
                             <div style="height: 100%;width: 276px;float:left;text-align: center">
                                 <div style="height: 162px;width: 276px;line-height: 162px;text-align: center;
                                 <?php if($row['contacts_card_electronic_2']){?>
-                                        background:url(http://img.uekuek.com/images/<?php echo $row['contacts_card_electronic_2'];?>) no-repeat center center/100% 100%;
+                                        background:url(http://img.chengzhanghao.com:81/images/<?php echo $row['contacts_card_electronic_2'];?>) no-repeat center center/100% 100%;
                                 <?php }else{?>
                                     <?php echo 'background:#f3faff;'?>
                                 <?php }?>
@@ -79,7 +79,7 @@
                             <div style="height: 100%;width: 276px;float:left;margin-left:20px;text-align: center">
                                 <div style="height: 162px;width: 276px;line-height: 162px;text-align: center;
                                 <?php if($row['contacts_card_electronic_3']){?>
-                                        background:url(http://img.uekuek.com/images/<?php echo $row['contacts_card_electronic_3'];?>) no-repeat center center/100% 100%;
+                                        background:url(http://img.chengzhanghao.com:81/images/<?php echo $row['contacts_card_electronic_3'];?>) no-repeat center center/100% 100%;
                                 <?php }else{?>
                                     <?php echo 'background:#f3faff;'?>
                                 <?php }?>
@@ -136,7 +136,7 @@
                         <td valign="center">
                             <div style="height: 395px;width: 570px;line-height: 395px;text-align: center;
                             <?php if($row['contacts_card_electronic_2']){?>
-                                    background:url(http://img.uekuek.com/images/<?php echo $row['contacts_card_electronic_2'];?>) no-repeat center center/100% 100%;
+                                    background:url(http://img.chengzhanghao.com:81/images/<?php echo $row['contacts_card_electronic_2'];?>) no-repeat center center/100% 100%;
                             <?php }else{?>
                                 <?php echo 'background:#f3faff;'?>
                             <?php }?>

@@ -42,7 +42,7 @@
                             <div style="height: 180px;">
                                 <div style="height: 162px;width: 276px;line-height: 162px;text-align: center;
                                 <?php if($row['business_licence_number_electronic']){?>
-                                        background:url(http://img.uekuek.com/images/<?php echo $row['business_licence_number_electronic'];?>) no-repeat center center/100% 100%;
+                                        background:url(http://img.chengzhanghao.com:81/images/<?php echo $row['business_licence_number_electronic'];?>) no-repeat center center/100% 100%;
                                 <?php }else{?>
                                     <?php echo 'background:#f3faff;'?>
                                 <?php }?>
@@ -95,7 +95,7 @@
                             <div style="height: 180px;">
                                 <div style="height: 162px;width: 276px;line-height: 162px;text-align: center;
                                 <?php if($row['contacts_card_electronic_1']){?>
-                                        background:url(http://img.uekuek.com/images/<?php echo $row['contacts_card_electronic_1'];?>) no-repeat center center/100% 100%;
+                                        background:url(http://img.chengzhanghao.com:81/images/<?php echo $row['contacts_card_electronic_1'];?>) no-repeat center center/100% 100%;
                                 <?php }else{?>
                                     <?php echo 'background:#f3faff;'?>
                                 <?php }?>
@@ -113,7 +113,7 @@
                             <div style="height: 100%;width: 276px;float:left;text-align: center">
                                 <div style="height: 162px;width: 276px;line-height: 162px;text-align: center;
                                 <?php if($row['contacts_card_electronic_2']){?>
-                                        background:url(http://img.uekuek.com/images/<?php echo $row['contacts_card_electronic_2'];?>) no-repeat center center/100% 100%;
+                                        background:url(http://img.chengzhanghao.com:81/images/<?php echo $row['contacts_card_electronic_2'];?>) no-repeat center center/100% 100%;
                                 <?php }else{?>
                                     <?php echo 'background:#f3faff;'?>
                                 <?php }?>
@@ -125,7 +125,7 @@
                             <div style="height: 100%;width: 276px;float:left;margin-left:20px;text-align: center">
                                 <div style="height: 162px;width: 276px;line-height: 162px;text-align: center;
                                 <?php if($row['contacts_card_electronic_3']){?>
-                                        background:url(http://img.uekuek.com/images/<?php echo $row['contacts_card_electronic_3'];?>) no-repeat center center/100% 100%;
+                                        background:url(http://img.chengzhanghao.com:81/images/<?php echo $row['contacts_card_electronic_3'];?>) no-repeat center center/100% 100%;
                                 <?php }else{?>
                                     <?php echo 'background:#f3faff;'?>
                                 <?php }?>
@@ -254,7 +254,7 @@
                             <div style="height: 180px;">
                                 <div style="height: 162px;width: 276px;line-height: 162px;text-align: center;
                                 <?php if($row['general_taxpayer']){?>
-                                        background:url(http://img.uekuek.com/images/<?php echo $row['general_taxpayer'];?>) no-repeat center center/100% 100%;
+                                        background:url(http://img.chengzhanghao.com:81/images/<?php echo $row['general_taxpayer'];?>) no-repeat center center/100% 100%;
                                 <?php }else{?>
                                     <?php echo 'background:#f3faff;'?>
                                 <?php }?>
@@ -272,7 +272,7 @@
                             <div style="height: 180px;">
                                 <div style="height: 162px;width: 276px;line-height: 162px;text-align: center;
                                 <?php if($row['organization_code_electronic']){?>
-                                        background:url(http://img.uekuek.com/images/<?php echo $row['organization_code_electronic'];?>) no-repeat center center/100% 100%;
+                                        background:url(http://img.chengzhanghao.com:81/images/<?php echo $row['organization_code_electronic'];?>) no-repeat center center/100% 100%;
                                 <?php }else{?>
                                     <?php echo 'background:#f3faff;'?>
                                 <?php }?>
@@ -290,7 +290,7 @@
                             <div style="height: 180px;">
                                 <div style="height: 162px;width: 276px;line-height: 162px;text-align: center;
                                 <?php if($row['bank_licence_electronic']){?>
-                                        background:url(http://img.uekuek.com/images/<?php echo $row['bank_licence_electronic'];?>) no-repeat center center/100% 100%;
+                                        background:url(http://img.chengzhanghao.com:81/images/<?php echo $row['bank_licence_electronic'];?>) no-repeat center center/100% 100%;
                                 <?php }else{?>
                                     <?php echo 'background:#f3faff;'?>
                                 <?php }?>
@@ -308,7 +308,7 @@
                             <div style="height: 180px;">
                                 <div style="height: 162px;width: 276px;line-height: 162px;text-align: center;
                                 <?php if($row['tax_registration_certificate_electronic']){?>
-                                        background:url(http://img.uekuek.com/images/<?php echo $row['tax_registration_certificate_electronic'];?>) no-repeat center center/100% 100%;
+                                        background:url(http://img.chengzhanghao.com:81/images/<?php echo $row['tax_registration_certificate_electronic'];?>) no-repeat center center/100% 100%;
                                 <?php }else{?>
                                     <?php echo 'background:#f3faff;'?>
                                 <?php }?>
@@ -350,7 +350,7 @@
                                 <div style="height: 162px;width: 276px;line-height: 162px;text-align: center;
 
                                 <?php if($row['shop_logo']){?>
-                                        background:url(http://img.uekuek.com/images/<?php echo $row['shop_logo'];?>) no-repeat center center/100% 100%;
+                                        background:url(http://img.chengzhanghao.com:81/images/<?php echo $row['shop_logo'];?>) no-repeat center center/100% 100%;
                                 <?php }else{?>
                                     <?php echo 'background:#f3faff;'?>
                                 <?php }?>
@@ -368,7 +368,7 @@
 	                            <div style="height: 180px;">
 	                                <div style="height: 162px;width: 276px;line-height: 162px;text-align: center;
                                     <?php if($row['shop_banner']){?>
-                                            background:url(http://img.uekuek.com/images/<?php echo $row['shop_banner'];?>) no-repeat center center/100% 100%;
+                                            background:url(http://img.chengzhanghao.com:81/images/<?php echo $row['shop_banner'];?>) no-repeat center center/100% 100%;
                                     <?php }else{?>
                                         <?php echo 'background:#f3faff;'?>
                                     <?php }?>
@@ -386,7 +386,7 @@
 	                            <div style="height: 180px;">
 	                                <div style="height: 162px;width: 276px;line-height: 162px;text-align: center;
                                     <?php if($row['shop_avatar']){?>
-                                            background:url(http://img.uekuek.com/images/<?php echo $row['shop_avatar'];?>) no-repeat center center/100% 100%;
+                                            background:url(http://img.chengzhanghao.com:81/images/<?php echo $row['shop_avatar'];?>) no-repeat center center/100% 100%;
                                     <?php }else{?>
                                         <?php echo 'background:#f3faff;'?>
                                     <?php }?>

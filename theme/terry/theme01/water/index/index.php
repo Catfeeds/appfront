@@ -396,7 +396,7 @@
         <div style="width: 1012px; margin: 0px auto;">
             <div class="main-content1">
                 <div class="dianpu"
-                     style="background: url('http://img.uekuek.com/images/<?= $shop[shop_logo] ?>')no-repeat center center /100% auto;"></div>
+                     style="background: url('http://img.chengzhanghao.com:81/images/<?= $shop[shop_logo] ?>')no-repeat center center /100% auto;"></div>
                 <div class="content1-center">
                     <div class="col-box"></div>
                     <div class="name">

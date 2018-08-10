@@ -186,7 +186,7 @@
 
                                     }
                                 </style>
-                                <div class="addImg"><img height="100%" src="http://img.uekuek.com/media/<?=$data[img]?>" alt=""></div>
+                                <div class="addImg"><img height="100%" src="http://img.chengzhanghao.com:81/media/<?=$data[img]?>" alt=""></div>
                                 <input onchange="uploads(this)" type="file" name="img" style="display:none" id="files">
                             </div>
                         </div>
