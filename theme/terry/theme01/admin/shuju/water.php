@@ -71,7 +71,7 @@ use yii\helpers\Url;
                             async:false,
                             success:function (msg) {
                                 //将json转换为字符串
-                                var rows = JSON.parse(msg);
+                                var rows = eval('('+msg+')');
                                 $("#city_id").find(".aa").remove();
                                 $("#district_id").find(".aa").remove();
                                 $.each(rows,function (k,v) {
@@ -93,7 +93,7 @@ use yii\helpers\Url;
                             data:{'city_id':city_id},
                             async:false,
                             success:function(msg){
-                                var rows = JSON.parse(msg);
+                                var rows = eval('('+msg+')');
                                 $("#district_id").find(".aa").remove();
                                 $.each(rows,function(k,v){
                                     $("#district_id").append("<option value='"+v.district_id+"' class='aa' >"+v.district_name+"</option>")

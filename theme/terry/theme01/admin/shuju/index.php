@@ -106,7 +106,7 @@
             	   var end = aval.substring(22,32);
             	   url="<?= Yii::$service->url->getUrl('admin/shuju/searchdate') ?>?type=3&sta="+sta+"&end="+end;
             	   $.get(url).done(function (data) {
-                    	var row =JSON.parse(data);
+                    	var row = eval('('+data+')');
                         // 填入数据
         	             myChart.setOption({
         	          	   title: {
@@ -165,7 +165,7 @@
             	   url="<?= Yii::$service->url->getUrl('admin/shuju/year') ?>?type="+type;
                }
                $.get(url).done(function (data) {
-                  	var row =JSON.parse(data);
+                  	var row = eval('('+data+')');
                       // 填入数据
       	             myChart.setOption({
       	          	   title: {
@@ -207,7 +207,7 @@
                   });
            }
             $.get(url).done(function (data) {
-            	var row =JSON.parse(data);
+            	var row = eval('('+data+')');
                 // 填入数据
 	             myChart.setOption({
 	          	   title: {
@@ -320,7 +320,7 @@
             	   var end = aval.substring(22,32);
             	   url="<?= Yii::$service->url->getUrl('admin/shuju/searchdate') ?>?type=1&sta="+sta+"&end="+end;
             	   $.get(url).done(function (data) {
-                    	var row =JSON.parse(data);
+                    	var row = eval('('+data+')');
                         // 填入数据
                     	mychart2.setOption({
         	          	   title: {
@@ -380,7 +380,7 @@
             	   url="<?= Yii::$service->url->getUrl('admin/shuju/year') ?>?type="+type;
                }
                $.get(url).done(function (data) {
-                  	var row =JSON.parse(data);
+                  	var row = eval('('+data+')');
                       // 填入数据
                   	mychart2.setOption({
       	          	   title: {
@@ -422,7 +422,7 @@
                   });
            }
             $.get(url).done(function (data) {
-            	var row =JSON.parse(data);
+            	var row = eval('('+data+')');
                 // 填入数据
             	mychart2.setOption({
 	          	   title: {
@@ -537,7 +537,7 @@
              	   var end = aval.substring(22,32);
              	   url="<?= Yii::$service->url->getUrl('admin/shuju/searchdate') ?>?type=2&sta="+sta+"&end="+end;
              	   $.get(url).done(function (data) {
-                     	var row =JSON.parse(data);
+                     	var row = eval('('+data+')');
                          // 填入数据
                      	mychart3.setOption({
          	          	   title: {
@@ -596,7 +596,7 @@
             	   url="<?= Yii::$service->url->getUrl('admin/shuju/year') ?>?type="+type;
                }
                $.get(url).done(function (data) {
-                  	var row =JSON.parse(data);
+                  	var row = eval('('+data+')');
                       // 填入数据
                   	mychart3.setOption({
       	          	   title: {
@@ -638,7 +638,7 @@
                   });
            }
             $.get(url).done(function (data) {
-            	var row =JSON.parse(data);
+            	var row = eval('('+data+')');
                 // 填入数据
             	mychart3.setOption({
 	          	   title: {
@@ -748,7 +748,7 @@
                         var end = aval.substring(22,32);
                         url="<?= Yii::$service->url->getUrl('admin/shuju/searchdate') ?>?type=6&sta="+sta+"&end="+end;
                         $.get(url).done(function (data) {
-                            var row =JSON.parse(data);
+                            var row = eval('('+data+')');
                             // 填入数据
                             mychart4.setOption({
                                 title: {
@@ -814,7 +814,7 @@
                         url="<?= Yii::$service->url->getUrl('admin/shuju/year') ?>?type="+type;
                     }
                     $.get(url).done(function (data) {
-                        var row =JSON.parse(data);
+                        var row = eval('('+data+')');
                         // 填入数据
                         mychart4.setOption({
                             title: {
@@ -863,7 +863,7 @@
                     });
                 }
                 $.get(url).done(function (data) {
-                    var row =JSON.parse(data);
+                    var row = eval('('+data+')');
                     // 填入数据
                     mychart4.setOption({
                         title: {
@@ -982,7 +982,7 @@
                         var end = aval.substring(22,32);
                         url="<?= Yii::$service->url->getUrl('admin/shuju/searchdate') ?>?type=5&sta="+sta+"&end="+end;
                         $.get(url).done(function (data) {
-                            var row =JSON.parse(data);
+                            var row = eval('('+data+')');
                             let arr=[];
                             let arr1=[];
                             let arr2=[];
@@ -1054,7 +1054,7 @@
                         url="<?= Yii::$service->url->getUrl('admin/shuju/year') ?>?type="+type;
                     }
                     $.get(url).done(function (data) {
-                        var row =JSON.parse(data);
+                        var row = eval('('+data+')');
                         let arr=[];
                         let arr1=[];
                         let arr2=[];
@@ -1105,7 +1105,7 @@
                     });
                 }
                 $.get(url).done(function (data) {
-                    var row =JSON.parse(data);
+                    var row = eval('('+data+')');
                     let arr=[];
                     let arr1=[];
                     let arr2=[];
@@ -1229,7 +1229,7 @@
                         var end = aval.substring(22,32);
                         url="<?= Yii::$service->url->getUrl('admin/shuju/searchdate') ?>?type=4&sta="+sta+"&end="+end;
                         $.get(url).done(function (data) {
-                            var row =JSON.parse(data);
+                            var row = eval('('+data+')');
                             // 填入数据
                             mychart6.setOption({
                                 title: {
@@ -1289,7 +1289,7 @@
                         url="<?= Yii::$service->url->getUrl('admin/shuju/year') ?>?type="+type;
                     }
                     $.get(url).done(function (data) {
-                        var row =JSON.parse(data);
+                        var row = eval('('+data+')');
                         // 填入数据
                         mychart6.setOption({
                             title: {
@@ -1331,7 +1331,7 @@
                     });
                 }
                 $.get(url).done(function (data) {
-                    var row =JSON.parse(data);
+                    var row = eval('('+data+')');
                     // 填入数据
                     mychart6.setOption({
                         title: {
