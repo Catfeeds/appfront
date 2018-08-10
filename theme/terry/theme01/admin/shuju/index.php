@@ -87,7 +87,7 @@
             <div>
                 <span>今日新增：<?php echo $huiyuannew['num'];?>&nbsp;&nbsp;&nbsp;&nbsp;会员总数：<?php echo $huiyuanall['num'];?></span>
             </div>
-            <div id="mychart" style="width:800px;height:400px;float:left;">
+            <div id="mychart" style="width:950px;height:400px;float:left;">
 
             </div>
             <script type="text/javascript">
@@ -112,16 +112,18 @@
         	          	   title: {
         	                   text: ''
         	               },
-        	               tooltip: {},
+        	               tooltip: {
+                               trigger: 'axis',
+                           },
         	               legend: {
-        	                   data:['新增量']
+        	                   data:['会员新增量'],
         	               },
         	               xAxis: {
         	                   data:row.dat    /* row.dat */
         	               },
         	               yAxis: {},
         	               series: [{
-        	                   name: '会员',
+        	                   name: '会员新增量',
         	                   type: 'line',
         	                   data:row.num    /* row.num */
         	               }],
@@ -171,16 +173,16 @@
       	          	   title: {
       	                   text: ''
       	               },
-      	               tooltip: {},
+      	               tooltip: {trigger: 'axis'},
       	               legend: {
-      	                   data:['新增量']
+      	                   data:['会员新增量']
       	               },
       	               xAxis: {
       	                   data:row.dat    /* row.dat */
       	               },
       	               yAxis: {},
       	               series: [{
-      	                   name: '会员',
+      	                   name: '会员新增量',
       	                   type: 'line',
       	                   data:row.num    /* row.num */
       	               }],
@@ -213,16 +215,16 @@
 	          	   title: {
 	                   text: ''
 	               },
-	               tooltip: {},
+	               tooltip: {trigger: 'axis'},
 	               legend: {
-	                   data:['新增量']
+	                   data:['会员新增量']
 	               },
 	               xAxis: {
 	                   data:row.dat    /* row.dat */
 	               },
 	               yAxis: {},
 	               series: [{
-	                   name: '会员',
+	                   name: '会员新增量',
 	                   type: 'line',
 	                   data:row.num    /* row.num */
 	               }],
@@ -302,7 +304,7 @@
             <div>
                 <span>今日新增：<?php echo $shuisinew['num'];?>&nbsp;&nbsp;&nbsp;&nbsp;会员总数：<?php echo $shuisiall['num'];?></span>
             </div>
-            <div id="mychart2" style="width:800px;height:400px;float:left;">
+            <div id="mychart2" style="width:950px;height:400px;float:left;">
             </div>
             <script type="text/javascript">
             //日期时间范围
@@ -326,16 +328,16 @@
         	          	   title: {
         	                   text: ''
         	               },
-        	               tooltip: {},
+        	               tooltip: {trigger: 'axis'},
         	               legend: {
-        	                   data:['新增量']
+        	                   data:['水司新增量']
         	               },
         	               xAxis: {
         	                   data:row.dat    /* row.dat */
         	               },
         	               yAxis: {},
         	               series: [{
-        	                   name: '水司',
+        	                   name: '水司新增量',
         	                   type: 'line',
         	                   data:row.num    /* row.num */
         	               }],
@@ -386,16 +388,16 @@
       	          	   title: {
       	                   text: ''
       	               },
-      	               tooltip: {},
+      	               tooltip: {trigger: 'axis'},
       	               legend: {
-      	                   data:['新增量']
+      	                   data:['水司新增量']
       	               },
       	               xAxis: {
       	                   data:row.dat    /* row.dat */
       	               },
       	               yAxis: {},
       	               series: [{
-      	                   name: '水司',
+      	                   name: '水司新增量',
       	                   type: 'line',
       	                   data:row.num    /* row.num */
       	               }],
@@ -428,16 +430,16 @@
 	          	   title: {
 	                   text: ''
 	               },
-	               tooltip: {},
+	               tooltip: {trigger: 'axis'},
 	               legend: {
-	                   data:['新增量']
+	                   data:['水司新增量']
 	               },
 	               xAxis: {
 	                   data:row.dat    /* row.dat */
 	               },
 	               yAxis: {},
 	               series: [{
-	                   name: '水司',
+	                   name: '水司新增量',
 	                   type: 'line',
 	                   data:row.num    /* row.num */
 	               }],
@@ -519,7 +521,7 @@
             <div>
                 <span>今日新增：<?php echo $shuisinew['num'];?>&nbsp;&nbsp;&nbsp;&nbsp;会员总数：<?php echo $shuisiall['num'];?></span>
             </div>
-            <div id="mychart3" style="width:800px;height:400px;float:left;">
+            <div id="mychart3" style="width:950px;height:400px;float:left;">
             </div>
              <script type="text/javascript">
              //日期时间范围
@@ -543,16 +545,16 @@
          	          	   title: {
          	                   text: ''
          	               },
-         	               tooltip: {},
+         	               tooltip: {trigger: 'axis'},
          	               legend: {
-         	                   data:['新增量']
+         	                   data:['商家新增量']
          	               },
          	               xAxis: {
          	                   data:row.dat    /* row.dat */
          	               },
          	               yAxis: {},
          	               series: [{
-         	                   name: '商家',
+         	                   name: '商家新增量',
          	                   type: 'line',
          	                   data:row.num    /* row.num */
          	               }],
@@ -602,16 +604,16 @@
       	          	   title: {
       	                   text: ''
       	               },
-      	               tooltip: {},
+      	               tooltip: {trigger: 'axis'},
       	               legend: {
-      	                   data:['新增量']
+      	                   data:['商家新增量']
       	               },
       	               xAxis: {
       	                   data:row.dat    /* row.dat */
       	               },
       	               yAxis: {},
       	               series: [{
-      	                   name: '商家',
+      	                   name: '商家新增量',
       	                   type: 'line',
       	                   data:row.num    /* row.num */
       	               }],
@@ -644,16 +646,16 @@
 	          	   title: {
 	                   text: ''
 	               },
-	               tooltip: {},
+	               tooltip: {trigger: 'axis'},
 	               legend: {
-	                   data:['新增量']
+	                   data:['商家新增量']
 	               },
 	               xAxis: {
 	                   data:row.dat    /* row.dat */
 	               },
 	               yAxis: {},
 	               series: [{
-	                   name: '商家',
+	                   name: '商家新增量',
 	                   type: 'line',
 	                   data:row.num    /* row.num */
 	               }],
@@ -730,7 +732,7 @@
                     <button style="float: left;border:0;margin-top:20px;" onclick="ftime()">确定</button>
                 </div>
             </div>
-            <div id="mychart4" style="width:800px;height:400px;float:left;">
+            <div id="mychart4" style="width:950px;height:400px;float:left;">
             </div>
             <script type="text/javascript">
                 //日期时间范围
@@ -754,7 +756,7 @@
                                 title: {
                                     text: ''
                                 },
-                                tooltip: {},
+                                tooltip: {trigger: 'axis'},
                                 legend: {
                                     data:['商品','服务']
                                 },
@@ -820,7 +822,8 @@
                             title: {
                                 text: ''
                             },
-                            tooltip: {},
+                            tooltip: {trigger: 'axis'},
+
                             legend: {
                                 data:['商品','服务']
                             },
@@ -963,7 +966,7 @@
                     <button style="float: left;border:0;margin-top:20px;" onclick="etime()">确定</button>
                 </div>
             </div>
-            <div id="mychart5" style="width:800px;height:400px;float:left;">
+            <div id="mychart5" style="width:950px;height:400px;float:left;">
             </div>
 
             <script type="text/javascript">
@@ -1210,7 +1213,7 @@
                     <button style="float: left;border:0;margin-top:20px;" onclick='dtime()'>确定</button>
                 </div>
             </div>
-            <div id="mychart6" style="width:800px;height:400px;float:left;">
+            <div id="mychart6" style="width:950px;height:400px;float:left;">
             </div>
 
             <script type="text/javascript">
@@ -1235,16 +1238,16 @@
                                 title: {
                                     text: ''
                                 },
-                                tooltip: {},
+                                tooltip: {trigger: 'axis'},
                                 legend: {
-                                    data:['新增量']
+                                    data:['访问量']
                                 },
                                 xAxis: {
                                     data:row.dat    /* row.dat */
                                 },
                                 yAxis: {},
                                 series: [{
-                                    name: '水司',
+                                    name: '访问量',
                                     type: 'line',
                                     data:row.num    /* row.num */
                                 }],
@@ -1295,16 +1298,16 @@
                             title: {
                                 text: ''
                             },
-                            tooltip: {},
+                            tooltip: {trigger: 'axis'},
                             legend: {
-                                data:['新增量']
+                                data:['访问量']
                             },
                             xAxis: {
                                 data:row.dat    /* row.dat */
                             },
                             yAxis: {},
                             series: [{
-                                name: '水司',
+                                name: '访问量',
                                 type: 'line',
                                 data:row.num    /* row.num */
                             }],
@@ -1337,16 +1340,16 @@
                         title: {
                             text: ''
                         },
-                        tooltip: {},
+                        tooltip: {trigger: 'axis'},
                         legend: {
-                            data:['新增量']
+                            data:['访问量']
                         },
                         xAxis: {
                             data:row.dat    /* row.dat */
                         },
                         yAxis: {},
                         series: [{
-                            name: '水司',
+                            name: '访问量',
                             type: 'line',
                             data:row.num    /* row.num */
                         }],
