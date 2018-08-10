@@ -466,8 +466,6 @@ use yii\helpers\Url;
                                                 url: "/admin/shuju/complaint?t1=" + t1 + "&t2=" + t2,
                                                 dataType: 'json',
                                                 success: function (msg) {
-<<<<<<< HEAD
-                                                    // console.log(msg);
                                                     var complaintArr=[];
                                                     if(msg.length!=0){
                                                         for (let i = 0; i < msg.length; i++) {
@@ -494,35 +492,10 @@ use yii\helpers\Url;
                                                             })
                                                         }
                                                         complaintArr = [type1.length, type2.length, type3.length, type4.length, type5.length, type6.length, type7.length];
-                                                    }else{
-                                                        complaintArr=[0,0,0,0,0,0,0];
-=======
-                                                    console.log(msg);
-                                                    return 0;
-                                                    for (let i = 0; i < msg.length; i++) {
-                                                        type1 = msg.filter(element => {
-                                                            return element.ctype == 1
-                                                        })
-                                                        type2 = msg.filter(element => {
-                                                            return element.ctype == 2
-                                                        })
-                                                        type3 = msg.filter(element => {
-                                                            return element.ctype == 3
-                                                        })
-                                                        type4 = msg.filter(element => {
-                                                            return element.ctype == 4
-                                                        })
-                                                        type5 = msg.filter(element => {
-                                                            return element.ctype == 5
-                                                        })
-                                                        type6 = msg.filter(element => {
-                                                            return element.ctype == 6
-                                                        })
-                                                        type7 = msg.filter(element => {
-                                                            return element.ctype == 7
-                                                        })
->>>>>>> fc2b65729a50642d5fddd4419f3df4d2cfe3f61a
                                                     }
+                                                    else{
+                                                        complaintArr=[0,0,0,0,0,0,0]
+                                                    };
                                                     getChart(complaintArr);
 
                                                 }
