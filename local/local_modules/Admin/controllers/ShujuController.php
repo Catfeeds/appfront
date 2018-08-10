@@ -45,7 +45,9 @@ class ShujuController extends PublicsController
     	$data['shuisiall']=$num = Yii::$app->db->createCommand("SELECT count(1) as num FROM shop WHERE shop_type=1 AND shop_state in(0,1,2)")->queryOne();
     	$data['shangjianew']=$num = Yii::$app->db->createCommand("SELECT count(1) as num FROM shop WHERE created_at>{$sta} AND created_at<{$end} AND shop_type=2 AND shop_state in(0,1,2)")->queryOne();
     	$data['shangjiaall']=$num = Yii::$app->db->createCommand("SELECT count(1) as num FROM shop WHERE shop_type=2 AND shop_state in(0,1,2)")->queryOne();
-//     	echo "<pre>";
+    	$data['views']=$num = Yii::$app->db->createCommand("SELECT count(*) as num FROM page_view")->queryOne();
+
+    	//     	echo "<pre>";
 //     	print_r($data);;die;
         return $this->render($this->action->id,$data);
     }

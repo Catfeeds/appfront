@@ -51,7 +51,7 @@
                     </div>
                     <div class="tongji-number">
                         <div>
-                            <span><?= $views?></span>
+                            <span><?php echo $views['num']?></span>
                         </div>
                         <div>
                             <span>总访问量</span>
