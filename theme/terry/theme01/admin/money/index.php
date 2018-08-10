@@ -25,7 +25,7 @@
                 <span class="demonstration">时间段选择</span>
                     <div class="timer">
                         <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
-                            <input type="text"  name="data" class="demo-input" placeholder="请选择日期时间范围" id="test1">
+                            <input type="text"  name="data" class="demo-input" placeholder="请选择日期时间范围" id="test1" style="border:none">
                         </div>
                     </div>
             </div>
