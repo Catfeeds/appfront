@@ -37,6 +37,8 @@ class ShopController extends PublicsController
 
         $_SESSION['pagess']="index";
         $province = Yii::$app->db->createCommand('select * from sys_province')->queryAll();
+        $city = Yii::$app->db->createCommand('select * from sys_city')->queryAll();
+        $district = Yii::$app->db->createCommand('select * from sys_district')->queryAll();
 
         // 获取数据
         $request = Yii::$app->request;
@@ -91,6 +93,8 @@ class ShopController extends PublicsController
         $datas["shop_name"] = $shop_name;
         $datas["pagination"] = $pagination;
         $datas['province'] = $province;
+        $datas['city'] = $city;
+        $datas['district'] =$district ;
         return $this->render($this->action->id, $datas);
     }
 
@@ -101,6 +105,8 @@ class ShopController extends PublicsController
     public function actionWater(){
         $_SESSION['pagess']="water";
         $province = Yii::$app->db->createCommand('select * from sys_province')->queryAll();
+        $city = Yii::$app->db->createCommand('select * from sys_city')->queryAll();
+        $district = Yii::$app->db->createCommand('select * from sys_district')->queryAll();
 
         // 获取数据
         $request = Yii::$app->request;
@@ -154,6 +160,8 @@ class ShopController extends PublicsController
         $datas["shop_name"] = $shop_name;
         $datas["pagination"] = $pagination;
         $datas['province'] = $province;
+        $datas['city'] = $city;
+        $datas['district'] =$district;
         return $this->render($this->action->id, $datas);
     }
     //水司订单管理

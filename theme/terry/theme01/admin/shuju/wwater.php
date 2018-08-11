@@ -168,7 +168,7 @@ use yii\helpers\Url;
                             <div class="tongji-number">
                                 <div>
                                     <span>
-                                        1024
+                                        <?= $views?>
                                     </span>
                                 </div>
                                 <div>
@@ -466,32 +466,36 @@ use yii\helpers\Url;
                                                 url: "/admin/shuju/complaint?t1=" + t1 + "&t2=" + t2,
                                                 dataType: 'json',
                                                 success: function (msg) {
-                                                    // console.log(msg);
-                                                    for (let i = 0; i < msg.length; i++) {
-                                                        type1 = msg.filter(element => {
-                                                            return element.ctype == 1
-                                                        })
-                                                        type2 = msg.filter(element => {
-                                                            return element.ctype == 2
-                                                        })
-                                                        type3 = msg.filter(element => {
-                                                            return element.ctype == 3
-                                                        })
-                                                        type4 = msg.filter(element => {
-                                                            return element.ctype == 4
-                                                        })
-                                                        type5 = msg.filter(element => {
-                                                            return element.ctype == 5
-                                                        })
-                                                        type6 = msg.filter(element => {
-                                                            return element.ctype == 6
-                                                        })
-                                                        type7 = msg.filter(element => {
-                                                            return element.ctype == 7
-                                                        })
+                                                    console.log(msg);
+                                                    var complaintArr=[];
+                                                    if(msg.length!=0){
+                                                        for (let i = 0; i < msg.length; i++) {
+                                                            type1 = msg.filter(element => {
+                                                                return element.ctype == 1
+                                                            })
+                                                            type2 = msg.filter(element => {
+                                                                return element.ctype == 2
+                                                            })
+                                                            type3 = msg.filter(element => {
+                                                                return element.ctype == 3
+                                                            })
+                                                            type4 = msg.filter(element => {
+                                                                return element.ctype == 4
+                                                            })
+                                                            type5 = msg.filter(element => {
+                                                                return element.ctype == 5
+                                                            })
+                                                            type6 = msg.filter(element => {
+                                                                return element.ctype == 6
+                                                            })
+                                                            type7 = msg.filter(element => {
+                                                                return element.ctype == 7
+                                                            })
+                                                        }
+                                                        complaintArr = [type1.length, type2.length, type3.length, type4.length, type5.length, type6.length, type7.length];
+                                                    }else{
+                                                        complaintArr=[0,0,0,0,0,0,0];
                                                     }
-                                                    var complaintArr = [type1.length, type2.length, type3.length, type4.length, type5.length, type6.length, type7.length];
-
                                                     getChart(complaintArr);
 
                                                 }

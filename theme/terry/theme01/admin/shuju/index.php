@@ -712,29 +712,205 @@
                 <div class="platdata-headername">商品服务数据</div>
                 <div class="platdata-headerright">
                     <ul>
-                        <li class="week but1 btnactive" onclick='cut4(4,this)' uri='1'>七天</li>
-                        <li class="month but1" onclick='cut4(4,this)' uri='2'>一个月</li>
-                        <li class="quarter but1" onclick='cut4(4,this)' uri='3'>一个季度</li>
-                        <li class="year but1" onclick='cut4(4,this)' uri='4'>一年</li>
+                        <li class="week but1 btnactive" onclick='cut6(6,this)' uri='1'>七天</li>
+                        <li class="month but1" onclick='cut6(6,this)' uri='2'>一个月</li>
+                        <li class="quarter but1" onclick='cut6(6,this)' uri='3'>一个季度</li>
+                        <li class="year but1" onclick='cut6(6,this)' uri='4'>一年</li>
                     </ul>
                     <!--时间戳-->
                     <div class="block shijianchuo" >
                         <div class="timer">
                             <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
-                                <i class="el-input__icon el-range__icon el-icon-time"></i>
-                                <input placeholder="开始日期" name="" class="el-range-input1 el-range-input" />
-                                <span class="el-range-separator">至</span>
-                                <input placeholder="结束日期" name="" class="el-range-input2 el-range-input"/>
-                                <i class="el-input__icon el-range__icon el-icon-time"></i>
+                                <input type="text" style="width:100%;height:100%;text-align: center;border:none;" name="data" class="demo-input"
+                                       placeholder="请选择要查询的时间段" id="test15">
                             </div>
                         </div>
 
                     </div>
-                    <button style="float: left;border:0;margin-top:20px;">确定</button>
+                    <button style="float: left;border:0;margin-top:20px;" onclick="ftime()">确定</button>
                 </div>
             </div>
             <div id="mychart4" style="width:800px;height:400px;float:left;">
             </div>
+            <script type="text/javascript">
+                //日期时间范围
+                laydate.render({
+                    elem: '#test15'
+                    , type: 'datetime'
+                    , range: true
+                    , theme: "#3CACFE"
+                });
+                function ctime(){
+                    var aval=$('#test15').val();
+                    if(aval){
+                        $(".but1").css({"background":"#fff","color":"#99cafe"});
+                        var sta = aval.substring(0, 10);
+                        var end = aval.substring(22,32);
+                        url="<?= Yii::$service->url->getUrl('admin/shuju/searchdate') ?>?type=6&sta="+sta+"&end="+end;
+                        $.get(url).done(function (data) {
+                            var row =JSON.parse(data);
+                            // 填入数据
+                            mychart4.setOption({
+                                title: {
+                                    text: ''
+                                },
+                                tooltip: {},
+                                legend: {
+                                    data:['商品','服务']
+                                },
+                                xAxis: {
+                                    data:row.dat    /* row.dat */
+                                },
+                                yAxis: {},
+                                series: [
+                                    {
+                                        name: '商家',
+                                        type: 'line',
+                                        data:row.num1    /* row.num */
+                                    },
+                                    {
+                                        name: '服务',
+                                        type: 'line',
+                                        data:row.num2    /* row.num */
+                                    }
+                                ],
+                                toolbox: {
+
+                                    show: true,
+
+                                    feature: {
+
+                                        saveAsImage: {
+
+                                            show:true,
+
+                                            excludeComponents :['toolbox'],
+
+                                            pixelRatio: 2
+
+                                        }
+
+                                    }
+
+                                }
+                            });
+                        });
+                    }
+                }
+                var mychart4 = echarts.init(document.getElementById('mychart4'));
+                // 异步加载数据
+                var url="<?= Yii::$service->url->getUrl('admin/shuju/hours?hours=24&type=6') ?>";
+                function cut6(type,that){
+                    $('#test15').val("");
+                    $(".but1").css({"border":"none"});
+                    $(that).css({"border-bottom":"4px solid rgb(48, 162, 254)"});
+                    if($(that).attr("uri")==1){
+                        url="<?= Yii::$service->url->getUrl("admin/shuju/week") ?>?type="+type;
+                    }else if($(that).attr("uri")==2){
+                        url="<?= Yii::$service->url->getUrl('admin/shuju/month') ?>?type="+type;
+                    }else if($(that).attr("uri")==3){
+                        url="<?= Yii::$service->url->getUrl('admin/shuju/quarter') ?>?type="+type;
+                    }else if($(that).attr("uri")==4){
+                        url="<?= Yii::$service->url->getUrl('admin/shuju/year') ?>?type="+type;
+                    }
+                    $.get(url).done(function (data) {
+                        var row =JSON.parse(data);
+                        // 填入数据
+                        mychart4.setOption({
+                            title: {
+                                text: ''
+                            },
+                            tooltip: {},
+                            legend: {
+                                data:['商品','服务']
+                            },
+                            xAxis: {
+                                data:row.dat    /* row.dat */
+                            },
+                            yAxis: {},
+                            series: [
+                                {
+                                    name: '商品',
+                                    type: 'line',
+                                    data:row.num1    /* row.num */
+                                },
+                                {
+                                    name: '服务',
+                                    type: 'line',
+                                    data:row.num2    /* row.num */
+                                }
+                            ],
+                            toolbox: {
+
+                                show: true,
+
+                                feature: {
+
+                                    saveAsImage: {
+
+                                        show:true,
+
+                                        excludeComponents :['toolbox'],
+
+                                        pixelRatio: 2
+
+                                    }
+
+                                }
+
+                            }
+                        });
+                    });
+                }
+                $.get(url).done(function (data) {
+                    var row =JSON.parse(data);
+                    // 填入数据
+                    mychart4.setOption({
+                        title: {
+                            text: ''
+                        },
+                        tooltip: {trigger: 'axis'},
+                        legend: {
+                            data:['商品','服务']
+                        },
+                        xAxis: {
+                            data:row.dat    /* row.dat */
+                        },
+                        yAxis: {},
+                        series: [
+                            {
+                                name: '商品',
+                                type: 'line',
+                                data:row.num1    /* row.num */
+                            },
+                            {
+                                name: '服务',
+                                type: 'line',
+                                data:row.num2    /* row.num */
+                            }
+                        ],
+                        toolbox: {
+
+                            show: true,
+
+                            feature: {
+
+                                saveAsImage: {
+
+                                    show:true,
+
+                                    excludeComponents :['toolbox'],
+
+                                    pixelRatio: 2
+
+                                }
+
+                            }
+
+                        }
+                    });
+                });
+            </script>
             <!--<div class="chart-b">
                 <button style=" width: 90px;
         height: 27px;
@@ -768,30 +944,220 @@
                 <div class="platdata-headername">支付方式汇总</div>
                 <div class="platdata-headerright">
                     <ul>
-                        <li class="btnactive">七天</li>
-                        <li>一个月</li>
-                        <li>一个季度</li>
-                        <li>一年</li>
+                        <li class="week but1 btnactive" onclick='cut5(5,this)' uri='1'>七天</li>
+                        <li class="month but1" onclick='cut5(5,this)' uri='2'>一个月</li>
+                        <li class="quarter but1" onclick='cut5(5,this)' uri='3'>一个季度</li>
+                        <li class="year but1" onclick='cut5(5,this)' uri='4'>一年</li>
                     </ul>
                     <!--时间戳-->
                     <div class="block shijianchuo" 
                     >
                         <div class="timer">
                             <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
-                                <i class="el-input__icon el-range__icon el-icon-time"></i>
-                                <input placeholder="开始日期" name="" class="el-range-input1 el-range-input" />
-                                <span class="el-range-separator">至</span>
-                                <input placeholder="结束日期" name="" class="el-range-input2 el-range-input"/>
-                                <i class="el-input__icon el-range__icon el-icon-time"></i>
+                                <input type="text" style="width:100%;height:100%;text-align: center;border:none;" name="data" class="demo-input"
+                                       placeholder="请选择要查询的时间段" id="test14">
                             </div>
                         </div>
 
                     </div>
-                    <button style="float: left;border:0;margin-top:20px;">确定</button>
+                    <button style="float: left;border:0;margin-top:20px;" onclick="etime()">确定</button>
                 </div>
             </div>
-            <div id="mychart5">
+            <div id="mychart5" style="width:800px;height:400px;float:left;">
             </div>
+
+            <script type="text/javascript">
+                //日期时间范围
+                laydate.render({
+                    elem: '#test14'
+                    , type: 'datetime'
+                    , range: true
+                    , theme: "#3CACFE"
+                });
+                function etime(){
+                    var aval=$('#test14').val();
+                    if(aval){
+                        $(".but1").css({"background":"#fff","color":"#99cafe"});
+                        var sta = aval.substring(0, 10);
+                        var end = aval.substring(22,32);
+                        url="<?= Yii::$service->url->getUrl('admin/shuju/searchdate') ?>?type=5&sta="+sta+"&end="+end;
+                        $.get(url).done(function (data) {
+                            var row =JSON.parse(data);
+                            let arr=[];
+                            let arr1=[];
+                            let arr2=[];
+                            for(let i=0;i<row.methods.length;i++){
+                                arr1=row.methods.filter(ele=>{return ele.payment_method==1});
+                                arr2=row.methods.filter(ele=>{return ele.payment_method==2});
+                            }
+                            arr=[arr1.length,arr2.length];
+                            if(row['methods'].length==0){
+                                arr=[0,0];
+                            }
+                            if(row['methods'].length==0){
+                                arr=[0,0];
+                            }
+                                // 填入数据
+                            mychart5.setOption({
+                                legend: {
+                                    itemWidth: 20,
+                                    itemHeight: 20,
+                                    orient: 'vertical',
+                                    // top: 'middle',
+                                    bottom: 20,
+                                    right: 24,
+                                    data: ['余额支付', '微信支付']
+                                },
+                                tooltip: {
+                                    trigger: 'item',
+                                    formatter: "{b} : {c} ({d}%)"
+                                },
+                                series: [
+                                    {
+                                        type: 'pie',
+                                        radius: '80%',
+                                        center: ['40%', '50%'],
+                                        selectedMode: 'single',
+                                        data: [
+                                            {value: arr[0], name: '余额支付'},
+                                            {value: arr[1], name: '微信支付'},
+                                        ],
+                                        itemStyle: {
+                                            normal: {
+                                                borderWidth: 10,
+                                                borderColor: '#ffffff',
+                                            },
+
+                                        }
+                                    }
+                                ],
+                                color: ['rgb(48,163,254)', 'rgb(55,223,116)']
+                            });
+                        });
+                    }
+                }
+
+                var mychart5 = echarts.init(document.getElementById('mychart5'));
+                // 异步加载数据
+                var url="<?= Yii::$service->url->getUrl('admin/shuju/hours?hours=24&type=5') ?>";
+                function cut5(type,that){
+                    $('#test14').val("");
+                    $(".but1").css({"border":"none"});
+                    $(that).css({"border-bottom":"4px solid rgb(48, 162, 254)"});
+                    if($(that).attr("uri")==1){
+                        url="<?= Yii::$service->url->getUrl("admin/shuju/week") ?>?type="+type;
+                    }else if($(that).attr("uri")==2){
+                        url="<?= Yii::$service->url->getUrl('admin/shuju/month') ?>?type="+type;
+                    }else if($(that).attr("uri")==3){
+                        url="<?= Yii::$service->url->getUrl('admin/shuju/quarter') ?>?type="+type;
+                    }else if($(that).attr("uri")==4){
+                        url="<?= Yii::$service->url->getUrl('admin/shuju/year') ?>?type="+type;
+                    }
+                    $.get(url).done(function (data) {
+                        var row =JSON.parse(data);
+                        let arr=[];
+                        let arr1=[];
+                        let arr2=[];
+                        for(let i=0;i<row.methods.length;i++){
+                            arr1=row.methods.filter(ele=>{return ele.payment_method==1});
+                            arr2=row.methods.filter(ele=>{return ele.payment_method==2});
+                        }
+                        arr=[arr1.length,arr2.length];
+                        if(row['methods'].length==0){
+                            arr=[0,0];
+                        }
+                        // 填入数据
+                        mychart5.setOption({
+                            legend: {
+                                itemWidth: 20,
+                                itemHeight: 20,
+                                orient: 'vertical',
+                                // top: 'middle',
+                                bottom: 20,
+                                right: 24,
+                                data: ['余额支付', '微信支付']
+                            },
+                            tooltip: {
+                                trigger: 'item',
+                                formatter: "{b} : {c} ({d}%)"
+                            },
+                            series: [
+                                {
+                                    type: 'pie',
+                                    radius: '80%',
+                                    center: ['40%', '50%'],
+                                    selectedMode: 'single',
+                                    data: [
+                                        {value: arr[0], name: '余额支付'},
+                                        {value: arr[1], name: '微信支付'},
+                                    ],
+                                    itemStyle: {
+                                        normal: {
+                                            borderWidth: 10,
+                                            borderColor: '#ffffff',
+                                        },
+
+                                    }
+                                }
+                            ],
+                            color: ['rgb(48,163,254)', 'rgb(55,223,116)']
+                        });
+                    });
+                }
+                $.get(url).done(function (data) {
+                    var row =JSON.parse(data);
+                    let arr=[];
+                    let arr1=[];
+                    let arr2=[];
+                    for(let i=0;i<row.methods.length;i++){
+                        arr1=row.methods.filter(ele=>{return ele.payment_method==1});
+                        arr2=row.methods.filter(ele=>{return ele.payment_method==2});
+                    }
+                    arr=[arr1.length,arr2.length];
+                    if(row['methods'].length==0){
+                        arr=[0,0];
+                    }
+                    if(row['methods'].length==0){
+                        arr=[0,0];
+                    }
+                    // 填入数据
+                    mychart5.setOption({
+                        legend: {
+                            itemWidth: 20,
+                            itemHeight: 20,
+                            orient: 'vertical',
+                            // top: 'middle',
+                            bottom: 20,
+                            right: 24,
+                            data: ['余额支付', '微信支付']
+                        },
+                        tooltip: {
+                            trigger: 'item',
+                            formatter: "{b} : {c} ({d}%)"
+                        },
+                        series: [
+                            {
+                                type: 'pie',
+                                radius: '80%',
+                                center: ['40%', '50%'],
+                                selectedMode: 'single',
+                                data: [
+                                    {value: arr[0], name: '余额支付'},
+                                    {value: arr[1], name: '微信支付'},
+                                ],
+                                itemStyle: {
+                                    normal: {
+                                        borderWidth: 10,
+                                        borderColor: '#ffffff',
+                                    },
+
+                                }
+                            }
+                        ],
+                        color: ['rgb(48,163,254)', 'rgb(55,223,116)']
+                    });
+                });
+            </script>
             <!--<div class="chart-b">
                 <button style=" width: 90px;
         height: 27px;
@@ -825,30 +1191,188 @@
                 <div class="platdata-headername">访问数据</div>
                 <div class="platdata-headerright">
                     <ul>
-                        <li class="btnactive">七天</li>
-                        <li>一个月</li>
-                        <li>一个季度</li>
-                        <li>一年</li>
+                        <li class="week but1 btnactive" onclick='cut4(4,this)' uri='1'>七天</li>
+                        <li class="month but1" onclick='cut4(4,this)' uri='2'>一个月</li>
+                        <li class="quarter but1" onclick='cut4(4,this)' uri='3'>一个季度</li>
+                        <li class="year but1" onclick='cut4(4,this)' uri='4'>一年</li>
                     </ul>
                     <!--时间戳-->
                     <div class="block shijianchuo" 
                     >
                         <div class="timer">
                             <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
-                                <i class="el-input__icon el-range__icon el-icon-time"></i>
-                                <input placeholder="开始日期" name="" class="el-range-input1 el-range-input" />
-                                <span class="el-range-separator">至</span>
-                                <input placeholder="结束日期" name="" class="el-range-input2 el-range-input"/>
-                                <i class="el-input__icon el-range__icon el-icon-time"></i>
+                                <input type="text" style="width:100%;height:100%;text-align: center;border:none;" name="data" class="demo-input"
+                                       placeholder="请选择要查询的时间段" id="test13">
                             </div>
                         </div>
 
                     </div>
-                    <button style="float: left;border:0;margin-top:20px;">确定</button>
+                    <button style="float: left;border:0;margin-top:20px;" onclick='dtime()'>确定</button>
                 </div>
             </div>
-            <div id="mychart6">
+            <div id="mychart6" style="width:800px;height:400px;float:left;">
             </div>
+
+            <script type="text/javascript">
+                //日期时间范围
+                laydate.render({
+                    elem: '#test13'
+                    , type: 'datetime'
+                    , range: true
+                    , theme: "#3CACFE"
+                });
+                function dtime(){
+                    var aval=$('#test13').val();
+                    if(aval){
+                        $(".but1").css({"background":"#fff","color":"#99cafe"});
+                        var sta = aval.substring(0, 10);
+                        var end = aval.substring(22,32);
+                        url="<?= Yii::$service->url->getUrl('admin/shuju/searchdate') ?>?type=4&sta="+sta+"&end="+end;
+                        $.get(url).done(function (data) {
+                            var row =JSON.parse(data);
+                            // 填入数据
+                            mychart6.setOption({
+                                title: {
+                                    text: ''
+                                },
+                                tooltip: {},
+                                legend: {
+                                    data:['新增量']
+                                },
+                                xAxis: {
+                                    data:row.dat    /* row.dat */
+                                },
+                                yAxis: {},
+                                series: [{
+                                    name: '水司',
+                                    type: 'line',
+                                    data:row.num    /* row.num */
+                                }],
+                                toolbox: {
+
+                                    show: true,
+
+                                    feature: {
+
+                                        saveAsImage: {
+
+                                            show:true,
+
+                                            excludeComponents :['toolbox'],
+
+                                            pixelRatio: 2
+
+                                        }
+
+                                    }
+
+                                }
+                            });
+                        });
+                    }
+                }
+
+                var mychart6 = echarts.init(document.getElementById('mychart6'));
+                // 异步加载数据
+                var url="<?= Yii::$service->url->getUrl('admin/shuju/hours?hours=24&type=4') ?>";
+                function cut4(type,that){
+                    $('#test13').val("");
+                    $(".but1").css({"border":"none"});
+                    $(that).css({"border-bottom":"4px solid rgb(48, 162, 254)"});
+                    if($(that).attr("uri")==1){
+                        url="<?= Yii::$service->url->getUrl("admin/shuju/week") ?>?type="+type;
+                    }else if($(that).attr("uri")==2){
+                        url="<?= Yii::$service->url->getUrl('admin/shuju/month') ?>?type="+type;
+                    }else if($(that).attr("uri")==3){
+                        url="<?= Yii::$service->url->getUrl('admin/shuju/quarter') ?>?type="+type;
+                    }else if($(that).attr("uri")==4){
+                        url="<?= Yii::$service->url->getUrl('admin/shuju/year') ?>?type="+type;
+                    }
+                    $.get(url).done(function (data) {
+                        var row =JSON.parse(data);
+                        // 填入数据
+                        mychart6.setOption({
+                            title: {
+                                text: ''
+                            },
+                            tooltip: {},
+                            legend: {
+                                data:['新增量']
+                            },
+                            xAxis: {
+                                data:row.dat    /* row.dat */
+                            },
+                            yAxis: {},
+                            series: [{
+                                name: '水司',
+                                type: 'line',
+                                data:row.num    /* row.num */
+                            }],
+                            toolbox: {
+
+                                show: true,
+
+                                feature: {
+
+                                    saveAsImage: {
+
+                                        show:true,
+
+                                        excludeComponents :['toolbox'],
+
+                                        pixelRatio: 2
+
+                                    }
+
+                                }
+
+                            }
+                        });
+                    });
+                }
+                $.get(url).done(function (data) {
+                    var row =JSON.parse(data);
+                    // 填入数据
+                    mychart6.setOption({
+                        title: {
+                            text: ''
+                        },
+                        tooltip: {},
+                        legend: {
+                            data:['新增量']
+                        },
+                        xAxis: {
+                            data:row.dat    /* row.dat */
+                        },
+                        yAxis: {},
+                        series: [{
+                            name: '水司',
+                            type: 'line',
+                            data:row.num    /* row.num */
+                        }],
+                        toolbox: {
+
+                            show: true,
+
+                            feature: {
+
+                                saveAsImage: {
+
+                                    show:true,
+
+                                    excludeComponents :['toolbox'],
+
+                                    pixelRatio: 2
+
+                                }
+
+                            }
+
+                        }
+                    });
+                });
+            </script>
+
             <!--<div class="chart-b">
                 <button style=" width: 90px;
         height: 27px;

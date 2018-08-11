@@ -157,14 +157,14 @@ use yii\helpers\Url;
                                     </td>
                                     <td class="el-table_2_column_14">
                                         <div class="cell el-tooltip" title="">
-                                            <?= $v["province_name"] ?>
-                                            <?= $v["city_name"] ?>
-                                            <?= $v["district_name"] ?>
+                                            <?= $province[$v['province_id']-1]["province_name"]?>
+                                            <?= $city[$v['city_id']-1]["city_name"]?>
+                                            <?= $district[$v['district_id']-1]["district_name"]?>
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_13">
                                         <div class="cell el-tooltip">
-                                            2018.05.29
+                                            <?= date('Y-m-d',$v['shop_end_time'])?>
                                         </div>
                                     </td>
                                     <td class="el-table_2_column_18">
