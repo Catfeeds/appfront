@@ -1,4 +1,4 @@
-<?php
+﻿<?php
    return [
    'store' => [
         'class'  => 'fecshop\services\Store',
@@ -38,7 +38,7 @@
                 // sitemap的路径。
                 'sitemapDir' => '@appfront/web/sitemap.xml',
             ],
-            'appfront.uekuek.com/fr' => [
+            'www.chengzhanghao.com/fr' => [
                 'language'         => 'fr_FR',
                 'languageName'     => 'Fran?ais',
                 'localThemeDir'    => '@appfront/theme/terry/theme01',
@@ -65,7 +65,7 @@
                 ],
                 'sitemapDir' => '@appfront/web/fr/sitemap.xml',
             ],
-            'appfront.uekuek.es' => [
+            'www.chengzhanghao.es' => [
                 'language'         => 'es_ES',
                 'languageName'     => 'Espa?ol',
                 'localThemeDir'    => '@appfront/theme/terry/theme01',
@@ -92,7 +92,7 @@
                 ],
                 'sitemapDir' => '@appfront/web/sitemap_es.xml',
             ],
-            'appfront.uekuek.com/cn' => [
+            'www.chengzhanghao.com/cn' => [
                 'language'         => 'zh_CN',
                 'languageName'     => '中文',
                 'localThemeDir'    => '@appfront/theme/terry/theme01',

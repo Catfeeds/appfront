@@ -130,7 +130,7 @@
                             var url="<?= Yii::$service->url->getUrl('admin/money/searchhours') ?>?type=3&sta="+t1+"&end="+t2;
                         }
                         $.get(url).done(function (data) {
-                            var row =JSON.parse(data);
+                            var row = eval('('+data+')');
                             // 填入数据
                             console.log(row);
                             $(".cjje").text(row.num);
@@ -164,7 +164,7 @@
             	   var end = aval.substring(22,32);
             	   url="<?= Yii::$service->url->getUrl('admin/money/searchdate') ?>?type=3&sta="+sta+"&end="+end;
             	   $.get(url).done(function (data) {
-                    	var row =JSON.parse(data); 
+                    	var row = eval('('+data+')');
                         // 填入数据
         	             myChart.setOption({
         	          	   title: {
@@ -223,7 +223,7 @@
             	   url="<?= Yii::$service->url->getUrl('admin/money/year') ?>?type="+type;
                }
                $.get(url).done(function (data) {
-                  	var row =JSON.parse(data); 
+                  	var row = eval('('+data+')');
                       // 填入数据
       	             myChart.setOption({
       	          	   title: {
@@ -265,7 +265,7 @@
                   });
            }
             $.get(url).done(function (data) {
-            	var row =JSON.parse(data); 
+            	var row = eval('('+data+')');
                 // 填入数据
 	             myChart.setOption({
 	          	   title: {
@@ -380,7 +380,7 @@
             	   var end = aval.substring(22,32);
             	   url="<?= Yii::$service->url->getUrl('admin/money/backsearchdate') ?>?type=1&sta="+sta+"&end="+end;
             	   $.get(url).done(function (data) {
-                    	var row =JSON.parse(data); 
+                    	var row = eval('('+data+')');
                         // 填入数据
                     	mychart2.setOption({
         	          	   title: {
@@ -440,7 +440,7 @@
             	   url="<?= Yii::$service->url->getUrl('admin/money/backyear') ?>?type="+type;
                }
                $.get(url).done(function (data) {
-                  	var row =JSON.parse(data); 
+                  	var row = eval('('+data+')');
                       // 填入数据
                   	mychart2.setOption({
       	          	   title: {
@@ -482,7 +482,7 @@
                   });
            }
             $.get(url).done(function (data) {
-            	var row =JSON.parse(data); 
+            	var row = eval('('+data+')');
                 // 填入数据
             	mychart2.setOption({
 	          	   title: {
@@ -597,7 +597,7 @@
              	   var end = aval.substring(22,32);
              	   url="<?= Yii::$service->url->getUrl('admin/money/numsearchdate') ?>?type=2&sta="+sta+"&end="+end;
              	   $.get(url).done(function (data) {
-                     	var row =JSON.parse(data); 
+                     	var row = eval('('+data+')');
                          // 填入数据
                      	mychart3.setOption({
          	          	   title: {
@@ -656,7 +656,7 @@
             	   url="<?= Yii::$service->url->getUrl('admin/money/numyear') ?>?type="+type;
                }
                $.get(url).done(function (data) {
-                  	var row =JSON.parse(data); 
+                  	var row = eval('('+data+')');
                       // 填入数据
                   	mychart3.setOption({
       	          	   title: {
@@ -698,7 +698,7 @@
                   });
            }
             $.get(url).done(function (data) {
-            	var row =JSON.parse(data); 
+            	var row = eval('('+data+')');
                 // 填入数据
             	mychart3.setOption({
 	          	   title: {

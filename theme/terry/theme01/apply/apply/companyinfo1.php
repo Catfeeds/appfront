@@ -159,9 +159,9 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div class="aaa" style="width: 500px; height: 250px;
                                 <?php if ($companyinfo['img'][0]) { ?>
-                                        background:url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][0];?>) no-repeat center center/100% 100%;
+                                        background:url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['img'][0];?>) no-repeat center center/100% 100%;
                                 <?php } else if ($companyinfo['imgc']['img0']) { ?>
-                                        background: url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['imgc']['img0'];?>) no-repeat center center/100% 100%;
+                                        background: url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['imgc']['img0'];?>) no-repeat center center/100% 100%;
                                 <?php } else { ?>
                                         background: rgb(243, 250, 255);
                                 <?php } ?>
@@ -261,9 +261,9 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div style="width: 270px; height: 160px; float:left;
                                 <?php if ($companyinfo['img'][1]) { ?>
-                                        background:url('http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][1];?>) no-repeat center center/100% 100%;
+                                        background:url('http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['img'][1];?>) no-repeat center center/100% 100%;
                                 <?php } else if ($companyinfo['imgc']['img1']) { ?>
-                                        background: url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['imgc']['img1'];?>) no-repeat center center/100% 100% ;
+                                        background: url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['imgc']['img1'];?>) no-repeat center center/100% 100% ;
                                 <?php } else { ?>
                                         background: rgb(243, 250, 255);
                                 <?php } ?>
@@ -305,9 +305,9 @@
                                 <div>
                                     <div style="width: 270px; height: 160px; float:left;
                                     <?php if ($companyinfo['img'][2]) { ?>
-                                            background:url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][2];?>) no-repeat center center/100% 100%;
+                                            background:url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['img'][2];?>) no-repeat center center/100% 100%;
                                     <?php } else if ($companyinfo['imgc']['img2']) { ?>
-                                            background: url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['imgc']['img2'];?>) no-repeat center center/100% 100%;
+                                            background: url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['imgc']['img2'];?>) no-repeat center center/100% 100%;
                                     <?php } else { ?>
                                             background: rgb(243, 250, 255);
                                     <?php } ?>
@@ -332,9 +332,9 @@
                                     </div>
                                     <div style="width: 270px; height: 160px;float: left;margin-left:50px;
                                     <?php if ($companyinfo['img'][3]) { ?>
-                                            background:url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][3];?>) no-repeat;
+                                            background:url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['img'][3];?>) no-repeat;
                                     <?php } else if ($companyinfo['imgc']['img3']) { ?>
-                                            background: url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['imgc']['img3'];?>) no-repeat;
+                                            background: url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['imgc']['img3'];?>) no-repeat;
                                     <?php } else { ?>
                                             background: rgb(243, 250, 255);
                                     <?php } ?>
@@ -522,9 +522,9 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div style="width: 500px; height: 250px;
                                 <?php if ($companyinfo['img'][4]) { ?>
-                                        background:url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][4];?>) no-repeat center center/100% 100%;
+                                        background:url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['img'][4];?>) no-repeat center center/100% 100%;
                                 <?php } else if ($companyinfo['imgc']['img4']) { ?>
-                                        background: url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['imgc']['img4'];?>) no-repeat center center/100% 100%;
+                                        background: url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['imgc']['img4'];?>) no-repeat center center/100% 100%;
                                 <?php } else { ?>
                                         background: rgb(243, 250, 255);
                                 <?php } ?>
@@ -544,9 +544,9 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div style="width: 500px; height: 250px;
                                 <?php if ($companyinfo['img'][5]) { ?>
-                                        background:url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][5];?>) no-repeat center center/100% 100%;
+                                        background:url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['img'][5];?>) no-repeat center center/100% 100%;
                                 <?php } else if ($companyinfo['imgc']['img5']) { ?>
-                                        background: url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['imgc']['img5'];?>) no-repeat center center/100% 100%;
+                                        background: url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['imgc']['img5'];?>) no-repeat center center/100% 100%;
                                 <?php } else { ?>
                                         background: rgb(243, 250, 255);
                                 <?php } ?>
@@ -567,9 +567,9 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div style="width: 500px; height: 250px;
                                 <?php if ($companyinfo['img'][6]) { ?>
-                                        background:url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][6];?>) no-repeat center center/100% 100%;
+                                        background:url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['img'][6];?>) no-repeat center center/100% 100%;
                                 <?php } else if ($companyinfo['imgc']['img6']) { ?>
-                                        background: url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['imgc']['img6'];?>) no-repeat center center/100% 100%;
+                                        background: url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['imgc']['img6'];?>) no-repeat center center/100% 100%;
                                 <?php } else { ?>
                                         background: rgb(243, 250, 255) center center/100% 100%;
                                 <?php } ?>
@@ -589,9 +589,9 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div style="width: 500px; height: 250px;
                                 <?php if ($companyinfo['img'][7]) { ?>
-                                        background:url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][7];?>) no-repeat center center/100% 100%;
+                                        background:url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['img'][7];?>) no-repeat center center/100% 100%;
                                 <?php } else if ($companyinfo['imgc']['img7']) { ?>
-                                        background: url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['imgc']['img7'];?>) no-repeat center center/100% 100%;
+                                        background: url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['imgc']['img7'];?>) no-repeat center center/100% 100%;
                                 <?php } else { ?>
                                         background: rgb(243, 250, 255);
                                 <?php } ?>

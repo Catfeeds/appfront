@@ -45,7 +45,7 @@
                     </span>
                     </td>
                     <td>
-                        <div style="width:96px;height:96px;background: url('http://img.uekuek.com/images/<?= $v[img] ?>')no-repeat center center /100% auto"></div>
+                        <div style="width:96px;height:96px;background: url('http://img.chengzhanghao.com:81/images/<?= $v[img] ?>')no-repeat center center /100% auto"></div>
                     </td>
                     <td><?= $v['name']?></td>
                     <td><span><?= $v["info"]?></span></td>

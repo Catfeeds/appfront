@@ -201,7 +201,7 @@ class GoodsController extends PublicsController
 
         $data=$query
             ->from('category')
-            ->where(['level'=>2,'parent_id'=>"$id"])
+            ->where(['level'=>2,'parent_id'=>$id])
             ->all();
 
 

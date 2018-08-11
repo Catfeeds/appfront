@@ -66,7 +66,11 @@ use yii\helpers\Url;
                             async:false,
                             success:function (msg) {
                                 //将json转换为字符串
+<<<<<<< HEAD
                                 var rows = JSON.parse(msg);
+=======
+                                var rows = eval('('+msg+')');
+>>>>>>> 292a301f0858e20e13a671ec7d3bf1f9ca7ce5f5
                                 $("#city_id").find(".aa").remove();
                                 $("#district_id").find(".aa").remove();
                                 $.each(rows,function (k,v) {
@@ -88,7 +92,11 @@ use yii\helpers\Url;
                             data:{'city_id':city_id},
                             async:false,
                             success:function(msg){
+<<<<<<< HEAD
                                 var rows = JSON.parse(msg);
+=======
+                                var rows = eval('('+msg+')');
+>>>>>>> 292a301f0858e20e13a671ec7d3bf1f9ca7ce5f5
                                 $("#district_id").find(".aa").remove();
                                 $.each(rows,function(k,v){
                                     $("#district_id").append("<option value='"+v.district_id+"' class='aa' >"+v.district_name+"</option>")

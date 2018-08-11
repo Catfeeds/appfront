@@ -1,8 +1,12 @@
+<<<<<<< HEAD
+﻿<style>
+=======
 <style>
     body{
         width: 100%;
         height: 100%;
     }
+>>>>>>> 3eb4743aa9b957816a08fa892db00c83bad46874
     .forget1{
         width: 128px;
         height: 100%;
@@ -58,7 +62,9 @@
     #loginin{
         width: 100%;
         height: 100%;
-        position: relative;
+        position: fixed;
+	top:0;
+	left:0;
         background: url("/public/background.png") no-repeat top center/100% 100%;
         overflow: hidden;
     }

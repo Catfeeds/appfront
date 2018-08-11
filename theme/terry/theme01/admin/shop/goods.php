@@ -410,7 +410,7 @@ use yii\helpers\Url;
                                                     <td class="el-table_2_column_9">
                                                         <div class="cell el-tooltip">
                                                             <div class="picture">
-                                                                <img src="http://img.uekuek.com/media/catalog/product/<?= $v['image']['main']['image'] ?>"
+                                                                <img src="http://img.chengzhanghao.com:81/media/catalog/product/<?= $v['image']['main']['image'] ?>"
                                                                      alt="">
                                                             </div>
                                                             <div class="contents">

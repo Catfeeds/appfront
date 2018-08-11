@@ -131,9 +131,9 @@
                             <div class="el-form-item__content" style="margin-left: 80px;">
                                 <div style="width: 500px; height: 250px;
                                 <?php if ($shopinfo['img'][0]) { ?>
-                                        background:url(http://img.uekuek.com/media/catalog/product/<?php echo $shopinfo['img'][0];?>) no-repeat;
+                                        background:url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $shopinfo['img'][0];?>) no-repeat;
                                 <?php } else if ($shopinfo['imgs']['img0']) { ?>
-                                        background: url(http://img.uekuek.com/media/catalog/product/<?php echo $shopinfo['imgs']['img0'];?>) no-repeat;
+                                        background: url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $shopinfo['imgs']['img0'];?>) no-repeat;
                                 <?php } else { ?>
                                         background: rgb(243, 250, 255);
                                 <?php } ?>
@@ -153,9 +153,9 @@
                             <div class="el-form-item__content" style="margin-left: 80px;">
                                 <div style="width: 500px; height: 250px;
                                 <?php if ($shopinfo['img'][1]) { ?>
-                                        background:url(http://img.uekuek.com/media/catalog/product/<?php echo $shopinfo['img'][1];?>) no-repeat;
+                                        background:url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $shopinfo['img'][1];?>) no-repeat;
                                 <?php } else if ($shopinfo['imgs']['img1']) { ?>
-                                        background: url(http://img.uekuek.com/media/catalog/product/<?php echo $shopinfo['imgs']['img1'];?>) no-repeat;
+                                        background: url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $shopinfo['imgs']['img1'];?>) no-repeat;
                                 <?php } else { ?>
                                         background: rgb(243, 250, 255);
                                 <?php } ?>
@@ -175,9 +175,9 @@
                             <div class="el-form-item__content" style="margin-left: 80px;">
                                 <div style="width: 500px; height: 250px;
                                 <?php if ($shopinfo['img'][2]) { ?>
-                                        background:url(http://img.uekuek.com/media/catalog/product/<?php echo $shopinfo['img'][2];?>) no-repeat;
+                                        background:url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $shopinfo['img'][2];?>) no-repeat;
                                 <?php } else if ($shopinfo['imgs']['img2']) { ?>
-                                        background: url(http://img.uekuek.com/media/catalog/product/<?php echo $shopinfo['imgs']['img2'];?>) no-repeat;
+                                        background: url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $shopinfo['imgs']['img2'];?>) no-repeat;
                                 <?php } else { ?>
                                         background: rgb(243, 250, 255);
                                 <?php } ?>

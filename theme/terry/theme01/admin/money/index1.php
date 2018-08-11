@@ -23,13 +23,17 @@
 
             <div class="block" style="float: left;line-height: 48px; margin-left: 20px;position: relative;">
                 <span class="demonstration">时间段选择</span>
-                    <div class="timer">
-                        <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
-                            <input type="text"  name="data" class="demo-input" placeholder="请选择日期时间范围" id="test1" style="border:none">
-                        </div>
+                <div class="timer">
+                    <div class="el-date-editor el-range-editor el-input__inner el-date-editor--datetimerange">
+                        <i class="el-input__icon el-range__icon el-icon-time"></i>
+                        <input placeholder="开始日期" name="" class="el-range-input el-range-input1" />
+                        <span class="el-range-separator">至</span>
+                        <input placeholder="结束日期" name="" class="el-range-input el-range-input2"/>
+                        <i class="el-input__icon el-range__icon el-icon-time"></i>
                     </div>
+                </div>
             </div>
-            <button id="search">查询</button>
+            <button>查询</button>
         </div>
         <div class="tongji">
             <ul>
@@ -39,7 +43,7 @@
                     </div>
                     <div class="tongji-number">
                         <div>
-                            <span class="cjje">6723.98</span>
+                            <span>6723.98</span>
                         </div>
                         <div>
                             <span>成交全额（元）</span>
@@ -52,7 +56,7 @@
                     </div>
                     <div class="tongji-number">
                         <div>
-                            <span class="dfkje">6723.98</span>
+                            <span>6723.98</span>
                         </div>
                         <div>
                             <span>待付款金额（元）</span>
@@ -65,7 +69,7 @@
                     </div>
                     <div class="tongji-number">
                         <div>
-                            <span class="ddzs">299</span>
+                            <span>299</span>
                         </div>
                         <div>
                             <span>订单总数</span>
@@ -110,46 +114,15 @@ margin-top:16px;"
             <div id="mychart">
 
             </div>
-            <script type="text/javascript">
-                $(function () {
-                    $("#search").on("click",function () {
-                        var aval=$('#test1').val();
-                        if(aval){
-                            $(".but1").css({"background":"#fff","color":"#99cafe"});
-                            var sta = aval.substring(0, 10);
-                            var end = aval.substring(22,32);
-                            var url="<?= Yii::$service->url->getUrl('admin/money/searchindex') ?>?type=3&sta="+sta+"&end="+end;
-
-                        }else{
-                            var t1 = timeForMat(7)["t2"];
-                            var t2 = timeForMat(7)["t1"].slice(0,timeForMat(7)["t1"].length-3)+timeForMat(7)["t1"].slice(timeForMat(7)["t1"].length-2,timeForMat(7)["t1"].length);
-                            var url="<?= Yii::$service->url->getUrl('admin/money/searchindex') ?>?type=3&sta="+t1+"&end="+t2;
-                        }
-                        $.get(url).done(function (data) {
-                            var row =eval('('+data+')');
-                            // 填入数据
-                            console.log(row);
-                            $(".cjje").text(row.num);
-                            $(".dfkje").text(row.daizhifu);
-                            $(".ddzs").text(row.number);
-                        });
-                    });
-                    $("#search").triggerHandler("click");
-                })
+            <script type="text/javascript"> 
             //日期时间范围
             laydate.render({
                 elem: '#test10'
                 , type: 'datetime'
                 , range: true
                 , theme: "#3CACFE"
-            });
-            laydate.render({
-                elem: '#test1'
-                , type: 'datetime'
-                , range: true
-                , theme: "#3CACFE"
-            });
-            function atime(){
+            });  
+           function atime(){
                var aval=$('#test10').val();
                if(aval){ 
             	   $(".but1").css({"background":"#fff","color":"#99cafe"});
