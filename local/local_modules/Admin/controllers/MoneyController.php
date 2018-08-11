@@ -242,8 +242,8 @@ class MoneyController extends PublicsController
         //开始时间
         $start=strtotime($startime);
         $end=strtotime($endtime);
-
         $data=[];
+
         //成交量 成交金额
         $num = Yii::$app->db->createCommand("SELECT count(*) as number,sum(grand_total) as num FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status !=0 AND order_status !=6 AND shop_id={$shop_id}")->queryOne();
         $sumorder = Yii::$app->db->createCommand("SELECT count(*) as sumordernum,sum(grand_total) as sumorder FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status =0 AND shop_id={$shop_id}")->queryOne();
@@ -281,7 +281,9 @@ class MoneyController extends PublicsController
                 $data['daizhifu']=$daizhifu ['daizhifu'];
             }
         }
+
         return json_encode($data);
+        exit;
     }
     /*
      * 返回最近七天的时间和成交额
