@@ -139,7 +139,7 @@ margin-top:16px;"
                     <button style="float: left;border:0;margin-top:20px;" onclick='atime()'>确定</button>
                 </div>
             </div>
-            <div id="mychart">
+            <div id="mychart" style="width: 950px; height: 400px; float: left; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;">
 
             </div>
             <script type="text/javascript">

@@ -126,7 +126,7 @@
 
                         }else{
                             var t1 = timeForMat(7)["t2"];
-                            var t2 = timeForMat(7)["t1"];
+                            var t2 = timeForMat(7)["t1"].slice(0,timeForMat(7)["t1"].length-3)+timeForMat(7)["t1"].slice(timeForMat(7)["t1"].length-2,timeForMat(7)["t1"].length);
                             var url="<?= Yii::$service->url->getUrl('admin/money/searchhours') ?>?type=3&sta="+t1+"&end="+t2;
                         }
                         $.get(url).done(function (data) {
