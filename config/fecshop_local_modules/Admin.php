@@ -9,5 +9,6 @@
 return [
     'admin' => [
         'class' => '\appfront\local\local_modules\Admin\Module',
+        'defaultRoute' => 'index',
     ],
 ];

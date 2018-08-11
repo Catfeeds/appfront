@@ -54,7 +54,9 @@
     #loginin{
         width: 100%;
         height: 100%;
-        position: relative;
+        position: fixed;
+        top:0;
+        left:0;
         background: url("/public/background.png") no-repeat top center/100% 100%;
         overflow: hidden;
     }
@@ -151,31 +153,35 @@
         <div class="login-box">
             <div class="login-logo">
                 <img src="/public/login.png" alt="">
-                <span>晋彤商家管理系统</span>
+                <span>晋彤管理系统</span>
             </div>
             <div class="login-l">
                 <ul>
                     <li>
                         <img src="/public/account.png" alt="">
-                        <span>手&nbsp;&nbsp;机&nbsp;号</span>
-                        <input type="text" name="firstname" id="mobile">
+<!--                        <span>手&nbsp;&nbsp;机&nbsp;号</span>-->
+                        <input type="text" name="firstname" id="mobile" placeholder="手 机 号" style="width: 100%;padding-left: 40px;
+box-sizing: border-box;border-radius: 16px;">
                     </li>
                     <li>
                         <img src="/public/account.png" alt="">
-                        <span>验&nbsp;&nbsp;证&nbsp;码</span>
-                        <input type="text" name="code" style="" id="code">
+<!--                        <span>验&nbsp;&nbsp;证&nbsp;码</span>-->
+                        <input type="text" name="code" id="code" placeholder="验 证 码" style="width: 100%;padding-left: 40px;
+box-sizing: border-box;border-radius: 16px;">
                         <button style="position: absolute;height: 100%;width: 80px;background: #36de76;border: none;border-radius: 20px;font-size: 12px;color: #fff;top: 0;right: 0;cursor: pointer;outline:none" onclick="getcode()">获取验证码</button>
                     </li>
 
                     <li>
                         <img src="/public/pwd.png" alt="">
-                        <span>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</span>
-                        <input type="password" name="password_hash" id="password_hash">
+<!--                        <span>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</span>-->
+                        <input type="password" name="password_hash" id="password_hash" placeholder="密      码" style="width: 100%;padding-left: 40px;
+box-sizing: border-box;border-radius: 16px;">
                     </li>
                     <li>
                         <img src="/public/pwd.png" alt="">
-                        <span>确认密码</span>
-                        <input type="password" name="repassword" id="repassword">
+<!--                        <span>确认密码</span>-->
+                        <input type="password" name="repassword" id="repassword" placeholder="确认密码" style="width: 100%;padding-left: 40px;
+box-sizing: border-box;border-radius: 16px;">
                     </li>
                 </ul>
                 <div class="forget">
@@ -184,7 +190,7 @@
                         <a href="<?= Yii::$service->url->getUrl('shop/login/index') ?>">登录</a>
                     </div>
                 </div>
-                <div style="display:flex;justify-content:center;width: 100%;height: 34px;cursor: pointer;margin-top:50px;text-align:center">
+                <div style="display:flex;justify-content:center;width: 100%;height: 34px;margin-top:30px;text-align:center">
                     <button style="cursor: pointer;margin-top: 10px;width: 230px;letter-spacing: 10px" class="submit" onclick="submit()">注册</button>
                 </div>
 
@@ -202,7 +208,7 @@
             return false;
         }else{
             $.get("<?= Yii::$service->url->getUrl('shop/login/fasong') ?>",{'mobile':phone},function(data){
-                var data = JSON.parse(data)
+                var data = JSON.parse(data);
                 if(data.err!=1){
                     alert(data.info)
                 }else{
@@ -241,41 +247,7 @@
             if(data.err!=1){
                 alert(data.info)
             }else{
-                alert(data.info)
-                // XMPP服务器BOSH地址
-                var BOSH_SERVICE = 'http://desktop-lj9fvnc:7070/http-bind/';
 
-                // XMPP连接
-                var connection = null;
-
-                connection = new Strophe.Connection(BOSH_SERVICE);
-
-                var callback = function (status) {
-                    if (status === Strophe.Status.REGISTER) {
-
-                        connection.register.fields.username = phone;
-                        connection.register.fields.password = password_hash;
-
-                        connection.register.submit();
-                    }
-                    else if (status === Strophe.Status.REGISTERED) {
-                        window.location.href = "<?= Yii::$service->url->getUrl('shop/login/index') ?>";
-                        console.log("registered!");
-                        // calling login will authenticate the registered JID.
-                        connection.register.authenticate();
-                    } else if (status === Strophe.Status.CONFLICT) {
-                        console.log("Contact already existed!");
-                    } else if (status === Strophe.Status.NOTACCEPTABLE) {
-                        console.log("Registration form not properly filled out.")
-                    } else if (status === Strophe.Status.REGIFAIL) {
-                        console.log("The Server does not support In-Band Registration")
-                    } else if (status === Strophe.Status.CONNECTED) {
-                        console.log('logged in')
-                    } else {
-                        console.log("every other status a connection.connect would receive");
-                    }
-                };
-                connection.register.connect("192.168.1.77/bosh/", callback, 60, 1);
             }
         })
     }

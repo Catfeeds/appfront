@@ -30,12 +30,13 @@ $cssOptions = [
     <!doctype html>
     <html lang="en">
     <head>
+        <title>晋彤商家入驻系统</title>
+
         <?= Yii::$service->page->widget->render('head',$this); ?>
         <?= Yii::$service->page->widget->render('beforeContent',$this); ?>
         <?php $this->beginBody() ?>
         <?php $this->endBody() ?>
         <meta charset="UTF-8">
-        <title>Document</title>
     </head>
     <body>
         <?= $content ?>
@@ -1845,7 +1846,7 @@ $cssOptions = [
     .settle-content{
         width: 100%;
         height: 540px;
-        background: url("/public/adminimg/settle.png") no-repeat center center/100% 100%;
+        background:#EAEFF5 url("/public/adminimg/settle.png") no-repeat center center/auto 100% ;
         position:relative;
     }
     .content2{

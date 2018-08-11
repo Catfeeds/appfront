@@ -121,6 +121,7 @@
                             <div class="el-form-item__content" style="margin-left: 80px;">
                                 <div class="el-input">
                                     <input type="text" name="shop_name" autocomplete="off" class="el-input__inner"
+                                           placeholder="请输入店铺名称"
                                            value="<?php echo $shopinfo['post']['shop_name'] ?>" required  />
                                 </div>
                             </div>
@@ -130,9 +131,9 @@
                             <div class="el-form-item__content" style="margin-left: 80px;">
                                 <div style="width: 500px; height: 250px;
                                 <?php if ($shopinfo['img'][0]) { ?>
-                                        background:url(http://img.uekuek.com/media/catalog/product/<?php echo $shopinfo['img'][0];?>) no-repeat;
+                                        background:url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $shopinfo['img'][0];?>) no-repeat;
                                 <?php } else if ($shopinfo['imgs']['img0']) { ?>
-                                        background: url(http://img.uekuek.com/media/catalog/product/<?php echo $shopinfo['imgs']['img0'];?>) no-repeat;
+                                        background: url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $shopinfo['imgs']['img0'];?>) no-repeat;
                                 <?php } else { ?>
                                         background: rgb(243, 250, 255);
                                 <?php } ?>
@@ -152,9 +153,9 @@
                             <div class="el-form-item__content" style="margin-left: 80px;">
                                 <div style="width: 500px; height: 250px;
                                 <?php if ($shopinfo['img'][1]) { ?>
-                                        background:url(http://img.uekuek.com/media/catalog/product/<?php echo $shopinfo['img'][1];?>) no-repeat;
+                                        background:url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $shopinfo['img'][1];?>) no-repeat;
                                 <?php } else if ($shopinfo['imgs']['img1']) { ?>
-                                        background: url(http://img.uekuek.com/media/catalog/product/<?php echo $shopinfo['imgs']['img1'];?>) no-repeat;
+                                        background: url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $shopinfo['imgs']['img1'];?>) no-repeat;
                                 <?php } else { ?>
                                         background: rgb(243, 250, 255);
                                 <?php } ?>
@@ -174,9 +175,9 @@
                             <div class="el-form-item__content" style="margin-left: 80px;">
                                 <div style="width: 500px; height: 250px;
                                 <?php if ($shopinfo['img'][2]) { ?>
-                                        background:url(http://img.uekuek.com/media/catalog/product/<?php echo $shopinfo['img'][2];?>) no-repeat;
+                                        background:url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $shopinfo['img'][2];?>) no-repeat;
                                 <?php } else if ($shopinfo['imgs']['img2']) { ?>
-                                        background: url(http://img.uekuek.com/media/catalog/product/<?php echo $shopinfo['imgs']['img2'];?>) no-repeat;
+                                        background: url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $shopinfo['imgs']['img2'];?>) no-repeat;
                                 <?php } else { ?>
                                         background: rgb(243, 250, 255);
                                 <?php } ?>
@@ -223,6 +224,7 @@
                             <div class="el-form-item__content" style="margin-left: 80px;">
                                 <div class="el-input">
                                     <input type="text" name="shop_region" autocomplete="off" class="el-input__inner"
+                                           placeholder="请输入店铺默认配送区域"
                                            value="<?php echo $shopinfo['post']['shop_region'] ?>" required />
                                 </div>
                             </div>
@@ -232,6 +234,7 @@
                             <div class="el-form-item__content" style="margin-left: 80px;">
                                 <div class="el-input">
                                     <input type="text" name="shop_qrcode" autocomplete="off" class="el-input__inner"
+                                           placeholder="请输入店铺公众号"
                                            value="<?php echo $shopinfo['post']['shop_qrcode'] ?>"  required />
                                 </div>
                             </div>
@@ -241,6 +244,7 @@
                             <div class="el-form-item__content" style="margin-left: 80px;">
                                 <div class="el-input">
                                     <input type="text" name="shop_address" autocomplete="off" class="el-input__inner"
+                                           placeholder="请输入详细地址"
                                            value="<?php echo $shopinfo['post']['shop_address'] ?>" required />
                                 </div>
                             </div>
@@ -250,24 +254,27 @@
                             <div class="el-form-item__content" style="margin-left: 80px;">
                                 <div class="el-input">
                                     <input type="text" name="shop_zip" autocomplete="off" class="el-input__inner"
+                                           placeholder="请输入邮政编码"
                                            value="<?php echo $shopinfo['post']['shop_zip'] ?>" required />
                                 </div>
                             </div>
                         </div>
-                        <div class="el-form-item">
+                        <!--<div class="el-form-item">
                             <label class="el-form-item__label" style="width: 80px;">店铺关闭原因</label>
                             <div class="el-form-item__content" style="margin-left: 80px;">
                                 <div class="el-input">
                                     <input type="text" name="shop_close_info" autocomplete="off" class="el-input__inner"
-                                           value="<?php echo $shopinfo['post']['shop_close_info'] ?>"  required />
+                                           placeholder="请输入店铺关闭原因"
+                                           value="<?php /*echo $shopinfo['post']['shop_close_info'] */?>"  required />
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                         <div class="el-form-item">
                             <label class="el-form-item__label" style="width: 80px;">店铺seo关键字</label>
                             <div class="el-form-item__content" style="margin-left: 80px;">
                                 <div class="el-input">
                                     <input type="text" name="shop_keywords" autocomplete="off" class="el-input__inner"
+                                           placeholder="请输入店铺seo关键字"
                                            value="<?php echo $shopinfo['post']['shop_keywords'] ?>"  required/>
                                 </div>
                             </div>
@@ -277,6 +284,7 @@
                             <div class="el-form-item__content" style="margin-left: 80px;">
                                 <div class="el-input">
                                     <input type="text" name="shop_description" autocomplete="off"
+                                           placeholder="请输入店铺seo描述"
                                            class="el-input__inner"
                                            value="<?php echo $shopinfo['post']['shop_description'] ?>" required />
                                 </div>
@@ -287,6 +295,7 @@
                             <div class="el-form-item__content" style="margin-left: 80px;">
                                 <div class="el-input">
                                     <input type="text" name="shop_phone" autocomplete="off" class="el-input__inner"
+                                           placeholder="请输入商家电话"
                                            value="<?php echo $shopinfo['post']['shop_phone'] ?>" required />
                                 </div>
                             </div>
@@ -386,7 +395,7 @@
             //监听文件读取结束后事件
             reader.onloadend = function (e) {
                 $(obj).parent("div").css({
-                    "background": "url(" + e.target.result + ") no-repeat center center/100% 100%",
+                    "background": "url(" + e.target.result + ") no-repeat center center /  auto 100%",
                 });
                 $(obj).next().hide();
             };
@@ -397,7 +406,7 @@
 
 <script>
     function shopload(url) {
-        // $("#el-form").attr("action", url);
+
         $("#el-form").submit(function (e) {
             e.preventDefault();
             let formdata = $('form').serializeArray();

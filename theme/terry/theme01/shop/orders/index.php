@@ -50,6 +50,7 @@ use yii\helpers\Url;
         width: 40px;
         height: 40px;
         background: url("/public/img/sousuo.png") no-repeat center center/100% auto;
+        cursor: pointer;
     }
 
     .content .item {
@@ -62,7 +63,7 @@ use yii\helpers\Url;
         height: 56px;
         background: url("/public/img/sousuo.png") no-repeat center center/100% auto;
         border-radius: 3px;
-        /*display: inline-block;*/
+
     }
 
     .item .contents {
@@ -360,9 +361,10 @@ use yii\helpers\Url;
                                                                         <button data-v-6045fa9c="" type="button"
                                                                                 class="el-button el-button--text el-button--small">
                                                                             <a href="<?= Yii::$service->url->getUrl('shop/orders/see?order_id=' . $v['order_id']) ?>"
-                                                                               style="color: #41b2fc;">查看</a></button>
-                                                                    </a> <span data-v-6045fa9c=""
-                                                                               style="color: rgb(234, 235, 236);">|</span>
+                                                                               style="color: #41b2fc;">查看</a>
+                                                                        </button>
+                                                                    </a>
+                                                                    <span data-v-6045fa9c="" style="color: rgb(234, 235, 236);">|</span>
                                                                     <button data-v-6045fa9c="" type="button"
                                                                             class="el-button el-button--text el-button--small">
                                                                         <span><i data-v-6045fa9c="" class="el-icon-delete"></i></span>

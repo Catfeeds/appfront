@@ -22,7 +22,7 @@
                 <div class="title">
                     <span style="font-size: 14px; color: rgb(206, 203, 203);">您当前选择的商品类别是：</span>
                     <div aria-label="Breadcrumb" role="navigation" class="el-breadcrumb" style="display: inline-block;">
-                        <span class="el-breadcrumb__item"><span role="link" class="el-breadcrumb__inner" id="one1">洗衣</span><span role="presentation" class="el-breadcrumb__separator">/</span></span>
+                        <span class="el-breadcrumb__item"><span role="link" class="el-breadcrumb__inner" id="one1"><?=$category[0][name][name_zh]?></span><span role="presentation" class="el-breadcrumb__separator">/</span></span>
                         <span class="el-breadcrumb__item" aria-current="page"><span role="link" class="el-breadcrumb__inner" id="two1"></span><span role="presentation" class="el-breadcrumb__separator">/</span></span>
                     </div>
                 </div>
@@ -82,26 +82,35 @@
 
 
         $.get("<?= Yii::$service->url->getUrl('shop/goods/ajaxclass') ?>" + "?id=" + id, function (data) {
-
-            $("#one").val(id);
+             $("#one").val(id);
             $("#one1").html(ids);
+
+            data=eval("("+data+")");
+            // str+=`<div class="tt">
+            //         <label onclick="clickMenu(this)"  id="${data[item]._id.$oid}" role="radio" aria-checked="true" tabindex="0" class="el-radio danxuan is-checked">
+            //             <span class="el-radio__input">
+            //                 <span class="el-radio__inner"></span>
+            //                 <input type="radio" aria-hidden="true" tabindex="-1" class="el-radio__original" value="1" />
+            //             </span>
+            //             <span class="el-radio__label">${data[item].name.name_zh}</span>
+            //         </label>
+            //     </div>`;
             for (item in data) {
 
-            	str+=`<div class="tt">
-            	    <label onclick="clickMenu(this)"  id="${data[item]._id.$oid}" role="radio" aria-checked="true" tabindex="0" class="el-radio danxuan is-checked">
-            	        <span class="el-radio__input">
-            	        	<span class="el-radio__inner"></span>
-            	        	<input type="radio" aria-hidden="true" tabindex="-1" class="el-radio__original" value="1" />
-            	        </span>
-            	        <span class="el-radio__label">${data[item].name.name_zh}</span>
-            	    </label>
-            	</div>`;
+                str+=`<div class="tt">
+                    <label onclick="clickMenu(this)"  id="${data[item]._id.$oid}" role="radio" aria-checked="true" tabindex="0" class="el-radio danxuan is-checked">
+                        <span class="el-radio__input">
+                            <span class="el-radio__inner"></span>
+                            <input type="radio" aria-hidden="true" tabindex="-1" class="el-radio__original" value="1" />
+                        </span>
+                        <span class="el-radio__label">${data[item].name.name_zh}</span>
+                    </label>
+                </div>`;
 
             }
+            $(".shuaixuan_bottom").eq(1).html(str);
 
-             $(".shuaixuan_bottom").eq(1).html(str);
-
-        }, 'json');
+        });
     }
 
     $(".shuaixuan_bottom").eq(0).find("label").eq(0).click();

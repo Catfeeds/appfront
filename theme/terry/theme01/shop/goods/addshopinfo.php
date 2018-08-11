@@ -195,7 +195,7 @@
                                 //监听文件读取结束后事件
                                 reader.onloadend = function (e) {
 
-                                    $(".qweasd1").append($("<input type='file' name='asd[]' onchange='uploads1(this)' class='img el-upload__input'>"));
+                                    $(".qweasd1").append($("<input type='file' name='asd[]' onchange='uploads1(this)' class='img2 el-upload__input'>"));
                                     $("<div>").css({
                                         "display":"inline-block",
                                         "width": "218px",

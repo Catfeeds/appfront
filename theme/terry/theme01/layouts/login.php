@@ -4,9 +4,7 @@ $jsOptions = [ # js的配置部分
         # js options ，来定义位置，条件等
         # 在当前options下的js文件
         'js' => [
-          'js/jquery-3.3.1.min.js',
-          'js/strophe.js',
-          'js/strophe.register.js'
+          'js/jquery-3.3.1.min.js'
         ],
     ]
 ];
@@ -29,7 +27,7 @@ $cssOptions = [
   <!doctype html>
   <html lang="en">
   <head>
-    <title>晋彤后台管理系统-登录页面</title>
+    <title>晋彤管理系统-登录页面</title>
       <?php $this->beginBody() ?>
       <?php $this->endBody() ?>
     <meta charset="UTF-8">
@@ -39,4 +37,5 @@ $cssOptions = [
     <?= $content ?>
   </body>
   </html>
+
 <?php $this->endPage() ?>

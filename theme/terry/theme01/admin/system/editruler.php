@@ -6,6 +6,21 @@
         box-shadow: 0 0 8px #FD5E4E;
         padding-top: 10px;
     }
+    .close{
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: 1px solid #666;
+        position: absolute;
+        left:96px;
+        top:0px;
+        cursor: pointer;
+        text-align:center;
+        line-height: 16px;
+        font-size: 16px;
+        color: #666;
+    }
+
     .main-content .details{
         width: 600px;
         height:116px;
@@ -30,7 +45,7 @@
         width: 96px;
         height: 96px;
         background: url("/public/img/sptp2.png")no-repeat center center /100% auto;
-    }
+
 
 </style>
 <div class="main-content">
@@ -74,13 +89,13 @@
                         <input type="file" onchange="uploads(this)" name="file[]" style="display:none" class="img">
                     </div>
                     <div class="el-form-item__content" id="abc" style="margin-left: 120px;">
-                        <img src="http://img.uekuek.com/images/<?= $ruler['img']?>" alt="" style="display:inline-block;width: 96px;height: 96px;">
+                        <div alt="" style="display:inline-block;width: 96px;height: 96px;background: url('http://img.chengzhanghao.com:81/images/<?= $ruler['img']?>')no-repeat center center /100% auto"></div>
                         <div class="close" onclick="del(this)">&times;</div>
                         <input accept="jpg;" type="file" onchange="uploads(this)" name="file[]" style="display:none" class="img">
                     </div>
                 </div>
                 <input type="hidden" name="id" value="<?= $ruler['id']?>">
-                <div style="margin-left:80px;">
+                <div style="margin-left:80px;margin-bottom: 50px;">
                     <button  type="submit" class="el-button red el-button--danger is-round">
                         <span>确定</span>
                     </button>

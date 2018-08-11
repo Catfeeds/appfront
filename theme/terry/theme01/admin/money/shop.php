@@ -14,7 +14,7 @@ use yii\helpers\Url;
         <div class="adminmannager-search">
             <form method="get" action="<?= Yii::$service->url->getUrl('admin/money/shop') ?>">
             <span style="margin-left:10px;">商家名称</span>
-            <input type="text" style="width: 150px" name="shop_name" value="<?php echo  $shop_name?>">
+            <input type="text" style="width: 150px" name="shop_name" value="<?php echo  $shop_name?>" placeholder="请输入商家名称">
             <div class="xiala" style="margin-left:20px;">
                 <span class="search-ID">状态</span>
                 <select name="shop_state" id="shop_state">
@@ -29,7 +29,10 @@ use yii\helpers\Url;
                 <input class="search-img" type="submit" value="">
             </div>
             </form>
-            <button class="addadmin" style="width: 100px;">导出表格</button>
+            <a href="<?= Yii::$service->url->getUrl('admin/money/shopexport') ?>">
+                <button class="addadmin" style="width: 100px;">导出表格</button>
+            </a>
+
         </div>
         <!--管理员列表-->
         <div class="admin-table">
@@ -58,7 +61,7 @@ use yii\helpers\Url;
                 	 <td>冻结</td>
                 	<?php }?>
                 	<td>
-                        <a style="color: #41b2fc" href="javascript:0">查看</a>
+                        <a style="color: #41b2fc" href="<?= Yii::$service->url->getUrl('admin/money/wshop', array('id' => $v['shop_id'])) ?>">查看</a>
                         &nbsp;<label>|</label>&nbsp;
                         <?php if($v['shop_state']==0){?>
 	                	<a style="color: #ff5932" href="javascript:open(<?php echo $v['shop_id']?>)">开启</a>
@@ -82,7 +85,7 @@ use yii\helpers\Url;
 						async:false,
 						success:function(msg){
 							if(msg){
-								location.href="<?= Yii::$service->url->getUrl('admin/money/water') ?>";
+								location.href="<?= Yii::$service->url->getUrl('admin/money/shop') ?>";
 							}
 						}
 					})
@@ -97,7 +100,7 @@ use yii\helpers\Url;
 						async:false,
 						success:function(msg){
 							if(msg){
-								location.href="<?= Yii::$service->url->getUrl('admin/money/water') ?>";
+								location.href="<?= Yii::$service->url->getUrl('admin/money/shop') ?>";
 							}
 						}
 					})

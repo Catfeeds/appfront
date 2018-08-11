@@ -420,7 +420,7 @@ use yii\helpers\Url;
                                                     </td>
                                                     <td class="el-table_2_column_9">
                                                         <div class="cell el-tooltip">
-                                                            <div class="picture" style="background:url('http://img.uekuek.com/media/catalog/product/<?= $v['image']['main']['image'] ?>')no-repeat center center /100% auto">
+                                                            <div class="picture" style="background:url('http://img.chengzhanghao.com:81/media/catalog/product/<?= $v['image']['main']['image'] ?>')no-repeat center center /100% auto">
                                                             </div>
                                                             <div class="contents">
                                                                 <div title="<?= $v["sku"] ?>" class="ddd">
@@ -518,9 +518,9 @@ use yii\helpers\Url;
                                             <button type="button" class="el-button green el-button--success is-round">
 
                                                 <span>导出表格</span></button>
-                                            <button type="button" class="el-button blue el-button--primary is-round">
+                                           <!--  <button type="button" class="el-button blue el-button--primary is-round">
 
-                                                <span>导出图片</span></button>
+                                                <span>导出图片</span></button> -->
                                         </div>
                                     </div>
                                     <div style="width: 100%; position: relative;">

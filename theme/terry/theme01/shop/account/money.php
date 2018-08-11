@@ -46,6 +46,7 @@
         width: 40px;
         height: 40px;
         background: url("/public/img/sousuo.png") no-repeat center center/100% auto;
+        cursor: pointer;
     }
 
     .content .item {
@@ -325,9 +326,9 @@
         <button  type="button" class="el-button green el-button--success is-round">
          
          <span>导出</span></button> 
-        <button  type="button" class="el-button blue el-button--primary is-round">
-         
-         <span>打印</span></button>
+<!--        <button  type="button" class="el-button blue el-button--primary is-round">-->
+<!--         -->
+<!--         <span>打印</span></button>-->
        </div> 
        <div  style="float: right; margin-top: 50px;">
         <div  class="el-pagination is-background">

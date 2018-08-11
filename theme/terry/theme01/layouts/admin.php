@@ -7,7 +7,8 @@ $jsOptions = [ # js的配置部分
             'js/jquery-3.3.1.min.js',
             'js/layout-admin.js',
             'js/echarts.min.js',
-            'js/laydate.js'
+            'js/laydate.js',
+            'js/getTime.js'
         ],
     ]
 
@@ -51,16 +52,15 @@ $cssOptions = [
         top: 0;
         left:167px;
         z-index: 999;
-        display: flex;
+        /*display: flex;*/
         background: #eaf6ff;
-        justify-content: space-between;
+        /*justify-content: space-between;*/
     }
 
     .header ul {
         width: 636px;
         height: 100%;
         display: flex;
-        padding-left: 44px;
         float: left;
     }
 
@@ -84,8 +84,15 @@ $cssOptions = [
     .header .header-right {
         height: 100%;
         display: flex;
+      /*  position: absolute;
+        top:0;
+        right:0;*/
     }
+    .shijianchuo{
+        float: left;line-height: 48px; position: relative;
+        margin-top:16px;
 
+    }
     .header .header-right .adminname {
         width: 120px;
         height: 100%;
@@ -224,6 +231,7 @@ $cssOptions = [
         margin:0 auto;
         padding: 27px 0 0 0;
         box-sizing: border-box;
+        margin-bottom: 50px;
     }
 
     .adminmannager-title span {
@@ -257,7 +265,7 @@ $cssOptions = [
     }
 
     .adminmannager-search .search-ID {
-        margin-left: 50px;
+        margin-left: 10px;
     }
 
     /*搜索框*/
@@ -320,7 +328,7 @@ $cssOptions = [
     .adminmannager-search .indexsearch{
         width:  40px;
         height: 40px;
-        margin-left: 40px;
+        margin-left: 30px;
         margin-top: 5px;
         border-radius: 50%;
         float: left;
@@ -452,7 +460,7 @@ $cssOptions = [
         border-top: 1px solid #eee;
         box-sizing: border-box;
         min-height: 120px;
-        margin-top:15px;
+        /*margin-top:15px;*/
     }
 
     .pagination {
@@ -857,9 +865,9 @@ $cssOptions = [
     }
 
     .platdata-headerright ul {
-        /* width: 318px;*/
         height: 100%;
         float: left;
+        cursor: pointer;
     }
 
     .platdata-headerright ul li {
@@ -873,9 +881,9 @@ $cssOptions = [
         cursor: pointer;
     }
 
-    .platdata-headerright ul li:hover {
+    /*.platdata-headerright ul li:hover {
         border-bottom: 4px solid #30a2fe;
-    }
+    }*/
 
     #mychart {
         width: 700px;
@@ -1091,9 +1099,9 @@ $cssOptions = [
         line-height: 38px;
         margin-right:38px;
     }
-    .system-header ul li:hover{
+    /*.system-header ul li:hover{
         border-bottom: 2px solid #30a2fe;
-    }
+    }*/
     .system-header ul li a{
         color:#30a2fe;
         display: block;
@@ -1231,7 +1239,7 @@ $cssOptions = [
         position: relative;
     }
     .money-box1{
-        background: url("/public/adminimg/dui.png") no-repeat center center;
+          background: url("/public/adminimg/dui.png") no-repeat center center;
     }
     .paihang{
         width: 100%;
@@ -1239,7 +1247,7 @@ $cssOptions = [
     }
     .paihang table{
         width: 100%;
-        height: 100%;
+        /*height: 100%;*/
     }
     .paihang table tr th{
         height: 50px;
@@ -2212,7 +2220,7 @@ $cssOptions = [
         display: none;
     }
     #platdata .ptongji li{
-        box-shadow: 2px 2px 5px #333333;
+        box-shadow: 2px 2px 5px rgba(51,51,51,0.3);
     }
     .ptongji .tongji-number div:first-child span{
         color:#30a3fe;
@@ -2387,6 +2395,7 @@ $cssOptions = [
     .header ul li a{
         width: 100%;
         height: 100%;
+        display: block;
     }
     .header ul li.active a {
         color: #fff;
@@ -2453,27 +2462,40 @@ $cssOptions = [
         font-size: 14px;
     }
     .admin-table table tr:hover{
-        background: rgba(238,238,238,0.2);
+        background: rgba(0, 0, 0, 0.02);
     }
     .system-content table tr:hover{
-        background: rgba(238,238,238,0.2);
+        background: rgba(0, 0, 0, 0.02);
     }
+    .ShopMannager-table table tr:hover{
+        background: rgba(0, 0, 0, 0.02);
+    }
+    .wait-list table tr:hover{
+        background: rgba(0, 0, 0, 0.02);
+    }
+
+    .table-list1{
+        margin-top:40px;
+    }
+    .table-list1 tr th{font-size: 14px;}
     .admin-tablelist1{
         padding:0;
     }
     .awreview{
         width: 400px;
-        height: 100%;
-        background: #fff;
-        border: 1px solid #797979;
-        text-align:center;
-        border-radius: 19px;
+        height: 30px;
+        /*border: 1px solid #797979;*/
+        /*text-align:center;*/
+        border-radius: 15px;
+        background: #f3faff;
+        border: 2px solid #e5eff8;
         cursor:pointer;
+        padding:0 10px;
     }
-    .awreview:hover{
+    /*.awreview:hover{
         border: 1px solid #41b2fc;
         background: rgba(65,178,252,0.2);
-    }
+    }*/
     .shop_btn{
         border:none;
         width: 40px;
@@ -2594,6 +2616,7 @@ $cssOptions = [
     .apagination{font-size: 12px; position: absolute; bottom: 0; right: 0; display: flex; justify-content: space-between;}
     .paginationbox{width: 100%; position: relative;height: 50px;}
     button{outline: none!important;}
+    .jianju{margin:0 5px;}
 </style>
 <?php $this->beginPage() ?>
     <!doctype html>
@@ -2610,6 +2633,7 @@ $cssOptions = [
     <div class="">
         <div class="aside"></div>
         <div class="header">
+            <div style="width:1012px;margin:0 auto;    display: flex;">
             <ul>
                 <li id="index">
                     <a href="/admin/index/aindex">
@@ -2658,6 +2682,7 @@ $cssOptions = [
                     </a>
                 </div>
             </div>
+            </div>
         </div>
         <?php $this->endBody() ?>
         <div class="right">
@@ -2678,14 +2703,17 @@ $cssOptions = [
 
             let asd=document.querySelectorAll(".aside-list li");
 
-            let str1=url[5];
-            let arr1=str1.split("?");
+            // let str1=url[5];
+            // let arr1=str1.split("?");
+
+            let arr1="<?php echo $_SESSION['pagess'];?>";
 
 
             for (let i=0; i <asd.length ;i++) {
                 let url12=asd[i].getAttribute('href1');
 
-                let n = url12.search('/'+arr1[0]);
+                // let n = url12.search('/'+arr1[0]);
+                let n = url12.search('/'+arr1);
 
                 if (n>=1) {
                     asd[i].className='active';

@@ -133,6 +133,7 @@ class GoodsController extends PublicsController
         $data['tot1']=$tot1;
         $data['pages']=ceil($tot/10);
         $data['class']=$class;
+        $_SESSION['pagess']="index";
         return $this->render($this->action->id,$data);
     }
 
@@ -151,6 +152,8 @@ class GoodsController extends PublicsController
                         ->from('category')
                         ->where(['level'=>1,"parent_id"=>"0","type"=>"1"])
                         ->all();
+
+        $_SESSION['pagess']="index";
 
         // 加载页面
         return $this->render($this->action->id,$data);
@@ -179,7 +182,7 @@ class GoodsController extends PublicsController
         $customer = Yii::$app->mongodb->getCollection('category')->findOne(['_id'=>$two]);
         $data['two']=$customer['name']['name_zh'];
         $data['twoId']=$two;
-
+        $_SESSION['pagess']="index";
         return $this->render($this->action->id,$data);
 
     }
@@ -198,7 +201,7 @@ class GoodsController extends PublicsController
 
         $data=$query
             ->from('category')
-            ->where(['level'=>2,'parent_id'=>"$id"])
+            ->where(['level'=>2,'parent_id'=>$id])
             ->all();
 
 
@@ -768,6 +771,7 @@ class GoodsController extends PublicsController
         $data['category']=$this->actionGetclass();
 
         // 加载页面
+        $_SESSION['pagess']="index";
         return $this->render($this->action->id,$data);
         
     }
@@ -795,7 +799,7 @@ class GoodsController extends PublicsController
     public function actionCommentlist(){
 
         // 读取数据
-
+        $_SESSION['pagess']="commentlist";
         $request = Yii::$app->request;
         $class = $request->get('class');
         $name = $request->get('name');

@@ -3,23 +3,29 @@ use yii\widgets\LinkPager;
 use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
-
+<style>
+    .ShopMannager table tr:hover{
+        background: rgba(0, 0, 0, 0.02);
+    }
+</style>
 <div class="main-content">
     <div class="ShopMannager">
-        <div class="ShopMannager-title">
-            <span>待审核列表</span>
+      
+        <div class="adminmannager-title">
+            <span>审核管理</span>&nbsp;
+            <span>·&nbsp;待审核列表</span>
         </div>
         <div class="ShopMannager-search">
         <form id="el-form" class="el-form" method="post"  action="<?= Yii::$service->url->getUrl('admin/review/index') ?>">
      	    <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>" />
             <div class="search" style="margin-left:0;">
                 <span>名称</span>
-                <input type="text" name="shop_name" value="<?php echo $shop_name;?>">
+                <input type="text" name="shop_name" value="<?php echo $shop_name;?>" placeholder="请输入名称">
             </div>
             <div class="xiala" style="margin-left:20px;">
                 <span class="search-ID">类型</span>
                 <select name="shop_type" id="shop_type">
-                    <option value="0">请选择类型</option>
+                    <option value="" selected>请选择类型</option>
                     <option value="1">水司</option>
                     <option value="2">商家</option>
                 </select>

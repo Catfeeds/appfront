@@ -184,8 +184,7 @@ use yii\helpers\Url;
         height: 114px;
         border-radius: 5px;
         box-shadow: 0 0 15px 2px #eee;
-        padding-left: 17px;
-        padding-top: 10px;
+        padding: 10px 10px 10px 15px;
         box-sizing: border-box;
         margin-bottom: 10px;
     }
@@ -209,6 +208,9 @@ use yii\helpers\Url;
         font-size: 10px;
         line-height: 36px;
         color: #bdc4c9;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow:ellipsis;
     }
 
     .item_box .jiantou1 {
@@ -224,14 +226,16 @@ use yii\helpers\Url;
         display: inline-block;
         width: 14px;
         height: 14px;
+
         background: url("/public/img/jiantou2.png") no-repeat center center/100% auto;
     }
 
     .item_box .jiantou3 {
-        margin-left: 10px;
+        margin-left: 5px;
         display: inline-block;
         width: 14px;
         height: 14px;
+
         background: url("/public/img/jiantou3.png") no-repeat center center/100% auto;
     }
 
@@ -407,7 +411,7 @@ use yii\helpers\Url;
         <div style="width: 1012px; margin: 0px auto;">
             <div class="main-content1">
                 <div class="dianpu"
-                     style="background: url('http://img.uekuek.com/images/<?= $shop[shop_logo] ?>')no-repeat center center /100% auto;"></div>
+                     style="background: url('http://img.chengzhanghao.com:81/images/<?= $shop[shop_logo] ?>')no-repeat center center /100% auto;"></div>
                 <div class="content1-center">
                     <div class="col-box"></div>
                     <div class="name">
@@ -467,7 +471,7 @@ use yii\helpers\Url;
                             <div class="item_box2">
                                 <?= number_format($turnover, 2) ?>
                             </div>
-                            <div class="item_box3">
+                            <div class="item_box3" title="本月增长<?= number_format($turnover, 2) ?>">
                                 昨日成交额 <?= number_format($turnover1, 2) ?>
                                 <?php
 
@@ -495,7 +499,7 @@ use yii\helpers\Url;
                             <div class="item_box2">
                                 <?= $volume ?>
                             </div>
-                            <div class="item_box3">
+                            <div class="item_box3" title="本月增长<?= number_format($volume, 2) ?>">
                                 昨日成交额 <?= $volume1 ?>
 
                                 <?php
@@ -524,7 +528,7 @@ use yii\helpers\Url;
                             <div class="item_box2">
                                 <?= $single ?>
                             </div>
-                            <div class="item_box3">
+                            <div class="item_box3" title="本月增长<?= number_format($single, 2) ?>">
                                 昨日下单量 <?= $single1 ?>
                                 <?php
                                 if ($single1 != 0) {
@@ -551,7 +555,7 @@ use yii\helpers\Url;
                             <div class="item_box2">
                                 <?= $return ?>
                             </div>
-                            <div class="item_box3">
+                            <div class="item_box3" title="本月增长<?=number_format($single, 2)?>">
                                 昨日退货量 <?= $return1 ?>
                                 <?php
                                 if ($return1 != 0) {
@@ -578,7 +582,7 @@ use yii\helpers\Url;
                             <div class="item_box2">
                                 <?= $clicks ?>
                             </div>
-                            <div class="item_box3">
+                            <div class="item_box3" title="本月增长<?=number_format($clicks, 2) ?>">
                                 昨日点击量 <?= $clicks1 ?>
                                 <?php
                                 if ($clicks1 != 0) {

@@ -137,6 +137,9 @@
     #loginin{
         width: 100%;
         height: 100vh;
+        position: fixed;
+        left:0;
+        top:0;
     }
     *{
         margin: 0;
@@ -153,33 +156,32 @@
         <div class="login-box">
             <div class="login-logo">
                 <img src="/public/login.png" alt="">
-                <span>晋彤商家管理系统</span>
+                <span id="tttt">晋彤管理系统</span>
             </div>
             <div class="login-l">
                 <ul>
                     <li>
                         <img src="/public/account.png" alt="">
-                        <span>账户</span>
-                        <input type="text" name="firstname">
+<!--                        <span>账户</span>-->
+                        <input type="text" name="firstname" placeholder="账户" style="width: 100%;padding-left: 40px;
+box-sizing: border-box;border-radius: 16px;">
                     </li>
                     <li>
                         <img src="/public/pwd.png" alt="">
-                        <span>密码</span>
-                        <input type="password" name="password_hash">
+<!--                        <span>密码</span>-->
+                        <input type="password" name="password_hash" placeholder="密码" style="width: 100%;padding-left: 40px;
+box-sizing: border-box;border-radius: 16px;">
                     </li>
                 </ul>
-
                 <div class="forget">
                     <div class="forget1">
                         <div></div>
                         <a href="<?= Yii::$service->url->getUrl('shop/login/reg') ?>">注册</a>
                     </div>
-
                 </div>
-                <div style="width: 100%;height: 34px;cursor: pointer;margin-top:38px;">
+                <div style="width: 100%;height: 34px;margin-top:38px;display:flex;justify-content: center">
                     <button style="cursor: pointer" class="submit">登录</button>
-                </div>
-
+                </div
             </div>
         </div>
     </form>

@@ -136,6 +136,7 @@
                                 <div class="el-input">
 
                                     <input type="text" name="shop_company_name" class="el-input__inner"
+                                           placeholder="请输入公司名称"
                                            value="<?php echo $companyinfo['post']['shop_company_name'] ?>" required />
                                 </div>
 
@@ -148,6 +149,7 @@
 
                                     <input type="text" name="business_licence_number" autocomplete="off"
                                            class="el-input__inner"
+                                           placeholder="请输入营业执照号"
                                            value="<?php echo $companyinfo['post']['business_licence_number'] ?>"  required />
                                 </div>
 
@@ -159,9 +161,9 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div class="aaa" style="width: 500px; height: 250px;
                                 <?php if ($companyinfo['img'][0]) { ?>
-                                        background:url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][0];?>) no-repeat center center/100% 100%;
+                                        background:url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['img'][0];?>) no-repeat center center/100% 100%;
                                 <?php } else if ($companyinfo['imgc']['img0']) { ?>
-                                        background: url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['imgc']['img0'];?>) no-repeat center center/100% 100%;
+                                        background: url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['imgc']['img0'];?>) no-repeat center center/100% 100%;
                                 <?php } else { ?>
                                         background: rgb(243, 250, 255);
                                 <?php } ?>
@@ -169,6 +171,7 @@
                                     <input type="hidden" name="img0" class="img0"
                                            value="<?php echo $companyinfo['img'][0]; ?>"  />
                                     <input type="file" multiple="multiple" class="file" name="file[]"
+                                           placeholder="请输入营业执照电子版"
                                            onchange="uploads(this)"   required />
                                     <a href="javascript:0"
                                        style="pointer-events: none; display: block; width: 50px; height: 50px; border-radius: 50%; background: rgb(48, 163, 254); position: absolute; margin: auto 210px; top: 0px; bottom: 0px; font-size: 30px; color: rgb(255, 255, 255); line-height: 50px; text-align: center;">+</a>
@@ -188,7 +191,7 @@
                                         reader.onloadend = function (e) {
                                             $(obj).parent("div").css({
 
-                                                "background": "url(" + e.target.result + ") no-repeat center center/100% 100%",
+                                                "background": "url(" + e.target.result + ") no-repeat center center/ auto 100%",
                                             });
                                             $(obj).next().hide();
                                             // $(obj).prev($('input[type=hidden]')).val(e.target.result);
@@ -204,6 +207,7 @@
                                 <div class="el-input">
 
                                     <input type="text" name="company_registered_capital" autocomplete="off"
+                                           placeholder="请输入注册资金"
                                            class="el-input__inner"
                                            value="<?php echo $companyinfo['post']['company_registered_capital'] ?>"  required/>
                                 </div>
@@ -216,6 +220,7 @@
                                 <div class="el-input">
 
                                     <input type="text" name="contacts_name" autocomplete="off" class="el-input__inner"
+                                           placeholder="请输入联系人姓名"
                                            value="<?php echo $companyinfo['post']['contacts_name'] ?>"  required/>
                                 </div>
 
@@ -227,6 +232,7 @@
                                 <div class="el-input">
 
                                     <input type="text" name="contacts_phone" autocomplete="off" class="el-input__inner"
+                                           placeholder="请输入联系人电话"
                                            value="<?php echo $companyinfo['post']['contacts_phone'] ?>"  required/>
                                 </div>
 
@@ -238,6 +244,7 @@
                                 <div class="el-input">
 
                                     <input type="text" name="contacts_email" autocomplete="off" class="el-input__inner"
+                                           placeholder="请输入联系人邮箱"
                                            value="<?php echo $companyinfo['post']['contacts_email'] ?>"  required />
                                 </div>
 
@@ -251,6 +258,7 @@
                                 <div class="el-input">
 
                                     <input type="text" name="contacts_card_no" autocomplete="off" class="el-input__inner"
+                                           placeholder="请输入申请人身份证号"
                                            value="<?php echo $companyinfo['post']['contacts_card_no'] ?>"  required />
                                 </div>
 
@@ -262,9 +270,9 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div style="width: 270px; height: 160px; float:left;
                                 <?php if ($companyinfo['img'][1]) { ?>
-                                        background:url('http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][1];?>) no-repeat center center/100% 100%;
+                                        background:url('http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['img'][1];?>) no-repeat center center/100% 100%;
                                 <?php } else if ($companyinfo['imgc']['img1']) { ?>
-                                        background: url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['imgc']['img1'];?>) no-repeat center center/100% 100% ;
+                                        background: url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['imgc']['img1'];?>) no-repeat center center/100% 100% ;
                                 <?php } else { ?>
                                         background: rgb(243, 250, 255);
                                 <?php } ?>
@@ -306,9 +314,9 @@
                                 <div>
                                     <div style="width: 270px; height: 160px; float:left;
                                     <?php if ($companyinfo['img'][2]) { ?>
-                                            background:url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][2];?>) no-repeat center center/100% 100%;
+                                            background:url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['img'][2];?>) no-repeat center center/100% 100%;
                                     <?php } else if ($companyinfo['imgc']['img2']) { ?>
-                                            background: url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['imgc']['img2'];?>) no-repeat center center/100% 100%;
+                                            background: url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['imgc']['img2'];?>) no-repeat center center/100% 100%;
                                     <?php } else { ?>
                                             background: rgb(243, 250, 255);
                                     <?php } ?>
@@ -333,9 +341,9 @@
                                     </div>
                                     <div style="width: 270px; height: 160px;float: left;margin-left:50px;
                                     <?php if ($companyinfo['img'][3]) { ?>
-                                            background:url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][3];?>) no-repeat;
+                                            background:url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['img'][3];?>) no-repeat;
                                     <?php } else if ($companyinfo['imgc']['img3']) { ?>
-                                            background: url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['imgc']['img3'];?>) no-repeat;
+                                            background: url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['imgc']['img3'];?>) no-repeat;
                                     <?php } else { ?>
                                             background: rgb(243, 250, 255);
                                     <?php } ?>
@@ -375,6 +383,7 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div class="el-input">
                                     <input type="text" name="bank_account_name" autocomplete="off" class="el-input__inner"
+                                           placeholder="请输入银行开户名"
                                            value="<?php echo $companyinfo['post']['bank_account_name'] ?>"  required />
                                 </div>
                             </div>
@@ -385,6 +394,7 @@
                                 <div class="el-input">
 
                                     <input type="text" name="bank_account_number" autocomplete="off" class="el-input__inner"
+                                           placeholder="请输入公司银行账号"
                                            value="<?php echo $companyinfo['post']['bank_account_number'] ?>"  required />
                                 </div>
                             </div>
@@ -394,6 +404,7 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div class="el-input">
                                     <input type="text" name="bank_name" autocomplete="off" class="el-input__inner"
+                                           placeholder="请输入开户银行支行名称"
                                            value="<?php echo $companyinfo['post']['bank_name'] ?>"  required />
                                 </div>
                             </div>
@@ -403,6 +414,7 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div class="el-input">
                                     <input type="text" name="bank_code" autocomplete="off" class="el-input__inner"
+                                           placeholder="请输入支行联行号"
                                            value="<?php echo $companyinfo['post']['bank_code'] ?>"  required />
                                 </div>
                             </div>
@@ -412,6 +424,7 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div class="el-input">
                                     <input type="text" name="bank_address" autocomplete="off" class="el-input__inner"
+                                           placeholder="请输入开户银行所在地"
                                            value="<?php echo $companyinfo['post']['bank_address'] ?>"  required />
                                 </div>
                             </div>
@@ -421,6 +434,7 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div class="el-input">
                                     <input type="text" name="settlement_bank_account_name" autocomplete="off"
+                                           placeholder="请输入结算银行开户名"
                                            class="el-input__inner"
                                            value="<?php echo $companyinfo['post']['settlement_bank_account_name'] ?>"  required />
                                 </div>
@@ -431,6 +445,7 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div class="el-input">
                                     <input type="text" name="settlement_bank_account_number" autocomplete="off"
+                                           placeholder="请输入结算公司银行账号"
                                            class="el-input__inner"
                                            value="<?php echo $companyinfo['post']['settlement_bank_account_number'] ?>"  required />
                                 </div>
@@ -441,6 +456,7 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div class="el-input">
                                     <input type="text" name="settlement_bank_name" autocomplete="off"
+                                           placeholder="请输入结算开户银行支行名称"
                                            class="el-input__inner"
                                            value="<?php echo $companyinfo['post']['settlement_bank_name'] ?>"  required />
                                 </div>
@@ -451,6 +467,7 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div class="el-input">
                                     <input type="text" name="settlement_bank_code" autocomplete="off"
+                                           placeholder="请输入结算支行联行号"
                                            class="el-input__inner"
                                            value="<?php echo $companyinfo['post']['settlement_bank_code'] ?>"  required />
                                 </div>
@@ -461,6 +478,7 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div class="el-input">
                                     <input type="text" name="settlement_bank_address" autocomplete="off"
+                                           placeholder="请输入结算开户银行所在地"
                                            class="el-input__inner"
                                            value="<?php echo $companyinfo['post']['settlement_bank_address'] ?>"  required />
                                 </div>
@@ -471,6 +489,7 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div class="el-input">
                                     <input type="text" name="tax_registration_certificate" autocomplete="off"
+                                           placeholder="请输入税务登记证号"
                                            class="el-input__inner"
                                            value="<?php echo $companyinfo['post']['tax_registration_certificate'] ?>"  required />
                                 </div>
@@ -481,6 +500,7 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div class="el-input">
                                     <input type="text" name="taxpayer_id" autocomplete="off" class="el-input__inner"
+                                           placeholder="请输入纳税人识别号"
                                            value="<?php echo $companyinfo['post']['taxpayer_id'] ?>"  required />
                                 </div>
                             </div>
@@ -490,6 +510,7 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div class="el-input">
                                     <input type="text" name="company_employee_count" autocomplete="off"
+                                           placeholder="请输入员工总数"
                                            class="el-input__inner"
                                            value="<?php echo $companyinfo['post']['company_employee_count'] ?>" required />
                                 </div>
@@ -500,6 +521,7 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div class="el-input">
                                     <input type="text" name="business_sphere" autocomplete="off" class="el-input__inner"
+                                           placeholder="请输入经营范围"
                                            value="<?php echo $companyinfo['post']['business_sphere'] ?>"  required />
                                 </div>
                             </div>
@@ -509,6 +531,7 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div class="el-input">
                                     <input type="text" name="organization_code" autocomplete="off" class="el-input__inner"
+                                           placeholder="请输入组织机构代码"
                                            value="<?php echo $companyinfo['post']['organization_code'] ?>"  required />
                                 </div>
                             </div>
@@ -526,9 +549,9 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div style="width: 500px; height: 250px;
                                 <?php if ($companyinfo['img'][4]) { ?>
-                                        background:url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][4];?>) no-repeat center center/100% 100%;
+                                        background:url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['img'][4];?>) no-repeat center center/100% 100%;
                                 <?php } else if ($companyinfo['imgc']['img4']) { ?>
-                                        background: url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['imgc']['img4'];?>) no-repeat center center/100% 100%;
+                                        background: url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['imgc']['img4'];?>) no-repeat center center/100% 100%;
                                 <?php } else { ?>
                                         background: rgb(243, 250, 255);
                                 <?php } ?>
@@ -548,9 +571,9 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div style="width: 500px; height: 250px;
                                 <?php if ($companyinfo['img'][5]) { ?>
-                                        background:url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][5];?>) no-repeat center center/100% 100%;
+                                        background:url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['img'][5];?>) no-repeat center center/100% 100%;
                                 <?php } else if ($companyinfo['imgc']['img5']) { ?>
-                                        background: url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['imgc']['img5'];?>) no-repeat center center/100% 100%;
+                                        background: url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['imgc']['img5'];?>) no-repeat center center/100% 100%;
                                 <?php } else { ?>
                                         background: rgb(243, 250, 255);
                                 <?php } ?>
@@ -570,9 +593,9 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div style="width: 500px; height: 250px;
                                 <?php if ($companyinfo['img'][6]) { ?>
-                                        background:url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][6];?>) no-repeat center center/100% 100%;
+                                        background:url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['img'][6];?>) no-repeat center center/100% 100%;
                                 <?php } else if ($companyinfo['imgc']['img6']) { ?>
-                                        background: url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['imgc']['img6'];?>) no-repeat center center/100% 100%;
+                                        background: url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['imgc']['img6'];?>) no-repeat center center/100% 100%;
                                 <?php } else { ?>
                                         background: rgb(243, 250, 255) center center/100% 100%;
                                 <?php } ?>
@@ -592,9 +615,9 @@
                             <div class="el-form-item__content" style="margin-left: 168px !important;">
                                 <div style="width: 500px; height: 250px;
                                 <?php if ($companyinfo['img'][7]) { ?>
-                                        background:url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['img'][7];?>) no-repeat center center/100% 100%;
+                                        background:url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['img'][7];?>) no-repeat center center/100% 100%;
                                 <?php } else if ($companyinfo['imgc']['img7']) { ?>
-                                        background: url(http://img.uekuek.com/media/catalog/product/<?php echo $companyinfo['imgc']['img7'];?>) no-repeat center center/100% 100%;
+                                        background: url(http://img.chengzhanghao.com:81/media/catalog/product/<?php echo $companyinfo['imgc']['img7'];?>) no-repeat center center/100% 100%;
                                 <?php } else { ?>
                                         background: rgb(243, 250, 255);
                                 <?php } ?>
@@ -631,8 +654,18 @@
 </div>
 <script>
     function shopload(url) {
-        $("#el-form").attr("action", url);
-        $("#el-form").submit();
+        $("#el-form").submit(function (e) {
+            e.preventDefault();
+            let formdata = $('form').serializeArray();
+            $.ajax({
+                url: url,
+                type: 'post',
+                data: formdata,
+                success: function (msg) {
+                    location.href = url;
+                }
+            })
+        });
     }
 
     $(".index-change").click(function () {

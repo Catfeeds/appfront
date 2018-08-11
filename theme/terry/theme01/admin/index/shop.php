@@ -9,9 +9,8 @@ use yii\helpers\Url;
     <div class="adminmannager">
         <!--用户管理-管理员管理-->
         <div class="adminmannager-title">
-            <span style="color:#333;">店铺管理</span>&nbsp;
-            <!--跳转水司-->
-           <!-- <span>·&nbsp;<a href="/admin/index/water" style="color: #30d366;">商家</a></span>-->
+            <span>店铺管理</span>&nbsp;
+            <span>·&nbsp;店铺管理</span>
         </div>
         <div class="adminmannager-search">
             <form action="<?= Yii::$service->url->getUrl('/admin/index/shop') ?>" method="get">
@@ -42,8 +41,14 @@ use yii\helpers\Url;
                     </select>
                     <div class="xialaimg1"></div>
                 </div>
-                <span style="margin-left:10px;">管理员名称</span>
-                <input type="text" name="shop_name">
+                <!-- <span style="margin-left:10px;">管理员名称</span> -->
+            <!--     <input type="text" name="shop_name"
+                       <?php if($shop_name){?>
+                           value="<?= $shop_name?>"
+                        <?php } else{?>
+                           placeholder="请输入管理员名称"
+                        <?php }?>
+                      > -->
                 <div class="indexsearch">
                     <input class="search-img" type="submit" value="">
                 </div>
@@ -100,7 +105,7 @@ use yii\helpers\Url;
         <div class="admin-table">
             <div class="admin-tablename">
                     <div class="admin-tablenamebox"></div>
-                    <span class="admin-tablename1"><a href="/vip">会员</a></span><span class="admin-tablename2">列表</span>
+                    <span class="admin-tablename1"><a href="/vip">店铺</a></span> <span class="admin-tablename2"> 列表</span>
              </div>
                 <div class="el-table__body-wrapper is-scrolling-left">
                     <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
@@ -150,6 +155,7 @@ use yii\helpers\Url;
                             <col name="el-table_2_column_5" width="300">
                         </colgroup>
                         <tbody style="font-size: 12px;color:#82898e">
+                        <?php /*var_dump($rows)*/?>
                         <?php foreach ($rows as $v){?>
                             <tr class="el-table__row" style="height:36px;font-size: 14px;">
                                 <td class="el-table_2_column_11  ">
@@ -165,7 +171,9 @@ use yii\helpers\Url;
 
                                 <td class="el-table_2_column_14">
                                     <div class="cell el-tooltip" title="<?= $v["payment_method"] ?>">
-                                        正常
+                                        <?php if ($v["shop_state"]==1){
+                                            echo "正常";
+                                        }else if($v["shop_state"]==0){echo "黑名单";} else if($v["shop_state"]==2){echo "冻结";}?>
                                     </div>
                                 </td>
                                 <td class="el-table_2_column_13">
@@ -174,9 +182,15 @@ use yii\helpers\Url;
                                     </div>
                                 </td>
                                 <td class="el-table_2_column_18">
-                                    <a style="color: #ff5932" href="<?= Yii::$service->url->getUrl('admin/index/sblacklist',array('id'=>$v['shop_id']))?>">移入黑名单</a>
+                                    <a style="color:<?php if($v["shop_state"]!=0){echo "#ff5932";}else{echo "#00FE0B";}?>
+                                     " href="<?= Yii::$service->url->getUrl('admin/index/sblacklist',array('id'=>$v['shop_id']))?>">
+                                        <?php if($v["shop_state"]!=0){echo "移入黑名单";}else{echo "移出黑名单";}?>
+                                    </a>
                                     &nbsp;<label>|</label>&nbsp;
-                                    <a style="color: #41b2fc" href="<?= Yii::$service->url->getUrl('admin/index/sfreeze',array('id'=>$v['shop_id']))?>">冻结账号</a>
+                                    <a style="color: <?php if($v["shop_state"]!=2){echo "#41b2fc";}else{echo "#00FE0B";}?>
+" href="<?= Yii::$service->url->getUrl('admin/index/sfreeze',array('id'=>$v['shop_id']))?>">
+                                        <?php if($v["shop_state"]!=2){echo "冻结账号";}else{echo "解冻账号";}?>
+                                    </a>
                                     &nbsp;<label>|</label>&nbsp;
                                     <a href="<?= Yii::$service->url->getUrl('admin/index/wshop',array('id'=>$v['shop_id']))?>" style="color: #41b2fc;left:200px;">查看</a>
                                     <label>|</label>&nbsp;
@@ -196,20 +210,22 @@ use yii\helpers\Url;
             </div>
 
         <div class="admincount" style="justify-content: flex-end;margin-bottom: 0px;margin-top:30px;font-size: 14px;">
+            <?php if($tot>10){?>
             <div class="admincountall">
                 <span style="color: #3db0ff">·</span>&nbsp;<span>总计</span><span><?=$tot?></span><span>记录</span>
             </div>
             <div class="admintotalpage">
                 <span style="color: #29c99a">·</span>&nbsp;<span>分</span><span
-                        style="color: #29c99a"><?= ceil($tot/3)?></span><span>页</span>
+                        style="color: #29c99a"><?= ceil($tot/10)?></span><span>页</span>
             </div>
             <div class="admintotalpage">
                 <span style="color: #29c99a">·</span>&nbsp;<span>每页</span>
                 <input type="text" style="display: inline-block;width: 40px;height: 20px;border-radius: 10px;
                             border: 1px solid #ebf6ff;background: #f3faff;outline: none;padding:0 5px;
                             box-sizing: border-box;text-align: center;color:#29c99a;line-height: 20px; "
-                       value="2">
+                       value="10" disabled>
             </div>
+            <?php }?>
         </div>
         <div style="width: 100%; position: relative;height: 50px;">
             <div style="font-size: 12px; position: absolute; bottom: 0; right: 0; display: flex; justify-content: space-between;">

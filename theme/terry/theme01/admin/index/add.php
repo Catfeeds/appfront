@@ -2,7 +2,7 @@
     .demo-input {
         padding-left: 10px;
         height: 30px;
-        min-width: 300px;
+        min-width: 420px;
         line-height: 38px;
         border: 1px solid #e6e6e6;
         background-color: #f3faff;
@@ -83,6 +83,13 @@
     .el-form-item__content {
         line-height: normal;
     }
+    .el-input .el-input__inner{
+        width: 400px;
+        height: 30px;
+        background: #f3faff;
+        border: 2px solid #e5eff8;
+    }
+
 </style>
 
 <div data-v-63f72479="" class="main-content">
@@ -110,7 +117,7 @@
                             <label class="el-form-item__label"
                                    style="width: 150px;">*用户名</label>
                             <div class="el-form-item__content" style="margin-left: 150px;">
-                                <div data-v-63f72479="" class="el-input" style="width: 300px;">
+                                <div data-v-63f72479="" class="el-input" style="width: 420px;">
                                     <input type="text" name="username"  class="el-input__inner" id="username">
                                 </div>
                                 <label id="result_name"></label>
@@ -120,7 +127,7 @@
                             <label class="el-form-item__label"
                                    style="width: 150px;">*密码</label>
                             <div class="el-form-item__content" style="margin-left: 150px;">
-                                <div data-v-63f72479="" class="el-input" style="width: 300px;">
+                                <div data-v-63f72479="" class="el-input" style="width: 420px;">
                                     <input type="password" name="password_hash"  class="el-input__inner" id="password">
                                 </div>
                                 <label id="result_pwd"></label>
@@ -130,7 +137,7 @@
                             <label class="el-form-item__label"
                                    style="width: 150px;">*邮箱</label>
                             <div class="el-form-item__content" style="margin-left: 150px;">
-                                <div data-v-63f72479="" class="el-input" style="width: 300px;">
+                                <div data-v-63f72479="" class="el-input" style="width: 420px;">
                                     <input type="email" name="email"  class="el-input__inner">
                                 </div>
                                 <label>(请填写正确的邮箱格式！)</label>
@@ -140,7 +147,7 @@
                             <label class="el-form-item__label"
                                    style="width: 150px;">*姓名</label>
                             <div class="el-form-item__content" style="margin-left: 150px;">
-                                <div data-v-63f72479="" class="el-input" style="width: 300px;">
+                                <div data-v-63f72479="" class="el-input" style="width: 420px;">
                                     <input type="text" name="person"  class="el-input__inner">
                                 </div>
                             </div>
@@ -178,15 +185,17 @@
        // 判断用户名是否合法
        var str2 = check_user_name($("#username").val());
 
-       nameObj.style.color="red";
+      /* nameObj.style.color="red";*/
        if ("该用户名合法" ==  str2)
        {
            flag = true;
            nameObj.innerHTML = str2;
+           nameObj.style.color="skyblue";
        }
        else
        {
            nameObj.innerHTML = str2;
+           nameObj.style.color="red";
        }
    });
     // 检查用户名是否合法
@@ -243,15 +252,16 @@
             // 判断用户名是否合法
             var str2 = check_password($("#password").val());
 
-            nameObj1.style.color="red";
             if ("密码合法" ==  str2)
             {
                 flag = true;
                 nameObj1.innerHTML = str2;
+                nameObj1.style.color="skyblue";
             }
             else
             {
                 nameObj1.innerHTML = str2;
+                nameObj1.style.color="red";
             }
         }
     );

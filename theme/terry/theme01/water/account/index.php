@@ -177,91 +177,96 @@ use yii\helpers\Url;
                                     <col name="el-table_2_column_18" width="80"/>
                                     <col name="el-table_2_column_19" width="82"/>
                                 </colgroup>
+                                <?php if(count($res)>0) { ?>
                                 <tbody style="font-size: 12px;color:#82898e">
-                                <?php foreach ($res as $v) { ?>
-                                    <tr class="el-table__row">
-                                        <td class="el-table_2_column_11  el-table-column--selection">
-                                            <div class="cell el-tooltip">
-                                                <label role="checkbox" class="el-checkbox"><span aria-checked="mixed"
-                                                                                                 class="el-checkbox__input"><span
-                                                                class="el-checkbox__inner"></span><input type="checkbox"
-                                                                                                         aria-hidden="true"
-                                                                                                         class="el-checkbox__original"
-                                                                                                         value=""/></span>
-                                                </label>
-                                            </div>
-                                        </td>
-                                        <td class="el-table_2_column_12  ">
-                                            <div class="cell el-tooltip">
-                                                <?= $v["order_id"] ?>
-                                            </div>
-                                        </td>
-                                        <td class="el-table_2_column_13  ">
-                                            <div class="cell el-tooltip">
-                                                <div class="ddd">
-                                                    订单金额：￥<?= $v['subtotal'] ?>
+                                    <?php foreach ($res as $v) { ?>
+                                        <tr class="el-table__row">
+                                            <td class="el-table_2_column_11  el-table-column--selection">
+                                                <div class="cell el-tooltip">
+                                                    <label role="checkbox" class="el-checkbox"><span aria-checked="mixed"
+                                                                                                     class="el-checkbox__input"><span
+                                                                    class="el-checkbox__inner"></span><input type="checkbox"
+                                                                                                             aria-hidden="true"
+                                                                                                             class="el-checkbox__original"
+                                                                                                             value=""/></span>
+                                                    </label>
                                                 </div>
-                                                <div class="ddd">
-                                                    退单金额：￥<?php if($v["order_status"]==6){ ?>
-                                                        <?= $v["subtotal"] - $v["subtotal_with_discount"] ?>
-                                                    <?php }else{ ?>
-                                                        0
-                                                    <?php } ?>
+                                            </td>
+                                            <td class="el-table_2_column_12  ">
+                                                <div class="cell el-tooltip">
+                                                    <?= $v["order_id"] ?>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td class="el-table_2_column_14  ">
-                                            <div class="cell el-tooltip">
-                                                <div class="ddd">
-                                                    收取比例：<?= (number_format($v["subtotal_with_discount"]/$v["grand_total"],2)*100)."%" ?>
+                                            </td>
+                                            <td class="el-table_2_column_13  ">
+                                                <div class="cell el-tooltip">
+                                                    <div class="ddd">
+                                                        订单金额：￥<?= $v['subtotal'] ?>
+                                                    </div>
+                                                    <div class="ddd">
+                                                        退单金额：￥<?php if($v["order_status"]==6){ ?>
+                                                            <?= $v["subtotal"] - $v["subtotal_with_discount"] ?>
+                                                        <?php }else{ ?>
+                                                            0
+                                                        <?php } ?>
+                                                    </div>
                                                 </div>
-                                                <div class="ddd">
-                                                    折扣比例：￥<?= $v["subtotal_with_discount"] ?>
+                                            </td>
+                                            <td class="el-table_2_column_14  ">
+                                                <div class="cell el-tooltip">
+                                                    <div class="ddd">
+                                                        收取比例：<?= (number_format($v["subtotal_with_discount"]/$v["grand_total"],2)*100)."%" ?>
+                                                    </div>
+                                                    <div class="ddd">
+                                                        折扣比例：￥<?= $v["subtotal_with_discount"] ?>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td class="el-table_2_column_15  ">
-                                            <div class="cell el-tooltip">
-                                                <?= $v["increment_id"] ?>
-                                            </div>
-                                        </td>
-                                        <td class="el-table_2_column_16  ">
-                                            <div class="cell el-tooltip">
-                                                <?= date("Y-m-d H:i:s",$v["created_at"]) ?>
-                                            </div>
-                                        </td>
-                                        <td class="el-table_2_column_17  ">
-                                            <div class="cell el-tooltip">
-                                                <?= date("Y-m-d H:i:s",$v["paypal_order_datetime"]) ?>
-                                            </div>
-                                        </td>
-                                        <td class="el-table_2_column_18  ">
-                                            <div class="cell el-tooltip">
-                                                <?php
-                                                if($v[order_status] == 1){
-                                                    echo "已支付";
-                                                }else if($v[order_status] == 2){
-                                                    echo "已接单";
-                                                }else if($v[order_status] == 3){
-                                                    echo "已确认";
-                                                }else if($v[order_status] == 4){
-                                                    echo "已完成";
-                                                }else if($v[order_status] == 5){
-                                                    echo "<span style='color:red'>申请退货</span>";
-                                                }else if($v[order_status] == 6){
-                                                    echo "<span style='color:red'>以退货</span>";
-                                                }
-                                                ?>
-                                            </div>
-                                        </td>
-                                        <td class="el-table_2_column_19  ">
-                                            <div class="cell el-tooltip">
-                                                <?= $v[payment_method] ?>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                <?php } ?>
+                                            </td>
+                                            <td class="el-table_2_column_15  ">
+                                                <div class="cell el-tooltip">
+                                                    <?= $v["increment_id"] ?>
+                                                </div>
+                                            </td>
+                                            <td class="el-table_2_column_16  ">
+                                                <div class="cell el-tooltip">
+                                                    <?= date("Y-m-d H:i:s",$v["created_at"]) ?>
+                                                </div>
+                                            </td>
+                                            <td class="el-table_2_column_17  ">
+                                                <div class="cell el-tooltip">
+                                                    <?= date("Y-m-d H:i:s",$v["paypal_order_datetime"]) ?>
+                                                </div>
+                                            </td>
+                                            <td class="el-table_2_column_18  ">
+                                                <div class="cell el-tooltip">
+                                                    <?php
+                                                    if($v[order_status] == 1){
+                                                        echo "已支付";
+                                                    }else if($v[order_status] == 2){
+                                                        echo "已接单";
+                                                    }else if($v[order_status] == 3){
+                                                        echo "已确认";
+                                                    }else if($v[order_status] == 4){
+                                                        echo "已完成";
+                                                    }else if($v[order_status] == 5){
+                                                        echo "<span style='color:red'>申请退货</span>";
+                                                    }else if($v[order_status] == 6){
+                                                        echo "<span style='color:red'>以退货</span>";
+                                                    }
+                                                    ?>
+                                                </div>
+                                            </td>
+                                            <td class="el-table_2_column_19  ">
+                                                <div class="cell el-tooltip">
+                                                    <?= $v[payment_method] ?>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
                                 </tbody>
+                                <?php }else{ ?>
+                                    <div style="width: 300px;height: 100px;background: url('/public/empty.jpg') center center/100% auto no-repeat;margin: 0 auto">
+                                    </div>
+                                <?php } ?>
                             </table>
                         </div>
                         <div class="el-table__column-resize-proxy" style="display: none;"></div>

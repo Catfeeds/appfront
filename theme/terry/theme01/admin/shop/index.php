@@ -7,15 +7,35 @@ use yii\helpers\Url;
 ?>
 <div class="main-content">
     <div class="ShopMannager">
-        <div class="ShopMannager-title">
-            <span>商家列表</span>
+        <div class="adminmannager-title">
+            <span>商家管理</span>&nbsp;
+            <span>·&nbsp;商家列表</span>
         </div>
         <div class="ShopMannager-search">
             <form action="<?= Yii::$service->url->getUrl('admin/shop/index') ?>" method="get">
-                <div class="xiala">
-                    <span class="search-ID">地区</span>
-                    <select name="member-level" id="member-level">
-                        <option value="">全部</option>
+                <div class="xiala xialapro" style="color:#49e17a">
+                    <span class="search-ID" style="color:#8d8d8d;margin-left:0;">地区省</span>
+                    <select name="province_id" id="province_id" style="color:#a4adb5">
+                        <option value="0">请选择省</option>
+                        <?php foreach ($province as $k=>$v){?>
+                            <option value="<?php echo $v['province_id']?>"><?php echo $v['province_name']?></option>
+                        <?php }?>
+                    </select>
+                    <div class="xialaimg1"></div>
+                </div>
+                <!--                市-->
+                <div class="xiala xialapro" style="color:#3CACFE">
+                    <span class="search-ID" style="color:#8d8d8d">市</span>
+                    <select name="city_id" id="city_id" style="color:#a4adb5">
+                        <option value="0">请选择市</option>
+                    </select>
+                    <div class="xialaimg1"></div>
+                </div>
+                <!--                县-->
+                <div class="xiala xialapro" style="color:#3CACFE">
+                    <span class="search-ID" style="color:#8d8d8d">县</span>
+                    <select name="district_id" id="district_id" style="color:#a4adb5">
+                        <option value="0">请选择县</option>
                     </select>
                     <div class="xialaimg1"></div>
                 </div>
@@ -40,8 +60,8 @@ use yii\helpers\Url;
                     <colgroup>
                         <col name="el-table_2_column_6" width="80">
                         <col name="el-table_2_column_7" width="120">
-                        <col name="el-table_2_column_8" width="120">
-                        <col name="el-table_2_column_9" width="120">
+                        <col name="el-table_2_column_8" width="200">
+                        <col name="el-table_2_column_9" width="150">
                         <col name="el-table_2_column_11" width="500">
                     </colgroup>
                     <thead class="has-gutter">
@@ -72,8 +92,8 @@ use yii\helpers\Url;
                     <colgroup>
                         <col name="el-table_2_column_6" width="80">
                         <col name="el-table_2_column_7" width="120">
-                        <col name="el-table_2_column_8" width="120">
-                        <col name="el-table_2_column_9" width="120">
+                        <col name="el-table_2_column_8" width="200">
+                        <col name="el-table_2_column_9" width="150">
                         <col name="el-table_2_column_11" width="500">
                     </colgroup>
                     <?php if($count>0){ ?>
@@ -127,7 +147,7 @@ use yii\helpers\Url;
                 </table>
             </div>
         </div>
-        <?php if($count>0){ ?>
+        <?php if($count>5){ ?>
         <div class="adminpagination">
             <div class="pagination">
                 <div class="block">
@@ -138,13 +158,6 @@ use yii\helpers\Url;
                         <div class="admintotalpage">
                             <span style="color: #29c99a">·</span>&nbsp;<span>分</span><span style="color: #29c99a"><?= ceil($count / $pagination->limit) ?></span><span>页</span>
                         </div>
-                        <!-- <div class="admintotalpage">
-                            <span style="color: #29c99a">·</span>&nbsp;<span>每页</span>
-                            <input type="text" style="display: inline-block;width: 40px;height: 20px;border-radius: 10px;
-                            border: 1px solid #ebf6ff;background: #f3faff;outline: none;padding:0 5px;
-                            box-sizing: border-box;text-align: center;color:#29c99a;line-height: 20px; "
-                                   value="10" >
-                        </div> -->
                     </div>
                     <div style="width: 100%; position: relative;margin-top: 40px;">
                         <div style="font-size: 12px; position: absolute; bottom: 0; right: 0; display: flex; justify-content: space-between;">

@@ -50,9 +50,9 @@
                             <div style="height: 180px;">
                                 <div style="height: 162px;width: 276px;line-height: 162px;text-align: center;
                                 <?php if($row['contacts_card_electronic_1']){?>
-                                        background:url(http://img.uekuek.com/images/<?php echo $row['contacts_card_electronic_1'];?>) no-repeat center center/100% 100%;
+                                        background:url(http://img.chengzhanghao.com:81/images/<?php echo $row['contacts_card_electronic_1'];?>) no-repeat center center/100% 100%;
                                 <?php }else{?>
-                                    <?php echo 'background:#eee;'?>
+                                    <?php echo 'background:#f3faff;'?>
                                 <?php }?>
                                         border-radius: 2px;">
                                     <span style="color:#333;"><?php if($row['contacts_card_electronic_1']==null){echo "(空)";}?></span>
@@ -67,9 +67,9 @@
                             <div style="height: 100%;width: 276px;float:left;text-align: center">
                                 <div style="height: 162px;width: 276px;line-height: 162px;text-align: center;
                                 <?php if($row['contacts_card_electronic_2']){?>
-                                        background:url(http://img.uekuek.com/images/<?php echo $row['contacts_card_electronic_2'];?>) no-repeat center center/100% 100%;
+                                        background:url(http://img.chengzhanghao.com:81/images/<?php echo $row['contacts_card_electronic_2'];?>) no-repeat center center/100% 100%;
                                 <?php }else{?>
-                                    <?php echo 'background:#eee;'?>
+                                    <?php echo 'background:#f3faff;'?>
                                 <?php }?>
                                         border-radius: 2px;">
                                     <span style="color:#333;"><?php if($row['contacts_card_electronic_2']==null){echo "(空)";}?></span>
@@ -79,9 +79,9 @@
                             <div style="height: 100%;width: 276px;float:left;margin-left:20px;text-align: center">
                                 <div style="height: 162px;width: 276px;line-height: 162px;text-align: center;
                                 <?php if($row['contacts_card_electronic_3']){?>
-                                        background:url(http://img.uekuek.com/images/<?php echo $row['contacts_card_electronic_3'];?>) no-repeat center center/100% 100%;
+                                        background:url(http://img.chengzhanghao.com:81/images/<?php echo $row['contacts_card_electronic_3'];?>) no-repeat center center/100% 100%;
                                 <?php }else{?>
-                                    <?php echo 'background:#eee;'?>
+                                    <?php echo 'background:#f3faff;'?>
                                 <?php }?>
                                         border-radius: 2px;">
                                     <span style="color:#333;"><?php if($row['contacts_card_electronic_3']==null){echo "(空)";}?></span>
@@ -136,9 +136,9 @@
                         <td valign="center">
                             <div style="height: 395px;width: 570px;line-height: 395px;text-align: center;
                             <?php if($row['contacts_card_electronic_2']){?>
-                                    background:url(http://img.uekuek.com/images/<?php echo $row['contacts_card_electronic_2'];?>) no-repeat center center/100% 100%;
+                                    background:url(http://img.chengzhanghao.com:81/images/<?php echo $row['contacts_card_electronic_2'];?>) no-repeat center center/100% 100%;
                             <?php }else{?>
-                                <?php echo 'background:#eee;'?>
+                                <?php echo 'background:#f3faff;'?>
                             <?php }?>
                                     border-radius: 2px;">
                                 <span style="color:#333;"><?php if($row['contacts_card_electronic_2']==null){echo "(空)";}?></span>
@@ -151,7 +151,7 @@
             </div>
         </div>
         <!--店铺信息-->
-        <div class="adminmannager" style="border-top:1px solid #eee;padding:0;">
+        <div class="adminmannager" style="border-top:1px solid #f3faff;padding:0;margin-bottom: 50px;">
             <div class="admin-tablename" style="margin-top:0;">
                 <div class="admin-tablenamebox"></div>
                 <span class="admin-tablename1">店铺</span><span class="admin-tablename2">信息</span>
@@ -184,19 +184,19 @@
             </div>
         </div>
         <!--审核状态-->
-        <div class="adminmannager" style="border-top:1px solid #eee;padding:0;">
+        <!--<div class="adminmannager" style="border-top:1px solid #f3faff;padding:0;">
             <div class="admin-tablename" style="margin-top:0;">
                 <div class="admin-tablenamebox"></div>
                 <span class="admin-tablename1">审核</span><span class="admin-tablename2">状态</span>
             </div>
             <button class="wshop_btn">
-                <?php if($rows['shop_state']==0){echo "关闭";}
+                <?php /*if($rows['shop_state']==0){echo "关闭";}
                 else if ($rows['shop_state']==1){echo "开启";}
                 else if ($rows['shop_state']==2){echo "冻结";}
                 else if ($rows['shop_state']==3){echo "待审核";}
                 else if ($rows['shop_state']==4){echo "未通过";}
-                ?>
+                */?>
             </button>
-        </div>
+        </div>-->
     </div>
 </div>

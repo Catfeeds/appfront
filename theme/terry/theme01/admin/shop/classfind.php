@@ -205,7 +205,7 @@
 
                                     }
                                 </style>
-                                <div class="addImg"><img height="100%" src="http://img.uekuek.com/media/catalog/<?=$class[img]?>" alt=""></div>
+                                <div class="addImg"><img height="100%" src="http://img.chengzhanghao.com:81/media/catalog/<?=$class[img]?>" alt=""></div>
                                 <input onchange="uploads(this)" type="file" name="img" style="display:none" id="files">
                             </div>
                             <input type="hidden" name="oldimg" value="<?=$class['img']?>">
