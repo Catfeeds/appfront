@@ -235,7 +235,7 @@ class MoneyController extends PublicsController
    *
    */
     public function actionSearchindex(){
-        $shop_id = $_SESSION['id'];
+//        $shop_id = $_SESSION['id'];
         $startime=$_GET['sta'];
         $endtime=$_GET['end'];
         $day=60*60*24;
@@ -245,18 +245,18 @@ class MoneyController extends PublicsController
         $data=[];
 
         //成交量 成交金额
-        $num = Yii::$app->db->createCommand("SELECT count(*) as number,sum(grand_total) as num FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status !=0 AND order_status !=6 AND shop_id={$shop_id}")->queryOne();
-        $sumorder = Yii::$app->db->createCommand("SELECT count(*) as sumordernum,sum(grand_total) as sumorder FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status =0 AND shop_id={$shop_id}")->queryOne();
+        $num = Yii::$app->db->createCommand("SELECT count(*) as number,sum(grand_total) as num FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status !=0 AND order_status !=6")->queryOne();
+        $sumorder = Yii::$app->db->createCommand("SELECT count(*) as sumordernum,sum(grand_total) as sumorder FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status =0")->queryOne();
         //待支付
-        $daizhifu = Yii::$app->db->createCommand("SELECT count(*) as daizhifunum,sum(grand_total) as daizhifu FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status =0 AND shop_id={$shop_id}")->queryOne();
+        $daizhifu = Yii::$app->db->createCommand("SELECT count(*) as daizhifunum,sum(grand_total) as daizhifu FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status =0 ")->queryOne();
         //已发货
-        $yifahuo = Yii::$app->db->createCommand("SELECT count(*) as yifahuonum,sum(grand_total) as yifahuo FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status in (2,3) AND shop_id={$shop_id}")->queryOne();
+        $yifahuo = Yii::$app->db->createCommand("SELECT count(*) as yifahuonum,sum(grand_total) as yifahuo FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status in (2,3)")->queryOne();
         //已收货
-        $yishouhuo = Yii::$app->db->createCommand("SELECT count(*) as yishouhuonum,sum(grand_total) as yishouhuo FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status=4 AND shop_id={$shop_id}")->queryOne();
+        $yishouhuo = Yii::$app->db->createCommand("SELECT count(*) as yishouhuonum,sum(grand_total) as yishouhuo FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status=4")->queryOne();
         //下单量
-        $sumnum = Yii::$app->db->createCommand("SELECT count(*) as sumnum FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND shop_id={$shop_id}")->queryOne();
+        $sumnum = Yii::$app->db->createCommand("SELECT count(*) as sumnum FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end}")->queryOne();
         //退货量
-        $backnum = Yii::$app->db->createCommand("SELECT count(*) as backnum FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status in (5,6)  AND shop_id={$shop_id}")->queryOne();
+        $backnum = Yii::$app->db->createCommand("SELECT count(*) as backnum FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status in (5,6) ")->queryOne();
         if($num['num']==null){
             $data['num']=0;
             $data['number']=$num['number'];

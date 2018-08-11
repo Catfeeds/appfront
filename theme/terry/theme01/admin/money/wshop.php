@@ -110,7 +110,7 @@
             <div>
                 <!--<span>今日新增：<?php /*echo $huiyuannew['num'];*/?>&nbsp;&nbsp;&nbsp;&nbsp;会员总数：<?php /*echo $huiyuanall['num'];*/?></span>-->
             </div>
-            <div id="mychart" >
+            <div id="mychart" style="width: 950px; height: 400px; float: left; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;">
             
             </div>
             <script type="text/javascript">
@@ -362,7 +362,7 @@
             <div>
 
             </div>
-            <div id="mychart2" style="width:700px;height:400px;float:left;">
+            <div id="mychart2" style="width: 950px; height: 400px; float: left; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;">
             </div>
             <script type="text/javascript">           
             //日期时间范围
@@ -579,7 +579,7 @@
             <div>
 
             </div>
-            <div id="mychart3" style="width:700px;height:400px;float:left;">
+            <div id="mychart3" style="width: 950px; height: 400px; float: left; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;">
             </div>
              <script type="text/javascript">   
              //日期时间范围
