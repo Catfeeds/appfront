@@ -6,7 +6,6 @@
         width: 100%;
         height: 100%;
     }
->>>>>>> 3eb4743aa9b957816a08fa892db00c83bad46874
     .forget1{
         width: 128px;
         height: 100%;
@@ -176,12 +175,12 @@
                     <li>
                         <img src="/public/account.png" alt="">
 
-                        <!--<span>账户</span>-->
+                        
                         <input type="text" name="username" placeholder="账户">
                     </li>
                     <li>
                         <img src="/public/pwd.png" alt="">
-                        <!--<span>密码</span>-->
+                        
                         <input type="password" name="password" placeholder="密码">
 
                     </li>

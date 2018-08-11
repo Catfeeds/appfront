@@ -126,7 +126,7 @@ margin-top:16px;"
                             var url="<?= Yii::$service->url->getUrl('admin/money/searchindex') ?>?type=3&sta="+t1+"&end="+t2;
                         }
                         $.get(url).done(function (data) {
-                            var row =JSON.parse(data);
+                            var row = eval('('+data+')');
                             // 填入数据
                             console.log(row);
                             $(".cjje").text(row.num);
@@ -157,7 +157,7 @@ margin-top:16px;"
             	   var end = aval.substring(22,32);
             	   url="<?= Yii::$service->url->getUrl('admin/money/searchdate') ?>?sta="+sta+"&end="+end;
             	   $.get(url).done(function (data) {
-                    	var row =JSON.parse(data); 
+                    	var row = eval('('+data+')'); 
                         // 填入数据
         	             myChart.setOption({
         	          	   title: {
@@ -215,7 +215,7 @@ margin-top:16px;"
             	   url="<?= Yii::$service->url->getUrl('admin/money/year') ?>";
                }
                $.get(url).done(function (data) {
-                  	var row =JSON.parse(data); 
+                  	var row = eval('('+data+')'); 
                       // 填入数据
       	             myChart.setOption({
       	          	   title: {
@@ -257,7 +257,7 @@ margin-top:16px;"
                   });
            }
             $.get(url).done(function (data) {
-            	var row =JSON.parse(data); 
+            	var row = eval('('+data+')'); 
                 // 填入数据
 	             myChart.setOption({
 	          	   title: {
