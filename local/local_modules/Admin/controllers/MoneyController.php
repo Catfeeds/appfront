@@ -249,10 +249,16 @@ class MoneyController extends PublicsController
         $sumorder = Yii::$app->db->createCommand("SELECT count(*) as sumordernum,sum(grand_total) as sumorder FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status =0")->queryOne();
         //待支付
         $daizhifu = Yii::$app->db->createCommand("SELECT count(*) as daizhifunum,sum(grand_total) as daizhifu FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status =0 ")->queryOne();
+        //待发货 (没有相应字段)
+        //$daifahuo = Yii::$app->db->createCommand("SELECT count(*) as daifahuonum,sum(grand_total) as daifahuo FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status =0 ")->queryOne();
         //已发货
         $yifahuo = Yii::$app->db->createCommand("SELECT count(*) as yifahuonum,sum(grand_total) as yifahuo FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status in (2,3)")->queryOne();
+        //已完成
+        $yiwancheng = Yii::$app->db->createCommand("SELECT count(*) as yiwanchengnum,sum(grand_total) as yiwancheng FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status = 4")->queryOne();
+        //用户申请退款
+        $applybackmoney = Yii::$app->db->createCommand("SELECT count(*) as applybackmoneynum,sum(grand_total) as applybackmoney FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status = 5")->queryOne();
         //已收货
-        $yishouhuo = Yii::$app->db->createCommand("SELECT count(*) as yishouhuonum,sum(grand_total) as yishouhuo FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status=4")->queryOne();
+        $yishouhuo = Yii::$app->db->createCommand("SELECT count(*) as yishouhuonum,sum(grand_total) as yishouhuo FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status in (3,4)")->queryOne();
         //下单量
         $sumnum = Yii::$app->db->createCommand("SELECT count(*) as sumnum FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end}")->queryOne();
         //退货量
@@ -262,7 +268,15 @@ class MoneyController extends PublicsController
             $data['number']=$num['number'];
             $data['sumnum']=$sumnum['sumnum'];
             $data['backnum']=$backnum ['backnum'];
-            $data['sumorder']=$sumorder ['sumorder'];
+            $data['yifahuonum']=$yifahuo ['yifahuonum'];
+            $data['yiwanchengnum']=$yiwancheng ['yiwanchengnum'];
+            $data['applybackmoneynum']=$applybackmoney ['applybackmoneynum'];
+            $data['yishouhuonum']=$yishouhuo ['yishouhuonum'];
+            if($sumorder ['sumorder']==null){
+                $data['sumorder']=0;
+            }else{
+                $data['sumorder']=$sumorder ['sumorder'];
+            }
             if($daizhifu ['daizhifu']==null){
                 $data['daizhifu']=0;
             }else{
@@ -274,7 +288,15 @@ class MoneyController extends PublicsController
             $data['number']=$num['number'];
             $data['sumnum']=$sumnum['sumnum'];
             $data['backnum']=$backnum ['backnum'];
-            $data['sumorder']=$backnum ['sumorder'];
+            $data['yifahuo']=$yifahuo ['yifahuonum'];
+            $data['yiwanchengnum']=$yiwancheng ['yiwanchengnum'];
+            $data['applybackmoneynum']=$applybackmoney ['applybackmoneynum'];
+            $data['yishouhuonum']=$yishouhuo ['yishouhuonum'];
+            if($sumorder ['sumorder']==null){
+                $data['sumorder']=0;
+            }else{
+                $data['sumorder']=$sumorder ['sumorder'];
+            }
             if($daizhifu ['daizhifu']==null){
                 $data['daizhifu']=0;
             }else{
