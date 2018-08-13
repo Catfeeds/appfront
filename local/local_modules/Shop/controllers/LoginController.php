@@ -52,7 +52,7 @@ class LoginController extends AppfrontController
         $password_hash = $req->post(password_hash);
         $firstname = $req->post(firstname);
 
-        $sql = "select customer.* from customer where customer.firstname='$firstname' and customer.usctomer_type=1";
+        $sql = "select customer.* from customer where customer.firstname='$firstname' and customer.customer_type=1";
         $res = Yii::$app->db->createCommand($sql)->queryOne();
         if(password_verify($password_hash,$res["password_hash"])){
             // 保存用户基本信息
@@ -74,23 +74,21 @@ class LoginController extends AppfrontController
 
                 if ($res2[shop_type]==2) {
                     # code...
-                    $arr = ["userNum"=>$res2["userNum"],"userId"=>$res2[userId],"userName"=>$res2[userName]];
-                    $cookies = Yii::$app->response->cookies;
 
-                    $cookies->add(new \yii\web\Cookie([
-                        'name' => 'user',
-                        'value' => json_encode($arr),
-                    ]));
+                    $_SESSION['userNum'] = $res2["userNum"];
+                    $_SESSION['userId'] = $res2["userId"];
+                    $_SESSION['userName'] = $res2["userName"];
+
                     return $this->redirect(["/shop/index/index"]);
                 // 水司
                 }else if($res2[shop_type]==1){
-                    $arr = ["userNum"=>$res2["userNum"],"userId"=>$res2[userId],"userName"=>$res2[userName]];
-                    $cookies = Yii::$app->response->cookies;
 
-                    $cookies->add(new \yii\web\Cookie([
-                        'name' => 'user',
-                        'value' => json_encode($arr),
-                    ]));
+                    $_SESSION['userNum'] = $res2["userNum"];
+                    $_SESSION['userId'] = $res2["userId"];
+                    $_SESSION['userName'] = $res2["userName"];
+
+                    $_SESSION["cookie"] = json_encode($arr);
+
                     return $this->redirect(["/water/index/index"]);
 
                 }else{

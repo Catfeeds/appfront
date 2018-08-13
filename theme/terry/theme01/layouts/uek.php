@@ -412,6 +412,7 @@ $cssOptions = [
             position: fixed;
             right: 0;
             bottom: 0;
+            z-index: 9999;
         }
         .chat iframe{
             width: 100%;
@@ -476,9 +477,12 @@ $cssOptions = [
         <div class="right" style="margin-top: 54px;">
             <?= $content ?>
         </div>
-<!--        <div class="chat">-->
-<!--            <iframe src="http://localhost:12345"></iframe>-->
-<!--        </div>>-->
+        <div class="chat">
+            <iframe src="" id="iframe"></iframe>
+        </div>
+        <script>
+            document.querySelector("#iframe").src = `http://localhost:12345/#/totaltab/wechat?userNum=<?= $_SESSION['userNum'] ?>&userId=<?= $_SESSION["userId"]?>&userName=<?= $_SESSION["userName"] ?>`;
+        </script>
     </div>
     </body>
     <script>
