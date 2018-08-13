@@ -48,6 +48,7 @@ class OrdersController extends PublicsController
         if ($get["increment_id"]) {
             $sql .= " and increment_id='{$get["increment_id"]}'";
         }
+
         //查询订单表数量
         $countArr = Yii::$app->db->createCommand($sql)->queryOne();
 

@@ -235,34 +235,48 @@ class MoneyController extends PublicsController
    *
    */
     public function actionSearchindex(){
-        $shop_id = $_SESSION['id'];
+//        $shop_id = $_SESSION['id'];
         $startime=$_GET['sta'];
         $endtime=$_GET['end'];
         $day=60*60*24;
         //开始时间
         $start=strtotime($startime);
         $end=strtotime($endtime);
-
         $data=[];
+
         //成交量 成交金额
-        $num = Yii::$app->db->createCommand("SELECT count(*) as number,sum(grand_total) as num FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status !=0 AND order_status !=6 AND shop_id={$shop_id}")->queryOne();
-        $sumorder = Yii::$app->db->createCommand("SELECT count(*) as sumordernum,sum(grand_total) as sumorder FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status =0 AND shop_id={$shop_id}")->queryOne();
+        $num = Yii::$app->db->createCommand("SELECT count(*) as number,sum(grand_total) as num FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status !=0 AND order_status !=6")->queryOne();
+        $sumorder = Yii::$app->db->createCommand("SELECT count(*) as sumordernum,sum(grand_total) as sumorder FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status =0")->queryOne();
         //待支付
-        $daizhifu = Yii::$app->db->createCommand("SELECT count(*) as daizhifunum,sum(grand_total) as daizhifu FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status =0 AND shop_id={$shop_id}")->queryOne();
+        $daizhifu = Yii::$app->db->createCommand("SELECT count(*) as daizhifunum,sum(grand_total) as daizhifu FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status =0 ")->queryOne();
+        //待发货 (没有相应字段)
+        //$daifahuo = Yii::$app->db->createCommand("SELECT count(*) as daifahuonum,sum(grand_total) as daifahuo FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status =0 ")->queryOne();
         //已发货
-        $yifahuo = Yii::$app->db->createCommand("SELECT count(*) as yifahuonum,sum(grand_total) as yifahuo FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status in (2,3) AND shop_id={$shop_id}")->queryOne();
+        $yifahuo = Yii::$app->db->createCommand("SELECT count(*) as yifahuonum,sum(grand_total) as yifahuo FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status in (2,3)")->queryOne();
+        //已完成
+        $yiwancheng = Yii::$app->db->createCommand("SELECT count(*) as yiwanchengnum,sum(grand_total) as yiwancheng FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status = 4")->queryOne();
+        //用户申请退款
+        $applybackmoney = Yii::$app->db->createCommand("SELECT count(*) as applybackmoneynum,sum(grand_total) as applybackmoney FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status = 5")->queryOne();
         //已收货
-        $yishouhuo = Yii::$app->db->createCommand("SELECT count(*) as yishouhuonum,sum(grand_total) as yishouhuo FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status=4 AND shop_id={$shop_id}")->queryOne();
+        $yishouhuo = Yii::$app->db->createCommand("SELECT count(*) as yishouhuonum,sum(grand_total) as yishouhuo FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status in (3,4)")->queryOne();
         //下单量
-        $sumnum = Yii::$app->db->createCommand("SELECT count(*) as sumnum FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND shop_id={$shop_id}")->queryOne();
+        $sumnum = Yii::$app->db->createCommand("SELECT count(*) as sumnum FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end}")->queryOne();
         //退货量
-        $backnum = Yii::$app->db->createCommand("SELECT count(*) as backnum FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status in (5,6)  AND shop_id={$shop_id}")->queryOne();
+        $backnum = Yii::$app->db->createCommand("SELECT count(*) as backnum FROM sales_flat_order WHERE updated_at>{$start} AND updated_at<{$end} AND order_status in (5,6) ")->queryOne();
         if($num['num']==null){
             $data['num']=0;
             $data['number']=$num['number'];
             $data['sumnum']=$sumnum['sumnum'];
             $data['backnum']=$backnum ['backnum'];
-            $data['sumorder']=$sumorder ['sumorder'];
+            $data['yifahuonum']=$yifahuo ['yifahuonum'];
+            $data['yiwanchengnum']=$yiwancheng ['yiwanchengnum'];
+            $data['applybackmoneynum']=$applybackmoney ['applybackmoneynum'];
+            $data['yishouhuonum']=$yishouhuo ['yishouhuonum'];
+            if($sumorder ['sumorder']==null){
+                $data['sumorder']=0;
+            }else{
+                $data['sumorder']=$sumorder ['sumorder'];
+            }
             if($daizhifu ['daizhifu']==null){
                 $data['daizhifu']=0;
             }else{
@@ -274,14 +288,24 @@ class MoneyController extends PublicsController
             $data['number']=$num['number'];
             $data['sumnum']=$sumnum['sumnum'];
             $data['backnum']=$backnum ['backnum'];
-            $data['sumorder']=$backnum ['sumorder'];
+            $data['yifahuo']=$yifahuo ['yifahuonum'];
+            $data['yiwanchengnum']=$yiwancheng ['yiwanchengnum'];
+            $data['applybackmoneynum']=$applybackmoney ['applybackmoneynum'];
+            $data['yishouhuonum']=$yishouhuo ['yishouhuonum'];
+            if($sumorder ['sumorder']==null){
+                $data['sumorder']=0;
+            }else{
+                $data['sumorder']=$sumorder ['sumorder'];
+            }
             if($daizhifu ['daizhifu']==null){
                 $data['daizhifu']=0;
             }else{
                 $data['daizhifu']=$daizhifu ['daizhifu'];
             }
         }
+
         return json_encode($data);
+        exit;
     }
     /*
      * 返回最近七天的时间和成交额

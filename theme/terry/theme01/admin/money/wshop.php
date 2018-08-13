@@ -110,7 +110,7 @@
             <div>
                 <!--<span>今日新增：<?php /*echo $huiyuannew['num'];*/?>&nbsp;&nbsp;&nbsp;&nbsp;会员总数：<?php /*echo $huiyuanall['num'];*/?></span>-->
             </div>
-            <div id="mychart" >
+            <div id="mychart" style="width: 950px; height: 400px; float: left; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;">
             
             </div>
             <script type="text/javascript">
@@ -126,7 +126,7 @@
 
                         }else{
                             var t1 = timeForMat(7)["t2"];
-                            var t2 = timeForMat(7)["t1"];
+                            var t2 = timeForMat(7)["t1"].slice(0,timeForMat(7)["t1"].length-3)+timeForMat(7)["t1"].slice(timeForMat(7)["t1"].length-2,timeForMat(7)["t1"].length);
                             var url="<?= Yii::$service->url->getUrl('admin/money/searchhours') ?>?type=3&sta="+t1+"&end="+t2;
                         }
                         $.get(url).done(function (data) {
@@ -362,7 +362,7 @@
             <div>
 
             </div>
-            <div id="mychart2" style="width:700px;height:400px;float:left;">
+            <div id="mychart2" style="width: 950px; height: 400px; float: left; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;">
             </div>
             <script type="text/javascript">           
             //日期时间范围
@@ -579,7 +579,7 @@
             <div>
 
             </div>
-            <div id="mychart3" style="width:700px;height:400px;float:left;">
+            <div id="mychart3" style="width: 950px; height: 400px; float: left; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;">
             </div>
              <script type="text/javascript">   
              //日期时间范围

@@ -810,7 +810,7 @@ $cssOptions = [
         height: 159px;
         float: left;
         background: red;
-        margin-right:9px;
+        margin-right:60px;
     }
     .process div:first-child{
         background: url('/public/adminimg/m1.png') no-repeat center center/100% auto;

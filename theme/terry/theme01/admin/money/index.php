@@ -75,14 +75,46 @@
             </ul>
         </div>
         <div class="process">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+            <div >
+                <span >待支付订单</span>
+                <span class="daizhifu"></span>
+            </div>
+            <!--<div class="daifahuo"></div>-->
+            <div >
+                <span >已发货订单</span>
+                <span class="yifahuo"></span>
+            </div>
+            <div>
+                <span >已收货订单</span>
+                <span  class="yishouhuo"></span>
+            </div>
+            <!--<div>
+                <span >待服务订单</span>
+                <span class="daifuwu"></span>
+            </div>-->
+            <div >
+                <span>已完成订单</span>
+                <span class="yiwancheng"></span>
+            </div>
+            <div >
+                <span>用户申请退款</span>
+                <span class="applybackmoney"></span>
+            </div>
         </div>
+        <style>
+            .process>div{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+            }
+            .process>div>span:nth-of-type(1){
+                margin-top:40px;
+            }
+            .process>div>span:nth-of-type(2){
+                margin-top:20px;
+            }
+        </style>
         <!--成交额趋势-->
         <div class="addofplatdata" style="float: left;">
             <div class="platdata-header">
@@ -107,7 +139,7 @@ margin-top:16px;"
                     <button style="float: left;border:0;margin-top:20px;" onclick='atime()'>确定</button>
                 </div>
             </div>
-            <div id="mychart">
+            <div id="mychart" style="width: 950px; height: 400px; float: left; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;">
 
             </div>
             <script type="text/javascript">
@@ -122,7 +154,7 @@ margin-top:16px;"
 
                         }else{
                             var t1 = timeForMat(7)["t2"];
-                            var t2 = timeForMat(7)["t1"];
+                            var t2 = timeForMat(7)["t1"].slice(0,timeForMat(7)["t1"].length-3)+timeForMat(7)["t1"].slice(timeForMat(7)["t1"].length-2,timeForMat(7)["t1"].length);
                             var url="<?= Yii::$service->url->getUrl('admin/money/searchindex') ?>?type=3&sta="+t1+"&end="+t2;
                         }
                         $.get(url).done(function (data) {
@@ -132,6 +164,12 @@ margin-top:16px;"
                             $(".cjje").text(row.num);
                             $(".dfkje").text(row.daizhifu);
                             $(".ddzs").text(row.number);
+                            $(".daizhifu").text(row.daizhifu);
+                            // $(".daifahuo").text(row.daifahuonum);
+                            $(".yifahuo").text(row.yifahuonum);
+                            $(".yishouhuo").text(row.yishouhuonum);
+                            $(".yiwancheng").text(row.yiwanchengnum);
+                            $(".applybackmoney").text(row.applybackmoneynum);
                         });
                     });
                     $("#search").triggerHandler("click");
