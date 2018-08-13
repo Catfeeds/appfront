@@ -34,7 +34,7 @@
                         <div>
                             <span class="cjje">652.36</span>
                             <script>
-                                console.log($(".cjje"));
+                                /*console.log($(".cjje"));*/
                             </script>
                         </div>
                         <div>
@@ -108,15 +108,15 @@
                 </div>
             </div>
             <div>
-                <!--<span>今日新增：<?php /*echo $huiyuannew['num'];*/?>&nbsp;&nbsp;&nbsp;&nbsp;会员总数：<?php /*echo $huiyuanall['num'];*/?></span>-->
+               
             </div>
-            <div id="mychart" >
+            <div id="mychart" style="width: 950px; height: 400px; float: left; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;">
 
             </div>
             <script type="text/javascript">
                 $(function () {
                     $("#search").on("click",function () {
-                        console.log(222);
+                        /*console.log(222);*/
                         var aval=$('#test1').val();
                         if(aval){
                             $(".but1").css({"background":"#fff","color":"#99cafe"});
@@ -130,9 +130,9 @@
                         $.get(url).done(function (data) {
                             var row = eval('('+data+')');
                             // 填入数据
-                            console.log(row);
+                            /*console.log(row);*/
                             $(".cjje").text(row.num);
-                            console.log(row['sumnum']);
+                            /*console.log(row['sumnum']);*/
                             $(".xdl").text(row.sumnum);
                             $(".cjl").text(row.number);
                             $(".thl").text(row.backnum);
@@ -361,7 +361,7 @@
             <div>
 
             </div>
-            <div id="mychart2" style="width:700px;height:400px;float:left;">
+            <div id="mychart2" style="width: 950px; height: 400px; float: left; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;">
             </div>
             <script type="text/javascript">
                 //日期时间范围
@@ -578,7 +578,7 @@
             <div>
 
             </div>
-            <div id="mychart3" style="width:700px;height:400px;float:left;">
+            <div id="mychart3" style="width: 950px; height: 400px; float: left; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;">
             </div>
             <script type="text/javascript">
                 //日期时间范围
