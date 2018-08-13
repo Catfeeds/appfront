@@ -172,7 +172,14 @@ class ApplyController extends AppfrontController
              unset($arr3['img5']);
              unset($arr3['img6']);
              unset($arr3['img7']);
+             $arr4 = [];
              Yii::$app->db->createCommand()->insert('shop', $arr3)->execute();
+
+             $arr4["userName"] = $arr3["shop_name"];
+             $arr4["relevancy"] = $_SESSION['uid'];
+             $arr4["userNum"] = $_SESSION['shop_name'];
+
+             Yii::$app->db->createCommand()->insert('userinfo',$arr4)->execute();
              $_SESSION['shop_id']=Yii::$app->db->getLastInsertID();
              $_SESSION['shop_type']=$arr3['shop_type'];
              exit();

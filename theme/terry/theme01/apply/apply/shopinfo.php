@@ -406,6 +406,7 @@
 
 <script>
     function shopload(url) {
+
         $("#el-form").submit(function (e) {
             e.preventDefault();
             let formdata = $('form').serializeArray();

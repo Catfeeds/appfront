@@ -9,15 +9,16 @@ $jsOptions = [ # js的配置部分
             'js/laydate.js',
             'js/echarts.min.js',
             'js/getTime.js'
-        ],
+        ]
     ]
 
 ];
+
 $cssOptions = [
     # css配置
     [
         'css' => [
-            'css/app.css',
+            'css/app.css'
         ],
     ],
 ];
@@ -405,6 +406,19 @@ $cssOptions = [
             overflow: hidden;
             white-space: nowrap;
         }
+        .chat{
+            width: 320px;
+            height: 500px;
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            z-index: 9999;
+        }
+        .chat iframe{
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
     </style>
     <?php $this->beginPage() ?>
     <!doctype html>
@@ -414,7 +428,6 @@ $cssOptions = [
         <?= Yii::$service->page->widget->render('head', $this); ?>
         <?= Yii::$service->page->widget->render('beforeContent', $this); ?>
         <?php $this->beginBody() ?>
-
         <meta charset="UTF-8">
     </head>
     <body>
@@ -464,6 +477,12 @@ $cssOptions = [
         <div class="right" style="margin-top: 54px;">
             <?= $content ?>
         </div>
+        <div class="chat">
+            <iframe src="" id="iframe"></iframe>
+        </div>
+        <script>
+            document.querySelector("#iframe").src = `http://localhost:12345/#/totaltab/wechat?userNum=<?= $_SESSION['userNum'] ?>&userId=<?= $_SESSION["userId"]?>&userName=<?= $_SESSION["userName"] ?>`;
+        </script>
     </div>
     </body>
     <script>
@@ -488,7 +507,9 @@ $cssOptions = [
            };
         };
 
-        let urls = "<?php echo $_SERVER['SERVER_NAME'];?>";
+    </script>
+    <script>
+
     </script>
     </html>
 <?php $this->endPage() ?>

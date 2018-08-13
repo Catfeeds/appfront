@@ -247,8 +247,7 @@ box-sizing: border-box;border-radius: 16px;">
             if(data.err!=1){
                 alert(data.info)
             }else{
-                alert(data.info)
-                window.location.href = "<?= Yii::$service->url->getUrl('shop/login/index') ?>";               
+
             }
         })
     }

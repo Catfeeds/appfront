@@ -52,7 +52,7 @@ class LoginController extends AppfrontController
         $password_hash = $req->post(password_hash);
         $firstname = $req->post(firstname);
 
-        $sql = "select customer.* from customer where customer.firstname='$firstname'";
+        $sql = "select customer.* from customer where customer.firstname='$firstname' and customer.customer_type=1";
         $res = Yii::$app->db->createCommand($sql)->queryOne();
         if(password_verify($password_hash,$res["password_hash"])){
             // 保存用户基本信息
@@ -60,11 +60,9 @@ class LoginController extends AppfrontController
             $_SESSION["uid"] = $res["id"];
             $_SESSION["admin_name"] = $firstname;
             $_SESSION["time"] = time();
-            $sql = "select shop.* from shop where shop.uid=$res[id];";
+            $sql = "select s.*,u.* from shop s  left join userinfo u on u.relevancy=s.uid where s.uid=$res[id]";
 
             $res2 = Yii::$app->db->createCommand($sql)->queryOne();
-
-
 
 
             if ($res2) {
@@ -76,9 +74,21 @@ class LoginController extends AppfrontController
 
                 if ($res2[shop_type]==2) {
                     # code...
+
+                    $_SESSION['userNum'] = $res2["userNum"];
+                    $_SESSION['userId'] = $res2["userId"];
+                    $_SESSION['userName'] = $res2["userName"];
+
                     return $this->redirect(["/shop/index/index"]);
                 // 水司
                 }else if($res2[shop_type]==1){
+
+                    $_SESSION['userNum'] = $res2["userNum"];
+                    $_SESSION['userId'] = $res2["userId"];
+                    $_SESSION['userName'] = $res2["userName"];
+
+                    $_SESSION["cookie"] = json_encode($arr);
+
                     return $this->redirect(["/water/index/index"]);
 
                 }else{
