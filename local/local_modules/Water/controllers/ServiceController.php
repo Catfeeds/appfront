@@ -45,6 +45,7 @@ class ServiceController extends PublicsController
         $name = $request->get('name');
 
         $shop_id=$_SESSION['shop_id'];
+		$where["type"] = 2;
 
         // 查询条件
         $where['shop_id']=$shop_id;
@@ -355,7 +356,22 @@ class ServiceController extends PublicsController
         $data['goods']=Yii::$app->mongodb->getCollection('product_flat')->findOne(['_id'=>$id]);
 
         $data['category']=$this->actionGetclass();
-        $_SESSION['pagess']='index';
+		
+		$query = new Query;
+				
+		$where=[];
+		$where['status']=1;
+		$where['shop_id']=$_SESSION['shop_id'];
+		$where['type']=1;
+
+		$data['goods2'] = $query->from('product_flat')
+			->orderBy("updated_at desc")
+			->where($where)
+			->all();
+
+		
+		
+		$_SESSION['pagess']='index';
         
         // 加载页面
         return $this->render($this->action->id,$data);
@@ -380,6 +396,53 @@ class ServiceController extends PublicsController
 
         return $class;
     }
+	
+	
+	public function actionAddgoods(){
+		
+		$id = $_GET['id']['oid'];
+		
+		// 根据商品查询对应的分类
+		
+		$data=[];
+		$goods=Yii::$app->mongodb->getCollection('product_flat')->findOne(['_id'=>$id]);
+		$data['one'] = Yii::$app->mongodb->getCollection('category')->findOne(['_id'=>$goods['category'][0]]);
+		$data['two'] = Yii::$app->mongodb->getCollection('category')->findOne(['_id'=>$goods['category'][1]]);
+		
+		// 查询所有的一级分类
+		$query = new Query;
+		
+		$where=[];
+		$where['status']=1;
+		$where['shop_id']=$_SESSION['shop_id'];
+		$where['type']=1;
+
+		$data['goods'] = $query->from('product_flat')
+			->orderBy("updated_at desc")
+			->where($where)
+			->all();
+		return $this->render($this->action->id,$data);
+
+	}
+	
+	public function actionInsertshop(){
+		
+		// 接受数据
+		$request = Yii::$app->request;
+		$data = $request->post();
+		
+		// 修改商品的上下架
+
+		$res=Yii::$app->mongodb->getCollection('product_flat')->update(['_id'=>$data['id']],['$set'=>['guanlian'=>$data['goods']]]);
+
+		// 判断
+		if ($res) {
+			return $this->redirect(['service/index']);
+		}else{
+			return $this->redirect($_SERVER['HTTP_REFERER']);
+		}
+		
+	}
 
     // 插入数据
     public function actionAddgoods1(){
@@ -630,21 +693,234 @@ class ServiceController extends PublicsController
         $collection = Yii::$app->mongodb->getCollection('product_flat');
 
         if($a=$collection->insert($arr)){
+			
 
-
-            $res = Yii::$app->db->createCommand("insert into product_flat_qty (product_id,qty) values ('$a','$kucun')")->execute();
-
-
-            return $this->redirect(['service/index']);
+            return $this->redirect(['service/addgoods','id'=>$a]);
 
         }else{
             return $this->redirect(['service/addshopinfo']);
 
         }
-
-
-
     }
+	
+	
+	// 商品修改页面
+
+	public function actionEdit(){
+
+		// 获取数据
+		$request = Yii::$app->request;
+		$data = $request->post();
+		
+	
+		// $data['kucun2']=$data['kucun']?1:2;
+		
+
+
+		// 获取需要保留的图片
+		$bao=explode(',', $data['bao']);
+		array_shift($bao);
+
+		// 获取需要删除的图片
+		$arr=explode(',', $data['del']);
+		array_shift($arr);
+
+
+
+		//文件上传存放的目录
+
+		$folder ='../../appimage/common/media/catalog/product/';
+
+
+
+		$file=$_FILES['file'];
+
+		// 获取用户上传的数量
+
+		$size=count($file['name']);
+
+		// 文件处理
+
+		for ($i=0; $i < $size; $i++) {
+
+			// 接收文件名
+			$name=$file['name'][$i];
+
+			// 接收临时目录
+			$tmp_name=$file['tmp_name'][$i];
+
+			// 错误编码
+
+			$error=$file['error'][$i];
+
+			if ($error==0) {
+
+				// 检测文件是否来自于表单
+				if (is_uploaded_file($tmp_name)) {
+					# code...
+					// 新的文件名
+					$ext=substr($name,strrpos($name,'.'));
+
+					$newName=time().rand().$ext;
+
+					// 进行上传
+
+					if (move_uploaded_file($tmp_name,$folder.$newName)) {
+						$bao[]=$newName;
+
+					}
+				}
+			}
+		}
+
+		$dataImg=[];
+		foreach ($bao as $key => $value) {
+			if ($key>=1) {
+				$dataImg[]=[
+					"image"=>"$value",
+					"label"=>"",
+					"sort_order"=>""
+				];
+			}
+		}
+
+		// 数组格式化
+
+		$arr1=[
+			"_id"=>$data['_id'],
+			"updated_at"=>time(),
+			"created_user_id"=>$_SESSION["uid"],
+			"shop_id"=>$_SESSION["shop_id"],
+			"type"=>2,
+			'name'=>[
+				"name_en"=>$data['name'],
+				"name_fr"=>"",
+				"name_de"=>"",
+				"name_es"=>"",
+				"name_ru"=>"",
+				"name_pt"=>"",
+				"name_zh"=>$data['name']
+			],
+			"weight"=>0.3,  // 产品重量
+			"score"=>0, // 产品的评分，这个可以通过销量值填写进去
+			"status"=>(int)$data['status'], // 产品的状态，1代表激活，2代表下架
+			"qty"=>0,  // 产品的库存，这个字段已经无效，库存在mysql中
+			"min_sales_qty"=>1,  // 产品的最小销售个数
+			"kucun"=>(int)$data['kucun'],
+			"is_in_stock"=>$data['kucun2'],  // 产品 的库存状态，1代表有库存，2代表无库存
+			"category"=>[  // 产品的分类id。可以多个
+				$data['classone'],
+				$data['classtwo'],
+			],
+			"tier_price"=>[ // 产品批发价格
+				[
+					"qty"=>0,
+					"price"=>0
+				]
+			],
+			"price"=>$data['price'],  // 产品的销售价格
+			"special_price"=>$data['special_price'],  // 产品的销售价格
+			"meta_keywords"=> [ // 产品meta信息
+				"meta_keywords_en"=>$data['keywords'],
+				"meta_keywords_fr"=>"",
+				"meta_keywords_de"=>"",
+				"meta_keywords_es"=>"",
+				"meta_keywords_ru"=>"",
+				"meta_keywords_pt"=>"",
+				"meta_keywords_zh"=>$data['keywords']
+			],
+
+			"meta_description"=>[// 产品meta信息
+				"meta_description_en"=>"$data[short_description]",
+				"meta_description_fr"=>"",
+				"meta_description_de"=>"",
+				"meta_description_es"=>"",
+				"meta_description_ru"=>"",
+				"meta_description_pt"=>"",
+				"meta_description_zh"=>"$data[short_description]"
+			] ,
+			"description"=>[// 产品meta信息
+				"description_en"=>"$data[short_description]",
+				"description_fr"=>"",
+				"description_de"=>"",
+				"description_es"=>"",
+				"description_ru"=>"",
+				"description_pt"=>"",
+				"description_zh"=>"$data[short_description]"
+			] ,
+			"short_description"=>[// 产品meta信息
+				"short_description_en"=>"$data[short_description]",
+				"short_description_fr"=>"",
+				"short_description_de"=>"",
+				"short_description_es"=>"",
+				"short_description_ru"=>"",
+				"short_description_pt"=>"",
+				"short_description_zh"=>"$data[short_description]"
+			],
+
+			"image"=>[  // 产品的图片
+				"main"=>[ // 产品主图
+					"image"=>$bao[0],
+					"label"=>"",
+					"sort_order"=>"",
+					"is_thumbnails"=>"1",  // 产品详情页面：图片是否在橱窗图中显示，1代表显示
+					"is_detail"=>"1"         // 产品详情页面：图片是否在描述中显示，1代表显示
+				],
+				"gallery"=>$dataImg
+
+			],
+			"attr_group"=>"test_group",  // 产品属性组
+			"relation_sku"=>"",  // 产品相关产品
+			"buy_also_buy_sku"=>"", // 产品买了还买
+			"see_also_see_sku"=>"", // 产品看了还看
+			"my_remark"=>"111",   // 下面是属性组中定义的属性，
+			"my_email"=>"1111@22.com",
+			"my_date"=>"2016-11-03",
+			"style"=>"Cute",
+			"dresses-length"=>"Mini",
+			"pattern-type"=>"Animal",
+			"sleeve-length"=>"Sleeveless",
+			"collar"=>"Round Neck",
+			"url_key"=>"",  // 产品urlkey
+			"reviw_rate_star_average"=>5, // 产品平均评分
+			"review_count"=>0, // 产品评论个数
+			"reviw_rate_star_average_lang"=>[  // 产品在各个语言的评分
+				"reviw_rate_star_average_lang_zh"=>5,
+				"reviw_rate_star_average_lang_en"=>4
+			],
+			"review_count_lang"=>[// 产品在各个语言的评论数
+				"review_count_lang_zh"=>0,
+				"review_count_lang_en"=>0
+			],
+			"guanlian"=>$data['goods'],
+			"deposit"=>$data["deposit"]
+
+
+		];
+
+		$res=Yii::$app->mongodb->getCollection('product_flat')->save($arr1);
+
+		// 判断
+		if ($res) {
+			foreach ($arr as $key => $value) {
+
+
+				if (file_exists("../../appimage/common/media/catalog/product/".$value)) {
+					unlink("../../appimage/common/media/catalog/product/".$value);
+				}
+
+			}
+			return $this->redirect($_SERVER['HTTP_REFERER']);
+
+
+		}else{
+			return $this->redirect($_SERVER['HTTP_REFERER']);
+		}
+
+	}
+	
+	
+	
 }
 ?>
 

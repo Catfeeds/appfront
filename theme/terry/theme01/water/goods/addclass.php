@@ -82,7 +82,8 @@
 
 
         $.get("<?= Yii::$service->url->getUrl('water/goods/ajaxclass') ?>" + "?id=" + id, function (data) {
-
+			
+			data = eval("("+data+")");
             $("#one").val(id);
             $("#one1").html(ids);
             for (item in data) {
@@ -101,7 +102,7 @@
 
              $(".shuaixuan_bottom").eq(1).html(str);
 
-        }, 'json');
+        });
     }
 
     $(".shuaixuan_bottom").eq(0).find("label").eq(0).click();

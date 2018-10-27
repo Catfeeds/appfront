@@ -257,9 +257,10 @@
             }
         });
         fetch("/water/store/getgoods?" + "category=" + JSON.stringify(category)).then(function (e) {
-            return e.json();
+            return e.text();
         }).then(function (e) {
             var str = "";
+						e = eval("("+e+")");
             e.forEach(function (val) {
                 if (goods[val["category"][0]] == undefined) {
                     goods[val["category"][0]] = [];
@@ -267,7 +268,6 @@
                 goods[val["category"][0]].forEach(function (value) {
                     if (val["_id"]['$oid'] == value) {
                         val.isSel = true;
-                        console.log(1);
                     }
                 })
             });

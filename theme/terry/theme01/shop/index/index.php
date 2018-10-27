@@ -804,7 +804,6 @@ use yii\helpers\Url;
     //七天的数据
     var datas = <?php echo json_encode($sales_infor)?>;
 
-    console.log(datas);
     var detailedDatas1 = [0,0,0,0,0,0,0];
     var detailedDatas2 = [0,0,0,0,0,0,0];
 

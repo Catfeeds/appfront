@@ -349,8 +349,9 @@
                         console.log("hasfdkjhkjfhak");
                         $.ajax({
                             url: "/shop/datas/count?t1=" + t1 + "&t2=" + t2,
-                            dataType: "json",
+                            dataType: "text",
                             success: function (data) {
+															var data = eval("("+data+")");
                                 document.querySelector(".xd").innerHTML = data[0].nums;
                                 document.querySelector(".cj").innerHTML = data[1].nums;
                                 document.querySelector(".th").innerHTML = data[2].nums;
@@ -556,7 +557,7 @@
                   var sta=date[0];var end=date[1];
                   var url="<?= Yii::$service->url->getUrl('shop/datas/searchdate') ?>?type=1&sta="+sta+"&end="+end;
                   $.get(url).done(function (data) {
-                      var row =JSON.parse(data);
+                      var row =eval("("+data+")");
                       // 填入数据
                       myCharts.setOption({
                           title: {
@@ -620,7 +621,8 @@
                   url="<?= Yii::$service->url->getUrl("shop/datas/year") ?>?type="+3;
               }
               $.get(url).done(function (data) {
-                  var row =JSON.parse(data);
+								
+                  var row =eval("("+data+")");
                   // 填入数据
                   myCharts.setOption({
                       title: {
@@ -671,7 +673,7 @@
               });
           })
           $.get(url).done(function (data) {
-              var row =JSON.parse(data);
+              var row =eval("("+data+")");
               // 填入数据
               myCharts.setOption({
                   title: {
@@ -750,8 +752,9 @@
 
           $.ajax({
               url:"/shop/datas/count?t1="+t1+"&t2="+t2,
-              dataType:"json",
+              dataType:"text",
               success:function (data) {
+								var data = eval("("+data+")");
                   document.querySelector(".xd").innerHTML=data[0].nums;
                   document.querySelector(".cj").innerHTML=data[1].nums;
                   document.querySelector(".th").innerHTML=data[2].nums;
@@ -813,14 +816,16 @@
               var favorable,reviewable,nagetivable;
               $.ajax({
                   url:"/shop/datas/countdate?t1="+t1+"&t2="+t2,
-                  dataType:'json',
+                  dataType:'text',
                   success:function (msg) {
+										var  msg = eval("("+msg+")");
                       for(let i=0;i<msg.length;i++){
                           msg[i]=filtert2(msg[i],t2);
                       }
                       favorable=msg[0].length;
                       reviewable=msg[1].length;
                       nagetivable=msg[2].length;
+											console.log(999999);
                       getChart(favorable,reviewable,nagetivable);
                   }
               });
@@ -863,6 +868,7 @@
                       ],
                       color: ['rgb(48,163,254)','rgb(55,223,116)','rgb(253,203,82)']
                   };
+									console.log(1111);
                   myChart.setOption(option);
               }
               function filtert2(arr,t2) {

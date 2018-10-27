@@ -63,8 +63,6 @@ class LoginController extends AppfrontController
             $sql = "select s.*,u.* from shop s  left join userinfo u on u.relevancy=s.uid where s.uid=$res[id]";
 
             $res2 = Yii::$app->db->createCommand($sql)->queryOne();
-
-
             if ($res2) {
                 // 商家
 

@@ -178,6 +178,7 @@ class ApplyController extends AppfrontController
              $arr4["userName"] = $arr3["shop_name"];
              $arr4["relevancy"] = $_SESSION['uid'];
              $arr4["userNum"] = $_SESSION['shop_name'];
+             $arr4["userId"] = $_SESSION['uid'];
 
              Yii::$app->db->createCommand()->insert('userinfo',$arr4)->execute();
              $_SESSION['shop_id']=Yii::$app->db->getLastInsertID();

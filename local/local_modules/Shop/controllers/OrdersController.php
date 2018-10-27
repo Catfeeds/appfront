@@ -96,11 +96,12 @@ class OrdersController extends PublicsController
             }
         }
         $sql = "select * from sales_flat_order_item where order_id in (";
-        foreach ($arr as $v) {
-            $sql = $sql . $v["order_id"] . ",";
+        foreach ($arr as $v2) {
+            $sql = $sql . $v2["order_id"] . ",";
         };
         // $sql = substr($sql, 0, -1);
         $sql .= "0)";
+				
         $arr1 = Yii::$app->db->createCommand($sql)->queryAll();
         foreach ($arr as $k => &$v) {
             $v["goodDatas"] = [];

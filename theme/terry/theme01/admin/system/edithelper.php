@@ -59,15 +59,15 @@
 
 
 </style>
-<link rel="stylesheet" href="/public/kindeditor-master/themes/example1/example1.css" />
 
+<link rel="stylesheet" href="/public/kindeditor-master/themes/example1/example1.css" />
 <script src="/public/kindeditor-master/kindeditor-all-min.js"></script>
 <div class="main-content">
     <div class="adminmannager">
         <div class="adminmannager-title">
             <span>系统设置</span>&nbsp;
             <span>·&nbsp;帮助</span>
-            <span>·&nbsp;添加帮助</span>
+            <span>·&nbsp;修改帮助</span>
         </div>
         <form class="el-form" method="post" enctype="multipart/form-data" action="<?= Yii::$service->url->getUrl('admin/system/edithelp') ?>">
             <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>"/>
@@ -103,6 +103,6 @@
         window.editor = K.create('#editor_id',{
             themeType : 'example1'
         });
-        editor.html('<?php echo $help['content']?>');
+        editor.html(`<?php echo $help['content']?>`);
     });
 </script>

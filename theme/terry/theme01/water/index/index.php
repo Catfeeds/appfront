@@ -418,7 +418,7 @@
                 <div class="content1-right">
                     <div class="name">
                         <div class="col-box"></div>
-                        <span style="color: rgb(65, 178, 252);">商家</span>信息
+                        <span style="color: rgb(65, 178, 252);">水司 </span>信息
                     </div>
                     <ul class="message3">
                         <li>

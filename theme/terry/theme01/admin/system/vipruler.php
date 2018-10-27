@@ -109,12 +109,14 @@
                         <?php 
                             foreach ($ruler as $key => $value) {
                                 $a = '';
-                                for ($i=1; $i <=count($m[rule][pid]) ; $i++) { 
-                                    if($i == $value['id']){
-                                        $a = checked;
-                                    }
-                                }
-                                echo "<input type='checkbox' name='$m[id][pid][$value[id]]' value='$value[id]' $a>";
+								$arr=explode(',',$m[rule]['pid']);
+								
+                                foreach($arr as $v){
+									if($v == $value[id]){
+										$a="checked";
+									}
+								}
+                                echo "<input type='checkbox' name='$m[id][pid][]' value='$value[id]' $a>";
                                 echo "<span>$value[name]</span>";
                                 if($value['type']==2){
                                     echo "<input type='text' name='$m[id][value][$value[id]]' value='".$m[rule][value][$value[id]]."' style='margin-left:10px;text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px; box-sizing: border-box'>";

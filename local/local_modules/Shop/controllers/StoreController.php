@@ -260,8 +260,8 @@ class StoreController extends PublicsController
             foreach ($res1 as $v1){
                 $res[]=$v1;
             }
-        }
-        echo json_encode($res);
+        };
+		echo json_encode($res);
         exit();
     }
     public function actionGetgoods1(){
@@ -285,21 +285,23 @@ class StoreController extends PublicsController
 
         $post = $res->post();
 
-        // var_dump($post);
+      
+
         $goods = "";
         if($post["flag"]==1||count($post["goods1"])<=0||count($post["goods"])<=0){
             $goods = 0;
         }else{
+			echo 1;
             foreach ($post["goods"] as $v){
                 $goods = $goods.$v."|";
             }
+			$goods = substr($goods,0,-1);
         }
-        $goods = substr($goods,0,-1);
+		
         $data = explode(" - ",$post["data"]);
         $start_date = strtotime($data[0]);
         $expiration_date = strtotime($data[1]);
         $coupon_code = "CO".time().$_SESSION["shop_id"];
-
         $res = Yii::$app->db->createCommand("insert into sales_coupon (uid,shop_id,start_date,coupon_name,coupon_code,expiration_date,users_per_customer,conditions,discount,goods,status) values ('{$_SESSION['uid']}','{$_SESSION["shop_id"]}','$start_date','{$post['coupon_name']}','$coupon_code','$expiration_date','1','{$post["conditions"]}','{$post["discount"]}','$goods',0)")->execute();
 
         return $this->redirect("/shop/store/couponindex");

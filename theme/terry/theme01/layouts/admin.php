@@ -2673,7 +2673,7 @@ $cssOptions = [
                 </div>
                 <div class="adminname">
                     <div class="clearimg"></div>
-                    <span class="name2">清除缓存</span>
+                    <span class="name2" onclick="alert('清除缓存成功')" >清除缓存</span>
                 </div>
                 <div class="adminname">
                     <a href="/admin/login/out" title="退出页面">

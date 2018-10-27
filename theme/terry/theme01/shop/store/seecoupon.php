@@ -204,8 +204,9 @@
     var category = document.querySelector("#info").innerHTML.split("|");
     var checked_goods = document.querySelector(".checked-goods");
     fetch("/shop/store/getgoods1?category="+JSON.stringify(category)).then(function (e) {
-        return e.json();
+        return e.text();
     }).then(function (e) {
+			  var e = eval('('+e+')');
         var str="";
         e.forEach(function (val) {
             str += `<div data-v-63f72479="" onclick="dianji(this)">

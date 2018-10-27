@@ -36,11 +36,11 @@
                             <td>
                                 <input id="<?= $v["id"] ?>" type="text" value="<?= $v["actual_payment"] ?>"
                                        onblur="saveRecharge1(this)"
-                                       style="text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;box-sizing: border-box">
+                                       style="text-align:center;color:red;width: 55px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;box-sizing: border-box">
                                 <span>元</span>
                                 <span style="margin:0 4px;">=</span>
                                 <input id="<?= $v["id"] ?>" type="text" value="<?= $v["price"] ?>"
-                                       onblur="saveRecharge2(this)" style="text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;
+                                       onblur="saveRecharge2(this)" style="text-align:center;color:red;width: 55px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;
 box-sizing: border-box">
                                 <span>元</span>
                                 <span class="del" id="<?= $v["id"] ?>">✖</span>
@@ -61,14 +61,10 @@ background: #30a3fe;border-radius: 18px;text-align: center;line-height: 32px;col
                             </span>
                 </div>
                 <div style="height: 40px;line-height: 40px;font-size: 14px;margin-left:10px;">
-                    <input type="text" value="1"
-                           style="text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;
-box-sizing: border-box">
+                    <input readonly type="text" value="1" style="text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;box-sizing: border-box">
                     <span>金币</span>
                     <span style="margin:0 4px;">=</span>
-                    <input type="text" value="0.1"
-                           style="text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;
-box-sizing: border-box">
+                    <input readonly type="text" value="0.1" style="text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;box-sizing: border-box">
                     <span>元</span>
                 </div>
                 <table border="0" cellspacing="10" cellpadding="0" class="rechargetable addtab1 addtag">
@@ -80,13 +76,13 @@ box-sizing: border-box">
                             <td>
                                 <input id="<?= $v[id] ?>" type="text" value="<?= $v["condition"] ?>"
                                        onblur="saveCoin1(this)"
-                                       style="text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;
+                                       style="text-align:center;color:red;width: 55px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;
 box-sizing: border-box">
                                 <span>元</span>
                                 <span style="margin:0 4px;">可使用</span>
                                 <input id="<?= $v[id] ?>" type="text" value="<?= $v["coin_num"] ?>"
                                        onblur="saveCoin2(this)"
-                                       style="text-align:center;color:red;width: 45px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;
+                                       style="text-align:center;color:red;width: 55px;height: 30px;background: #f3faff;outline: none;border:none;padding:0 8px;
 box-sizing: border-box">
                                 <span>金币</span>
                                 <span class="del" style="display: none" id="<?= $v["id"] ?>">✖</span>

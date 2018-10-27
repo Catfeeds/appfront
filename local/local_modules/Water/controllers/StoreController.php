@@ -238,7 +238,7 @@ class StoreController extends PublicsController
 
         // 进行数据查询
         $class=$query->from('category')
-            ->where(['level'=>1,"parent_id"=>"0"])
+            ->where(['level'=>1,"parent_id"=>"0","type"=>"2"])
             ->all();
         $datas["class"] = $class;
         return $this->render($this->action->id,$datas);
@@ -292,8 +292,8 @@ class StoreController extends PublicsController
             foreach ($post["goods"] as $v){
                 $goods = $goods.$v."|";
             }
+			$goods = substr($goods,0,-1);
         }
-        $goods = substr($goods,0,-1);
         $data = explode(" - ",$post["data"]);
         $start_date = strtotime($data[0]);
         $expiration_date = strtotime($data[1]);

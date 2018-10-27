@@ -408,16 +408,55 @@ $cssOptions = [
         }
         .chat{
             width: 320px;
-            height: 500px;
+            height: 0px;
             position: fixed;
             right: 0;
             bottom: 0;
-            z-index: 9999;
+            z-index: 999999999999;
         }
         .chat iframe{
             width: 100%;
             height: 100%;
             border: none;
+        }
+        .chat .line-box{
+            position: absolute;
+            width: 20px;
+            height: 45px;
+            right: 10px;
+            top: 0;
+            cursor: pointer;
+        }
+        .chat .line{
+            display: inline-block;
+            width: 20px;
+            background: #fff;
+            height: 2px;
+            margin-top: 22px;
+        }
+        .zx-btn{
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            box-sizing: border-box;
+            padding:10px 15px;
+            display: block; 
+            z-index: 9999;
+            background: #3CACFE;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .twinkle{
+            animation: ani 0.5s infinite;
+        }
+        @keyframes ani{
+            from{
+                background: #3CACFE;
+            }
+            to{
+                background: orange;
+            }
         }
     </style>
     <?php $this->beginPage() ?>
@@ -463,7 +502,7 @@ $cssOptions = [
                             <span class="name1"><?=$_SESSION['shop_name']?></span></div>
                         <div class="adminname" style="width: 110px;cursor:pointer;">
                             <div class="clearimg" ></div>
-                            <span class="name2">清除缓存</span></div>
+                            <span class="name2" onclick="alert('清除缓存成功')" >清除缓存</span></div>
                         <div class="adminname" style="width: 80px;cursor:pointer;">
                             <a href="<?= Yii::$service->url->getUrl("/water/login/out") ?>">
                                 <div class="out"></div>
@@ -478,10 +517,33 @@ $cssOptions = [
             <?= $content ?>
         </div>
         <div class="chat">
+            <div class="line-box">
+                <span class="line"></span>                
+            </div>
             <iframe src="" id="iframe"></iframe>
         </div>
+        <div class="zx-btn">
+            点击打开客服窗口
+        </div>
         <script>
-            document.querySelector("#iframe").src = `http://localhost:12345/#/totaltab/wechat?userNum=<?= $_SESSION['userNum'] ?>&userId=<?= $_SESSION["userId"]?>&userName=<?= $_SESSION["userName"] ?>`;
+            var iframe = document.querySelector("#iframe");
+            var chat = document.querySelector(".chat");
+            var zx = document.querySelector(".zx-btn");
+
+            iframe.src = `http://www.chengzhanghao.com:1701/#/totaltab/wechat?userNum=<?= $_SESSION['userNum'] ?>&userId=<?= $_SESSION["userId"]?>&userName=<?= $_SESSION["userName"] ?>`;
+            document.querySelector(".chat .line-box").onclick=function(){
+                chat.style.height = 0;
+                zx.style.display = "block"; 
+                zx.classList.remove("twinkle");
+            }
+            zx.onclick = function(){
+                chat.style.height = "500px";
+                zx.style.display = "none"; 
+                zx.classList.remove("twinkle");
+            }
+            window.addEventListener('message',function(event){
+                document.querySelector(".zx-btn").classList.add("twinkle");
+            })
         </script>
     </div>
     </body>

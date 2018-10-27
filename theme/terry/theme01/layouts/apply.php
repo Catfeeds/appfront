@@ -1052,13 +1052,15 @@ $cssOptions = [
         width: 330px;
         height: 34px;
         /* background: #00fff9;*/
-        line-height: 30px;
+        /* line-height: 30px; */
         margin-top:30px;
+				display:flex;
+				align-items: center;
     }
     .select-all{
         float: left;
         width: 14px;
-        height: 100%;
+        /* height: 100%; */
         /*background: red;*/
         position: relative;
     }
@@ -1970,7 +1972,7 @@ $cssOptions = [
     }
     #index1{
         width: 100%;
-        overflow:hidden ;
+        /* overflow:hidden ; */
     }
     #index1 header{
         width:1160px;
@@ -2005,7 +2007,7 @@ $cssOptions = [
     }
     .index2-list{
         width: 1031px;
-        height: 100%;
+        /* height: 100%; */
         /*float:right;*/
         /*margin-right:58px;*/
         margin:0 auto;

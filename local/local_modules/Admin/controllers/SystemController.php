@@ -288,6 +288,11 @@ class SystemController extends PublicsController
             $member[$key]['rule'] = json_decode($value['rule'],true);
         }
         $data['member'] = $member;
+				
+// 				echo "<pre>";
+// 				print_R($data);
+// 				
+// 				exit;
         return $this->render($this->action->id, $data);
     }
 
@@ -423,7 +428,10 @@ class SystemController extends PublicsController
     public function actionAddmember(){
         $res = Yii::$app->request;
         $data = $res->get();
+				
+		
         foreach ($data as $key => $value) {
+						$value['pid'] = join(array_values($value[pid]),',');
             $rule = json_encode($value);
             $sql = "update member_rule set recharge = '$value[money]',rule = '$rule' where id = $key";
             $res = Yii::$app->db->createCommand($sql)->execute();

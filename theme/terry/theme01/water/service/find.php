@@ -29,7 +29,7 @@
                         </div>
                         <div class="title" style="box-sizing:border-box">
                             <form class="el-form" method="post" enctype="multipart/form-data"
-                                  action="<?= Yii::$service->url->getUrl('water/goods/edit') ?>">
+                                  action="<?= Yii::$service->url->getUrl('water/service/edit') ?>">
                                 <div class="el-row" style="width: 500px;">
                                     <div class="el-form-item">
                                         <label class="el-form-item__label">货号:</label>
@@ -103,31 +103,12 @@
                                         <label class="el-form-item__label">定金:</label>
                                         <div class="el-form-item__content" style="margin-left: 120px;">
                                             <div class="el-input">
-                                                <input type="text" name="price" placeholder="<?= $goods['deposit'] ?>"
-                                                       value="<?= $goods['price'] ?>" class="el-input__inner">
+                                                <input type="text" name="deposit" placeholder="<?= $goods['deposit'] ?>"
+                                                       value="<?= $goods['deposit'] ?>" class="el-input__inner">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="el-form-item">
-                                        <label class="el-form-item__label">服务费:</label>
-                                        <div class="el-form-item__content" style="margin-left: 120px;">
-                                            <div class="el-input">
-                                                <input type="text" name="price" placeholder="<?= $goods['price'] ?>"
-                                                       value="<?= $goods['price'] ?>" class="el-input__inner">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="el-form-item">
-                                        <label class="el-form-item__label">折扣价:</label>
-                                        <div class="el-form-item__content" style="margin-left: 120px;">
-                                            <div class="el-input">
-                                                <input type="text" name="special_price"
-                                                       value="<?= $goods['special_price'] ?>"
-                                                       placeholder="<?= $goods['special_price'] ?>"
-                                                       class="el-input__inner">
-                                            </div>
-                                        </div>
-                                    </div>
+                                   
                                     <label class="el-form-item__label" style="width: 120px;">上下架:</label>
                                     <div class="el-form-item">
                                         <div class="el-form-item__content" style="margin-left: 120px;">
@@ -299,6 +280,37 @@
                                                value=",<?= $goods['image']['main']['image'] ?><?= $zxc ?>">
                                         <input type="hidden" name="del" id="del" value="">
                                     </div>
+																		<div class="el-form-item">
+																				<label class="el-form-item__label" style="width: 120px;">关联商品选择:</label>
+																				<div class="el-form-item__content" style="margin-left: 120px;">
+																					
+																					<?php 
+																						foreach($goods2 as $value){
+																					?>
+																						<div class="oo">
+																							<label role="radio" tabindex="0" class="el-radio danxuan is-checked class1">
+																								<?php
+																								
+																		
+																									if(in_array($value['_id'],$goods['guanlian'])){
+																								?>
+																									<input type="checkbox"  name="goods[]" checked value="<?= $value['_id']?>" />
+																								<?php
+																									}else{
+																								?>
+																									<input type="checkbox"  name="goods[]"  value="<?= $value['_id']?>" />
+
+																								<?php
+																									}
+																								?>
+																								<span class="el-radio__label"><?= $value['name']['name_zh']?></span>
+																							</label>
+																						</div>
+																					<?php
+																						}
+																					?>
+																				</div>
+																		</div>
                                     <div>
                                         <button type="submit" class="el-button blue el-button--primary is-round">
                                             <span>保存</span>
@@ -308,6 +320,8 @@
                                         </button>
                                     </div>
                                 </div>
+																
+																
 
                         </div>
                     </div>

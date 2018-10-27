@@ -1,4 +1,9 @@
-
+<style>
+	
+	.select .left_box{
+		overflow: auto;
+	}
+</style>
   <div class="main-content">
    <div style="width: 1012px; margin: 0px auto;">
     <div class="biaoti">
@@ -20,7 +25,7 @@
       <li class="btn2"><span class="btn">填写商品信息</span></li>
       <li class="btn3"><span class="btn">选择商品关联</span></li>
      </ul> 
-     <ul class="shuaixuan">
+  <!--   <ul class="shuaixuan">
       <li>
           <select name="" id="" class="el-select xiala">
               <option value="" style="display: none;">请选择分类</option>
@@ -35,15 +40,14 @@
        </div></li> 
       <li>
        <div class="sousuo"></div></li>
-     </ul> 
-		 
-		 
+     </ul> -->
+		 <input type="hidden" name="id" value="<?= $_GET['id']['oid']?>">
      <div class="bottom">
       <div class="title">
        <span style="font-size: 14px; color: rgb(206, 203, 203);">您当前选择的商品类别是：</span> 
        <div aria-label="Breadcrumb" role="navigation" class="el-breadcrumb" style="display: inline-block;">
-        <span class="el-breadcrumb__item"><span role="link" class="el-breadcrumb__inner">洗衣</span><span role="presentation" class="el-breadcrumb__separator">/</span></span> 
-        <span class="el-breadcrumb__item" aria-current="page"><span role="link" class="el-breadcrumb__inner">羽绒服清洗</span><span role="presentation" class="el-breadcrumb__separator">/</span></span>
+        <span class="el-breadcrumb__item"><span role="link" class="el-breadcrumb__inner"><?= $one['name']['name_zh']?></span><span role="presentation" class="el-breadcrumb__separator">/</span></span> 
+        <span class="el-breadcrumb__item" aria-current="page"><span role="link" class="el-breadcrumb__inner"><?= $two['name']['name_zh']?></span><span role="presentation" class="el-breadcrumb__separator">/</span></span>
        </div>
       </div> 
       <div class="select">
@@ -53,22 +57,46 @@
           <div class="col-box"></div> 可选择商品 
          </div> 
          <div class="shuaixuan_bottom">
-          <div class="oo">
-           <label role="radio" aria-checked="true" tabindex="0" class="el-radio danxuan is-checked"><span class="el-radio__input is-checked"><span class="el-radio__inner"></span><input type="radio" aria-hidden="true" tabindex="-1" class="el-radio__original" value="1" /></span><span class="el-radio__label">羽绒服
-             </span></label>
-          </div>
-          <div class="oo">
-           <label role="radio" tabindex="0" class="el-radio danxuan"><span class="el-radio__input"><span class="el-radio__inner"></span><input type="radio" aria-hidden="true" tabindex="-1" class="el-radio__original" value="2" /></span><span class="el-radio__label">卫浴
-             </span></label>
-          </div>
+					 <?php 
+						foreach($goods as $value){
+					 ?>
+						<div class="oo">
+							<label role="radio" tabindex="0" class="el-radio danxuan is-checked class1">
+								<span class="el-radio__input ">
+								 <span class="el-radio__inner"></span>
+								 <input type="checkbox" aria-hidden="true" name="goods[]" tabindex="-1" class="el-radio__original" value="<?= $value['_id']?>" />
+								</span>
+								<span class="el-radio__label"><?= $value['name']['name_zh']?></span>
+							</label>
+						</div>
+						
+						
+				
+					<?php
+						}
+					?>
+					
+					<script>
+						$(".class1").click(function(){
+							// 设置鼠标点击效果
+							$(".class1").find(".el-radio__input").removeClass("is-checked");
+							$(this).find(".el-radio__input").addClass("is-checked");
+							
+							$(this).removeClass("class1");
+							$(this).parent().appendTo($("#guanlian"));
+							
+
+						});
+					</script>
+          
          </div>
         </div> 
         <div>
-         <label role="radio" aria-checked="true" tabindex="0" class="el-radio danxuan is-checked"><span class="el-radio__input is-checked"><span class="el-radio__inner"></span><input type="radio" aria-hidden="true" tabindex="-1" class="el-radio__original" value="1" /></span><span class="el-radio__label">全选
+      <!--   <label role="radio" aria-checked="true" tabindex="0" class="el-radio danxuan is-checked"><span class="el-radio__input is-checked"><span class="el-radio__inner"></span><input type="radio" aria-hidden="true" tabindex="-1" class="el-radio__original" value="1" /></span><span class="el-radio__label">全选
            </span></label> 
          <button type="button" class="el-button blue el-button--primary is-round">
           
-          <span>确定</span></button>
+          <span>确定</span></button> -->
         </div>
        </div> 
        <div class="danshuang">
@@ -87,35 +115,44 @@
           <div class="col-box"></div> 跟该商品关联的商品 
          </div> 
          <div class="shuaixuan_bottom">
-          <div class="oo">
-           <label role="radio" aria-checked="true" tabindex="0" class="el-radio danxuan is-checked"><span class="el-radio__input is-checked"><span class="el-radio__inner"></span><input type="radio" aria-hidden="true" tabindex="-1" class="el-radio__original" value="1" /></span><span class="el-radio__label">浴室柜3423
-             </span></label>
-          </div> 
-          <div class="oo">
-           <label role="radio" tabindex="0" class="el-radio danxuan"><span class="el-radio__input"><span class="el-radio__inner"></span><input type="radio" aria-hidden="true" tabindex="-1" class="el-radio__original" value="2" /></span><span class="el-radio__label">晾衣架5624
-             </span></label>
-          </div> 
-          <div class="oo">
-           <label role="radio" tabindex="0" class="el-radio danxuan"><span class="el-radio__input"><span class="el-radio__inner"></span><input type="radio" aria-hidden="true" tabindex="-1" class="el-radio__original" value="3" /></span><span class="el-radio__label">花洒
-             </span></label>
-          </div>
+					 
+					<form action="<?= Yii::$service->url->getUrl('water/service/insertshop') ?>" method="post" id="guanlian">
+						<input type="hidden" name="id" value="<?=$_GET['id']['oid']?>">
+						<input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>"/>
+							
+						 
+					
+					</form>
+          
          </div>
         </div> 
-        <div>
+<!--        <div>
          <label role="radio" aria-checked="true" tabindex="0" class="el-radio danxuan is-checked"><span class="el-radio__input is-checked"><span class="el-radio__inner"></span><input type="radio" aria-hidden="true" tabindex="-1" class="el-radio__original" value="1" /></span><span class="el-radio__label">全选
            </span></label> 
          <button type="button" class="el-button blue el-button--primary is-round">
           
           <span>移除关联</span></button>
-        </div>
+        </div> -->
        </div>
       </div>
      </div> 
-     <a href="#/GoodsAdd2" class=""><button type="button" class="el-button blue el-button--primary is-round">
-       
-       <span>上一步，填写商品信息</span></button> <button type="button" class="el-button blue el-button--primary is-round">
-       
-       <span>完成，发布商品</span></button></a>
+     <!-- <a href="#/GoodsAdd2" class=""> -->
+			 <!-- <button type="button" class="el-button blue el-button--primary is-round">
+					<span>上一步，填写商品信息</span>
+			 </button> -->
+			 <button type="button" class="el-button blue el-button--primary is-round" onclick="tijiao()">
+					<span>完成，发布商品</span>
+				</button>
+				<!-- </a> -->
+				
+				<script>
+						
+						function tijiao(){
+							// 获取数据
+							$("#guanlian").submit();
+						}
+					
+				</script>
     </div>
    </div>
   </div>

@@ -359,7 +359,7 @@ use yii\helpers\Url;
                                                 </th>
                                                 <th colspan="1" rowspan="1" class="el-table_2_column_10     is-leaf">
                                                     <div class="cell">
-                                                        价格/折扣价
+                                                        服务价
                                                     </div>
                                                 </th>
                                                 <th colspan="1" rowspan="1" class="el-table_2_column_11     is-leaf">
@@ -432,9 +432,9 @@ use yii\helpers\Url;
                                                         </div>
                                                     </td>
                                                     <td class="el-table_2_column_10">
-                                                        <div class="cell el-tooltip"
-                                                             style="width: 115px;"><?= $v["price"] ?>
-                                                            / <?= $v['special_price'] ?></div>
+                                                        <div class="cell el-tooltip" style="width: 115px;">
+																													<?= $v["deposit"] ?>
+																												</div>
                                                     </td>
                                                     <td class="el-table_2_column_11">
                                                         <div class="cell el-tooltip">
@@ -503,8 +503,8 @@ use yii\helpers\Url;
                                             <span style="font-weight: bolder; color: rgb(41, 201, 154);margin:0 5px"><?= $pages ?></span>页
                                         </div>
                                     </div>
-                                    <div style="margin-top: 40px;">
-                                        <button type="button" class="el-button el-button--default">
+                                   <div style="margin-top: 40px;">
+                                       <button type="button" class="el-button el-button--default">
                                             <span>全选</span></button>
                                         <button type="button" class="el-button red el-button--danger is-round">
 

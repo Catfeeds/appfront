@@ -156,7 +156,7 @@
                 <span>晋彤管理系统</span>
             </div>
             <div class="login-l">
-                <ul>
+                <ul style="height:auto">
                     <li>
                         <img src="/public/account.png" alt="">
 <!--                        <span>手&nbsp;&nbsp;机&nbsp;号</span>-->
@@ -185,7 +185,7 @@ box-sizing: border-box;border-radius: 16px;">
                     </li>
                 </ul>
                 <div class="forget">
-                    <div class="forget1">
+                    <div class="forget1"  style="height:auto">
                         <div></div>
                         <a href="<?= Yii::$service->url->getUrl('shop/login/index') ?>">登录</a>
                     </div>
@@ -208,7 +208,7 @@ box-sizing: border-box;border-radius: 16px;">
             return false;
         }else{
             $.get("<?= Yii::$service->url->getUrl('shop/login/fasong') ?>",{'mobile':phone},function(data){
-                var data = JSON.parse(data);
+                var data = eval("("+data+")");
                 if(data.err!=1){
                     alert(data.info)
                 }else{
@@ -243,10 +243,12 @@ box-sizing: border-box;border-radius: 16px;">
             return false;
         }
         $.post("<?= Yii::$service->url->getUrl('shop/login/reg') ?>",{'firstname':phone,'code':code,'password_hash':password_hash,'repassword':repassword,'_csrf':$('#_csrf').val()},function(data){
-            var data = JSON.parse(data)
+            var data = eval("("+data+")")
             if(data.err!=1){
                 alert(data.info)
             }else{
+							alert('注册成功');
+							location.href="<?= Yii::$service->url->getUrl('shop/login/index') ?>";
 
             }
         })

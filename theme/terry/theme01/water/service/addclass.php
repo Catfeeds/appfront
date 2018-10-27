@@ -14,9 +14,14 @@
         </div>
         <div class="item">
             <ul class="top">
+							<style>
+								.item .top .btn3{
+										background: url(/public/img/add3.png) no-repeat center center/100% auto;
+								}
+							</style>
                 <li class="btn1"><span class="btn " style="color: white;">选择服务分类</span> </li>
-                 <li class="btn2"><span class="btn">填写服务信息</span></li>
-<!--                 <li class="btn3"><span class="btn">选择商品关联</span></li>-->
+                <li class="btn2"><span class="btn">填写服务信息</span></li>
+                <li class="btn3"><span class="btn">选择商品关联</span></li>
             </ul>
             <div class="bottom">
                 <div class="title">
@@ -82,6 +87,8 @@
 
 
         $.get("<?= Yii::$service->url->getUrl('water/goods/ajaxclass') ?>" + "?id=" + id, function (data) {
+						
+					data = eval("("+data+")");
 
             $("#one").val(id);
             $("#one1").html(ids);
@@ -101,7 +108,7 @@
 
              $(".shuaixuan_bottom").eq(1).html(str);
 
-        }, 'json');
+        });
     }
 
     $(".shuaixuan_bottom").eq(0).find("label").eq(0).click();

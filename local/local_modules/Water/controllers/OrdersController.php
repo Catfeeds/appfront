@@ -96,8 +96,8 @@ class OrdersController extends PublicsController
             }
         }
         $sql = "select * from sales_flat_order_item where order_id in (";
-        foreach ($arr as $v) {
-            $sql = $sql . $v["order_id"] . ",";
+        foreach ($arr as $v2) {
+            $sql = $sql . $v2["order_id"] . ",";
         };
         // $sql = substr($sql, 0, -1);
         $sql .= "0)";
@@ -268,6 +268,8 @@ class OrdersController extends PublicsController
 
 
         $arr = Yii::$app->db->createCommand($sql)->queryAll();
+		
+
 
         $sql = "select * from sales_coupon where coupon_id in(";
 
@@ -288,12 +290,17 @@ class OrdersController extends PublicsController
                 }
             }
         }
+		
+
         $sql = "select * from sales_flat_order_item where order_id in (";
-        foreach ($arr as $v) {
-            $sql = $sql . $v["order_id"] . ",";
+        foreach ($arr as $v2) {
+            $sql = $sql . $v2["order_id"] . ",";
         };
+		
+	
         // $sql = substr($sql, 0, -1);
         $sql .= "0)";
+
         $arr1 = Yii::$app->db->createCommand($sql)->queryAll();
         foreach ($arr as $k => &$v) {
             $v["goodDatas"] = [];
@@ -315,7 +322,20 @@ class OrdersController extends PublicsController
         return $this->render($this->action->id, $datas);
 
     }
+	
+	//接单
+	public function actionReceipt()
+	{
 
+		$res = Yii::$app->request;
+		$order_id = $res->get("order_id");
+
+
+		$res = Yii::$app->db->createCommand("update sales_flat_order set order_status=2,receipt_at=" . time() . " where order_id={$order_id}")->execute();
+
+		return $this->redirect("/water/orders/shop");
+
+	}
 
     //返回缺货列表页面
     public function actionLack()

@@ -17,8 +17,8 @@
         account: [
             {"name":"实名认证","url":"/water/account/realname"},
             {"name":"账单列表","url":"/water/account/index"},
-            {"name":"资金列表","url":"/water/account/money"},
-            {"name":"账户解冻","url":"/water/account/thawing"}
+            // {"name":"资金列表","url":"/water/account/money"},
+            // {"name":"账户解冻","url":"/water/account/thawing"}
         ],
         datas: [
 

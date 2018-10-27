@@ -318,13 +318,11 @@ use yii\helpers\Url;
                                         <div></div>
                                         <div></div>
                                         <div></div>
-                                        <div></div>
                                     </div>
                                     <div class="el-table__header-wrapper">
                                         <table cellspacing="0" cellpadding="0" border="0" class="el-table__header"
                                                style="width: 1012px;">
                                             <colgroup>
-                                                <col name="el-table_2_column_7" width="55"/>
                                                 <col name="el-table_2_column_8" width="150"/>
                                                 <col name="el-table_2_column_9" width="200"/>
                                                 <col name="el-table_2_column_10" width="100"/>
@@ -336,17 +334,7 @@ use yii\helpers\Url;
                                             </colgroup>
                                             <thead class="has-gutter">
                                             <tr style="font-size: 14px;color: #B1DBFE;">
-                                                <th colspan="1" rowspan="1"
-                                                    class="el-table_2_column_7   el-table-column--selection  is-leaf">
-                                                    <div class="cell">
-                                                        <label role="checkbox" class="el-checkbox">
-                                                            <span class="el-checkbox__input">
-                                                                <span class="el-checkbox__inner"></span>
-                                                                <input type="checkbox" class="el-checkbox__original" value=""/>
-                                                            </span>
-                                                        </label>
-                                                    </div>
-                                                </th>
+                                               
                                                 <th colspan="1" rowspan="1" class="el-table_2_column_8     is-leaf">
                                                     <div class="cell">
                                                         编号
@@ -390,7 +378,6 @@ use yii\helpers\Url;
                                     <div class="el-table__body-wrapper is-scrolling-none">
                                         <table cellspacing="0" cellpadding="0" border="0" class="el-table__body" style="width: 1012px;">
                                             <colgroup>
-                                                <col name="el-table_2_column_7" width="55"/>
                                                 <col name="el-table_2_column_8" width="150"/>
                                                 <col name="el-table_2_column_9" width="200"/>
                                                 <col name="el-table_2_column_10" width="100"/>
@@ -402,16 +389,7 @@ use yii\helpers\Url;
                                             <tbody style="font-size: 12px;color:#82898e">
                                             <?php foreach ($goods as $v) { ?>
                                                 <tr class="el-table__row">
-                                                    <td class="el-table_2_column_7  el-table-column--selection">
-                                                        <div class="cell el-tooltip">
-                                                            <label role="checkbox" class="el-checkbox">
-                                                                <span class="el-checkbox__input">
-                                                                    <span class="el-checkbox__inner"></span>
-                                                                    <input type="checkbox"  class="el-checkbox__original" value=""/>
-                                                                </span>
-                                                            </label>
-                                                        </div>
-                                                    </td>
+                                                    
                                                     <td class="el-table_2_column_8">
                                                         <div class="cell el-tooltip" title="<?= $v["_id"]; ?>">
                                                             <?= $v["_id"]; ?>
@@ -506,11 +484,11 @@ use yii\helpers\Url;
                                         </div>
                                     </div>
                                     <div style="margin-top: 40px;">
-                                        <button type="button" class="el-button el-button--default">
-                                            <span>全选</span></button>
-                                        <button type="button" class="el-button red el-button--danger is-round">
+                                        <!-- <button type="button" class="el-button el-button--default"> -->
+                                            <!-- <span>全选</span></button> -->
+                                       <!-- <button type="button" class="el-button red el-button--danger is-round">
 
-                                            <span>批量删除</span></button>
+                                            <span>批量删除</span></button> -->
                                         <button type="button" class="el-button green el-button--success is-round">
 
                                             <span>导出表格</span></button>

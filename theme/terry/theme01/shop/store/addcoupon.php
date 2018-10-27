@@ -99,6 +99,7 @@
 </style>
 
 <div data-v-63f72479="" class="main-content">
+	<?= $_SESSION["shop_id"] ?>
     <div data-v-63f72479="" style="width: 1064px; margin: 0px auto;">
         <div data-v-63f72479="" class="biaoti">
             <div data-v-63f72479="" aria-label="Breadcrumb" role="navigation" class="el-breadcrumb"><span
@@ -261,9 +262,12 @@
                 goods[val.value]=[];
             }
         });
-        fetch("/shop/store/getgoods?" + "category=" + JSON.stringify(category)).then(function (e) {
-            return e.json();
+        fetch("/shop/store/getgoods?" + "category=" + JSON.stringify(category),{
+					credentials: 'include'
+				}).then(function (e) {
+            return e.text();
         }).then(function (e) {
+						var e = eval('('+e+')');
             var str = "";
             e.forEach(function (val) {
                 if (goods[val["category"][0]] == undefined) {
@@ -272,7 +276,6 @@
                 goods[val["category"][0]].forEach(function (value) {
                     if (val["_id"]['$oid'] == value) {
                         val.isSel = true;
-                        console.log(1);
                     }
                 })
             });

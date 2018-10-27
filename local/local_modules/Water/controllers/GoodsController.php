@@ -452,7 +452,7 @@ class GoodsController extends PublicsController
                 "review_count_lang_zh"=>0,
                 "review_count_lang_en"=>0
             ],
-            "type"=>2,//产品的类型 1是商品，2是服务
+            "type"=>1,//产品的类型 1是商品，2是服务
 
 
         ];

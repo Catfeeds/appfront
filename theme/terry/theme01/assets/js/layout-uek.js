@@ -30,12 +30,14 @@
 
     var arr = arrs[url[4]];
 
-    var str = `<div class="logo"></div><ul class=\"aside-list\">`;
-    arr.forEach(function (val,index) {
-        str+=`<li href1="${val.url}">
-                <div class="col-box"></div> 
-                <a href="${val.url}" class="router-link-exact-active router-link-active">${val.name}</a>
-            </li> `;
-    });
-    str+="</ul>"
-    document.querySelector(".aside").innerHTML=str;
+    var str = `<div class="logo"></div><ul class="aside-list">`;
+    if(arr){
+        arr.forEach(function (val,index) {
+            str+=`<li href1="${val.url}">
+                    <div class="col-box"></div> 
+                    <a href="${val.url}" class="router-link-exact-active router-link-active">${val.name}</a>
+                </li> `;
+        });
+        str+="</ul>"
+        document.querySelector(".aside").innerHTML=str;
+    }

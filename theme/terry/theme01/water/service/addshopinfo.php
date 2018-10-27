@@ -22,9 +22,14 @@
         </div>
         <div class="item">
             <ul class="top">
+							<style>
+								.item .top .btn3{
+										background: url(/public/img/add3.png) no-repeat center center/100% auto;
+								}
+							</style>
                 <li class="btn1"><span class="btn">选择服务分类</span></li>
                 <li class="btn2"><span class="btn">填写服务信息</span></li>
-<!--                <li class="btn3"><span class="btn">选择商品关联</span></li>-->
+                <li class="btn3"><span class="btn">选择商品关联</span></li>
             </ul>
             <div class="bottom">
                 <div style="width: 328px; height: 42px; line-height: 42px; font-size: 18px; font-weight: bolder;">
@@ -83,26 +88,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="el-form-item">
-                                <label class="el-form-item__label" style="width: 80px;">价格</label>
-                                <div class="el-form-item__content" style="margin-left: 80px;">
-                                    <div class="inputbox el-input">
-                                        <input min="0" max="99999999" type="text"  placeholder="请输入服务价格" name="price" class="el-input__inner"/>
-                                    </div>
-                                    <div class="tishi">
-                                        价格必须是在0.01-99999999之间的数字，且不能高于市场价
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="el-form-item">
-                                <label class="el-form-item__label" style="width: 80px;">折扣价</label>
-                                <div class="el-form-item__content" style="margin-left: 80px;">
-                                    <div class="inputbox el-input">
-                                        <input required min="0" type="text" placeholder="请输入服务的折扣价格" name="special_price"class="el-input__inner"/>
-                                    </div>
-                                </div>
-                            </div>
+														<div class="el-form-item" style="margin-top: 10px">
+																<label class="el-form-item__label" style="width: 80px;">文字描述</label>
+																<div class="el-form-item__content" style="margin-left: 80px;">
+																		<textarea required id="" class="details" placeholder="请输入服务文字描述" cols="30" rows="10" name="description_zh1"></textarea>
+																</div>
+				
+														</div>
                             <style>
                                 .el-icon-plus:before {
                                     content: "";
@@ -157,67 +149,7 @@
                         }
                     }
                 </script>
-                <div style="width: 328px; height: 42px; line-height: 42px; font-size: 18px; font-weight: bolder; margin-top: 15px;">
-                    <div class="col-box"
-                         style="width: 12px; height: 7px; border-radius: 5px; margin-top: 17px; margin-left: 10px; margin-right: 7px; background-color: rgb(55, 224, 111);"></div>
-                    基本信息
-                </div>
-                <div class="message">
-                    <div>
-                        <span style="color: rgb(164, 173, 181);">基本要求：</span>手机详情总体大小：图片+文字不超过20张，文字不超过5000字&nbsp;&nbsp;&nbsp;&nbsp;
-                        <span style="color: rgb(59, 172, 254);">建议:</span>所有图片都是本宝贝相关的图片
-                    </div>
-                    <div>
-                        <span style="color: rgb(164, 173, 181);">图片大小：</span>1.建议使用宽度480-620像素，高度小于等于960像素的图片。&nbsp;&nbsp;2.格式为：JPG/PNG/GIF
-                    </div>
-                    <div>
-                        <span style="margin-left: 70px; color: rgb(59, 172, 254);">举例：可以上传宽度为480，高度为960像素，格式为JPG的图片。</span>
-                    </div>
-                    <div>
-                        <span style="color: rgb(164, 173, 181);">文字要求：</span>每次插入文字不超过500字，标点、特殊字符按一个字算。2.请手动输入文字，不要复制粘贴网页上的文字，防止出现乱码。3.以下特殊字符“＜”“＞”“、”“/”会被替换为空。
-                    </div>
-                    <div>
-                        <span style="margin-left: 70px; color: rgb(59, 172, 254);">建议:</span>不要添加太多的文字，这样看起来更清晰。
-                    </div>
-                    <div style="width: 100%; margin-left: 70px; margin-top: 15px;" class="qweasd1">
-                        <div class="shangchuan"></div>
-                        <input type="file" name="asd[]"  onchange='uploads1(this)'  id="" class='img2 el-upload__input'> 
-                    </div>
-
-                    <script>
-                        // 点击上传按钮
-                        $(".shangchuan").click(function () {
-                            // 相当于点击文件上传框
-
-                            $(".img2").eq($(".img2").length - 1).click();
-                        });
-
-                        function uploads1(obj) {
-                            var file = obj.files[0];
-
-                            if (window.FileReader) {
-                                var reader = new FileReader();
-                                reader.readAsDataURL(file);
-                                //监听文件读取结束后事件
-                                reader.onloadend = function (e) {
-
-                                    $(".qweasd1").append($("<input type='file' name='asd[]' onchange='uploads1(this)' class='img2 el-upload__input'>"));
-                                    $("<img>").css({
-                                        // "width": "218px",
-                                        "height": "312px"
-                                    }).attr("src", e.target.result).appendTo($(".qweasd1"));
-                                };
-                            }
-                        }
-                    </script>
-                    <div class="el-form-item" style="margin-top: 10px">
-                        <label class="el-form-item__label" style="width: 80px;">文字描述</label>
-                        <div class="el-form-item__content" style="margin-left: 80px;">
-                            <textarea required id="" class="details" placeholder="请输入服务文字描述" cols="30" rows="10" name="description_zh1"></textarea>
-                        </div>
-
-                    </div>
-                </div>
+        
                 <div style="width: 328px; height: 42px; line-height: 42px; font-size: 18px; font-weight: bolder; margin-top: 15px;">
                     <div class="col-box"
                          style="width: 12px; height: 7px; border-radius: 5px; margin-top: 17px; margin-left: 10px; margin-right: 7px; background-color: rgb(55, 224, 111);"></div>
@@ -242,7 +174,7 @@
                         <label class="el-form-item__label" style="width: 80px;">关键词</label>
                         <div class="el-form-item__content" style="margin-left: 80px;">
                             <div class="inputbox el-input">
-                                <input type="text" placeholder="请输入关键字" autocomplete="off" name="keywords" class="el-input__inner"/>
+                                <input type="text" required placeholder="请输入关键字" autocomplete="off" name="keywords" class="el-input__inner"/>
                                 <input type="hidden" name="one" value="<?= $oneId ?>">
                                 <input type="hidden" name="tow" value="<?= $twoId ?>">
                                 <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>"/>

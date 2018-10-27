@@ -213,14 +213,12 @@ use yii\helpers\Url;
                                                 <div data-v-6045fa9c=""></div>
                                                 <div data-v-6045fa9c=""></div>
                                                 <div data-v-6045fa9c=""></div>
-                                                <div data-v-6045fa9c=""></div>
                                             </div>
                                             <div class="el-table__header-wrapper">
                                                 <table cellspacing="0" cellpadding="0" border="0"
                                                        class="el-table__header"
                                                        style="width: 1012px;">
                                                     <colgroup>
-                                                        <col name="el-table_2_column_10" width="52">
                                                         <col name="el-table_2_column_11" width="120">
                                                         <col name="el-table_2_column_12" width="100">
                                                         <col name="el-table_2_column_13" width="180">
@@ -232,17 +230,6 @@ use yii\helpers\Url;
                                                     </colgroup>
                                                     <thead class="has-gutter">
                                                     <tr style="font-size: 14px;color: #B1DBFE;">
-                                                        <th colspan="1" rowspan="1"
-                                                            class="el-table_2_column_7   el-table-column--selection  is-leaf">
-                                                            <div class="cell">
-                                                                <label role="checkbox" class="el-checkbox">
-                                                            <span class="el-checkbox__input">
-                                                                <span class="el-checkbox__inner"></span>
-                                                                <input type="checkbox" class="el-checkbox__original" value=""/>
-                                                            </span>
-                                                                </label>
-                                                            </div>
-                                                        </th>
                                                         <th colspan="1" rowspan="1"
                                                             class="el-table_2_column_11     is-leaf">
                                                             <div class="cell">订单号</div>
@@ -284,7 +271,6 @@ use yii\helpers\Url;
                                                 <table cellspacing="0" cellpadding="0" border="0" class="el-table__body"
                                                        style="width: 1012px;">
                                                     <colgroup>
-                                                        <col name="el-table_2_column_10" width="52">
                                                         <col name="el-table_2_column_11" width="120">
                                                         <col name="el-table_2_column_12" width="100">
                                                         <col name="el-table_2_column_13" width="180">
@@ -295,18 +281,11 @@ use yii\helpers\Url;
                                                         <col name="el-table_2_column_18" width="80">
                                                     </colgroup>
                                                     <tbody style="font-size: 12px;color:#82898e">
+																											
+																											
                                                     <?php foreach ($orders as $v) { ?>
                                                         <tr class="el-table__row">
-                                                            <td class="el-table_2_column_10  el-table-column--selection">
-                                                                <div class="cell el-tooltip">
-                                                                    <label role="checkbox" class="el-checkbox">
-                                                                <span class="el-checkbox__input">
-                                                                    <span class="el-checkbox__inner"></span>
-                                                                    <input type="checkbox"  class="el-checkbox__original" value=""/>
-                                                                </span>
-                                                                    </label>
-                                                                </div>
-                                                            </td>
+                                                            
                                                             <td class="el-table_2_column_11  ">
                                                                 <div class="cell el-tooltip" title="<?= $v["increment_id"] ?>">
                                                                     <?= $v["increment_id"] ?></div>
@@ -330,14 +309,14 @@ use yii\helpers\Url;
                                                             </td>
                                                             <td class="el-table_2_column_15">
                                                                 <div class="cell el-tooltip">
-                                                                    <div title="<?= $v["grand_total"] ?>">
-                                                                        总金额：<span style="color: #566168;font-weight: bold"><?= $v["grand_total"] ?></span></div>
+                                                                    <div title="<?= $v["subtotal"] ?>">
+                                                                        总金额：<span style="color: #566168;font-weight: bold"><?= $v["subtotal"] ?></span></div>
                                                                     <div title="<?= $v["coupon_name"] ?>">
                                                                         使用优惠券：<span style="color: #FF8F71;font-weight: bold"><?= $v["coupon_name"] ?></span></div>
                                                                     <div title="<?= $v["coin_num"] ?>">使用金币：<span style="color: #FFD545;font-weight: bold"><?= $v["coin_num"] ?></span></div>
                                                                     <div title="<?= $v["discount_amount"] ?>">折扣：<span style="color: #1FD98C;font-weight: bold"><?= $v["discount_amount"] ?></span></div>
-                                                                    <div title="<?= $v["grand_total"] - $v["subtotal_with_discount"] ?>">
-                                                                        应付金额：<span style="color:#3BACFE;font-weight: bold"><?= $v["grand_total"] - $v["subtotal_with_discount"] ?></span></div>
+                                                                    <div title="<?= $v["grand_total"] ?>">
+                                                                        应付金额：<span style="color:#3BACFE;font-weight: bold"><?= $v["grand_total"] ?></span></div>
                                                                 </div>
                                                             </td>
                                                             <td class="el-table_2_column_16">
@@ -385,13 +364,14 @@ use yii\helpers\Url;
                                         </div>
                                         <div data-v-6045fa9c="" style="position: relative;">
                                             <div data-v-6045fa9c="" style="margin-top: 40px;">
-                                                <button data-v-6045fa9c="" type="button"
-                                                        class="el-button el-button--default"><!---->
-                                                    <!----><span>全选</span>
+                                                <!-- <button data-v-6045fa9c="" type="button"
+                                                        class="el-button el-button--default"><span>全选</span>
                                                 </button>
                                                 <button data-v-6045fa9c="" type="button"
                                                         class="el-button red el-button--danger is-round">
-                                                    <span>批量删除</span></button>
+                                                    <span>批量删除</span></button> -->
+																										<br>
+																										<br>
                                             </div>
                                         </div>
                                         <div data-v-6045fa9c="" style="width: 100%; position: relative;">
